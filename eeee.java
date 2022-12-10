@@ -10,7 +10,7 @@ public class eeee
     // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
     private int x;
 
-    /**
+    /**rr
      * Konstruktor für Objekte der Klasse eeee
      */
     public eeee()
