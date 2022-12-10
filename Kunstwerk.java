@@ -9,7 +9,7 @@ public class Kunstwerk
 {
     // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
     private int x;
-    private int y;
+    
 
     /**
      * Konstruktor für Objekte der Klasse Kunstwerk
