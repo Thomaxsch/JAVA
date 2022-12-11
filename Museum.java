@@ -2,7 +2,7 @@
 /**
  * Beschreiben Sie hier die Klasse Museum.
  * 
- * @author (Ihr Name) 
+ * @author (Mischa) 
  * @version (eine Versionsnummer oder ein Datum)
  */
 public class Museum
