@@ -1,21 +1,19 @@
 
 /**
- * Beschreiben Sie hier die Klasse Kunstwerk.
+ * Beschreiben Sie hier die Klasse eeee.
  * 
  * @author (Ihr Name) 
  * @version (eine Versionsnummer oder ein Datum)
  */
-public class Kunstwerk
+public class eeee
 {
     // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
     private int x;
-    private int y;
-    
 
-    /**
-     * Konstruktor für Objekte der Klasse Kunstwerk
+    /**rr
+     * Konstruktor für Objekte der Klasse eeee
      */
-    public Kunstwerk()
+    public eeee()
     {
         // Instanzvariable initialisieren
         x = 0;
