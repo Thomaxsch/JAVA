@@ -1,19 +1,19 @@
 
 /**
- * Beschreiben Sie hier die Klasse eeee.
+ * Beschreiben Sie hier die Klasse Ausstellungsplanung.
  * 
- * @author (Ihr Name) 
+ * @author (Thomas Scheidt) 
  * @version (eine Versionsnummer oder ein Datum)
  */
-public class eeee
+public class Ausstellungsplanung
 {
     // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
     private int x;
 
-    /**rr
-     * Konstruktor für Objekte der Klasse eeee
+    /**
+     * Konstruktor für Objekte der Klasse Ausstellungsplanung
      */
-    public eeee()
+    public Ausstellungsplanung()
     {
         // Instanzvariable initialisieren
         x = 0;

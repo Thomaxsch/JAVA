@@ -2,6 +2,7 @@
 /**
  * Beschreiben Sie hier die Klasse Kunstwerk.
  * 
+<<<<<<< HEAD
  * @author (Ihr Name) 
  * @version (eine Versionsnummer oder ein Datum)
  */
@@ -11,6 +12,15 @@ public class Kunstwerk
     private int x;
     private int y;
     
+=======
+ * @author (Alexander Kipry) 
+ * @version (eine Versionsnummer oder ein Datum)
+ */
+public class Kunstwerk
+{
+    // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
+    private int x;
+>>>>>>> 49797233eff024eb354304d84e6ac2a92bdd38a5
 
     /**
      * Konstruktor für Objekte der Klasse Kunstwerk
