@@ -1,19 +1,19 @@
 
 /**
- * Beschreiben Sie hier die Klasse Museum.
+ * Beschreiben Sie hier die Klasse Ausgabedatei.
  * 
  * @author (Mischa Paul Marchlewski) 
  * @version (eine Versionsnummer oder ein Datum)
  */
-public class Museum
+public class Ausgabedatei
 {
     // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
     private int x;
 
     /**
-     * Konstruktor für Objekte der Klasse Museum
+     * Konstruktor für Objekte der Klasse Ausgabedatei
      */
-    public Museum()
+    public Ausgabedatei()
     {
         // Instanzvariable initialisieren
         x = 0;

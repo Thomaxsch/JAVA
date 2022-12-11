@@ -1,19 +1,19 @@
 
 /**
- * Beschreiben Sie hier die Klasse Museum.
+ * Beschreiben Sie hier die Klasse Bild.
  * 
- * @author (Mischa Paul Marchlewski) 
+ * @author (Alexander Kipry) 
  * @version (eine Versionsnummer oder ein Datum)
  */
-public class Museum
+public class Bild
 {
     // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
     private int x;
 
     /**
-     * Konstruktor für Objekte der Klasse Museum
+     * Konstruktor für Objekte der Klasse Bild
      */
-    public Museum()
+    public Bild()
     {
         // Instanzvariable initialisieren
         x = 0;
