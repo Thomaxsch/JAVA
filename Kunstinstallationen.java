@@ -1,22 +1,29 @@
 
 /**
- * Beschreiben Sie hier die Klasse Kunstinstallationen.
+ * Hierbei handelt es sich um eine Child-Klasse der Klasse "Kunstwerk", aus welcher die wesentlichen Attribute vererbt werden.
+ * Zudem werden unter den Attributen die spezifischen Eigenschaften der Kunstinstallationen erfasst. 
  * 
  * @author (Alexander Kipry) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @version (11.12.2022)
  */
-public class Kunstinstallationen
+public class Kunstinstallationen extends Kunstwerk
 {
-    // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
-    private int x;
-
+   /**
+    * Länge der Kunstinstallation oder des Kunstgegenstandes in cm
+    */
+    public int laenge;
+    /**
+     * Gewicht der Kunstinstallation oder des Kunstgegenstandes in KG
+     */
+    public int gewicht;
+    
     /**
      * Konstruktor für Objekte der Klasse Kunstinstallationen
      */
     public Kunstinstallationen()
     {
         // Instanzvariable initialisieren
-        x = 0;
+        laenge = 0;
     }
 
     /**
@@ -28,6 +35,6 @@ public class Kunstinstallationen
     public int beispielMethode(int y)
     {
         // tragen Sie hier den Code ein
-        return x + y;
+        return laenge;
     }
 }

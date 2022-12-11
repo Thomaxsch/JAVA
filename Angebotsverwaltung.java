@@ -3,7 +3,7 @@
  * Beschreiben Sie hier die Klasse Angebotsverwaltung.
  * 
  * @author (Alexander Kipry) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @version (11.12.2022)
  */
 public class Angebotsverwaltung
 {

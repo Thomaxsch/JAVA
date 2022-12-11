@@ -1,15 +1,14 @@
 
 /**
- * Beschreiben Sie hier die Klasse Kunstgegenstand.
+ * Hierbei handelt es sich um eine Child-Klasse der Klasse "Kunstwerk", aus welcher die wesentlichen Attribute vererbt werden. 
+ * Zudem werden unter den Attributen die spezifischen Eigenschaften der Kunstgegenstände erfasst.
  * 
  * @author (Alexander Kipry) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @version (11.12.2022)
  */
-public class Kunstgegenstand
+public class Kunstgegenstand extends Kunstwerk
 {
-    // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
-    private int x;
-
+    public int x; 
     /**
      * Konstruktor für Objekte der Klasse Kunstgegenstand
      */
@@ -28,6 +27,6 @@ public class Kunstgegenstand
     public int beispielMethode(int y)
     {
         // tragen Sie hier den Code ein
-        return x + y;
+        return x;
     }
 }

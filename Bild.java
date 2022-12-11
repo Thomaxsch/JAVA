@@ -5,7 +5,7 @@
  * @author (Alexander Kipry) 
  * @version (eine Versionsnummer oder ein Datum)
  */
-public class Bild
+public class Bild extends Kunstwerk
 {
     // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
     private int x;
