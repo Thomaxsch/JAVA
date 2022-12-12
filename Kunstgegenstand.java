@@ -8,14 +8,21 @@
  */
 public class Kunstgegenstand extends Kunstwerk
 {
-    public int x; 
+   /**
+    * Länge der Kunstinstallation oder des Kunstgegenstandes in cm
+    */
+    private int laenge;
+    /**
+     * Gewicht der Kunstinstallation oder des Kunstgegenstandes in KG
+     */
+    private int gewicht;    
     /**
      * Konstruktor für Objekte der Klasse Kunstgegenstand
      */
     public Kunstgegenstand()
     {
         // Instanzvariable initialisieren
-        x = 0;
+        laenge = 0;
     }
 
     /**
@@ -27,6 +34,6 @@ public class Kunstgegenstand extends Kunstwerk
     public int beispielMethode(int y)
     {
         // tragen Sie hier den Code ein
-        return x;
+        return laenge;
     }
 }

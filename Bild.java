@@ -1,22 +1,39 @@
 
 /**
- * Beschreiben Sie hier die Klasse Bild.
+ * Hierbei handelt es sich um eine Child-Klasse der Klasse "Kunstwerk", aus welcher die wesentlichen Attribute vererbt werden. 
+ * Zudem werden unter den Attributen die spezifischen Eigenschaften der Bilder erfasst.
  * 
  * @author (Alexander Kipry) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @version (12.11.2022)
  */
 public class Bild extends Kunstwerk
 {
-    // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
-    private int x;
-
+    /**
+     * Minimaltemperatur des Bildes in °C
+     */
+    private int minTemp;
+    
+    /**
+     * Maximaltemperatur des Bildes in °C
+     */
+    private int maxTemp;
+    /**
+     * Anforderung der minimalen Luftfeuchtigkeit des Bildes in %
+     */
+    private int minLuft;
+    /**
+     * Anforderung der maximalen Luftfeuchtigkeit des Bildes in %
+     */
+    private int maxLuft;
+    
+    
     /**
      * Konstruktor für Objekte der Klasse Bild
      */
     public Bild()
     {
         // Instanzvariable initialisieren
-        x = 0;
+        minTemp = 0;
     }
 
     /**
@@ -28,6 +45,6 @@ public class Bild extends Kunstwerk
     public int beispielMethode(int y)
     {
         // tragen Sie hier den Code ein
-        return x + y;
+        return minTemp;
     }
 }

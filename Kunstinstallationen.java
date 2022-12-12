@@ -11,11 +11,11 @@ public class Kunstinstallationen extends Kunstwerk
    /**
     * Länge der Kunstinstallation oder des Kunstgegenstandes in cm
     */
-    public int laenge;
+    private int laenge;
     /**
      * Gewicht der Kunstinstallation oder des Kunstgegenstandes in KG
      */
-    public int gewicht;
+    private int gewicht;
     
     /**
      * Konstruktor für Objekte der Klasse Kunstinstallationen
