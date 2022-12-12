@@ -2,7 +2,15 @@
 /**
  * Beschreiben Sie hier die Klasse Museum.
  * 
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * @author (Mischa) 
+=======
  * @author (Mischa Paul Marchlewski) 
+>>>>>>> 49797233eff024eb354304d84e6ac2a92bdd38a5
+=======
+ * @author (Mischa Paul Marchlewski) 
+>>>>>>> 4a6772f4139e352c35acd466b20b0b081692ed40
  * @version (eine Versionsnummer oder ein Datum)
  */
 public class Museum

@@ -6,6 +6,7 @@
  * @author (Alexander Kipry) 
  * @version (11.12.2022)
  */
+        
 public class Kunstgegenstand extends Kunstwerk
 {
    /**
@@ -33,7 +34,6 @@ public class Kunstgegenstand extends Kunstwerk
      */
     public int beispielMethode(int y)
     {
-        // tragen Sie hier den Code ein
         return laenge;
     }
 }

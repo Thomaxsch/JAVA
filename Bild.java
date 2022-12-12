@@ -6,6 +6,7 @@
  * @author (Alexander Kipry) 
  * @version (12.11.2022)
  */
+
 public class Bild extends Kunstwerk
 {
     /**
