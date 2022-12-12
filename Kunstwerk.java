@@ -6,6 +6,7 @@
  * @author (Alexander Kipry) 
  * @version (11.12.2022)
  */
+ 
     abstract class Kunstwerk
 {
     /** 
