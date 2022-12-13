@@ -1,9 +1,15 @@
 
 /**
- * Beschreiben Sie hier die Klasse Raumverwaltung.
+ * Die Klasse Raumverwaltung ist eine Containerklasse und dient zur 
+ * Verwaltung von Objekten der Klasse Raum. Sie ermöglicht das Suchen 
+ * und das Zugreifen auf bestimmte Objekte der Klasse Raum.
  * 
- * @author (Carla Saradeth) 
- * @version (eine Versionsnummer oder ein Datum)
+ * Über diese Klasse werden die von Herr Schneider bereitgestellten Details
+ * zu den Räume des VAWI- Museums in Form einer csv-Datei eingelesen und auf
+ * deren Basis Objekte der Klasse Raum erstellt.
+ * 
+ * @author Carla Saradeth 
+ * @version Dez 2022
  */
 public class Raumverwaltung
 {
@@ -30,4 +36,23 @@ public class Raumverwaltung
         // tragen Sie hier den Code ein
         return x + y;
     }
+    
+    /* Noch zu erstellende Methoden: (??)
+     * 
+     * Lese csv-Datei und importiere Daten.
+     * 
+     * Erstelle Objekte der Klasse Raum.
+     * 
+     * Lösche alle Objekte der Klasse Raum.
+     * 
+     * Aktualisiere alle Objekte der Klasse Raum.
+     * 
+     * Suche ein Objekt der Klasse Raum, welches folgende Erfüllung trifft:
+     * - hoeheRaumInCm >= Hoehe eines Kunstgegenstandes/installation
+     * - laengeRaumInCm >= Laenge eines Kunstgegenstandes/installation
+     * - breiteRaumInCm >= Breite eines Kunstgegenstandes/installation
+     * 
+     * 
+     * 
+     */
 }
