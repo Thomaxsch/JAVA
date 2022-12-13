@@ -1,33 +1,59 @@
 
 /**
- * Beschreiben Sie hier die Klasse Ausgabedatei.
+ * Die Klasse enthält die Attribute und Methoden zum Erstellen einer Ausgabe
+ * datei (Ausleihdatei).
  * 
- * @author (Mischa Paul Marchlewski) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @author Mischa Paul Marchlewski
+ * @version 13.12.2022
  */
 public class Ausgabedatei
 {
-    // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
-    private int x;
+    /**
+     * Attribute zur Aufnahme des Dateinamens
+     */
+    private int dateiname;
 
     /**
      * Konstruktor für Objekte der Klasse Ausgabedatei
      */
     public Ausgabedatei()
     {
-        // Instanzvariable initialisieren
-        x = 0;
+       
     }
 
     /**
-     * Ein Beispiel einer Methode - ersetzen Sie diesen Kommentar mit Ihrem eigenen
+     * Erstellt eine Datei (Ausleihdatei), die nach Quelle sortiert angibt 
+     * welche Kunstwerke wo ausgeliehen werden sollen, einschließlich der 
+     * dabei entstehenden Kosten. Die Methode nutzt dazu die Ausstellungs-
+     * planung
      * 
-     * @param  y    ein Beispielparameter für eine Methode
-     * @return        die Summe aus x und y
+     * @param  planung    Objekt der Klasse Ausstellungsplanung
+     * 
      */
-    public int beispielMethode(int y)
+    public void schreibeAusleihen(Ausstellungsplanung planung)
     {
-        // tragen Sie hier den Code ein
-        return x + y;
+    
     }
+    
+    /**
+     * Erstellt eine Datei (Ausstellungsdatei), die nach Räumen aufgegliedert
+     * auflistet,welches Kunstwerk wo ausgestellt werden soll. Sie nutzt dazu
+     * die Ausstellungsplanung.
+     */
+    public void schreibeAusstellungen(Ausstellungsplanung planung)
+    {
+        
+    }
+    
+    /**
+     * Erstellt eine Datei, die für die Besucher eine kurze Übersicht zu
+     * den Räumen und wichtigsten Kunstwerken enthält. Sie nutzt dazu die 
+     * Ausstellungsplanung.
+     */
+    public void schreibeMuseumsfuehrer(Ausstellungsplanung planung)
+    {
+        
+    }
+    
+    
 }

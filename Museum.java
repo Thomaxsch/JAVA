@@ -1,41 +1,53 @@
 
 /**
- * Beschreiben Sie hier die Klasse Museum.
+ * Die Klasse Museum bildet die Einstiegsklasse. Aus ihr wird das Programm
+ * gestartet. 
  * 
-<<<<<<< HEAD
-<<<<<<< HEAD
- * @author (Mischa) 
-=======
- * @author (Mischa Paul Marchlewski) 
->>>>>>> 49797233eff024eb354304d84e6ac2a92bdd38a5
-=======
- * @author (Mischa Paul Marchlewski) 
->>>>>>> 4a6772f4139e352c35acd466b20b0b081692ed40
- * @version (eine Versionsnummer oder ein Datum)
+ * @author Mischa Paul Marchlewski 
+ * @version 13.12.2022
  */
 public class Museum
 {
-    // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
-    private int x;
-
     /**
-     * Konstruktor für Objekte der Klasse Museum
+     * speichert ein Objekt der Klasse Ausstellungsplanung
      */
-    public Museum()
-    {
-        // Instanzvariable initialisieren
-        x = 0;
-    }
+    private Ausstellungsplanung planung;
 
     /**
-     * Ein Beispiel einer Methode - ersetzen Sie diesen Kommentar mit Ihrem eigenen
+     * In der Main-Methode werden alle Anweisungen aufgeführt, die beim Start
+     * des Programms ausgeführt werden sollen. Von hier aus wird die zentrale
+     * Geschäftslogikklasse Ausstellungsplanung aufgerufen. 
      * 
-     * @param  y    ein Beispielparameter für eine Methode
-     * @return        die Summe aus x und y
+     * @param  args    Beispielparameter für eine Methode
      */
-    public int beispielMethode(int y)
+    public static void main(String[] args)
     {
         // tragen Sie hier den Code ein
-        return x + y;
+     
     }
+    
+    /**
+     * Liest die Kunstwerke aus der Datei kunstwerke.csv ein und erstellt
+     * daraus Objeke der Klasse Bild, Kunstinstallation bzw. Kunstgegenstand
+     */
+    public static void importiereKunstwerke()
+    {
+        
+    }
+    
+    /**
+     * Liest die Räume aus der Datei raeume.csv ein und erstellt daraus
+     * Objekte der Klasse Raum,die in der Klasse Raumverwaltung verwaltet 
+     * werden.
+     */
+    public static void importiereRaeume()
+    {
+        
+    }
+    
+    
+    
+    
+    
+    
 }
