@@ -27,13 +27,26 @@ public class Kunstgegenstand extends Kunstwerk
     }
 
     /**
-     * Ein Beispiel einer Methode - ersetzen Sie diesen Kommentar mit Ihrem eigenen
+     * Gibt die Länge des Kunstgegenstandes an.
      * 
-     * @param  y    ein Beispielparameter für eine Methode
-     * @return        die Summe aus x und y
+     *
+     * @return        Länge des Kunstgegenstandes in cm.
      */
-    public int beispielMethode(int y)
+    public int zeigeLaenge(int laenge)
     {
         return laenge;
     }
+    
+     /**
+     * Gibt das Gewicht des Kunstgegenstandes an.
+     * 
+     *
+     * @return        Gewicht des Kunstgegenstandes in KG.
+     */
+    public int zeigeGewicht(int gewicht)
+    {
+        return gewicht;
+    }
+    
+    
 }

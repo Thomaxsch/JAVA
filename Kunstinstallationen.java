@@ -4,7 +4,7 @@
  * Zudem werden unter den Attributen die spezifischen Eigenschaften der Kunstinstallationen erfasst. 
  * 
  * @author (Alexander Kipry) 
- * @version (11.12.2022)
+ * @version (15.12.2022)
  */
 public class Kunstinstallationen extends Kunstwerk
 {
@@ -20,21 +20,28 @@ public class Kunstinstallationen extends Kunstwerk
     /**
      * Konstruktor für Objekte der Klasse Kunstinstallationen
      */
-    public Kunstinstallationen()
+    public Kunstinstallationen(int laenge, int gewicht)
     {
-        // Instanzvariable initialisieren
-        laenge = 0;
     }
 
     /**
-     * Ein Beispiel einer Methode - ersetzen Sie diesen Kommentar mit Ihrem eigenen
+     * Gibt die Länge der Kunstinstallation an.
      * 
-     * @param  y    ein Beispielparameter für eine Methode
-     * @return        die Summe aus x und y
+     *
+     * @return        laenge der Kunstinstallation in cm.
      */
-    public int beispielMethode(int y)
+    public int zeigeLänge(int laenge)
     {
-        // tragen Sie hier den Code ein
         return laenge;
+    }
+    /**
+     * Gibt das Gewicht der Kunstinstallation an.
+     * 
+     *
+     * @return        Gewicht der Kunstinstallation in kg.
+     */
+    public int beispielMethode(int gewicht)
+    {
+        return gewicht;
     }
 }

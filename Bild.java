@@ -30,22 +30,62 @@ public class Bild extends Kunstwerk
     
     /**
      * Konstruktor für Objekte der Klasse Bild
-     */
-    public Bild()
-    {
-        // Instanzvariable initialisieren
-        minTemp = 0;
-    }
-
-    /**
-     * Ein Beispiel einer Methode - ersetzen Sie diesen Kommentar mit Ihrem eigenen
      * 
-     * @param  y    ein Beispielparameter für eine Methode
-     * @return        die Summe aus x und y
-     */
-    public int beispielMethode(int y)
+     * @param bezeichnung           Dieser String entspricht der Bezeichnung des Kunstwerkes.
+     * @param kuenstler             Dieser String entspricht dem Namen des Künstlers.
+     * @param jahr                  Dieser String entspricht dem Jahr, in dem das Kunstwerk erstellt wurde.
+     * @param thema                 Dieser String entspricht dem Thema, welches dem Kunstwerk zugeordnet wurde.
+     * @param attraktivitaetswert   Dieser int entspricht der Attraktivität des Objekts in % (Bewertung durch Herrn Schneider).
+     * @param kosten                Dieser int entspricht den Kosten für die Ausleihe des Kunstwerkes in €.
+     * @param ausleihendesMuseum    Dieser String entpricht dem Namen des ausleihenden Museums
+     * @param hoehe                 Dieser int entspricht der Höhe des Kunstwerkes in cm.
+     * @param breite                Dieser int entspricht der Breite des Kunstwerkes in cm. 
+     * @param minTemp               Dieser int entspricht der minimalen Temperatur in einem Raum, welche für das Kunstwerk zulässig ist, in °C.
+     * @param maxTemp               Dieser int entspricht der maximalen Temperatur in einem Raum, welche für das Kunstwerk zulässig ist, in °C.
+     * @param minLuft               Dieser int entspricht der minimalen Luftfeuchtigkeit in einem Raum, welche für das Kunstwerk zulässig ist, in %.
+     * @param maxLuft               Dieser int entspricht der minimalen Luftfeuchtigkeit in einem Raum, welche für das Kunstwerk zulässig ist, in %.
+       */
+    
+    
+      public Bild ()
     {
-        // tragen Sie hier den Code ein
+        
+    }
+    /**
+     * Gibt die Mindesttemperatur wieder, die für das Bild zulässig ist.
+     * 
+     * @return Mindestemperatur in °C.
+     */
+    public int zeigeMinTemp(int minTemp)
+    {
         return minTemp;
     }
-}
+     /**
+     * Gibt die Maximaltemperatur wieder, die für das Bild zulässig ist.
+     * 
+     * @return Maximaltemperatur in °C.
+     */
+    public int zeigeMaxTemp(int maxTemp)
+    {
+        return maxTemp;
+    }
+     /**
+     * Gibt die Mindest-Luftfeuchtigkeit wieder, die für das Bild zulässig ist.
+     * 
+     * @return Mindest-Luftfeuchtigkeit in %.
+     */
+    public int zeigeMinLuft(int minLuft)
+    {
+        return minLuft;
+    }
+     /**
+     * Gibt die Maximal-Luftfeuchtigkeit wieder, die für das Bild zulässig ist.
+     * 
+     * @return Maximal-Luftfeuchtigkeit in %.
+     */
+    public int zeigeMaxLuft(int maxLuft)
+    {
+        return maxLuft;
+    }
+    }
+    
