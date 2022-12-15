@@ -11,12 +11,12 @@ public class Ausgabedatei
     /**
      * Attribute zur Aufnahme des Dateinamens
      */
-    private int dateiname;
+    private String dateiname;
 
     /**
      * Konstruktor für Objekte der Klasse Ausgabedatei
      */
-    public Ausgabedatei()
+    public Ausgabedatei(String dateiname)
     {
        
     }
