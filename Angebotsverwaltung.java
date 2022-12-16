@@ -9,8 +9,11 @@
 
 public class Angebotsverwaltung
 {
-    // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
-    private int x;
+    //erstmal erstellt um eine Beziehung zu den Klassen herzustellen. Angestrebt ist jedoch eine Aggregations(enthält-Beziehung).
+    
+    private Kunstinstallationen kunstinstallation;
+    private Bild bild;
+    private Kunstgegenstand kunstgegenstand;
 
     /**
      * Konstruktor für Objekte der Klasse Angebotsverwaltung
@@ -18,18 +21,31 @@ public class Angebotsverwaltung
     public Angebotsverwaltung()
     {
         // Instanzvariable initialisieren
-        x = 0;
     }
 
     /**
-     * Ein Beispiel einer Methode - ersetzen Sie diesen Kommentar mit Ihrem eigenen
-     * 
-     * @param  y    ein Beispielparameter für eine Methode
-     * @return        die Summe aus x und y
+     * Diese Methode durchsucht die Objekte nach einer bestimmten Kunstinstallation und zeigt dieses an.
      */
-    public int beispielMethode(int y)
+    public static void sucheKunstinstallation()
     {
-        // tragen Sie hier den Code ein
-        return x + y;
+        //Code zum Durchsuchen der Kunstinstallationen 
+    }
+    
+    /**
+     * Diese Methode durchsucht die Objekte nach einem bestimmten Bild und zeigt dieses an.
+     */
+    public static void sucheBild()
+    {
+        //Code zum Durchsuchen der Bilder 
+    }
+    
+    /**
+     * Diese Methode durchsucht die Objekte nach einem bestimmten Kunstgegenstand und zeigt dieses an.
+     */
+    public static void sucheKunstgegenstand()
+    {
+        //Code zum Durchsuchen der Kunstgegenstaende 
     }
 }
+
+
