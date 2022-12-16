@@ -30,6 +30,7 @@ public class Kunstgegenstand extends Kunstwerk
     /**
      * Konstruktor für Objekte der Klasse Kunstgegenstand mit Parameter
      * 
+     * @param laufendeNummer            Dieser short entspricht der laufenden Nummer des Kunstwerkes
      * @param bezeichnung               Dieser String entspricht der Bezeichnung des Kunstwerkes.
      * @param in_kuenstler              Dieser String entspricht dem Namen des Künstlers.
      * @param jahr                      Dieser String entspricht dem Jahr, in dem das Kunstwerk erstellt wurde.
@@ -42,8 +43,9 @@ public class Kunstgegenstand extends Kunstwerk
      * @param laenge                    Dieser int entspricht der Länge der Kunstgegenstandes in cm.
      * @param gewicht                   Dieser int entspricht dem Gewicht des Kunstgegenstandes in KG.
      */
-    public Kunstgegenstand (String bezeichnung, String kuenstler, String jahr, String thema, int attraktivitaetswert, int kosten, String verleihendesMuseum, int hoehe, int breite, int laenge, int gewicht)
+    public Kunstgegenstand (short laufendeNummer, String bezeichnung, String kuenstler, String jahr, String thema, int attraktivitaetswert, int kosten, String verleihendesMuseum, int hoehe, int breite, int laenge, int gewicht)
     {
+        setLaufendeNummer(laufendeNummer);
         setBezeichnung(bezeichnung);
         setKuenstler(kuenstler);
         setJahr(jahr);

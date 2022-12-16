@@ -8,24 +8,26 @@
  */
     abstract class Kunstwerk
 { //Attribute der Klasse Kunstwerk
+    /** Lfd-Nummer des Kunstwerkes aus dem Angebot */
+    private short laufendeNummer;
     /** Bezeichnung, bzw Name des jeweiligen Kunstwerkes */
-    public String bezeichnung; 
+    private String bezeichnung; 
     /**  Name des Künstlers, der das Kunstwerk erstellt hat */
-    public String kuenstler;
+    private String kuenstler;
     /** Jahr, in welchem das Kunstwerk hergestellt wurde */
-    public String jahr; 
+    private String jahr; 
     /** Thema, in welches Herr Schneider das Kunstwerk eingeordnet hat */
-    public String thema;
+    private String thema;
     /** Bewertung der Attraktivität des Kunstwerkes durch Herrn Schneider in % */
-    public int attraktivitaetswert;
+    private int attraktivitaetswert;
     /** Kosten für die Ausleihe des Kunstwerkes in Euro */
-    public int kosten; 
+    private int kosten; 
     /** Angabe des Museums, welches das Kunstwerk zur Verfügung stellt */
-    public String verleihendesMuseum;
+    private String verleihendesMuseum;
     /** Höhe des Kunstwerkes in cm */
-    public int hoehe;
+    private int hoehe;
     /** Breite des Kunstwerkes in cm */
-    public int breite; 
+    private int breite; 
     
     /**
      * Konstruktor für Objekte der Klasse Kunstwerk ohne Parameter
@@ -37,6 +39,7 @@
     /**
      * Konstruktor für Objekte der Klasse Kunstwerk mit Parametern
      * 
+     * @param laufendeNummer        Dieser short entspricht der laufenden Nummer des Kunstwerkes
      * @param bezeichnung           Dieser String entspricht der Bezeichnung des Kunstwerkes.
      * @param kuenstler             Dieser String entspricht dem Namen des Künstlers.
      * @param jahr                  Dieser String entspricht dem Jahr, in dem das Kunstwerk erstellt wurde.
@@ -48,16 +51,27 @@
      * @param breite                Dieser int entspricht der Breite des Kunstwerkes in cm. 
      */
     
-    public Kunstwerk(String bezeichnung, String kuenstler, String jahr, String thema, int attraktivitaetswert, int kosten, String verleihendesMuseum, int hoehe, int breite)
+    public Kunstwerk(short laufendeNummer,String bezeichnung, String kuenstler, String jahr, String thema, int attraktivitaetswert, int kosten, String verleihendesMuseum, int hoehe, int breite)
     {  
     }
     
     //Methoden der Klasse Kunstwerk
     /** 
+     * Diese Methode ueberschreibt das laufendeNummer Attribut eines "Kunstwerk" Objektes
+     * 
+     * @param in_laufendeNummer laufende Nummer des Kunstwerkes (short)
+     */
+    public void setLaufendeNummer(short in_laufendeNummer)
+    {
+        laufendeNummer=in_laufendeNummer;
+    }
+    
+    /** 
      * Diese Methode ueberschreibt das bezeichnung Attribut eines "Kunstwerk" Objektes
      * 
      * @param in_bezeichnung Bezeichnung des Kunstwerkes (String)
      */
+    
     public void setBezeichnung(String in_bezeichnung)
     {
         bezeichnung=in_bezeichnung;

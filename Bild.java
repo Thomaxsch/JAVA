@@ -5,7 +5,7 @@
  * Es lassen sich hierrüber manuell Objekte anlegen, jedoch sollen über die Einstiegsklasse "Museum" über einen Datenimport die Objekte erstellt werden.
  * 
  * @author (Alexander Kipry) 
- * @version (16.12 .2022)
+ * @version (16.12.2022)
  */
 
 public class Bild extends Kunstwerk
@@ -41,6 +41,7 @@ public class Bild extends Kunstwerk
     /**
      * Konstruktor für Objekte der Klasse Bild mit Parametern
      *
+     * @param laufendeNummer        Dieser short entspricht der laufenden Nummer des Kunstwerkes.
      * @param bezeichnung           Dieser String entspricht der Bezeichnung des Kunstwerkes.
      * @param kuenstler             Dieser String entspricht dem Namen des Künstlers.
      * @param jahr                  Dieser String entspricht dem Jahr, in dem das Kunstwerk erstellt wurde.
@@ -56,8 +57,9 @@ public class Bild extends Kunstwerk
      * @param maxLuft               Dieser int entspricht der minimalen Luftfeuchtigkeit in einem Raum, welche für das Kunstwerk zulässig ist, in %.
        */
 
-      public Bild (String bezeichnung, String kuenstler, String jahr, String thema, int attraktivitaetswert, int kosten, String verleihendesMuseum, int hoehe, int breite, int minTemp,int maxTemp, int minLuft, int maxLuft)
+      public Bild (short laufendeNummer, String bezeichnung, String kuenstler, String jahr, String thema, int attraktivitaetswert, int kosten, String verleihendesMuseum, int hoehe, int breite, int minTemp,int maxTemp, int minLuft, int maxLuft)
     { 
+        setLaufendeNummer(laufendeNummer);
         setBezeichnung(bezeichnung);
         setKuenstler(kuenstler);
         setJahr(jahr);
