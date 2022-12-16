@@ -22,8 +22,9 @@ public class Museum
      */
     public static void main(String[] args)
     {
-        // tragen Sie hier den Code ein
-     
+        Kunstinstallationen kunstinstallation= new Kunstinstallationen();
+        Bild bild= new Bild();
+        Kunstgegenstand kunstgegenstand= new Kunstgegenstand();
     }
     
     /**

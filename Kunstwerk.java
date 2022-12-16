@@ -4,7 +4,7 @@
  * Auf die Parent-Klasse wird durch die Child-Klassen zugegriffen, um die jeweiligen Objekte zu erstellen. 
  * 
  * @author (Alexander Kipry) 
- * @version (11.12.2022)
+ * @version (16.12.2022)
  */
     abstract class Kunstwerk
 { //Attribute der Klasse Kunstwerk
@@ -21,14 +21,21 @@
     /** Kosten für die Ausleihe des Kunstwerkes in Euro */
     public int kosten; 
     /** Angabe des Museums, welches das Kunstwerk zur Verfügung stellt */
-    public String ausleihendesMuseum;
+    public String verleihendesMuseum;
     /** Höhe des Kunstwerkes in cm */
     public int hoehe;
     /** Breite des Kunstwerkes in cm */
     public int breite; 
     
     /**
-     * Konstruktor für Objekte der Klasse Kunstwerk
+     * Konstruktor für Objekte der Klasse Kunstwerk ohne Parameter
+     */
+    public Kunstwerk()
+    {       
+    }
+    
+    /**
+     * Konstruktor für Objekte der Klasse Kunstwerk mit Parametern
      * 
      * @param bezeichnung           Dieser String entspricht der Bezeichnung des Kunstwerkes.
      * @param kuenstler             Dieser String entspricht dem Namen des Künstlers.
@@ -36,17 +43,107 @@
      * @param thema                 Dieser String entspricht dem Thema, welches dem Kunstwerk zugeordnet wurde.
      * @param attraktivitaetswert   Dieser int entspricht der Attraktivität des Objekts in % (Bewertung durch Herrn Schneider)
      * @param kosten                Dieser int entspricht den Kosten für die Ausleihe des Kunstwerkes in €.
-     * @param verleihendesMuseum    Dieser String entpricht dem Namen des verleihenden Museums
+     * @param verleihendesMuseum    Dieser String entpricht dem Namen & der Adresse des verleihenden Museums
      * @param hoehe                 Dieser int entspricht der Höhe des Kunstwerkes in cm.
      * @param breite                Dieser int entspricht der Breite des Kunstwerkes in cm. 
      */
+    
     public Kunstwerk(String bezeichnung, String kuenstler, String jahr, String thema, int attraktivitaetswert, int kosten, String verleihendesMuseum, int hoehe, int breite)
-    {
-        // Instanzvariable initialisieren
-        
+    {  
     }
     
-    //Methoden der Klasse Raum
+    //Methoden der Klasse Kunstwerk
+    /** 
+     * Diese Methode ueberschreibt das bezeichnung Attribut eines "Kunstwerk" Objektes
+     * 
+     * @param in_bezeichnung Bezeichnung des Kunstwerkes (String)
+     */
+    public void setBezeichnung(String in_bezeichnung)
+    {
+        bezeichnung=in_bezeichnung;
+    }
+    /** 
+     * Diese Methode ueberschreibt das kuenstler Attribut eines "Kunstwerk" Objektes
+     * 
+     * @param in_kuenstler Bezeichnung des Kuenstlers (String)
+     */
+    public void setKuenstler(String in_kuenstler)
+    {
+        kuenstler=in_kuenstler;
+    }
+    
+    /** 
+     * Diese Methode ueberschreibt das jahr Attribut eines "Kunstwerk" Objektes
+     * 
+     * @param in_jahr Jahresangabe des Kunstwerkes (String)
+     */
+    public void setJahr(String in_jahr)
+    {
+        jahr = in_jahr;
+    }
+    
+    /** 
+     * Diese Methode ueberschreibt das thema Attributes eines "Kunstwerk" Objektes
+     * 
+     * @param in_thema thema des Kunstwerkes (String)
+     */
+    
+    public void setThema(String in_thema)
+    {
+        thema = in_thema;
+    }
+    
+    /** 
+     * Diese Methode ueberschreibt das attraktivitaetswert Attribut eines "Kunstwerk" Objektes
+     * 
+     * @param in_attraktivitaet attraktivitaetswert des Kunstwerkes in % (int)
+     */
+    
+    public void setAttraktivitaet (int in_attraktivitaet)
+    {
+        attraktivitaetswert = in_attraktivitaet;
+    }
+    /**
+     * Diese Methode ueberschreibt das kosten Attribut eines "Kunstwerk" Objektes
+     * 
+     * @param in_kosten kosten für die Ausleihe des Kunstwerkes in € (int)
+     * 
+     */
+    public void setKosten (int in_kosten)
+    {
+        kosten = in_kosten;
+    }
+    
+    /** 
+     * Diese Methode ueberschreibt das verleihendesMuseum Attribut eines "Kunstwerk" Objektes
+     * 
+     * @param in_verleihendesMuseum Name und Adresse des verleihenden Museums
+     */
+    public void setVerleihendesMuseum (String in_verleihendesMuseum)
+    {
+        verleihendesMuseum = in_verleihendesMuseum;
+    }
+    
+     /** 
+     * Diese Methode ueberschreibt das hoehe Attribut eines "Kunstwerk" Objektes
+     * 
+     * @param in_hoehe Hoehe des Kunstwerkes in cm.
+     */
+    public void setHoehe (int in_hoehe)
+    {
+        hoehe = in_hoehe;
+    }
+    
+     /** 
+     * Diese Methode ueberschreibt das breite Attribut eines "Kunstwerk" Objektes
+     * 
+     * @param in_breite Breite des Kunstwerkes in cm.
+     */
+    public void setBreite (int in_breite)
+    {
+        breite = in_breite;
+    }
+    
      /**
      * Gibt die Bezeichnung des Kunstwerkes wieder.
      * 
