@@ -59,6 +59,46 @@ public class Ausstellungsplanung2
     {
         
     }
+    
+    /**
+     * Über diese Methode kann das Attribut schwerpunktthema geändert/gesetzt werden.
+     * 
+     * @param schwerpunktthema  neues Schwerpunktthema als Text
+     */
+    public void setSchwerpunktthema(String schwerpunktthema) 
+    {
+        
+    }
+    
+    /**
+     * Über diese Methode kann das Schwerpunktthema der Ausstellung abgefragt werden.
+     * 
+     * @return schwerpunktthema   Wert des Attributtes schwerpunktthema
+     */
+    public String getSchwerpunktthema() 
+    {
+        return this.schwerpunktthema;
+    }
+    
+    /**
+     * Methode zum nachträglichen Ändern/Setzen der Kostenobergrenze
+     * 
+     * @param kostenobergrenze  neue Kostenobergrenze
+     */
+    public void setKostenobergrenze(double kostenobergrenze)
+    {
+        
+    }
+    
+    /**
+     * Methode zum Abfragen der Kostenobergrenze
+     * 
+     * @return kostenobergrenze   Wert des Attributs kostenobergrenze
+     */
+    public double getKostenobergrenze()
+    {
+        return this.kostenobergrenze;
+    }
 
     /**
      * Methode, die die Angebote der Partnermuseen und die Räume des Museums als
