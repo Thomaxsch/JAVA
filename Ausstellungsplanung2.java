@@ -1,33 +1,96 @@
-
+import java.util.*;
 /**
- * Beschreiben Sie hier die Klasse Ausstellungsplanung2.
+ * Die Klasse Ausstellungsplanung ist die zentrale Logikklasse. In dieser Klasse wird auf 
+ * Grundlage eines Schwerpunktthemas und einer optionalen Kostenobergrenze eine möglichst
+ * attraktive Ausstellung geplant und festgehalten. 
  * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @author Mischa Marchlewski 
+ * @version 17.12.2022
  */
 public class Ausstellungsplanung2
 {
-    // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
-    private int x;
-
     /**
-     * Konstruktor für Objekte der Klasse Ausstellungsplanung2
+     * Variable um das Schwerpunktthema der Ausstellung festzulegen.
+     */
+    private String schwerpunktthema;
+    /**
+     * Legt die Kostenobergrenze für alle Kunstwerke für eine Ausstellung fest.
+     */
+    private double kostenobergrenze;
+    /**
+     * Map,die die Räume und die zugeordneten Kunstwerke enthält. Der Raum wird 
+     * als Schlüssel genommen (da eindeutig und nicht mehrmals vorhanden) und die
+     * zugeordneten Kunstwerke als Liste von Kunstwerken zu einem Raum als Wert gespeichert.
+     */
+    private HashMap<Raum, List<Kunstwerk>> zugeordneteRaeumeKunstwerke;
+    
+    /**
+     * Konstruktor für Objekte der Klasse Ausstellungsplanung. Wird verwendet, wenn kein 
+     * Schwerpunktthema und keine Kostenobergrenze festgelegt wird.
      */
     public Ausstellungsplanung2()
     {
-        // Instanzvariable initialisieren
-        x = 0;
+        
+    }
+    
+    /**
+     * Konstruktor für Objekte der Klasse Ausstellungsplanung. Wird verwendet, wenn ein 
+     * Schwerpunktthema aber keine Kostenobergrenze festgelegt wird.
+     */
+    public Ausstellungsplanung2(String schwerpunktthema)
+    {
+        
+    }
+    
+      /**
+     * Konstruktor für Objekte der Klasse Ausstellungsplanung. Wird verwendet, wenn kein 
+     * Schwerpunktthema aber eine Kostenobergrenze festgelegt wird.
+     */
+    public Ausstellungsplanung2(double kostenobergrenze)
+    {
+        
+    }
+    
+    /**
+     * Konstruktor für Objekte der Klasse Ausstellungsplanung. Als Parameter können ein
+     * Schwerpunktthema und eine Kostenobergrenze übergeben werden.
+     */
+    public Ausstellungsplanung2(String schwerpunktthema, double kostenobergrenze)
+    {
+        
     }
 
     /**
-     * Ein Beispiel einer Methode - ersetzen Sie diesen Kommentar mit Ihrem eigenen
+     * Methode, die die Angebote der Partnermuseen und die Räume des Museums als
+     * Parameter entgegennimmt und eine Zuordnung der Kunstwerke aus den Angeboten
+     * zu den entsprechenden Räumen vornimmt. Dabei erfolgt eine Prüfung ob die Kapazitäten 
+     * der Räume ausreichend sind und stellt die Kunstwerke entsprechend zusammen. Das 
+     * Ergebnis wird im Attribut zugeordneteRaeumeKunstwerke gespeichert.Dabei wird auch
+     * geprüft ob in einem auch nicht mehr als drei verschiedene Themen vorhanden sind.
      * 
-     * @param  y    ein Beispielparameter für eine Methode
-     * @return        die Summe aus x und y
+     * @param  raeume    Raumobjekte aus der Raumverwaltung
+     * @param  angebot   Kunstwerke aus der Angebotsverwaltung
      */
-    public int beispielMethode(int y)
+    public void zuordnenRaum(Raumverwaltung raeume, Angebotsverwaltung angebot)
     {
         // tragen Sie hier den Code ein
-        return x + y;
+        
     }
+    
+    /**
+     * Hilfsmethode zum Sortieren der Angebote nach Attraktivität, wenn kein Schwerpunkt-
+     * thema und keine Kostenobergrenze vorliegt.
+     * 
+     * @param  a                  Angebote aus der Angebotsverwaltung
+     * @return s                  sortierte Kunstwerke nach Attraktivität
+     */
+    private List<Angebotsverwaltung> sortiereNachAttraktivaet(Angebotsverwaltung a)
+    {
+        List<Angebotsverwaltung> s = new LinkedList<Angebotsverwaltung>();
+        return s;
+    }
+    
+    
+    
+    
 }
