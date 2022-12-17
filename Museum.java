@@ -22,9 +22,7 @@ public class Museum
      */
     public static void main(String[] args)
     {
-        Kunstinstallationen kunstinstallation= new Kunstinstallationen();
-        Bild bild= new Bild();
-        Kunstgegenstand kunstgegenstand= new Kunstgegenstand();
+        
     }
     
     /**
@@ -33,7 +31,9 @@ public class Museum
      */
     public static void importiereKunstwerke()
     {
-        
+        Kunstinstallationen kunstinstallation= new Kunstinstallationen();
+        Bild bild= new Bild();
+        Kunstgegenstand kunstgegenstand= new Kunstgegenstand();
     }
     
     /**
