@@ -8,6 +8,13 @@
 public class Ausleihe
 {
     // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
+    
+    //Declaring 2D array
+    int[][] a;
+
+    //Creating a 2D array /3x3 Matrix
+    a = new int[3][3];
+    
     private int x;
 
     /**

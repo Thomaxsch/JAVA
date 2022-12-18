@@ -1,58 +1,63 @@
 
 /**
- * Die Klasse Raumverwaltung ist eine Containerklasse und dient zur 
- * Verwaltung von Objekten der Klasse Raum. Sie ermöglicht das Suchen 
- * und das Zugreifen auf bestimmte Objekte der Klasse Raum.
+ * Die Klasse Raumverwaltung ist eine Containerklasse und dient zur Verwaltung von Objekten der Klasse Raum.
+ * Sie ermöglicht das Suchen und das Zugreifen auf bestimmte Objekte der Klasse Raum.
+ * Sie steht in einer Aggregation zu der Klasse Raum. Sie verfügt ueber keine eigenen Objekte.
  * 
- * Über diese Klasse werden die von Herr Schneider bereitgestellten Details
- * zu den Räume des VAWI- Museums in Form einer csv-Datei eingelesen und auf
- * deren Basis Objekte der Klasse Raum erstellt.
  * 
  * @author Carla Saradeth 
  * @version Dez 2022
  */
-public class Raumverwaltung
+public abstract class Raumverwaltung
 {
-    // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
-    private int x;
-
-    /**
-     * Konstruktor für Objekte der Klasse Raumverwaltung
+    // Attribute der Klasse Raumverwaltung
+    /** 
+     * Die Klasse Raumverwaltung hat die Klasse Raum als Attribut, um auf Objekte der Klasse Raum zugreifen zu koennen.
      */
-    public Raumverwaltung()
-    {
-        // Instanzvariable initialisieren
-        x = 0;
-    }
+    private Raum raum;
+    
+    
 
-    /**
-     * Ein Beispiel einer Methode - ersetzen Sie diesen Kommentar mit Ihrem eigenen
-     * 
-     * @param  y    ein Beispielparameter für eine Methode
-     * @return        die Summe aus x und y
+    
+    //Methoden der Klasse Raumverwaltung
+    //Methoden technische Aspekte
+    /** Ermittelt ein Objekt der Klasse Raum, dessen Hoehe größer ist als die Hoehe eines Kunstgegenstanden oder
+     *  Kunstinstallation unter Berücksichtigung eine Mindestabstandes von 2m.
+     *  (hoeheRaumInCm - 2m >= Hoehe eines Kunstgegenstanden oder Kunstinstallation)
+     *  @return     Objekt der Klasse Raum, das Kriterien in Hoehe erfüllt.
      */
-    public int beispielMethode(int y)
+    public Raum getRaumNachHoehe()
     {
         // tragen Sie hier den Code ein
-        return x + y;
+        return raum;
     }
     
-    /* Noch zu erstellende Methoden: (??)
-     * 
-     * Lese csv-Datei und importiere Daten.
-     * 
-     * Erstelle Objekte der Klasse Raum.
-     * 
-     * Lösche alle Objekte der Klasse Raum.
-     * 
-     * Aktualisiere alle Objekte der Klasse Raum.
-     * 
-     * Suche ein Objekt der Klasse Raum, welches folgende Erfüllung trifft:
-     * - hoeheRaumInCm >= Hoehe eines Kunstgegenstandes/installation
-     * - laengeRaumInCm >= Laenge eines Kunstgegenstandes/installation
-     * - breiteRaumInCm >= Breite eines Kunstgegenstandes/installation
-     * 
-     * 
-     * 
+    /** Ermittelt ein Objekt der Klasse Raum, dessen Laenge größer ist als die Laenge eines Kunstgegenstanden oder
+     *  Kunstinstallation unter Berücksichtigung eine Mindestabstandes von 2m.
+     *  (laengeRaumInCm - 2m >= Laenge eines Kunstgegenstanden oder Kunstinstallation)
+     *  @return     Objekt der Klasse Raum, das Kriterien in Laenge erfüllt.
      */
+    public Raum getRaumNachLaenge()
+    {
+        // tragen Sie hier den Code ein
+        return raum;
+    }
+    
+    /** Ermittelt ein Objekt der Klasse Raum, dessen Breite größer ist als die Breite eines Kunstgegenstanden oder
+     *  Kunstinstallation unter Berücksichtigung eine Mindestabstandes von 2m.
+     *  (breiteRaumInCm - 2m >= Breite eines Kunstgegenstanden oder Kunstinstallation)
+     *  @return     Objekt der Klasse Raum, das Kriterien in Breite erfüllt.
+     */
+    public Raum getRaumNachBreite()
+    {
+        // tragen Sie hier den Code ein
+        return raum;
+    }
+   
+    //Methoden organisatorische Aspekte
+    
+    
+    
+    
+    
 }
