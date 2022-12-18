@@ -99,7 +99,7 @@ public class Ausstellungsplanung2
     {
         return this.kostenobergrenze;
     }
-
+    
     /**
      * Methode, die die Angebote der Partnermuseen und die Räume des Museums als
      * Parameter entgegennimmt und eine Zuordnung der Kunstwerke aus den Angeboten
