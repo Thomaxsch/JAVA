@@ -1,10 +1,13 @@
 
 /**
- * Bei dieser Klasse handelt es sich um eine abstrakte Parent-Klasse, welche die wesentlichen Informationen aller Kunstwerke beeinhaltet. 
- * Auf die Parent-Klasse wird durch die Child-Klassen zugegriffen, um die jeweiligen Objekte zu erstellen. 
+ * Bei dieser Klasse handelt es sich um eine abstrakte Parent-Klasse, welche die wesentlichen Informationen aller Kunstwerke definiert. 
+ * Somit werden hierrüber neben den Attributen, die auf alle Arten von Kunstwerken, also der Child-Klassen (Kunstinstallationen, Bild, Kunstgegenstand), ebenfalls ein Konstruktor und Methoden definiert.
+ * Es wurde sich hierbei für eine abstrakte Klasse entschieden, da ein Kunstwerk immer einen “Typ” (Kunstinstallationen, Bild, Kunstgegenstand) haben muss und somit ein Erzeugen eines Objekts “Kunstwerk” nicht sinnvoll ist. 
+ * Mit Starten des Programms durch die Klasse Museum wird eine Eingabedatei mit Daten zu den verfügbaren Angeboten der Kunstwerke eingelesen und die Objekte der jeweiligen Child-Klassen angelegt.
+ * Dabei wird auf die Parent-Klasse durch die Child-Klassen zugegriffen, um die jeweiligen Objekte zu erstellen. Zusätzlich gibt es die Möglichkeit Objekte der Child-Klassen manuell anzulegen oder zu ändern. 
  * 
  * @author (Alexander Kipry) 
- * @version (16.12.2022)
+ * @version (18.12.2022)
  */
     abstract class Kunstwerk
 { //Attribute der Klasse Kunstwerk

@@ -1,19 +1,18 @@
 
 /**
- * Bei der Klasse Angebotsverwaltung handelt es sich um eine Verwaltungsklasse, welche diverse Funktionen in Bezug auf die Klassen "Kunstinstallationen", "Bild" und "Kunstgegenstand" durchführen kann.
- * So kann diese die o.g. Klassen nach Objekten durchsuchen und gezielt darauf zugreifen. 
+ * Bei der Klasse Angebotsverwaltung handelt es sich um eine Verwaltungsklasse, welche diverse Funktionen in Bezug auf die Klassen "Kunstinstallationen", "Bild" und "Kunstgegenstand" durchführen kann. 
+ * So kann diese die o.g. Klassen nach Objekten durchsuchen und gezielt darauf zugreifen.  
+ * Die Angebotsverwaltung ist zudem geeignet die aus dem Angebot hervorgehenden Kunstwerke nach Attraktivität zu sortieren und ist durch weitere Methoden in der Lage die Klasse der "Ausstellungsplanung" zu entlasten. 
+ * Die Ausstellungsplanung kann sich folglich auf die Angebotsverwaltung beziehen, um daraus die richtige Auswahl der Ausstellung und Ausleihe zu treffen. 
  * 
  * @author (Alexander Kipry) 
- * @version (16.12.2022)
+ * @version (18.12.2022)
 */
 
 public class Angebotsverwaltung
 {
-    //erstmal erstellt um eine Beziehung zu den Klassen herzustellen. Angestrebt ist jedoch eine Aggregations(enthält-Beziehung).
     
-    private Kunstinstallationen kunstinstallation;
-    private Bild bild;
-    private Kunstgegenstand kunstgegenstand;
+    private Angebotsverwaltung angebot;
 
     /**
      * Konstruktor für Objekte der Klasse Angebotsverwaltung

@@ -2,10 +2,10 @@
 /**
  * Hierbei handelt es sich um eine Child-Klasse der Klasse "Kunstwerk", aus welcher die wesentlichen Attribute vererbt werden.
  * Zudem werden unter den Attributen die spezifischen Eigenschaften der Kunstinstallationen erfasst. 
- * Es lassen sich hierrüber manuell Objekte anlegen, jedoch sollen über die Einstiegsklasse "Museum" über einen Datenimport die Objekte erstellt werden.
+ * Es lassen sich hierrüber manuell Objekte anlegen/ändern, jedoch sollen über die Einstiegsklasse "Museum" über einen Datenimport die Objekte erstellt werden, welches sich hierbei den Konstruktoren bedienen.
  * 
  * @author (Alexander Kipry) 
- * @version (16.12.2022)
+ * @version (18.12.2022)
  */
 public class Kunstinstallationen extends Kunstwerk
 {
