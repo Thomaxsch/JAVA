@@ -7,53 +7,94 @@
  */
 public class Ausstellungsplanung
 {
-    // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
-    private String schwerpunktthema;
-    private int kostenobergrenze;
-    private Ausleihverwaltung ausleihverwaltung = new Ausleihverwaltung();
+    // ==========================================================================
+    // === Attribute
+    // ==========================================================================
+    
+    private String schwerpunktthema; //Variable um das Schwerpunktthema der Ausstellung festzulegen.
+    private double kostenobergrenze; //Legt die Kostenobergrenze der Ausstellung fest.
+    private Ausleihverwaltung ausleihverwaltung; //Ausleihverwaltung, um bis zwei Ausstellungskandidaten zu speichern/vergleichen. 
 
+    // ==========================================================================
+    // === Konstruktoren
+    // ==========================================================================
+        
     /**
-     * Konstruktor für Objekte der Klasse Ausstellungsplanung
+     * Konstruktor für Objekte der Klasse Ausstellungsplanung.
+     * 
+     * @param kostenobergrenze   Kostenobergrenze als Double. Wenn keine Kostenobergrenze gesetzt werden soll, dann z.B. den Wert von
+     *                                                        ca 1 Milliarde (neun Mal die 9) übergeben. 
      */
-    public Ausstellungsplanung()
+    public Ausstellungsplanung(String in_schwerpunktthema, double in_kostenobergrenze)
     {
         // Instanzvariable initialisieren
-        schwerpunktthema = "";
-        kostenobergrenze = 0;
-    }
-
-    /**
-     * Ein Beispiel einer Methode - ersetzen Sie diesen Kommentar mit Ihrem eigenen
-     * 
-     * @param  y    ein Beispielparameter für eine Methode
-     * @return        die Summe aus x und y
-     */
-    public void beispielMethode(int y)
-    {
-        // tragen Sie hier den Code ein
-        /**return x + y;*/
+        schwerpunktthema = null; //default
+        kostenobergrenze = 999999999; //default
     }
     
-    public void generiereAusstellung(int y)
-    {
-        // tragen Sie hier den Code ein
-        ausleihverwaltung[0].
-    }
-    public void optimiereAusstellung(int y)
-    {
-        // tragen Sie hier den Code ein
-        ausleihverwaltung[0].
-        ausleihverwaltung[1].
-        drop die schlechtere
-    }   
+    // ==========================================================================
+    // === Methoden
+    // ==========================================================================
+    
+    /**
+     * Methode um Schwerpunktthema zu setzen.
+     * @param schwerpunktthema   Schwerpunktthema als String. Wenn kein Schwerpunkt gesetzt werden soll, kann null übergeben werden.
+     */   
     public void set_schwerpunktthema(String in_schwerpunktthema)
     {
         // tragen Sie hier den Code ein
         schwerpunktthema=in_schwerpunktthema;
     }
-    public void set_kostenobergrenze(int in_kostenobergrenze)
+        
+    /**
+     * Methode um Kostenobergrenze zu setzen.
+     * @param kostenobergrenze   Kostenobergrenze als Double. Wenn keine Kostenobergrenze gesetzt werden soll, dann z.B. den Wert von
+     *                                                        ca 1 Milliarde (neun Mal die 9) übergeben. 
+     */   
+    public void set_kostenobergrenze(double in_kostenobergrenze)
     {
         // tragen Sie hier den Code ein
         kostenobergrenze=in_kostenobergrenze;
     }
+    
+    /**
+     * Hierüber kann das Schwerpunktthema der Ausstellung abgefragt werden.
+     * 
+     * @return schwerpunktthema   Wert des Attributtes schwerpunktthema
+     */
+    public String get_Schwerpunktthema() 
+    {
+        return schwerpunktthema;
+    }
+       
+    /**
+     * Methode zum Abfragen der Kostenobergrenze
+     * 
+     * @return kostenobergrenze   Wert des Attributs kostenobergrenze
+     */
+    public double get_Kostenobergrenze()
+    {
+        return kostenobergrenze;
+    }
 }
+  
+    
+    
+  
+    
+    public void generiereAusstellung(int y)
+    {
+        
+        // Lege eine neue Ausleihverwaltung an:
+        ausleihverwaltung = new Ausleihverwaltung();
+        
+        // tragen Sie hier den Code ein
+        //ausleihverwaltung[0].
+    }
+    public void optimiereAusstellung(int y)
+    {
+        // tragen Sie hier den Code ein
+        //ausleihverwaltung[0].
+        //ausleihverwaltung[1].
+        //drop die schlechtere
+    }   
