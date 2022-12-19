@@ -43,7 +43,7 @@ public class Museum
      */
     public static void importiereRaeume()
     {
-        
+        Raum raum = new Raum();
     }
     
     

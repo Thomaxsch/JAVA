@@ -1,62 +1,161 @@
+// Importiert die Klasse Vector
+import java.util.Vector;
 
 /**
- * Die Klasse Raumverwaltung ist eine Containerklasse und dient zur Verwaltung von Objekten der Klasse Raum.
- * Sie ermöglicht das Suchen und das Zugreifen auf bestimmte Objekte der Klasse Raum.
- * Sie steht in einer Aggregation zu der Klasse Raum. Sie verfügt ueber keine eigenen Objekte.
+ * Die Klasse Raumverwaltung ist eine Containerklasse und dient zur Verwaltung von Objekten der Klasse "Raum".
+ * Diese Klasse kann Raeume aufnehmen, entfernen und Listen von Raeume nach bestimmten Kriterien erstellen.
+ * Sie ermöglicht das Suchen und das Zugreifen auf bestimmte Objekte der Klasse "Raum".
+ * Sie steht in einer Aggregation zu der Klasse "Raum".
+ * 
+ * Mittelt der erstellten Listen unterstuetzt sie die Klasse "Ausstellungsplanung".
  * 
  * 
  * @author Carla Saradeth 
  * @version Dez 2022
  */
-public abstract class Raumverwaltung
+public class Raumverwaltung
 {
     // Attribute der Klasse Raumverwaltung
-    /** 
-     * Die Klasse Raumverwaltung hat die Klasse Raum als Attribut, um auf Objekte der Klasse Raum zugreifen zu koennen.
+    /** In diesem Attribut werden die einzelnen Baeume mittels der Containerklasse Vector verwaltet.*/
+    private Vector<Raum> raumVector;
+        
+    //Konstruktor der Klasse Raumverwaltung
+    /**
+     * Konstruktor fuer Objekte der Klasse Raum. Dieser Konstrukter erzeugt eine leere Raumverwaltung.
      */
-    private Raum raum;
-    
-    
-
+    public Raumverwaltung()
+    {
+    // Anlegen eines neuen Vectorobjektes
+        raumVector = new Vector<Raum>();
+    }
     
     //Methoden der Klasse Raumverwaltung
-    //Methoden technische Aspekte
-    /** Ermittelt ein Objekt der Klasse Raum, dessen Hoehe größer ist als die Hoehe eines Kunstgegenstanden oder
-     *  Kunstinstallation unter Berücksichtigung eine Mindestabstandes von 2m.
+    //Methoden zur Verwaltung der Klasse Raumverwaltung
+    /** Fügt einen Raum der Raumverwaltung zu.
+     *  @param  inRaum  Ein Objekt der Klasse Raum. 
+     */
+    public void addRaum()
+    {
+        //Code einfuegen
+    }
+    
+    /** Entfernt einen Raum aus der Raumverwaltung.
+     *  @param  inRaum  Ein Objekt der Klasse Raum.
+     */
+    public void removeRaum()
+    {
+        //Code einfuegen
+    }
+    
+    /** Ermittelt die Anzahl an Raeumen in der Raumverwaltung.
+     *  @return Die Anzahl der Objekte der Klasse Raum in der Raumverwaltung.
+     */
+    public int sizeRaumverwaltung()
+    {
+        return raumVector.size();
+    }
+    
+    /** Loescht alle Raeume aus der Raumverwaltung.
+     * 
+     */
+    public void clearRaumverwaltung()
+    {
+        //Code einfuegen
+    }
+    
+    //Methoden zur Unterstützung der Klasse Ausstellungplanung - technischen Aspekte
+    /** Ermittelt alle Objekte der Klasse Raum, dessen Hoehe größer ist als die Hoehe eines Bildes 
+     *  unter Berücksichtigung eines Mindestabstandes von 1m. 
+     *  (hoeheRaumInCm - 1m >= Hoehe eines Bildes)
+     *  @return     Objekte der Klasse Raum, das Kriterien in Hoehe erfüllt.
+     */
+    public Vector<Raum> getRaumNachHoehe1()
+    {
+        //Code einfuegen
+        return raumVector;
+    }
+    /** Ermittelt alle Objekte der Klasse Raum, dessen Hoehe größer ist als die Hoehe eines Kunstgegenstanden/Kunstinstallation 
+     *  unter Berücksichtigung eines Mindestabstandes von 2m. 
      *  (hoeheRaumInCm - 2m >= Hoehe eines Kunstgegenstanden oder Kunstinstallation)
-     *  @return     Objekt der Klasse Raum, das Kriterien in Hoehe erfüllt.
+     *  @return     Objekte der Klasse Raum, das Kriterien in Hoehe erfüllt.
      */
-    public Raum getRaumNachHoehe()
+    public Vector<Raum> getRaumNachHoehe2()
     {
-        // tragen Sie hier den Code ein
-        return raum;
+        //Code einfuegen
+        return raumVector;
     }
     
-    /** Ermittelt ein Objekt der Klasse Raum, dessen Laenge größer ist als die Laenge eines Kunstgegenstanden oder
-     *  Kunstinstallation unter Berücksichtigung eine Mindestabstandes von 2m.
+    /** Ermittelt alle Objekte der Klasse Raum, dessen Laenge größer ist als die Laenge eines Bildes 
+     *  unter Berücksichtigung eines Mindestabstandes von 1m.
+     *  (laengeRaumInCm - 1m >= Laenge eines Bildes)
+     *  @return     Objekte der Klasse Raum, das Kriterien in Laenge erfüllt.
+     */
+    public Vector<Raum> getRaumNachLaenge1()
+    {
+        //Code einfuegen
+        return raumVector;
+    }
+    /** Ermittelt alle Objekte der Klasse Raum, dessen Laenge größer ist als die Laenge eines Kunstgegenstanden/Kunstinstallation
+     *  unter Berücksichtigung eines Mindestabstandes von 2m.
      *  (laengeRaumInCm - 2m >= Laenge eines Kunstgegenstanden oder Kunstinstallation)
-     *  @return     Objekt der Klasse Raum, das Kriterien in Laenge erfüllt.
+     *  @return     Objekte der Klasse Raum, das Kriterien in Laenge erfüllt.
      */
-    public Raum getRaumNachLaenge()
+    public Vector<Raum> getRaumNachLaenge2()
     {
-        // tragen Sie hier den Code ein
-        return raum;
+        //Code einfuegen
+        return raumVector;
     }
-    
-    /** Ermittelt ein Objekt der Klasse Raum, dessen Breite größer ist als die Breite eines Kunstgegenstanden oder
-     *  Kunstinstallation unter Berücksichtigung eine Mindestabstandes von 2m.
-     *  (breiteRaumInCm - 2m >= Breite eines Kunstgegenstanden oder Kunstinstallation)
-     *  @return     Objekt der Klasse Raum, das Kriterien in Breite erfüllt.
+      
+    /** Ermittelt alle Objekt der Klasse Raum, dessen Breite größer ist als die Breite eines Bildes 
+     *  unter Berücksichtigung eines Mindestabstandes von 1m.
+     *  (breiteRaumInCm - 1m >= Breite eines Bildes)
+     *  @return     Objekte der Klasse Raum, das Kriterien in Breite erfüllt.
      */
-    public Raum getRaumNachBreite()
+    public Vector<Raum> getRaumNachBreite1()
     {
-        // tragen Sie hier den Code ein
-        return raum;
+        //Code einfuegen
+        return raumVector;
+    }
+    /** Ermittelt alle Objekte der Klasse Raum, dessen Breite größer ist als die Breite eines Kunstgegenstanden/Kunstinstallation 
+     *  unter Berücksichtigung eines Mindestabstandes von 2m.
+     *  (breiteRaumInCm - 2m >= Breite eines Kunstgegenstanden oder Kunstinstallation)
+     *  @return     Objekte der Klasse Raum, das Kriterien in Breite erfüllt.
+     */
+    public Vector<Raum> getRaumNachBreite2()
+    {
+        //Code einfuegen
+        return raumVector;
     }
    
-    //Methoden organisatorische Aspekte
+    //Methoden zur Unterstützung der Klasse Ausstellungplanung - organisatorsche Aspekte
+    /** Ermittelt alle Objekte der Klasse Raum, die mindestens ein Kunstwerk entsprechend dem Schwerpunktthema enthalten.
+     *  @return     Objekte der Klasse Raum, das Kriterien in Schwerpunktthema erfüllt.
+     */
+    public Vector<Raum> getRaumThema1()
+    {
+        //Code einfuegen
+        return raumVector;
+    }
     
+    /** Ermittelt alle Objekte der Klasse Raum, die kein Kunstwerk entsprechend dem Schwerpunktthema enthalten.
+     *  @return     Objekte der Klasse Raum, das Kriterien in Schwerpunktthema nicht erfüllt.
+     */
+     public Vector<Raum> getRaumThema2()
+    {
+        //Code einfuegen
+        return raumVector;
+    }
     
+    /** Ueberprueft, ob mindestens die Hälfte aller Raeume mindestens ein Kunstwerk mit dem Schwerpunktthema enthalten.
+     *  @return     Wahrheitswert, ob Bedingung erfuellt ist.
+     */
+        public boolean pruefeVertretungThema()
+    {
+        //Code einfuegen
+        //"true" falls erstellter raumVector der Methode getRaumThema1 >= erstellter raumVector der Methode getRaumThema2
+        //"false" falls erstellter raumVector der Methode getRaumThema1 < erstellter raumVector der Methode getRaumThema2
+        return true;
+    }
     
     
     
