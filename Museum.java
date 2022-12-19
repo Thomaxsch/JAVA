@@ -54,8 +54,8 @@ public class Museum
      */
     public static void importiereRaeume()
     {
-        Raum raum = new Raum();
         Raumverwaltung raumv = new Raumverwaltung();
+        Raum raum = new Raum();
         raumv.addRaum(raum);
     }
     
