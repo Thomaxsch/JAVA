@@ -9,97 +9,14 @@ import java.util.*;
  */
 public class Ausstellungsplanung2
 {
-    /**
-     * Variable um das Schwerpunktthema der Ausstellung festzulegen.
-     */
-    private String schwerpunktthema;
-    /**
-     * Legt die Kostenobergrenze für alle Kunstwerke für eine Ausstellung fest.
-     */
-    private double kostenobergrenze;
-    /**
+     /**
      * Map,die die Räume und die zugeordneten Kunstwerke enthält. Der Raum wird 
      * als Schlüssel genommen (da eindeutig und nicht mehrmals vorhanden) und die
      * zugeordneten Kunstwerke als Liste von Kunstwerken zu einem Raum als Wert gespeichert.
      */
     private HashMap<Raum, List<Kunstwerk>> zugeordneteRaeumeKunstwerke;
     
-    /**
-     * Konstruktor für Objekte der Klasse Ausstellungsplanung. Wird verwendet, wenn kein 
-     * Schwerpunktthema und keine Kostenobergrenze festgelegt wird.
-     */
-    public Ausstellungsplanung2()
-    {
-        
-    }
-    
-    /**
-     * Konstruktor für Objekte der Klasse Ausstellungsplanung. Wird verwendet, wenn ein 
-     * Schwerpunktthema aber keine Kostenobergrenze festgelegt wird.
-     */
-    public Ausstellungsplanung2(String schwerpunktthema)
-    {
-        
-    }
-    
-      /**
-     * Konstruktor für Objekte der Klasse Ausstellungsplanung. Wird verwendet, wenn kein 
-     * Schwerpunktthema aber eine Kostenobergrenze festgelegt wird.
-     */
-    public Ausstellungsplanung2(double kostenobergrenze)
-    {
-        
-    }
-    
-    /**
-     * Konstruktor für Objekte der Klasse Ausstellungsplanung. Als Parameter können ein
-     * Schwerpunktthema und eine Kostenobergrenze übergeben werden.
-     */
-    public Ausstellungsplanung2(String schwerpunktthema, double kostenobergrenze)
-    {
-        
-    }
-    
-    /**
-     * Über diese Methode kann das Attribut schwerpunktthema geändert/gesetzt werden.
-     * 
-     * @param schwerpunktthema  neues Schwerpunktthema als Text
-     */
-    public void setSchwerpunktthema(String schwerpunktthema) 
-    {
-        
-    }
-    
-    /**
-     * Über diese Methode kann das Schwerpunktthema der Ausstellung abgefragt werden.
-     * 
-     * @return schwerpunktthema   Wert des Attributtes schwerpunktthema
-     */
-    public String getSchwerpunktthema() 
-    {
-        return this.schwerpunktthema;
-    }
-    
-    /**
-     * Methode zum nachträglichen Ändern/Setzen der Kostenobergrenze
-     * 
-     * @param kostenobergrenze  neue Kostenobergrenze
-     */
-    public void setKostenobergrenze(double kostenobergrenze)
-    {
-        
-    }
-    
-    /**
-     * Methode zum Abfragen der Kostenobergrenze
-     * 
-     * @return kostenobergrenze   Wert des Attributs kostenobergrenze
-     */
-    public double getKostenobergrenze()
-    {
-        return this.kostenobergrenze;
-    }
-    
+       
     /**
      * Methode, die die Angebote der Partnermuseen und die Räume des Museums als
      * Parameter entgegennimmt und eine Zuordnung der Kunstwerke aus den Angeboten
@@ -117,7 +34,7 @@ public class Ausstellungsplanung2
         
     }
     
-    /**
+    /** 
      * Hilfsmethode zum Sortieren der Angebote nach Attraktivität, wenn kein Schwerpunkt-
      * thema und keine Kostenobergrenze vorliegt.
      * 

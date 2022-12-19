@@ -16,13 +16,22 @@ public class Museum
     /**
      * In der Main-Methode werden alle Anweisungen aufgeführt, die beim Start
      * des Programms ausgeführt werden sollen. Von hier aus wird die zentrale
-     * Geschäftslogikklasse Ausstellungsplanung aufgerufen. 
+     * Geschäftslogikklasse Ausstellungsplanung aufgerufen. (<- alt)
+     * 
+     * In der Main-Methode werden alle Anweisungen aufgeführt, die beim Start
+     * des Programms ausgeführt werden sollen. Hier wird der Import der Kunstwerke und 
+     * der Räume veranlasst. Danach wird ein Objekt "Ausstellungsplanung" erzeugt. Bei 
+     * diesem Objekt können dann manuelle Eingaben vorgenommen werden (Schwerpunktthema, 
+     * Kostenobergrenze), woraufhin man manuell die Planung mit einer Methode dieses Objekts
+     * anstoßen kann (mittels der Methode "planung").  (<-vorschlag)
      * 
      * @param  args    Beispielparameter für eine Methode
      */
     public static void main(String[] args)
     {
-        
+        this.importiereKunstwerke();
+        this.importiereRaeume();
+        planung= new Ausstellungsplanung();
     }
     
     /**
