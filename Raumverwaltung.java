@@ -7,7 +7,10 @@ import java.util.Vector;
  * Sie ermöglicht das Suchen und das Zugreifen auf bestimmte Objekte der Klasse "Raum".
  * Sie steht in einer Aggregation zu der Klasse "Raum".
  * 
- * Mittelt der erstellten Listen unterstuetzt sie die Klasse "Ausstellungsplanung".
+ * Mittels der erstellten Listen unterstuetzt sie die Klasse "Ausstellungsplanung".
+ * 
+ * Dafuer benutzt die Klasse Informationen aus den Klassen "Raum", "Bild", "Kunstgegenstand", "Kunstinstallation" und 
+ * "Ausstellungsplanung".
  * 
  * 
  * @author Carla Saradeth 
@@ -127,7 +130,7 @@ public class Raumverwaltung
         return raumVector;
     }
    
-    //Methoden zur Unterstützung der Klasse Ausstellungplanung - organisatorsche Aspekte
+    //Methoden zur Unterstützung der Klasse Ausstellungplanung - organisatorische Aspekte
     /** Ermittelt alle Objekte der Klasse Raum, die mindestens ein Kunstwerk entsprechend dem Schwerpunktthema enthalten.
      *  @return     Objekte der Klasse Raum, das Kriterien in Schwerpunktthema erfüllt.
      */
@@ -152,8 +155,8 @@ public class Raumverwaltung
         public boolean pruefeVertretungThema()
     {
         //Code einfuegen
-        //"true" falls erstellter raumVector der Methode getRaumThema1 >= erstellter raumVector der Methode getRaumThema2
-        //"false" falls erstellter raumVector der Methode getRaumThema1 < erstellter raumVector der Methode getRaumThema2
+        //"true" falls size raumVector der Methode getRaumThema1 >= size raumVector der Methode getRaumThema2
+        //"false" falls size raumVector der Methode getRaumThema1 < size raumVector der Methode getRaumThema2
         return true;
     }
     
