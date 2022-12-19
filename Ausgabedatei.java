@@ -1,7 +1,6 @@
 
 /**
- * Die Klasse enthält die Attribute und Methoden zum Erstellen einer Ausgabe
- * datei (Ausleihdatei).
+ * Die Klasse Datei kann Strings als Zeilen in einer Datei ausgeben bzw. einlesen.
  * 
  * @author Mischa Paul Marchlewski
  * @version 13.12.2022

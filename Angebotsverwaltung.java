@@ -1,5 +1,6 @@
 // Importiert die Klasse Vector
 import java.util.Vector;
+
 /**
  * Bei der Klasse Angebotsverwaltung handelt es sich um eine Verwaltungsklasse, welche diverse Funktionen in Bezug auf die Klassen "Kunstinstallationen", "Bild" und "Kunstgegenstand" durchführen kann. 
  * So kann diese die o.g. Klassen nach Objekten durchsuchen und gezielt darauf zugreifen.  
@@ -16,6 +17,7 @@ public class Angebotsverwaltung
 {
     /** In diesem Attribut werden die einzelnen Kunstwerke aus dem Angebot mittels der der Containerklasse Vektor verwaltet. */
     private Vector<Kunstwerk> kunstwerkVector;
+    private Angebotsverwaltung angebot;
 
     /**
      * Konstruktor für Objekte der Klasse Angebotsverwaltung. Dieser Konstruktor erzeugt ein leeres Angebot, welches später über Methoden mit Kunstwerken befüllt werden kann. 
@@ -82,6 +84,8 @@ public class Angebotsverwaltung
     {
         //Code zum Durchsuchen der Kunstgegenstaende 
     }
+    
+
 }
 
 

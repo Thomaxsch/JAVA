@@ -30,7 +30,7 @@ public class Ausstellungsplanung2
      */
     public void zuordnenRaum(Raumverwaltung raeume, Angebotsverwaltung angebot)
     {
-        // tragen Sie hier den Code ein
+         // tragen Sie hier den Code ein
         
     }
     
