@@ -6,7 +6,7 @@ import java.util.Vector;
  * Diese Klasse kann Raeume aufnehmen, entfernen und erstellt eine Listen von Raeumen.Sie ermöglicht das Suchen 
  * und das Zugreifen auf bestimmte Objekte der Klasse "Raum". Sie steht in einer Aggregation zu der Klasse "Raum".
  * 
- *  * Die Klasse verfuegt ueber Methoden zur Ueberpruefung der vorgegebenen thematischen Anforderungen.
+ * Die Klasse verfuegt ueber Methoden zur Ueberpruefung der vorgegebenen thematischen Anforderungen.
  * Dafuer benutzt die Klasse Informationen aus den Klassen "Raum", "Bild", "Kunstgegenstand", "Kunstinstallation" und 
  * "Ausleihe".
  * 
@@ -31,17 +31,19 @@ public class Raumverwaltung
     }
     
     //Methoden der Klasse Raumverwaltung
+    //=============================================================
     //Methoden zur Verwaltung der Klasse Raumverwaltung
+    //=============================================================
     /** Fügt einen Raum der Raumverwaltung zu.
-     *  @param  inRaum  Ein Objekt der Klasse Raum. 
+     *  @param  nummer  Die Nummer des Objektes der Klasse Raum, das hinzugefuegt werden soll. 
      */
-    public void addRaum()
+    public void addRaum(int nummer)
     {
         //Code einfuegen
     }
     
     /** Entfernt einen Raum aus der Raumverwaltung.
-     *  @param  inRaum  Ein Objekt der Klasse Raum.
+     * 
      */
     public void removeRaum()
     {
@@ -63,8 +65,10 @@ public class Raumverwaltung
     {
         //Code einfuegen
     }
-      
+    
+    //=============================================================
     //Methoden zur Unterstützung der Klasse Ausstellungplanung - organisatorische Aspekte
+    //=============================================================
     /** Ermittelt alle Objekte der Klasse Raum, die mindestens ein Kunstwerk entsprechend dem Schwerpunktthema enthalten.
      *  @return     Objekte der Klasse Raum, das Kriterien in Schwerpunktthema erfüllt.
      */
