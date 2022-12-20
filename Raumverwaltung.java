@@ -3,7 +3,7 @@ import java.util.Vector;
 
 /**
  * Die Klasse Raumverwaltung ist eine Containerklasse und dient zur Verwaltung von Objekten der Klasse "Raum".
- * Diese Klasse kann Raeume aufnehmen, entfernen und erstellt eine Listen von Raeumen.Sie ermöglicht das Suchen 
+ * Diese Klasse kann Raeume aufnehmen, entfernen und Listen von Raeumen erstellen. Sie ermöglicht das Suchen 
  * und das Zugreifen auf bestimmte Objekte der Klasse "Raum". Sie steht in einer Aggregation zu der Klasse "Raum".
  * 
  * Die Klasse verfuegt ueber Methoden zur Ueberpruefung der vorgegebenen thematischen Anforderungen.
@@ -67,8 +67,17 @@ public class Raumverwaltung
     }
     
     //=============================================================
-    //Methoden zur Unterstützung der Klasse Ausstellungplanung - organisatorische Aspekte
+    //Methoden zur Unterstützung der Klasse Aussleihe - organisatorische Aspekte
     //=============================================================
+    /** Den Vector der Raumverwaltung ermittlen.
+     *  @return  Den Vector der Raumverwaltung.
+     */
+    
+        public Vector<Raum> getRaumVector()
+    { 
+        return raumVector;
+    }
+    
     /** Ermittelt alle Objekte der Klasse Raum, die mindestens ein Kunstwerk entsprechend dem Schwerpunktthema enthalten.
      *  @return     Objekte der Klasse Raum, das Kriterien in Schwerpunktthema erfüllt.
      */

@@ -60,7 +60,7 @@ public class Ausleihe
         angebotsverwaltung.sizeAngebotsverwaltung(); // Anzahl angebotene Kunstwerke
         
         kunstwerk.zeigeAttraktivitaet(); // Attraktivität Kunstwerk IN PROZENZ [Ziel]
-        this.mittelwertAttr(); // hier umsetzen?! ====> TO DO?!
+        this.mittelwertAttr(); // hier umzusetzen als private Methode ODER in der Angebotsverwaltung ====> ggf. TO DO
                                
         kunstwerk.zeigeKosten(); // Kosten des Kunstwerks [Restriktion 1]
         ausstellungsplanung.get_kostenobergrenze(); // [Restriktion 1]
@@ -73,7 +73,7 @@ public class Ausleihe
         raumverwaltung.pruefeMax3Themen(); // sind max. 3 unterschiedliche Themen im Raum? [Restriktion3]
         raumverwaltung.pruefeWeiteresThema(); // darf noch 1 weiteres Thema in Raum? [Restriktion3]
         
-        this.checkTempFeu // Temp und Feuchte ohne Widerspruch. hier umsetzen?? [Restriktion 4]  ====> TO DO?!
+        this.checkTempFeu // Temp und Feuchte ohne Widerspruch. hier private umsetzen // perspektivisch ggf. im Raum [Restriktion 4]
         bild.setMinTemp();
         bild.setMaxTemp();
         bild.setMinLuft();
@@ -101,7 +101,7 @@ public class Ausleihe
         raumverwaltung.getVerfuegbareBreite();
         
         kunstwerk.thema(); // hierUmsetzen?? KI alleine im Raum, dh. sonst keine Bilder oder KI --> bei Zuteilung beachten[Restriktion 8]
-        kunstwerk.type();   ====> TO DO?
+        kunstwerk.art();   ===> OK
         
         this.setzePlanungZurueck();
         this.ordneZu();
@@ -118,26 +118,15 @@ public class Ausleihe
     public void zuordnenRaumOptimieren()
     {
         /////////////////////////////////// Ideen und Übersicht
-        //siehe oben bei zuordnenRaumMinimal
+        //siehe oben bei zuordnenRaumMinimal exemplarisch - die Methoden sind noch nicht ausgeführt
 
     }
-    ///** 
-    // * Hilfsmethode zum Sortieren der Angebote nach Attraktivität, wenn kein Schwerpunkt-
-    // * thema und keine Kostenobergrenze vorliegt. Wird voraussichtlich an anderer Stelle umgesetzt.
-    // * 
-    // * @param  a                  Angebote aus der Angebotsverwaltung
-    // * @return s                  sortierte Kunstwerke nach Attraktivität
-    // */
-    //private List<Angebotsverwaltung> sortiereNachAttraktivaet(Angebotsverwaltung a)
-    //{
-    //   List<Angebotsverwaltung> s = new LinkedList<Angebotsverwaltung>();
-    //    return s;
-    //}
-    
+        
     /**
-     * Hierüber können andere Klassen eine Referenz auf den aktuellen Planungszustand in Form der Zuordnung Räume-Kunstwerke bekommen. Hierbei wird kein Abbild übergeben,
-     * sondern es handelt sich um pass-by-reference. Das heißt es ist davon auszugehen, dass andere Klassen über das get in der Lage sind, die Werte der HashMap zu ändern.
-     * Dies werden wir jedoch nicht vornehmen, es geht uns in den anderen Klasse nur um die Möglichkeit für das Lesen.
+     * Hierüber können andere Klassen eine Referenz auf den aktuellen Planungszustand in Form der Zuordnung Räume-Kunstwerke bekommen.
+     * Hierbei wird kein Abbild übergeben, sondern es handelt sich um pass-by-reference. Das heißt es ist davon auszugehen, dass andere 
+     * Klassen über das get in der Lage sind, die Werte der HashMap zu ändern. Dies werden wir jedoch nicht vornehmen, es geht uns in den 
+     * anderen Klassen nur um die Möglichkeit für das Lesen.
      * 
      * @return zugeordneteRaeumeKunstwerke   Wert des Attributtes schwerpunktthema
      */

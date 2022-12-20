@@ -17,8 +17,7 @@ public class Angebotsverwaltung
 {
     /** In diesem Attribut werden die einzelnen Kunstwerke aus dem Angebot mittels der der Containerklasse Vektor verwaltet. */
     private Vector<Kunstwerk> kunstwerkVector;
-    private Angebotsverwaltung angebot;
-
+   
     /**
      * Konstruktor für Objekte der Klasse Angebotsverwaltung. Dieser Konstruktor erzeugt ein leeres Angebot, welches später über Methoden mit Kunstwerken befüllt werden kann. 
      */
