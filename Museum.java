@@ -43,10 +43,10 @@ public class Museum
         verw.add(kunstinstallation);
         
         Bild bild= new Bild();
-        verw.add(bild);
+        verw.addKunstwerk(bild);
         
         Kunstgegenstand kunstgegenstand= new Kunstgegenstand();
-        verw.add(kunstgegenstand);
+        verw.addKunstwerk(kunstgegenstand);
     }
     
     /**

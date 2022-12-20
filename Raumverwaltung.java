@@ -35,17 +35,19 @@ public class Raumverwaltung
     //Methoden zur Verwaltung der Klasse Raumverwaltung
     //=============================================================
     /** Fügt einen Raum der Raumverwaltung zu.
-     *  @param  nummer  Die Nummer des Objektes der Klasse Raum, das hinzugefuegt werden soll. 
+     *  @param raum  Die Nummer des Objektes der Klasse Raum, das hinzugefuegt werden soll. 
      */
-    public void addRaum(int nummer)
+    public void addRaum(Raum raum)
     {
         //Code einfuegen
     }
     
     /** Entfernt einen Raum aus der Raumverwaltung.
      * 
+     * @param raum Raum der der gelöscht werden soll
+     * 
      */
-    public void removeRaum()
+    public void removeRaum(Raum raum)
     {
         //Code einfuegen
     }

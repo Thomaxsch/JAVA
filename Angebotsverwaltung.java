@@ -30,8 +30,10 @@ public class Angebotsverwaltung
     //Methoden für die Verwaltung der Klasse Angebotsverwaltung
     /**
      * Diese Methode fügt der Angebotsverwaltung ein Kunstwerk hinzu.
+     * 
+     * @param kunstwerk  Kunstwerk (Kunsinstallation, Bild, Kunstgegenstand) der hinzugefügt werden soll
      */
-    public void addKunstwerk()
+    public void addKunstwerk(Kunstwerk kunstwerk)
     {
         //Code zum Hinzufügen eines Kunstwerkes (Kunstinstallation, Bild, Kunstgegenstand)
     }
