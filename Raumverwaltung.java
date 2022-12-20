@@ -24,7 +24,7 @@ public class Raumverwaltung
     /**
      * Konstruktor fuer Objekte der Klasse Raum. Dieser Konstrukter erzeugt eine leere Raumverwaltung.
      */
-    public Raumverwaltung()
+        public Raumverwaltung()
     {
     // Anlegen eines neuen Vectorobjektes
         raumVector = new Vector<Raum>();
@@ -35,17 +35,17 @@ public class Raumverwaltung
     //Methoden zur Verwaltung der Klasse Raumverwaltung
     //=============================================================
     /** Fügt einen Raum der Raumverwaltung zu.
-     *  @param  nummer  Die Nummer des Objektes der Klasse Raum, das hinzugefuegt werden soll. 
+     *  @param  raum  Ein Objekt der Klasse Raum, das hinzugefuegt werden soll. 
      */
-    public void addRaum(int nummer)
+        public void addRaum(Raum raum)
     {
         //Code einfuegen
     }
     
     /** Entfernt einen Raum aus der Raumverwaltung.
-     * 
+     *  @param  raum  Ein Objekt der Klasse Raum, das entfernt werden soll.
      */
-    public void removeRaum()
+        public void removeRaum(Raum raum)
     {
         //Code einfuegen
     }
@@ -53,7 +53,7 @@ public class Raumverwaltung
     /** Ermittelt die Anzahl an Raeumen in der Raumverwaltung.
      *  @return Die Anzahl der Objekte der Klasse Raum in der Raumverwaltung.
      */
-    public int anzahl()
+        public int anzahl()
     {
         return raumVector.size();
     }
@@ -61,7 +61,7 @@ public class Raumverwaltung
     /** Loescht alle Raeume aus der Raumverwaltung.
      * 
      */
-    public void clearRaumverwaltung()
+        public void clearRaumverwaltung()
     {
         //Code einfuegen
     }
@@ -81,7 +81,7 @@ public class Raumverwaltung
     /** Ermittelt alle Objekte der Klasse Raum, die mindestens ein Kunstwerk entsprechend dem Schwerpunktthema enthalten.
      *  @return     Objekte der Klasse Raum, das Kriterien in Schwerpunktthema erfüllt.
      */
-    private Vector<Raum> getRaumThema1()
+        private Vector<Raum> getRaumThema1()
     {
         //Code einfuegen
         return raumVector;
@@ -90,7 +90,7 @@ public class Raumverwaltung
     /** Ermittelt alle Objekte der Klasse Raum, die kein Kunstwerk entsprechend dem Schwerpunktthema enthalten.
      *  @return     Objekte der Klasse Raum, das Kriterien in Schwerpunktthema nicht erfüllt.
      */
-    private Vector<Raum> getRaumThema2()
+        private Vector<Raum> getRaumThema2()
     {
         //Code einfuegen
         return raumVector;
@@ -99,7 +99,7 @@ public class Raumverwaltung
     /** Ueberprueft, ob mindestens die Hälfte aller Raeume mindestens ein Kunstwerk mit dem Schwerpunktthema enthalten.
      *  @return     Wahrheitswert, ob Bedingung erfuellt ist.
      */
-    public boolean pruefeVertretungThema()
+        public boolean pruefeVertretungThema()
     {
         //Code einfuegen
         //"true" falls size raumVector der Methode getRaumThema1 >= size raumVector der Methode getRaumThema2
