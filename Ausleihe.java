@@ -16,9 +16,11 @@ public class Ausleihe
     /////kostenSumme=
     
     /**
-     * Map,die die Räume und die zugeordneten Kunstwerke enthält. Der Raum wird 
+     * Map,die Räume und ihre im Rahmen der Planung zugeordneten Kunstwerke enthält. Der Raum wird 
      * als Schlüssel genommen (da eindeutig und nicht mehrmals vorhanden) und die
      * zugeordneten Kunstwerke als Liste von Kunstwerken zu einem Raum als Wert gespeichert.
+     * Ob bei der Programmierung letztendlich eine HashMap realisiert wird, muss sich bei der Programmierung in SL3 erweisen. 
+     * Auf jeden Fall wird aber ein Konstrukt benötigt, welches die Zuordnung der Kunstwerke zu einem Raum speichert. 
      */
     private HashMap<Raum, List<Kunstwerk>> zugeordneteRaeumeKunstwerke;
         
@@ -37,29 +39,90 @@ public class Ausleihe
     // ==========================================================================
     // === Methoden
     // ==========================================================================    
-       
+     
     /**
-     * Methode, die die Angebote der Partnermuseen und die Räume des Museums als
-     * Parameter entgegennimmt und eine Zuordnung der Kunstwerke aus den Angeboten
-     * zu den entsprechenden Räumen vornimmt. Dabei erfolgt eine Prüfung ob die Kapazitäten 
-     * der Räume ausreichend sind und stellt die Kunstwerke entsprechend zusammen. Das 
-     * Ergebnis wird im Attribut zugeordneteRaeumeKunstwerke gespeichert.Dabei wird auch
-     * geprüft ob in einem auch nicht mehr als drei verschiedene Themen vorhanden sind.
+     * Die Methode dient dazu, eine Minimallösung für unser Optimierungsproblem zu finden.
      * 
-     * @param  raeume    Raumobjekte aus der Raumverwaltung
-     * @param  angebot   Kunstwerke aus der Angebotsverwaltung
+     * Sie versucht basierend auf den Angeboten der Partnermuseen und Räumen des Museums 
+     * eine Zuordnung ausgewählter Kunstwerke vorzunehmen, sodass genau die Hälfte der Räume mit dem Schwerpunktthema besetzt sind.
+     * Dabei erfolgt u.a. eine Prüfung ob die Kapazitäten der Räume ausreichend sind.
+     * Der aktuelle Planungszustand wird im Attribut zugeordneteRaeumeKunstwerke gespeichert. 
+     * 
      */
-    public void zuordnenRaum(Raumverwaltung raeume, Angebotsverwaltung angebot)
+    public void zuordnenRaumMinimal()
     {
-        // tragen Sie hier den Code ein
+        /////////////////////////////////// Ideen und Übersicht
         
-        ausstellungsplanung.get_schwerpunktthema(); 
-        ausstellungsplanung.get_kostenobergrenze();
+        raumverwaltung.getAngebotsliste();  ====> TO DO
+        angebotsverwaltung.getRaumliste();  ====> TO DO
+        
+        raumverwaltung.anzahl(); // Anzahl Räume
+        angebotsverwaltung.sizeAngebotsverwaltung(); // Anzahl angebotene Kunstwerke
+        
+        kunstwerk.zeigeAttraktivitaet(); // Attraktivität Kunstwerk IN PROZENZ [Ziel]
+        this.mittelwertAttr(); // hier umsetzen?! ====> TO DO?!
+                               
+        kunstwerk.zeigeKosten(); // Kosten des Kunstwerks [Restriktion 1]
+        ausstellungsplanung.get_kostenobergrenze(); // [Restriktion 1]
+        kostenCounter // kann im Sinne eines Counters Kosten hier in privater Variable mitgezählt/kumuliert werden?! [Restriktion1]
+        
+        raumverwaltung.pruefeVertretungThema(); // ob Schwerpunktthema in mindestens der Hälfte der Räume [Restriktion2]
+        raumverwaltung.pruefeMin1Schwerpuntkthema(); // min. 1 Schwerpunktthema im Raum? [Restriktion2]
+        ausstellungsplanung.get_schwerpunktthema();  // falls hier in der methode noch erforderlich [Restriktion2]
+        
+        raumverwaltung.pruefeMax3Themen(); // sind max. 3 unterschiedliche Themen im Raum? [Restriktion3]
+        raumverwaltung.pruefeWeiteresThema(); // darf noch 1 weiteres Thema in Raum? [Restriktion3]
+        
+        this.checkTempFeu // Temp und Feuchte ohne Widerspruch. hier umsetzen?? [Restriktion 4]  ====> TO DO?!
+        bild.setMinTemp();
+        bild.setMaxTemp();
+        bild.setMinLuft();
+        bild.setMaxLuft();
+        bild.getMinTemp();
+        bild.getMaxTemp();
+        bild.getMinLuft();
+        bild.getMaxLuft();
+        
+        raumverwaltung.getHoeheRaum(); //  [Restriktion 5]
+        
+        raumverwaltung.setWandNord(); // Restplatz für Bild, ist nach jeder Zuordnung zu aktualisieren [Restriktion 6]
+        raumverwaltung.setWandOst();
+        raumverwaltung.setWandSued();
+        raumverwaltung.setWandWest();
+        raumverwaltung.getWandNord();
+        raumverwaltung.getWandOst();
+        raumverwaltung.getWandSued();
+        raumverwaltung.getWandWest();    
+        
+        raumverwaltung.setVerfuegbareLaenge(); // Restplatz für Kunstgegenstand/KI, ist nach jeder Zuordnung zu aktualisieren [Restriktion 7]
+        raumverwaltung.setVerfuegbareBreite();
+        raumverwaltung.getVerfuegbareLaenge();
+        raumverwaltung.getVerfuegbareBreite();
+        
+        kunstwerk.thema(); // hierUmsetzen?? KI alleine im Raum, dh. sonst keine Bilder oder KI --> bei Zuteilung beachten[Restriktion 8]
+        kunstwerk.type();   ====> TO DO?
+        
+        this.setzePlanungZurueck();
+        this.ordneZu();
+        kunstwerk.setVerplant();   ====> TO DO?
+        kunstwerk.getVerplant();   ====> TO DO?    
+        
     }
-    
+        
+    /**
+     * Die Methode dient dazu, die Minimallösung für unser Optimierungsproblem zu optimieren. Für jeden Raum wird u.a. geprüft, 
+     * ob noch weitere Kunstwerke in diesen Raum aufgenommen werden können.
+     *  
+     */
+    public void zuordnenRaumOptimieren()
+    {
+        /////////////////////////////////// Ideen und Übersicht
+        
+
+    }
     ///** 
     // * Hilfsmethode zum Sortieren der Angebote nach Attraktivität, wenn kein Schwerpunkt-
-    // * thema und keine Kostenobergrenze vorliegt.
+    // * thema und keine Kostenobergrenze vorliegt. Wird voraussichtlich an anderer Stelle umgesetzt.
     // * 
     // * @param  a                  Angebote aus der Angebotsverwaltung
     // * @return s                  sortierte Kunstwerke nach Attraktivität
@@ -70,4 +133,16 @@ public class Ausleihe
     //    return s;
     //}
     
+    /**
+     * Hierüber können andere Klassen eine Referenz auf den aktuellen Planungszustand in Form der Zuordnung Räume-Kunstwerke bekommen. Hierbei wird kein Abbild übergeben,
+     * sondern es handelt sich um pass-by-reference. Das heißt es ist davon auszugehen, dass andere Klassen über das get in der Lage sind, die Werte der HashMap zu ändern.
+     * Dies werden wir jedoch nicht vornehmen, es geht uns in den anderen Klasse nur um die Möglichkeit für das Lesen.
+     * 
+     * @return zugeordneteRaeumeKunstwerke   Wert des Attributtes schwerpunktthema
+     */
+    public HashMap<Raum, List<Kunstwerk>> get_zugeordneteRaeumeKunstwerke() 
+    {
+        return zugeordneteRaeumeKunstwerke;
+    }
+      
 }
