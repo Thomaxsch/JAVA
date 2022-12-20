@@ -39,8 +39,10 @@ public class Angebotsverwaltung
     }
     /** 
      * Diese Methode entfernt aus der Angebotsverwaltung ein Kunstwerk. 
+     * 
+     * @param kunstwerk Kunstwerk das gelöscht werden soll
      */
-    public void removeKunstwerk()
+    public void removeKunstwerk(Kunstwerk kunstwerk)
     {
         //Code zum Entfernen eines Kunstwerkes (Kunstinstallation, Bild, Kunstgegenstand)
     }
