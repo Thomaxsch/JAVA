@@ -16,16 +16,18 @@ public class Museum
     /**
      * In der Main-Methode werden alle Anweisungen ausgeführt, die beim Start
      * des Programms benötigt werden (z.B. Import der Räume und
-     * Kunstwerke aus den CSV-Dateien). Weiterhin wird ein Objekt der zentralen
-     * Geschäftslogikklasse Ausstellungsplanung erstellt.
+     * Kunstwerke aus den CSV-Dateien). Weiterhin wird ein Objekt der 
+     * Klasse Ausstellungsplanung erstellt und dann deren Methode "generiereAusstellung"
+     * aufgerufen.
      * 
      * @param  args    Stringparameter, die übergeben werden können
      */
     public static void main(String[] args)
     {
-        Museum.importiereKunstwerke();
-        Museum.importiereRaeume();
-        planung= new Ausstellungsplanung();
+        //Museum.importiereKunstwerke();
+        //Museum.importiereRaeume();
+        //planung= new Ausstellungsplanung();
+        //Ausstellungsplanung.generiereAusstellung();
     }
     
     /**
