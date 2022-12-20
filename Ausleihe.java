@@ -84,6 +84,7 @@ public class Ausleihe
         bild.getMaxLuft();
         
         raumverwaltung.getHoeheRaum(); //  [Restriktion 5]
+        this.pruefeRaum;
         
         raumverwaltung.setWandNord(); // Restplatz für Bild, ist nach jeder Zuordnung zu aktualisieren [Restriktion 6]
         raumverwaltung.setWandOst();
