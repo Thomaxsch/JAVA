@@ -32,7 +32,9 @@
     /** Höhe des Kunstwerkes in cm */
     private int hoehe;
     /** Breite des Kunstwerkes in cm */
-    private int breite; 
+    private int breite;
+    /** Gibt an, ob das Kunstwerk bereits in einem Raum plaziert wurde (true - plaziert, false - noch nicht gesetzt) */
+    private boolean plaziert; 
     
     /**
      * Konstruktor für Objekte der Klasse Kunstwerk ohne Parameter
@@ -44,7 +46,8 @@
     /**
      * Konstruktor für Objekte der Klasse Kunstwerk mit Parametern
      * 
-     * @param laufendeNummer        Dieser short entspricht der laufenden Nummer des Kunstwerkes
+     * @param laufendeNummer        Dieser short entspricht der laufenden Nummer des Kunstwerkes.
+     * @param art                   Dieser char entspricht der Art des Kunstwerkes (Bild "B", Kunstinstallation "I", Kunstgegenstand "G")
      * @param bezeichnung           Dieser String entspricht der Bezeichnung des Kunstwerkes.
      * @param kuenstler             Dieser String entspricht dem Namen des Künstlers.
      * @param jahr                  Dieser String entspricht dem Jahr, in dem das Kunstwerk erstellt wurde.
@@ -54,9 +57,10 @@
      * @param verleihendesMuseum    Dieser String entpricht dem Namen & der Adresse des verleihenden Museums
      * @param hoehe                 Dieser int entspricht der Höhe des Kunstwerkes in cm.
      * @param breite                Dieser int entspricht der Breite des Kunstwerkes in cm. 
+     * @param plaziert              Dieser boolean gibt über true und false an, ob das Kunstwerk bereits in einem Raum plaziert wurde. 
      */
     
-    public Kunstwerk(short laufendeNummer,String bezeichnung, String kuenstler, String jahr, String thema, int attraktivitaetswert, int kosten, String verleihendesMuseum, int hoehe, int breite)
+    public Kunstwerk(short laufendeNummer, char art, String bezeichnung, String kuenstler, String jahr, String thema, int attraktivitaetswert, int kosten, String verleihendesMuseum, int hoehe, int breite, boolean plaziert)
     {  
     }
     
@@ -69,6 +73,25 @@
     public void setLaufendeNummer(short in_laufendeNummer)
     {
         laufendeNummer=in_laufendeNummer;
+    }
+    
+     /** 
+     * Diese Methode ernuttekt das laufendeNummer Attribut eines "Kunstwerk" Objektes
+     * 
+     * @param in_laufendeNummer laufende Nummer des Kunstwerkes (short)
+     */
+    public getLaufendeNummer()
+    {
+        return laufendeNummmer;
+    }
+    /** 
+     * Diese Methode ueberschreibt das art Attribut eines "Kunstwerk" Objektes
+     * 
+     * @param in_art Typbezeichnung des Kunstwerkes (Bild "B", Kunstinstallation "I", Kunstgegenstand "G")
+     */
+    public void setArt(char in_art)
+    {
+        art = in_art;
     }
     
     /** 

@@ -42,6 +42,7 @@ public class Bild extends Kunstwerk
      * Konstruktor für Objekte der Klasse Bild mit Parametern
      *
      * @param laufendeNummer        Dieser short entspricht der laufenden Nummer des Kunstwerkes.
+     * @param art                   Dieser char entspricht der Art des Kunstwerkes (Bild "B", Kunstinstallation "I", Kunstgegenstand "G")
      * @param bezeichnung           Dieser String entspricht der Bezeichnung des Kunstwerkes.
      * @param kuenstler             Dieser String entspricht dem Namen des Künstlers.
      * @param jahr                  Dieser String entspricht dem Jahr, in dem das Kunstwerk erstellt wurde.
@@ -51,13 +52,15 @@ public class Bild extends Kunstwerk
      * @param verleihendesMuseum    Dieser String entpricht dem Namen & der Adresse des verleihenden Museums (Name & Adresse ).
      * @param hoehe                 Dieser int entspricht der Höhe des Kunstwerkes in cm.
      * @param breite                Dieser int entspricht der Breite des Kunstwerkes in cm. 
+     * @param plaziert              Dieser boolean gibt über true und false an, ob das Kunstwerk bereits in einem Raum plaziert wurde. 
      * @param minTemp               Dieser int entspricht der minimalen Temperatur in einem Raum, welche für das Kunstwerk zulässig ist, in °C.
      * @param maxTemp               Dieser int entspricht der maximalen Temperatur in einem Raum, welche für das Kunstwerk zulässig ist, in °C.
      * @param minLuft               Dieser int entspricht der minimalen Luftfeuchtigkeit in einem Raum, welche für das Kunstwerk zulässig ist, in %.
      * @param maxLuft               Dieser int entspricht der minimalen Luftfeuchtigkeit in einem Raum, welche für das Kunstwerk zulässig ist, in %.
+   
        */
 
-      public Bild (short laufendeNummer, String bezeichnung, String kuenstler, String jahr, String thema, int attraktivitaetswert, int kosten, String verleihendesMuseum, int hoehe, int breite, int minTemp,int maxTemp, int minLuft, int maxLuft)
+      public Bild (short laufendeNummer, char art, String bezeichnung, String kuenstler, String jahr, String thema, int attraktivitaetswert, int kosten, String verleihendesMuseum, int hoehe, int breite,boolean plaziert, int minTemp,int maxTemp, int minLuft, int maxLuft)
     { 
         setLaufendeNummer(laufendeNummer);
         setBezeichnung(bezeichnung);
@@ -120,7 +123,7 @@ public class Bild extends Kunstwerk
      * 
      * @return Mindestemperatur in °C.
      */
-    public int zeigeMinTemp(int minTemp)
+    public int zeigeMinTemp()
     {
         return minTemp;
     }
@@ -129,7 +132,7 @@ public class Bild extends Kunstwerk
      * 
      * @return Maximaltemperatur in °C.
      */
-    public int zeigeMaxTemp(int maxTemp)
+    public int zeigeMaxTemp()
     {
         return maxTemp;
     }
@@ -138,7 +141,7 @@ public class Bild extends Kunstwerk
      * 
      * @return Mindest-Luftfeuchtigkeit in %.
      */
-    public int zeigeMinLuft(int minLuft)
+    public int zeigeMinLuft()
     {
         return minLuft;
     }
@@ -147,7 +150,7 @@ public class Bild extends Kunstwerk
      * 
      * @return Maximal-Luftfeuchtigkeit in %.
      */
-    public int zeigeMaxLuft(int maxLuft)
+    public int zeigeMaxLuft()
     {
         return maxLuft;
     }

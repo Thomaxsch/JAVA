@@ -31,6 +31,7 @@ public class Kunstinstallationen extends Kunstwerk
      * Konstruktor für ein Objekt der Klasse Kunstinstallationen mit Parametern
      * 
      * @param laufendeNummer            Dieser short entspricht der laufenden Nummer des Kunstwerkes
+     * @param art                       Dieser char entspricht der Art des Kunstwerkes (Bild "B", Kunstinstallation "I", Kunstgegenstand "G")
      * @param bezeichnung               Dieser String entspricht der Bezeichnung des Kunstwerkes.
      * @param in_kuenstler              Dieser String entspricht dem Namen des Künstlers.
      * @param jahr                      Dieser String entspricht dem Jahr, in dem das Kunstwerk erstellt wurde.
@@ -40,10 +41,11 @@ public class Kunstinstallationen extends Kunstwerk
      * @param verleihendesMuseum        Dieser String entpricht dem Namen & der Adresse des verleihenden Museums
      * @param hoehe                     Dieser int entspricht der Höhe des Kunstwerkes in cm.
      * @param breite                    Dieser int entspricht der Breite des Kunstwerkes in cm. 
+     * @param plaziert                  Dieser boolean gibt über true und false an, ob das Kunstwerk bereits in einem Raum plaziert wurde. 
      * @param laenge                    Dieser int entspricht der Länge der Kunstinstallation in cm.
      * @param gewicht                   Dieser int entspricht dem Gewicht der Kunstinstallation in KG.
      */
-    public Kunstinstallationen (short laufendeNummer, String bezeichnung, String kuenstler, String jahr, String thema, int attraktivitaetswert, int kosten, String verleihendesMuseum, int hoehe, int breite, int laenge, int gewicht)
+    public Kunstinstallationen (short laufendeNummer, char art, String bezeichnung, String kuenstler, String jahr, String thema, int attraktivitaetswert, int kosten, String verleihendesMuseum, int hoehe, int breite, boolean plaziert, int laenge, int gewicht)
     {
         setLaufendeNummer(laufendeNummer);
         setBezeichnung(bezeichnung);
