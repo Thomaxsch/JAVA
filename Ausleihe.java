@@ -118,7 +118,7 @@ public class Ausleihe
     public void zuordnenRaumOptimieren()
     {
         /////////////////////////////////// Ideen und Übersicht
-        
+        //siehe oben bei zuordnenRaumMinimal
 
     }
     ///** 
