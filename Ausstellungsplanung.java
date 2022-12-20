@@ -13,7 +13,7 @@ public class Ausstellungsplanung
     // === Attribute
     // ==========================================================================
     
-    private String schwerpunktthema = null; //Variable um das Schwerpunktthema der Ausstellung festzulegen
+    private String schwerpunktthema = ""; //Variable um das Schwerpunktthema der Ausstellung festzulegen
     private double kostenobergrenze = 999999999; //Legt die Kostenobergrenze der Ausstellung fest.
     private Ausleihverwaltung ausleihverwaltung; //Ausleihverwaltung, um bis zwei Ausstellungskandidaten zu speichern/vergleichen. 
 
@@ -26,7 +26,7 @@ public class Ausstellungsplanung
      * 
      * @param kostenobergrenze   Kostenobergrenze als Double. Wenn keine Kostenobergrenze gesetzt werden soll, dann z.B. den Wert von
      *                                                        ca 1 Milliarde (neun Mal die 9) übergeben. 
-     * @param schwerpunktthema   Schwerpunktthema als String. Wenn kein Schwerpunkt gesetzt werden soll, kann null übergeben werden.
+     * @param schwerpunktthema   Schwerpunktthema als String. Wenn kein Schwerpunkt gesetzt werden soll, kann null oder leer ("") übergeben werden.
      */
     public Ausstellungsplanung(String in_schwerpunktthema, double in_kostenobergrenze)
     {
