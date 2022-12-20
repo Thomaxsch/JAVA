@@ -13,6 +13,8 @@
 { //Attribute der Klasse Kunstwerk
     /** Lfd-Nummer des Kunstwerkes aus dem Angebot */
     private short laufendeNummer;
+    /** Beschreibt die Art des Kunstwerkes (B, I, G) */
+    private char art;
     /** Bezeichnung, bzw Name des jeweiligen Kunstwerkes */
     private String bezeichnung; 
     /**  Name des Künstlers, der das Kunstwerk erstellt hat */
