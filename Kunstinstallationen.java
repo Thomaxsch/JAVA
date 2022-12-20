@@ -2,21 +2,19 @@
 /**
  * Hierbei handelt es sich um eine Child-Klasse der Klasse "Kunstwerk", aus welcher die wesentlichen Attribute vererbt werden.
  * Zudem werden unter den Attributen die spezifischen Eigenschaften der Kunstinstallationen erfasst. 
- * Es lassen sich hierrüber manuell Objekte anlegen/ändern, jedoch sollen über die Einstiegsklasse "Museum" über einen Datenimport die Objekte erstellt werden, welches sich hierbei den Konstruktoren bedienen.
+ * Es lassen sich hierrüber manuell Objekte anlegen/ändern.
+ * Jedoch sollen über die Einstiegsklasse "Museum" über einen Datenimport die Objekte erstellt werden, welches sich hierbei den Konstruktoren bedienen.
  * 
  * @author (Alexander Kipry) 
- * @version (18.12.2022)
+ * @version (20.12.2022)
  */
 public class Kunstinstallationen extends Kunstwerk
 {
     //Attribute der Klasse Kunstinstallationen
-   /**
-    * Länge der Kunstinstallation in cm
-    */
+   /** Länge der Kunstinstallation in cm */
     private int laenge;
-    /**
-     * Gewicht der Kunstinstallation in KG
-     */
+    
+    /** Gewicht der Kunstinstallation in KG */
     private int gewicht;
     
     //Konstruktoren der Klasse Kunstinstallationen
@@ -48,18 +46,21 @@ public class Kunstinstallationen extends Kunstwerk
     public Kunstinstallationen (short laufendeNummer, char art, String bezeichnung, String kuenstler, String jahr, String thema, int attraktivitaetswert, int kosten, String verleihendesMuseum, int hoehe, int breite, boolean plaziert, int laenge, int gewicht)
     {
         setLaufendeNummer(laufendeNummer);
+        setArt(art);
         setBezeichnung(bezeichnung);
         setKuenstler(kuenstler);
         setJahr(jahr);
         setAttraktivitaet(attraktivitaetswert);
         setKosten(kosten);
         setVerleihendesMuseum(verleihendesMuseum);
+        setPlaziert(plaziert);
         setHoehe(hoehe);
         setBreite(breite);
         setLaenge(laenge);
         setGewicht(gewicht);
     }
-     //Methoden der Klasse Kunstinstallationen
+    
+     //setter - Methoden
     /**
      * Diese Methode ueberschreibt das laenge Attribut einer Kunstinstallation
      * 
@@ -82,23 +83,25 @@ public class Kunstinstallationen extends Kunstwerk
         gewicht = in_gewicht;
     }
     
+    //getter - Methoden
     /**
      * Gibt die Länge der Kunstinstallation an.
      * 
      *
      * @return        laenge der Kunstinstallation in cm.
      */
-    public int zeigeLaenge(int laenge)
+    public int getLaenge()
     {
         return laenge;
     }
+    
     /**
      * Gibt das Gewicht der Kunstinstallation an.
      * 
      *
      * @return        Gewicht der Kunstinstallation in kg.
      */
-    public int zeigeGewicht(int gewicht)
+    public int zeigeGewicht()
     {
         return gewicht;
     }

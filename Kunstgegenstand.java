@@ -5,19 +5,16 @@
  * Es lassen sich hierrüber manuell Objekte anlegen/ändern, jedoch sollen über die Einstiegsklasse "Museum" über einen Datenimport die Objekte erstellt werden.
  * 
  * @author (Alexander Kipry) 
- * @version (18.12.2022)
+ * @version (20.12.2022)
  */
         
 public class Kunstgegenstand extends Kunstwerk
 {
     //Attribute der Klasse Kunstgegenstand
-   /**
-    * Länge der Kunstinstallation oder des Kunstgegenstandes in cm
-    */
+   /** Länge der Kunstinstallation oder des Kunstgegenstandes in cm */
     private int laenge;
-    /**
-     * Gewicht der Kunstinstallation oder des Kunstgegenstandes in KG
-     */
+    
+    /** Gewicht der Kunstinstallation oder des Kunstgegenstandes in KG */
     private int gewicht;    
     
     //Konstruktoren der Klasse Kunstgegenstand
@@ -48,6 +45,7 @@ public class Kunstgegenstand extends Kunstwerk
     public Kunstgegenstand (short laufendeNummer, char art, String bezeichnung, String kuenstler, String jahr, String thema, int attraktivitaetswert, int kosten, String verleihendesMuseum, int hoehe, int breite, boolean plaziert, int laenge, int gewicht)
     {
         setLaufendeNummer(laufendeNummer);
+        setArt(art);
         setBezeichnung(bezeichnung);
         setKuenstler(kuenstler);
         setJahr(jahr);
@@ -56,11 +54,13 @@ public class Kunstgegenstand extends Kunstwerk
         setVerleihendesMuseum(verleihendesMuseum);
         setHoehe(hoehe);
         setBreite(breite);
+        setPlaziert(plaziert);
         setLaenge(laenge);
         setGewicht(gewicht);
     }
     
     //Methoden der Klasse Kunstgegenstand
+    //Setter-Methoden
     /**
      * Diese Methode ueberschreibt das laenge Attribut eines Kunstgegenstandes
      * 
@@ -82,13 +82,14 @@ public class Kunstgegenstand extends Kunstwerk
     {
         gewicht = in_gewicht;
     }
+    
+    //getter-Methoden
     /**
      * Gibt die Länge des Kunstgegenstandes an.
      * 
-     *
      * @return        Länge des Kunstgegenstandes in cm.
      */
-    public int zeigeLaenge(int laenge)
+    public int getLaenge()
     {
         return laenge;
     }
@@ -96,10 +97,9 @@ public class Kunstgegenstand extends Kunstwerk
      /**
      * Gibt das Gewicht des Kunstgegenstandes an.
      * 
-     *
      * @return        Gewicht des Kunstgegenstandes in KG.
      */
-    public int zeigeGewicht(int gewicht)
+    public int getGewicht()
     {
         return gewicht;
     }

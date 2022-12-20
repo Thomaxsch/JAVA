@@ -2,37 +2,51 @@
 /**
  * Bei dieser Klasse handelt es sich um eine abstrakte Parent-Klasse, welche die wesentlichen Informationen aller Kunstwerke definiert. 
  * Somit werden hierrüber neben den Attributen, die auf alle Arten von Kunstwerken, also der Child-Klassen (Kunstinstallationen, Bild, Kunstgegenstand), ebenfalls ein Konstruktor und Methoden definiert.
- * Es wurde sich hierbei für eine abstrakte Klasse entschieden, da ein Kunstwerk immer einen “Typ” (Kunstinstallationen, Bild, Kunstgegenstand) haben muss und somit ein Erzeugen eines Objekts “Kunstwerk” nicht sinnvoll ist. 
- * Mit Starten des Programms durch die Klasse Museum wird eine Eingabedatei mit Daten zu den verfügbaren Angeboten der Kunstwerke eingelesen und die Objekte der jeweiligen Child-Klassen angelegt.
- * Dabei wird auf die Parent-Klasse durch die Child-Klassen zugegriffen, um die jeweiligen Objekte zu erstellen. Zusätzlich gibt es die Möglichkeit Objekte der Child-Klassen manuell anzulegen oder zu ändern. 
+ * Es wurde sich hierbei für eine abstrakte Klasse entschieden, da ein Kunstwerk immer einen “Typ” (Kunstinstallationen, Bild, Kunstgegenstand) haben muss .
+ * Somit ist ein Erzeugen eines Objekts “Kunstwerk” nicht sinnvoll. 
+ * Mit Starten des Programms durch die Klasse Museum wird eine Eingabedatei mit Daten zu den verfügbaren Angeboten der Kunstwerke eingelesen.
+ * Die Objekte der jeweiligen Child-Klassen werden dadurch angelegt.
+ * Dabei wird auf die Parent-Klasse durch die Child-Klassen zugegriffen, um die jeweiligen Objekte zu erstellen. 
+ * Zusätzlich gibt es die Möglichkeit Objekte der Child-Klassen manuell anzulegen oder zu ändern. 
  * 
  * @author (Alexander Kipry) 
- * @version (18.12.2022)
+ * @version (20.12.2022)
  */
     abstract class Kunstwerk
 { //Attribute der Klasse Kunstwerk
     /** Lfd-Nummer des Kunstwerkes aus dem Angebot */
     private short laufendeNummer;
+    
     /** Beschreibt die Art des Kunstwerkes (B, I, G) */
     private char art;
+    
     /** Bezeichnung, bzw Name des jeweiligen Kunstwerkes */
     private String bezeichnung; 
+    
     /**  Name des Künstlers, der das Kunstwerk erstellt hat */
     private String kuenstler;
+    
     /** Jahr, in welchem das Kunstwerk hergestellt wurde */
     private String jahr; 
+    
     /** Thema, in welches Herr Schneider das Kunstwerk eingeordnet hat */
     private String thema;
+    
     /** Bewertung der Attraktivität des Kunstwerkes durch Herrn Schneider in % */
     private int attraktivitaetswert;
+    
     /** Kosten für die Ausleihe des Kunstwerkes in Euro */
     private int kosten; 
+    
     /** Angabe des Museums, welches das Kunstwerk zur Verfügung stellt */
     private String verleihendesMuseum;
+    
     /** Höhe des Kunstwerkes in cm */
     private int hoehe;
+    
     /** Breite des Kunstwerkes in cm */
     private int breite;
+    
     /** Gibt an, ob das Kunstwerk bereits in einem Raum plaziert wurde (true - plaziert, false - noch nicht gesetzt) */
     private boolean plaziert; 
     
@@ -65,6 +79,8 @@
     }
     
     //Methoden der Klasse Kunstwerk
+    
+    //Setter-Methoden
     /** 
      * Diese Methode ueberschreibt das laufendeNummer Attribut eines "Kunstwerk" Objektes
      * 
@@ -74,16 +90,7 @@
     {
         laufendeNummer=in_laufendeNummer;
     }
-    
-     /** 
-     * Diese Methode ernuttekt das laufendeNummer Attribut eines "Kunstwerk" Objektes
-     * 
-     * @param in_laufendeNummer laufende Nummer des Kunstwerkes (short)
-     */
-    public getLaufendeNummer()
-    {
-        return laufendeNummmer;
-    }
+
     /** 
      * Diese Methode ueberschreibt das art Attribut eines "Kunstwerk" Objektes
      * 
@@ -104,6 +111,8 @@
     {
         bezeichnung=in_bezeichnung;
     }
+    
+    
     /** 
      * Diese Methode ueberschreibt das kuenstler Attribut eines "Kunstwerk" Objektes
      * 
@@ -186,85 +195,130 @@
         breite = in_breite;
     }
     
+    /** 
+     * Diese Methode ueberschreibt das plaziert Attribut eines "Kunstwerk" Objektes
+     * 
+     * @param in_plaziert gibt an, ob das Kunstwerk bereits in einem Raum plaziert wurde (true/False).
+     */
+    public void setPlaziert (boolean in_plaziert)
+    {
+        plaziert = in_plaziert;
+    }
+    
+
+    //getter-Methoden
+      /** 
+     * Diese Methode ermittelt das laufendeNummer Attribut eines "Kunstwerk" Objektes
+     */
+    public short getLaufendeNummer()
+    {
+        return laufendeNummer;
+    }
+    
+      /**
+     * Diese Methode ermittelt das Art Attribut eines Kunstwerk Objektes 
+     */
+    public char getArt ()
+    {
+        return art;
+    }
      /**
      * Gibt die Bezeichnung des Kunstwerkes wieder.
      * 
      * @return        Bezeichnung/Name des Kunstwerkes.
      */
-    public String zeigeBezeichnung(String bezeichnung)
+    public String getBezeichnung()
     {
         return bezeichnung;
     }
+    
     /**
      * Gibt den Namen des Künstlers wieder.
      * 
      * @return Name des Künstlers.
     */
-    public String zeigeKuenstler(String kuenstler)
+    public String getKuenstler()
     {
         return kuenstler;
     }
+    
     /**
      * Gibt das Jahr, in dem das Kunstwerk erstellt wurde wieder. 
      * 
      * @return Jahresangabe .
      */
-    public String zeigeJahr(String jahr)
+    public String getJahr()
     {
         return jahr;
     }
+    
     /**
      * Gibt das Thema / den Schwerpunkt des Kunstwerkes wieder.
      * 
      * @return Thema des Kunstwerkes.
      */
-    public String thema (String thema)
+    public String getThema ()
     {
         return thema; 
     }
+    
     /**
      * Gibt den Attraktivitaetswert des Kunstwerkes wieder.
      * 
      * @return Attraktivität des Kunstwerkes in %.
      */
-    public int zeigeAttraktivitaet(int attraktivitaetswert)
+    public int getAttraktivitaet()
     {
         return attraktivitaetswert;
     }
+    
     /**
      * Gibt die anfallenden Kosten für die Ausleihe des Kunstwerkes wieder.
      * 
      * @return Preis für das Ausleihen in €.
      */
-    public int zeigeKosten (int kosten)
+    public int getKosten ()
     {
         return kosten;
     }
+    
     /**
      * Gibt den Namen des verleihenden Museums wieder.
      * 
      * @return Namen des verleihenden Museums.
      */
-    public String zeigeVerleihendesMuseum(String verleihendesMuseum)
+    public String getVerleihendesMuseum()
     {
         return verleihendesMuseum;
     }
+    
     /**
      * Gibt die Höhe des Kunstwerkes wieder.
      * 
      * @return Höhe des Kunstwerkes in cm.
      */
-    public int zeigeHoehe(int hoehe)
+    public int getHoehe()
     {
         return hoehe;
     }
+    
      /**
      * Gibt die Breite des Kunstwerkes wieder.
      * 
      * @return Breite des Kunstwerkes in cm.
      */
-    public int zeigeBreite(int breite)
+    public int getBreite()
     {
         return breite;
+    }
+    
+    /**
+     * Gibt wieder, ob das Kunstwerk bereits plaziert wurde 
+     * 
+     * @return plaziert true oder false, je nachdem ob das Kunstwerk plaziert wurde. 
+    */
+   public boolean getPlaziert()
+    {
+        return plaziert;
     }
 }

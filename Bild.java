@@ -5,35 +5,28 @@
  * Es lassen sich hierrüber manuell Objekte anlegen/ändern, jedoch sollen über die Einstiegsklasse "Museum" über einen Datenimport die Objekte erstellt werden.
  * 
  * @author (Alexander Kipry) 
- * @version (18.12.2022)
+ * @version (20.12.2022)
  */
 
 public class Bild extends Kunstwerk
 {
     //Attribute der Klasse Bild
-    /**
-     * Minimaltemperatur des Bildes in °C
-     */
+    /** Minimaltemperatur des Bildes in °C */
     private int minTemp;
     
-    /**
-     * Maximaltemperatur des Bildes in °C
-     */
+    /** Maximaltemperatur des Bildes in °C */
     private int maxTemp;
-    /**
-     * Anforderung der minimalen Luftfeuchtigkeit des Bildes in %
-     */
+    
+    /** Anforderung der minimalen Luftfeuchtigkeit des Bildes in % */
     private int minLuft;
-    /**
-     * Anforderung der maximalen Luftfeuchtigkeit des Bildes in %
-     */
+    
+    /** Anforderung der maximalen Luftfeuchtigkeit des Bildes in % */
     private int maxLuft;
     
     //Konstruktoren der Klasse Bild
     /**
      * Konstruktor für Objekte der Klasse Bild ohne Parameter
      */
-    
     public Bild ()
     {
     }
@@ -63,6 +56,7 @@ public class Bild extends Kunstwerk
       public Bild (short laufendeNummer, char art, String bezeichnung, String kuenstler, String jahr, String thema, int attraktivitaetswert, int kosten, String verleihendesMuseum, int hoehe, int breite,boolean plaziert, int minTemp,int maxTemp, int minLuft, int maxLuft)
     { 
         setLaufendeNummer(laufendeNummer);
+        setArt(art);
         setBezeichnung(bezeichnung);
         setKuenstler(kuenstler);
         setJahr(jahr);
@@ -71,12 +65,15 @@ public class Bild extends Kunstwerk
         setVerleihendesMuseum(verleihendesMuseum);
         setHoehe(hoehe);
         setBreite(breite);
+        setPlaziert(plaziert);
         setMinTemp(minTemp);
         setMaxTemp(maxTemp);
         setMinLuft(minLuft);
         setMaxLuft(maxLuft);
     }
+    
     //Methoden der Klasse Bild
+    //setter-Methoden
     /**
      * Diese Methode ueberschreibt das minTemp Attribut eines Bildes
      * 
@@ -87,6 +84,7 @@ public class Bild extends Kunstwerk
     {
         minTemp=in_minTemp;
     }
+    
     /**
      * Diese Methode ueberschreibt das maxTemp Attribut eines Bildes
      * 
@@ -97,6 +95,7 @@ public class Bild extends Kunstwerk
     {
         maxTemp=in_maxTemp;
     }
+    
     /**
      * Diese Methode ueberschreibt das minLuft Attribut eines Bildes
      * 
@@ -107,6 +106,7 @@ public class Bild extends Kunstwerk
     {
         minLuft=in_minLuft;
     }
+    
     /**
      * Diese Methode ueberschreibt das maxLuft Attribut eines Bildes
      * 
@@ -118,12 +118,13 @@ public class Bild extends Kunstwerk
         maxLuft=in_maxLuft;
     }
     
+    //getter-Methoden
     /**
      * Gibt die Mindesttemperatur wieder, die für das Bild zulässig ist.
      * 
      * @return Mindestemperatur in °C.
      */
-    public int zeigeMinTemp()
+    public int getMinTemp()
     {
         return minTemp;
     }
@@ -132,25 +133,27 @@ public class Bild extends Kunstwerk
      * 
      * @return Maximaltemperatur in °C.
      */
-    public int zeigeMaxTemp()
+    public int getMaxTemp()
     {
         return maxTemp;
     }
+    
      /**
      * Gibt die Mindest-Luftfeuchtigkeit wieder, die für das Bild zulässig ist.
      * 
      * @return Mindest-Luftfeuchtigkeit in %.
      */
-    public int zeigeMinLuft()
+    public int getMinLuft()
     {
         return minLuft;
     }
+    
      /**
      * Gibt die Maximal-Luftfeuchtigkeit wieder, die für das Bild zulässig ist.
      * 
      * @return Maximal-Luftfeuchtigkeit in %.
      */
-    public int zeigeMaxLuft()
+    public int getMaxLuft()
     {
         return maxLuft;
     }
