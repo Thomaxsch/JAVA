@@ -32,8 +32,10 @@ public class Museum
      * Liest die Kunstwerke aus der Datei kunstwerke.csv ein und erstellt
      * daraus Objeke der Klasse Bild, Kunstinstallation bzw. Kunstgegenstand, die dann
      * inder Klasse Angebotsverwaltung verwaltet werden
+     * 
+     * @param name  Name (Pfad) der Datei, die eingelesen werden soll
      */
-    public static void importiereKunstwerke()
+    public static void importiereKunstwerke(String name)
     {
         Angebotsverwaltung verw = new Angebotsverwaltung();
         
@@ -51,8 +53,10 @@ public class Museum
      * Liest die Räume aus der Datei raeume.csv ein und erstellt daraus
      * Objekte der Klasse Raum, die in der Klasse Raumverwaltung verwaltet 
      * werden.
+     * 
+     * @param name Name (Pfad) der Datei, die eingelesen werden soll
      */
-    public static void importiereRaeume()
+    public static void importiereRaeume(String name)
     {
         Raumverwaltung raumv = new Raumverwaltung();
         Raum raum = new Raum();
