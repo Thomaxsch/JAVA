@@ -1,6 +1,6 @@
 
 /**
- * Die Klasse Ausstellungsplanung entlastet vor allem die zentrale Logikklasse "Ausleihe", indem sie sich um das Schwerpunktthema und die Kostenobergrenze kümmert.
+ * Die Klasse Ausstellungsplanung entlastet vor allem die zentrale Logikklasse "Ausleihe", indem sie das Schwerpunktthema und die Kostenobergrenze aufnimmt.
  * Außerdem wird hier die Suche nach einer (optimalen) Ausstellung gesteuert.
  * 
  * 
@@ -66,7 +66,7 @@ public class Ausstellungsplanung
      * 
      * @return schwerpunktthema   Wert des Attributtes schwerpunktthema
      */
-    public String get_Schwerpunktthema() 
+    public String get_schwerpunktthema() 
     {
         return schwerpunktthema;
     }
@@ -76,7 +76,7 @@ public class Ausstellungsplanung
      * 
      * @return kostenobergrenze   Wert des Attributs kostenobergrenze
      */
-    public double get_Kostenobergrenze()
+    public double get_kostenobergrenze()
     {
         return kostenobergrenze;
     }

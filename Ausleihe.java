@@ -34,7 +34,9 @@ public class Ausleihe
         
     }
 
-    
+    // ==========================================================================
+    // === Methoden
+    // ==========================================================================    
        
     /**
      * Methode, die die Angebote der Partnermuseen und die Räume des Museums als
@@ -51,19 +53,21 @@ public class Ausleihe
     {
         // tragen Sie hier den Code ein
         
+        ausstellungsplanung.get_schwerpunktthema(); 
+        ausstellungsplanung.get_kostenobergrenze();
     }
     
-    /** 
-     * Hilfsmethode zum Sortieren der Angebote nach Attraktivität, wenn kein Schwerpunkt-
-     * thema und keine Kostenobergrenze vorliegt.
-     * 
-     * @param  a                  Angebote aus der Angebotsverwaltung
-     * @return s                  sortierte Kunstwerke nach Attraktivität
-     */
-    private List<Angebotsverwaltung> sortiereNachAttraktivaet(Angebotsverwaltung a)
-    {
-        List<Angebotsverwaltung> s = new LinkedList<Angebotsverwaltung>();
-        return s;
-    }
+    ///** 
+    // * Hilfsmethode zum Sortieren der Angebote nach Attraktivität, wenn kein Schwerpunkt-
+    // * thema und keine Kostenobergrenze vorliegt.
+    // * 
+    // * @param  a                  Angebote aus der Angebotsverwaltung
+    // * @return s                  sortierte Kunstwerke nach Attraktivität
+    // */
+    //private List<Angebotsverwaltung> sortiereNachAttraktivaet(Angebotsverwaltung a)
+    //{
+    //   List<Angebotsverwaltung> s = new LinkedList<Angebotsverwaltung>();
+    //    return s;
+    //}
     
 }
