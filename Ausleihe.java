@@ -131,7 +131,7 @@ public class Ausleihe
      * Klassen über das get in der Lage sind, die Werte der HashMap zu ändern. Dies werden wir jedoch nicht vornehmen, es geht uns in den 
      * anderen Klassen nur um die Möglichkeit für das Lesen.
      * 
-     * @return zugeordneteRaeumeKunstwerke   Wert des Attributtes schwerpunktthema
+     * @return zugeordneteRaeumeKunstwerke   aktuelle Raum-Kunstwerk-Zuordnung
      */
     public HashMap<Raum, List<Kunstwerk>> get_zugeordneteRaeumeKunstwerke() 
     {
