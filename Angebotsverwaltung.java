@@ -1,5 +1,6 @@
 // Importiert die Klasse Vector
 import java.util.Vector;
+import java.util.*;
 
 /**
  * Bei der Klasse Angebotsverwaltung handelt es sich um eine Verwaltungsklasse, welche diverse Funktionen in Bezug auf die Klassen "Kunstinstallationen", "Bild" und "Kunstgegenstand" durchführen kann. 
@@ -30,7 +31,7 @@ public class Angebotsverwaltung
     /**
      * Diese Methode fügt der Angebotsverwaltung ein Kunstwerk hinzu.
      */
-    public void addKunstwerk()
+    public void addKunstwerk(Kunstwerk in_kunstwerk)
     {
         //Code zum Hinzufügen eines Kunstwerkes (Kunstinstallation, Bild, Kunstgegenstand)
     }
@@ -66,9 +67,24 @@ public class Angebotsverwaltung
     {
         return kunstwerkVector;
     }
-    
-
-
+    /**
+     * Methode zum Sortieren der Kunstwerke aus dem Vector nach deren Kosten. 
+     * 
+     * @return sortiert die Kunstwerke innerhalb des Vectors nach deren Kosten. 
+     */
+    public Vector<Kunstwerk> sortKosten()
+    {
+        return kunstwerkVector;//Code zum sortieren der Kunstwerke nach den Kosten --> Collections.sort mit Parameter kunstwerk.kosten 
+    }
+    /**
+     * Methode zum Sortieren der Kunstwerke aus dem Vector nach deren Attrakvitaet. 
+     * 
+     * @return sortiert die Kunstwerke innerhalb des Vectors nach deren Attrakvitaet. 
+     */
+    public Vector<Kunstwerk> sortAttraktivitaet()
+    {
+        return kunstwerkVector;//Code zum sortieren der Kunstwerke nach der Attraktivitaet --> Collections.sort mit Parameter kunstwerk.attraktivitaetswert 
+    }
 }
 
 
