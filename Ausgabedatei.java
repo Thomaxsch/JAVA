@@ -1,3 +1,4 @@
+import java.io.*;
 
 /**
  * Die Klasse Datei kann Strings als Zeilen in einer Datei ausgeben.
@@ -33,22 +34,25 @@ public class Ausgabedatei
     }
     
     /**
-     * Konstruktor für Objekte der Klasse Ausgabedatei mit Parameternn für den Dateinamen und die Ausstellungsplanung
+     * Konstruktor für Objekte der Klasse Ausgabedatei mit Parameternn für den Dateinamen und die Ausstellungsplanung. Die Klasse Ausstellungsplanung
+     * bietet eine Methode namens "get_besteZuordnung()", damit auf die in der Ausleihverwaltung bzw genauer der Ausleihe gespeicherte Zuordnung zurückegriffen werden kann.
+     * 
      * @param file      Dateiname für die zu erstellende Outputdatei 
-     * @param planung   Objekt der Klasse Ausstellungsplanung
+     * @param planung   Objekt der Klasse Ausstellungsplanung, was lokal im Attribut "planung" zwischengespeichert wird mittels der Methode setAusstellungsplanung 
      */
     public Ausgabedatei(String file, Ausstellungsplanung planung) 
     {
-        
+        //planung.get_besteZuordnung()
     }
     
     /**
-     * Methode zum nachträglichen Setzen eines Objekts der Klasse Ausstellungsplanung
-     * @param planung   Objekt der Klasse Ausstellungsplanung die nachträglich gesetzt werden kann
+     * Methode zum Übergebem eines Objekts der Klasse Ausstellungsplanung. Dies kann wohl durch die Klasse Museum gesteuert werden.
+     * 
+     * @param planung   Objekt der Klasse Ausstellungsplanung, welche übergeben wird
      */
-    public void setAusstellungsplanung(Ausstellungsplanung planung)
+    public void setAusstellungsplanung(Ausstellungsplanung in_planung)
     {
-        
+        //planung=in_planung
     }
 
     /**

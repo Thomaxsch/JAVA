@@ -58,11 +58,11 @@ public class Angebotsverwaltung
     }
     
     /**
-     * Methode zum Aufrufen aller Kunstwerke innerhalb der Vektorliste 
+     * Methode zur Umsetzung des Aufrufens aller Kunstwerke innerhalb der Vektorliste 
      * 
-     * @return gibt alle Kunstwerke aus dem Vector zurück. 
+     * @return gibt die Möglichkeit zum Zugriff auf alle Kunstwerke aus dem Vector zurück. 
      */
-    public Vector<Kunstwerk> getKunstwerk()
+    public Vector<Kunstwerk> getKunstwerkVector()
     {
         return kunstwerkVector;
     }

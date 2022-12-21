@@ -32,8 +32,24 @@ public class Ausleihverwaltung
     {
         listeAusstellungen = new Ausleihe[2]; // zwei Objekte vom Typ Ausleihe im Array
     }
-
-
     
+    /**
+     * Gebe ein bestimmtes Element aus dem Vektor zurück.
+     * 
+     * @return Ein bestimmtes Element aus Vektor, also eine bestimmte geplante Ausleihe.
+     */
+    public Ausleihe get_AusleiheVonAusleihverwaltung(int n)
+    {
+        return listeAusstellungen[n];
+    }
+
+    /**
+     * Drop die schlechtere Planung, sodass die beste Zuordnung an Stelle [0] ist
+     *  
+     */
+    public void drop_schlechtesteAusleihe()
+    {
+        ;
+    }
     
 }

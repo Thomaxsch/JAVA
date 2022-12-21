@@ -42,13 +42,13 @@ public class Museum
         Angebotsverwaltung verw = new Angebotsverwaltung();
         
         Kunstinstallationen kunstinstallation= new Kunstinstallationen();
-        verw.add(kunstinstallation);
+        verw.addKunstwerk(kunstinstallation);
         
         Bild bild= new Bild();
-        verw.add(bild);
+        verw.addKunstwerk(bild);
         
         Kunstgegenstand kunstgegenstand= new Kunstgegenstand();
-        verw.add(kunstgegenstand);
+        verw.addKunstwerk(kunstgegenstand);
     }
     
     /**

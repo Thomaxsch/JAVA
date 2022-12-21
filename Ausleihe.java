@@ -52,19 +52,21 @@ public class Ausleihe
     public void zuordnenRaumMinimal()
     {
         /////////////////////////////////// Ideen und Übersicht
+        // Bausteine für die Umsetzung:
         
-        raumverwaltung.getAngebotsliste();  ====> TO DO
-        angebotsverwaltung.getRaumliste();  ====> TO DO
+        /**
+        raumverwaltung.getKunstwerkVector(); // Vector der angebotenenKunstwerke
+        angebotsverwaltung.getRaumVector(); // Vector der Räume
         
         raumverwaltung.anzahl(); // Anzahl Räume
         angebotsverwaltung.sizeAngebotsverwaltung(); // Anzahl angebotene Kunstwerke
         
-        kunstwerk.getAttraktivitaet(); // Attraktivität Kunstwerk IN PROZENZ [Ziel]
-        this.mittelwertAttr(); // hier umzusetzen als private Methode ODER in der Angebotsverwaltung ====> ggf. TO DO
+        kunstwerk.getAttraktivitaet(); // Attraktivität Kunstwerk IN PROZENT [Ziel]
+        this.mittelwertAttr(); // hier umzusetzen als private Methode ODER in der Angebotsverwaltung <=== TO DO in Teil 3 der SL
                                
         kunstwerk.getKosten(); // Kosten des Kunstwerks [Restriktion 1]
         ausstellungsplanung.get_kostenobergrenze(); // [Restriktion 1]
-        kostenCounter // kann im Sinne eines Counters Kosten hier in privater Variable mitgezählt/kumuliert werden?! [Restriktion1]
+        this.kostenCounter // wschl. kann im Sinne eines Counters Kosten hier in privater Variable mitgezählt/kumuliert werden [Restriktion1]
         
         raumverwaltung.pruefeVertretungThema(); // ob Schwerpunktthema in mindestens der Hälfte der Räume [Restriktion2]
         raumverwaltung.pruefeMin1Schwerpuntkthema(); // min. 1 Schwerpunktthema im Raum? [Restriktion2]
@@ -84,7 +86,7 @@ public class Ausleihe
         bild.getMaxLuft();
         
         raumverwaltung.getHoeheRaum(); //  [Restriktion 5]
-        this.pruefeRaum;
+        this.pruefeRaumHoehe; //noch in private Methode umzusetzen
         
         raumverwaltung.setWandNord(); // Restplatz für Bild, ist nach jeder Zuordnung zu aktualisieren [Restriktion 6]
         raumverwaltung.setWandOst();
@@ -100,14 +102,15 @@ public class Ausleihe
         raumverwaltung.getVerfuegbareLaenge();
         raumverwaltung.getVerfuegbareBreite();
         
-        kunstwerk.thema(); // hierUmsetzen?? KI alleine im Raum, dh. sonst keine Bilder oder KI --> bei Zuteilung beachten[Restriktion 8]
-        kunstwerk.art();   ===> OK // habe ich eingepflegt - Alex 
+        kunstwerk.thema(); // KI alleine im Raum, dh. sonst keine Bilder oder KI --> bei Zuteilung beachten[Restriktion 8]
+        
+        kunstwerk.getArt(); // Typ von Kunstwerk B / G / I
         
         this.setzePlanungZurueck();
         this.ordneZu();
-        kunstwerk.setVerplant();   ====> TO DO? // habe ich eingepflegt - Alex
-        kunstwerk.getVerplant();   ====> TO DO? // habe ich eingepflegt - Alex
-        
+        kunstwerk.setPlaziert();
+        kunstwerk.getPlaziert();
+        */
     }
         
     /**
@@ -118,7 +121,7 @@ public class Ausleihe
     public void zuordnenRaumOptimieren()
     {
         /////////////////////////////////// Ideen und Übersicht
-        //siehe oben bei zuordnenRaumMinimal exemplarisch - die Methoden sind noch nicht ausgeführt
+        //siehe den Fundus oben bei zuordnenRaumMinimal
 
     }
         
