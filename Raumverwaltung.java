@@ -34,46 +34,21 @@ public class Raumverwaltung
     //=============================================================
     //Methoden zur Verwaltung der Klasse Raumverwaltung
     //=============================================================
-<<<<<<< HEAD
-/** Fügt einen Raum der Raumverwaltung zu.
-*  @param  raum  Ein Objekt der Klasse Raum, das hinzugefuegt werden soll. 
-*/
-        public void addRaum(Raum raum)
-
-=======
     /** Fügt einen Raum der Raumverwaltung zu.
      *  @param  raum  Ein Objekt der Klasse Raum, das hinzugefuegt werden soll. 
      */
-        public void addRaum(Raum raum)
-<<<<<<< HEAD
->>>>>>> fd2a486aef44d613acb0fb8e2c49c8159522a81f
-=======
->>>>>>> fd2a486aef44d613acb0fb8e2c49c8159522a81f
+    public void addRaum(Raum raum)
     {
         //Code einfuegen
     }
-<<<<<<< HEAD
-        
-/** Entfernt einen Raum aus der Raumverwaltung.
-*  @param  raum  Ein Objekt der Klasse Raum, das entfernt werden soll.
-*/
-    public void removeRaum(Raum raum)
-=======
-    
+         
     /** Entfernt einen Raum aus der Raumverwaltung.
      *  @param  raum  Ein Objekt der Klasse Raum, das entfernt werden soll.
      */
-        public void removeRaum(Raum raum)
-<<<<<<< HEAD
->>>>>>> fd2a486aef44d613acb0fb8e2c49c8159522a81f
-=======
->>>>>>> fd2a486aef44d613acb0fb8e2c49c8159522a81f
+    public void removeRaum(Raum raum)
     {
         
     }
-<<<<<<< HEAD
-
-=======
     
     /** Ermittelt die Anzahl an Raeumen in der Raumverwaltung.
      *  @return Die Anzahl der Objekte der Klasse Raum in der Raumverwaltung.
@@ -82,7 +57,7 @@ public class Raumverwaltung
     {
         return raumVector.size();
     }
->>>>>>> fd2a486aef44d613acb0fb8e2c49c8159522a81f
+
     
     /** Loescht alle Raeume aus der Raumverwaltung.
      * 
@@ -132,7 +107,4 @@ public class Raumverwaltung
         //"false" falls size raumVector der Methode getRaumThema1 < size raumVector der Methode getRaumThema2
         return true;
     }
-    
-    
-    
 }
