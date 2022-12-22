@@ -1,3 +1,4 @@
+import java.util.*;
 
 /**
  * Die Klasse Ausstellungsplanung entlastet vor allem die zentrale Logikklasse "Ausleihe", indem sie das Schwerpunktthema und die Kostenobergrenze aufnimmt.
@@ -111,10 +112,21 @@ public class Ausstellungsplanung
     public void optimiereAusstellung()
     {
         // ...
-        //ausleihverwaltung[0].
-        //ausleihverwaltung[1].
-        //drop die schlechtere
+        //ausleihverwaltung.get_AusleiheVonAusleihverwaltung(0).
+        //ausleihverwaltung.get_AusleiheVonAusleihverwaltung(1).
+        //ausleihverwaltung.drop_schlechtesteAusleihe(); //drop die schlechtere, sodass die best Zuordnung an Stelle [0] ist
     }   
+    
+    /**
+     * Die Klasse Ausgabedatei benötigt Zugang zur Zuordnung Räume-Kunstwerke, wie sie in Ausleihverwaltung[0] vorliegt.
+     *  
+     */       
+    public HashMap get_besteZuordnung()
+    {
+        return ausleihverwaltung.get_AusleiheVonAusleihverwaltung(0).get_zugeordneteRaeumeKunstwerke();
+    }   
+    
+       
     
 }
   

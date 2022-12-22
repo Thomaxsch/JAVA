@@ -52,62 +52,24 @@ public class Ausleihe
     public void zuordnenRaumMinimal()
     {
         /////////////////////////////////// Ideen und Übersicht
+        // Bausteine für die Umsetzung:
         
-        raumverwaltung.getAngebotsliste();  ====> TO DO
-        angebotsverwaltung.getRaumliste();  ====> TO DO
+        /**
+        raumverwaltung.getKunstwerkVector(); // Vector der angebotenenKunstwerke
+        angebotsverwaltung.getRaumVector(); // Vector der Räume
         
         raumverwaltung.anzahl(); // Anzahl Räume
         angebotsverwaltung.sizeAngebotsverwaltung(); // Anzahl angebotene Kunstwerke
         
-        kunstwerk.getAttraktivitaet(); // Attraktivität Kunstwerk IN PROZENZ [Ziel]
-        this.mittelwertAttr(); // hier umzusetzen als private Methode ODER in der Angebotsverwaltung ====> ggf. TO DO
-                               
-        kunstwerk.getKosten(); // Kosten des Kunstwerks [Restriktion 1]
-        ausstellungsplanung.get_kostenobergrenze(); // [Restriktion 1]
-        kostenCounter // kann im Sinne eines Counters Kosten hier in privater Variable mitgezählt/kumuliert werden?! [Restriktion1]
-        
-        raumverwaltung.pruefeVertretungThema(); // ob Schwerpunktthema in mindestens der Hälfte der Räume [Restriktion2]
-        raumverwaltung.pruefeMin1Schwerpuntkthema(); // min. 1 Schwerpunktthema im Raum? [Restriktion2]
-        ausstellungsplanung.get_schwerpunktthema();  // falls hier in der methode noch erforderlich [Restriktion2]
-        
-        raumverwaltung.pruefeMax3Themen(); // sind max. 3 unterschiedliche Themen im Raum? [Restriktion3]
-        raumverwaltung.pruefeWeiteresThema(); // darf noch 1 weiteres Thema in Raum? [Restriktion3]
-        
-        this.checkTempFeu // Temp und Feuchte ohne Widerspruch. hier private umsetzen // perspektivisch ggf. im Raum [Restriktion 4]
-        bild.setMinTemp();
-        bild.setMaxTemp();
-        bild.setMinLuft();
-        bild.setMaxLuft();
-        bild.getMinTemp();
-        bild.getMaxTemp();
-        bild.getMinLuft();
-        bild.getMaxLuft();
-        
-        raumverwaltung.getHoeheRaum(); //  [Restriktion 5]
-        this.pruefeRaum;
-        
-        raumverwaltung.setWandNord(); // Restplatz für Bild, ist nach jeder Zuordnung zu aktualisieren [Restriktion 6]
-        raumverwaltung.setWandOst();
-        raumverwaltung.setWandSued();
-        raumverwaltung.setWandWest();
-        raumverwaltung.getWandNord();
-        raumverwaltung.getWandOst();
-        raumverwaltung.getWandSued();
-        raumverwaltung.getWandWest();    
-        
-        raumverwaltung.setVerfuegbareLaenge(); // Restplatz für Kunstgegenstand/KI, ist nach jeder Zuordnung zu aktualisieren [Restriktion 7]
-        raumverwaltung.setVerfuegbareBreite();
-        raumverwaltung.getVerfuegbareLaenge();
-        raumverwaltung.getVerfuegbareBreite();
-        
-        kunstwerk.thema(); // hierUmsetzen?? KI alleine im Raum, dh. sonst keine Bilder oder KI --> bei Zuteilung beachten[Restriktion 8]
-        kunstwerk.art();   ===> OK // habe ich eingepflegt - Alex 
-        
-        this.setzePlanungZurueck();
-        this.ordneZu();
+
         kunstwerk.setVerplant();   ====> TO DO? // habe ich eingepflegt - Alex
         kunstwerk.getVerplant();   ====> TO DO? // habe ich eingepflegt - Alex
         
+
+        kunstwerk.setPlaziert();
+        kunstwerk.getPlaziert();
+        */
+
     }
         
     /**
@@ -118,7 +80,7 @@ public class Ausleihe
     public void zuordnenRaumOptimieren()
     {
         /////////////////////////////////// Ideen und Übersicht
-        //siehe oben bei zuordnenRaumMinimal exemplarisch - die Methoden sind noch nicht ausgeführt
+        //siehe den Fundus oben bei zuordnenRaumMinimal
 
     }
         
@@ -128,7 +90,7 @@ public class Ausleihe
      * Klassen über das get in der Lage sind, die Werte der HashMap zu ändern. Dies werden wir jedoch nicht vornehmen, es geht uns in den 
      * anderen Klassen nur um die Möglichkeit für das Lesen.
      * 
-     * @return zugeordneteRaeumeKunstwerke   Wert des Attributtes schwerpunktthema
+     * @return zugeordneteRaeumeKunstwerke   aktuelle Raum-Kunstwerk-Zuordnung
      */
     public HashMap<Raum, List<Kunstwerk>> get_zugeordneteRaeumeKunstwerke() 
     {

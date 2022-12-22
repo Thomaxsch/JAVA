@@ -1,3 +1,4 @@
+import java.io.*;
 
 /**
  * Die Klasse Datei kann Strings als Zeilen in einer Datei ausgeben.

@@ -34,46 +34,23 @@ public class Raumverwaltung
     //=============================================================
     //Methoden zur Verwaltung der Klasse Raumverwaltung
     //=============================================================
-    /** Fügt einen Raum der Raumverwaltung zu.
-<<<<<<< HEAD
-     *  @param raum  Die Nummer des Objektes der Klasse Raum, das hinzugefuegt werden soll. 
-=======
-     *  @param  raum  Ein Objekt der Klasse Raum, das hinzugefuegt werden soll. 
->>>>>>> 1739088bd0bdcf37b7085c3a8e4d74209bb5ca67
-
-    public void addRaum(Raum raum)
-=======
-
+/** Fügt einen Raum der Raumverwaltung zu.
+*  @param  raum  Ein Objekt der Klasse Raum, das hinzugefuegt werden soll. 
+*/
+        public void addRaum(Raum raum)
 
     {
         //Code einfuegen
     }
-    
-    /** Entfernt einen Raum aus der Raumverwaltung.
-<<<<<<< HEAD
-     * 
-     * @param raum Raum der der gelöscht werden soll
-     * 
-=======
-     *  @param  raum  Ein Objekt der Klasse Raum, das entfernt werden soll.
->>>>>>> 1739088bd0bdcf37b7085c3a8e4d74209bb5ca67
-     */
-<<<<<<< HEAD
+        
+/** Entfernt einen Raum aus der Raumverwaltung.
+*  @param  raum  Ein Objekt der Klasse Raum, das entfernt werden soll.
+*/
     public void removeRaum(Raum raum)
-=======
-        public void removeRaum(Raum raum)
->>>>>>> 1739088bd0bdcf37b7085c3a8e4d74209bb5ca67
     {
-        //Code einfuegen
+        
     }
-    
-    /** Ermittelt die Anzahl an Raeumen in der Raumverwaltung.
-     *  @return Die Anzahl der Objekte der Klasse Raum in der Raumverwaltung.
-     */
-        public int anzahl()
-    {
-        return raumVector.size();
-    }
+
     
     /** Loescht alle Raeume aus der Raumverwaltung.
      * 

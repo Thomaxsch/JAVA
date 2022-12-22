@@ -42,7 +42,7 @@ public class Museum
         Angebotsverwaltung verw = new Angebotsverwaltung();
         
         Kunstinstallationen kunstinstallation= new Kunstinstallationen();
-        verw.add(kunstinstallation);
+        verw.addKunstwerk(kunstinstallation);
         
         Bild bild= new Bild();
         verw.addKunstwerk(bild);

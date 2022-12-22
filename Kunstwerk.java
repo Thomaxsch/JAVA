@@ -134,7 +134,7 @@
     }
     
     /** 
-     * Diese Methode ueberschreibt das thema Attributes eines "Kunstwerk" Objektes
+     * Diese Methode ueberschreibt das thema Attribut eines "Kunstwerk" Objektes
      * 
      * @param in_thema thema des Kunstwerkes (String)
      */
