@@ -45,6 +45,9 @@ public class Raumverwaltung
      *  @param  raum  Ein Objekt der Klasse Raum, das hinzugefuegt werden soll. 
      */
         public void addRaum(Raum raum)
+<<<<<<< HEAD
+>>>>>>> fd2a486aef44d613acb0fb8e2c49c8159522a81f
+=======
 >>>>>>> fd2a486aef44d613acb0fb8e2c49c8159522a81f
     {
         //Code einfuegen
@@ -61,6 +64,9 @@ public class Raumverwaltung
      *  @param  raum  Ein Objekt der Klasse Raum, das entfernt werden soll.
      */
         public void removeRaum(Raum raum)
+<<<<<<< HEAD
+>>>>>>> fd2a486aef44d613acb0fb8e2c49c8159522a81f
+=======
 >>>>>>> fd2a486aef44d613acb0fb8e2c49c8159522a81f
     {
         

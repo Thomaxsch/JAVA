@@ -62,16 +62,22 @@ public class Ausleihe
         angebotsverwaltung.sizeAngebotsverwaltung(); // Anzahl angebotene Kunstwerke
         
 <<<<<<< HEAD
+<<<<<<< HEAD
 
         kunstwerk.setVerplant();   ====> TO DO? // habe ich eingepflegt - Alex
         kunstwerk.getVerplant();   ====> TO DO? // habe ich eingepflegt - Alex
 =======
+=======
+>>>>>>> fd2a486aef44d613acb0fb8e2c49c8159522a81f
         kunstwerk.getAttraktivitaet(); // Attraktivität Kunstwerk IN PROZENT [Ziel]
         this.mittelwertAttr(); // hier umzusetzen als private Methode ODER in der Angebotsverwaltung <=== TO DO in Teil 3 der SL
                                
         kunstwerk.getKosten(); // Kosten des Kunstwerks [Restriktion 1]
         ausstellungsplanung.get_kostenobergrenze(); // [Restriktion 1]
         this.kostenCounter // wschl. kann im Sinne eines Counters Kosten hier in privater Variable mitgezählt/kumuliert werden [Restriktion1]
+<<<<<<< HEAD
+>>>>>>> fd2a486aef44d613acb0fb8e2c49c8159522a81f
+=======
 >>>>>>> fd2a486aef44d613acb0fb8e2c49c8159522a81f
         
 <<<<<<< HEAD
@@ -124,6 +130,9 @@ public class Ausleihe
         kunstwerk.setPlaziert();
         kunstwerk.getPlaziert();
         */
+<<<<<<< HEAD
+>>>>>>> fd2a486aef44d613acb0fb8e2c49c8159522a81f
+=======
 >>>>>>> fd2a486aef44d613acb0fb8e2c49c8159522a81f
     }
         
