@@ -61,33 +61,17 @@ public class Angebotsverwaltung
         //Code zum Löschen aller Kunstwerke aus der Angebotsverwaltung
     }
     
-    
-    
-    //Methoden mit allgemeinen Suchfunktionen
     /**
-     * Diese Methode durchsucht die Objekte nach einer bestimmten Kunstinstallation und zeigt dieses an.
+     * Methode zum Aufrufen aller Kunstwerke innerhalb der Vektorliste 
+     * 
+     * @return gibt alle Kunstwerke aus dem Vector zurück. 
      */
-    public static void sucheKunstinstallation()
+    public Vector<Kunstwerk> getKunstwerk()
     {
-        //Code zum Durchsuchen der Kunstinstallationen 
+        return kunstwerkVector;
     }
     
-    /**
-     * Diese Methode durchsucht die Objekte nach einem bestimmten Bild und zeigt dieses an.
-     */
-    public static void sucheBild()
-    {
-        //Code zum Durchsuchen der Bilder 
-    }
-    
-    /**
-     * Diese Methode durchsucht die Objekte nach einem bestimmten Kunstgegenstand und zeigt dieses an.
-     */
-    public static void sucheKunstgegenstand()
-    {
-        //Code zum Durchsuchen der Kunstgegenstaende 
-    }
-    
+
 
 }
 

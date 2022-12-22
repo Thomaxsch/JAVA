@@ -59,10 +59,10 @@ public class Ausleihe
         raumverwaltung.anzahl(); // Anzahl Räume
         angebotsverwaltung.sizeAngebotsverwaltung(); // Anzahl angebotene Kunstwerke
         
-        kunstwerk.zeigeAttraktivitaet(); // Attraktivität Kunstwerk IN PROZENZ [Ziel]
+        kunstwerk.getAttraktivitaet(); // Attraktivität Kunstwerk IN PROZENZ [Ziel]
         this.mittelwertAttr(); // hier umzusetzen als private Methode ODER in der Angebotsverwaltung ====> ggf. TO DO
                                
-        kunstwerk.zeigeKosten(); // Kosten des Kunstwerks [Restriktion 1]
+        kunstwerk.getKosten(); // Kosten des Kunstwerks [Restriktion 1]
         ausstellungsplanung.get_kostenobergrenze(); // [Restriktion 1]
         kostenCounter // kann im Sinne eines Counters Kosten hier in privater Variable mitgezählt/kumuliert werden?! [Restriktion1]
         
@@ -101,12 +101,12 @@ public class Ausleihe
         raumverwaltung.getVerfuegbareBreite();
         
         kunstwerk.thema(); // hierUmsetzen?? KI alleine im Raum, dh. sonst keine Bilder oder KI --> bei Zuteilung beachten[Restriktion 8]
-        kunstwerk.art();   ===> OK
+        kunstwerk.art();   ===> OK // habe ich eingepflegt - Alex 
         
         this.setzePlanungZurueck();
         this.ordneZu();
-        kunstwerk.setVerplant();   ====> TO DO?
-        kunstwerk.getVerplant();   ====> TO DO?    
+        kunstwerk.setVerplant();   ====> TO DO? // habe ich eingepflegt - Alex
+        kunstwerk.getVerplant();   ====> TO DO? // habe ich eingepflegt - Alex
         
     }
         

@@ -19,11 +19,7 @@ public class Ausgabedatei
      * Objekt der Java-Klasse PrintWriter zum Schreiben von Zeichenketten
      */
     private PrintWriter outpoutDatei;
-    /**
-     * Objekt der Java-Klasse BufferedReader zum Lesen von Dateien
-     */
-    private BufferedReader inputDatei;
-    /**
+        /**
      * Konstruktor für Objekte der Klasse Ausgabedatei mit Parameternamen für den Dateinamen
      * @param file Dateiname für die zu erstellende Outputdatei 
      */

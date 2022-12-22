@@ -5,35 +5,28 @@
  * Es lassen sich hierrüber manuell Objekte anlegen/ändern, jedoch sollen über die Einstiegsklasse "Museum" über einen Datenimport die Objekte erstellt werden.
  * 
  * @author (Alexander Kipry) 
- * @version (18.12.2022)
+ * @version (20.12.2022)
  */
 
 public class Bild extends Kunstwerk
 {
     //Attribute der Klasse Bild
-    /**
-     * Minimaltemperatur des Bildes in °C
-     */
+    /** Minimaltemperatur des Bildes in °C */
     private int minTemp;
     
-    /**
-     * Maximaltemperatur des Bildes in °C
-     */
+    /** Maximaltemperatur des Bildes in °C */
     private int maxTemp;
-    /**
-     * Anforderung der minimalen Luftfeuchtigkeit des Bildes in %
-     */
+    
+    /** Anforderung der minimalen Luftfeuchtigkeit des Bildes in % */
     private int minLuft;
-    /**
-     * Anforderung der maximalen Luftfeuchtigkeit des Bildes in %
-     */
+    
+    /** Anforderung der maximalen Luftfeuchtigkeit des Bildes in % */
     private int maxLuft;
     
     //Konstruktoren der Klasse Bild
     /**
      * Konstruktor für Objekte der Klasse Bild ohne Parameter
      */
-    
     public Bild ()
     {
     }
@@ -42,6 +35,7 @@ public class Bild extends Kunstwerk
      * Konstruktor für Objekte der Klasse Bild mit Parametern
      *
      * @param laufendeNummer        Dieser short entspricht der laufenden Nummer des Kunstwerkes.
+     * @param art                   Dieser char entspricht der Art des Kunstwerkes (Bild "B", Kunstinstallation "I", Kunstgegenstand "G")
      * @param bezeichnung           Dieser String entspricht der Bezeichnung des Kunstwerkes.
      * @param kuenstler             Dieser String entspricht dem Namen des Künstlers.
      * @param jahr                  Dieser String entspricht dem Jahr, in dem das Kunstwerk erstellt wurde.
@@ -51,15 +45,18 @@ public class Bild extends Kunstwerk
      * @param verleihendesMuseum    Dieser String entpricht dem Namen & der Adresse des verleihenden Museums (Name & Adresse ).
      * @param hoehe                 Dieser int entspricht der Höhe des Kunstwerkes in cm.
      * @param breite                Dieser int entspricht der Breite des Kunstwerkes in cm. 
+     * @param plaziert              Dieser boolean gibt über true und false an, ob das Kunstwerk bereits in einem Raum plaziert wurde. 
      * @param minTemp               Dieser int entspricht der minimalen Temperatur in einem Raum, welche für das Kunstwerk zulässig ist, in °C.
      * @param maxTemp               Dieser int entspricht der maximalen Temperatur in einem Raum, welche für das Kunstwerk zulässig ist, in °C.
      * @param minLuft               Dieser int entspricht der minimalen Luftfeuchtigkeit in einem Raum, welche für das Kunstwerk zulässig ist, in %.
      * @param maxLuft               Dieser int entspricht der minimalen Luftfeuchtigkeit in einem Raum, welche für das Kunstwerk zulässig ist, in %.
+   
        */
 
-      public Bild (short laufendeNummer, String bezeichnung, String kuenstler, String jahr, String thema, int attraktivitaetswert, int kosten, String verleihendesMuseum, int hoehe, int breite, int minTemp,int maxTemp, int minLuft, int maxLuft)
+      public Bild (short laufendeNummer, char art, String bezeichnung, String kuenstler, String jahr, String thema, int attraktivitaetswert, int kosten, String verleihendesMuseum, int hoehe, int breite,boolean plaziert, int minTemp,int maxTemp, int minLuft, int maxLuft)
     { 
         setLaufendeNummer(laufendeNummer);
+        setArt(art);
         setBezeichnung(bezeichnung);
         setKuenstler(kuenstler);
         setJahr(jahr);
@@ -68,12 +65,15 @@ public class Bild extends Kunstwerk
         setVerleihendesMuseum(verleihendesMuseum);
         setHoehe(hoehe);
         setBreite(breite);
+        setPlaziert(plaziert);
         setMinTemp(minTemp);
         setMaxTemp(maxTemp);
         setMinLuft(minLuft);
         setMaxLuft(maxLuft);
     }
+    
     //Methoden der Klasse Bild
+    //setter-Methoden
     /**
      * Diese Methode ueberschreibt das minTemp Attribut eines Bildes
      * 
@@ -84,6 +84,7 @@ public class Bild extends Kunstwerk
     {
         minTemp=in_minTemp;
     }
+    
     /**
      * Diese Methode ueberschreibt das maxTemp Attribut eines Bildes
      * 
@@ -94,6 +95,7 @@ public class Bild extends Kunstwerk
     {
         maxTemp=in_maxTemp;
     }
+    
     /**
      * Diese Methode ueberschreibt das minLuft Attribut eines Bildes
      * 
@@ -104,6 +106,7 @@ public class Bild extends Kunstwerk
     {
         minLuft=in_minLuft;
     }
+    
     /**
      * Diese Methode ueberschreibt das maxLuft Attribut eines Bildes
      * 
@@ -115,12 +118,13 @@ public class Bild extends Kunstwerk
         maxLuft=in_maxLuft;
     }
     
+    //getter-Methoden
     /**
      * Gibt die Mindesttemperatur wieder, die für das Bild zulässig ist.
      * 
      * @return Mindestemperatur in °C.
      */
-    public int zeigeMinTemp(int minTemp)
+    public int getMinTemp()
     {
         return minTemp;
     }
@@ -129,25 +133,27 @@ public class Bild extends Kunstwerk
      * 
      * @return Maximaltemperatur in °C.
      */
-    public int zeigeMaxTemp(int maxTemp)
+    public int getMaxTemp()
     {
         return maxTemp;
     }
+    
      /**
      * Gibt die Mindest-Luftfeuchtigkeit wieder, die für das Bild zulässig ist.
      * 
      * @return Mindest-Luftfeuchtigkeit in %.
      */
-    public int zeigeMinLuft(int minLuft)
+    public int getMinLuft()
     {
         return minLuft;
     }
+    
      /**
      * Gibt die Maximal-Luftfeuchtigkeit wieder, die für das Bild zulässig ist.
      * 
      * @return Maximal-Luftfeuchtigkeit in %.
      */
-    public int zeigeMaxLuft(int maxLuft)
+    public int getMaxLuft()
     {
         return maxLuft;
     }
