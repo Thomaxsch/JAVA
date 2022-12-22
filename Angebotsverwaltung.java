@@ -33,9 +33,13 @@ public class Angebotsverwaltung
      * 
      * @param kunstwerk  Kunstwerk (Kunsinstallation, Bild, Kunstgegenstand) der hinzugefügt werden soll
      */
+<<<<<<< HEAD
 
     public void addKunstwerk(Kunstwerk in_kunstwerk)
 
+=======
+    public void addKunstwerk(Kunstwerk in_kunstwerk)
+>>>>>>> fd2a486aef44d613acb0fb8e2c49c8159522a81f
     {
         //Code zum Hinzufügen eines Kunstwerkes (Kunstinstallation, Bild, Kunstgegenstand)
     }
@@ -64,14 +68,26 @@ public class Angebotsverwaltung
         //Code zum Löschen aller Kunstwerke aus der Angebotsverwaltung
     }
     
+<<<<<<< HEAD
 
     public Vector<Kunstwerk> getKunstwerkVector()
 
+=======
+    /**
+     * Methode zur Umsetzung des Aufrufens aller Kunstwerke innerhalb der Vektorliste 
+     * 
+     * @return gibt die Möglichkeit zum Zugriff auf alle Kunstwerke aus dem Vector zurück. 
+     */
+    public Vector<Kunstwerk> getKunstwerkVector()
+>>>>>>> fd2a486aef44d613acb0fb8e2c49c8159522a81f
     {
         return kunstwerkVector;
     }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> fd2a486aef44d613acb0fb8e2c49c8159522a81f
     /**
      * Methode zum Sortieren der Kunstwerke aus dem Vector nach deren Kosten. 
      * 
@@ -90,7 +106,10 @@ public class Angebotsverwaltung
     {
         return kunstwerkVector;//Code zum sortieren der Kunstwerke nach der Attraktivitaet --> Collections.sort mit Parameter kunstwerk.attraktivitaetswert 
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> fd2a486aef44d613acb0fb8e2c49c8159522a81f
 }
 
 

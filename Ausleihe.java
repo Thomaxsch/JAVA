@@ -61,15 +61,70 @@ public class Ausleihe
         raumverwaltung.anzahl(); // Anzahl Räume
         angebotsverwaltung.sizeAngebotsverwaltung(); // Anzahl angebotene Kunstwerke
         
+<<<<<<< HEAD
 
         kunstwerk.setVerplant();   ====> TO DO? // habe ich eingepflegt - Alex
         kunstwerk.getVerplant();   ====> TO DO? // habe ich eingepflegt - Alex
+=======
+        kunstwerk.getAttraktivitaet(); // Attraktivität Kunstwerk IN PROZENT [Ziel]
+        this.mittelwertAttr(); // hier umzusetzen als private Methode ODER in der Angebotsverwaltung <=== TO DO in Teil 3 der SL
+                               
+        kunstwerk.getKosten(); // Kosten des Kunstwerks [Restriktion 1]
+        ausstellungsplanung.get_kostenobergrenze(); // [Restriktion 1]
+        this.kostenCounter // wschl. kann im Sinne eines Counters Kosten hier in privater Variable mitgezählt/kumuliert werden [Restriktion1]
+>>>>>>> fd2a486aef44d613acb0fb8e2c49c8159522a81f
         
+<<<<<<< HEAD
 
         kunstwerk.setPlaziert();
         kunstwerk.getPlaziert();
         */
 
+=======
+        raumverwaltung.pruefeVertretungThema(); // ob Schwerpunktthema in mindestens der Hälfte der Räume [Restriktion2]
+        raumverwaltung.pruefeMin1Schwerpuntkthema(); // min. 1 Schwerpunktthema im Raum? [Restriktion2]
+        ausstellungsplanung.get_schwerpunktthema();  // falls hier in der methode noch erforderlich [Restriktion2]
+        
+        raumverwaltung.pruefeMax3Themen(); // sind max. 3 unterschiedliche Themen im Raum? [Restriktion3]
+        raumverwaltung.pruefeWeiteresThema(); // darf noch 1 weiteres Thema in Raum? [Restriktion3]
+        
+        this.checkTempFeu // Temp und Feuchte ohne Widerspruch. hier private umsetzen // perspektivisch ggf. im Raum [Restriktion 4]
+        bild.setMinTemp();
+        bild.setMaxTemp();
+        bild.setMinLuft();
+        bild.setMaxLuft();
+        bild.getMinTemp();
+        bild.getMaxTemp();
+        bild.getMinLuft();
+        bild.getMaxLuft();
+        
+        raumverwaltung.getHoeheRaum(); //  [Restriktion 5]
+        this.pruefeRaumHoehe; //noch in private Methode umzusetzen
+        
+        raumverwaltung.setWandNord(); // Restplatz für Bild, ist nach jeder Zuordnung zu aktualisieren [Restriktion 6]
+        raumverwaltung.setWandOst();
+        raumverwaltung.setWandSued();
+        raumverwaltung.setWandWest();
+        raumverwaltung.getWandNord();
+        raumverwaltung.getWandOst();
+        raumverwaltung.getWandSued();
+        raumverwaltung.getWandWest();    
+        
+        raumverwaltung.setVerfuegbareLaenge(); // Restplatz für Kunstgegenstand/KI, ist nach jeder Zuordnung zu aktualisieren [Restriktion 7]
+        raumverwaltung.setVerfuegbareBreite();
+        raumverwaltung.getVerfuegbareLaenge();
+        raumverwaltung.getVerfuegbareBreite();
+        
+        kunstwerk.thema(); // KI alleine im Raum, dh. sonst keine Bilder oder KI --> bei Zuteilung beachten[Restriktion 8]
+        
+        kunstwerk.getArt(); // Typ von Kunstwerk B / G / I
+        
+        this.setzePlanungZurueck();
+        this.ordneZu();
+        kunstwerk.setPlaziert();
+        kunstwerk.getPlaziert();
+        */
+>>>>>>> fd2a486aef44d613acb0fb8e2c49c8159522a81f
     }
         
     /**
