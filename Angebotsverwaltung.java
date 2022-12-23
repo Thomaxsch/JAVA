@@ -30,18 +30,24 @@ public class Angebotsverwaltung
     //Methoden für die Verwaltung der Klasse Angebotsverwaltung
     /**
      * Diese Methode fügt der Angebotsverwaltung ein Kunstwerk hinzu.
+     * 
+     * @param kunstwerk  Kunstwerk (Kunsinstallation, Bild, Kunstgegenstand) der hinzugefügt werden soll
      */
     public void addKunstwerk(Kunstwerk in_kunstwerk)
     {
         //Code zum Hinzufügen eines Kunstwerkes (Kunstinstallation, Bild, Kunstgegenstand)
     }
+    
     /** 
      * Diese Methode entfernt aus der Angebotsverwaltung ein Kunstwerk. 
+     * 
+     * @param kunstwerk Kunstwerk das gelöscht werden soll
      */
     public void removeKunstwerk(Kunstwerk in_kunstwerk)
     {
         //Code zum Entfernen eines Kunstwerkes (Kunstinstallation, Bild, Kunstgegenstand)
     }
+    
     /** Ermittelt die Anzahl an Kunstwerken in der Angebotsverwaltung .
      *  
      *  @return Die Anzahl der Objekte der Kunstwerk-Klassen in der Angebotsverwaltung. 
@@ -50,6 +56,7 @@ public class Angebotsverwaltung
     {
         return kunstwerkVector.size();
     }
+    
     /** Loescht alle Kunstwerke aus der Angebotsverwaltung.
      * 
      */
@@ -58,15 +65,19 @@ public class Angebotsverwaltung
         //Code zum Löschen aller Kunstwerke aus der Angebotsverwaltung
     }
     
+    
     /**
      * Methode zur Umsetzung des Aufrufens aller Kunstwerke innerhalb der Vektorliste 
      * 
      * @return gibt die Möglichkeit zum Zugriff auf alle Kunstwerke aus dem Vector zurück. 
      */
     public Vector<Kunstwerk> getKunstwerkVector()
+
     {
         return kunstwerkVector;
     }
+
+
     /**
      * Methode zum Sortieren der Kunstwerke aus dem Vector nach deren Kosten. 
      * 
@@ -76,6 +87,7 @@ public class Angebotsverwaltung
     {
         return kunstwerkVector;//Code zum sortieren der Kunstwerke nach den Kosten --> Collections.sort mit Parameter kunstwerk.kosten 
     }
+    
     /**
      * Methode zum Sortieren der Kunstwerke aus dem Vector nach deren Attrakvitaet. 
      * 
@@ -85,6 +97,7 @@ public class Angebotsverwaltung
     {
         return kunstwerkVector;//Code zum sortieren der Kunstwerke nach der Attraktivitaet --> Collections.sort mit Parameter kunstwerk.attraktivitaetswert 
     }
+    
 }
 
 
