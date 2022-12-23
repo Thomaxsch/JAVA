@@ -38,7 +38,7 @@ public class Angebotsverwaltung
     /** 
      * Diese Methode entfernt aus der Angebotsverwaltung ein Kunstwerk. 
      */
-    public void removeKunstwerk()
+    public void removeKunstwerk(Kunstwerk in_kunstwerk)
     {
         //Code zum Entfernen eines Kunstwerkes (Kunstinstallation, Bild, Kunstgegenstand)
     }
