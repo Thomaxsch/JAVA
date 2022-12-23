@@ -43,7 +43,11 @@ public class Angebotsverwaltung
      * 
      * @param kunstwerk Kunstwerk das gelöscht werden soll
      */
+<<<<<<< HEAD
     public void removeKunstwerk(Kunstwerk in_kunstwerk)
+=======
+    public void removeKunstwerk(Kunstwerk kunstwerk)
+>>>>>>> fdd9936181bee7b687361e02400f4710f48ec01b
     {
         //Code zum Entfernen eines Kunstwerkes (Kunstinstallation, Bild, Kunstgegenstand)
     }
