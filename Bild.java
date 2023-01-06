@@ -53,7 +53,8 @@ public class Bild extends Kunstwerk
    
        */
 
-      public Bild (short laufendeNummer, char art, String bezeichnung, String kuenstler, String jahr, String thema, int attraktivitaetswert, int kosten, String verleihendesMuseum, int hoehe, int breite,boolean plaziert, int minTemp,int maxTemp, int minLuft, int maxLuft)
+      public Bild (short laufendeNummer, char art, String bezeichnung, String kuenstler, String jahr, String thema, int attraktivitaetswert, int kosten, String verleihendesMuseum,
+                   String anschrift, int hoehe, int breite,/*boolean plaziert, */int minTemp,int maxTemp, int minLuft, int maxLuft)
     { 
         setLaufendeNummer(laufendeNummer);
         setArt(art);
@@ -65,7 +66,7 @@ public class Bild extends Kunstwerk
         setVerleihendesMuseum(verleihendesMuseum);
         setHoehe(hoehe);
         setBreite(breite);
-        setPlaziert(plaziert);
+        //setPlaziert(plaziert);
         setMinTemp(minTemp);
         setMaxTemp(maxTemp);
         setMinLuft(minLuft);

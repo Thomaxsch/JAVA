@@ -35,7 +35,7 @@ public class Angebotsverwaltung
      */
     public void addKunstwerk(Kunstwerk in_kunstwerk)
     {
-        //Code zum Hinzufügen eines Kunstwerkes (Kunstinstallation, Bild, Kunstgegenstand)
+        kunstwerkVector.add(in_kunstwerk);
     }
     
     /** 
@@ -71,10 +71,12 @@ public class Angebotsverwaltung
      * 
      * @return gibt die Möglichkeit zum Zugriff auf alle Kunstwerke aus dem Vector zurück. 
      */
-    public Vector<Kunstwerk> getKunstwerkVector()
-
+    public void getKunstwerkVector()
     {
-        return kunstwerkVector;
+        for(Kunstwerk kw : kunstwerkVector)
+        {
+            System.out.println(kw);
+        }
     }
 
 

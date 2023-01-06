@@ -43,7 +43,8 @@ public class Kunstinstallationen extends Kunstwerk
      * @param laenge                    Dieser int entspricht der Länge der Kunstinstallation in cm.
      * @param gewicht                   Dieser int entspricht dem Gewicht der Kunstinstallation in KG.
      */
-    public Kunstinstallationen (short laufendeNummer, char art, String bezeichnung, String kuenstler, String jahr, String thema, int attraktivitaetswert, int kosten, String verleihendesMuseum, int hoehe, int breite, boolean plaziert, int laenge, int gewicht)
+    public Kunstinstallationen (short laufendeNummer, char art, String bezeichnung, String kuenstler, String jahr, String thema, int attraktivitaetswert, int kosten, String verleihendesMuseum,
+                                String anschrift, int hoehe, int breite, /*boolean plaziert,*/ int laenge, int gewicht)
     {
         setLaufendeNummer(laufendeNummer);
         setArt(art);
@@ -53,7 +54,7 @@ public class Kunstinstallationen extends Kunstwerk
         setAttraktivitaet(attraktivitaetswert);
         setKosten(kosten);
         setVerleihendesMuseum(verleihendesMuseum);
-        setPlaziert(plaziert);
+        //setPlaziert(plaziert);
         setHoehe(hoehe);
         setBreite(breite);
         setLaenge(laenge);

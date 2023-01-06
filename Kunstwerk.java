@@ -41,6 +41,9 @@
     /** Angabe des Museums, welches das Kunstwerk zur Verfügung stellt */
     private String verleihendesMuseum;
     
+    /** Anschrift des Museums */
+    private String anschrift;
+    
     /** Höhe des Kunstwerkes in cm */
     private int hoehe;
     
@@ -74,7 +77,8 @@
      * @param plaziert              Dieser boolean gibt über true und false an, ob das Kunstwerk bereits in einem Raum plaziert wurde. 
      */
     
-    public Kunstwerk(short laufendeNummer, char art, String bezeichnung, String kuenstler, String jahr, String thema, int attraktivitaetswert, int kosten, String verleihendesMuseum, int hoehe, int breite, boolean plaziert)
+    public Kunstwerk(short laufendeNummer, char art, String bezeichnung, String kuenstler, String jahr, String thema, int attraktivitaetswert, int kosten, String verleihendesMuseum,
+                     String anschrift, int hoehe, int breite /*boolean plaziert*/)
     {  
     }
     
@@ -321,4 +325,16 @@
     {
         return plaziert;
     }
+    
+    /**
+     * @author Mischa, 06.01.2023
+     * Methode gibt eine lesbare Beschreibung eines Kunstwerks aus
+     * @return Beschreibung
+     */
+    @Override
+    public String toString()
+    { 
+        return "Nr: " + this.laufendeNummer + ", Art des Kunstwerks: " + this.art + ", Bezeichnung: " + this.bezeichnung;
+    }
+        
 }

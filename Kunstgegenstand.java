@@ -42,7 +42,8 @@ public class Kunstgegenstand extends Kunstwerk
      * @param laenge                    Dieser int entspricht der Länge der Kunstgegenstandes in cm.
      * @param gewicht                   Dieser int entspricht dem Gewicht des Kunstgegenstandes in KG.
      */
-    public Kunstgegenstand (short laufendeNummer, char art, String bezeichnung, String kuenstler, String jahr, String thema, int attraktivitaetswert, int kosten, String verleihendesMuseum, int hoehe, int breite, boolean plaziert, int laenge, int gewicht)
+    public Kunstgegenstand (short laufendeNummer, char art, String bezeichnung, String kuenstler, String jahr, String thema, int attraktivitaetswert, int kosten, String verleihendesMuseum, 
+                            String anschrift,   int hoehe, int breite, /*boolean plaziert*/ int laenge, int gewicht)
     {
         setLaufendeNummer(laufendeNummer);
         setArt(art);
@@ -54,7 +55,7 @@ public class Kunstgegenstand extends Kunstwerk
         setVerleihendesMuseum(verleihendesMuseum);
         setHoehe(hoehe);
         setBreite(breite);
-        setPlaziert(plaziert);
+        //setPlaziert(plaziert);
         setLaenge(laenge);
         setGewicht(gewicht);
     }

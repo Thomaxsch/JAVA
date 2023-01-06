@@ -107,4 +107,16 @@ public class Raumverwaltung
         //"false" falls size raumVector der Methode getRaumThema1 < size raumVector der Methode getRaumThema2
         return true;
     }
+    
+    /**
+     * Mischa, 06.01.2023
+     * Gibt eine textuelle Beschreibung aller Räume aus 
+     */
+    public void gebeRaeumeAus()
+    {
+        for(Raum raum : raumVector) 
+        {
+            System.out.println(raum);
+        }
+    }
 }

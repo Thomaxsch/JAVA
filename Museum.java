@@ -6,14 +6,24 @@ import java.util.Scanner;
  * gestartet. 
  * 
  * @author Mischa Paul Marchlewski 
- * @version 19.12.2022
+ * @version 06.01.2023
  */
 public class Museum
 {
-    /**
-     * speichert ein Objekt der Klasse Ausstellungsplanung
-     */
-    private static Ausstellungsplanung planung;
+    private Raumverwaltung raeume;
+    private Angebotsverwaltung kunstwerke;
+    
+    public Museum() 
+    {
+        raeume = new Raumverwaltung();
+        kunstwerke = new Angebotsverwaltung();
+        
+        importiereKunstwerke("kunstwerke.csv");
+        importiereRaeume("raeume.csv"); 
+        
+        raeume.gebeRaeumeAus();
+        kunstwerke.getKunstwerkVector(); 
+    }
 
     /**
      * In der Main-Methode werden alle Anweisungen ausgeführt, die beim Start
@@ -26,31 +36,132 @@ public class Museum
      */
     public static void main(String[] args)
     {
-        planung = new Ausstellungsplanung();
-        //Museum.importiereKunstwerke();
-        Museum.importiereRaeume("raeume.csv");
-        //Ausstellungsplanung.generiereAusstellung();
+        Museum meinMuseum = new Museum();
     }
     
     /**
      * Liest die Kunstwerke aus der Datei kunstwerke.csv ein und erstellt
      * daraus Objeke der Klasse Bild, Kunstinstallation bzw. Kunstgegenstand, die dann
-     * inder Klasse Angebotsverwaltung verwaltet werden
+     * in der Klasse Angebotsverwaltung verwaltet werden
      * 
      * @param name  Name (Pfad) der Datei, die eingelesen werden soll
      */
-    public static void importiereKunstwerke(String name)
-    {
-        Angebotsverwaltung verw = new Angebotsverwaltung();
+    public void importiereKunstwerke(String name)
+    {              
+        Kunstinstallationen ki;
+        Bild bi;
+        Kunstgegenstand kg;
         
-        Kunstinstallationen kunstinstallation= new Kunstinstallationen();
-        verw.addKunstwerk(kunstinstallation);
-        
-        Bild bild= new Bild();
-        verw.addKunstwerk(bild);
-        
-        Kunstgegenstand kunstgegenstand= new Kunstgegenstand();
-        verw.addKunstwerk(kunstgegenstand);
+        try 
+        {
+            boolean eof = false;
+            BufferedReader dEin = new BufferedReader(new FileReader(name));
+            
+            while(!eof)
+            {
+               String zw_in = dEin.readLine(); 
+               
+               if(zw_in != null)
+               {
+                   String[] array = zw_in.split(",");
+                   
+                   /*
+                    * array[0]  = Laufende Nummer
+                    * array[1]  = Art des Kunstwerks
+                    * array[2]  = Bezeichnung
+                    * array[3]  = Künstlername
+                    * array[4]  = Jahresangabe
+                    * array[5]  = Thema
+                    * array[6]  = Attraktivität in Prozent
+                    * array[7]  = Kosten in Euro
+                    * array[8]  = Name des Museums
+                    * array[9]  = Anschrift des Museums
+                    * array[10] = Höhe in cm
+                    * array[11] = Breite in cm
+                    * array[12] = Länge in cm (nur bei Kunstgegenstand oder Installation)  /Minimaltemperatur in C (nur bei Bildern)
+                    * array[13] = Gewicht in kg (nur bei Kunstgegenstand oder Installation)/Maximaltemperatur in C (nur bei Bildern)
+                    * array[14] = Minimale Luftfeuchtigkeit in C (nur bei Bildern)
+                    * array[15] = Maximale Luftfeuchtigkeit in C (nur bei Bildern)
+                    */ 
+                   
+                   if(array[1].equals("B")) 
+                   {
+                        bi = new Bild(Short.parseShort(array[0]),
+                                     array[1].charAt(0),
+                                     array[2],
+                                     array[3],
+                                     array[4],
+                                     array[5],
+                                     Integer.parseInt(array[6]),
+                                     Integer.parseInt(array[7]),
+                                     array[8],
+                                     array[9],         
+                                     Integer.parseInt(array[10]),
+                                     Integer.parseInt(array[11]),
+                                     Integer.parseInt(array[12]),
+                                     Integer.parseInt(array[13]),
+                                     Integer.parseInt(array[14]),
+                                     Integer.parseInt(array[15]));
+                                     
+                        kunstwerke.addKunstwerk(bi);
+                   }
+                   
+                   if(array[1].equals("I"))
+                   {
+                         ki = new Kunstinstallationen(Short.parseShort(array[0]),
+                                     array[1].charAt(0),
+                                     array[2],
+                                     array[3],
+                                     array[4],
+                                     array[5],
+                                     Integer.parseInt(array[6]),
+                                     Integer.parseInt(array[7]),
+                                     array[8],
+                                     array[9],         
+                                     Integer.parseInt(array[10]),
+                                     Integer.parseInt(array[11]),
+                                     Integer.parseInt(array[12]),
+                                     Integer.parseInt(array[13]));
+                                     
+                        kunstwerke.addKunstwerk(ki);
+                   }
+                   
+                   if(array[1].equals("G"))
+                   {
+                         kg = new Kunstgegenstand(Short.parseShort(array[0]),
+                                     array[1].charAt(0),
+                                     array[2],
+                                     array[3],
+                                     array[4],
+                                     array[5],
+                                     Integer.parseInt(array[6]),
+                                     Integer.parseInt(array[7]),
+                                     array[8],
+                                     array[9],         
+                                     Integer.parseInt(array[10]),
+                                     Integer.parseInt(array[11]),
+                                     Integer.parseInt(array[12]),
+                                     Integer.parseInt(array[13]));
+                                     
+                        kunstwerke.addKunstwerk(kg);
+                      }
+                }
+                
+                if (zw_in == null)
+                {
+                    eof=true;
+                }
+            }
+        }
+        catch(FileNotFoundException e)
+        {
+            System.out.println("Die Datei" + name + "existiert nicht.");
+        }
+        catch(IOException e)
+        {
+            System.out.println("Fehler beim Zugriff auf die Datei!");
+            System.out.println("Folgender Fehler ist aufgetreten " + e.getMessage());
+        }
     }
     
     /**
@@ -60,9 +171,8 @@ public class Museum
      * 
      * @param name Name (Pfad) der Datei, die eingelesen werden soll
      */
-    public static void importiereRaeume(String name)
+    public void importiereRaeume(String name)
     {
-        Raumverwaltung raumv = new Raumverwaltung();
         Raum raum;
         
         try 
@@ -100,8 +210,7 @@ public class Museum
                                    Integer.parseInt(array[7]),
                                    Integer.parseInt(array[8]));
                    
-                    raumv.addRaum(raum);                
-                    System.out.println(raum.toString());
+                    raeume.addRaum(raum);                
                 }
                 
                 if (zw_in == null)
@@ -109,8 +218,6 @@ public class Museum
                     eof=true;
                 }
             }
-            
-            System.out.println(raumv.anzahl());
         }
         catch(FileNotFoundException e)
         {
