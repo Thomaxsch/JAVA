@@ -1,3 +1,5 @@
+import java.io.*;
+import java.util.Scanner;
 
 /**
  * Die Klasse Museum bildet die Einstiegsklasse. Aus ihr wird das Programm
@@ -25,7 +27,7 @@ public class Museum
     public static void main(String[] args)
     {
         //Museum.importiereKunstwerke();
-        //Museum.importiereRaeume();
+        Museum.importiereRaeume("raeume.csv");
         //planung= new Ausstellungsplanung();
         //Ausstellungsplanung.generiereAusstellung();
     }
@@ -61,8 +63,61 @@ public class Museum
     public static void importiereRaeume(String name)
     {
         Raumverwaltung raumv = new Raumverwaltung();
-        Raum raum = new Raum();
-        raumv.addRaum(raum);
+        Raum raum;
+        
+        try 
+        {
+            boolean eof = false;
+            BufferedReader dEin = new BufferedReader(new FileReader(name));
+            
+            while(!eof)
+            {
+               String zw_in = dEin.readLine(); 
+               
+               if(zw_in != null)
+               {
+                   String[] array = zw_in.split(",");
+               
+                   /*
+                    * array[0] = Laufende Nummer
+                    * array[1] = Bezeichnung
+                    * array[2] = Länge  (der Nord- und Südwand) in cm
+                    * array[3] = Breite (der Ost- und Westwand) in cm
+                    * array[4] = Höhe in cm
+                    * array[5] = Türbreite Nordseite in cm
+                    * array[6] = Türbreite Ostseite in cm
+                    * array[7] = Türbreite Südseite in cm
+                    * array[8] = Türbreite Westseite in cm
+                    */ 
+                         
+                   raum = new Raum(Integer.parseInt(array[0]), 
+                                   array[1], 
+                                   Integer.parseInt(array[2]),
+                                   Integer.parseInt(array[3]),
+                                   Integer.parseInt(array[4]), 
+                                   Integer.parseInt(array[5]),
+                                   Integer.parseInt(array[6]),
+                                   Integer.parseInt(array[7]),
+                                   Integer.parseInt(array[8]));
+               
+                   System.out.println(raum.toString());
+                }
+                
+                if (zw_in == null)
+                {
+                    eof=true;
+                }
+            }
+        }
+        catch(FileNotFoundException e)
+        {
+            System.out.println("Die Datei" + name + "existiert nicht.");
+        }
+        catch(IOException e)
+        {
+            System.out.println("Fehler beim Zugriff auf die Datei!");
+            System.out.println("Folgender Fehler ist aufgetreten " + e.getMessage());
+        }
     }
     
     
