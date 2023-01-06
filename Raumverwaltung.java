@@ -39,7 +39,7 @@ public class Raumverwaltung
      */
     public void addRaum(Raum raum)
     {
-        //Code einfuegen
+       raumVector.addElement(raum);
     }
          
     /** Entfernt einen Raum aus der Raumverwaltung.

@@ -36,6 +36,14 @@ public class Ausstellungsplanung
         kostenobergrenze = in_kostenobergrenze;
     }
     
+    /**
+     * Konstruktor für Objekte der Klasse Austellungsplanung ohne Parameter
+     */
+    public Ausstellungsplanung() 
+    {
+        
+    }
+    
     // ==========================================================================
     // === Methoden
     // ==========================================================================

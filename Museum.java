@@ -13,7 +13,7 @@ public class Museum
     /**
      * speichert ein Objekt der Klasse Ausstellungsplanung
      */
-    private Ausstellungsplanung planung;
+    private static Ausstellungsplanung planung;
 
     /**
      * In der Main-Methode werden alle Anweisungen ausgeführt, die beim Start
@@ -26,9 +26,9 @@ public class Museum
      */
     public static void main(String[] args)
     {
+        planung = new Ausstellungsplanung();
         //Museum.importiereKunstwerke();
         Museum.importiereRaeume("raeume.csv");
-        //planung= new Ausstellungsplanung();
         //Ausstellungsplanung.generiereAusstellung();
     }
     
@@ -99,8 +99,9 @@ public class Museum
                                    Integer.parseInt(array[6]),
                                    Integer.parseInt(array[7]),
                                    Integer.parseInt(array[8]));
-               
-                   System.out.println(raum.toString());
+                   
+                    raumv.addRaum(raum);                
+                    System.out.println(raum.toString());
                 }
                 
                 if (zw_in == null)
@@ -108,6 +109,8 @@ public class Museum
                     eof=true;
                 }
             }
+            
+            System.out.println(raumv.anzahl());
         }
         catch(FileNotFoundException e)
         {
