@@ -18,7 +18,8 @@ public class Ausstellungsplanung2
         // Instanzvariable initialisieren
         x = 0;
     }
-
+    
+    
     /**
      * Ein Beispiel einer Methode - ersetzen Sie diesen Kommentar mit Ihrem eigenen
      * 

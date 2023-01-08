@@ -23,6 +23,8 @@ public class Museum
         
         raeume.gebeRaeumeAus();
         kunstwerke.getKunstwerkVector();
+        
+        Ausstellungsplanung planung = new Ausstellungsplanung();       
     }
 
     /**
@@ -228,6 +230,11 @@ public class Museum
             System.out.println("Fehler beim Zugriff auf die Datei!");
             System.out.println("Folgender Fehler ist aufgetreten " + e.getMessage());
         }
+    }
+    
+    public Raumverwaltung raeume()
+    {
+        return this.raeume;
     }
     
     
