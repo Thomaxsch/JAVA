@@ -19,7 +19,7 @@ public class Ausleihverwaltung
     // === Attribute
     // ==========================================================================
      
-    private Ausleihe[] listeAusstellungen; // array für die Ausleihen
+    private Zuordnung[] listeAusstellungen; // array für die Ausleihen
     
     // ==========================================================================
     // === Konstruktoren
@@ -30,7 +30,7 @@ public class Ausleihverwaltung
      */
     public Ausleihverwaltung()
     {
-        listeAusstellungen = new Ausleihe[2]; // zwei Objekte vom Typ Ausleihe im Array
+        listeAusstellungen = new Zuordnung[2]; // zwei Objekte vom Typ Ausleihe im Array
     }
     
     /**
@@ -38,7 +38,7 @@ public class Ausleihverwaltung
      * 
      * @return Ein bestimmtes Element aus Vektor, also eine bestimmte geplante Ausleihe.
      */
-    public Ausleihe get_AusleiheVonAusleihverwaltung(int n)
+    public Zuordnung get_AusleiheVonAusleihverwaltung(int n)
     {
         return listeAusstellungen[n];
     }

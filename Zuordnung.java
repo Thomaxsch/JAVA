@@ -6,7 +6,7 @@ import java.util.*;
  * @author Thomas Scheidt 
  * @version 19.12.2022
  */
-public class Ausleihe
+public class Zuordnung
 {
     // ==========================================================================
     // === Attribute
@@ -31,7 +31,7 @@ public class Ausleihe
     /**
      * Konstruktor für Objekte der Klasse Ausleihe
      */
-    public Ausleihe()
+    public Zuordnung()
     {
         
     }
