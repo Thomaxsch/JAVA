@@ -24,7 +24,10 @@ public class Museum
         raeume.gebeRaeumeAus();
         kunstwerke.getKunstwerkVector();
         
-        Ausstellungsplanung planung = new Ausstellungsplanung();       
+        Ausstellungsplanung planung = new Ausstellungsplanung(raeume, kunstwerke);
+        planung.set_kostenobergrenze(999999999);
+        planung.set_schwerpunktthema("test");
+        planung.generiereAusstellungskandidaten();
     }
 
     /**

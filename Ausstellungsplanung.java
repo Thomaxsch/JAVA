@@ -16,8 +16,11 @@ public class Ausstellungsplanung
     
     private String schwerpunktthema = ""; //Variable um das Schwerpunktthema der Ausstellung festzulegen
     private double kostenobergrenze = 999999999; //Legt die Kostenobergrenze der Ausstellung fest.
-    private Ausleihverwaltung ausleihverwaltung; //Ausleihverwaltung, um bis zwei Ausstellungskandidaten zu speichern/vergleichen. 
-
+    private Raumverwaltung raeume;
+    private Angebotsverwaltung kunstwerke;
+    private int anzahlZuordnungen = 100;
+    
+    private Zuordnungsverwaltung zuordnungen;
     // ==========================================================================
     // === Konstruktoren
     // ==========================================================================
@@ -37,11 +40,15 @@ public class Ausstellungsplanung
     }
     
     /**
-     * Konstruktor für Objekte der Klasse Austellungsplanung ohne Parameter
+     * Konstruktor für Objekte der Klasse Austellungsplanung ohne Parameter.,.,,..,,.
      */
-    public Ausstellungsplanung() 
+    public Ausstellungsplanung(Raumverwaltung in_raeume, Angebotsverwaltung in_kunstwerke) 
     {
+        // Initieerung der Zuordnungsverwaltung
+        zuordnungen = new Zuordnungsverwaltung(anzahlZuordnungen);
         
+        raeume=in_raeume;
+        kunstwerke=in_kunstwerke;
     }
     
     // ==========================================================================
@@ -99,15 +106,52 @@ public class Ausstellungsplanung
      *   
      */       
       
-    public void generiereAusstellung()
+    public void generiereAusstellungskandidaten()
     {
         
-        // Lege eine neue Ausleihverwaltung an:
-        ausleihverwaltung = new Ausleihverwaltung();
         
+     /**Die Verwaltungsklasse "Zuordnungsverwaltung" enthält
+    eine Liste von Zuordnungen,
+    kann Zuordnungen anlegen und
+    könnte Methoden anbieten, bestimmte Zuordnungen abzurufen
+    (etwa Alle Zuordnungen zu einem Raum).
+    
+Die Planungslogik würde sich im Modell aber erst eine Ebene darüber befinden,
+ in einer Geschäftslogikklasse, die die Beschriebene Logik implementiert.
+ Sie kann dann Zuordnungsverwaltung initiieren,
+ darin Zuordnungen erzeugen oder ändern
+ oder Zuordnungen vergleichen.
+        */
+       
+       for (int i=0;i<anzahlZuordnungen;i++)
+       {
+           // erzeuge eine neue Zuordnung an Position i der Zuordnungsliste, übergebe dazu auch die Anzahl der Kunstwerke in der Angebotsverwaltung, damit der Zuordnungarray diese Länge bekommt
+           
+           zuordnungen.addZuordnung(i,kunstwerke.sizeAngebotsverwaltung()); 
+           
+           System.out.println("Lege an Zuordnung Nr."+Integer.toString(i)+" für bis zu " + Integer.toString(kunstwerke.sizeAngebotsverwaltung()) + " Kunstwerke" );
+
+           // rufe die Zuordnung der Position i der Zuordnungsliste ab
+           ///7//Zuordnung zuordnungAktuell = zuordnungen.getZuordnung(i);
+           
+           //
+           
+           
+           
+           // ändere die bestehende Zuordnung
+           //////zuordnungen.setZuordnung(i,zuordnungAktuell);
+       
+        }
         // Hier werden dann ein bis mehrere Methoden der Klasse Ausleihe aufgerufen.
         //ausleihverwaltung[0].
     }
+    
+    public void vergleicheAusstellungskandidaten()
+    {
+        // ...
+  
+    }       
+    
     
     /**
      * Es kann nötig werden, dass das Mapping/die Zuordnung von Räumen und Bildern der vorgesehen Ausstellung nicht alleine "in place" im ersten Objekt "Ausleihe" optimiert werden kann.
@@ -117,7 +161,7 @@ public class Ausstellungsplanung
      * [aktuell deutet sich an, dass wir ohne diese Methode auskommen können]
      *  
      */       
-    public void optimiereAusstellung()
+    public void optimiereOderVergleicheAusstellung()
     {
         // ...
         //ausleihverwaltung.get_AusleiheVonAusleihverwaltung(0).
@@ -129,9 +173,10 @@ public class Ausstellungsplanung
      * Die Klasse Ausgabedatei benötigt Zugang zur Zuordnung Räume-Kunstwerke, wie sie in Ausleihverwaltung[0] vorliegt.
      *  
      */       
-    public HashMap get_besteZuordnung()
+    public void get_besteZuordnung()
     {
-        return ausleihverwaltung.get_AusleiheVonAusleihverwaltung(0).get_zugeordneteRaeumeKunstwerke();
+        
+        //return Zuordnungsverwaltung.get_Zuordnung(0).get_zugeordneteRaeumeKunstwerke();
     }   
     
        

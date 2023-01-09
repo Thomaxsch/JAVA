@@ -13,13 +13,16 @@
  * @author Thomas Scheidt 
  * @version 19.12.2022
  */
-public class Ausleihverwaltung
+public class Zuordnungsverwaltung
 {
     // ==========================================================================
     // === Attribute
     // ==========================================================================
-     
-    private Zuordnung[] listeAusstellungen; // array für die Ausleihen
+    
+    // Deklaration eines Arrays für die Zuordnungen:
+    private Zuordnung[] listeZuordnungen; 
+    
+    //ArrayList <Zuordnung> listeZuordnungen = new ArrayList <Zuordnung >() ; 
     
     // ==========================================================================
     // === Konstruktoren
@@ -28,9 +31,12 @@ public class Ausleihverwaltung
     /**
      * Konstruktor für Objekte der Klasse Ausleihverwaltung
      */
-    public Ausleihverwaltung()
+    public Zuordnungsverwaltung(int in_arraylaenge)
     {
-        listeAusstellungen = new Zuordnung[2]; // zwei Objekte vom Typ Ausleihe im Array
+        listeZuordnungen = new Zuordnung[in_arraylaenge]; // Initialisierung des Arrays, sodass
+        // es 100 Elemente (vom Typ Zuordnung) aufnehmen kann
+        
+       
     }
     
     /**
@@ -38,11 +44,30 @@ public class Ausleihverwaltung
      * 
      * @return Ein bestimmtes Element aus Vektor, also eine bestimmte geplante Ausleihe.
      */
-    public Zuordnung get_AusleiheVonAusleihverwaltung(int n)
+    public Zuordnung getZuordnung(int n)
     {
-        return listeAusstellungen[n];
+        return listeZuordnungen[n];
     }
 
+    public void addZuordnung(int arrayposition, int anzahlKunstwerke)
+    {
+        
+        listeZuordnungen[arrayposition]=new Zuordnung(anzahlKunstwerke);
+        
+    }
+    
+    public void setZuordnung(int arrayposition, Zuordnung in_zuordnung)
+    {
+       listeZuordnungen[arrayposition]=in_zuordnung;
+    }   
+    
+    /**
+    public void removeKunstwerk(Kunstwerk in_kunstwerk)
+    {
+        listeZuordnungen.add(in_kunstwerk);
+    }
+    */
+    
     /**
      * Drop die schlechtere Planung, sodass die beste Zuordnung an Stelle [0] ist
      *  

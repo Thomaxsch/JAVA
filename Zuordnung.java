@@ -20,9 +20,10 @@ public class Zuordnung
      * als Schlüssel genommen (da eindeutig und nicht mehrmals vorhanden) und die
      * zugeordneten Kunstwerke als Liste von Kunstwerken zu einem Raum als Wert gespeichert.
      * Ob bei der Programmierung letztendlich eine HashMap realisiert wird, muss sich bei der Programmierung in SL3 erweisen. 
-     * Auf jeden Fall wird aber ein Konstrukt benötigt, welches die Zuordnung der Kunstwerke zu einem Raum speichert. 
+     * Auf jeden Fall wird aber ein Konstrukt benötigt, welches die CopyOfZuordnung der Kunstwerke zu einem Raum speichert. 
      */
     private HashMap<Raum, List<Kunstwerk>> zugeordneteRaeumeKunstwerke;
+    private int [] zuordnungsArray ; 
         
     // ==========================================================================
     // === Konstruktoren
@@ -31,9 +32,9 @@ public class Zuordnung
     /**
      * Konstruktor für Objekte der Klasse Ausleihe
      */
-    public Zuordnung()
+    public Zuordnung(int in_AnzahlKunstwerke)
     {
-        
+        zuordnungsArray= new int [in_AnzahlKunstwerke]; // Array Länge = Anzahl Kunstwerke
     }
 
     // ==========================================================================
@@ -44,7 +45,7 @@ public class Zuordnung
      * Die Methode dient dazu, eine Minimallösung für unser Optimierungsproblem zu finden.
      * 
      * Sie versucht basierend auf den Angeboten der Partnermuseen und Räumen des Museums 
-     * eine Zuordnung ausgewählter Kunstwerke vorzunehmen, sodass genau die Hälfte der Räume mit dem Schwerpunktthema besetzt sind.
+     * eine CopyOfZuordnung ausgewählter Kunstwerke vorzunehmen, sodass genau die Hälfte der Räume mit dem Schwerpunktthema besetzt sind.
      * Dabei erfolgt u.a. eine Prüfung ob die Kapazitäten der Räume ausreichend sind.
      * Der aktuelle Planungszustand wird im Attribut zugeordneteRaeumeKunstwerke gespeichert. 
      * 
@@ -94,7 +95,7 @@ public class Zuordnung
         raumverwaltung.getHoeheRaum(); //  [Restriktion 5]
         this.pruefeRaumHoehe; //noch in private Methode umzusetzen
         
-        raumverwaltung.setWandNord(); // Restplatz für Bild, ist nach jeder Zuordnung zu aktualisieren [Restriktion 6]
+        raumverwaltung.setWandNord(); // Restplatz für Bild, ist nach jeder CopyOfZuordnung zu aktualisieren [Restriktion 6]
         raumverwaltung.setWandOst();
         raumverwaltung.setWandSued();
         raumverwaltung.setWandWest();
@@ -103,7 +104,7 @@ public class Zuordnung
         raumverwaltung.getWandSued();
         raumverwaltung.getWandWest();    
         
-        raumverwaltung.setVerfuegbareLaenge(); // Restplatz für Kunstgegenstand/KI, ist nach jeder Zuordnung zu aktualisieren [Restriktion 7]
+        raumverwaltung.setVerfuegbareLaenge(); // Restplatz für Kunstgegenstand/KI, ist nach jeder CopyOfZuordnung zu aktualisieren [Restriktion 7]
         raumverwaltung.setVerfuegbareBreite();
         raumverwaltung.getVerfuegbareLaenge();
         raumverwaltung.getVerfuegbareBreite();
@@ -134,7 +135,7 @@ public class Zuordnung
     }
         
     /**
-     * Hierüber können andere Klassen eine Referenz auf den aktuellen Planungszustand in Form der Zuordnung Räume-Kunstwerke bekommen.
+     * Hierüber können andere Klassen eine Referenz auf den aktuellen Planungszustand in Form der CopyOfZuordnung Räume-Kunstwerke bekommen.
      * Hierbei wird kein Abbild übergeben, sondern es handelt sich um pass-by-reference. Das heißt es ist davon auszugehen, dass andere 
      * Klassen über das get in der Lage sind, die Werte der HashMap zu ändern. Dies werden wir jedoch nicht vornehmen, es geht uns in den 
      * anderen Klassen nur um die Möglichkeit für das Lesen.
