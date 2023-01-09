@@ -24,24 +24,8 @@ public class Museum
         raeume.showRaeume();
         kunstwerke.showKunstwerke();
         
-<<<<<<< HEAD
-
-        Ausstellungsplanung planung = new Ausstellungsplanung(raeume, kunstwerke);
-        planung.set_kostenobergrenze(999999999);
-        planung.set_schwerpunktthema("test");
-        planung.generiereAusstellungskandidaten();
-
         Ausstellungsplanung planung = new Ausstellungsplanung(); 
         Ausstellungsplanung2 planung2 = new Ausstellungsplanung2(raeume, kunstwerke);
-
-
-        Ausstellungsplanung planung = new Ausstellungsplanung(); 
-        Ausstellungsplanung2 planung2 = new Ausstellungsplanung2(raeume, kunstwerke);
-
-=======
-        Ausstellungsplanung planung = new Ausstellungsplanung(); 
-        Ausstellungsplanung2 planung2 = new Ausstellungsplanung2(raeume, kunstwerke);
->>>>>>> 950fff71bafd37eb2fe012bb3e8440e50624eff0
     }
 
     /**

@@ -17,7 +17,7 @@ public class Ausstellungsplanung
     private String schwerpunktthema = ""; //Variable um das Schwerpunktthema der Ausstellung festzulegen
     private double kostenobergrenze = 999999999; //Legt die Kostenobergrenze der Ausstellung fest.
     private Raumverwaltung raeume;
-    private Angebotsverwaltung kunstwerke;
+    private Kunstwerkverwaltung kunstwerke;
     private int anzahlZuordnungen = 100;
     
     private Zuordnungsverwaltung zuordnungen;
@@ -43,7 +43,7 @@ public class Ausstellungsplanung
     /**
      * Konstruktor für Objekte der Klasse Austellungsplanung ohne Parameter.,.,,..,,.
      */
-    public Ausstellungsplanung(Raumverwaltung in_raeume, Angebotsverwaltung in_kunstwerke) 
+    public Ausstellungsplanung(Raumverwaltung in_raeume, Kunstwerkverwaltung in_kunstwerke) 
     {
         // Initieerung der Zuordnungsverwaltung
         zuordnungen = new Zuordnungsverwaltung(anzahlZuordnungen);

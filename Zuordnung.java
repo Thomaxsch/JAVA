@@ -27,7 +27,7 @@ public class Zuordnung
     private Raum [] raeumeArray; // um die Referenzen auf die Räume vom Import aufzunehmen (alle Räume)
     
     
-    private ArrayList <Kunstwerk > demRaumZugeordneteKunstwerke = new ArrayList <Kunstwerk >() ; // Kunstwerke im Raum
+    //private ArrayList <Kunstwerk > demRaumZugeordneteKunstwerke = new ArrayList <Kunstwerk >() ; // Kunstwerke im Raum
     private ArrayList <Kunstwerk > [] denRaeumenZugeordneteKunstwerke; // Liste von (Kunstwerke im Raum) pro Raum
     
     //relevant für B:
@@ -86,7 +86,7 @@ public class Zuordnung
         
         // Rufe die konkreten verfügbaren Distanzen ab:
         
-        for (int i=0;i<raeumeArray.length;i++)
+        for (i=0;i<raeumeArray.length;i++)
         {
             verfuegbarWandWest[i]=raeumeArray[i].getWandWest();  // TO DO: netto-Wert abrufen
             verfuegbarWandOst[i]=raeumeArray[i].getWandOst();  // TO DO: netto-Wert abrufen

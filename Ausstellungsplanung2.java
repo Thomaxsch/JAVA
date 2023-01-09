@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-import java.util.HashMap;
-import java.util.Vector;
-=======
 import java.util.*;
->>>>>>> 950fff71bafd37eb2fe012bb3e8440e50624eff0
 
 /**
  * Beschreiben Sie hier die Klasse Ausstellungsplanung2.
@@ -14,24 +9,14 @@ import java.util.*;
 public class Ausstellungsplanung2
 {
     // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
-<<<<<<< HEAD
-    private HashMap<Raum, Kunstwerk> zugeordneteKunstwerke;
-    private Raumverwaltung raeume;
-    private Angebotsverwaltung kunstwerke;
-=======
     private HashMap<Raum, List<Kunstwerk>> zugeordneteKunstwerke;
     private Raumverwaltung raeume;
     private Kunstwerkverwaltung kunstwerke;
->>>>>>> 950fff71bafd37eb2fe012bb3e8440e50624eff0
 
     /**
      * Konstruktor für Objekte der Klasse Ausstellungsplanung2
      */
-<<<<<<< HEAD
-    public Ausstellungsplanung2(Raumverwaltung raeume, Angebotsverwaltung kunstwerke)
-=======
     public Ausstellungsplanung2(Raumverwaltung raeume, Kunstwerkverwaltung kunstwerke)
->>>>>>> 950fff71bafd37eb2fe012bb3e8440e50624eff0
     {
         this.raeume = raeume;
         this.kunstwerke = kunstwerke;        
@@ -47,11 +32,6 @@ public class Ausstellungsplanung2
     public void generiereAusstellung()
     {
         Vector<Raum> raeume2 = raeume.getRaumVector();
-<<<<<<< HEAD
-        
-        for(Raum raum : raeume2) 
-        {
-=======
         Vector<Kunstwerk> kunstwerke2 = kunstwerke.sortAttraktivitaet();
         // Abstand der Kunstwerke von den Ecken eines Raums muss 1 Meter (100 cm) entsprechen
         int abstandEcke = 100;
@@ -86,7 +66,6 @@ public class Ausstellungsplanung2
             
             
             
->>>>>>> 950fff71bafd37eb2fe012bb3e8440e50624eff0
             System.out.println(raum);
         }
     }
