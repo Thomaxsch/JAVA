@@ -75,7 +75,7 @@ public class Zuordnung
         }
         
         // Initialisierungen von Arrays, welche ihrer Natur nach immer eine feste Länge haben. Array Länge ist die Anzahl der Räume:
-        denRaeumenZugeordneteKunstwerke= new ArrayList <Kunstwerk >  [raeumeArray.length]; 
+        //denRaeumenZugeordneteKunstwerke= new ArrayList <Kunstwerk>  [raeumeArray.length]; 
         verfuegbarWandWest = new int [raeumeArray.length];
         verfuegbarWandOst = new int [raeumeArray.length];
         verfuegbarWandNord = new int [raeumeArray.length];
@@ -214,9 +214,9 @@ public class Zuordnung
      * 
      * @return zugeordneteRaeumeKunstwerke   aktuelle Raum-Kunstwerk-Zuordnung
      */
-    public Boolean [] get_zugeordneteRaeumeKunstwerke() 
+    /*public get_zugeordneteRaeumeKunstwerke() 
     {
-        return zuordnungsArray;
-    }
+        return false;
+    }*/
       
 }
