@@ -21,8 +21,8 @@ public class Museum
         importiereKunstwerke("kunstwerke.csv");
         importiereRaeume("raeume.csv"); 
         
-        raeume.gebeRaeumeAus();
-        kunstwerke.gebeKunstwerkeaus();
+        raeume.showRaeume();
+        kunstwerke.showKunstwerke();
         
         Ausstellungsplanung planung = new Ausstellungsplanung(); 
         Ausstellungsplanung2 planung2 = new Ausstellungsplanung2(raeume, kunstwerke);
