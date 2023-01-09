@@ -92,7 +92,7 @@
      */
     public void setLaufendeNummer(short in_laufendeNummer)
     {
-        laufendeNummer=in_laufendeNummer;
+        laufendeNummer= in_laufendeNummer;
     }
 
     /** 

@@ -71,7 +71,7 @@ public class Angebotsverwaltung
      * 
      * @return gibt die Möglichkeit zum Zugriff auf alle Kunstwerke aus dem Vector zurück. 
      */
-    public void gebeKunstwerkeaus()
+    public void showKunstwerke()
     {
         for(Kunstwerk kw : kunstwerkVector)
         {

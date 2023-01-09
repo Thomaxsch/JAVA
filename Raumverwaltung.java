@@ -113,7 +113,7 @@ public class Raumverwaltung
      * Mischa, 06.01.2023
      * Gibt eine textuelle Beschreibung aller Räume aus 
      */
-    public void gebeRaeumeAus()
+    public void showRaeume()
     {
         for(Raum raum : raumVector) 
         {
