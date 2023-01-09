@@ -14,7 +14,7 @@ import java.util.*;
  * @version (18.12.2022)
 */
 
-public class Angebotsverwaltung
+public class Kunstwerkverwaltung
 {
     /** In diesem Attribut werden die einzelnen Kunstwerke aus dem Angebot mittels der der Containerklasse Vektor verwaltet. */
     private Vector<Kunstwerk> kunstwerkVector;
@@ -22,7 +22,7 @@ public class Angebotsverwaltung
     /**
      * Konstruktor für Objekte der Klasse Angebotsverwaltung. Dieser Konstruktor erzeugt ein leeres Angebot, welches später über Methoden mit Kunstwerken befüllt werden kann. 
      */
-    public Angebotsverwaltung()
+    public Kunstwerkverwaltung()
     {
        //anlegen eines neuen Vectorobjektes
        kunstwerkVector = new Vector<Kunstwerk>();
@@ -71,7 +71,7 @@ public class Angebotsverwaltung
      * 
      * @return gibt die Möglichkeit zum Zugriff auf alle Kunstwerke aus dem Vector zurück. 
      */
-    public void gebeKunstwerkeaus()
+    public void showKunstwerke()
     {
         for(Kunstwerk kw : kunstwerkVector)
         {

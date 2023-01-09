@@ -1,5 +1,6 @@
 // Importiert die Klasse Vector
 import java.util.Vector;
+import java.util.*;
 
 /**
  * Die Klasse Raumverwaltung ist eine Containerklasse und dient zur Verwaltung von Objekten der Klasse "Raum".
@@ -112,7 +113,7 @@ public class Raumverwaltung
      * Mischa, 06.01.2023
      * Gibt eine textuelle Beschreibung aller Räume aus 
      */
-    public void gebeRaeumeAus()
+    public void showRaeume()
     {
         for(Raum raum : raumVector) 
         {

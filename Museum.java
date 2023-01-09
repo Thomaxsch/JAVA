@@ -11,19 +11,20 @@ import java.util.Scanner;
 public class Museum
 {
     private Raumverwaltung raeume;
-    private Angebotsverwaltung kunstwerke;
+    private Kunstwerkverwaltung kunstwerke;
     
     public Museum() 
     {
         raeume = new Raumverwaltung();
-        kunstwerke = new Angebotsverwaltung();
+        kunstwerke = new Kunstwerkverwaltung();
         
         importiereKunstwerke("kunstwerke.csv");
         importiereRaeume("raeume.csv"); 
         
-        raeume.gebeRaeumeAus();
-        kunstwerke.gebeKunstwerkeaus();
+        raeume.showRaeume();
+        kunstwerke.showKunstwerke();
         
+<<<<<<< HEAD
 
         Ausstellungsplanung planung = new Ausstellungsplanung(raeume, kunstwerke);
         planung.set_kostenobergrenze(999999999);
@@ -37,6 +38,10 @@ public class Museum
         Ausstellungsplanung planung = new Ausstellungsplanung(); 
         Ausstellungsplanung2 planung2 = new Ausstellungsplanung2(raeume, kunstwerke);
 
+=======
+        Ausstellungsplanung planung = new Ausstellungsplanung(); 
+        Ausstellungsplanung2 planung2 = new Ausstellungsplanung2(raeume, kunstwerke);
+>>>>>>> 950fff71bafd37eb2fe012bb3e8440e50624eff0
     }
 
     /**
@@ -62,7 +67,7 @@ public class Museum
      */
     public void importiereKunstwerke(String name)
     {              
-        Kunstinstallationen ki;
+        Kunstinstallation ki;
         Bild bi;
         Kunstgegenstand kg;
         
@@ -122,7 +127,7 @@ public class Museum
                    
                    if(array[1].equals("I"))
                    {
-                         ki = new Kunstinstallationen(Short.parseShort(array[0]),
+                         ki = new Kunstinstallation(Short.parseShort(array[0]),
                                      array[1].charAt(0),
                                      array[2],
                                      array[3],
