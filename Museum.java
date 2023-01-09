@@ -11,12 +11,12 @@ import java.util.Scanner;
 public class Museum
 {
     private Raumverwaltung raeume;
-    private Angebotsverwaltung kunstwerke;
+    private Kunstwerkverwaltung kunstwerke;
     
     public Museum() 
     {
         raeume = new Raumverwaltung();
-        kunstwerke = new Angebotsverwaltung();
+        kunstwerke = new Kunstwerkverwaltung();
         
         importiereKunstwerke("kunstwerke.csv");
         importiereRaeume("raeume.csv"); 

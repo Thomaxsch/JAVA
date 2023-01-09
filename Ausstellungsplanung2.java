@@ -11,12 +11,12 @@ public class Ausstellungsplanung2
     // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
     private HashMap<Raum, List<Kunstwerk>> zugeordneteKunstwerke;
     private Raumverwaltung raeume;
-    private Angebotsverwaltung kunstwerke;
+    private Kunstwerkverwaltung kunstwerke;
 
     /**
      * Konstruktor für Objekte der Klasse Ausstellungsplanung2
      */
-    public Ausstellungsplanung2(Raumverwaltung raeume, Angebotsverwaltung kunstwerke)
+    public Ausstellungsplanung2(Raumverwaltung raeume, Kunstwerkverwaltung kunstwerke)
     {
         this.raeume = raeume;
         this.kunstwerke = kunstwerke;        
