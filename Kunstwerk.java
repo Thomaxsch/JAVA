@@ -78,7 +78,7 @@
      */
     
     public Kunstwerk(short laufendeNummer, char art, String bezeichnung, String kuenstler, String jahr, String thema, int attraktivitaetswert, int kosten, String verleihendesMuseum,
-                     String anschrift, int hoehe, int breite /*boolean plaziert*/)
+                     String anschrift, int hoehe, int breite,boolean plaziert)
     {  
     }
     

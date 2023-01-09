@@ -22,7 +22,7 @@ public class Museum
         importiereRaeume("raeume.csv"); 
         
         raeume.gebeRaeumeAus();
-        kunstwerke.getKunstwerkVector();
+        kunstwerke.gebeKunstwerkeaus();
         
         Ausstellungsplanung planung = new Ausstellungsplanung(raeume, kunstwerke);
         planung.set_kostenobergrenze(999999999);
