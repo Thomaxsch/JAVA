@@ -26,8 +26,9 @@ public class Zuordnung
     private Kunstwerk [] kunstwerkeArray; // um die Referenzen auf die Kunstwerke vom Import aufzunehmen (alle Kunstwerke)
     private Raum [] raeumeArray; // um die Referenzen auf die Räume vom Import aufzunehmen (alle Räume)
     
+    
     private ArrayList <Kunstwerk > demRaumZugeordneteKunstwerke = new ArrayList <Kunstwerk >() ; // Kunstwerke im Raum
-    private demRaumZugeordneteKunstwerke [] denRaeumenZugeordneteKunstwerke; // Liste von (Kunstwerke im Raum) pro Raum
+    private ArrayList <Kunstwerk > [] denRaeumenZugeordneteKunstwerke; // Liste von (Kunstwerke im Raum) pro Raum
     
     //relevant für B:
     private int [] verfuegbarWandWest; // Liste von (noch verfuegbarer Wandplatz) pro Raum
@@ -38,12 +39,15 @@ public class Zuordnung
     private int [] verfuegbarLaengeRaum; // Liste von (noch verfuegbarer Raumdistanz) pro Raum
     private int [] verfuegbarBreiteRaum; // Liste von (noch verfuegbarer Raumdistanz) pro Raum
     
+    private int [] verfuegbarHoeheRaum; // Liste von (noch verfuegbarer Raumdistanz) pro Raum
+    
     
     private ArrayList <Kunstwerk > kunstwerkeSchonZugeordnet = new ArrayList <Kunstwerk >() ; // Liste aller Kunstwerke, die schon einem Raum zugeordnet wurden
     
   
-    demRaumZugeordneteKunstwerke.add(Kunstwerk); 
+    /**demRaumZugeordneteKunstwerke.add(Kunstwerk); 
     demRaumZugeordneteKunstwerke.get(0);
+    */
         
     // ==========================================================================
     // === Konstruktoren
@@ -70,14 +74,29 @@ public class Zuordnung
             i++;
         }
         
-        // Initialisierungen von Arrays, die ihrer Natur nach eine feste Länge haben. Array Länge ist die Anzahl der Räume:
-        denRaeumenZugeordneteKunstwerke= new demRaumZugeordneteKunstwerke [raeumeArray.length]; 
+        // Initialisierungen von Arrays, welche ihrer Natur nach immer eine feste Länge haben. Array Länge ist die Anzahl der Räume:
+        denRaeumenZugeordneteKunstwerke= new ArrayList <Kunstwerk >  [raeumeArray.length]; 
         verfuegbarWandWest = new int [raeumeArray.length];
         verfuegbarWandOst = new int [raeumeArray.length];
         verfuegbarWandNord = new int [raeumeArray.length];
         verfuegbarWandSued = new int [raeumeArray.length];
         verfuegbarLaengeRaum = new int [raeumeArray.length];
         verfuegbarBreiteRaum = new int [raeumeArray.length];
+        verfuegbarHoeheRaum = new int [raeumeArray.length];
+        
+        // Rufe die konkreten verfügbaren Distanzen ab:
+        
+        for (int i=0;i<raeumeArray.length;i++)
+        {
+            verfuegbarWandWest[i]=raeumeArray[i].getWandWest();  // TO DO: netto-Wert abrufen
+            verfuegbarWandOst[i]=raeumeArray[i].getWandOst();  // TO DO: netto-Wert abrufen
+            verfuegbarWandNord[i]=raeumeArray[i].getWandNord();  // TO DO: netto-Wert abrufen
+            verfuegbarWandSued[i]=raeumeArray[i].getWandSued();  // TO DO: netto-Wert abrufen
+            verfuegbarLaengeRaum[i]=raeumeArray[i].getWandNord();// TO DO: netto-Wert abrufen
+            verfuegbarBreiteRaum[i]=raeumeArray[i].getWandOst();// TO DO: netto-Wert abrufen
+            verfuegbarHoeheRaum[i]=raeumeArray[i].getHoeheRaum();
+            
+        }
     }
 
     // ==========================================================================
@@ -87,7 +106,10 @@ public class Zuordnung
     /**
      * 
      */
-    public void passtKunstwerkNochInRaum
+    public void passtKunstwerkNochInRaum(Kunstwerk in_Kunstwerk, Raum in_Raum)
+    {
+        
+    }
     
     
     
