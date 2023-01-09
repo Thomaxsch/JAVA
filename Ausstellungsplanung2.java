@@ -1,3 +1,4 @@
+import java.util.HashMap;
 
 /**
  * Beschreiben Sie hier die Klasse Ausstellungsplanung2.
@@ -8,7 +9,7 @@
 public class Ausstellungsplanung2
 {
     // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
-    private int x;
+    private HashMap<Raum, Kunstwerk> zugeordneteKunstwerke;
 
     /**
      * Konstruktor für Objekte der Klasse Ausstellungsplanung2
@@ -16,7 +17,7 @@ public class Ausstellungsplanung2
     public Ausstellungsplanung2()
     {
         // Instanzvariable initialisieren
-        x = 0;
+        
     }
     
     
@@ -29,6 +30,6 @@ public class Ausstellungsplanung2
     public int beispielMethode(int y)
     {
         // tragen Sie hier den Code ein
-        return x + y;
+        return 1;
     }
 }
