@@ -24,7 +24,8 @@ public class Museum
         raeume.gebeRaeumeAus();
         kunstwerke.gebeKunstwerkeaus();
         
-        Ausstellungsplanung planung = new Ausstellungsplanung();       
+        Ausstellungsplanung planung = new Ausstellungsplanung(); 
+        Ausstellungsplanung2 planung2 = new Ausstellungsplanung2(raeume, kunstwerke);
     }
 
     /**
