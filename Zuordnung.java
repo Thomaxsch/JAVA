@@ -22,8 +22,28 @@ public class Zuordnung
      * Ob bei der Programmierung letztendlich eine HashMap realisiert wird, muss sich bei der Programmierung in SL3 erweisen. 
      * Auf jeden Fall wird aber ein Konstrukt benötigt, welches die CopyOfZuordnung der Kunstwerke zu einem Raum speichert. 
      */
-    private HashMap<Raum, List<Kunstwerk>> zugeordneteRaeumeKunstwerke;
-    private int [] zuordnungsArray ; 
+   
+    private Kunstwerk [] kunstwerkeArray; // um die Referenzen auf die Kunstwerke vom Import aufzunehmen (alle Kunstwerke)
+    private Raum [] raeumeArray; // um die Referenzen auf die Räume vom Import aufzunehmen (alle Räume)
+    
+    private ArrayList <Kunstwerk > demRaumZugeordneteKunstwerke = new ArrayList <Kunstwerk >() ; // Kunstwerke im Raum
+    private demRaumZugeordneteKunstwerke [] denRaeumenZugeordneteKunstwerke; // Liste von (Kunstwerke im Raum) pro Raum
+    
+    //relevant für B:
+    private int [] verfuegbarWandWest; // Liste von (noch verfuegbarer Wandplatz) pro Raum
+    private int [] verfuegbarWandOst;  // Liste von (noch verfuegbarer Wandplatz) pro Raum
+    private int [] verfuegbarWandNord; // Liste von (noch verfuegbarer Wandplatz) pro Raum
+    private int [] verfuegbarWandSued; // Liste von (noch verfuegbarer Wandplatz) pro Raum
+    //relevant für KG und KI:
+    private int [] verfuegbarLaengeRaum; // Liste von (noch verfuegbarer Raumdistanz) pro Raum
+    private int [] verfuegbarBreiteRaum; // Liste von (noch verfuegbarer Raumdistanz) pro Raum
+    
+    
+    private ArrayList <Kunstwerk > kunstwerkeSchonZugeordnet = new ArrayList <Kunstwerk >() ; // Liste aller Kunstwerke, die schon einem Raum zugeordnet wurden
+    
+  
+    demRaumZugeordneteKunstwerke.add(Kunstwerk); 
+    demRaumZugeordneteKunstwerke.get(0);
         
     // ==========================================================================
     // === Konstruktoren
@@ -32,15 +52,45 @@ public class Zuordnung
     /**
      * Konstruktor für Objekte der Klasse Ausleihe
      */
-    public Zuordnung(int in_AnzahlKunstwerke)
+    public Zuordnung(Vector<Kunstwerk> in_kunstwerke,Vector<Raum> in_raeume)
     {
-        zuordnungsArray= new int [in_AnzahlKunstwerke]; // Array Länge = Anzahl Kunstwerke
+        // Den eingegebenen Vector in Array umwandeln
+        kunstwerkeArray = new Kunstwerk [in_kunstwerke.size()];
+        int i = 0;
+        for (Kunstwerk k: in_kunstwerke) {
+            kunstwerkeArray[i]=(Kunstwerk) k; // cast
+            i++;
+        }
+        
+        // Den dreingegebenen Vector in Array umwandeln
+        raeumeArray = new Raum [in_raeume.size()];
+        i = 0;
+        for (Raum r: in_raeume) {
+            raeumeArray[i]=(Raum) r; // cast
+            i++;
+        }
+        
+        // Initialisierungen von Arrays, die ihrer Natur nach eine feste Länge haben. Array Länge ist die Anzahl der Räume:
+        denRaeumenZugeordneteKunstwerke= new demRaumZugeordneteKunstwerke [raeumeArray.length]; 
+        verfuegbarWandWest = new int [raeumeArray.length];
+        verfuegbarWandOst = new int [raeumeArray.length];
+        verfuegbarWandNord = new int [raeumeArray.length];
+        verfuegbarWandSued = new int [raeumeArray.length];
+        verfuegbarLaengeRaum = new int [raeumeArray.length];
+        verfuegbarBreiteRaum = new int [raeumeArray.length];
     }
 
     // ==========================================================================
     // === Methoden
     // ==========================================================================    
-     
+    
+    /**
+     * 
+     */
+    public void passtKunstwerkNochInRaum
+    
+    
+    
     /**
      * Die Methode dient dazu, eine Minimallösung für unser Optimierungsproblem zu finden.
      * 
@@ -142,9 +192,9 @@ public class Zuordnung
      * 
      * @return zugeordneteRaeumeKunstwerke   aktuelle Raum-Kunstwerk-Zuordnung
      */
-    public HashMap<Raum, List<Kunstwerk>> get_zugeordneteRaeumeKunstwerke() 
+    public Boolean [] get_zugeordneteRaeumeKunstwerke() 
     {
-        return zugeordneteRaeumeKunstwerke;
+        return zuordnungsArray;
     }
       
 }

@@ -68,7 +68,7 @@ public class Raumverwaltung
     }
     
     //=============================================================
-    //Methoden zur Unterstützung der Klasse Aussleihe - organisatorische Aspekte
+    //Methoden zur Unterstützung der Klasse Ausstellungsplanung - organisatorische Aspekte
     //=============================================================
     /** Den Vector der Raumverwaltung ermittlen.
      *  @return  Den Vector der Raumverwaltung.

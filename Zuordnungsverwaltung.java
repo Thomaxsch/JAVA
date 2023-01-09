@@ -1,3 +1,4 @@
+import java.util.Vector;
 
 /**
  * Die Ausleihverwaltung ist eine Verwaltungsklasse. Kandidaten für Ausstellungen werden in der Klasse Ausleihverwaltung in einem array mit (aktuell vorgesehen) zwei Einträgen verwaltet.
@@ -8,6 +9,12 @@
  * Dies kann zum Beispiel der Fall sein, wenn man komplexere Vertauschungen in der Zuordnung vornimmt, die sich jedoch als schlechter als die bisherige Lösung herausstellen, sodass man die
  * letzte Zuordnung wiederherstellen möchte. Jedenfalls bietet sich hier die Möglichkeit verschiedene Planungszustände zu speichern; es kann umgesetzt werden, dass man Planungszustände 
  * miteinander vergleicht und schlechtere Planungen verwirft. [aktuell deutet sich an, dass wir ohne dies auskommen können]
+ * 
+ * /**Die Verwaltungsklasse "Zuordnungsverwaltung" enthält
+    eine Liste von Zuordnungen,
+    kann Zuordnungen anlegen und
+    könnte Methoden anbieten, bestimmte Zuordnungen abzurufen
+    (etwa Alle Zuordnungen zu einem Raum).
  * 
  * 
  * @author Thomas Scheidt 
@@ -34,7 +41,7 @@ public class Zuordnungsverwaltung
     public Zuordnungsverwaltung(int in_arraylaenge)
     {
         listeZuordnungen = new Zuordnung[in_arraylaenge]; // Initialisierung des Arrays, sodass
-        // es 100 Elemente (vom Typ Zuordnung) aufnehmen kann
+        // es 100 Elemente (vom Typ Zuordnung) aufnehmen kann.
         
        
     }
@@ -49,10 +56,10 @@ public class Zuordnungsverwaltung
         return listeZuordnungen[n];
     }
 
-    public void addZuordnung(int arrayposition, int anzahlKunstwerke)
+    public void addZuordnung(int arrayposition, Vector<Kunstwerk> in_kunstwerke,Vector<Raum> in_raeume)
     {
-        
-        listeZuordnungen[arrayposition]=new Zuordnung(anzahlKunstwerke);
+       
+        listeZuordnungen[arrayposition]=new Zuordnung(in_kunstwerke,in_raeume);
         
     }
     

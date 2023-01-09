@@ -21,6 +21,7 @@ public class Ausstellungsplanung
     private int anzahlZuordnungen = 100;
     
     private Zuordnungsverwaltung zuordnungen;
+    private Zuordnung zuordnungAktuell;
     // ==========================================================================
     // === Konstruktoren
     // ==========================================================================
@@ -104,39 +105,27 @@ public class Ausstellungsplanung
      * vorgesehen Ausstellung. Das zweite (oder weitere) Ausleihe-Objekte des Arrays der Ausleihverwaltung bleiben hier ungenutzt, aber können von der Methode "optimiereAusstellung"
      * genutzt werden.
      *   
-     */       
-      
-    public void generiereAusstellungskandidaten()
-    {
-        
-        
-     /**Die Verwaltungsklasse "Zuordnungsverwaltung" enthält
-    eine Liste von Zuordnungen,
-    kann Zuordnungen anlegen und
-    könnte Methoden anbieten, bestimmte Zuordnungen abzurufen
-    (etwa Alle Zuordnungen zu einem Raum).
-    
-Die Planungslogik würde sich im Modell aber erst eine Ebene darüber befinden,
+     *   Die Planungslogik würde sich im Modell aber erst eine Ebene darüber befinden,
  in einer Geschäftslogikklasse, die die Beschriebene Logik implementiert.
  Sie kann dann Zuordnungsverwaltung initiieren,
  darin Zuordnungen erzeugen oder ändern
  oder Zuordnungen vergleichen.
-        */
-       
+     */       
+      
+    public void generiereAusstellungskandidaten()
+    {
        for (int i=0;i<anzahlZuordnungen;i++)
        {
-           // erzeuge eine neue Zuordnung an Position i der Zuordnungsliste, übergebe dazu auch die Anzahl der Kunstwerke in der Angebotsverwaltung, damit der Zuordnungarray diese Länge bekommt
+           // erzeuge eine neue Zuordnung als Position i der Zuordnungsliste, übergebe dafür Referenzen auf alle Kunstwerke und alle Räume.
            
-           zuordnungen.addZuordnung(i,kunstwerke.sizeAngebotsverwaltung()); 
+           System.out.println("Lege an Zuordnung Nr."+Integer.toString(i)
+           +" für bis zu " + Integer.toString(kunstwerke.sizeAngebotsverwaltung()) + " Kunstwerke und " );
+           System.out.println(Integer.toString(raeume.anzahl()) + " Räume");
            
-           System.out.println("Lege an Zuordnung Nr."+Integer.toString(i)+" für bis zu " + Integer.toString(kunstwerke.sizeAngebotsverwaltung()) + " Kunstwerke" );
-
+           zuordnungen.addZuordnung(i,kunstwerke.sortAttraktivitaet(),raeume.getRaumVector());
+           
            // rufe die Zuordnung der Position i der Zuordnungsliste ab
-           ///7//Zuordnung zuordnungAktuell = zuordnungen.getZuordnung(i);
-           
-           //
-           
-           
+           zuordnungAktuell = zuordnungen.getZuordnung(i);
            
            // ändere die bestehende Zuordnung
            //////zuordnungen.setZuordnung(i,zuordnungAktuell);
