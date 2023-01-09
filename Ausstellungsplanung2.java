@@ -32,8 +32,7 @@ public class Ausstellungsplanung2
     public void generiereAusstellung()
     {
         Vector<Raum> raeume2 = raeume.getRaumVector();
-        Vector<Kunstwerk> kunstwerke = kunstwerke.sortAttraktivitaet();
-        
+        Vector<Kunstwerk> kunstwerke2 = kunstwerke.sortAttraktivitaet();
         // Abstand der Kunstwerke von den Ecken eines Raums muss 1 Meter (100 cm) entsprechen
         int abstandEcke = 100;
         
@@ -60,7 +59,7 @@ public class Ausstellungsplanung2
             int nettoBreiteOst  = breiteOst  - (abstandEcke * 2) - tuerbreiteOst;
             int nettoBreiteWest = breiteWest - (abstandEcke * 2) - tuerbreiteWest;
             
-            for(Kunstwerk kunstwerk : kunstwerke)
+            for(Kunstwerk kunstwerk : kunstwerke2)
             {
                 
             }
