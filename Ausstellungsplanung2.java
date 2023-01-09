@@ -17,7 +17,7 @@ public class Ausstellungsplanung2
     public Ausstellungsplanung2()
     {
         // Instanzvariable initialisieren
-        x = 0;
+        
     }
     
     
@@ -30,6 +30,6 @@ public class Ausstellungsplanung2
     public int beispielMethode(int y)
     {
         // tragen Sie hier den Code ein
-        return x + y;
+        return 1;
     }
 }
