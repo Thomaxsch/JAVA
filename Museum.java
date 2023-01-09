@@ -51,7 +51,7 @@ public class Museum
      */
     public void importiereKunstwerke(String name)
     {              
-        Kunstinstallationen ki;
+        Kunstinstallation ki;
         Bild bi;
         Kunstgegenstand kg;
         
@@ -111,7 +111,7 @@ public class Museum
                    
                    if(array[1].equals("I"))
                    {
-                         ki = new Kunstinstallationen(Short.parseShort(array[0]),
+                         ki = new Kunstinstallation(Short.parseShort(array[0]),
                                      array[1].charAt(0),
                                      array[2],
                                      array[3],

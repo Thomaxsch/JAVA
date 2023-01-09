@@ -8,7 +8,7 @@
  * @author (Alexander Kipry) 
  * @version (20.12.2022)
  */
-public class Kunstinstallationen extends Kunstwerk
+public class Kunstinstallation extends Kunstwerk
 {
     //Attribute der Klasse Kunstinstallationen
    /** Länge der Kunstinstallation in cm */
@@ -21,7 +21,7 @@ public class Kunstinstallationen extends Kunstwerk
     /**
      * Konstruktor für ein Objekt der Klasse Kunstinstallationen ohne Parameter
      */
-    public Kunstinstallationen ()
+    public Kunstinstallation ()
     {
     }
     
@@ -43,7 +43,7 @@ public class Kunstinstallationen extends Kunstwerk
      * @param laenge                    Dieser int entspricht der Länge der Kunstinstallation in cm.
      * @param gewicht                   Dieser int entspricht dem Gewicht der Kunstinstallation in KG.
      */
-    public Kunstinstallationen (short laufendeNummer, char art, String bezeichnung, String kuenstler, String jahr, String thema, int attraktivitaetswert, int kosten, String verleihendesMuseum,
+    public Kunstinstallation (short laufendeNummer, char art, String bezeichnung, String kuenstler, String jahr, String thema, int attraktivitaetswert, int kosten, String verleihendesMuseum,
                                 String anschrift, int hoehe, int breite, /*boolean plaziert,*/ int laenge, int gewicht)
     {
         setLaufendeNummer(laufendeNummer);
