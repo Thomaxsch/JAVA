@@ -1,7 +1,6 @@
 import java.util.*;
 /**
- * Die Klasse Ausleihe ist die zentrale Logikklasse. Hier wird eine Ausstellung/Ausleihe gesucht und optimiert. Ein Schwerpunktthema und eine Kostenobergrenze 
- * aus der Klasse Ausstellungsplanung werden dabei berücksichtigt.  
+
  * 
  * @author Thomas Scheidt 
  * @version 19.12.2022
@@ -11,27 +10,15 @@ public class Zuordnung
     // ==========================================================================
     // === Attribute
     // ==========================================================================
-    
-    /////attraktivitaetSumme=0;
-    /////kostenSumme=
-    
-    /**
-     * Map,die Räume und ihre im Rahmen der Planung zugeordneten Kunstwerke enthält. Der Raum wird 
-     * als Schlüssel genommen (da eindeutig und nicht mehrmals vorhanden) und die
-     * zugeordneten Kunstwerke als Liste von Kunstwerken zu einem Raum als Wert gespeichert.
-     * Ob bei der Programmierung letztendlich eine HashMap realisiert wird, muss sich bei der Programmierung in SL3 erweisen. 
-     * Auf jeden Fall wird aber ein Konstrukt benötigt, welches die CopyOfZuordnung der Kunstwerke zu einem Raum speichert. 
-     */
    
     private Kunstwerk [] kunstwerkeArray; // um die Referenzen auf die Kunstwerke vom Import aufzunehmen (alle Kunstwerke)
     private Raum [] raeumeArray; // um die Referenzen auf die Räume vom Import aufzunehmen (alle Räume)
     
     private ArrayList <ArrayList <Kunstwerk >> denRaeumenZugeordneteKunstwerke = new ArrayList <ArrayList <Kunstwerk >>(); // Liste von (Kunstwerke im Raum) pro Raum. Nested array list.
-        /**demRaumZugeordneteKunstwerke.add(Kunstwerk); 
-    demRaumZugeordneteKunstwerke.get(0);
-    */
+    //  die äußere ArrayList wird später so viele Elemente haben wie es Räume gibt
+    // während die innere ArrayList die Anzahl der Kunstwerke in einem konkreten Raum angibt (Anzahl Elemente der inneren Arraylist: von keins ... bis theroetisch max Anzahl Kunstwerke)
     
-    
+    //// Auch die folgenden Arrays zu Raumdimensionen werden später so viele Elemente habe wie es Räume gibt (d.h. je ein Wert von z.B. Höhe pro Raum)
     //relevant für B:
     private int [] verfuegbarWandWest; // Liste von (noch verfuegbarer Wandplatz) pro Raum
     private int [] verfuegbarWandOst;  // Liste von (noch verfuegbarer Wandplatz) pro Raum
@@ -40,12 +27,9 @@ public class Zuordnung
     //relevant für KG und KI:
     private int [] verfuegbarLaengeRaum; // Liste von (noch verfuegbarer Raumdistanz) pro Raum
     private int [] verfuegbarBreiteRaum; // Liste von (noch verfuegbarer Raumdistanz) pro Raum
+    //relevant für alle KW:
+    private int [] verfuegbarHoeheRaum; // Liste von (Höhe) pro Raum
     
-    private int [] verfuegbarHoeheRaum; // Liste von (noch verfuegbarer Raumdistanz) pro Raum
-    
-    private ArrayList <Kunstwerk > kunstwerkeSchonZugeordnet = new ArrayList <Kunstwerk >() ; // Liste aller Kunstwerke, die schon einem Raum zugeordnet wurden ^<--- hier dann als Array!!!
-    
-
     // ==========================================================================
     // === Konstruktoren
     // ==========================================================================
@@ -55,23 +39,23 @@ public class Zuordnung
      */
     public Zuordnung(Vector<Kunstwerk> in_kunstwerke,Vector<Raum> in_raeume)
     {
-        // Den eingegebenen Vector in Array umwandeln
+        // Den eingegebenen Vector zu Kunstwerken in Array umwandeln
         kunstwerkeArray = new Kunstwerk [in_kunstwerke.size()];
         int i = 0;
         for (Kunstwerk k: in_kunstwerke) {
-            kunstwerkeArray[i]=(Kunstwerk) k; // cast
+            kunstwerkeArray[i]=(Kunstwerk) k; // cast glaub ich unnötig?
             i++;
         }
         
-        // Den dreingegebenen Vector in Array umwandeln
+        // Den dreingegebenen Vector zu Räumen in Array umwandeln
         raeumeArray = new Raum [in_raeume.size()];
         i = 0;
         for (Raum r: in_raeume) {
-            raeumeArray[i]=(Raum) r; // cast
+            raeumeArray[i]=(Raum) r; // cast glaub ich unnötig?
             i++;
         }
         
-        // Initialisierungen von Arrays, welche ihrer Natur nach immer eine feste Länge haben. Array Länge ist die Anzahl der Räume:
+        // Initialisierungen von Arrays, welche ihrer Natur nach immer eine feste Länge haben. Array Länge ist die Anzahl der Räume!
         verfuegbarWandWest = new int [raeumeArray.length];
         verfuegbarWandOst = new int [raeumeArray.length];
         verfuegbarWandNord = new int [raeumeArray.length];
@@ -80,11 +64,10 @@ public class Zuordnung
         verfuegbarBreiteRaum = new int [raeumeArray.length];
         verfuegbarHoeheRaum = new int [raeumeArray.length];
         
-        // Rufe die konkreten verfügbaren Distanzen ab:
-        
+        // Rufe die konkreten verfügbaren Distanzen via Methode der Klasse Raum ab:
         for (i=0;i<raeumeArray.length;i++)
         {
-            verfuegbarWandWest[i]=raeumeArray[i].getWandWest();  // TO DO: netto-Wert abrufen
+            verfuegbarWandWest[i]=raeumeArray[i].getWandWest();  // TO DO: netto-Wert abrufen    ===> in KLASSE Raum/Raumverwaltung
             verfuegbarWandOst[i]=raeumeArray[i].getWandOst();  // TO DO: netto-Wert abrufen
             verfuegbarWandNord[i]=raeumeArray[i].getWandNord();  // TO DO: netto-Wert abrufen
             verfuegbarWandSued[i]=raeumeArray[i].getWandSued();  // TO DO: netto-Wert abrufen
@@ -93,6 +76,14 @@ public class Zuordnung
             verfuegbarHoeheRaum[i]=raeumeArray[i].getHoeheRaum();
             
         }
+        
+        // Initialisiere die äußere Arraylist von denRaeumenZugeordneteKunstwerke
+        for (i=0;i<raeumeArray.length;i++)
+        {
+            denRaeumenZugeordneteKunstwerke.add(new ArrayList<Kunstwerk>()); 
+            // somit gibt es je Raum eine Arraylist der Kunstwerke, wobei aktuell bei allen Räumen noch keine Kunstwerke darin sind
+        }
+
     }
 
     // ==========================================================================
@@ -100,9 +91,11 @@ public class Zuordnung
     // ==========================================================================    
     
     /**
+     * Passt Kunstwerk von den Dimensionen in den Raum (Restriktionen 5, 6, 7)
      * 
+     * Gewährleistet auch Restriktion 8, dass KI alleine in Raum, d.h. sonst keine Bilder oder KG
      */
-    public boolean passtKunstwerkNochInRaum(Kunstwerk in_Kunstwerk, int i) // Raum i
+    public boolean passtKunstwerkDimensionalInRaum(Kunstwerk in_Kunstwerk, int i) // Raum i
     {
         boolean passtHoehe = (in_Kunstwerk.getHoehe()<verfuegbarHoeheRaum[i]);
         if (passtHoehe==false)
@@ -112,11 +105,16 @@ public class Zuordnung
         
         if (in_Kunstwerk.getArt()=='B'|| in_Kunstwerk.getArt()=='G')
         {
-            boolean blockiertDurchKunstinstallation = (denRaeumenZugeordneteKunstwerke.get(0).get(0).getArt()=='I');
-            if (blockiertDurchKunstinstallation == true)
+            boolean schonAnderesKunstwerkImRaum = !denRaeumenZugeordneteKunstwerke.get(i).isEmpty(); // ! für "nicht"
+            if (schonAnderesKunstwerkImRaum)
             {
-                return false;
+                boolean blockiertDurchKunstinstallation = (denRaeumenZugeordneteKunstwerke.get(0).get(0).getArt()=='I'); // get 0 get 0 bzgl verschachtelter array list 2 dim
+                if (blockiertDurchKunstinstallation == true)
+                {
+                    return false;
+                }
             }
+
         }
         
         if (in_Kunstwerk.getArt()=='B')
@@ -157,7 +155,10 @@ public class Zuordnung
         {
             Kunstinstallation in_Kunstinstallation = (Kunstinstallation) in_Kunstwerk;// die Parentclass "Kunstwerk" hat nicht die Methode getLaenge, die wir aber gleich benötigen, daher casten wir
             
-            boolean nochKeinAnderesKunstwerkImRaum = denRaeumenZugeordneteKunstwerke.get(i).isEmpty();
+            boolean schonAnderesKunstwerkImRaum = !denRaeumenZugeordneteKunstwerke.get(i).isEmpty(); // ! für "nicht"
+            
+            if (schonAnderesKunstwerkImRaum)
+            {return false;}
             
             boolean passtQuerA = (verfuegbarLaengeRaum[i]-in_Kunstwerk.getBreite()>=0); //einmal quer im Raum platzieren, wobei quer aktuell beliebig (?) aber orthoginal zu laengs definiert ist
             boolean passtQuerB = (verfuegbarBreiteRaum[i]-in_Kunstinstallation.getLaenge()>=0);
@@ -175,7 +176,158 @@ public class Zuordnung
             
     }
     
+    /**
+     * Bilder im Raum müssen hinsichtlich Temperatur und Feuchte ohne Widerspruch sein (Restriktion 4)
+     */
+    public boolean passtBildFeuchteTemparaturZuBildernInRaum ()
+    {
+        /**
+         
+        bild.setMinTemp();
+        bild.setMaxTemp();
+        bild.setMinLuft();
+        bild.setMaxLuft();
+        bild.getMinTemp();
+        bild.getMaxTemp();
+        bild.getMinLuft();
+        bild.getMaxLuft();
+         */
+        return true;
+    }
     
+    /**
+     * in einem Raum dürfen höchstens drei verschiedene Themen sein (Restriktion 3)
+     * 
+     * Ueberprueft, ob noch ein weiteres Thema in einen Raum passt.
+     *  @return     Wahrheitswert, ob Bedingung erfuellt ist.
+     */
+    public boolean passtKunstwerkHoechstensDreiThemenInRaum ()
+    {
+        //raumverwaltung.pruefeMax3Themen(); // sind max. 3 unterschiedliche Themen im Raum? [Restriktion3]
+        
+        
+        //// alternativer Name der Methode: pruefeWeiteresThema()
+        //Code einfuegen
+        //Zugriff auf public Methoden von Klasse Bild, Kunstgegenstand und Kunstinstallation durch Punktoperator
+        //Zugriff auf public Methoden von Klasse Ausleihe durch Punktoperator 
+        //"true" falls verschiedene Themen pro Raum <= 2
+        //"false" falls verschiedene Themen pro Raum > 2
+        
+        return true;
+    }
+    
+    /**
+     * 
+     */
+    public void setzeKunstwerkInRaum ()
+    {
+        //aktualisiereNochVerfügbarenPlatzImRaumNachSetzen => siehe private Hilfsmethode
+        
+        /**
+        this.ordneZu();
+        kunstwerk.setPlaziert();
+        kunstwerk.getPlaziert();
+        
+        bei Bildern: welche der bis 4 wände ist die beste
+        bei G: welcher der Ausrichtungen quer oder laengs ist die beste
+        
+        demRaumZugeordneteKunstwerke.add(Kunstwerk); 
+        demRaumZugeordneteKunstwerke.get(0);
+    
+        try catch macht hier Sinn!
+        */
+       
+        //kunstwerk.getKosten(); // Kosten des Kunstwerks [Restriktion 1]
+        //ausstellungsplanung.get_kostenobergrenze(); // [Restriktion 1]
+        //this.kostenCounter // wschl. kann im Sinne eines Counters Kosten hier in privater Variable mitgezählt/kumuliert werden [Restriktion1]
+    }
+    
+    /**
+     * private hilfsmethode für setzeKunstwerkInRaum
+     */
+    
+    private void aktualisiereNochVerfügbarenPlatzImRaumNachSetzen()
+    {
+        /// ist nach jedem zugeordneten Kunstwerk zu aktualisieren:
+        /// wschl noch extra 1 m oder 2 m abziehen
+        //verfuegbarWandWest[i]
+        //verfuegbarWandOst[i]
+        //verfuegbarWandNord[i]
+        //verfuegbarWandSued[i]
+        //verfuegbarLaengeRaum[i]
+        //verfuegbarBreiteRaum[i]
+    }
+    
+    /**
+     * für Alex / Kunstwerkverwaltung: bisher platzierte KW. damit er ggf. bestimmte noch nicht platzierte Kunstwerke wählen kann, die wir versuchen als nächstes zu platzieren
+     */
+    public ArrayList <Kunstwerk> ermittlePlatzierteKunstwerke()
+    {
+        //Zu befüllen und returnieren:
+        ArrayList <Kunstwerk> kunstwerkeSchonZugeordnet = new ArrayList <Kunstwerk >(); // Liste aller Kunstwerke, die schon einem Raum zugeordnet wurden. Arraylist mit flex. Länge
+        
+        // Zur Erinnerung: so sieht die Struktur vom nested Array aus:
+        //private ArrayList <ArrayList <Kunstwerk >> denRaeumenZugeordneteKunstwerke = new ArrayList <ArrayList <Kunstwerk >>();
+        
+        // => aus dem nested Array müssen wir jetzt die Elemente in kunstwerkeSchonZugeordnet packen:
+        
+        for (ArrayList <Kunstwerk> kunstwerkeImRaum: denRaeumenZugeordneteKunstwerke) {
+            //denRaeumenZugeordneteKunstwerke;
+            for (Kunstwerk kunstwerkImRaum : kunstwerkeImRaum)
+            {
+                kunstwerkeSchonZugeordnet.add(kunstwerkImRaum);
+            }
+            
+        }
+        return kunstwerkeSchonZugeordnet;
+    }
+    
+    /**
+     * Summe der Kosten der bisher platzierten KW. 
+     * 
+     * TODO: Kann das ggf. die Kunstwerkeverwaltung unterstützen/umsetzen?
+     */
+    public int ermittlePlatzierteKunstwerkeKosten()
+    {
+        ermittlePlatzierteKunstwerke(); // liefert eine einfache Arraylist der schon platzierten KW
+        // TO DO
+        ////kunstwerk.getAttraktivitaet();
+        int kostenSumme=0;
+        return kostenSumme;
+    }
+    
+    /**
+     * Mittelwert (?) der Attraktvität % der bisher platzierten KW. 
+     * 
+     * TODO:
+     * Kann das ggf. die Kunstwerkeverwaltung unterstützen/umsetzen?
+     * Sind die Attraktivitäten ggf. pro Raum zu berechnen?
+     */
+    public int ermittlePlatzierteKunstwerkeAttraktivitaet()
+    {
+        ermittlePlatzierteKunstwerke(); // liefert eine einfache Arraylist der schon platzierten KW
+        // TO DO
+        int attraktivitaetSumme=0;
+        return attraktivitaetSumme;
+    }
+    
+    
+    // ==========================================================================
+    // === ALTE METHODEN ANSÄTZE / ÜBERLEGUNGEN 
+    
+    //(OBSOLET!!!) https://www.computerweekly.com/de/definition/veraltet-deprecated
+    // ==========================================================================    
+    
+        /**
+     * Map,die Räume und ihre im Rahmen der Planung zugeordneten Kunstwerke enthält. Der Raum wird 
+     * als Schlüssel genommen (da eindeutig und nicht mehrmals vorhanden) und die
+     * zugeordneten Kunstwerke als Liste von Kunstwerken zu einem Raum als Wert gespeichert.
+     * Ob bei der Programmierung letztendlich eine HashMap realisiert wird, muss sich bei der Programmierung in SL3 erweisen. 
+     * Auf jeden Fall wird aber ein Konstrukt benötigt, welches die CopyOfZuordnung der Kunstwerke zu einem Raum speichert. 
+     *
+     *Die Klasse Zuordnung ist die zentrale Logikklasse. Hier wird eine Ausstellung/Ausleihe gesucht und optimiert. Ein Schwerpunktthema und eine Kostenobergrenze 
+ * aus der Klasse Ausstellungsplanung werden dabei berücksichtigt.  
+ */
     
     /**
      * Die Methode dient dazu, eine Minimallösung für unser Optimierungsproblem zu finden.
@@ -189,70 +341,14 @@ public class Zuordnung
     public void zuordnenRaumMinimal()
     {
         /////////////////////////////////// Ideen und Übersicht
-        // Bausteine für die Umsetzung:
-        
-        /**
-        raumverwaltung.getKunstwerkVector(); // Vector der angebotenenKunstwerke
-        angebotsverwaltung.getRaumVector(); // Vector der Räume
-        
-        raumverwaltung.anzahl(); // Anzahl Räume
-        angebotsverwaltung.sizeAngebotsverwaltung(); // Anzahl angebotene Kunstwerke
-        
-        kunstwerk.setVerplant();   ====> TO DO? // habe ich eingepflegt - Alex
-        kunstwerk.getVerplant();   ====> TO DO? // habe ich eingepflegt - Alex
-
-        kunstwerk.getAttraktivitaet(); // Attraktivität Kunstwerk IN PROZENT [Ziel]
-        this.mittelwertAttr(); // hier umzusetzen als private Methode ODER in der Angebotsverwaltung <=== TO DO in Teil 3 der SL
-                               
-        kunstwerk.getKosten(); // Kosten des Kunstwerks [Restriktion 1]
-        ausstellungsplanung.get_kostenobergrenze(); // [Restriktion 1]
-        this.kostenCounter // wschl. kann im Sinne eines Counters Kosten hier in privater Variable mitgezählt/kumuliert werden [Restriktion1]
-        kunstwerk.setPlaziert();
-        kunstwerk.getPlaziert();
-        
+        /**                   
 
         raumverwaltung.pruefeVertretungThema(); // ob Schwerpunktthema in mindestens der Hälfte der Räume [Restriktion2]
         raumverwaltung.pruefeMin1Schwerpuntkthema(); // min. 1 Schwerpunktthema im Raum? [Restriktion2]
         ausstellungsplanung.get_schwerpunktthema();  // falls hier in der methode noch erforderlich [Restriktion2]
-        
-        raumverwaltung.pruefeMax3Themen(); // sind max. 3 unterschiedliche Themen im Raum? [Restriktion3]
-        raumverwaltung.pruefeWeiteresThema(); // darf noch 1 weiteres Thema in Raum? [Restriktion3]
-        
-        this.checkTempFeu // Temp und Feuchte ohne Widerspruch. hier private umsetzen // perspektivisch ggf. im Raum [Restriktion 4]
-        bild.setMinTemp();
-        bild.setMaxTemp();
-        bild.setMinLuft();
-        bild.setMaxLuft();
-        bild.getMinTemp();
-        bild.getMaxTemp();
-        bild.getMinLuft();
-        bild.getMaxLuft();
-        
-        raumverwaltung.getHoeheRaum(); //  [Restriktion 5]
-        this.pruefeRaumHoehe; //noch in private Methode umzusetzen
-        
-        raumverwaltung.setWandNord(); // Restplatz für Bild, ist nach jeder CopyOfZuordnung zu aktualisieren [Restriktion 6]
-        raumverwaltung.setWandOst();
-        raumverwaltung.setWandSued();
-        raumverwaltung.setWandWest();
-        raumverwaltung.getWandNord();
-        raumverwaltung.getWandOst();
-        raumverwaltung.getWandSued();
-        raumverwaltung.getWandWest();    
-        
-        raumverwaltung.setVerfuegbareLaenge(); // Restplatz für Kunstgegenstand/KI, ist nach jeder CopyOfZuordnung zu aktualisieren [Restriktion 7]
-        raumverwaltung.setVerfuegbareBreite();
-        raumverwaltung.getVerfuegbareLaenge();
-        raumverwaltung.getVerfuegbareBreite();
-        
-        kunstwerk.thema(); // KI alleine im Raum, dh. sonst keine Bilder oder KI --> bei Zuteilung beachten[Restriktion 8]
-        
-        kunstwerk.getArt(); // Typ von Kunstwerk B / G / I
-        
-        this.setzePlanungZurueck();
-        this.ordneZu();
-        kunstwerk.setPlaziert();
-        kunstwerk.getPlaziert();
+    
+        this.setzePlanungZurueck(); ODER BRECHE PLANUNG AB (???) ---> ist nicht mehr nötig wenn wir mehere Zuordnungen haben? dann evtl. etwas wie "next"/"continue"
+
         
         */
 

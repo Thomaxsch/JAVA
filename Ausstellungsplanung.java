@@ -18,7 +18,7 @@ public class Ausstellungsplanung
     private double kostenobergrenze = 999999999; //Legt die Kostenobergrenze der Ausstellung fest.
     private Raumverwaltung raeume;
     private Kunstwerkverwaltung kunstwerke;
-    private int anzahlZuordnungen = 5;
+    private int anzahlZuordnungen = 1;
     
     private Zuordnungsverwaltung zuordnungen;
     private Zuordnung zuordnungAktuell;
@@ -125,8 +125,19 @@ public class Ausstellungsplanung
            zuordnungen.addZuordnung(i,kunstwerke.sortAttraktivitaet(),raeume.getRaumVector());
            
            // rufe die Zuordnung der Position i der Zuordnungsliste ab
-           zuordnungAktuell = zuordnungen.getZuordnung(i);
+           ////zuordnungAktuell = zuordnungen.getZuordnung(i);
            
+           //Test: 
+           zuordnungAktuell = zuordnungen.getZuordnung(0);
+           System.out.println("test: welche Kunstwerke passen in erstes Raumobjekt der Zuordnung?");
+           
+           for (Kunstwerk k: kunstwerke.sortAttraktivitaet() )
+           {
+               System.out.println("KW Ldf Nr:" + k.getLaufendeNummer()+" : " +
+               zuordnungAktuell.passtKunstwerkDimensionalInRaum(k,1) + " KW Art: " + k.getArt());
+           }
+
+        
            // ändere die bestehende Zuordnung
            //////zuordnungen.setZuordnung(i,zuordnungAktuell);
        
