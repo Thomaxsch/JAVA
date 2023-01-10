@@ -151,34 +151,6 @@ public class Raumverwaltung
     
     
     
-    // Soll raus aus dieser Klasse:
-    /** Ermittelt alle Objekte der Klasse Raum, die mindestens ein Kunstwerk entsprechend dem Schwerpunktthema enthalten.
-     *  @return     Objekte der Klasse Raum, das Kriterien in Schwerpunktthema erfüllt.
-     */
-        private Vector<Raum> getRaumThema1()
-    {
-        //Code einfuegen
-        return raumVector;
-    }
     
-    /** Ermittelt alle Objekte der Klasse Raum, die kein Kunstwerk entsprechend dem Schwerpunktthema enthalten.
-     *  @return     Objekte der Klasse Raum, das Kriterien in Schwerpunktthema nicht erfüllt.
-     */
-        private Vector<Raum> getRaumThema2()
-    {
-        //Code einfuegen
-        return raumVector;
-    }
-    
-    /** Ueberprueft, ob mindestens die Hälfte aller Raeume mindestens ein Kunstwerk mit dem Schwerpunktthema enthalten.
-     *  @return     Wahrheitswert, ob Bedingung erfuellt ist.
-     */
-        public boolean pruefeVertretungThema()
-    {
-        //Code einfuegen
-        //"true" falls size raumVector der Methode getRaumThema1 >= size raumVector der Methode getRaumThema2
-        //"false" falls size raumVector der Methode getRaumThema1 < size raumVector der Methode getRaumThema2
-        return true;
-    }
     
 }
