@@ -367,6 +367,47 @@ public class Raum
     {
         return "Nummer: " + this.nummer + ", Raumbezeichnung: " + this.name;  
     }
-
+    
+    
+    
+    // Soll raus aus dieser Klasse:
+    /** Ueberprueft, ob mindestens ein Kunstwerk im Raum dem Schwerpunktthema enstpricht.
+     *  @return     Wahrheitswert, ob Bedingung erfuellt ist.
+     */
+        public boolean pruefeMin1Schwerpuntkthema()
+    {
+        //Code einfuegen
+        //Zugriff auf public Methoden von Klasse Bild, Kunstgegenstand und Kunstinstallation durch Punktoperator
+        //Zugriff auf public Methoden von Klasse Ausleihe durch Punktoperator 
+        //"true" falls Schwerpunktthema pro Raum >= 1
+        //"false" falls verschiedene Themen pro Raum < 1
+        return true;
+    }
+    
+    /** Ueberprueft, ob die Kunstwerke im Raum maximal drei verschiedene Themen vetreten.
+     *  @return     Wahrheitswert, ob Bedingung erfuellt ist.
+     */
+        public boolean pruefeMax3Themen()
+    {
+        //Code einfuegen
+        //Zugriff auf public Methoden von Klasse Bild, Kunstgegenstand und Kunstinstallation durch Punktoperator
+        //Zugriff auf public Methoden von Klasse Ausleihe durch Punktoperator 
+        //"true" falls verschiedene Themen pro Raum <= 3
+        //"false" falls verschiedene Themen pro Raum > 3
+        return true;
+    }
+    
+    /** Ueberprueft, ob noch ein weiteres Thema in einen Raum passt.
+     *  @return     Wahrheitswert, ob Bedingung erfuellt ist.
+     */
+        public boolean pruefeWeiteresThema()
+    {
+        //Code einfuegen
+        //Zugriff auf public Methoden von Klasse Bild, Kunstgegenstand und Kunstinstallation durch Punktoperator
+        //Zugriff auf public Methoden von Klasse Ausleihe durch Punktoperator 
+        //"true" falls verschiedene Themen pro Raum <= 2
+        //"false" falls verschiedene Themen pro Raum > 2
+        return true;
+    }
     
 }
