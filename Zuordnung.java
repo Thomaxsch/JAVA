@@ -317,7 +317,32 @@ public class Zuordnung
     
     //(OBSOLET!!!) https://www.computerweekly.com/de/definition/veraltet-deprecated
     // ==========================================================================    
+   
     
+    /** Ueberprueft, ob mindestens ein Kunstwerk im Raum dem Schwerpunktthema enstpricht.
+     *  @return     Wahrheitswert, ob Bedingung erfuellt ist.
+     */
+        public boolean pruefeMin1Schwerpuntkthema()
+    {
+        //Code einfuegen
+        //Zugriff auf public Methoden von Klasse Bild, Kunstgegenstand und Kunstinstallation durch Punktoperator
+        //Zugriff auf public Methoden von Klasse Ausleihe durch Punktoperator 
+        //"true" falls Schwerpunktthema pro Raum >= 1
+        //"false" falls verschiedene Themen pro Raum < 1
+        return true;
+    }
+    /** Ueberprueft, ob die Kunstwerke im Raum maximal drei verschiedene Themen vetreten.
+     *  @return     Wahrheitswert, ob Bedingung erfuellt ist.
+     */
+        public boolean pruefeMax3Themen()
+    {
+        //Code einfuegen
+        //Zugriff auf public Methoden von Klasse Bild, Kunstgegenstand und Kunstinstallation durch Punktoperator
+        //Zugriff auf public Methoden von Klasse Ausleihe durch Punktoperator 
+        //"true" falls verschiedene Themen pro Raum <= 3
+        //"false" falls verschiedene Themen pro Raum > 3
+        return true;
+    }
         /**
      * Map,die Räume und ihre im Rahmen der Planung zugeordneten Kunstwerke enthält. Der Raum wird 
      * als Schlüssel genommen (da eindeutig und nicht mehrmals vorhanden) und die
