@@ -26,9 +26,11 @@ public class Zuordnung
     private Kunstwerk [] kunstwerkeArray; // um die Referenzen auf die Kunstwerke vom Import aufzunehmen (alle Kunstwerke)
     private Raum [] raeumeArray; // um die Referenzen auf die Räume vom Import aufzunehmen (alle Räume)
     
+    private ArrayList <ArrayList <Kunstwerk >> denRaeumenZugeordneteKunstwerke = new ArrayList <ArrayList <Kunstwerk >>(); // Liste von (Kunstwerke im Raum) pro Raum. Nested array list.
+        /**demRaumZugeordneteKunstwerke.add(Kunstwerk); 
+    demRaumZugeordneteKunstwerke.get(0);
+    */
     
-    //private ArrayList <Kunstwerk > demRaumZugeordneteKunstwerke = new ArrayList <Kunstwerk >() ; // Kunstwerke im Raum
-    private ArrayList <Kunstwerk > [] denRaeumenZugeordneteKunstwerke; // Liste von (Kunstwerke im Raum) pro Raum
     
     //relevant für B:
     private int [] verfuegbarWandWest; // Liste von (noch verfuegbarer Wandplatz) pro Raum
@@ -41,14 +43,9 @@ public class Zuordnung
     
     private int [] verfuegbarHoeheRaum; // Liste von (noch verfuegbarer Raumdistanz) pro Raum
     
+    private ArrayList <Kunstwerk > kunstwerkeSchonZugeordnet = new ArrayList <Kunstwerk >() ; // Liste aller Kunstwerke, die schon einem Raum zugeordnet wurden ^<--- hier dann als Array!!!
     
-    private ArrayList <Kunstwerk > kunstwerkeSchonZugeordnet = new ArrayList <Kunstwerk >() ; // Liste aller Kunstwerke, die schon einem Raum zugeordnet wurden
-    
-  
-    /**demRaumZugeordneteKunstwerke.add(Kunstwerk); 
-    demRaumZugeordneteKunstwerke.get(0);
-    */
-        
+
     // ==========================================================================
     // === Konstruktoren
     // ==========================================================================
@@ -75,7 +72,6 @@ public class Zuordnung
         }
         
         // Initialisierungen von Arrays, welche ihrer Natur nach immer eine feste Länge haben. Array Länge ist die Anzahl der Räume:
-        denRaeumenZugeordneteKunstwerke= new ArrayList <Kunstwerk >  [raeumeArray.length]; 
         verfuegbarWandWest = new int [raeumeArray.length];
         verfuegbarWandOst = new int [raeumeArray.length];
         verfuegbarWandNord = new int [raeumeArray.length];
@@ -106,9 +102,77 @@ public class Zuordnung
     /**
      * 
      */
-    public void passtKunstwerkNochInRaum(Kunstwerk in_Kunstwerk, Raum in_Raum)
+    public boolean passtKunstwerkNochInRaum(Kunstwerk in_Kunstwerk, int i) // Raum i
     {
+        boolean passtHoehe = (in_Kunstwerk.getHoehe()<verfuegbarHoeheRaum[i]);
+        if (passtHoehe==false)
+        {
+            return false;
+        }
         
+        if (in_Kunstwerk.getArt()=='B'|| in_Kunstwerk.getArt()=='G')
+        {
+            boolean blockiertDurchKunstinstallation = (denRaeumenZugeordneteKunstwerke.get(0).get(0).getArt()=='I');
+            if (blockiertDurchKunstinstallation == true)
+            {
+                return false;
+            }
+        }
+        
+        if (in_Kunstwerk.getArt()=='B')
+        {
+            boolean passtNord = (verfuegbarWandNord[i]-in_Kunstwerk.getBreite()>=0);
+            boolean passtSued =(verfuegbarWandSued[i]-in_Kunstwerk.getBreite()>=0);
+            boolean passtOst =(verfuegbarWandOst[i]-in_Kunstwerk.getBreite()>=0);
+            boolean passtWest =(verfuegbarWandWest[i]-in_Kunstwerk.getBreite()>=0);
+            boolean passtBildAnEineWand = passtNord || passtSued  ||  passtOst || passtWest;
+            if (passtBildAnEineWand)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        
+        if (in_Kunstwerk.getArt()=='G')
+        {
+            Kunstgegenstand in_Kunstgegenstand = (Kunstgegenstand) in_Kunstwerk; // die Parentclass "Kunstwerk" hat nicht die Methode getLaenge, die wir aber gleich benötigen, daher casten wir
+            
+            boolean passtQuerA = (verfuegbarLaengeRaum[i]-in_Kunstwerk.getBreite()>=0); //einmal quer im Raum platzieren, wobei quer aktuell beliebig (?) aber orthoginal zu laengs definiert ist
+            boolean passtQuerB = (verfuegbarBreiteRaum[i]-in_Kunstgegenstand.getLaenge()>=0);
+            boolean passtQuer = passtQuerA && passtQuerB;
+            boolean passtLaengsA = (verfuegbarLaengeRaum[i]-in_Kunstgegenstand.getLaenge()>=0); //einmal laengs im Raum platzieren
+            boolean passtLaengsB = (verfuegbarBreiteRaum[i]-in_Kunstwerk.getBreite()>=0);
+            boolean passtLaengs = passtLaengsA && passtLaengsB;
+            
+            if (passtQuer||passtLaengs)
+            {return true;}
+            else
+            {return false;}
+        }
+            
+        if (in_Kunstwerk.getArt()=='I') 
+        {
+            Kunstinstallation in_Kunstinstallation = (Kunstinstallation) in_Kunstwerk;// die Parentclass "Kunstwerk" hat nicht die Methode getLaenge, die wir aber gleich benötigen, daher casten wir
+            
+            boolean nochKeinAnderesKunstwerkImRaum = denRaeumenZugeordneteKunstwerke.get(i).isEmpty();
+            
+            boolean passtQuerA = (verfuegbarLaengeRaum[i]-in_Kunstwerk.getBreite()>=0); //einmal quer im Raum platzieren, wobei quer aktuell beliebig (?) aber orthoginal zu laengs definiert ist
+            boolean passtQuerB = (verfuegbarBreiteRaum[i]-in_Kunstinstallation.getLaenge()>=0);
+            boolean passtQuer = passtQuerA && passtQuerB;
+            boolean passtLaengsA = (verfuegbarLaengeRaum[i]-in_Kunstinstallation.getLaenge()>=0); //einmal laengs im Raum platzieren
+            boolean passtLaengsB = (verfuegbarBreiteRaum[i]-in_Kunstwerk.getBreite()>=0);
+            boolean passtLaengs = passtLaengsA && passtLaengsB;
+            
+            if (passtQuer||passtLaengs)
+            {return true;}
+            else
+            {return false;}
+        }
+        return false; // Java meckert wenn dies nicht da steht am Ende, aber macht das überhaupt Sinn?!?! => try Formulierung?
+            
     }
     
     
@@ -214,9 +278,9 @@ public class Zuordnung
      * 
      * @return zugeordneteRaeumeKunstwerke   aktuelle Raum-Kunstwerk-Zuordnung
      */
-    public Boolean [] get_zugeordneteRaeumeKunstwerke() 
+    public ArrayList <ArrayList <Kunstwerk >>  get_zugeordneteRaeumeKunstwerke() 
     {
-        return zuordnungsArray;
+        return denRaeumenZugeordneteKunstwerke;
     }
       
 }

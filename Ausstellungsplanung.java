@@ -18,7 +18,7 @@ public class Ausstellungsplanung
     private double kostenobergrenze = 999999999; //Legt die Kostenobergrenze der Ausstellung fest.
     private Raumverwaltung raeume;
     private Kunstwerkverwaltung kunstwerke;
-    private int anzahlZuordnungen = 100;
+    private int anzahlZuordnungen = 5;
     
     private Zuordnungsverwaltung zuordnungen;
     private Zuordnung zuordnungAktuell;
