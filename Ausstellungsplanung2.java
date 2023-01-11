@@ -73,9 +73,15 @@ public class Ausstellungsplanung2
                 
             }
             
+                 
             
             
             System.out.println(raum);
         }
+    }
+    
+    private boolean validiereKunstinstallation(Kunstwerk kunstwerk, Raum raum)
+    {
+        return true;         
     }
 }
