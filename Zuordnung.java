@@ -87,8 +87,138 @@ public class Zuordnung
     }
 
     // ==========================================================================
-    // === Methoden
+    // === Methoden, die die Zuordnung bilden
     // ==========================================================================    
+    
+    /**
+     * Kernfragen unserer Zuordnung sind, was der nächste (bzw. nächste beste) Raum ist, dem man welches nächste (bzw. nächste beste) Kunstwerk zuordnet.
+     * 
+     * Eine Minimalloesung bedeutet, dass genau ein Kunstwerk des Schwerpunktthemas in genau der Hälfte der Räume vertreten ist (also Restriktion 2 erfüllt ist)
+     * 
+     *   Hierbei müssen wir also erstmal nur die Restriktionen 5,6,7 (Höhen und Abstände) und 1 (globale Kostenobergrenze) berücksichtigen,
+     * 
+     *   während die Restriktionen 8 (KI alleine im Raum), 4 (mehrere Bilder im Raum ohne Temp/Feuchte Widerspruch), 3 (max 3 versch Themen im Raum)
+     *   noch KEINE Bedeutung haben.
+     * 
+     * Wir setzen an, dass wir einem zufälligen noch leeren Raum ein möglichst gutes KW zuordnen, dann dem nächsten etc..
+     * Die zufällige Raumauswahl bewirkt, dass wir Pfadabhängigkeiten aufgrund der Reihenfolge der KW-Platzierung vermeiden und möglichst diverse Konstellationen
+     * als minimale Zuordnungen erhalten. Später versuchen wir dann die minimalen Loesungen noch zu verbessern.
+     */
+    public void versucheMinimalloesungZuFinden ()
+    {
+        WHILE NOCH NICHT GENUG IM RAUM !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        for (int i=0;i<raeumeArray.length;i++) // d.h. potentiell für jeden Raum wenn die Schleife vorher nicht abgebrochen wird EINFACH WEITERMACHEN!!!!
+        {
+            // Wir benötigen also zunächst einen zufällig ausgewählten noch leeren Raum:
+            Raumverwaltung.naechsterZufaelligerLeererRaum(ermittleBelegteRaeume());
+            
+            i mit k ersetzen???
+            
+            // Das Folgende gibt uns das als nächstes zu setzende Kunstwerk in die Hand,
+            // das vom Schwerpunktthema ist, die Restriktionen 5,6,7 (im Raum) erfüllt, sodass auch 1 (global) erfüllt ist. Und bei all dem ist es das KW mit höchster Attraktivität.
+            Kunstwerk naechstesKW = Kunstwerkverwaltung.naechstesZuSetzendesKunstwerk(
+                super.schwerpunktthema,                                                                 // ist in der Zuordnungsverwaltung gespeichert.
+                verfuegbarWandWest[i],verfuegbarWandOst[i],verfuegbarWandNord[i],verfuegbarWandSued[i], // relevant für Bilder (vier Wände)
+                verfuegbarLaengeRaum[i],verfuegbarBreiteRaum[i],                                        // relevant für G und I (laengs/quer bzw Raumfläche)
+                verfuegbarHoeheRaum[i],                                                                 // relevant für alle KW
+                ermittlePlatzierteKunstwerkeRestbudget(),
+                ermittlePlatzierteKunstwerke
+                ); 
+
+            //// am einfachsten: EINFACH WEITERMACHEN !!!! 
+            // was wenn leer, weil kein KW passt ??? (z.B. Kostengrenze erreicht) => nächster Raum
+            // was wenn hälfte der Räume durch und noch alle leer, weil kein KW passt? => dann Misserfolg. Zuordnung nicht möglich und setze Zuordnung zurück oder besser: nächste Zuordnung!
+            
+            
+            //hier kann Abgleich erfolgen: ich kann hier relativ einfach mit  passtKunstwerkDimensionalInRaum zählen, ob es irgendein KW gibt was passt. Wenn nein, dann wäre es ein Wider-
+            // spruch wenn doch von Kunstwerkverwaltung mir eins angeboten wird ...
+            
+            
+            
+            wenn G/I: laengs oder quer => Methode Alex
+            wenn B: welche Wand am besten => Methode Alex
+            
+            später auch mit anderer Methode  versuchen:
+            - naechstesZuSetzendesKunstwerkMODUS2 (statt beste Attraktivität die beste Relation aus Attraktivität und Kosten(*Volumen); sowie nicht mehr als 1/3 ges.-Kostenobergrenze pro Kunstwerk?)
+            - naechstesZuSetzendesKunstwerkMODUS3 (stattdessen rein zufällige Zuordnung)
+            - naechstesZuSetzendesKunstwerkMODUS4 (kostenpfad berücksichtigen: z.B. 40% der Hälfte der Räume schon gesetzt, liegen proportional aber bei 60% Kostenausschöpfung...)
+        }
+    }
+    
+    /**
+     * Erweiterung der Minimalloesung
+     * 
+     * Ideen:
+- A) versuchen, in Räumen ohne Kunstinstallation noch weitere unzugeordnete Bilder und/oder KG beliebigen Themas unterzubringen (muss alle Restriktion außer Nr. 2 beachten)
+- B) SPÄTER  Prüfe, ob es möglich und vorteilhaft ist, einen mit X Bildern und Y Kunstgegenständen gefüllten Raum durch eine (bisher nicht zugeordnete) KI zu ersetzen
+- C) SPÄTER Kunstwerk durch ein nicht zugeteiltes eindeutig besseres Kunstwerk ersetzen
+
+     *  Bei Idee A) ist Restriktion 2 (Schwerpunktthema in mind. der Hälfte der Räume) erfüllt - sofern es eine Minimalloesung gab.
+     *  Jetzt sind also nur noch zu berücksichtigen:
+     *  
+     *  Restriktionen 5,6,7 (Höhen und Abstände),8 (KI alleine im Raum)  => methode passtKunstwerkDimensionalInRaum (wie auch bei Minimalloesung). 
+     *  1 (globale Kostenobergrenze) => 
+     *  4 (mehrere Bilder im Raum ohne Temp/Feuchte Widerspruch) => methode
+     *  3 (max 3 versch Themen im Raum) =>
+     *  
+     *  => brauchen eine naechstesZuSetzendesKunstwerkERWEITERUNG ():
+     *          ---> diese muss NICHT mehr auf das Schwerpunktthema achten (2)
+     *          ---> Budget R1 spielt weiterhin die selbe Rolle => wieder mit Restbudget
+     *          ---> Raumdimensionen  R5-7 => wie bisher
+     *          ---> Temp und Feutche SPIELEN JETZT EINE ROLLE R4 => Array wird übergeben welcheBildTempFeuchteImRaum
+     *          ---> hinsichtlich R3 sind ggf. nur manche Themen für den Raum noch erlaubt => Arraylist wird übergeben welcheThemenDuerfenNochInRaum
+     *          ---> R8 ist vor Methodenaufruf zu prüfen, also ob eine KI für weitere KW alles blockiert
+     *                  => mache unten also aus blockiertDurchKunstinstallation in passtKunstwerkDimensionalInRaum (s. unten) ggf. eine eigene Methode
+     */
+    public void versucheLoesungserweiterung()
+    {
+        //
+    }
+    
+     /**
+     * 
+     */
+    public void setzeKunstwerkInRaum ()
+    {
+        //aktualisiereNochVerfügbarenPlatzImRaumNachSetzen => siehe private Hilfsmethode
+        
+        /**
+        this.ordneZu();
+
+        
+        bei Bildern: welche der bis 4 wände ist die beste
+        bei G: welcher der Ausrichtungen quer oder laengs ist die beste
+        
+        demRaumZugeordneteKunstwerke.add(Kunstwerk); 
+        demRaumZugeordneteKunstwerke.get(0);
+    
+        try catch macht hier Sinn!
+        */
+       
+        //kunstwerk.getKosten(); // Kosten des Kunstwerks [Restriktion 1]
+        //ausstellungsplanung.get_kostenobergrenze(); // [Restriktion 1]
+        //this.kostenCounter // wschl. kann im Sinne eines Counters Kosten hier in privater Variable mitgezählt/kumuliert werden [Restriktion1]
+    }
+    
+    /**
+     * private hilfsmethode für setzeKunstwerkInRaum, falls nicht unmittelbar in setzeKunstwerkInRaum
+     */
+    
+    private void aktualisiereNochVerfügbarenPlatzImRaumNachSetzen()
+    {
+        /// ist nach jedem zugeordneten Kunstwerk zu aktualisieren:
+        /// wschl noch extra 1 m oder 2 m abziehen
+        //verfuegbarWandWest[i]
+        //verfuegbarWandOst[i]
+        //verfuegbarWandNord[i]
+        //verfuegbarWandSued[i]
+        //verfuegbarLaengeRaum[i]
+        //verfuegbarBreiteRaum[i]
+    }
+    
+    // ==========================================================================
+    // === Raumbezogene Prüfmethoden
+    // ==========================================================================  
     
     /**
      * Passt Kunstwerk von den Dimensionen in den Raum (Restriktionen 5, 6, 7)
@@ -175,7 +305,7 @@ public class Zuordnung
         return false; // Java meckert wenn dies nicht da steht am Ende, aber macht das überhaupt Sinn?!?! => try Formulierung?
             
     }
-    
+        
     /**
      * Bilder im Raum müssen hinsichtlich Temperatur und Feuchte ohne Widerspruch sein (Restriktion 4)
      */
@@ -216,50 +346,47 @@ public class Zuordnung
         return true;
     }
     
+    // ==========================================================================
+    // === Helfende Methoden
+    //    
+    // :)
+    //
+    //
+    // ==========================================================================    
+
     /**
-     * 
+     * Welche Räume sind schon belegt? Erlaubt u.a. der Raumverwaltung zufällig noch leere Räume auszuwählen.
      */
-    public void setzeKunstwerkInRaum ()
+    public ArrayList <Raum> ermittleBelegteRaeume()
     {
-        //aktualisiereNochVerfügbarenPlatzImRaumNachSetzen => siehe private Hilfsmethode
+        //Zu befüllen und returnieren:
+        ArrayList <Raum> raeumeSchonBelegt = new ArrayList <Raum>(); // Initalisierung der Liste aller Räume, denen schon ein KW zugeordnet wurde. Arraylist mit flex. Länge
         
-        /**
-        this.ordneZu();
-        kunstwerk.setPlaziert();
-        kunstwerk.getPlaziert();
+        // Zur Erinnerung: so sieht die Struktur vom nested Array aus:
+        //private ArrayList <ArrayList <Kunstwerk >> denRaeumenZugeordneteKunstwerke = new ArrayList <ArrayList <Kunstwerk >>();
         
-        bei Bildern: welche der bis 4 wände ist die beste
-        bei G: welcher der Ausrichtungen quer oder laengs ist die beste
-        
-        demRaumZugeordneteKunstwerke.add(Kunstwerk); 
-        demRaumZugeordneteKunstwerke.get(0);
-    
-        try catch macht hier Sinn!
-        */
-       
-        //kunstwerk.getKosten(); // Kosten des Kunstwerks [Restriktion 1]
-        //ausstellungsplanung.get_kostenobergrenze(); // [Restriktion 1]
-        //this.kostenCounter // wschl. kann im Sinne eines Counters Kosten hier in privater Variable mitgezählt/kumuliert werden [Restriktion1]
+        // => wir müssen schauen, bei welchem Index des äußeren Array das innere Array leer ist, dann in diesen Fällen den Raum zum äußeren Index zu raeumeSchonBelegt hinzufügen:
+        int i=0;
+        for (ArrayList <Kunstwerk> kunstwerkeImRaum: denRaeumenZugeordneteKunstwerke) {
+            if (kunstwerkeImRaum.isEmpty())
+            {
+                raeumeSchonBelegt.add(raeumeArray[i]);
+            }
+            i++;
+        }
+        return raeumeSchonBelegt;
     }
     
     /**
-     * private hilfsmethode für setzeKunstwerkInRaum
+     * Wie viele Räume sind schon belegt?
      */
-    
-    private void aktualisiereNochVerfügbarenPlatzImRaumNachSetzen()
+    public int ermittleBelegteRaeumeAnzahl()
     {
-        /// ist nach jedem zugeordneten Kunstwerk zu aktualisieren:
-        /// wschl noch extra 1 m oder 2 m abziehen
-        //verfuegbarWandWest[i]
-        //verfuegbarWandOst[i]
-        //verfuegbarWandNord[i]
-        //verfuegbarWandSued[i]
-        //verfuegbarLaengeRaum[i]
-        //verfuegbarBreiteRaum[i]
+        return ermittleBelegteRaeume().size();
     }
     
     /**
-     * für Alex / Kunstwerkverwaltung: bisher platzierte KW. damit er ggf. bestimmte noch nicht platzierte Kunstwerke wählen kann, die wir versuchen als nächstes zu platzieren
+     * Bisher platzierte Kunstwerke. Erlaubt der Kunstwerkverwaltung bestimmte noch nicht platzierte Kunstwerke auszuwählen, die wir versuchen als nächstes zu platzieren.
      */
     public ArrayList <Kunstwerk> ermittlePlatzierteKunstwerke()
     {
@@ -272,18 +399,16 @@ public class Zuordnung
         // => aus dem nested Array müssen wir jetzt die Elemente in kunstwerkeSchonZugeordnet packen:
         
         for (ArrayList <Kunstwerk> kunstwerkeImRaum: denRaeumenZugeordneteKunstwerke) {
-            //denRaeumenZugeordneteKunstwerke;
             for (Kunstwerk kunstwerkImRaum : kunstwerkeImRaum)
             {
                 kunstwerkeSchonZugeordnet.add(kunstwerkImRaum);
             }
-            
         }
         return kunstwerkeSchonZugeordnet;
     }
     
     /**
-     * Summe der Kosten der bisher platzierten KW. 
+     * Summe der Kosten der bisher platzierten Kunstwerke. 
      * 
      * TODO: Kann das ggf. die Kunstwerkeverwaltung unterstützen/umsetzen?
      */
@@ -294,6 +419,14 @@ public class Zuordnung
         ////kunstwerk.getAttraktivitaet();
         int kostenSumme=0;
         return kostenSumme;
+    }
+    
+    /**
+     * Restbudget d.h. Kostenobergrenze minus aktuell angelaufene Kosten
+     */
+    public int ermittlePlatzierteKunstwerkeRestbudget();
+    {
+        return super.kostenobergrenze - ermittlePlatzierteKunstwerkeKosten();
     }
     
     /**
@@ -312,6 +445,8 @@ public class Zuordnung
     }
     
     
+    
+ 
     // ==========================================================================
     // === ALTE METHODEN ANSÄTZE / ÜBERLEGUNGEN 
     

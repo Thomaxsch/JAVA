@@ -1,6 +1,13 @@
 import java.util.Vector;
 
 /**
+ * NEU:
+ * Empfehlen würden wir eine eigene Datenklasse für die einzelne Zuordnung von Raum und Kunstwerk (z.B. „Zuordnung“ oder eben „Ausleihe“) und eine 
+Verwaltungsklasse, die die Gesamtheit der Zuordnungen umfasst.
+ * 
+ * 
+ * OLD:
+ * 
  * Die Ausleihverwaltung ist eine Verwaltungsklasse. Kandidaten für Ausstellungen werden in der Klasse Ausleihverwaltung in einem array mit (aktuell vorgesehen) zwei Einträgen verwaltet.
  * Das erste Ausleihe-Objekt des Arrays dient zur Umsetzung der Kandidatensuche und enthält auch das Mapping/die Zuordnung von Räumen und Bildern der vorgesehen Ausstellung. 
  * 
