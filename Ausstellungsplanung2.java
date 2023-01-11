@@ -65,23 +65,47 @@ public class Ausstellungsplanung2
                                    
             for(Kunstwerk kunstwerk : kunstwerke2)
             {
-                if(kunstwerk.getArt() == 'I')
+                if(kunstwerk.getArt() == 'I' || kunstwerk.getArt() == 'G')
                 {
-                    //validiereKunstinstallation(kunstwerk, raum)
-                    kw.add(kunstwerk);
+                    if(validiereKunstinstallation((Kunstinstallation)kunstwerk, raum))
+                    {
+                        kw.add(kunstwerk);
+                    }
                 }
                 
+                
+                
+                
+                
             }
-            
-                 
-            
             
             System.out.println(raum);
         }
     }
     
-    private boolean validiereKunstinstallation(Kunstwerk kunstwerk, Raum raum)
+    /**
+     * prüft ob eine Kunstinstallation genügend Abstand zu den Wänden hat 
+     * @param ki Kunstinstallation die geprüft werden soll
+     * @param raum Raum dem die Kunstinstallation zugeordnet werden soll
+     */
+    private boolean validiereKunstinstallation(Kunstinstallation ki, Raum raum)
     {
-        return true;         
+    int abstandBreite = ki.getBreite() - raum.getLaengeRaum();
+    int abstandLaenge = ki.getLaenge() - raum.getLaengeRaum();
+    
+    // Abstand zu einer Wand muss mindestens 2 Meter (= 200 cm) betragen, d.h 400 cm insgesamt
+    if(abstandBreite > 400 && abstandLaenge > 400)
+    {
+        return true;
+    }
+    else
+    {
+        return false;    
+    }
+    
+    
+    
+    
+    
     }
 }
