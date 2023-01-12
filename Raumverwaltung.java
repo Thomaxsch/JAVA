@@ -29,50 +29,109 @@ public class Raumverwaltung
     //=============================================================
     //Methoden zur Verwaltung der Klasse Raumverwaltung
     //=============================================================
+  
     /** Fügt einen Raum der Raumverwaltung zu.
      *  @param  raum  Ein Objekt der Klasse Raum, das hinzugefuegt werden soll. 
      */
-    public void addRaum(Raum raum)
+    public void addRaum(Raum inRaum)
+    {
+       // Ein Objekt Raum kann nur hinzugefuegt werden wenn nicht bereits enthalten
+       if (!raumVector.contains(inRaum)){
+           raumVector.addElement(inRaum);
+       }
+       else { 
+           System.out.println("Raum ist bereits in der Raumverwaltung enthalten. Er kann nicht erneut hinzugefuegt werden");
+       }
+    }
+    
+    //muss noch gemacht werden/ noetig?
+    /** Fügt alle Raume der Raumverwaltung zu.
+     *  @param  raum  alle Objekt der Klasse Raum, die hinzugefuegt werden sollen. 
+     */
+    public void addAll(Raum raum)
     {
        raumVector.addElement(raum);
+       // Code einfuegen: Schleife
+       // Code einfuegen: Ein Objekt Raum kann nur hinzugefuegt werden wenn nicht bereits enthalten
+       
     }
-         
+    
     /** Entfernt einen Raum aus der Raumverwaltung.
      *  @param  raum  Ein Objekt der Klasse Raum, das entfernt werden soll.
      */
-    public void removeRaum(Raum raum)
+    public void removeRaum(Raum inRaum)
     {
-        
+        if (raumVector.contains(inRaum)){
+            raumVector.removeElement(inRaum);
+        }
+        else {
+            System.out.println("Der Raum ist nicht in der Raumverwaltung enhalten. Er kann nicht entfernt werden.");
+        }
     }
     
     /** Ermittelt die Anzahl an Raeumen in der Raumverwaltung.
      *  @return Die Anzahl der Objekte der Klasse Raum in der Raumverwaltung.
      */
-        public int anzahl()
+    public int anzahlRaeume()
     {
         return raumVector.size();
     }
-
+    
+    //muss noch gemacht werden
+    /** Ermittelt die Anzahl der Haelfte der Raeume in der Raumverwaltung (aufgerundet).
+     *  @return Die Anzahl der der Haelfte der Objekte der Klasse Raum in der Raumverwaltung.
+     */
+    public int anzahlHaelfteRaeume()
+    {
+        return raumVector.size();
+    }
+    
     /** Loescht alle Raeume aus der Raumverwaltung.
      * 
      */
-        public void clearRaumverwaltung()
+    public void clearRaumverwaltung()
     {
-        //Code einfuegen
+        raumVector.clear();
     }
     
-    //=============================================================
-    //Methoden zur Unterstützung der Klasse Ausstellungsplanung 
-    //=============================================================
+    //uebernommen und angepasst von "Wald"-Beispiel/ muss noch gemacht werden
+    //benoetigt fuer die Methode zufaelligerRaum
+    /** Gibt einen Raum nach seiner Indexnummer in der Raumverwaltung zurueck.
+     *  @param      Indexnummer in der Raumverwaltung
+     *  @return     Raum mit dieser Indexnummer
+     */
+    public Raum getRaum(int index)
+    {
+        return  (Raum)raumVector.elementAt(index);
+    }
+    
+    //muss noch gemacht werden
     /** Ermittelt den Vector der Raumverwaltung.
      *  @return  Den Vector der Raumverwaltung.
      */
     
-        public Vector<Raum> getRaumVector()
+    public Vector<Raum> getRaumVector()
     { 
         return raumVector;
     }
     
+    //uebernommen und angepasst von "Wald"-Beispiel/ muss noch gemacht werden
+    /** Sucht einen zufaelligen Raum aus der Raumverwaltung aus.
+     *  @return Zufaelliger Raum aus der Raumverwaltung
+     */
+    public Raum zufealligerRaum(Raumverwaltung inRaumverwaltung)
+    {
+        // liest die Anzahl der Raeume in der Raumverwaltung
+        int anzahlRaeume = raumVector.size();
+        // ermittelt Zufallszahl zwischen 0.0 und 1.0
+        double zw_random = Math.random();
+        // berechnet die zufaellige Nummer,die die Position des Elements im Vector angibt.
+        int auswahlRaumNr = (int)(zw_random * anzahlRaeume);
+        // liest das entsprechende Element aus dem Vector
+        return inRaumverwaltung.getRaum(auswahlRaumNr);
+    }
+    
+    //muss noch gemacht werden
     // Für alle Kunstwerke relevant:Raeume raussuchen nach verfuegbareHoehe 
     /** Ermittelt alle (oder ein?) Objekte der Klasse Raum, dessen Hoehe größer ist als ein anzugebender Wert.
      *  @return     Objekte der Klasse Raum, welche das Kriterium in Hoehe erfüllen.
@@ -83,6 +142,7 @@ public class Raumverwaltung
         return raumVector;
     }
     
+    //muss noch gemacht werden
     // Für KI/KG relevant: Raeume raussuchen nach verfuegbareLaenge, verfuegbareBreite
     /** Ermittelt alle (oder ein?) Objekte der Klasse Raum, dessen Laenge größer ist als ein anzugebender Wert.
      *  @return     Objekte der Klasse Raum, welche das Kriterium in Laenge erfüllen.
@@ -101,6 +161,7 @@ public class Raumverwaltung
         return raumVector;
     }
     
+    //muss noch gemacht werden
     // Für Bilder relevant: Raeume raussuchen nach wandNord, wandOst, wandSued, wandWest
     /** Ermittelt alle (oder ein?) Objekt der Klasse Raum, dessen wandNord größer ist als ein anzugebender Wert.
      *  @return     Objekte der Klasse Raum, das Kriterien in wandNord erfüllt.
@@ -134,6 +195,7 @@ public class Raumverwaltung
         //Code einfuegen
         return raumVector;
     }
+    
     //=======================================
     // Weitere Methoden
     //=======================================
