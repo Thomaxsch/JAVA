@@ -75,10 +75,19 @@ public class Ausstellungsplanung2
                         kw.add(kunstwerk);
                         kunstwerke2.remove(kunstwerk);
                         break;
-                     }
+                    }
+                
+                if(kunstwerk.getArt() == 'G')
+                {
+                   
                 }
-            }
-            zugeordneteKunstwerke.put(raum, kw);
+                
+                if(kunstwerk.getArt() == 'B')
+                {
+                   
+                }
+            
+                zugeordneteKunstwerke.put(raum, kw);
         }
         
         for(Raum key : zugeordneteKunstwerke.keySet())
@@ -94,6 +103,9 @@ public class Ausstellungsplanung2
             } 
         }
     }
+}
+
+}
     
     /**
      * prüft ob eine Kunstinstallation genügend Abstand zu den Wänden hat 
