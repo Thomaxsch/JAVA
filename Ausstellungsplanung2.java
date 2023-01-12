@@ -70,11 +70,11 @@ public class Ausstellungsplanung2
             {
                 if(kunstwerk.getArt() == 'I')
                 {
-                    /*if(validiereKunstinstallation((Kunstinstallation)kunstwerk, raum))
-                    {*/
+                    if(validiereKunstinstallation((Kunstinstallation)kunstwerk, raum))
+                    {
                         kw.add(kunstwerk);
                         break;
-                    
+                     }
                 }  
             }
             zugeordneteKunstwerke.put(raum, kw);
@@ -105,18 +105,18 @@ public class Ausstellungsplanung2
      */
     private boolean validiereKunstinstallation(Kunstinstallation ki, Raum raum)
     {
-    int abstandBreite = ki.getBreite() - raum.getLaengeRaum();
-    int abstandLaenge = ki.getLaenge() - raum.getLaengeRaum();
+        int abstandBreite = raum.getBreiteRaum()- ki.getBreite();
+        int abstandLaenge = raum.getLaengeRaum()- ki.getLaenge();
     
-    // Abstand zu einer Wand muss mindestens 2 Meter (= 200 cm) betragen, d.h 400 cm insgesamt
-    if(abstandBreite > 400 && abstandLaenge > 400)
-    {
-        return true;
-    }
-    else
-    {
-        return false;    
-    }
+        // Abstand zu jeder Wand mindestens 2 Meter (= 200 cm) betragen, d.h 400 cm insgesamt
+        if(abstandBreite > 400 && abstandLaenge > 400)
+        {
+            return true;
+        }
+        else
+        {
+            return false;    
+        }
     
     
     
