@@ -22,31 +22,22 @@ public class Ausstellungsplanung
     
     private Zuordnungsverwaltung zuordnungen;
     private Zuordnung zuordnungAktuell;
+    
     // ==========================================================================
-    // === Konstruktoren
+    // === Konstruktor
     // ==========================================================================
-        
+   
     /**
-     * Konstruktor für Objekte der Klasse Ausstellungsplanung.
+     * Konstruktor für Objekte der Klasse Austellungsplanung
      * 
      * @param kostenobergrenze   Kostenobergrenze als Double. Wenn keine Kostenobergrenze gesetzt werden soll, dann z.B. den Wert von
      *                                                        ca 1 Milliarde (neun Mal die 9) übergeben. 
-     * @param schwerpunktthema   Schwerpunktthema als String. Wenn kein Schwerpunkt gesetzt werden soll, kann null oder leer ("") übergeben werden.
-     */
-    public Ausstellungsplanung(String in_schwerpunktthema, double in_kostenobergrenze)
-    {
-        // Instanzvariable initialisieren
-        schwerpunktthema = in_schwerpunktthema; 
-        kostenobergrenze = in_kostenobergrenze;
-    }
-    
-    /**
-     * Konstruktor für Objekte der Klasse Austellungsplanung ohne Parameter.,.,,..,,.
+     * @param schwerpunktthema   Schwerpunktthema als String. Wenn kein Schwerpunkt gesetzt werden soll, kann null oder leer ("") oder "KEIN" übergeben werden.
      */
     public Ausstellungsplanung(Raumverwaltung in_raeume, Kunstwerkverwaltung in_kunstwerke) 
     {
         // Initieerung der Zuordnungsverwaltung
-        zuordnungen = new Zuordnungsverwaltung(anzahlZuordnungen);
+        zuordnungen = new Zuordnungsverwaltung(anzahlZuordnungen,schwerpunktthema,kostenobergrenze);
         
         raeume=in_raeume;
         kunstwerke=in_kunstwerke;
@@ -122,7 +113,7 @@ public class Ausstellungsplanung
            +" für bis zu " + Integer.toString(kunstwerke.sizeAngebotsverwaltung()) + " Kunstwerke und " );
            System.out.println(Integer.toString(raeume.anzahl()) + " Räume");
            
-           zuordnungen.addZuordnung(i,kunstwerke.sortAttraktivitaet(),raeume.getRaumVector());
+           zuordnungen.addZuordnung(i,kunstwerke.sortAttraktivitaet(),raeume.getRaumVector(),schwerpunktthema,kostenobergrenze);
            
            // rufe die Zuordnung der Position i der Zuordnungsliste ab
            ////zuordnungAktuell = zuordnungen.getZuordnung(i);
