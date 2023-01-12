@@ -34,8 +34,8 @@ public class Ausstellungsplanung2
      */
     public void generiereAusstellung()
     {
-        Vector<Raum> raeume2 = raeume.getRaumVector();
-        
+        Vector<Raum> raeume2 = (Vector<Raum>) raeume.getRaumVector().clone();
+
         //Comparator<Raum>
         Vector<Kunstwerk> kunstwerke2 = kunstwerke.sortAttraktivitaet();
         // Abstand der Kunstwerke von den Ecken eines Raums muss 1 Meter (100 cm) entsprechen
@@ -73,9 +73,10 @@ public class Ausstellungsplanung2
                     if(validiereKunstinstallation((Kunstinstallation)kunstwerk, raum))
                     {
                         kw.add(kunstwerk);
+                        kunstwerke2.remove(kunstwerk);
                         break;
                      }
-                }  
+                }
             }
             zugeordneteKunstwerke.put(raum, kw);
         }
@@ -90,10 +91,7 @@ public class Ausstellungsplanung2
             for(Kunstwerk k : temp)
             {
                 System.out.println(k);
-            }
-            //System.out.println(temp.size());
-            
-            
+            } 
         }
     }
     
@@ -117,10 +115,5 @@ public class Ausstellungsplanung2
         {
             return false;    
         }
-    
-    
-    
-    
-    
     }
 }
