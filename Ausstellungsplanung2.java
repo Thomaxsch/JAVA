@@ -43,28 +43,16 @@ public class Ausstellungsplanung2
         
         for(Raum raum : raeume2) 
         {
-            List<Kunstwerk> kw = new ArrayList<Kunstwerk>();
-            
-            // Ermitelt die Länge und Breite des aktuellen Raums
-            int laengeNord = raum.getLaengeRaum();
-            int laengeSued = raum.getLaengeRaum();
-            int breiteOst  = raum.getBreiteRaum();
-            int breiteWest = raum.getBreiteRaum();
-            
-            // Türbreiten der vier Seiten ermitteln;
-            int tuerbreiteNord = raum.getTuerNord();
-            int tuerbreiteSued = raum.getTuerSued();
-            int tuerbreiteOst  = raum.getTuerOst();
-            int tuerbreiteWest = raum.getTuerWest();
-            
+            List<Kunstwerk> kw = new ArrayList<Kunstwerk>();           
             // Höhe des Raums ermitteln
             int hoeheRaum = raum.getHoeheRaum();
             
-            // verfügbare Nettolänge einer Wand berechnen: Nettolänge = Bruttolänge - (abstandEcke * 2) - Türbreite
-            int nettoLaengeNord = laengeNord - (abstandEcke * 2) - tuerbreiteNord;
-            int nettoLaengeSued = laengeSued - (abstandEcke * 2) - tuerbreiteSued;
-            int nettoBreiteOst  = breiteOst  - (abstandEcke * 2) - tuerbreiteOst;
-            int nettoBreiteWest = breiteWest - (abstandEcke * 2) - tuerbreiteWest;
+            // verfügbare Nettolänge einer Wand berechnen: Nettolänge = Bruttolänge - (abstandEcke * 2) 
+            //- Türbreite
+            int verfuegbareLaengeNord = raum.getLaengeRaum() - (abstandEcke * 2) - raum.getTuerNord();
+            int verfuegbareLaengeSued = raum.getLaengeRaum() - (abstandEcke * 2) - raum.getTuerSued();
+            int verfuegbareBreiteOst  = raum.getBreiteRaum() - (abstandEcke * 2) - raum.getTuerOst();
+            int verfuegbareBreiteWest = raum.getBreiteRaum() - (abstandEcke * 2) - raum.getTuerWest();
                                    
             for(Kunstwerk kunstwerk : kunstwerke2)
             {
