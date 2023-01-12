@@ -1,3 +1,4 @@
+import java.lang.Integer;
 
 /**
  * Bei dieser Klasse handelt es sich um eine abstrakte Parent-Klasse, welche die wesentlichen Informationen aller Kunstwerke definiert. 
@@ -10,9 +11,9 @@
  * Zusätzlich gibt es die Möglichkeit Objekte der Child-Klassen manuell anzulegen oder zu ändern. 
  * 
  * @author (Alexander Kipry) 
- * @version (20.12.2022)
+ * @version (12.01.2023)
  */
-    abstract class Kunstwerk
+    abstract class Kunstwerk implements Comparable<Kunstwerk> 
 { //Attribute der Klasse Kunstwerk
     /** Lfd-Nummer des Kunstwerkes aus dem Angebot */
     private short laufendeNummer;
@@ -38,7 +39,7 @@
     /** Kosten für die Ausleihe des Kunstwerkes in Euro */
     private int kosten; 
     
-    /** Angabe des Museums, welches das Kunstwerk zur Verfügung stellt */
+    /** Angabe des Namens des Museums, welches das Kunstwerk zur Verfügung stellt */
     private String verleihendesMuseum;
     
     /** Anschrift des Museums */
@@ -49,9 +50,6 @@
     
     /** Breite des Kunstwerkes in cm */
     private int breite;
-    
-    /** Gibt an, ob das Kunstwerk bereits in einem Raum plaziert wurde (true - plaziert, false - noch nicht gesetzt) */
-    private boolean plaziert; 
     
     /**
      * Konstruktor für Objekte der Klasse Kunstwerk ohne Parameter
@@ -71,14 +69,15 @@
      * @param thema                 Dieser String entspricht dem Thema, welches dem Kunstwerk zugeordnet wurde.
      * @param attraktivitaetswert   Dieser int entspricht der Attraktivität des Objekts in % (Bewertung durch Herrn Schneider)
      * @param kosten                Dieser int entspricht den Kosten für die Ausleihe des Kunstwerkes in €.
-     * @param verleihendesMuseum    Dieser String entpricht dem Namen & der Adresse des verleihenden Museums
+     * @param verleihendesMuseum    Dieser String entpricht dem Namen des verleihenden Museums
+     * @param anschrift             Dieser String entspricht der Adresse des verleihenden Museums (Straße, Hnr, Plz, Ort)
      * @param hoehe                 Dieser int entspricht der Höhe des Kunstwerkes in cm.
      * @param breite                Dieser int entspricht der Breite des Kunstwerkes in cm. 
      * @param plaziert              Dieser boolean gibt über true und false an, ob das Kunstwerk bereits in einem Raum plaziert wurde. 
      */
     
     public Kunstwerk(short laufendeNummer, char art, String bezeichnung, String kuenstler, String jahr, String thema, int attraktivitaetswert, int kosten, String verleihendesMuseum,
-                     String anschrift, int hoehe, int breite,boolean plaziert)
+                     String anschrift, int hoehe, int breite)
     {  
     }
     
@@ -115,7 +114,6 @@
     {
         bezeichnung=in_bezeichnung;
     }
-    
     
     /** 
      * Diese Methode ueberschreibt das kuenstler Attribut eines "Kunstwerk" Objektes
@@ -180,6 +178,16 @@
     }
     
      /** 
+     * Diese Methode ueberschreibt das Anschrift Attribut eines "Kunstwerk" Objektes
+     * 
+     * @param in_Anschrift Name und Adresse des verleihenden Museums
+     */
+    public void setAnschrift (String in_Anschrift)
+    {
+        anschrift = in_Anschrift;
+    }
+    
+     /** 
      * Diese Methode ueberschreibt das hoehe Attribut eines "Kunstwerk" Objektes
      * 
      * @param in_hoehe Hoehe des Kunstwerkes in cm.
@@ -198,17 +206,6 @@
     {
         breite = in_breite;
     }
-    
-    /** 
-     * Diese Methode ueberschreibt das plaziert Attribut eines "Kunstwerk" Objektes
-     * 
-     * @param in_plaziert gibt an, ob das Kunstwerk bereits in einem Raum plaziert wurde (true/False).
-     */
-    public void setPlaziert (boolean in_plaziert)
-    {
-        plaziert = in_plaziert;
-    }
-    
 
     //getter-Methoden
       /** 
@@ -297,6 +294,16 @@
     }
     
     /**
+     * Gibt die Anschrift des verleihenden Museums wieder.
+     * 
+     * @return Anschrift des verleihenden Museums.
+     */
+    public String getAnschrift()
+    {
+        return anschrift;
+    }
+    
+    /**
      * Gibt die Höhe des Kunstwerkes wieder.
      * 
      * @return Höhe des Kunstwerkes in cm.
@@ -317,18 +324,8 @@
     }
     
     /**
-     * Gibt wieder, ob das Kunstwerk bereits plaziert wurde 
-     * 
-     * @return plaziert true oder false, je nachdem ob das Kunstwerk plaziert wurde. 
-    */
-   public boolean getPlaziert()
-    {
-        return plaziert;
-    }
-    
-    /**
-     * @author Mischa, 06.01.2023
      * Methode gibt eine lesbare Beschreibung eines Kunstwerks aus
+     * 
      * @return Beschreibung
      */
     @Override
@@ -337,5 +334,10 @@
         return "Nr: " + this.laufendeNummer + ", Art des Kunstwerks: " + this.art + ", Bezeichnung: " + 
         this.bezeichnung + ", Breite " + this.breite;
     }
-        
+    
+    @Override
+    public int compareTo(Kunstwerk k) 
+    {
+        return Integer.compare(this.kosten, k.kosten);
+    }
 }

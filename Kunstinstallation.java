@@ -88,7 +88,6 @@ public class Kunstinstallation extends Kunstwerk
     /**
      * Gibt die Länge der Kunstinstallation an.
      * 
-     *
      * @return        laenge der Kunstinstallation in cm.
      */
     public int getLaenge()
@@ -99,10 +98,9 @@ public class Kunstinstallation extends Kunstwerk
     /**
      * Gibt das Gewicht der Kunstinstallation an.
      * 
-     *
      * @return        Gewicht der Kunstinstallation in kg.
      */
-    public int zeigeGewicht()
+    public int getGewicht()
     {
         return gewicht;
     }
