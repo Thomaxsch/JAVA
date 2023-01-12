@@ -365,7 +365,8 @@ public class Raum
     @Override
     public String toString()
     {
-        return "Nummer: " + this.nummer + ", Raumbezeichnung: " + this.name;  
+        return "Nummer: " + this.nummer + ", Raumbezeichnung: " + this.name + "Breite: "+ this.breiteRaum +
+        "Länge: " + this.laengeRaum;  
     }
     
 
