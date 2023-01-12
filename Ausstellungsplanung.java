@@ -4,6 +4,12 @@ import java.util.*;
  * Die Klasse Ausstellungsplanung entlastet vor allem die zentrale Logikklasse "Ausleihe", indem sie das Schwerpunktthema und die Kostenobergrenze aufnimmt.
  * Außerdem wird hier die Suche nach einer (optimalen) Ausstellung gesteuert.
  * 
+ * Die Planungslogik würde sich im Modell aber erst eine Ebene darüber befinden,
+in einer Geschäftslogikklasse, die die Beschriebene Logik implementiert.
+Sie kann dann Zuordnungsverwaltung initiieren,
+darin Zuordnungen erzeugen oder ändern
+oder Zuordnungen vergleichen.
+ * 
  * 
  * @author Thomas Scheidt
  * @version 19.12.2022
@@ -16,11 +22,11 @@ public class Ausstellungsplanung
     
     private String schwerpunktthema = ""; //Variable um das Schwerpunktthema der Ausstellung festzulegen
     private double kostenobergrenze = 999999999; //Legt die Kostenobergrenze der Ausstellung fest.
-    private Raumverwaltung raeume;
-    private Kunstwerkverwaltung kunstwerke;
+    private Raumverwaltung raumverwaltung;
+    private Kunstwerkverwaltung kunstwerkverwaltung;
     private int anzahlZuordnungen = 1;
     
-    private Zuordnungsverwaltung zuordnungen;
+    private Zuordnungsverwaltung zuordnungsverwaltung;
     private Zuordnung zuordnungAktuell;
     
     // ==========================================================================
@@ -34,13 +40,13 @@ public class Ausstellungsplanung
      *                                                        ca 1 Milliarde (neun Mal die 9) übergeben. 
      * @param schwerpunktthema   Schwerpunktthema als String. Wenn kein Schwerpunkt gesetzt werden soll, kann null oder leer ("") oder "KEIN" übergeben werden.
      */
-    public Ausstellungsplanung(Raumverwaltung in_raeume, Kunstwerkverwaltung in_kunstwerke) 
+    public Ausstellungsplanung(Raumverwaltung in_raumverwaltung, Kunstwerkverwaltung in_kunstwerkverwaltung) 
     {
         // Initieerung der Zuordnungsverwaltung
-        zuordnungen = new Zuordnungsverwaltung(anzahlZuordnungen,schwerpunktthema,kostenobergrenze);
+        zuordnungsverwaltung = new Zuordnungsverwaltung(anzahlZuordnungen,schwerpunktthema,kostenobergrenze);
         
-        raeume=in_raeume;
-        kunstwerke=in_kunstwerke;
+        raumverwaltung=in_raumverwaltung;
+        kunstwerkverwaltung=in_kunstwerkverwaltung;
     }
     
     // ==========================================================================
@@ -90,17 +96,10 @@ public class Ausstellungsplanung
     }
     
     /**
-     * Methode, um anzustoßen (und ggf. auf hohem Level zu steuern), dass ein Kandidat für die Ausstellung erzeugt und optimiert wird. 
-     * Solche Kandidaten werden in der Klasse Ausleihverwaltung in einem array mit (aktuell vorgesehen) zwei Einträgen
-     * verwaltet. Das erste Ausleihe-Objekt des Arrays dient zur Umsetzung der Kandidatensuche und enthält auch das Mapping/die Zuordnung von Räumen und Bildern der 
-     * vorgesehen Ausstellung. Das zweite (oder weitere) Ausleihe-Objekte des Arrays der Ausleihverwaltung bleiben hier ungenutzt, aber können von der Methode "optimiereAusstellung"
-     * genutzt werden.
-     *   
-     *   Die Planungslogik würde sich im Modell aber erst eine Ebene darüber befinden,
- in einer Geschäftslogikklasse, die die Beschriebene Logik implementiert.
- Sie kann dann Zuordnungsverwaltung initiieren,
- darin Zuordnungen erzeugen oder ändern
- oder Zuordnungen vergleichen.
+     * Methode, um anzustoßen und auf hohem Level zu steuern, dass Zuordnungskandidaten für die Ausstellung erzeugt und optimiert werden. 
+     * 
+     * Solche Kandidaten werden als Zuordnungen in der Klasse Zuordnungsverwaltung in einem Array verwaltet. Dieses kann so viele einzelne Zuordnungen aufnehmen,
+     * wie in obigem Attribut anzahlZuordnungen festgelegt wird.
      */       
       
     public void generiereAusstellungskandidaten()
@@ -109,20 +108,21 @@ public class Ausstellungsplanung
        {
            // erzeuge eine neue Zuordnung als Position i der Zuordnungsliste, übergebe dafür Referenzen auf alle Kunstwerke und alle Räume.
            
-           System.out.println("Lege an Zuordnung Nr."+Integer.toString(i)
-           +" für bis zu " + Integer.toString(kunstwerke.sizeAngebotsverwaltung()) + " Kunstwerke und " );
-           System.out.println(Integer.toString(raeume.anzahl()) + " Räume");
+           System.out.println(
+               "Lege an Zuordnung Nr."+Integer.toString(i) +
+               " für bis zu " + Integer.toString(kunstwerkverwaltung.sizeAngebotsverwaltung()) +
+               " Kunstwerke und " + Integer.toString(raumverwaltung.anzahlRaeume()) + " Räume");
            
-           zuordnungen.addZuordnung(i,kunstwerke.sortAttraktivitaet(),raeume.getRaumVector(),schwerpunktthema,kostenobergrenze);
+           zuordnungsverwaltung.addZuordnung(i,kunstwerkverwaltung,raumverwaltung,schwerpunktthema,kostenobergrenze);
            
            // rufe die Zuordnung der Position i der Zuordnungsliste ab
            ////zuordnungAktuell = zuordnungen.getZuordnung(i);
            
            //Test: 
-           zuordnungAktuell = zuordnungen.getZuordnung(0);
+           zuordnungAktuell = zuordnungsverwaltung.getZuordnung(0);
            System.out.println("test: welche Kunstwerke passen in erstes Raumobjekt der Zuordnung?");
            
-           for (Kunstwerk k: kunstwerke.sortAttraktivitaet() )
+           for (Kunstwerk k: kunstwerkverwaltung.sortAttraktivitaet() )
            {
                System.out.println("KW Ldf Nr:" + k.getLaufendeNummer()+" : " +
                zuordnungAktuell.passtKunstwerkDimensionalInRaum(k,1) + " KW Art: " + k.getArt());
