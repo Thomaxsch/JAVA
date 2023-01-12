@@ -67,12 +67,12 @@ public class Zuordnung
         // Rufe die konkreten verfügbaren Distanzen via Methode der Klasse Raum ab:
         for (i=0;i<raeumeArray.length;i++)
         {
-            verfuegbarWandWest[i]=raeumeArray[i].getWandWest();  // TO DO: netto-Wert abrufen    ===> in KLASSE Raum/Raumverwaltung
-            verfuegbarWandOst[i]=raeumeArray[i].getWandOst();  // TO DO: netto-Wert abrufen
-            verfuegbarWandNord[i]=raeumeArray[i].getWandNord();  // TO DO: netto-Wert abrufen
-            verfuegbarWandSued[i]=raeumeArray[i].getWandSued();  // TO DO: netto-Wert abrufen
-            verfuegbarLaengeRaum[i]=raeumeArray[i].getWandNord();// TO DO: netto-Wert abrufen
-            verfuegbarBreiteRaum[i]=raeumeArray[i].getWandOst();// TO DO: netto-Wert abrufen
+            verfuegbarWandWest[i]=raeumeArray[i].showWandWest();  // TO DO: netto-Wert abrufen    ===> in KLASSE Raum/Raumverwaltung
+            verfuegbarWandOst[i]=raeumeArray[i].showWandOst();  // TO DO: netto-Wert abrufen
+            verfuegbarWandNord[i]=raeumeArray[i].showWandNord();  // TO DO: netto-Wert abrufen
+            verfuegbarWandSued[i]=raeumeArray[i].showWandSued();  // TO DO: netto-Wert abrufen
+            verfuegbarLaengeRaum[i]=raeumeArray[i].showWandNord();// TO DO: netto-Wert abrufen
+            verfuegbarBreiteRaum[i]=raeumeArray[i].showWandOst();// TO DO: netto-Wert abrufen
             verfuegbarHoeheRaum[i]=raeumeArray[i].getHoeheRaum();
             
         }

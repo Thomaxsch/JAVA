@@ -50,9 +50,6 @@
     /** Breite des Kunstwerkes in cm */
     private int breite;
     
-    /** Gibt an, ob das Kunstwerk bereits in einem Raum plaziert wurde (true - plaziert, false - noch nicht gesetzt) */
-    private boolean plaziert; 
-    
     /**
      * Konstruktor für Objekte der Klasse Kunstwerk ohne Parameter
      */
@@ -78,7 +75,7 @@
      */
     
     public Kunstwerk(short laufendeNummer, char art, String bezeichnung, String kuenstler, String jahr, String thema, int attraktivitaetswert, int kosten, String verleihendesMuseum,
-                     String anschrift, int hoehe, int breite,boolean plaziert)
+                     String anschrift, int hoehe, int breite)
     {  
     }
     
@@ -198,17 +195,6 @@
     {
         breite = in_breite;
     }
-    
-    /** 
-     * Diese Methode ueberschreibt das plaziert Attribut eines "Kunstwerk" Objektes
-     * 
-     * @param in_plaziert gibt an, ob das Kunstwerk bereits in einem Raum plaziert wurde (true/False).
-     */
-    public void setPlaziert (boolean in_plaziert)
-    {
-        plaziert = in_plaziert;
-    }
-    
 
     //getter-Methoden
       /** 
@@ -315,17 +301,7 @@
     {
         return breite;
     }
-    
-    /**
-     * Gibt wieder, ob das Kunstwerk bereits plaziert wurde 
-     * 
-     * @return plaziert true oder false, je nachdem ob das Kunstwerk plaziert wurde. 
-    */
-   public boolean getPlaziert()
-    {
-        return plaziert;
-    }
-    
+
     /**
      * @author Mischa, 06.01.2023
      * Methode gibt eine lesbare Beschreibung eines Kunstwerks aus
