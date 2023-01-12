@@ -49,8 +49,8 @@ public class Zuordnungsverwaltung
     public Zuordnungsverwaltung(int in_arraylaenge, String in_schwerpunktthema, double in_kostenobergrenze)
     {
         listeZuordnungen = new Zuordnung[in_arraylaenge]; // Initialisierung des Arrays, sodass es 100 Elemente (vom Typ Zuordnung) aufnehmen kann.
-        schwerpunktthema =in_schwerpunktthema;
-        kostenobergrenze=in_kostenobergrenze;
+        schwerpunktthema = in_schwerpunktthema;
+        kostenobergrenze = in_kostenobergrenze;
     }
     
     // ==========================================================================
@@ -70,10 +70,10 @@ public class Zuordnungsverwaltung
     /**
      * Lege die i-te Zuordnung in der Zuordnungsverwaltung neu an
      */
-    public void addZuordnung(int arrayposition, Vector<Kunstwerk> in_kunstwerke,Vector<Raum> in_raeume, String in_schwerpunktthema,double in_kostenobergrenze)
+    public void addZuordnung(int arrayposition, Kunstwerkverwaltung in_kunstwerkverwaltung,Raumverwaltung in_raumverwaltung, String in_schwerpunktthema,double in_kostenobergrenze)
     {
        
-        listeZuordnungen[arrayposition]=new Zuordnung(in_kunstwerke,in_raeume,in_schwerpunktthema,in_kostenobergrenze);
+        listeZuordnungen[arrayposition]=new Zuordnung(in_kunstwerkverwaltung,in_raumverwaltung,in_schwerpunktthema,in_kostenobergrenze);
         
     }
     

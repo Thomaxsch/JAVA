@@ -11,8 +11,10 @@ public class Zuordnung
     // === Attribute
     // ==========================================================================
    
-    private Kunstwerk [] kunstwerkeArray; // um die Referenzen auf die Kunstwerke vom Import aufzunehmen (alle Kunstwerke)
-    private Raum [] raeumeArray; // um die Referenzen auf die Räume vom Import aufzunehmen (alle Räume)
+    private Kunstwerk [] kunstwerkeArray;           // um die Referenzen auf die Kunstwerke vom Import aufzunehmen (alle Kunstwerke)
+    private Raum [] raeumeArray;                    // um die Referenzen auf die Räume vom Import aufzunehmen (alle Räume)
+    private Kunstwerkverwaltung kunstwerkverwaltung;//Damit wir später auf Methoden der Kunstwerk- bzw. Raumverwaltung zugreifen können
+    private Raumverwaltung raumverwaltung;          //Damit wir später auf Methoden der Kunstwerk- bzw. Raumverwaltung zugreifen können
     
     private ArrayList <ArrayList <Kunstwerk >> denRaeumenZugeordneteKunstwerke = new ArrayList <ArrayList <Kunstwerk >>(); // Liste von (Kunstwerke im Raum) pro Raum. Nested array list.
     // Die äußere ArrayList wird später so viele Elemente haben wie es Räume gibt,
@@ -51,20 +53,24 @@ public class Zuordnung
     /**
      * Konstruktor für Objekte der Klasse Ausleihe
      */
-    public Zuordnung(Vector<Kunstwerk> in_kunstwerke,Vector<Raum> in_raeume,String in_schwerpunktthema,double in_kostenobergrenze)
+    public Zuordnung(Kunstwerkverwaltung in_kunstwerkverwaltung,Raumverwaltung in_raumverwaltung,String in_schwerpunktthema,double in_kostenobergrenze)
     {
-        // Den eingegebenen Vector zu Kunstwerken in Array umwandeln
-        kunstwerkeArray = new Kunstwerk [in_kunstwerke.size()];
+        // Damit wir später auf Methoden der Kunstwerk- bzw. Raumverwaltung zugreifen können, speichern wir uns die Referenz auf die Verwaltungen ab:
+        kunstwerkverwaltung = in_kunstwerkverwaltung;
+        raumverwaltung = in_raumverwaltung;
+        
+        // Aus der Kunstwerkverwaltung den Vector zu Kunstwerken abrufen und in Array umwandeln
+        kunstwerkeArray = new Kunstwerk [in_kunstwerkverwaltung.sizeAngebotsverwaltung()];
         int i = 0;
-        for (Kunstwerk k: in_kunstwerke) {
+        for (Kunstwerk k: in_kunstwerkverwaltung.sortAttraktivitaet()) {
             kunstwerkeArray[i]=(Kunstwerk) k; // cast glaub ich unnötig?
             i++;
         }
         
-        // Den dreingegebenen Vector zu Räumen in Array umwandeln
-        raeumeArray = new Raum [in_raeume.size()];
+        // Aus der Raumverwaltung den Vector der Räume abrufen und in Array umwandeln
+        raeumeArray = new Raum [in_raumverwaltung.anzahlRaeume()];
         i = 0;
-        for (Raum r: in_raeume) {
+        for (Raum r: in_raumverwaltung.getRaumVector()) {
             raeumeArray[i]=(Raum) r; // cast glaub ich unnötig?
             i++;
         }
@@ -143,28 +149,41 @@ public class Zuordnung
         for (int i=0;i<raeumeArray.length;i++) // d.h. potentiell für jeden Raum wenn die Schleife vorher nicht abgebrochen wird
         {
             // Unser Etappenziel ist erreicht, wenn die Hälfte der Räume mit Schwerpunktkunstwerk versehen wurde. Dann soll die Schleife abbrechen:
-            if (wieOftWurdeSchonEinSchwerpunktKunstwertPlatziert = Kunstwerkverwaltung.haelfteDerRaeume())
+            if (wieOftWurdeSchonEinSchwerpunktKunstwertPlatziert == raumverwaltung.anzahlHaelfteRaeume())
             {
                 break; // Anweisung im Schleifenkörper führt zum sofortigen Abbruch der Schleife
             }
             
             // Wir benötigen einen zufällig ausgewählten noch leeren Raum, um dort zu versuchen ein KW zu platzieren:
-            Raum unserAktuellerRaum = Raumverwaltung.naechsterZufaelligerLeererRaum(ermittleBelegteRaeume());
-            int unserAktuellerRaumIndex = raeumeArray.indexOf(unserAktuellerRaum);
-        
+            Raum unserAktuellerRaum = raumverwaltung.zufealligerRaum(raeumeSchonBelegt);
+            
+            // Wir brauchen auch den Index dieses Raums, damit wir in unseren Listen später die richtigen Werte zum Raumindex finden können: 
+            int unserAktuellerRaumIndex = 0;
+            for (Raum r: raeumeArray)
+            {
+                if (r == unserAktuellerRaum)
+                {
+                    break; // breche die Schleife ab, weil unserAktuellerRaumIndex bereits den richtigen Wert hat
+                }
+                else
+                {
+                    unserAktuellerRaumIndex++; // erhoehe unserAktuellerRaumIndex um 1 und schaue ob der nächste Raum der mit dem gesuchten Index ist
+                }
+            }
+            
             // Das Folgende gibt uns das als nächstes zu setzende Kunstwerk in die Hand,
             // das vom Schwerpunktthema ist, die Restriktionen 5,6,7 (im Raum) erfüllt, sodass auch 1 (global) erfüllt ist. 
             // Und bei all dem ist es das KW mit höchster Attraktivität.
             
             Kunstwerk zuSetzendesKW;
             try {
-                zuSetzendesKW = Kunstwerkverwaltung.naechstesZuSetzendesKunstwerk(
+                zuSetzendesKW = kunstwerkverwaltung.naechstesZuSetzendesKunstwerk(
                     schwerpunktthema,
                     verfuegbarWandWest[i],verfuegbarWandOst[i],verfuegbarWandNord[i],verfuegbarWandSued[i], // relevant für Bilder (vier Wände)
                     verfuegbarLaengeRaum[i],verfuegbarBreiteRaum[i],                                        // relevant für G und I (laengs/quer bzw Raumfläche)
                     verfuegbarHoeheRaum[i],                                                                 // relevant für alle KW
-                    restbudget,                                                                             //verfügbares Restbudget
-                    kunstwerkeSchonZugeordnet                                                               //bisher platzierte Kunstwerke
+                    restbudget,                                                                             // verfügbares Restbudget
+                    kunstwerkeSchonZugeordnet                                                               // bisher platzierte Kunstwerke
                 ); 
             }
             catch (Exception e){ 
