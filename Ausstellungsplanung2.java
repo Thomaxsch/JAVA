@@ -23,6 +23,7 @@ public class Ausstellungsplanung2
         zugeordneteKunstwerke = new HashMap<Raum, List<Kunstwerk>>();
         
         generiereAusstellung();
+        gebeAus();
     }
     
     
@@ -37,49 +38,67 @@ public class Ausstellungsplanung2
         Vector<Raum> raeume2 = (Vector<Raum>) raeume.getRaumVector().clone();
 
         //Comparator<Raum>
-        Vector<Kunstwerk> kunstwerke2 = kunstwerke.sortAttraktivitaet();
+        Vector<Kunstwerk> kunstwerke2 = (Vector<Kunstwerk>) kunstwerke.sortAttraktivitaet().clone();
+        Vector<Kunstwerk> kunstwerke3 = (Vector<Kunstwerk>) kunstwerke.sortAttraktivitaet().clone();
         // Abstand der Kunstwerke von den Ecken eines Raums muss 1 Meter (100 cm) entsprechen
         int abstandEcke = 100;
         
-        for(Raum raum : raeume2) 
-        {
-            List<Kunstwerk> kw = new ArrayList<Kunstwerk>();           
-            // Höhe des Raums ermitteln
-            int hoeheRaum = raum.getHoeheRaum();
+    for(Raum raum : raeume2) 
+    {
+        List<Kunstwerk> kw = new ArrayList<Kunstwerk>();           
+        // Höhe des Raums ermitteln
+        int hoeheRaum = raum.getHoeheRaum();
+        
+        int zugeordneteKunstwerkeZuRaum = 0;
             
-            // verfügbare Nettolänge einer Wand berechnen: Nettolänge = Bruttolänge - (abstandEcke * 2) 
-            //- Türbreite
-            int verfuegbareLaengeNord = raum.getLaengeRaum() - (abstandEcke * 2) - raum.getTuerNord();
-            int verfuegbareLaengeSued = raum.getLaengeRaum() - (abstandEcke * 2) - raum.getTuerSued();
-            int verfuegbareBreiteOst  = raum.getBreiteRaum() - (abstandEcke * 2) - raum.getTuerOst();
-            int verfuegbareBreiteWest = raum.getBreiteRaum() - (abstandEcke * 2) - raum.getTuerWest();
+        // verfügbare Nettolänge einer Wand berechnen: Nettolänge = Bruttolänge - (abstandEcke * 2) 
+        //- Türbreite
+        int verfuegbareLaengeNord = raum.getLaengeRaum() - (abstandEcke * 2) - raum.getTuerNord();
+        int verfuegbareLaengeSued = raum.getLaengeRaum() - (abstandEcke * 2) - raum.getTuerSued();
+        int verfuegbareBreiteOst  = raum.getBreiteRaum() - (abstandEcke * 2) - raum.getTuerOst();
+        int verfuegbareBreiteWest = raum.getBreiteRaum() - (abstandEcke * 2) - raum.getTuerWest();
                                    
-            for(Kunstwerk kunstwerk : kunstwerke2)
+        for(Kunstwerk kunstwerk : kunstwerke2)
+        {   
+            if(kunstwerk.getArt() == 'I')
             {
-                if(kunstwerk.getArt() == 'I')
-                {
-                    if(validiereKunstinstallation((Kunstinstallation)kunstwerk, raum))
-                    {
-                        kw.add(kunstwerk);
-                        kunstwerke2.remove(kunstwerk);
-                        break;
-                    }
-                
-                if(kunstwerk.getArt() == 'G')
-                {
-                   
-                }
-                
-                if(kunstwerk.getArt() == 'B')
-                {
-                   
-                }
+              if(validiereKunstinstallation((Kunstinstallation)kunstwerk, raum) && zugeordneteKunstwerkeZuRaum < 1)
+              {
+                kw.add(kunstwerk);
+                zugeordneteKunstwerkeZuRaum++;
+                continue;
+              }
+            }
             
-                zugeordneteKunstwerke.put(raum, kw);
+            /*if(kunstwerk.getArt() == 'B')
+            {
+              boolean gueltigeHoehe = false;
+              if(kunstwerk.getHoehe() <= hoeheRaum)
+              gueltigeHoehe = true;
+                    
+              if(kunstwerk.getBreite() <= verfuegbareLaengeNord && gueltigeHoehe)
+              {
+                kw.add(kunstwerk);
+                verfuegbareLaengeNord = kunstwerk.getBreite() - 1;
+                kunstwerke2.remove(kunstwerk);
+                continue;
+              }        
+            }*/
+                
+            if(kunstwerk.getArt() == 'G')
+            {
+                   
+            }
         }
         
-        for(Raum key : zugeordneteKunstwerke.keySet())
-        {
+        zugeordneteKunstwerke.put(raum, kw);
+    }
+}
+
+public void gebeAus()
+{
+    for(Raum key : zugeordneteKunstwerke.keySet())
+    {
             System.out.println("------------------------------------");
             System.out.print("Key: " + key + " - " + "\n");
             System.out.println("------------------------------------");
@@ -89,12 +108,10 @@ public class Ausstellungsplanung2
             {
                 System.out.println(k);
             } 
-        }
     }
 }
 
-}
-    
+
     /**
      * prüft ob eine Kunstinstallation genügend Abstand zu den Wänden hat 
      * @param ki Kunstinstallation die geprüft werden soll
