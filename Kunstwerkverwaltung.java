@@ -88,7 +88,7 @@ public class Kunstwerkverwaltung
     {
         Collections.sort(kunstwerkVector);
         for (Kunstwerk kw: kunstwerkVector){
-            System.out.println(kw);//Code zum sortieren der Kunstwerke nach den Kosten --> Collections.sort mit Parameter kunstwerk.kosten 
+            System.out.println(kw); 
         }
     }
     
