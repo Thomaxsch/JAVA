@@ -36,23 +36,27 @@ public class Zuordnungsverwaltung
     // Deklaration eines Arrays für die Zuordnungen:
     private Zuordnung[] listeZuordnungen; 
     
-    //ArrayList <Zuordnung> listeZuordnungen = new ArrayList <Zuordnung >() ; 
+    private String schwerpunktthema; //Schwerpunktthema der Ausstellung
+    private double kostenobergrenze; //Kostenobergrenze der Ausstellung
     
     // ==========================================================================
-    // === Konstruktoren
+    // === Konstruktor
     // ==========================================================================
        
     /**
-     * Konstruktor für Objekte der Klasse Ausleihverwaltung
+     * Konstruktor für Objekte der Klasse Zuordnungsverwaltung
      */
-    public Zuordnungsverwaltung(int in_arraylaenge)
+    public Zuordnungsverwaltung(int in_arraylaenge, String in_schwerpunktthema, double in_kostenobergrenze)
     {
-        listeZuordnungen = new Zuordnung[in_arraylaenge]; // Initialisierung des Arrays, sodass
-        // es 100 Elemente (vom Typ Zuordnung) aufnehmen kann.
-        
-       
+        listeZuordnungen = new Zuordnung[in_arraylaenge]; // Initialisierung des Arrays, sodass es 100 Elemente (vom Typ Zuordnung) aufnehmen kann.
+        schwerpunktthema =in_schwerpunktthema;
+        kostenobergrenze=in_kostenobergrenze;
     }
     
+    // ==========================================================================
+    // === Methoden
+    // ==========================================================================
+       
     /**
      * Gebe ein bestimmtes Element aus dem Vektor zurück.
      * 
@@ -63,27 +67,27 @@ public class Zuordnungsverwaltung
         return listeZuordnungen[n];
     }
 
-    public void addZuordnung(int arrayposition, Vector<Kunstwerk> in_kunstwerke,Vector<Raum> in_raeume)
+    /**
+     * Lege die i-te Zuordnung in der Zuordnungsverwaltung neu an
+     */
+    public void addZuordnung(int arrayposition, Vector<Kunstwerk> in_kunstwerke,Vector<Raum> in_raeume, String in_schwerpunktthema,double in_kostenobergrenze)
     {
        
-        listeZuordnungen[arrayposition]=new Zuordnung(in_kunstwerke,in_raeume);
+        listeZuordnungen[arrayposition]=new Zuordnung(in_kunstwerke,in_raeume,in_schwerpunktthema,in_kostenobergrenze);
         
     }
     
+    
+    
+    
+    // ALT:
     public void setZuordnung(int arrayposition, Zuordnung in_zuordnung)
     {
        listeZuordnungen[arrayposition]=in_zuordnung;
     }   
     
     /**
-    public void removeKunstwerk(Kunstwerk in_kunstwerk)
-    {
-        listeZuordnungen.add(in_kunstwerk);
-    }
-    */
-    
-    /**
-     * Drop die schlechtere Planung, sodass die beste Zuordnung an Stelle [0] ist
+     * Drop die schlechtere Planung, sodass die beste Zuordnung an Stelle [0] ist ==== MUSS KOMPLETT NEU GEMACHT UND GEDACHT WERDEN (ALT)
      *  
      */
     public void drop_schlechtesteAusleihe()

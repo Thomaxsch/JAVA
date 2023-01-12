@@ -19,7 +19,10 @@ public class Ausstellungsplanung2
     public Ausstellungsplanung2(Raumverwaltung raeume, Kunstwerkverwaltung kunstwerke)
     {
         this.raeume = raeume;
-        this.kunstwerke = kunstwerke;        
+        this.kunstwerke = kunstwerke; 
+        zugeordneteKunstwerke = new HashMap<Raum, List<Kunstwerk>>();
+        
+        generiereAusstellung();
     }
     
     
@@ -65,21 +68,33 @@ public class Ausstellungsplanung2
                                    
             for(Kunstwerk kunstwerk : kunstwerke2)
             {
-                if(kunstwerk.getArt() == 'I' || kunstwerk.getArt() == 'G')
+                if(kunstwerk.getArt() == 'I')
                 {
-                    if(validiereKunstinstallation((Kunstinstallation)kunstwerk, raum))
-                    {
+                    /*if(validiereKunstinstallation((Kunstinstallation)kunstwerk, raum))
+                    {*/
                         kw.add(kunstwerk);
-                    }
-                }
-                
-                
-                
-                
-                
+                        break;
+                    
+                }  
             }
+            System.out.println("Array: " + kw.size());
+            zugeordneteKunstwerke.put(raum, kw);
+        }
+        
+        for(Raum key : zugeordneteKunstwerke.keySet())
+        {
+            System.out.println("------------------------------------");
+            System.out.print("Key: " + key + " - " + "\n");
+            System.out.println("------------------------------------");
+            List<Kunstwerk> temp = zugeordneteKunstwerke.get(key);
             
-            System.out.println(raum);
+            for(Kunstwerk k : temp)
+            {
+                System.out.println(k);
+            }
+            //System.out.println(temp.size());
+            
+            
         }
     }
     
@@ -87,6 +102,7 @@ public class Ausstellungsplanung2
      * prüft ob eine Kunstinstallation genügend Abstand zu den Wänden hat 
      * @param ki Kunstinstallation die geprüft werden soll
      * @param raum Raum dem die Kunstinstallation zugeordnet werden soll
+     * @return liefert ein booleschen Wert zurück ob die Kunstinstallation in den Raum passt
      */
     private boolean validiereKunstinstallation(Kunstinstallation ki, Raum raum)
     {

@@ -21,11 +21,11 @@ public class Museum
         importiereKunstwerke("kunstwerke.csv");
         importiereRaeume("raeume.csv"); 
         
-        raeume.showRaeume();
-        kunstwerke.showKunstwerke();
+        //raeume.showRaeume();
+        //kunstwerke.showKunstwerke();
         
-        Ausstellungsplanung planung = new Ausstellungsplanung(raeume, kunstwerke); 
-        planung.generiereAusstellungskandidaten();
+        //Ausstellungsplanung planung = new Ausstellungsplanung(raeume, kunstwerke); 
+        //planung.generiereAusstellungskandidaten();
         Ausstellungsplanung2 planung2 = new Ausstellungsplanung2(raeume, kunstwerke);
     }
 
@@ -234,10 +234,10 @@ public class Museum
         }
     }
     
-    public Raumverwaltung raeume()
+    /*public Raumverwaltung raeume()
     {
         return this.raeume;
-    }
+    }*/
     
     
     
