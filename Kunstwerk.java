@@ -332,7 +332,7 @@ import java.lang.Integer;
     public String toString()
     { 
         return "Nr: " + this.laufendeNummer + ", Art des Kunstwerks: " + this.art + ", Bezeichnung: " + 
-        this.bezeichnung + "Breite" + this.breite;
+        this.bezeichnung + ", Breite " + this.breite;
     }
     
     @Override

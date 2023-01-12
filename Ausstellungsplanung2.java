@@ -77,7 +77,6 @@ public class Ausstellungsplanung2
                     
                 }  
             }
-            System.out.println("Array: " + kw.size());
             zugeordneteKunstwerke.put(raum, kw);
         }
         
