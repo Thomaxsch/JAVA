@@ -19,7 +19,10 @@ public class Ausstellungsplanung2
     public Ausstellungsplanung2(Raumverwaltung raeume, Kunstwerkverwaltung kunstwerke)
     {
         this.raeume = raeume;
-        this.kunstwerke = kunstwerke;        
+        this.kunstwerke = kunstwerke; 
+        zugeordneteKunstwerke = new HashMap<Raum, List<Kunstwerk>>();
+        
+        generiereAusstellung();
     }
     
     
@@ -31,8 +34,8 @@ public class Ausstellungsplanung2
      */
     public void generiereAusstellung()
     {
-        Vector<Raum> raeume2 = raeume.getRaumVector();
-        
+        Vector<Raum> raeume2 = (Vector<Raum>) raeume.getRaumVector().clone();
+
         //Comparator<Raum>
         Vector<Kunstwerk> kunstwerke2 = kunstwerke.sortAttraktivitaet();
         // Abstand der Kunstwerke von den Ecken eines Raums muss 1 Meter (100 cm) entsprechen
@@ -65,21 +68,30 @@ public class Ausstellungsplanung2
                                    
             for(Kunstwerk kunstwerk : kunstwerke2)
             {
-                if(kunstwerk.getArt() == 'I' || kunstwerk.getArt() == 'G')
+                if(kunstwerk.getArt() == 'I')
                 {
                     if(validiereKunstinstallation((Kunstinstallation)kunstwerk, raum))
                     {
                         kw.add(kunstwerk);
-                    }
+                        kunstwerke2.remove(kunstwerk);
+                        break;
+                     }
                 }
-                
-                
-                
-                
-                
             }
+            zugeordneteKunstwerke.put(raum, kw);
+        }
+        
+        for(Raum key : zugeordneteKunstwerke.keySet())
+        {
+            System.out.println("------------------------------------");
+            System.out.print("Key: " + key + " - " + "\n");
+            System.out.println("------------------------------------");
+            List<Kunstwerk> temp = zugeordneteKunstwerke.get(key);
             
-            System.out.println(raum);
+            for(Kunstwerk k : temp)
+            {
+                System.out.println(k);
+            } 
         }
     }
     
@@ -87,25 +99,21 @@ public class Ausstellungsplanung2
      * prüft ob eine Kunstinstallation genügend Abstand zu den Wänden hat 
      * @param ki Kunstinstallation die geprüft werden soll
      * @param raum Raum dem die Kunstinstallation zugeordnet werden soll
+     * @return liefert ein booleschen Wert zurück ob die Kunstinstallation in den Raum passt
      */
     private boolean validiereKunstinstallation(Kunstinstallation ki, Raum raum)
     {
-    int abstandBreite = ki.getBreite() - raum.getLaengeRaum();
-    int abstandLaenge = ki.getLaenge() - raum.getLaengeRaum();
+        int abstandBreite = raum.getBreiteRaum()- ki.getBreite();
+        int abstandLaenge = raum.getLaengeRaum()- ki.getLaenge();
     
-    // Abstand zu einer Wand muss mindestens 2 Meter (= 200 cm) betragen, d.h 400 cm insgesamt
-    if(abstandBreite > 400 && abstandLaenge > 400)
-    {
-        return true;
-    }
-    else
-    {
-        return false;    
-    }
-    
-    
-    
-    
-    
+        // Abstand zu jeder Wand mindestens 2 Meter (= 200 cm) betragen, d.h 400 cm insgesamt
+        if(abstandBreite > 400 && abstandLaenge > 400)
+        {
+            return true;
+        }
+        else
+        {
+            return false;    
+        }
     }
 }

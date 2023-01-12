@@ -95,6 +95,16 @@ public class Zuordnung
         // Rufe die konkreten verfügbaren Distanzen via Methode der Klasse Raum ab:
         for (i=0;i<raeumeArray.length;i++)
         {
+<<<<<<< HEAD
+            verfuegbarWandWest[i]=raeumeArray[i].showWandWest();  // TO DO: netto-Wert abrufen    ===> in KLASSE Raum/Raumverwaltung
+            verfuegbarWandOst[i]=raeumeArray[i].showWandOst();  // TO DO: netto-Wert abrufen
+            verfuegbarWandNord[i]=raeumeArray[i].showWandNord();  // TO DO: netto-Wert abrufen
+            verfuegbarWandSued[i]=raeumeArray[i].showWandSued();  // TO DO: netto-Wert abrufen
+            verfuegbarLaengeRaum[i]=raeumeArray[i].showWandNord();// TO DO: netto-Wert abrufen
+            verfuegbarBreiteRaum[i]=raeumeArray[i].showWandOst();// TO DO: netto-Wert abrufen
+            verfuegbarHoeheRaum[i]=raeumeArray[i].getHoeheRaum();
+            
+=======
             verfuegbarWandWest[i]=raeumeArray[i].showWandWest();
             verfuegbarWandOst[i]=raeumeArray[i].showWandOst();
             verfuegbarWandNord[i]=raeumeArray[i].showWandNord();  
@@ -102,6 +112,7 @@ public class Zuordnung
             verfuegbarLaengeRaum[i]=raeumeArray[i].showVerfuegbareLaenge();
             verfuegbarBreiteRaum[i]=raeumeArray[i].showVerfuegbareBreite();
             verfuegbarHoeheRaum[i]=raeumeArray[i].showVerfuegbareHoehe();
+>>>>>>> 1119c03a7038306d226844bd1f5f7d9a77c28d33
         }
         
         // Initialisiere die äußere Arraylist von denRaeumenZugeordneteKunstwerke
