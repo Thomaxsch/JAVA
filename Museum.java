@@ -18,9 +18,11 @@ public class Museum
         raeume = new Raumverwaltung();
         kunstwerke = new Kunstwerkverwaltung();
         
+        
         importiereKunstwerke("kunstwerke.csv");
         importiereRaeume("raeume.csv"); 
         
+            
         //raeume.showRaeume();
         //kunstwerke.showKunstwerke();
         

@@ -76,7 +76,7 @@ public class Kunstwerkverwaltung
             System.out.println(kw);
         }
     }
-
+    
     /**
      * Methode zum Sortieren der Kunstwerke aus dem Vector nach deren Attrakvitaet. 
      */
