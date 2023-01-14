@@ -58,8 +58,8 @@ public class Kunstwerkverwaltung
         return kunstwerkVector.size();
     }
     
-    /** Loescht alle Kunstwerke aus dem Vektor der Kunstwerkverwaltung.
-     * 
+    /** 
+     * Loescht alle Kunstwerke aus dem Vektor der Kunstwerkverwaltung.
      */
     public void clearKunstwerkverwaltung()
     {
@@ -68,8 +68,6 @@ public class Kunstwerkverwaltung
     
     /**
      * Methode zur Umsetzung des Aufrufens aller Kunstwerke innerhalb der Vektorliste 
-     * 
-     * @return gibt die Möglichkeit zum Zugriff auf alle Kunstwerke aus dem Vector zurück. 
      */
     public void showKunstwerke()
     {
@@ -78,13 +76,11 @@ public class Kunstwerkverwaltung
             System.out.println(kw);
         }
     }
-    
+
     /**
-     * Methode zum Sortieren der Kunstwerke aus dem Vector nach deren Kosten. 
-     * 
-     * @return Gibt eine nach Kosten sortierte Liste der Kunstwerke innerhalb des Vectors zurück. 
+     * Methode zum Sortieren der Kunstwerke aus dem Vector nach deren Attrakvitaet. 
      */
-    public void sortKosten()
+    public void sortAttraktivitaet()
     {
         Collections.sort(kunstwerkVector);
         for (Kunstwerk kw: kunstwerkVector){
@@ -93,15 +89,35 @@ public class Kunstwerkverwaltung
     }
     
     /**
-     * Methode zum Sortieren der Kunstwerke aus dem Vector nach deren Attrakvitaet. 
-     * 
-     * @return Gibt eine nach Attraktivitaet sortierte Liste der Kunstwerke innerhalb des Vectors zurück.
+     * Methode zum Ermitteln eines Kunstwerkes anhand seiner laufendenNummer
      */
-    public Vector<Kunstwerk> sortAttraktivitaet()
+    public void showKunstwerkByLaufendeNummer(short in_laufendeNummer) {
+    boolean found = false;
+    for (Kunstwerk kw : kunstwerkVector) {
+        if (kw.getLaufendeNummer() == in_laufendeNummer) 
+        {
+            System.out.println(kw);
+            found = true;
+            break;
+        }   
+    }   
+    if(!found)
+        System.out.println("Es wurde kein Kunstwerk zur LaufendenNummer gefunden");
+    }    
+      /*
+    /**
+     * Methode zum Sortieren der Kunstwerke aus dem Vector nach deren Kosten. 
+     * 
+
+    public void sortKosten()
     {
-        return kunstwerkVector;//Code zum sortieren der Kunstwerke nach der Attraktivitaet --> Collections.sort mit Parameter kunstwerk.attraktivitaetswert 
+        Collections.sort(kunstwerkVector);
+        for (Kunstwerk kw: kunstwerkVector){
+            System.out.println(kw); 
+        }
     }
-    
+    */ 
+       
 }
 
 

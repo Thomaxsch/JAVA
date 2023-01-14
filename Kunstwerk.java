@@ -336,8 +336,16 @@ import java.lang.Integer;
     }
     
     @Override
+    public int compareTo(Kunstwerk k)
+    {
+        return Integer.compare(this.attraktivitaetswert, k.attraktivitaetswert);
+    }
+     /*
+    @Override
     public int compareTo(Kunstwerk k) 
     {
         return Integer.compare(this.kosten, k.kosten);
     }
+    */
 }
+
