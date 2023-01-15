@@ -36,7 +36,13 @@ public class Kunstwerkverwaltung
      */
     public void addKunstwerk(Kunstwerk in_kunstwerk)
     {
-        kunstwerkVector.add(in_kunstwerk);
+        if (!kunstwerkVector.contains(in_kunstwerk)){
+            kunstwerkVector.add(in_kunstwerk);
+        }
+        else {
+            System.out.println("Kunstwerk ist bereits in der Kunstwerkverwaltung enthalten. Es kann nicht erneut hinzugefuegt werden");
+        }
+        
     }
     
     /** 
@@ -46,8 +52,13 @@ public class Kunstwerkverwaltung
      */
     public void removeKunstwerk(Kunstwerk in_kunstwerk)
     {
-        kunstwerkVector.remove(in_kunstwerk);
-    }
+        if (kunstwerkVector.contains(in_kunstwerk)){
+            kunstwerkVector.removeElement(in_kunstwerk);
+        }
+        else {
+            System.out.println("Kunstwerk ist nicht in der Kunstwerkverwaltung enthalten. Es kann nicht entfernt werden");
+        }
+    }   
     
     /** Ermittelt die Anzahl an Kunstwerken in der Vektorliste der Kunstwerkverwaltung .
      *  
@@ -67,57 +78,77 @@ public class Kunstwerkverwaltung
     }
     
     /**
-     * Methode zur Umsetzung des Aufrufens aller Kunstwerke innerhalb der Vektorliste 
+     * Methode zur Umsetzung des Aufrufens aller Kunstwerke innerhalb der Vektorliste
+     * @return den Vector der Kunstwerkverwaltung
+     */
+    public Vector <Kunstwerk> getKunstwerkVector()
+    {
+        return kunstwerkVector;
+    }
+    
+     /**
+     * Gibt eine textuelle Beschreibung aller Kunstwerke im Vector aus 
      */
     public void showKunstwerke()
     {
-        for(Kunstwerk kw : kunstwerkVector)
+        for(Kunstwerk kw : kunstwerkVector) 
         {
             System.out.println(kw);
         }
-    }
+    } 
     
+    //Methoden für die Zuordnung
     /**
      * Methode zum Sortieren der Kunstwerke aus dem Vector nach deren Attrakvitaet. 
+     * 
+     * @return den Vector sortiert nach der Attraktvitaet in absteigender Reihenfolge. 
      */
-    public void sortAttraktivitaet()
+    public Vector <Kunstwerk> sortAttraktivitaet()
     {
-        Collections.sort(kunstwerkVector);
-        for (Kunstwerk kw: kunstwerkVector){
-            System.out.println(kw); 
-        }
-    }
+        Collections.sort(kunstwerkVector, Collections.reverseOrder()); 
+        //das "reverseOrder" sorgt dafür, dass das Kunstwerk mit der höchsten Attraktivitaet zu erst angezeigt wird. 
+        return kunstwerkVector;
+        }   
     
     /**
      * Methode zum Ermitteln eines Kunstwerkes anhand seiner laufendenNummer
      */
-    public void showKunstwerkByLaufendeNummer(short in_laufendeNummer) {
+    public Vector <Kunstwerk> showKunstwerkZuLaufendeNummer(short in_laufendeNummer) {
     boolean found = false;
     for (Kunstwerk kw : kunstwerkVector) {
         if (kw.getLaufendeNummer() == in_laufendeNummer) 
         {
             System.out.println(kw);
             found = true;
-            break;
         }   
     }   
     if(!found)
+        {
         System.out.println("Es wurde kein Kunstwerk zur LaufendenNummer gefunden");
-    }    
-      /*
-    /**
-     * Methode zum Sortieren der Kunstwerke aus dem Vector nach deren Kosten. 
-     * 
-
-    public void sortKosten()
-    {
-        Collections.sort(kunstwerkVector);
-        for (Kunstwerk kw: kunstwerkVector){
-            System.out.println(kw); 
+        return null;
         }
+        return kunstwerkVector;
+    }  
+    
+    /**
+     * Methode, welche überprüft, ob noch genügend Platz für den Kunstgegenstand in einem Raum übrig ist
+     * 
+     * @return false = kein Platz vorhanden. true = ausreichend Platz vorhanden. 
+     */
+    public boolean checkPlatzfürKG (int in_hoehe, int in_breite)
+    {
+        return false; //muss noch geschrieben werden
     }
-    */ 
-       
+    /**
+     * Methode, welche überprüft, ob noch genügend Platz für das Bild in einem Raum übrig ist
+     * 
+     * @return false = kein Platz vorhanden. true = ausreichend Platz vorhanden
+     */
+    public boolean checkPlatzfürBild (int in_hoehe, int in_breite)
+    {
+        return false; //muss noch geschrieben werden
+    }
+    
 }
 
 
