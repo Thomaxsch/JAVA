@@ -63,7 +63,7 @@ public class Zuordnung
         kunstwerkeArray = new Kunstwerk [in_kunstwerkverwaltung.sizeKunstwerkverwaltung()];
         int i = 0;
         for (Kunstwerk kw: in_kunstwerkverwaltung.sortAttraktivitaet()) {
-            kunstwerkeArray[i]=(Kunstwerk) k; // cast glaub ich unnötig?
+            kunstwerkeArray[i]=(Kunstwerk) kw; // cast glaub ich unnötig?
             i++;
         }
         

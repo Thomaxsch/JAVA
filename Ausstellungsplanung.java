@@ -110,7 +110,7 @@ public class Ausstellungsplanung
            
            System.out.println(
                "Lege an Zuordnung Nr."+Integer.toString(i) +
-               " für bis zu " + Integer.toString(kunstwerkverwaltung.sizeAngebotsverwaltung()) +
+               " für bis zu " + Integer.toString(kunstwerkverwaltung.sizeKunstwerkverwaltung()) +
                " Kunstwerke und " + Integer.toString(raumverwaltung.anzahlRaeume()) + " Räume");
            
            zuordnungsverwaltung.addZuordnung(i,kunstwerkverwaltung,raumverwaltung,schwerpunktthema,kostenobergrenze);
