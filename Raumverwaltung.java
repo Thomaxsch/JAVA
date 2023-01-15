@@ -1,6 +1,7 @@
 // Importiert die Klasse Vector
 import java.util.Vector;
 import java.util.*;
+import java.lang.Math;
 
 /**
  * Die Klasse Raumverwaltung ist eine Containerklasse und dient zur Verwaltung von Objekten der Klasse "Raum".
@@ -18,20 +19,30 @@ public class Raumverwaltung
     private Vector<Raum> raumVector;
         
     //Konstruktor der Klasse Raumverwaltung
-    /** Konstruktor fuer Objekte der Klasse Raum. Dieser Konstrukter erzeugt eine leere Raumverwaltung.
+    /** Konstruktor fuer Objekte der Klasse Raum. 
+     *  Dieser Konstruktor erzeugt eine leere Raumverwaltung.
      */
         public Raumverwaltung()
     {
     // Anlegen eines neuen Vectorobjektes
         raumVector = new Vector<Raum>();
     }
-    
+       
     //=============================================================
     //Methoden zur Verwaltung der Klasse Raumverwaltung
     //=============================================================
-  
+    //muss noch gemacht werden
+    /** Ermittelt den Vector der Raumverwaltung.
+     *  @return  Den Vector der Raumverwaltung.
+     */
+    
+    public Vector<Raum> getRaumVector()
+    { 
+        return raumVector;
+    }
+    
     /** Fügt einen Raum der Raumverwaltung zu.
-     *  @param  raum  Ein Objekt der Klasse Raum, das hinzugefuegt werden soll. 
+     *  @param  inRaum  Ein Objekt der Klasse Raum, das hinzugefuegt werden soll. 
      */
     public void addRaum(Raum inRaum)
     {
@@ -57,7 +68,7 @@ public class Raumverwaltung
     }
     
     /** Entfernt einen Raum aus der Raumverwaltung.
-     *  @param  raum  Ein Objekt der Klasse Raum, das entfernt werden soll.
+     *  @param  inRaum  Ein Objekt der Klasse Raum, das entfernt werden soll.
      */
     public void removeRaum(Raum inRaum)
     {
@@ -69,23 +80,6 @@ public class Raumverwaltung
         }
     }
     
-    /** Ermittelt die Anzahl an Raeumen in der Raumverwaltung.
-     *  @return Die Anzahl der Objekte der Klasse Raum in der Raumverwaltung.
-     */
-    public int anzahlRaeume()
-    {
-        return raumVector.size();
-    }
-    
-    //muss noch gemacht werden
-    /** Ermittelt die Anzahl der Haelfte der Raeume in der Raumverwaltung (aufgerundet).
-     *  @return Die Anzahl der der Haelfte der Objekte der Klasse Raum in der Raumverwaltung.
-     */
-    public int anzahlHaelfteRaeume()
-    {
-        return raumVector.size();
-    }
-    
     /** Loescht alle Raeume aus der Raumverwaltung.
      * 
      */
@@ -94,8 +88,29 @@ public class Raumverwaltung
         raumVector.clear();
     }
     
-    //uebernommen und angepasst von "Wald"-Beispiel/ muss noch gemacht werden
-    //benoetigt fuer die Methode zufaelligerRaum
+    /** Ermittelt die Anzahl der Raeume in der Raumverwaltung.
+     *  @return Die Anzahl der Objekte der Klasse Raum in der Raumverwaltung.
+     */
+    public int anzahlRaeume()
+    {
+        return raumVector.size();
+    }
+    
+    /** Ermittelt die Anzahl der Haelfte der Raeume in der Raumverwaltung (aufgerundet).
+     *  @return Die Anzahl der der Haelfte der Objekte der Klasse Raum in der Raumverwaltung.
+     */
+    public int anzahlHaelfteRaeume()
+    {
+        // liest die Anzahl der Raeume in der Raumverwaltung
+        int anzahlRaeume = raumVector.size();
+        // teilt die Anzahl der Raeume durch 2 
+        double anzahlRaeumeGenau = (double)anzahlRaeume / 2;
+        // rundet das Ergbenis auf
+        int haelfteRaeumeAufgerundet = (int)Math.ceil(anzahlRaeumeGenau);
+        // gibt das Ergebnis aus
+        return haelfteRaeumeAufgerundet;
+    }
+    
     /** Gibt einen Raum nach seiner Indexnummer in der Raumverwaltung zurueck.
      *  @param      Indexnummer in der Raumverwaltung
      *  @return     Raum mit dieser Indexnummer
@@ -104,17 +119,7 @@ public class Raumverwaltung
     {
         return  (Raum)raumVector.elementAt(index);
     }
-    
-    //muss noch gemacht werden
-    /** Ermittelt den Vector der Raumverwaltung.
-     *  @return  Den Vector der Raumverwaltung.
-     */
-    
-    public Vector<Raum> getRaumVector()
-    { 
-        return raumVector;
-    }
-    
+       
     //uebernommen und angepasst von "Wald"-Beispiel/ muss noch gemacht werden
     /** Sucht einen zufaelligen Raum aus der Raumverwaltung aus.
      *  @return Zufaelliger Raum aus der Raumverwaltung
@@ -124,12 +129,12 @@ public class Raumverwaltung
         // liest die Anzahl der Raeume in der Raumverwaltung
         int anzahlRaeume = raumVector.size();
         // ermittelt Zufallszahl zwischen 0.0 und 1.0
-        double zw_random = Math.random();
+        double zahlRandom = Math.random();
         // berechnet die zufaellige Nummer,die die Position des Elements im Vector angibt.
-        int auswahlRaumNr = (int)(zw_random * anzahlRaeume);
+        int auswahlRaumNr = (int)(zahlRandom * anzahlRaeume);
         // liest das entsprechende Element aus dem Vector
         return inRaumverwaltung.getRaum(auswahlRaumNr);
-    }
+        }
     
     //muss noch gemacht werden
     // Für alle Kunstwerke relevant:Raeume raussuchen nach verfuegbareHoehe 
