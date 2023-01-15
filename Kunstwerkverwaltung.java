@@ -76,7 +76,8 @@ public class Kunstwerkverwaltung
             System.out.println(kw);
         }
     }
-
+    
+    //Methoden für die Zuordnung
     /**
      * Methode zum Sortieren der Kunstwerke aus dem Vector nach deren Attrakvitaet. 
      */
@@ -87,23 +88,6 @@ public class Kunstwerkverwaltung
             System.out.println(kw); 
         }
     }
-    
-    /**
-     * Methode zum Ermitteln eines Kunstwerkes anhand seiner laufendenNummer
-     */
-    public void showKunstwerkByLaufendeNummer(short in_laufendeNummer) {
-    boolean found = false;
-    for (Kunstwerk kw : kunstwerkVector) {
-        if (kw.getLaufendeNummer() == in_laufendeNummer) 
-        {
-            System.out.println(kw);
-            found = true;
-            break;
-        }   
-    }   
-    if(!found)
-        System.out.println("Es wurde kein Kunstwerk zur LaufendenNummer gefunden");
-    }    
       /*
     /**
      * Methode zum Sortieren der Kunstwerke aus dem Vector nach deren Kosten. 
@@ -118,6 +102,42 @@ public class Kunstwerkverwaltung
     }
     */ 
        
+    /**
+     * Methode zum Ermitteln eines Kunstwerkes anhand seiner laufendenNummer
+     */
+    public void showKunstwerkZuLaufendeNummer(short in_laufendeNummer) {
+    boolean found = false;
+    for (Kunstwerk kw : kunstwerkVector) {
+        if (kw.getLaufendeNummer() == in_laufendeNummer) 
+        {
+            System.out.println(kw);
+            found = true;
+            break;
+        }   
+    }   
+    if(!found)
+        System.out.println("Es wurde kein Kunstwerk zur LaufendenNummer gefunden");
+    }    
+    
+    /**
+     * Methode, welche überprüft, ob noch genügend Platz für den Kunstgegenstand in einem Raum übrig ist
+     * 
+     * @return false = kein Platz vorhanden. true = ausreichend Platz vorhanden. 
+     */
+    public boolean checkPlatzfürKG (int in_hoehe, int in_breite)
+    {
+        return false; //muss noch geschrieben werden
+    }
+    /**
+     * Methode, welche überprüft, ob noch genügend Platz für das Bild in einem Raum übrig ist
+     * 
+     * @return false = kein Platz vorhanden. true = ausreichend Platz vorhanden
+     */
+    public boolean checkPlatzfürBild (int in_hoehe, int in_breite)
+    {
+        return false; //muss noch geschrieben werden
+    }
+    
 }
 
 

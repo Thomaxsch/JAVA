@@ -62,7 +62,7 @@ public class Zuordnung
         // Aus der Kunstwerkverwaltung den Vector zu Kunstwerken abrufen und in Array umwandeln
         kunstwerkeArray = new Kunstwerk [in_kunstwerkverwaltung.sizeKunstwerkverwaltung()];
         int i = 0;
-        for (Kunstwerk k: in_kunstwerkverwaltung.sortAttraktivitaet()) {
+        for (Kunstwerk kw: in_kunstwerkverwaltung.sortAttraktivitaet()) {
             kunstwerkeArray[i]=(Kunstwerk) k; // cast glaub ich unnötig?
             i++;
         }
