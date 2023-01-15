@@ -326,7 +326,7 @@ import java.lang.Integer;
     /**
      * Methode gibt eine lesbare Beschreibung eines Kunstwerks aus
      * 
-     * @return Beschreibung
+     * @return Beschreibung der Kunstwerke
      */
     @Override
     public String toString()
@@ -335,10 +335,16 @@ import java.lang.Integer;
         this.bezeichnung + ", Breite " + this.breite;
     }
     
+    /**
+     * Methode, welche vorgibt, dass die Attraktivitaet zwischen Kunstwerken verglichen werden kann und 
+     * somit die Kunstwerkverwaltung in der Lage ist Kunstwerke nach deren Attraktivitaet zu sortieren. 
+     * 
+     * @return Übergabe der verglichenen Attraktivitaetswerte
+     */
     @Override
-    public int compareTo(Kunstwerk k)
+    public int compareTo(Kunstwerk kw)
     {
-        return Integer.compare(this.attraktivitaetswert, k.attraktivitaetswert);
+        return Integer.compare(this.attraktivitaetswert, kw.attraktivitaetswert);
     }
      /*
     @Override
