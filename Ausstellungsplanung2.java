@@ -36,20 +36,26 @@ public class Ausstellungsplanung2
     public void generiereAusstellung()
     {
         Vector<Raum> raeume2 = (Vector<Raum>) raeume.getRaumVector().clone();
-
+        
         //Comparator<Raum>
-        Vector<Kunstwerk> kunstwerke2 = (Vector<Kunstwerk>) kunstwerke.sortAttraktivitaet().clone();
-        Vector<Kunstwerk> kunstwerke3 = (Vector<Kunstwerk>) kunstwerke.sortAttraktivitaet().clone();
+        Vector<Kunstwerk> kunstwerke2 = (Vector<Kunstwerk>) kunstwerke.getKunstwerkVector().clone();
+        Vector<Kunstwerk> kunstwerke3 = (Vector<Kunstwerk>) kunstwerke.getKunstwerkVector().clone();
+        
+        //ListIterator<Kunstwerk> kunstiter = kunstwerke2.listIterator();
+                
         // Abstand der Kunstwerke von den Ecken eines Raums muss 1 Meter (100 cm) entsprechen
         int abstandEcke = 100;
         
     for(Raum raum : raeume2) 
     {
-        List<Kunstwerk> kw = new ArrayList<Kunstwerk>();           
+        List<Kunstwerk> kw = new ArrayList<Kunstwerk>();  
+        
         // Höhe des Raums ermitteln
         int hoeheRaum = raum.getHoeheRaum();
+        int zugeordneteInstallationenProRaum = 0;
+        int zugeordneteKunstwerkeProRaum = 0;
         
-        int zugeordneteKunstwerkeZuRaum = 0;
+        ListIterator<Kunstwerk> kunstiter = kunstwerke2.listIterator();
             
         // verfügbare Nettolänge einer Wand berechnen: Nettolänge = Bruttolänge - (abstandEcke * 2) 
         //- Türbreite
@@ -57,42 +63,87 @@ public class Ausstellungsplanung2
         int verfuegbareLaengeSued = raum.getLaengeRaum() - (abstandEcke * 2) - raum.getTuerSued();
         int verfuegbareBreiteOst  = raum.getBreiteRaum() - (abstandEcke * 2) - raum.getTuerOst();
         int verfuegbareBreiteWest = raum.getBreiteRaum() - (abstandEcke * 2) - raum.getTuerWest();
-                                   
-        for(Kunstwerk kunstwerk : kunstwerke2)
+                         
+        while(kunstiter.hasNext())
         {   
-            if(kunstwerk.getArt() == 'I')
-            {
-              if(validiereKunstinstallation((Kunstinstallation)kunstwerk, raum) && zugeordneteKunstwerkeZuRaum < 1)
-              {
-                kw.add(kunstwerk);
-                zugeordneteKunstwerkeZuRaum++;
-                continue;
-              }
-            }
+            Kunstwerk temp = kunstiter.next();
             
-            /*if(kunstwerk.getArt() == 'B')
+            // wenn die Anzahl der zugeordneten Kunstinstallation den Wert 1 überschreitet, dann braucht die Aufnahme weiterer Kunstwerke nicht geprüft werden
+            if(zugeordneteInstallationenProRaum < 1)
             {
-              boolean gueltigeHoehe = false;
-              if(kunstwerk.getHoehe() <= hoeheRaum)
-              gueltigeHoehe = true;
-                    
-              if(kunstwerk.getBreite() <= verfuegbareLaengeNord && gueltigeHoehe)
-              {
-                kw.add(kunstwerk);
-                verfuegbareLaengeNord = kunstwerk.getBreite() - 1;
-                kunstwerke2.remove(kunstwerk);
-                continue;
-              }        
-            }*/
+                // Prüft ob eine Kunstinstallation der Ausstellung hinzugefügt werden kann
+                if(temp.getArt() == 'I')
+                {
+                  if(validiereKunstinstallation((Kunstinstallation)temp, raum) && zugeordneteKunstwerkeProRaum < 1)
+                  {
+                    kw.add(temp);
+                    kunstiter.remove();
+                    zugeordneteInstallationenProRaum++; 
+                    zugeordneteKunstwerkeProRaum++; 
+                    continue;
+                  }
+                }
                 
-            if(kunstwerk.getArt() == 'G')
-            {
-                   
+                // Prüft ob ein Bild der Ausstellung hinzugefügt werden kann
+                if(temp.getArt() == 'B')
+                {
+                  boolean gueltigeHoehe = false;
+                  if(temp.getHoehe() <= hoeheRaum)
+                      gueltigeHoehe = true;
+              
+                  // Prüft ob noch Platz auf der nördlichen Wand ist und fügt das Kunstwerk bei Platz hinzu
+                  if(temp.getBreite() <= verfuegbareLaengeNord && gueltigeHoehe)
+                  {
+                    kw.add(temp);
+                    kunstiter.remove();
+                    verfuegbareLaengeNord -= temp.getBreite() - 1;
+                    zugeordneteKunstwerkeProRaum++; 
+                    continue;
+                  } 
+              
+                  // Prüft ob noch Platz auf der südlichen Wand ist und fügt das Kunstwerk bei Platz hinzu
+                  if(temp.getBreite() <= verfuegbareLaengeSued && gueltigeHoehe)
+                  {
+                    kw.add(temp);
+                    kunstiter.remove();
+                    verfuegbareLaengeSued -= temp.getBreite() - 1;
+                    zugeordneteKunstwerkeProRaum++; 
+                    continue;
+                  } 
+              
+                  // Prüft ob noch Platz auf der östlichen Wand ist und fügt das Kunstwerk bei Platz hinzu
+                  if(temp.getBreite() <= verfuegbareBreiteOst && gueltigeHoehe)
+                  {
+                    kw.add(temp);
+                    kunstiter.remove();
+                    verfuegbareBreiteOst -= temp.getBreite() - 1;
+                    zugeordneteKunstwerkeProRaum++; 
+                    continue;
+                  } 
+              
+                  // Prüft ob noch Platz auf der westlichen Wand ist und fügt das Kunstwerk bei Platz hinzu
+                  if(temp.getBreite() <= verfuegbareBreiteWest && gueltigeHoehe)
+                  {
+                    kw.add(temp);
+                    kunstiter.remove();
+                    verfuegbareBreiteWest -= temp.getBreite() - 1;
+                    zugeordneteKunstwerkeProRaum++; 
+                    continue;
+                  } 
+            }
+                // Prüft ob ein Kunstgegenstand der Ausstellung hinzugefügt werden kann
+                  if(temp.getArt() == 'G')
+                {
+                  
+                }  
+               
+            continue;
             }
         }
-        
-        zugeordneteKunstwerke.put(raum, kw);
-    }
+         zugeordneteKunstwerke.put(raum, kw);
+        }
+       
+    
 }
 
 public void gebeAus()
@@ -100,7 +151,7 @@ public void gebeAus()
     for(Raum key : zugeordneteKunstwerke.keySet())
     {
             System.out.println("------------------------------------");
-            System.out.print("Key: " + key + " - " + "\n");
+            System.out.print("Raum: " + key + " - " + "\n");
             System.out.println("------------------------------------");
             List<Kunstwerk> temp = zugeordneteKunstwerke.get(key);
             
@@ -111,6 +162,13 @@ public void gebeAus()
     }
 }
 
+/**
+ * Prüft ob ein Bild mit der geforderten Temperatur und Luftfeuchte in den Raum aufgenommen werden darf
+ */
+private boolean validiereTemperaturLuftfeuchte(Kunstwerk kw, Raum raum)
+{
+    return true;
+}
 
     /**
      * prüft ob eine Kunstinstallation genügend Abstand zu den Wänden hat 
