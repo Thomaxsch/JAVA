@@ -177,8 +177,8 @@ public class Zuordnung
                     verfuegbarWandWest[i],verfuegbarWandOst[i],verfuegbarWandNord[i],verfuegbarWandSued[i], // relevant für Bilder (vier Wände)
                     verfuegbarLaengeRaum[i],verfuegbarBreiteRaum[i],                                        // relevant für G und I (laengs/quer bzw Raumfläche)
                     verfuegbarHoeheRaum[i],                                                                 // relevant für alle KW
-                    restbudget,                                                                             // verfügbares Restbudget
-                    kunstwerkeSchonZugeordnet                                                               // bisher platzierte Kunstwerke
+                    restbudget,                                                                             // verfügbares Restbudget (double)
+                    kunstwerkeSchonZugeordnet                                                               // bisher platzierte Kunstwerke (Arraylist)
                 ); 
             }
             catch (Exception e){ 
