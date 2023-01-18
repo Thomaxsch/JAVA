@@ -63,6 +63,9 @@ public class Ausstellungsplanung2
         int verfuegbareLaengeSued = raum.getLaengeRaum() - (abstandEcke * 2) - raum.getTuerSued();
         int verfuegbareBreiteOst  = raum.getBreiteRaum() - (abstandEcke * 2) - raum.getTuerOst();
         int verfuegbareBreiteWest = raum.getBreiteRaum() - (abstandEcke * 2) - raum.getTuerWest();
+        
+        // Länge des Raums ermitteln um mehrere Kunstgegenstände anzuordnen, dabei werden für die Länge und Breite des Raums jeweils schon 1 Meter abgezogen (Mindestabstand zu den Wänden)
+        double nettoFlaecheRaum = (raum.getBreiteRaum() - 200) * (raum.getLaengeRaum() - 200);
                          
         while(kunstiter.hasNext())
         {   
@@ -132,8 +135,23 @@ public class Ausstellungsplanung2
                   } 
             }
                 // Prüft ob ein Kunstgegenstand der Ausstellung hinzugefügt werden kann
-                  if(temp.getArt() == 'G')
+                if(temp.getArt() == 'G')
                 {
+                    Kunstgegenstand kg = (Kunstgegenstand) temp;
+                    
+                    // berechnet die benötigte Fläche eines Kunstgegenstandes, auf die Breite und Länge werden 200 cm addiert um den Abstand von 1 Meter zu anderen 
+                    // Kunstgegenständen zu gewährleisten bzw. den Gesamtabstand von 2 Meter zu der jeweiligen Wand zu gewährleisten, wenn der Kunstgegenstand direkt 
+                    // in der Nähe einer Wand platziert wird
+                    double benoetigteFlaecheKunstgegenstand = (kg.getBreite() + 200) * (kg.getLaenge() + 200);
+                    
+                    if(benoetigteFlaecheKunstgegenstand <= nettoFlaecheRaum)
+                    {
+                        kw.add(temp);
+                        kunstiter.remove();
+                        nettoFlaecheRaum -= benoetigteFlaecheKunstgegenstand;
+                    }
+                    
+                    continue;
                   
                 }  
                
@@ -182,6 +200,27 @@ private boolean validiereTemperaturLuftfeuchte(Kunstwerk kw, Raum raum)
         int abstandLaenge = raum.getLaengeRaum()- ki.getLaenge();
     
         // Abstand zu jeder Wand mindestens 2 Meter (= 200 cm) betragen, d.h 400 cm insgesamt
+        if(abstandBreite > 400 && abstandLaenge > 400)
+        {
+            return true;
+        }
+        else
+        {
+            return false;    
+        }
+    }
+    
+    /**
+     * prüft ob ein Kunstgegenstand genügend Abstand zu den Wänden, mindestens 2 Meter
+     * Optimierung bestände darin, dass bei ausreichender Breite mehrere Kunstgegenstände auch inder Breite angeordnet werden
+     * aktuell wird nur die Länge geprüft, evtl. dadurch prüfen das der Raum immer weiter verkleinert wird, oder  eine Maße des Raumes herangezogen wird, die jeweils schon 2 Meter an jeder
+     * Ecke kleiner ist
+     */
+    private boolean validiereKunstgegenstand(Kunstgegenstand kg, Raum raum, int verfuegbareLaengeNord)
+    {
+        int abstandBreite = raum.getBreiteRaum() - kg.getBreite();
+        int abstandLaenge = raum.getLaengeRaum() - kg.getLaenge();
+        
         if(abstandBreite > 400 && abstandLaenge > 400)
         {
             return true;
