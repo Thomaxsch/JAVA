@@ -27,36 +27,38 @@ public class Kunstgegenstand extends Kunstwerk
     /**
      * Konstruktor für Objekte der Klasse Kunstgegenstand mit Parameter
      * 
-     * @param laufendeNummer            Dieser short entspricht der laufenden Nummer des Kunstwerkes
-     * @param art                       Dieser char entspricht der Art des Kunstwerkes (Bild "B", Kunstinstallation "I", Kunstgegenstand "G")
-     * @param bezeichnung               Dieser String entspricht der Bezeichnung des Kunstwerkes.
-     * @param in_kuenstler              Dieser String entspricht dem Namen des Künstlers.
-     * @param jahr                      Dieser String entspricht dem Jahr, in dem das Kunstwerk erstellt wurde.
-     * @param thema                     Dieser String entspricht dem Thema, welches dem Kunstwerk zugeordnet wurde.
-     * @param attraktivitaetswert       Dieser int entspricht der Attraktivität des Objekts in % (Bewertung durch Herrn Schneider).
-     * @param kosten                    Dieser int entspricht den Kosten für die Ausleihe des Kunstwerkes in €.
-     * @param verleihendesMuseum        Dieser String entpricht dem Namen des verleihenden Museums
-     * @param hoehe                     Dieser int entspricht der Höhe des Kunstwerkes in cm.
-     * @param breite                    Dieser int entspricht der Breite des Kunstwerkes in cm. 
-     * @param plaziert                  Dieser boolean gibt über true und false an, ob das Kunstwerk bereits in einem Raum plaziert wurde. 
-     * @param laenge                    Dieser int entspricht der Länge der Kunstgegenstandes in cm.
-     * @param gewicht                   Dieser int entspricht dem Gewicht des Kunstgegenstandes in KG.
+     * @param in_ laufendeNummer           Dieser short entspricht der laufenden Nummer des Kunstwerkes
+     * @param in_art                       Dieser char entspricht der Art des Kunstwerkes (Bild "B", Kunstinstallation "I", Kunstgegenstand "G")
+     * @param in_bezeichnung               Dieser String entspricht der Bezeichnung des Kunstwerkes.
+     * @param in_kuenstler                 Dieser String entspricht dem Namen des Künstlers.
+     * @param in_jahr                      Dieser String entspricht dem Jahr, in dem das Kunstwerk erstellt wurde.
+     * @param in_thema                     Dieser String entspricht dem Thema, welches dem Kunstwerk zugeordnet wurde.
+     * @param in_attraktivitaetswert       Dieser int entspricht der Attraktivität des Objekts in % (Bewertung durch Herrn Schneider).
+     * @param in_kosten                    Dieser int entspricht den Kosten für die Ausleihe des Kunstwerkes in €.
+     * @param in_verleihendesMuseum        Dieser String entpricht dem Namen des verleihenden Museums
+     * @param in_anschrift                 Dieser String entspricht der Anschrift des verleihenden Museums (Straße, Hnr, Plz, Ort). 
+     * @param in_hoehe                     Dieser int entspricht der Höhe des Kunstwerkes in cm.
+     * @param in_breite                    Dieser int entspricht der Breite des Kunstwerkes in cm. 
+     * @param in_laenge                    Dieser int entspricht der Länge der Kunstgegenstandes in cm.
+     * @param in_gewicht                   Dieser int entspricht dem Gewicht des Kunstgegenstandes in KG.
      */
-    public Kunstgegenstand (short laufendeNummer, char art, String bezeichnung, String kuenstler, String jahr, String thema, int attraktivitaetswert, int kosten, String verleihendesMuseum, 
-                            String anschrift,   int hoehe, int breite, int laenge, int gewicht)
+    public Kunstgegenstand (short in_laufendeNummer, char in_art, String in_bezeichnung, String in_kuenstler, String in_jahr, String in_thema, 
+    int in_attraktivitaetswert, int in_kosten, String in_verleihendesMuseum, String in_anschrift,int in_hoehe, int in_breite,
+    int in_laenge, int in_gewicht)
     {
-        setLaufendeNummer(laufendeNummer);
-        setArt(art);
-        setBezeichnung(bezeichnung);
-        setKuenstler(kuenstler);
-        setJahr(jahr);
-        setAttraktivitaet(attraktivitaetswert);
-        setKosten(kosten);
-        setVerleihendesMuseum(verleihendesMuseum);
-        setHoehe(hoehe);
-        setBreite(breite);
-        setLaenge(laenge);
-        setGewicht(gewicht);
+        setLaufendeNummer(in_laufendeNummer);
+        setArt(in_art);
+        setBezeichnung(in_bezeichnung);
+        setKuenstler(in_kuenstler);
+        setJahr(in_jahr);
+        setAttraktivitaet(in_attraktivitaetswert);
+        setKosten(in_kosten);
+        setVerleihendesMuseum(in_verleihendesMuseum);
+        setAnschrift(in_anschrift);
+        setHoehe(in_hoehe);
+        setBreite(in_breite);
+        setLaenge(in_laenge);
+        setGewicht(in_gewicht);
     }
     
     //Methoden der Klasse Kunstgegenstand
@@ -87,7 +89,7 @@ public class Kunstgegenstand extends Kunstwerk
     /**
      * Gibt die Laenge des Kunstgegenstandes an.
      * 
-     * @return  Laenge des Kunstgegenstandes in cm.
+     * @return  die Laenge des Kunstgegenstandes in cm.
      */
     public int getLaenge()
     {
@@ -97,7 +99,7 @@ public class Kunstgegenstand extends Kunstwerk
      /**
      * Gibt das Gewicht des Kunstgegenstandes an.
      * 
-     * @return Gewicht des Kunstgegenstandes in KG.
+     * @return das Gewicht des Kunstgegenstandes in KG.
      */
     public int getGewicht()
     {

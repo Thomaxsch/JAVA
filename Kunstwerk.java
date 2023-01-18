@@ -13,7 +13,7 @@ import java.lang.Integer;
  * @author (Alexander Kipry) 
  * @version (12.01.2023)
  */
-    abstract class Kunstwerk implements Comparable<Kunstwerk> 
+    abstract class Kunstwerk implements Comparable<Kunstwerk> // "Comparable" damit durch die Kunstwerkverwaltung ein Vergleich von Attributen vorgenommen werden kann. 
 { //Attribute der Klasse Kunstwerk
     /** Lfd-Nummer des Kunstwerkes aus dem Angebot */
     private short laufendeNummer;
@@ -61,23 +61,22 @@ import java.lang.Integer;
     /**
      * Konstruktor für Objekte der Klasse Kunstwerk mit Parametern
      * 
-     * @param laufendeNummer        Dieser short entspricht der laufenden Nummer des Kunstwerkes.
-     * @param art                   Dieser char entspricht der Art des Kunstwerkes (Bild "B", Kunstinstallation "I", Kunstgegenstand "G")
-     * @param bezeichnung           Dieser String entspricht der Bezeichnung des Kunstwerkes.
-     * @param kuenstler             Dieser String entspricht dem Namen des Künstlers.
-     * @param jahr                  Dieser String entspricht dem Jahr, in dem das Kunstwerk erstellt wurde.
-     * @param thema                 Dieser String entspricht dem Thema, welches dem Kunstwerk zugeordnet wurde.
-     * @param attraktivitaetswert   Dieser int entspricht der Attraktivität des Objekts in % (Bewertung durch Herrn Schneider)
-     * @param kosten                Dieser int entspricht den Kosten für die Ausleihe des Kunstwerkes in €.
-     * @param verleihendesMuseum    Dieser String entpricht dem Namen des verleihenden Museums
-     * @param anschrift             Dieser String entspricht der Adresse des verleihenden Museums (Straße, Hnr, Plz, Ort)
-     * @param hoehe                 Dieser int entspricht der Höhe des Kunstwerkes in cm.
-     * @param breite                Dieser int entspricht der Breite des Kunstwerkes in cm. 
-     * @param plaziert              Dieser boolean gibt über true und false an, ob das Kunstwerk bereits in einem Raum plaziert wurde. 
+     * @param in_laufendeNummer        Dieser short entspricht der laufenden Nummer des Kunstwerkes.
+     * @param in_art                   Dieser char entspricht der Art des Kunstwerkes (Bild "B", Kunstinstallation "I", Kunstgegenstand "G")
+     * @param in_bezeichnung           Dieser String entspricht der Bezeichnung des Kunstwerkes.
+     * @param in_kuenstler             Dieser String entspricht dem Namen des Künstlers.
+     * @param in_jahr                  Dieser String entspricht dem Jahr, in dem das Kunstwerk erstellt wurde.
+     * @param in_thema                 Dieser String entspricht dem Thema, welches dem Kunstwerk zugeordnet wurde.
+     * @param in_attraktivitaetswert   Dieser int entspricht der Attraktivität des Objekts in % (Bewertung durch Herrn Schneider)
+     * @param in_kosten                Dieser int entspricht den Kosten für die Ausleihe des Kunstwerkes in €.
+     * @param in_verleihendesMuseum    Dieser String entpricht dem Namen des verleihenden Museums
+     * @param in_anschrift             Dieser String entspricht der Adresse des verleihenden Museums (Straße, Hnr, Plz, Ort)
+     * @param in_hoehe                 Dieser int entspricht der Höhe des Kunstwerkes in cm.
+     * @param in_breite                Dieser int entspricht der Breite des Kunstwerkes in cm. 
      */
     
-    public Kunstwerk(short laufendeNummer, char art, String bezeichnung, String kuenstler, String jahr, String thema, int attraktivitaetswert, int kosten, String verleihendesMuseum,
-                     String anschrift, int hoehe, int breite)
+    public Kunstwerk(short in_laufendeNummer, char in_art, String in_bezeichnung, String in_kuenstler, String in_jahr, String in_thema, 
+    int in_attraktivitaetswert, int in_kosten, String in_verleihendesMuseum,String in_anschrift, int in_hoehe, int in_breite)
     {  
     }
     
@@ -210,6 +209,8 @@ import java.lang.Integer;
     //getter-Methoden
       /** 
      * Diese Methode ermittelt das laufendeNummer Attribut eines "Kunstwerk" Objektes
+     * 
+     * @return die laufende Nummer des Kunstwerkes
      */
     public short getLaufendeNummer()
     {
@@ -218,6 +219,8 @@ import java.lang.Integer;
     
       /**
      * Diese Methode ermittelt das Art Attribut eines Kunstwerk Objektes 
+     * 
+     * @return die Art des Kunstwerkes (Kunstinstallation, Bild, Kunstgegenstand)
      */
     public char getArt ()
     {
@@ -226,7 +229,7 @@ import java.lang.Integer;
      /**
      * Gibt die Bezeichnung des Kunstwerkes wieder.
      * 
-     * @return        Bezeichnung/Name des Kunstwerkes.
+     * @return  die Bezeichnung/ den Namen des Kunstwerkes.
      */
     public String getBezeichnung()
     {
@@ -236,7 +239,7 @@ import java.lang.Integer;
     /**
      * Gibt den Namen des Künstlers wieder.
      * 
-     * @return Name des Künstlers.
+     * @return den Namen des Künstlers.
     */
     public String getKuenstler()
     {
@@ -246,7 +249,7 @@ import java.lang.Integer;
     /**
      * Gibt das Jahr, in dem das Kunstwerk erstellt wurde wieder. 
      * 
-     * @return Jahresangabe .
+     * @return die Jahresangabe, in welchem das Kunstwerk erstellt wurde.
      */
     public String getJahr()
     {
@@ -256,7 +259,7 @@ import java.lang.Integer;
     /**
      * Gibt das Thema / den Schwerpunkt des Kunstwerkes wieder.
      * 
-     * @return Thema des Kunstwerkes.
+     * @return das Thema des Kunstwerkes.
      */
     public String getThema ()
     {
@@ -266,7 +269,7 @@ import java.lang.Integer;
     /**
      * Gibt den Attraktivitaetswert des Kunstwerkes wieder.
      * 
-     * @return Attraktivität des Kunstwerkes in %.
+     * @return die Attraktivität des Kunstwerkes in %.
      */
     public int getAttraktivitaet()
     {
@@ -276,7 +279,7 @@ import java.lang.Integer;
     /**
      * Gibt die anfallenden Kosten für die Ausleihe des Kunstwerkes wieder.
      * 
-     * @return Preis für das Ausleihen in €.
+     * @return den Preis für das Ausleihen in €.
      */
     public int getKosten ()
     {
@@ -286,7 +289,7 @@ import java.lang.Integer;
     /**
      * Gibt den Namen des verleihenden Museums wieder.
      * 
-     * @return Namen des verleihenden Museums.
+     * @return den Namen des verleihenden Museums.
      */
     public String getVerleihendesMuseum()
     {
@@ -296,7 +299,7 @@ import java.lang.Integer;
     /**
      * Gibt die Anschrift des verleihenden Museums wieder.
      * 
-     * @return Anschrift des verleihenden Museums.
+     * @return die Anschrift des verleihenden Museums (Straße, Hnr, Plz, Ort) 
      */
     public String getAnschrift()
     {
@@ -306,7 +309,7 @@ import java.lang.Integer;
     /**
      * Gibt die Höhe des Kunstwerkes wieder.
      * 
-     * @return Höhe des Kunstwerkes in cm.
+     * @return die Höhe des Kunstwerkes in cm.
      */
     public int getHoehe()
     {
@@ -316,7 +319,7 @@ import java.lang.Integer;
      /**
      * Gibt die Breite des Kunstwerkes wieder.
      * 
-     * @return Breite des Kunstwerkes in cm.
+     * @return die Breite des Kunstwerkes in cm.
      */
     public int getBreite()
     {
@@ -326,7 +329,7 @@ import java.lang.Integer;
     /**
      * Methode gibt eine lesbare Beschreibung eines Kunstwerks aus
      * 
-     * @return Beschreibung der Kunstwerke
+     * @return eine modifizierte textuelle Beschreibung der Kunstwerke
      */
     @Override
     public String toString()
@@ -339,7 +342,7 @@ import java.lang.Integer;
      * Methode, welche vorgibt, dass die Attraktivitaet zwischen Kunstwerken verglichen werden kann und 
      * somit die Kunstwerkverwaltung in der Lage ist Kunstwerke nach deren Attraktivitaet zu sortieren. 
      * 
-     * @return Übergabe der verglichenen Attraktivitaetswerte
+     * @return die Übergabe der verglichenen Attraktivitaetswerte
      */
     @Override
     public int compareTo(Kunstwerk kw)

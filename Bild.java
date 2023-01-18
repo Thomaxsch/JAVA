@@ -34,43 +34,44 @@ public class Bild extends Kunstwerk
     /**
      * Konstruktor für Objekte der Klasse Bild mit Parametern
      *
-     * @param laufendeNummer        Dieser short entspricht der laufenden Nummer des Kunstwerkes.
-     * @param art                   Dieser char entspricht der Art des Kunstwerkes (Bild "B", Kunstinstallation "I", Kunstgegenstand "G")
-     * @param bezeichnung           Dieser String entspricht der Bezeichnung des Kunstwerkes.
-     * @param kuenstler             Dieser String entspricht dem Namen des Künstlers.
-     * @param jahr                  Dieser String entspricht dem Jahr, in dem das Kunstwerk erstellt wurde.
-     * @param thema                 Dieser String entspricht dem Thema, welches dem Kunstwerk zugeordnet wurde.
-     * @param attraktivitaetswert   Dieser int entspricht der Attraktivität des Objekts in % (Bewertung durch Herrn Schneider).
-     * @param kosten                Dieser int entspricht den Kosten für die Ausleihe des Kunstwerkes in €.
-     * @param verleihendesMuseum    Dieser String entpricht dem Namen & der Adresse des verleihenden Museums (Name & Adresse ).
-     * @param hoehe                 Dieser int entspricht der Höhe des Kunstwerkes in cm.
-     * @param breite                Dieser int entspricht der Breite des Kunstwerkes in cm. 
-     * @param plaziert              Dieser boolean gibt über true und false an, ob das Kunstwerk bereits in einem Raum plaziert wurde. 
-     * @param minTemp               Dieser int entspricht der minimalen Temperatur in einem Raum, welche für das Kunstwerk zulässig ist, in °C.
-     * @param maxTemp               Dieser int entspricht der maximalen Temperatur in einem Raum, welche für das Kunstwerk zulässig ist, in °C.
-     * @param minLuft               Dieser int entspricht der minimalen Luftfeuchtigkeit in einem Raum, welche für das Kunstwerk zulässig ist, in %.
-     * @param maxLuft               Dieser int entspricht der minimalen Luftfeuchtigkeit in einem Raum, welche für das Kunstwerk zulässig ist, in %.
+     * @param in_laufendeNummer        Dieser short entspricht der laufenden Nummer des Kunstwerkes.
+     * @param in_art                   Dieser char entspricht der Art des Kunstwerkes (Bild "B", Kunstinstallation "I", Kunstgegenstand "G")
+     * @param in_bezeichnung           Dieser String entspricht der Bezeichnung des Kunstwerkes.
+     * @param in_kuenstler             Dieser String entspricht dem Namen des Künstlers.
+     * @param in_jahr                  Dieser String entspricht dem Jahr, in dem das Kunstwerk erstellt wurde.
+     * @param in_thema                 Dieser String entspricht dem Thema, welches dem Kunstwerk zugeordnet wurde.
+     * @param in_attraktivitaetswert   Dieser int entspricht der Attraktivität des Objekts in % (Bewertung durch Herrn Schneider).
+     * @param in_kosten                Dieser int entspricht den Kosten für die Ausleihe des Kunstwerkes in €.
+     * @param in_verleihendesMuseum    Dieser String entpricht dem Namen des verleihenden Museums.
+     * @param in_anschrift             Dieser String entspricht der Anschrift des verleihenden Museums (Straße, Hnr, Plz, Ort). 
+     * @param in_hoehe                 Dieser int entspricht der Höhe des Kunstwerkes in cm.
+     * @param in_breite                Dieser int entspricht der Breite des Kunstwerkes in cm. 
+     * @param in_minTemp               Dieser int entspricht der minimalen Temperatur in einem Raum, welche für das Kunstwerk zulässig ist, in °C.
+     * @param in_maxTemp               Dieser int entspricht der maximalen Temperatur in einem Raum, welche für das Kunstwerk zulässig ist, in °C.
+     * @param in_minLuft               Dieser int entspricht der minimalen Luftfeuchtigkeit in einem Raum, welche für das Kunstwerk zulässig ist, in %.
+     * @param in_maxLuft               Dieser int entspricht der minimalen Luftfeuchtigkeit in einem Raum, welche für das Kunstwerk zulässig ist, in %.
    
        */
 
-      public Bild (short laufendeNummer, char art, String bezeichnung, String kuenstler, String jahr, String thema, int attraktivitaetswert, int kosten, String verleihendesMuseum,
-                   String anschrift, int hoehe, int breite,/*boolean plaziert, */int minTemp,int maxTemp, int minLuft, int maxLuft)
+      public Bild (short in_laufendeNummer, char in_art, String in_bezeichnung, String in_kuenstler, String in_jahr, String in_thema, 
+      int in_attraktivitaetswert, int in_kosten, String in_verleihendesMuseum,String in_anschrift, int in_hoehe, int in_breite,
+      int in_minTemp,int in_maxTemp, int in_minLuft, int in_maxLuft)
     { 
-        setLaufendeNummer(laufendeNummer);
-        setArt(art);
-        setBezeichnung(bezeichnung);
-        setKuenstler(kuenstler);
-        setJahr(jahr);
-        setAttraktivitaet(attraktivitaetswert);
-        setKosten(kosten);
-        setVerleihendesMuseum(verleihendesMuseum);
-        setHoehe(hoehe);
-        setBreite(breite);
-        //setPlaziert(plaziert);
-        setMinTemp(minTemp);
-        setMaxTemp(maxTemp);
-        setMinLuft(minLuft);
-        setMaxLuft(maxLuft);
+        setLaufendeNummer(in_laufendeNummer);
+        setArt(in_art);
+        setBezeichnung(in_bezeichnung);
+        setKuenstler(in_kuenstler);
+        setJahr(in_jahr);
+        setAttraktivitaet(in_attraktivitaetswert);
+        setKosten(in_kosten);
+        setVerleihendesMuseum(in_verleihendesMuseum);
+        setAnschrift(in_anschrift);
+        setHoehe(in_hoehe);
+        setBreite(in_breite);
+        setMinTemp(in_minTemp);
+        setMaxTemp(in_maxTemp);
+        setMinLuft(in_minLuft);
+        setMaxLuft(in_maxLuft);
     }
     
     //Methoden der Klasse Bild
@@ -123,7 +124,7 @@ public class Bild extends Kunstwerk
     /**
      * Gibt die Mindesttemperatur wieder, die für das Bild zulässig ist.
      * 
-     * @return Mindestemperatur in °C.
+     * @return die Mindestemperatur in °C.
      */
     public int getMinTemp()
     {
@@ -132,7 +133,7 @@ public class Bild extends Kunstwerk
      /**
      * Gibt die Maximaltemperatur wieder, die für das Bild zulässig ist.
      * 
-     * @return Maximaltemperatur in °C.
+     * @return die Maximaltemperatur in °C.
      */
     public int getMaxTemp()
     {
@@ -142,7 +143,7 @@ public class Bild extends Kunstwerk
      /**
      * Gibt die Mindest-Luftfeuchtigkeit wieder, die für das Bild zulässig ist.
      * 
-     * @return Mindest-Luftfeuchtigkeit in %.
+     * @return die Mindest-Luftfeuchtigkeit in %.
      */
     public int getMinLuft()
     {
@@ -152,7 +153,7 @@ public class Bild extends Kunstwerk
      /**
      * Gibt die Maximal-Luftfeuchtigkeit wieder, die für das Bild zulässig ist.
      * 
-     * @return Maximal-Luftfeuchtigkeit in %.
+     * @return die Maximal-Luftfeuchtigkeit in %.
      */
     public int getMaxLuft()
     {

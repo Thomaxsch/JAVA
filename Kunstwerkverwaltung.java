@@ -21,7 +21,7 @@ public class Kunstwerkverwaltung
     private Vector<Kunstwerk> kunstwerkVector;
    
     /**
-     * Konstruktor für Objekte der Klasse Kunstwerkverwaltung. Dieser Konstruktor erzeugt ein leeres Angebot, welches später über Methoden mit Kunstwerken befüllt werden kann. 
+     * Konstruktor für Objekte der Klasse Kunstwerkverwaltung. Dieser Konstruktor erzeugt ein leeren Vector / Angebot, welches später über Methoden mit Kunstwerken befüllt werden kann. 
      */
     public Kunstwerkverwaltung()
     {
@@ -36,7 +36,7 @@ public class Kunstwerkverwaltung
      */
     public void addKunstwerk(Kunstwerk in_kunstwerk)
     {
-        if (!kunstwerkVector.contains(in_kunstwerk)){
+        if (!kunstwerkVector.contains(in_kunstwerk)){ // das Kunstwerk kann sich nur einmal im Vector befinden. 
             kunstwerkVector.add(in_kunstwerk);
         }
         else {
@@ -52,7 +52,7 @@ public class Kunstwerkverwaltung
      */
     public void removeKunstwerk(Kunstwerk in_kunstwerk)
     {
-        if (kunstwerkVector.contains(in_kunstwerk)){
+        if (kunstwerkVector.contains(in_kunstwerk)){ // das Kunstwerk muss bereits im Vector vorhanden sein, um es daraus zu entfernen.
             kunstwerkVector.removeElement(in_kunstwerk);
         }
         else {
@@ -93,7 +93,7 @@ public class Kunstwerkverwaltung
     {
         for(Kunstwerk kw : kunstwerkVector) 
         {
-            System.out.println(kw);
+            System.out.println(kw); // hierbei wird automatisch auf die "toString" Methode aus der Klasse Kunstwerk zugegriffen
         }
     } 
     
@@ -112,6 +112,8 @@ public class Kunstwerkverwaltung
     
     /**
      * Methode zum Ermitteln eines Kunstwerkes anhand seiner laufendenNummer
+     * 
+     * @return das Kunstwerk zur laufendenNummer
      */
     public Vector <Kunstwerk> showKunstwerkZuLaufendeNummer(short in_laufendeNummer) {
     boolean found = false;
