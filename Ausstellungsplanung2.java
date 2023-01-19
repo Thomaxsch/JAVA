@@ -39,10 +39,7 @@ public class Ausstellungsplanung2
         
         //Comparator<Raum>
         Vector<Kunstwerk> kunstwerke2 = (Vector<Kunstwerk>) kunstwerke.getKunstwerkVector().clone();
-        Vector<Kunstwerk> kunstwerke3 = (Vector<Kunstwerk>) kunstwerke.getKunstwerkVector().clone();
-        
-        //ListIterator<Kunstwerk> kunstiter = kunstwerke2.listIterator();
-                
+             
         // Abstand der Kunstwerke von den Ecken eines Raums muss 1 Meter (100 cm) entsprechen
         int abstandEcke = 100;
         
@@ -50,8 +47,14 @@ public class Ausstellungsplanung2
     {
         List<Kunstwerk> kw = new ArrayList<Kunstwerk>();  
         
+        // zählt die Anzahl der Themen pro Raum, Vorgabe maximal 3 pro Raum
+        ArrayList<String> themenProRaum = new ArrayList<String>();
+        int anzahlThemenProRaum = 0;
+        
         // Höhe des Raums ermitteln
         int hoeheRaum = raum.getHoeheRaum();
+        
+        //Anzahl der Kunstinstallationen pro Raum
         int zugeordneteInstallationenProRaum = 0;
         int zugeordneteKunstwerkeProRaum = 0;
         
@@ -71,7 +74,8 @@ public class Ausstellungsplanung2
         {   
             Kunstwerk temp = kunstiter.next();
             
-            // wenn die Anzahl der zugeordneten Kunstinstallation den Wert 1 überschreitet, dann braucht die Aufnahme weiterer Kunstwerke nicht geprüft werden
+            // wenn die Anzahl der zugeordneten Kunstinstallation den Wert 1 überschreitet, dann braucht die Aufnahme weiterer Kunstwerke in einem Raum nicht geprüft werden
+            // wenn die Anzahl der unterschiedlichen Themen pro Raum den Wert > 3 überschreitet, dann kann das Kunstwerk nicht mehr aufgenommen werden
             if(zugeordneteInstallationenProRaum < 1)
             {
                 // Prüft ob eine Kunstinstallation der Ausstellung hinzugefügt werden kann
@@ -90,50 +94,57 @@ public class Ausstellungsplanung2
                 // Prüft ob ein Bild der Ausstellung hinzugefügt werden kann
                 if(temp.getArt() == 'B')
                 {
-                  boolean gueltigeHoehe = false;
-                  if(temp.getHoehe() <= hoeheRaum)
-                      gueltigeHoehe = true;
+                  /*
+                   * Prüfung folgender Bedingungen vor Aufnahme eines Bildes in den Raum
+                   * 1. wenn das Thema des Bildes schon vorhanden ist, dann kann ein weiteres Bild mit dem gleichen Thema aufgenommen werden
+                   */
+                  if(themenProRaum.contains(temp.getThema()))
+                  {                       
+                      boolean gueltigeHoehe = false;
+                      
+                      if(temp.getHoehe() <= hoeheRaum)
+                          gueltigeHoehe = true;
               
-                  // Prüft ob noch Platz auf der nördlichen Wand ist und fügt das Kunstwerk bei Platz hinzu
-                  if(temp.getBreite() <= verfuegbareLaengeNord && gueltigeHoehe)
-                  {
-                    kw.add(temp);
-                    kunstiter.remove();
-                    verfuegbareLaengeNord -= temp.getBreite() - 1;
-                    zugeordneteKunstwerkeProRaum++; 
-                    continue;
-                  } 
+                      // Prüft ob noch Platz auf der nördlichen Wand ist und fügt das Kunstwerk bei Platz hinzu
+                      if(temp.getBreite() <= verfuegbareLaengeNord && gueltigeHoehe)
+                      {
+                        kw.add(temp);
+                        kunstiter.remove();
+                        verfuegbareLaengeNord -= temp.getBreite() - 1;
+                        zugeordneteKunstwerkeProRaum++; 
+                      }
+                   
+                      // Prüft ob noch Platz auf der südlichen Wand ist und fügt das Kunstwerk bei Platz hinzu
+                      if(temp.getBreite() <= verfuegbareLaengeSued && gueltigeHoehe)
+                      {
+                        kw.add(temp);
+                        kunstiter.remove();
+                        verfuegbareLaengeSued -= temp.getBreite() - 1;
+                        zugeordneteKunstwerkeProRaum++; 
+                        continue;
+                      } 
               
-                  // Prüft ob noch Platz auf der südlichen Wand ist und fügt das Kunstwerk bei Platz hinzu
-                  if(temp.getBreite() <= verfuegbareLaengeSued && gueltigeHoehe)
-                  {
-                    kw.add(temp);
-                    kunstiter.remove();
-                    verfuegbareLaengeSued -= temp.getBreite() - 1;
-                    zugeordneteKunstwerkeProRaum++; 
-                    continue;
-                  } 
+                      // Prüft ob noch Platz auf der östlichen Wand ist und fügt das Kunstwerk bei Platz hinzu
+                      if(temp.getBreite() <= verfuegbareBreiteOst && gueltigeHoehe)
+                      {
+                        kw.add(temp);
+                        kunstiter.remove();
+                        verfuegbareBreiteOst -= temp.getBreite() - 1;
+                        zugeordneteKunstwerkeProRaum++; 
+                        continue;
+                      } 
               
-                  // Prüft ob noch Platz auf der östlichen Wand ist und fügt das Kunstwerk bei Platz hinzu
-                  if(temp.getBreite() <= verfuegbareBreiteOst && gueltigeHoehe)
-                  {
-                    kw.add(temp);
-                    kunstiter.remove();
-                    verfuegbareBreiteOst -= temp.getBreite() - 1;
-                    zugeordneteKunstwerkeProRaum++; 
-                    continue;
-                  } 
-              
-                  // Prüft ob noch Platz auf der westlichen Wand ist und fügt das Kunstwerk bei Platz hinzu
-                  if(temp.getBreite() <= verfuegbareBreiteWest && gueltigeHoehe)
-                  {
-                    kw.add(temp);
-                    kunstiter.remove();
-                    verfuegbareBreiteWest -= temp.getBreite() - 1;
-                    zugeordneteKunstwerkeProRaum++; 
-                    continue;
-                  } 
-            }
+                      // Prüft ob noch Platz auf der westlichen Wand ist und fügt das Kunstwerk bei Platz hinzu
+                      if(temp.getBreite() <= verfuegbareBreiteWest && gueltigeHoehe)
+                      {
+                        kw.add(temp);
+                        kunstiter.remove();
+                        verfuegbareBreiteWest -= temp.getBreite() - 1;
+                        zugeordneteKunstwerkeProRaum++; 
+                        continue;
+                      } 
+                  }
+                }
                 // Prüft ob ein Kunstgegenstand der Ausstellung hinzugefügt werden kann
                 if(temp.getArt() == 'G')
                 {
@@ -150,12 +161,9 @@ public class Ausstellungsplanung2
                         kunstiter.remove();
                         nettoFlaecheRaum -= benoetigteFlaecheKunstgegenstand;
                     }
-                    
                     continue;
-                  
                 }  
-               
-            continue;
+                continue;
             }
         }
          zugeordneteKunstwerke.put(raum, kw);
@@ -200,27 +208,6 @@ private boolean validiereTemperaturLuftfeuchte(Kunstwerk kw, Raum raum)
         int abstandLaenge = raum.getLaengeRaum()- ki.getLaenge();
     
         // Abstand zu jeder Wand mindestens 2 Meter (= 200 cm) betragen, d.h 400 cm insgesamt
-        if(abstandBreite > 400 && abstandLaenge > 400)
-        {
-            return true;
-        }
-        else
-        {
-            return false;    
-        }
-    }
-    
-    /**
-     * prüft ob ein Kunstgegenstand genügend Abstand zu den Wänden, mindestens 2 Meter
-     * Optimierung bestände darin, dass bei ausreichender Breite mehrere Kunstgegenstände auch inder Breite angeordnet werden
-     * aktuell wird nur die Länge geprüft, evtl. dadurch prüfen das der Raum immer weiter verkleinert wird, oder  eine Maße des Raumes herangezogen wird, die jeweils schon 2 Meter an jeder
-     * Ecke kleiner ist
-     */
-    private boolean validiereKunstgegenstand(Kunstgegenstand kg, Raum raum, int verfuegbareLaengeNord)
-    {
-        int abstandBreite = raum.getBreiteRaum() - kg.getBreite();
-        int abstandLaenge = raum.getLaengeRaum() - kg.getLaenge();
-        
         if(abstandBreite > 400 && abstandLaenge > 400)
         {
             return true;
