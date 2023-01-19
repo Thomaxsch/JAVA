@@ -11,14 +11,25 @@ public class Zuordnung
     // === Attribute
     // ==========================================================================
    
-    private Kunstwerk [] kunstwerkeArray;           // um die Referenzen auf die Kunstwerke vom Import aufzunehmen (alle Kunstwerke)
-    private Raum [] raeumeArray;                    // um die Referenzen auf die Räume vom Import aufzunehmen (alle Räume)
     private Kunstwerkverwaltung kunstwerkverwaltung;//Damit wir später auf Methoden der Kunstwerk- bzw. Raumverwaltung zugreifen können
     private Raumverwaltung raumverwaltung;          //Damit wir später auf Methoden der Kunstwerk- bzw. Raumverwaltung zugreifen können
     
+    private Kunstwerk [] kunstwerkeArray;           // um die Referenzen auf die Kunstwerke vom Import aufzunehmen (alle Kunstwerke)
+    private Raum [] raeumeArray;                    // um die Referenzen auf die Räume vom Import aufzunehmen (alle Räume)
+
     private ArrayList <ArrayList <Kunstwerk >> denRaeumenZugeordneteKunstwerke = new ArrayList <ArrayList <Kunstwerk >>(); // Liste von (Kunstwerke im Raum) pro Raum. Nested array list.
     // Die äußere ArrayList wird später so viele Elemente haben wie es Räume gibt,
     // während die innere ArrayList die Anzahl der Kunstwerke in einem konkreten Raum angibt (Anzahl Elemente der inneren Arraylist: von keins ... bis theroetisch max Anzahl Kunstwerke)
+    
+    // Analog, welche Themen im Raum erlaubt sind, pro Raum - 
+    // was entweder genau drei Stück sind oder die ArrayList des Raums hat weniger als drei Einträge, dann ist noch alles erlaubt an Themen
+    private ArrayList <ArrayList <String >> welcheThemenDuerfenNochInRaum = new ArrayList <ArrayList <String >> (); 
+     
+    // Liste, welche Typen noch in den Raum dürfen, pro Raum - mit den erlaubten Werten "BIG" oder "BG": 
+    private ArrayList <String> welcheTypenDuerfenNochInRaum = new ArrayList <String>(); // 
+    
+    private ArrayList <Kunstwerk> kunstwerkeSchonZugeordnet = new ArrayList <Kunstwerk >(); // Liste aller Kunstwerke, die schon einem Raum zugeordnet wurden. Arraylist mit flex. Länge
+    private ArrayList <Raum> raeumeSchonBelegt = new ArrayList <Raum>(); // Initalisierung der Liste aller Räume, denen schon ein KW zugeordnet wurde. Arraylist mit flex. Länge
     
     //// Auch die folgenden Arrays zu Raumdimensionen werden später so viele Elemente habe wie es Räume gibt (d.h. je ein Wert von z.B. Höhe pro Raum)
     //relevant für B:
@@ -37,19 +48,9 @@ public class Zuordnung
     //relevant für alle KW:
     private int [] verfuegbarHoeheRaum; // Liste von (Höhe) pro Raum
     
-    private String schwerpunktthema; //Vorgegebenes Schwerpunktthema der Ausstellung
     private double kostenobergrenze; //Vorgegebene Kostenobergrenze der Ausstellung
-    
-    private ArrayList <Kunstwerk> kunstwerkeSchonZugeordnet = new ArrayList <Kunstwerk >(); // Liste aller Kunstwerke, die schon einem Raum zugeordnet wurden. Arraylist mit flex. Länge
-    private ArrayList <Raum> raeumeSchonBelegt = new ArrayList <Raum>(); // Initalisierung der Liste aller Räume, denen schon ein KW zugeordnet wurde. Arraylist mit flex. Länge
     private double restbudget; // noch verbliebenes Budget
-    
-    // Liste, welche Themen im Raum erlaubt sind, pro Raum mit den erlaubten Werten "alle":
-    private ArrayList <String> welcheThemenDuerfenNochInRaum = new ArrayList <String>(); 
-    
-    //
-    private ArrayList <String> welcheTypenDuerfenNochInRaum = new ArrayList <String>(); // Liste der 
-    
+    private String schwerpunktthema; //Vorgegebenes Schwerpunktthema der Ausstellung
     private int wieOftWurdeSchonEinSchwerpunktKunstwertPlatziert = 0;
     
     // ==========================================================================
@@ -68,7 +69,7 @@ public class Zuordnung
         // Aus der Kunstwerkverwaltung den Vector zu Kunstwerken abrufen und in Array umwandeln
         kunstwerkeArray = new Kunstwerk [in_kunstwerkverwaltung.sizeKunstwerkverwaltung()];
         int i = 0;
-        for (Kunstwerk kw: in_kunstwerkverwaltung.sortAttraktivitaet()) {
+        for (Kunstwerk kw: in_kunstwerkverwaltung.getKunstwerkVector()) {
             kunstwerkeArray[i]=(Kunstwerk) kw; // cast glaub ich unnötig?
             i++;
         }
@@ -98,7 +99,7 @@ public class Zuordnung
         minTempRaum = new int [raeumeArray.length];
         maxTempRaum = new int [raeumeArray.length];
         
-        // Rufe die konkreten verfügbaren Distanzen via Methode der Klasse Raum ab:
+        // Rufe die konkreten verfügbaren Distanzen via Methode der Klasse Raum ab und übernehme sie hier:
         for (i=0;i<raeumeArray.length;i++)
         {
             verfuegbarWandWest[i]=raeumeArray[i].showWandWest();
@@ -115,9 +116,14 @@ public class Zuordnung
         {
             denRaeumenZugeordneteKunstwerke.add(new ArrayList<Kunstwerk>()); 
             // somit gibt es je Raum eine Arraylist der Kunstwerke, wobei aktuell bei allen Räumen noch keine Kunstwerke darin sind
+            
+            //und analog:
+            welcheThemenDuerfenNochInRaum.add(new ArrayList<String>());
+            
+            welcheTypenDuerfenNochInRaum.add("BIG"); // anfangs dürfen boch B I G in den Raum bis ein I gesetzt wurde
         }
         
-        //Restbudget mit dem vollen Betrag belegen
+        //Restbudget initial mit dem vollen Betrag belegen
         restbudget=kostenobergrenze;
     }
 
@@ -255,7 +261,7 @@ public class Zuordnung
             }
             
             // Wir prüfen, ob schon eine Kunstinstalltion im Raum ist. Dann können wir den Raum überspringen, weil nichts mehr herein passt:
-            blockiertDurchKunstinstallation= (denRaeumenZugeordneteKunstwerke.get(i).get(0).getArt()=='I'); // aufgrund des Vorgehens wäre die I immer das erste Element
+            boolean blockiertDurchKunstinstallation= (denRaeumenZugeordneteKunstwerke.get(i).get(0).getArt()=='I'); // aufgrund des Vorgehens wäre die I immer das erste Element
             if (blockiertDurchKunstinstallation){
                 continue; 
                 // diese Anweisung beendet die aktuelle Ausführung des Schleifenkörpers, aber die Schleife wird mit dem nächsten Durchlauf (d.h. nächster Raum) fortgesetzt 
@@ -270,15 +276,16 @@ public class Zuordnung
             Kunstwerk zuSetzendesKW;
             try {
                 zuSetzendesKW = kunstwerkverwaltung.naechstesZuSetzendesKunstwerk(
-                    //schwerpunktthema,<--- das Schwerpunktthema übergeben wir wir erklärt nicht
+                    //schwerpunktthema,<--- das Schwerpunktthema übergeben wir wie erklärt nicht
                     verfuegbarWandWest[i],verfuegbarWandOst[i],verfuegbarWandNord[i],verfuegbarWandSued[i], // relevant für Bilder (vier Wände)
                     verfuegbarLaengeRaum[i],verfuegbarBreiteRaum[i],                                        // relevant für G und I (laengs/quer bzw Raumfläche)
                     verfuegbarHoeheRaum[i],                                                                 // relevant für alle KW
                     minFeuchteRaum[i], maxFeuchteRaum[i],minTempRaum[i], maxTempRaum[i],                    // relevant für Bilder
                     restbudget,                                                                             // verfügbares Restbudget
-                    dfgdfg                                                                                  //welche Themen erlaubt sind
-                    dfgdfg                                                                                  //ob der Typ egal ist oder es nur noch B/G sein darf
-                    kunstwerkeSchonZugeordnet                                                               // bisher platzierte Kunstwerke
+                    welcheThemenDuerfenNochInRaum,                                 //welche Themen erlaubt sind, falls es schon 3 unique im Raum gibt.
+                                                                                   // ACHTUNG: wenn weniger als 3 Einträge zum Raum, dann ignorieren
+                    welcheTypenDuerfenNochInRaum,                                  //ob der Typ egal ist oder es nur noch B/G sein darf
+                    kunstwerkeSchonZugeordnet                                      // bisher platzierte Kunstwerke
                 ); 
             }
             catch (Exception e){ 
@@ -322,7 +329,7 @@ public class Zuordnung
      *      - raeumeSchonBelegt
      *      - Temp Min/Max aufgrund Bildern im Raum
      *      - Feuchte Min/Max aufgrund Bildern im Raum
-     *      - welche bis zu drei Themen im Raum sind
+     *      - wenn es schon drei Themen im Raum gibt, welches das sind, weil dann nur noch diese erlaubt sind für weitere KW
      *      - ob noch B/I/G (kein Kunstwerk bisher im Raum) oder nur noch B/G im Raum platziert werden kann
      *      - wie oft schon ein Kunstwerk des Schwerpunktthemas gesetzt wurde
      *      
@@ -382,7 +389,7 @@ public class Zuordnung
         }
         
         // Bei G oder I:  
-        // Bei Kunstgegenständen müssen noch zwei Meter als Puffer extra abgezogen werden, wenn noch ein Rest übrig bliebe. Bei I ist es im Grunde egal,
+        // Bei Kunstgegenständen müssen noch ein Meter als Puffer extra abgezogen werden, wenn noch ein Rest übrig bliebe. Bei I ist es im Grunde egal,
         // weil sowieso sonst nichts mehr in den Raum passt, aber es schadet nicht, die selbe Logik durchzuhalten.
         // Bei Kunstgegenständen ist die Frage, ob die Platzierung "laengs" oder "quer" die beste ist, sofern beide Optionen möglich sind. Wir nehmen 
         // in solchen Fällen die Platzierungsoption,bei der am meisten FLÄCHE ungenutzt leibt.
@@ -403,12 +410,12 @@ public class Zuordnung
             {
                 if (restl1*restl2>=restq1*restq2) //Platzierung laengs wird vorgenommen
                 {
-                    if (restl1>=2 && restl2>=2) // nur wenn die Reste beide größer gleich 2 sind, können wir zwei Meter Puffer abziehen
+                    if (restl1>=1 && restl2>=1) // nur wenn die Reste beide größer gleich 1 sind, können wir ein Meter Puffer abziehen
                     {
-                        verfuegbarLaengeRaum[r]-=(l+2); 
-                        verfuegbarBreiteRaum[r]-=(b+2);
+                        verfuegbarLaengeRaum[r]-=(l+1); 
+                        verfuegbarBreiteRaum[r]-=(b+1);
                     }
-                    else // sonst macht es keinen Sinn 2 Meter Puffer abzuziehen
+                    else // sonst macht es keinen Sinn 1 Meter Puffer abzuziehen
                     {
                         verfuegbarLaengeRaum[r]-=(l);
                         verfuegbarBreiteRaum[r]-=(b);
@@ -416,12 +423,12 @@ public class Zuordnung
                 }
                 else if (restl1*restl2<restq1*restq2) // Platzierung quer wird vorgenommen
                 {
-                    if (restq1>=2 && restq2>=2) // nur wenn die Reste beide größer gleich 2 sind, können wir zwei Meter Puffer abziehen
+                    if (restq1>=1 && restq2>=1) // nur wenn die Reste beide größer gleich 1 sind, können wir ein Meter Puffer abziehen
                     {
-                        verfuegbarLaengeRaum[r]-=(b+2); 
-                        verfuegbarBreiteRaum[r]-=(l+2);
+                        verfuegbarLaengeRaum[r]-=(b+1); 
+                        verfuegbarBreiteRaum[r]-=(l+1);
                     }
-                    else // sonst macht es keinen Sinn 2 Meter Puffer abzuziehen
+                    else // sonst macht es keinen Sinn 1 Meter Puffer abzuziehen
                     {
                         verfuegbarLaengeRaum[r]-=(b);
                         verfuegbarBreiteRaum[r]-=(l);
@@ -433,12 +440,12 @@ public class Zuordnung
             if (restl1>=0 && restl2>=0 && (restq1<0 | restq2<0))
             {
                 //Platzierung laengs wird vorgenommen
-                    if (restl1>=2 && restl2>=2) // nur wenn die Rest beide größer gleich 2 sind, können wir zwei Meter Puffer abziehen
+                    if (restl1>=1 && restl2>=1) // nur wenn die Rest beide größer gleich 1 sind, können wir 1 Meter Puffer abziehen
                     {
-                        verfuegbarLaengeRaum[r]-=(l+2); 
-                        verfuegbarBreiteRaum[r]-=(b+2);
+                        verfuegbarLaengeRaum[r]-=(l+1); 
+                        verfuegbarBreiteRaum[r]-=(b+1);
                     }
-                    else // sonst macht es keinen Sinn 2 Meter Puffer abzuziehen
+                    else // sonst macht es keinen Sinn 1 Meter Puffer abzuziehen
                     {
                         verfuegbarLaengeRaum[r]-=(l);
                         verfuegbarBreiteRaum[r]-=(b);
@@ -450,12 +457,12 @@ public class Zuordnung
             if ((restl1<0 | restl2<0) && restq1>=0 && restq2>=0)
             {
                 // Platzierung quer wird vorgenommen
-                if (restq1>=2 && restq2>=2) // nur wenn die Reste beide größer gleich 2 sind, können wir zwei Meter Puffer abziehen
+                if (restq1>=1 && restq2>=1) // nur wenn die Reste beide größer gleich 1 sind, können wir 1 Meter Puffer abziehen
                     {
-                        verfuegbarLaengeRaum[r]-=(b+2); 
-                        verfuegbarBreiteRaum[r]-=(l+2);
+                        verfuegbarLaengeRaum[r]-=(b+1); 
+                        verfuegbarBreiteRaum[r]-=(l+1);
                     }
-                    else // sonst macht es keinen Sinn 2 Meter Puffer abzuziehen
+                    else // sonst macht es keinen Sinn 1 Meter Puffer abzuziehen
                     {
                         verfuegbarLaengeRaum[r]-=(b);
                         verfuegbarBreiteRaum[r]-=(l);
@@ -507,14 +514,24 @@ public class Zuordnung
         }
         
         /////////////////////////////////////////////////////////////////////////
-        // Aktualisiere, welche bis zu drei Themen im Raum sind (bei mehr als 3 Themen relevant dafür, dass nur noch diese 3 Themen erlaubt sind)
-        
+        // Aktualisiere, welche drei Themen im Raum erlaubt sind 
+        // --- bei potentiell mehr als 3 Themen im Raum relevant dafür, dass nur noch diese 3 Themen für weitere KW erlaubt sind
+        // --- welcheThemenDuerfenNochInRaum zeigt die 3 erlaubten Themen in einem Raum; sind es weniger als 3 Einträge für den Raum, dann sind noch alle Themen erlaubt
+
+        if (welcheThemenDuerfenNochInRaum.size()<=2) {  // wenn es kleiner gleich 2 unique Themen im Raum gibt
+            if (!welcheThemenDuerfenNochInRaum.get(r).contains(kw.getThema()))  // wenn das Thema bisher noch nicht im Raum vertreten ist
+            {
+                welcheThemenDuerfenNochInRaum.get(r).add(kw.getThema());
+            }
+        }
+
         /////////////////////////////////////////////////////////////////////////
         // Aktualisiere, ob noch B/I/G (kein Kunstwerk bisher im Raum) oder nur noch B/G im Raum platziert werden kann
-             *     -- R3 (max 3 versch Themen im Raum) => ggf. nur manche Themen für den Raum noch erlaubt => TO DO: Arraylist wird übergeben welcheThemenDuerfenNochInRaum
-     *     -- R8 (KI alleine im Raum) => wir übergeben, ob noch B/I/G (kein Kunstwerk bisher im Raum) oder nur noch B/G geht  => TO DO! welcheTypenDuerfenNochInRaum
-     *     
-  
+        
+        if (kw.getArt()=='I')
+        {
+            welcheTypenDuerfenNochInRaum.set(r,"BG");
+        }
         
         /////////////////////////////////////////////////////////////////////////
         // Aktualisiere, wie oft schon ein Schwerpunktkunstwerk gesetzt wurde
