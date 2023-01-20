@@ -51,6 +51,7 @@ public class Kunstinstallation extends Kunstwerk
         setBezeichnung(in_bezeichnung);
         setKuenstler(in_kuenstler);
         setJahr(in_jahr);
+        setThema(in_thema);
         setAttraktivitaet(in_attraktivitaetswert);
         setKosten(in_kosten);
         setVerleihendesMuseum(in_verleihendesMuseum);

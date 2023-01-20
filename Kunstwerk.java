@@ -334,7 +334,7 @@ import java.lang.Integer;
     @Override
     public String toString()
     { 
-        return "Attraktivität: " + this.getAttraktivitaet() + ", Nr: " + this.laufendeNummer + ", Art des Kunstwerks: " + this.art + ", Bezeichnung: " + 
+        return "Attraktivität: " + this.getAttraktivitaet() + ", Thema: " + this.thema + ", Nr: " + this.laufendeNummer + ", Art des Kunstwerks: " + this.art + ", Bezeichnung: " + 
         this.bezeichnung + ", Breite " + this.breite;
     }
     

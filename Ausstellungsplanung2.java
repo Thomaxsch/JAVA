@@ -58,6 +58,12 @@ public class Ausstellungsplanung2
         int zugeordneteInstallationenProRaum = 0;
         int zugeordneteKunstwerkeProRaum = 0;
         
+        // Initialwerte für den Wertebereich der Temperatur und Luftfeuchte bei Bildern
+        int raumMinTemperatur = 0;
+        int raumMaxTemperatur = 0;
+        int raumMinLuftfeuchte = 0;
+        int raumMaxLuftfeuchte = 0;
+        
         ListIterator<Kunstwerk> kunstiter = kunstwerke2.listIterator();
             
         // verfügbare Nettolänge einer Wand berechnen: Nettolänge = Bruttolänge - (abstandEcke * 2) 
@@ -97,7 +103,7 @@ public class Ausstellungsplanung2
                 // Prüft ob ein Bild der Ausstellung hinzugefügt werden kann
                 if(temp.getArt() == 'B')
                 {
-                  if(validiereThemaProRaum(themenProRaum,temp, anzahlThemenProRaum))
+                  if(validiereThemaProRaum(themenProRaum, temp, anzahlThemenProRaum))
                   {                       
                       // Prüft ob noch Platz auf der nördlichen Wand ist und fügt das Kunstwerk bei Platz hinzu
                       if(temp.getBreite() <= verfuegbareLaengeNord && gueltigeHoehe)
