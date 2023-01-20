@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.Arrays;
 
 /**
  * Beschreiben Sie hier die Klasse Ausstellungsplanung2.
@@ -37,8 +38,7 @@ public class Ausstellungsplanung2
     {
         Vector<Raum> raeume2 = (Vector<Raum>) raeume.getRaumVector().clone();
         
-        //Comparator<Raum>
-        Vector<Kunstwerk> kunstwerke2 = (Vector<Kunstwerk>) kunstwerke.getKunstwerkVector().clone();
+        Vector<Kunstwerk> kunstwerke2 = (Vector<Kunstwerk>) kunstwerke.sortAttraktivitaet().clone();
              
         // Abstand der Kunstwerke von den Ecken eines Raums muss 1 Meter (100 cm) entsprechen
         int abstandEcke = 100;
@@ -73,15 +73,18 @@ public class Ausstellungsplanung2
         while(kunstiter.hasNext())
         {   
             Kunstwerk temp = kunstiter.next();
-            
-            // wenn die Anzahl der zugeordneten Kunstinstallation den Wert 1 überschreitet, dann braucht die Aufnahme weiterer Kunstwerke in einem Raum nicht geprüft werden
-            // wenn die Anzahl der unterschiedlichen Themen pro Raum den Wert > 3 überschreitet, dann kann das Kunstwerk nicht mehr aufgenommen werden
+                        
             if(zugeordneteInstallationenProRaum < 1)
-            {
+            {             
+                // Prüft ob die Kunstinstallation nicht zu hoch für den Raum ist
+                boolean gueltigeHoehe = false;
+                if(temp.getHoehe() <= hoeheRaum)
+                    gueltigeHoehe = true;
+                    
                 // Prüft ob eine Kunstinstallation der Ausstellung hinzugefügt werden kann
                 if(temp.getArt() == 'I')
                 {
-                  if(validiereKunstinstallation((Kunstinstallation)temp, raum) && zugeordneteKunstwerkeProRaum < 1)
+                  if(validiereKunstinstallation((Kunstinstallation)temp, raum) && zugeordneteKunstwerkeProRaum < 1 && gueltigeHoehe)
                   {
                     kw.add(temp);
                     kunstiter.remove();
@@ -94,18 +97,8 @@ public class Ausstellungsplanung2
                 // Prüft ob ein Bild der Ausstellung hinzugefügt werden kann
                 if(temp.getArt() == 'B')
                 {
-                  /*
-                   * Prüfung folgender Bedingungen vor Aufnahme eines Bildes in den Raum
-                   * 1. wenn das Thema des Bildes schon vorhanden ist, dann kann ein weiteres Bild mit dem gleichen Thema aufgenommen werden
-                   * 2. Wenn das Thema des Bildes noch nicht vorhanden ist, dann wird es zusammen mit dem Bild aufgenommen, wenn nicht mehr als drei Themen vorhanden sind
-                   */
-                  if(themenProRaum.contains(temp.getThema()) || (!themenProRaum.contains(temp.getThema() || (anzahlThemenProRaum < 3))))
+                  if(validiereThemaProRaum(themenProRaum,temp, anzahlThemenProRaum))
                   {                       
-                      boolean gueltigeHoehe = false;
-                      
-                      if(temp.getHoehe() <= hoeheRaum)
-                          gueltigeHoehe = true;
-              
                       // Prüft ob noch Platz auf der nördlichen Wand ist und fügt das Kunstwerk bei Platz hinzu
                       if(temp.getBreite() <= verfuegbareLaengeNord && gueltigeHoehe)
                       {
@@ -113,6 +106,7 @@ public class Ausstellungsplanung2
                         kunstiter.remove();
                         verfuegbareLaengeNord -= temp.getBreite() - 1;
                         zugeordneteKunstwerkeProRaum++; 
+                        continue;
                       }
                    
                       // Prüft ob noch Platz auf der südlichen Wand ist und fügt das Kunstwerk bei Platz hinzu
@@ -161,10 +155,11 @@ public class Ausstellungsplanung2
                         kw.add(temp);
                         kunstiter.remove();
                         nettoFlaecheRaum -= benoetigteFlaecheKunstgegenstand;
+                        zugeordneteKunstwerkeProRaum++; 
                     }
                     continue;
                 }  
-                continue;
+                //continue;
             }
         }
          zugeordneteKunstwerke.put(raum, kw);
@@ -219,9 +214,26 @@ private boolean validiereTemperaturLuftfeuchte(Kunstwerk kw, Raum raum)
         }
     }
 
-private boolean validiereThemaProRaum(Array<String> themenProRaum, int anzahlThemenProRaum)
-{
-    return true;
-}
-
+    /**
+     * Prüfe ob ein Kunstwerk (Bild, Kunstgegenstand) mit dem Thema noch aufgenommen werden kann
+     */
+    private boolean validiereThemaProRaum(ArrayList<String> themenProRaum, Kunstwerk kw, int anzahlThemenProRaum)
+    {
+        // wenn das Thema des Bildes schon vorhanden,dann gebe den Wert true zurück
+        if(themenProRaum.contains(kw.getThema()))
+        {
+            return true;
+        }
+                  // wenn das Thema des Bildes noch nicht vorhanden ist und die Anzahl der Themen pro Raum nicht überschritten ist (maximal 3 erlaubt, dann nehme das Thema auf und gebe den Wert true zurück
+        else if(!themenProRaum.contains(kw.getThema()))
+        {
+            themenProRaum.add(kw.getThema());
+            anzahlThemenProRaum++;
+            return true;
+        }
+        else 
+        {
+            return false;
+        }
+    }
 }
