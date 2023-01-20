@@ -11,6 +11,7 @@ public class Ausstellungsplanung2
 {
     // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
     private HashMap<Raum, List<Kunstwerk>> zugeordneteKunstwerke;
+    
     private Raumverwaltung raeume;
     private Kunstwerkverwaltung kunstwerke;
 

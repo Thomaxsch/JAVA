@@ -366,7 +366,7 @@ public class Raum
     public String toString()
     {
         return "Nummer: " + this.nummer + ", Raumbezeichnung: " + this.name + ", Breite: " + this.breiteRaum +
-        ", Länge: " + this.laengeRaum;  
+        ", Länge: " + this.laengeRaum + ", Höhe:" + this.getHoeheRaum();  
     }
     
 
