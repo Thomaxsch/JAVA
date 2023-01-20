@@ -97,8 +97,9 @@ public class Ausstellungsplanung2
                   /*
                    * Prüfung folgender Bedingungen vor Aufnahme eines Bildes in den Raum
                    * 1. wenn das Thema des Bildes schon vorhanden ist, dann kann ein weiteres Bild mit dem gleichen Thema aufgenommen werden
+                   * 2. Wenn das Thema des Bildes noch nicht vorhanden ist, dann wird es zusammen mit dem Bild aufgenommen, wenn nicht mehr als drei Themen vorhanden sind
                    */
-                  if(themenProRaum.contains(temp.getThema()))
+                  if(themenProRaum.contains(temp.getThema()) || (!themenProRaum.contains(temp.getThema() || (anzahlThemenProRaum < 3))))
                   {                       
                       boolean gueltigeHoehe = false;
                       
@@ -217,4 +218,10 @@ private boolean validiereTemperaturLuftfeuchte(Kunstwerk kw, Raum raum)
             return false;    
         }
     }
+
+private boolean validiereThemaProRaum(Array<String> themenProRaum, int anzahlThemenProRaum)
+{
+    return true;
+}
+
 }
