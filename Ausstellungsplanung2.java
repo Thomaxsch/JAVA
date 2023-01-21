@@ -14,6 +14,8 @@ public class Ausstellungsplanung2
     
     private Raumverwaltung raeume;
     private Kunstwerkverwaltung kunstwerke;
+    private double kostenobergrenze;   
+    private String schwerpunktthema;
 
     /**
      * Konstruktor für Objekte der Klasse Ausstellungsplanung2
@@ -25,7 +27,7 @@ public class Ausstellungsplanung2
         zugeordneteKunstwerke = new HashMap<Raum, List<Kunstwerk>>();
         
         generiereAusstellung();
-        gebeAus();
+        //gebeAus();
     }
     
     
@@ -39,6 +41,13 @@ public class Ausstellungsplanung2
     {
         Vector<Raum> raeume2 = (Vector<Raum>) raeume.getRaumVector().clone();
         
+        // 1/3 der zur Verfügung stehenden Räume soll mit Kunstinstallation belegt werden 
+        int anzahlRaeumeMitInstallation = (int) (raeume2.size() * 0.3);
+        
+        // aktuell mit Kunstinstallationen belegte Räume
+        int anzahlInstallationen = 0;
+        
+        
         Vector<Kunstwerk> kunstwerke2 = (Vector<Kunstwerk>) kunstwerke.sortAttraktivitaet().clone();
              
         // Abstand der Kunstwerke von den Ecken eines Raums muss 1 Meter (100 cm) entsprechen
@@ -50,15 +59,14 @@ public class Ausstellungsplanung2
         
         // zählt die Anzahl der Themen pro Raum, Vorgabe maximal 3 pro Raum
         ArrayList<String> themenProRaum = new ArrayList<String>();
-        int anzahlThemenProRaum = 0;
-        
+               
         // Höhe des Raums ermitteln
         int hoeheRaum = raum.getHoeheRaum();
         
         //Anzahl der Kunstinstallationen pro Raum
         int zugeordneteInstallationenProRaum = 0;
         int zugeordneteKunstwerkeProRaum = 0;
-        
+                
         // Initialwerte für den Wertebereich der Temperatur und Luftfeuchte bei Bildern
         int raumMinTemperatur = 0;
         int raumMaxTemperatur = 0;
@@ -80,8 +88,8 @@ public class Ausstellungsplanung2
         while(kunstiter.hasNext())
         {   
             Kunstwerk temp = kunstiter.next();
-                        
-            if(zugeordneteInstallationenProRaum < 1)
+            //System.out.println(raum + " : " + themenProRaum.size() + " : " + themenProRaum + " : " + temp);           
+            if(zugeordneteInstallationenProRaum < 1 && themenProRaum.size() <= 3)
             {             
                 // Prüft ob die Kunstinstallation nicht zu hoch für den Raum ist
                 boolean gueltigeHoehe = false;
@@ -91,21 +99,20 @@ public class Ausstellungsplanung2
                 // Prüft ob eine Kunstinstallation der Ausstellung hinzugefügt werden kann
                 if(temp.getArt() == 'I')
                 {
-                  if(validiereKunstinstallation((Kunstinstallation)temp, raum) && zugeordneteKunstwerkeProRaum < 1 && gueltigeHoehe)
+                  if(validiereKunstinstallation((Kunstinstallation)temp, raum) && zugeordneteKunstwerkeProRaum < 1 && gueltigeHoehe && (anzahlInstallationen < anzahlRaeumeMitInstallation))
                   {
                     kw.add(temp);
                     kunstiter.remove();
                     zugeordneteInstallationenProRaum++; 
                     zugeordneteKunstwerkeProRaum++; 
-                    continue;
+                    anzahlInstallationen++;
+                    break;
                   }
                 }
                 
                 // Prüft ob ein Bild der Ausstellung hinzugefügt werden kann
                 if(temp.getArt() == 'B')
-                {
-                  if(validiereThemaProRaum(themenProRaum, temp, anzahlThemenProRaum))
-                  {                       
+                {           
                       // Prüft ob noch Platz auf der nördlichen Wand ist und fügt das Kunstwerk bei Platz hinzu
                       if(temp.getBreite() <= verfuegbareLaengeNord && gueltigeHoehe)
                       {
@@ -113,6 +120,12 @@ public class Ausstellungsplanung2
                         kunstiter.remove();
                         verfuegbareLaengeNord -= temp.getBreite() - 1;
                         zugeordneteKunstwerkeProRaum++; 
+                        
+                        if(!themenProRaum.contains(temp.getThema()) && themenProRaum.size() < 3)
+                        {
+                            themenProRaum.add(temp.getThema());
+                        }
+                        
                         continue;
                       }
                    
@@ -123,6 +136,12 @@ public class Ausstellungsplanung2
                         kunstiter.remove();
                         verfuegbareLaengeSued -= temp.getBreite() - 1;
                         zugeordneteKunstwerkeProRaum++; 
+                        
+                        if(!themenProRaum.contains(temp.getThema()) && themenProRaum.size() < 3)
+                        {
+                            themenProRaum.add(temp.getThema());
+                        }
+                        
                         continue;
                       } 
               
@@ -133,6 +152,12 @@ public class Ausstellungsplanung2
                         kunstiter.remove();
                         verfuegbareBreiteOst -= temp.getBreite() - 1;
                         zugeordneteKunstwerkeProRaum++; 
+                        
+                        if(!themenProRaum.contains(temp.getThema()) && themenProRaum.size() < 3)
+                        {
+                            themenProRaum.add(temp.getThema());
+                        }    
+                    
                         continue;
                       } 
               
@@ -143,9 +168,15 @@ public class Ausstellungsplanung2
                         kunstiter.remove();
                         verfuegbareBreiteWest -= temp.getBreite() - 1;
                         zugeordneteKunstwerkeProRaum++; 
+                        
+                        if(!themenProRaum.contains(temp.getThema()) && themenProRaum.size() < 3)
+                        {
+                            themenProRaum.add(temp.getThema());
+                        }
+                        
                         continue;
                       } 
-                  }
+                      //continue;
                 }
                 // Prüft ob ein Kunstgegenstand der Ausstellung hinzugefügt werden kann
                 if(temp.getArt() == 'G')
@@ -162,17 +193,23 @@ public class Ausstellungsplanung2
                         kw.add(temp);
                         kunstiter.remove();
                         nettoFlaecheRaum -= benoetigteFlaecheKunstgegenstand;
-                        zugeordneteKunstwerkeProRaum++; 
+                        zugeordneteKunstwerkeProRaum++;
+                        
+                        if(!themenProRaum.contains(temp.getThema()) && themenProRaum.size() < 3)
+                        {
+                            themenProRaum.add(temp.getThema());
+                        }
                     }
                     continue;
-                }  
+                } 
                 //continue;
             }
-        }
-         zugeordneteKunstwerke.put(raum, kw);
-        }
-       
-    
+             
+            zugeordneteKunstwerke.put(raum, kw);
+             
+        }   
+        //zugeordneteKunstwerke.put(raum, kw);
+    }
 }
 
 public void gebeAus()
@@ -220,27 +257,25 @@ private boolean validiereTemperaturLuftfeuchte(Kunstwerk kw, Raum raum)
             return false;    
         }
     }
+    
+public void setKostenobergrenze(double in_kostenobergrenze)
+{
+    this.kostenobergrenze = in_kostenobergrenze;
+}
 
-    /**
-     * Prüfe ob ein Kunstwerk (Bild, Kunstgegenstand) mit dem Thema noch aufgenommen werden kann
-     */
-    private boolean validiereThemaProRaum(ArrayList<String> themenProRaum, Kunstwerk kw, int anzahlThemenProRaum)
-    {
-        // wenn das Thema des Bildes schon vorhanden,dann gebe den Wert true zurück
-        if(themenProRaum.contains(kw.getThema()))
-        {
-            return true;
-        }
-                  // wenn das Thema des Bildes noch nicht vorhanden ist und die Anzahl der Themen pro Raum nicht überschritten ist (maximal 3 erlaubt, dann nehme das Thema auf und gebe den Wert true zurück
-        else if(!themenProRaum.contains(kw.getThema()))
-        {
-            themenProRaum.add(kw.getThema());
-            anzahlThemenProRaum++;
-            return true;
-        }
-        else 
-        {
-            return false;
-        }
-    }
+public double getKostenobergrenze()
+{
+    return this.kostenobergrenze;
+}
+
+public void setSchwerpunktthema(String in_schwerpunktthema)
+{
+    this.schwerpunktthema = in_schwerpunktthema;
+}
+
+public String getSchwerpunktthema()
+{
+    return this.schwerpunktthema;
+}
+
 }

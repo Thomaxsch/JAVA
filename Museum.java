@@ -1,5 +1,5 @@
 import java.io.*;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Die Klasse Museum bildet die Einstiegsklasse. Aus ihr wird das Programm
@@ -19,15 +19,18 @@ public class Museum
         kunstwerke = new Kunstwerkverwaltung();
 
         importiereKunstwerke("kunstwerke.csv");
-        importiereRaeume("raeume.csv"); 
+        importiereRaeume("raeume.csv");
         
-            
+        Ausstellungsplanung2 planung2 = new Ausstellungsplanung2(raeume, kunstwerke);
+        
+        gebeMenuAus();
+        
         //raeume.showRaeume();
         //kunstwerke.showKunstwerke();
         
         //Ausstellungsplanung planung = new Ausstellungsplanung(raeume, kunstwerke); 
         //planung.generiereAusstellungskandidaten();
-        Ausstellungsplanung2 planung2 = new Ausstellungsplanung2(raeume, kunstwerke);
+        
     }
 
     /**
@@ -235,10 +238,98 @@ public class Museum
         }
     }
     
-    /*public Raumverwaltung raeume()
+    private void gebeMenuAus()
     {
-        return this.raeume;
-    }*/
+        boolean weiter= true;;
+        BufferedReader console = new BufferedReader(new InputStreamReader(System.in));
+        
+        String eingabe = "";
+        
+        Ausstellungsplanung2 planung = new Ausstellungsplanung2(raeume, kunstwerke);
+        
+        try 
+        {
+           do 
+           {
+            System.out.println("-------------------------------------");
+            System.out.println("VAWi-Museum Essen Ausstellungsplanung");
+            System.out.println("-------------------------------------");
+            System.out.println("(1) Planung starten");
+            System.out.println("(2) Schwerpunktthema angeben/ändern");
+            System.out.println("(3) Kostenobergrenze angeben/ändern");
+            System.out.println("(4) Räume einlesen");
+            System.out.println("(5) Kunstwerk einlesen");
+            System.out.println("(6) Anwendung beenden"); 
+            System.out.println("Bitte eine Auswahl trefen (z.B. 2 um ein Schwerpunktthema zu setzen"); 
+            eingabe = console.readLine();
+            
+            if(eingabe.equals("1"))
+            {
+                planung.generiereAusstellung();
+            }
+            
+            if(eingabe.equals("2"))
+            {
+                // Liste der Themen wird direkt bei der Erstellung mit Hilfe der Methode asList der Klasse Arrays initialisiert
+                List<String> themen = Arrays.asList("Aktmalerei", "Barock", "Bauhaus", "Expressionismus", "Hyperrealismus", "Impressionismus", "Klassizismus", "Landschaftmalerei", "Neo-Expressionismus",
+                    "Pflanzen", "Portraits", "Religion", "Renaissance", "Rokoko", "Romantik", "Sonstiges", "Stilleben", "Surrealismus", "Tiere");
+                
+                System.out.print("Ihr Schwerpunktthema: ");
+                eingabe = console.readLine();
+                
+                if(themen.contains(eingabe))
+                {
+                    planung.setSchwerpunktthema(eingabe);
+                    System.out.println("Schwerpunktthema " + planung.getSchwerpunktthema() + " wurde erfolgreich gesetzt");
+                }
+                else 
+                {
+                    System.out.println("Eingegebenes Thema " + eingabe + " ist nicht gültig! Bitte versuchen Sie es erneut.");
+                }
+            }
+            
+            // behandelt die Eingabe einer Kostenobergrenze
+            if(eingabe.equals("3"))
+            {
+                System.out.println("Bitte geben Sie eine Kostenobergrenze an: ");
+                eingabe = console.readLine();
+                
+                try
+                {                
+                    planung.setKostenobergrenze(Double.parseDouble(eingabe));
+                    System.out.println("Kostenobergrenze " + planung.getKostenobergrenze() + " wurde erfolgreich gesetzt");
+                }
+                // Catch-Block fängt Fehler ab, wenn z.B. ein Text statt einer Zahl eingegeben wurde
+                catch(NumberFormatException e)
+                {
+                    System.out.println("Fehler beim Setzen der Kostenobergrenze. Kein gültiger Wert!");
+                }
+            }
+            
+            // behandelt die Auswahl einer einzulesenden Datei mit Räumen
+             if(eingabe.equals("4"))
+            {
+                
+            }
+            
+            // behandelt die Auswahl einer einzulesenden Datei mit Kunstwerken
+             if(eingabe.equals("5"))
+            {
+                
+            }
+            
+            // beendet die Anwendung
+            if(eingabe.equals("6"))
+            {
+                System.exit(0);
+            }
+            
+           } while(weiter);
+        } catch(Exception e) 
+        {
+            e.printStackTrace();
+        }  
+    }
     
     
     
