@@ -23,11 +23,7 @@ public class Museum
         
         Ausstellungsplanung2 planung2 = new Ausstellungsplanung2(raeume, kunstwerke);
         
-        gebeMenuAus();
-        
-        //raeume.showRaeume();
-        //kunstwerke.showKunstwerke();
-        
+        gebeMenuAus();   
         //Ausstellungsplanung planung = new Ausstellungsplanung(raeume, kunstwerke); 
         //planung.generiereAusstellungskandidaten();
         
@@ -238,19 +234,29 @@ public class Museum
         }
     }
     
+    /**
+     * Methode, die ein einfaches Benutzermenü erstellt und Validierungen vornimmt
+     */    
     private void gebeMenuAus()
     {
-        boolean weiter= true;;
+        // Variable vom Typ boolean, die mit dem Wert true initialisiert wird
+        boolean weiter= true;
+        
+        // Objekt console der Klasse BuffferedReader um Eingaben von der Konsole lesen zu können
         BufferedReader console = new BufferedReader(new InputStreamReader(System.in));
         
+        // Variable zur Speicherung der Eingbe von der Konsole
         String eingabe = "";
         
+        // Objekt planung der Klasse Austellungsplanung wird erstellt
         Ausstellungsplanung2 planung = new Ausstellungsplanung2(raeume, kunstwerke);
         
         try 
         {
-           do 
+           // Do-Schleife damit das Menü nach einer Eingabe immer wieder angezeigt wird
+            do 
            {
+            // Einfaches Benutzermenü
             System.out.println("-------------------------------------");
             System.out.println("VAWi-Museum Essen Ausstellungsplanung");
             System.out.println("-------------------------------------");
@@ -260,30 +266,46 @@ public class Museum
             System.out.println("(4) Räume einlesen");
             System.out.println("(5) Kunstwerk einlesen");
             System.out.println("(6) Anwendung beenden"); 
-            System.out.println("Bitte eine Auswahl trefen (z.B. 2 um ein Schwerpunktthema zu setzen"); 
+            System.out.println("Bitte eine Auswahl treffen (z.B. 2 um ein Schwerpunktthema zu setzen)"); 
+            
+            // nimmt ausgewählten Menüpunkt entgegen
             eingabe = console.readLine();
             
+            // behandelt die Generierung der Ausstellung
             if(eingabe.equals("1"))
             {
+                // Aufruf der Methode generiereAusstellung der Klasse Ausstellungsplanung 
                 planung.generiereAusstellung();
             }
             
+            // behandelt die Eingabe eines Schwerpunktthemas
             if(eingabe.equals("2"))
             {
                 // Liste der Themen wird direkt bei der Erstellung mit Hilfe der Methode asList der Klasse Arrays initialisiert
                 List<String> themen = Arrays.asList("Aktmalerei", "Barock", "Bauhaus", "Expressionismus", "Hyperrealismus", "Impressionismus", "Klassizismus", "Landschaftmalerei", "Neo-Expressionismus",
                     "Pflanzen", "Portraits", "Religion", "Renaissance", "Rokoko", "Romantik", "Sonstiges", "Stilleben", "Surrealismus", "Tiere");
                 
+                // Info an Benutzer welche Eingabe erforderlich ist
                 System.out.print("Ihr Schwerpunktthema: ");
+                
+                // nimmt die Eingabe von der Konsole entgegen und speichert Sie in der Variablen eingabe
                 eingabe = console.readLine();
                 
+                // If-Zweig wird ausgeführt, wenn das eingegebene Thema ein gültiges Thema aus der o.g. Liste ist
+                // dazu wird mithilfe der Methode contains der der List themen geprüft, ob das eingegebene Thema enthalten, 
+                // wenn das Thema enthalten ist, dann ist es gültig
                 if(themen.contains(eingabe))
                 {
+                    // Aufruf der Methode setSchwerpunktthema des Objekts planung der Klasse Ausstellungsplanung
                     planung.setSchwerpunktthema(eingabe);
+                    
+                    // Info für den Benutzer wenn Kostenobergrenze erfolgreich gesetzt werden konnte
                     System.out.println("Schwerpunktthema " + planung.getSchwerpunktthema() + " wurde erfolgreich gesetzt");
                 }
+                // Else-Zweig wird ausgeührt, wenn eingegebenes Thema nicht vorhanden ist
                 else 
                 {
+                    // Benutzer wird informiert, dass das eingegebene Thema nicht entalten ist
                     System.out.println("Eingegebenes Thema " + eingabe + " ist nicht gültig! Bitte versuchen Sie es erneut.");
                 }
             }
@@ -291,12 +313,20 @@ public class Museum
             // behandelt die Eingabe einer Kostenobergrenze
             if(eingabe.equals("3"))
             {
+                // Info an Benutzer welche Eingabe erforderlich ist
                 System.out.println("Bitte geben Sie eine Kostenobergrenze an: ");
+                
+                // nimmt die Eingabe von der Konsole entgegen und speichert Sie in der Variablen eingabe
                 eingabe = console.readLine();
                 
+                // Try-Block
                 try
                 {                
+                    // Aufruf der Methode setKostenobergrenze des Objekts planung der Klasse Ausstellungsplanung
+                    // Eingaben von der Konsole sind immer Strings und müssen deshalb erstmal mit der Methoder parseDouble der Klasse Double umgewandelt werden
                     planung.setKostenobergrenze(Double.parseDouble(eingabe));
+                    
+                    // Info für den Benutzer wenn Kostenobergrenze erfolgreich gesetzt werden konnte
                     System.out.println("Kostenobergrenze " + planung.getKostenobergrenze() + " wurde erfolgreich gesetzt");
                 }
                 // Catch-Block fängt Fehler ab, wenn z.B. ein Text statt einer Zahl eingegeben wurde
@@ -321,11 +351,16 @@ public class Museum
             // beendet die Anwendung
             if(eingabe.equals("6"))
             {
+                weiter = false;
+                
+                // Methode exit der Klasse System beendet die Anwendung
                 System.exit(0);
             }
             
            } while(weiter);
-        } catch(Exception e) 
+        } 
+        // Catch-Block wird ausgeführt wenn Fehler bei der Generierung des Menüs auftreten
+        catch(Exception e) 
         {
             e.printStackTrace();
         }  
