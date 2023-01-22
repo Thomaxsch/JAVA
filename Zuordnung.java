@@ -50,6 +50,8 @@ public class Zuordnung
     
     private double kostenobergrenze; //Vorgegebene Kostenobergrenze der Ausstellung
     private double restbudget; // noch verbliebenes Budget
+    private float qualitaetsgewicht; //Gewichtung der Qualität (Werte von 0 bis 1; das Gewicht der Quantität ergibt sich umgekehrt als 1 minus qualitaetsgewicht).
+                                           // default 0.5
     private String schwerpunktthema; //Vorgegebenes Schwerpunktthema der Ausstellung
     private int wieOftWurdeSchonEinSchwerpunktKunstwertPlatziert = 0;
     private int wieOftWurdeSchonEineInstallationPlatziert = 0;
@@ -61,7 +63,8 @@ public class Zuordnung
     /**
      * Konstruktor für Objekte der Klasse Ausleihe
      */
-    public Zuordnung(Kunstwerkverwaltung in_kunstwerkverwaltung,Raumverwaltung in_raumverwaltung,String in_schwerpunktthema,double in_kostenobergrenze)
+    public Zuordnung(Kunstwerkverwaltung in_kunstwerkverwaltung,Raumverwaltung in_raumverwaltung,
+                     String in_schwerpunktthema,double in_kostenobergrenze, float in_qualitaetsgewicht)
     {
         // Damit wir später auf Methoden der Kunstwerk- bzw. Raumverwaltung zugreifen können, speichern wir uns die Referenz auf die Verwaltungen ab:
         kunstwerkverwaltung = in_kunstwerkverwaltung;
@@ -83,9 +86,10 @@ public class Zuordnung
             i++;
         }
         
-        // Schwerpunktthema und Kostenobergrenze zwischenspeichern
+        // Schwerpunktthema und Kostenobergrenze und Qualitätsgewicht zwischenspeichern
         schwerpunktthema=in_schwerpunktthema;
         kostenobergrenze=in_kostenobergrenze;
+        qualitaetsgewicht=in_qualitaetsgewicht;
         
         // Initialisierungen von Arrays, welche ihrer Natur nach immer eine feste Länge haben. Array Länge ist die Anzahl der Räume!
         verfuegbarWandWest = new int [raeumeArray.length];
@@ -206,9 +210,9 @@ public class Zuordnung
             if (!passtKunstwerkDimensionalInRaum(zuSetzendesKW,unserAktuellerRaumIndex))
             {throw new Exception ("es konnte nicht validiert werden, dass das KW in den Raum passt. Widerspruch");}
             
-            // Wenn wir bis hierhin ohne break/continue/throw gekommen sind, können wir das ausgewählte Kunstwerk im Raum platzieren:
+            // Wenn wir bis hierhin ohne break/continue/throw gekommen sind, können wir das ausgewählte Kunstwerk im Raum platzieren (= das eigentliche Setzen):
             denRaeumenZugeordneteKunstwerke.get(unserAktuellerRaumIndex).add(zuSetzendesKW);
-            //Nach jedem Setzen sind einige Parameter zu aktualisieren:
+            // Nach jedem Setzen sind einige Parameter zu aktualisieren:
             aktualisiereParameterNachSetzen(zuSetzendesKW,unserAktuellerRaumIndex); 
                 
             /**
@@ -666,12 +670,27 @@ public class Zuordnung
     
     
     
+    /*
+     * Methoden, die die Ausstellungsplanung zur Steuerung benötigt
+     */
     
+    public boolean wurdeMinimalloesungErreicht (){
+        boolean wurdeMinimalErreicht=false;
+        if (wieOftWurdeSchonEinSchwerpunktKunstwertPlatziert >= raumverwaltung.anzahlHaelfteRaeume())
+        {
+            wurdeMinimalErreicht=true;
+        }
+        return wurdeMinimalErreicht;
+    }
     
+    public ArrayList <ArrayList <Kunstwerk >> getDenRaeumenZugeordneteKunstwerke()
+    {
+        return denRaeumenZugeordneteKunstwerke;
+    }
     
-    
-    
-    
+    public double getZuordnungsGuete(){
+        
+    }
     
     
     
