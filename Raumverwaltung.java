@@ -136,6 +136,30 @@ public class Raumverwaltung
         return inRaumverwaltung.getRaum(auswahlRaumNr);
         }
     
+        public Raum zufealligerLeererRaum(ArrayList <Raum> inRaeumeSchonBelegt)
+    {
+        // Die belegten Räume kommen als ArrayList an. Wir erzeugen für den nachfolgenden Schritt eine ArrayList aus dem raumVector, der alle Räume enthält
+        ArrayList<Raum> raumArrayList = new ArrayList<Raum>(raumVector);
+        
+        // Jetzt entnehmen wir daraus alle Räume, die schon belegt sind. Das heißt wir führen in raumArrayList nur noch die komplett unbelegten Räume
+        raumArrayList.removeAll(inRaeumeSchonBelegt);
+        
+        // Um zufällig einen freien Raum daraus abrufen zu können, suchen wir als Index eine ganzzahlige Zufallszahl zwischen
+        // erstes Element von raumArrayList (d.h. der Wert 0 ) und 
+        // letztes Element von raumArrayList ( d.h. der Länge von raumArrayList minus 1), 
+        // wobei diese beiden Randwerte selbst eingeschlossen sein müssen ("inclusive")
+        
+        // Wie auf https://docs.oracle.com/javase/8/docs/api/java/util/Random.html nachgelesen werden kann, sollte uns die nextInt-Methode Folgendes zurückgeben:
+        // "a pseudorandom, uniformly distributed int value between 0 (inclusive) and the specified value (exclusive), drawn from this random number generator's sequence"
+        
+        Random rand = new Random();
+        int randomNum = rand.nextInt(raumArrayList.size() -1 + 1); 
+        //// int randomNum = rand.nextInt((max - min) + 1) + min  gäbe uns Werte zwischen min und max jeweils einschließlich der beiden Grenzen
+        
+        // Wir geben den zufällig ausgewählten Raum aus der ArrayList der noch freien Räume zurück:
+        return raumArrayList.get(randomNum);
+        }
+        
     //muss noch gemacht werden
     // Für alle Kunstwerke relevant:Raeume raussuchen nach verfuegbareHoehe 
     /** Ermittelt alle (oder ein?) Objekte der Klasse Raum, dessen Hoehe größer ist als ein anzugebender Wert.

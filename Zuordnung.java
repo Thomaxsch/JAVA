@@ -52,6 +52,7 @@ public class Zuordnung
     private double restbudget; // noch verbliebenes Budget
     private String schwerpunktthema; //Vorgegebenes Schwerpunktthema der Ausstellung
     private int wieOftWurdeSchonEinSchwerpunktKunstwertPlatziert = 0;
+    private int wieOftWurdeSchonEineInstallationPlatziert = 0;
     
     // ==========================================================================
     // === Konstruktoren
@@ -136,7 +137,8 @@ public class Zuordnung
      * 
      * Eine Minimalloesung bedeutet, dass genau ein Kunstwerk des Schwerpunktthemas in genau der Hälfte der Räume vertreten ist (also Restriktion 2 erfüllt ist)
      * 
-     *   Hierbei müssen wir also erstmal nur die Restriktionen 5,6,7 (Höhen und Abstände) und 1 (globale Kostenobergrenze) berücksichtigen,
+     *   Hierbei müssen wir also erstmal nur die Restriktionen 5,6,7 (Höhen und Abstände) und 1 (globale Kostenobergrenze) und 
+     *   9 (höchstens ein Drittel der Räume abgerundet mit Installation) berücksichtigen,
      * 
      *   während die Restriktionen 8 (KI alleine im Raum), 4 (mehrere Bilder im Raum ohne Temp/Feuchte Widerspruch), 3 (max 3 versch Themen im Raum)
      *   noch KEINE Bedeutung haben.
@@ -156,7 +158,7 @@ public class Zuordnung
             }
             
             // Wir benötigen einen zufällig ausgewählten noch leeren Raum, um dort zu versuchen ein KW zu platzieren:
-            Raum unserAktuellerRaum = raumverwaltung.zufealligerRaum(raeumeSchonBelegt);
+            Raum unserAktuellerRaum = raumverwaltung.zufealligerLeererRaum(raeumeSchonBelegt);
             
             // Wir brauchen auch den Index dieses Raums, damit wir in unseren Listen später die richtigen Werte zum Raumindex finden können: 
             int unserAktuellerRaumIndex = 0;
@@ -178,14 +180,18 @@ public class Zuordnung
             
             Kunstwerk zuSetzendesKW;
             try {
-                zuSetzendesKW = kunstwerkverwaltung.naechstesZuSetzendesKunstwerk(
+                
+                
+                short laufendeNummer = kunstwerkverwaltung.naechstesZuSetzendesKunstwerk(
                     schwerpunktthema,
                     verfuegbarWandWest[i],verfuegbarWandOst[i],verfuegbarWandNord[i],verfuegbarWandSued[i], // relevant für Bilder (vier Wände)
                     verfuegbarLaengeRaum[i],verfuegbarBreiteRaum[i],                                        // relevant für G und I (laengs/quer bzw Raumfläche)
                     verfuegbarHoeheRaum[i],                                                                 // relevant für alle KW
                     restbudget,                                                                             // verfügbares Restbudget (double)
-                    kunstwerkeSchonZugeordnet                                                               // bisher platzierte Kunstwerke (Arraylist)
+                    kunstwerkeSchonZugeordnet,                                                              // bisher platzierte Kunstwerke (Arraylist)
+                    ((double) wieOftWurdeSchonEineInstallationPlatziert)/raeumeArray.length                 // Anteil der mit I belegten Räume. (cast für die Division nötig)
                 ); 
+                zuSetzendesKW = kunstwerkverwaltung.showKunstwerkZuLaufendeNummer(laufendeNummer);
             }
             catch (Exception e){ 
                 // Mit exception e werden alle, nicht nur spezielle Fehler abgefangen.
@@ -229,6 +235,7 @@ public class Zuordnung
      *   - im Prinzip wie bei versucheMinimalloesungZuFinden mittels Einsatz der Methode kunstwerkverwaltung.naechstesZuSetzendesKunstwerk():
      *     -- Restriktionen 5,6,7 (Höhen und Abstände)
      *     -- R1 (globale Kostenobergrenze)
+     *     -- R9 (höchstens ein Drittel der Räume (abgerundet) mit Installation)
      *   - aber NICHT mehr:
      *     -- R2 (Schwerpunktthema in min. der Hälfte der Räume)
      *   - nun neu
@@ -244,7 +251,7 @@ public class Zuordnung
         for (int i=0;i<raeumeArray.length;i++) // d.h. für jeden Raum
         {
             // Wir benötigen einen zufällig ausgewählten noch leeren Raum, um dort zu versuchen ein KW zu platzieren:
-            Raum unserAktuellerRaum = raumverwaltung.zufealligerRaum(raeumeSchonBelegt);
+            Raum unserAktuellerRaum = raumverwaltung.zufealligerLeererRaum(raeumeSchonBelegt);
             
             // Wir brauchen auch den Index dieses Raums, damit wir in unseren Listen später die richtigen Werte zum Raumindex finden können: 
             int unserAktuellerRaumIndex = 0;
@@ -332,6 +339,7 @@ public class Zuordnung
      *      - wenn es schon drei Themen im Raum gibt, welches das sind, weil dann nur noch diese erlaubt sind für weitere KW
      *      - ob noch B/I/G (kein Kunstwerk bisher im Raum) oder nur noch B/G im Raum platziert werden kann
      *      - wie oft schon ein Kunstwerk des Schwerpunktthemas gesetzt wurde
+     *      - wie oft schon eine Installation gesetzt wurde
      *      
      * @param in_r Raumindex
      */
@@ -468,6 +476,7 @@ public class Zuordnung
                         verfuegbarBreiteRaum[r]-=(l);
                     }
             }
+            
         }
         
         //////////////////////////////////////////////////////////////////////////
@@ -518,7 +527,7 @@ public class Zuordnung
         // --- bei potentiell mehr als 3 Themen im Raum relevant dafür, dass nur noch diese 3 Themen für weitere KW erlaubt sind
         // --- welcheThemenDuerfenNochInRaum zeigt die 3 erlaubten Themen in einem Raum; sind es weniger als 3 Einträge für den Raum, dann sind noch alle Themen erlaubt
 
-        if (welcheThemenDuerfenNochInRaum.size()<=2) {  // wenn es kleiner gleich 2 unique Themen im Raum gibt
+        if (welcheThemenDuerfenNochInRaum.size()<=2) {  // wenn es kleiner gleich 2 unique Themen im Raum vorher gab
             if (!welcheThemenDuerfenNochInRaum.get(r).contains(kw.getThema()))  // wenn das Thema bisher noch nicht im Raum vertreten ist
             {
                 welcheThemenDuerfenNochInRaum.get(r).add(kw.getThema());
@@ -539,7 +548,14 @@ public class Zuordnung
         {
             wieOftWurdeSchonEinSchwerpunktKunstwertPlatziert++;
         }
-    
+        
+        /////////////////////////////////////////////////////////////////////////
+        // Aktualisiere, wie oft schon eine Installation gesetzt wurde
+        if (kw.getArt()=='I')
+        {
+            wieOftWurdeSchonEineInstallationPlatziert++;
+        }
+        
     }
     
     // ==========================================================================
@@ -635,7 +651,8 @@ public class Zuordnung
             else
             {return false;}
         }
-        return false; // Java meckert wenn dies nicht da steht am Ende, aber macht das überhaupt Sinn?!?! => try Formulierung?
+        //return false; // Java meckert wenn das return nicht da steht am Ende. Lieber hätte ich dann einen Fehler. Aber gut, wenn Java es so will.
+                    
             
     }
         
