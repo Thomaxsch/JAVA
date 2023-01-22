@@ -50,7 +50,7 @@ public class Zuordnung
     
     private double kostenobergrenze; //Vorgegebene Kostenobergrenze der Ausstellung
     private double restbudget; // noch verbliebenes Budget
-    private float qualitaetsgewicht; //Gewichtung der Qualität (Werte von 0 bis 1; das Gewicht der Quantität ergibt sich umgekehrt als 1 minus qualitaetsgewicht).
+    private double qualitaetsgewicht; //Gewichtung der Qualität (Werte von 0 bis 1; das Gewicht der Quantität ergibt sich umgekehrt als 1 minus qualitaetsgewicht).
                                            // default 0.5
     private String schwerpunktthema; //Vorgegebenes Schwerpunktthema der Ausstellung
     private int wieOftWurdeSchonEinSchwerpunktKunstwertPlatziert = 0;
@@ -64,7 +64,7 @@ public class Zuordnung
      * Konstruktor für Objekte der Klasse Ausleihe
      */
     public Zuordnung(Kunstwerkverwaltung in_kunstwerkverwaltung,Raumverwaltung in_raumverwaltung,
-                     String in_schwerpunktthema,double in_kostenobergrenze, float in_qualitaetsgewicht)
+                     String in_schwerpunktthema,double in_kostenobergrenze, double in_qualitaetsgewicht)
     {
         // Damit wir später auf Methoden der Kunstwerk- bzw. Raumverwaltung zugreifen können, speichern wir uns die Referenz auf die Verwaltungen ab:
         kunstwerkverwaltung = in_kunstwerkverwaltung;
@@ -184,8 +184,6 @@ public class Zuordnung
             
             Kunstwerk zuSetzendesKW;
             try {
-                
-                
                 short laufendeNummer = kunstwerkverwaltung.naechstesZuSetzendesKunstwerk(
                     schwerpunktthema,
                     verfuegbarWandWest[i],verfuegbarWandOst[i],verfuegbarWandNord[i],verfuegbarWandSued[i], // relevant für Bilder (vier Wände)
@@ -193,7 +191,8 @@ public class Zuordnung
                     verfuegbarHoeheRaum[i],                                                                 // relevant für alle KW
                     restbudget,                                                                             // verfügbares Restbudget (double)
                     kunstwerkeSchonZugeordnet,                                                              // bisher platzierte Kunstwerke (Arraylist)
-                    ((double) wieOftWurdeSchonEineInstallationPlatziert)/raeumeArray.length                 // Anteil der mit I belegten Räume. (cast für die Division nötig)
+                    ((double) wieOftWurdeSchonEineInstallationPlatziert)/raeumeArray.length,                // Anteil der mit I belegten Räume. (cast für die Division nötig)
+                    qualitaetsgewicht                                                                       // Gewichtung von Qualität und Quantität
                 ); 
                 zuSetzendesKW = kunstwerkverwaltung.showKunstwerkZuLaufendeNummer(laufendeNummer);
             }
@@ -286,7 +285,9 @@ public class Zuordnung
             
             Kunstwerk zuSetzendesKW;
             try {
-                zuSetzendesKW = kunstwerkverwaltung.naechstesZuSetzendesKunstwerk(
+                /*
+                 
+                 zuSetzendesKW = kunstwerkverwaltung.naechstesZuSetzendesKunstwerk(
                     //schwerpunktthema,<--- das Schwerpunktthema übergeben wir wie erklärt nicht
                     verfuegbarWandWest[i],verfuegbarWandOst[i],verfuegbarWandNord[i],verfuegbarWandSued[i], // relevant für Bilder (vier Wände)
                     verfuegbarLaengeRaum[i],verfuegbarBreiteRaum[i],                                        // relevant für G und I (laengs/quer bzw Raumfläche)
@@ -298,6 +299,7 @@ public class Zuordnung
                     welcheTypenDuerfenNochInRaum,                                  //ob der Typ egal ist oder es nur noch B/G sein darf
                     kunstwerkeSchonZugeordnet                                      // bisher platzierte Kunstwerke
                 ); 
+                */
             }
             catch (Exception e){ 
                 // Mit exception e werden alle, nicht nur spezielle Fehler abgefangen.
@@ -689,7 +691,7 @@ public class Zuordnung
     }
     
     public double getZuordnungsGuete(){
-        
+        n;
     }
     
     

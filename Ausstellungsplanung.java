@@ -24,7 +24,7 @@ public class Ausstellungsplanung
                                             //Wenn kein Schwerpunkt gesetzt werden soll, kann leer ("")  übergeben werden.
     private double kostenobergrenze = 999999999; //Legt die Kostenobergrenze der Ausstellung fest (mit Default)
                                             // Wenn keine Kostenobergrenze gesetzt werden soll, dann den Wert von ca 1 Milliarde (neun Mal die 9) übergeben.
-    private float qualitaetsgewicht = 0.5; //Gewichtung der Qualität (Werte von 0 bis 1; das Gewicht der Quantität ergibt sich umgekehrt als 1 minus qualitaetsgewicht).
+    private double qualitaetsgewicht = 0.5; //Gewichtung der Qualität (Werte von 0 bis 1; das Gewicht der Quantität ergibt sich umgekehrt als 1 minus qualitaetsgewicht).
                                            // default 0.5
     
     private Raumverwaltung raumverwaltung;
@@ -43,7 +43,7 @@ public class Ausstellungsplanung
     public Ausstellungsplanung(Raumverwaltung in_raumverwaltung, Kunstwerkverwaltung in_kunstwerkverwaltung) 
     {
         // Initieerung der Zuordnungsverwaltung
-        zuordnungsverwaltung = new Zuordnungsverwaltung(anzahlZuordnungen,schwerpunktthema,kostenobergrenze,qualitaetsgewicht);
+        zuordnungsverwaltung = new Zuordnungsverwaltung(anzahlZuordnungen);
         
         raumverwaltung=in_raumverwaltung;
         kunstwerkverwaltung=in_kunstwerkverwaltung;
@@ -68,7 +68,7 @@ public class Ausstellungsplanung
         for (int i=0;i<anzahlZuordnungen;i++){
             // erzeuge eine neue Zuordnung als Position i der Zuordnungsliste, übergebe dafür Referenzen auf alle Kunstwerke und alle Räume.
             // Schwerpunktthema und Kostenobergrenze sind Default, wenn nicht anders vorgegegeben.
-            zuordnungsverwaltung.addZuordnung(i,kunstwerkverwaltung,raumverwaltung,schwerpunktthema,kostenobergrenze);
+            zuordnungsverwaltung.addZuordnung(i,kunstwerkverwaltung,raumverwaltung,schwerpunktthema,kostenobergrenze,qualitaetsgewicht);
             
             System.out.println(
                "Lege an Zuordnung Nr."+Integer.toString(i) +
@@ -85,7 +85,7 @@ public class Ausstellungsplanung
             }
             else
             {
-                NEUTHROW 
+                ; /////////////XXXXXXXXXX TO DO: NEUTHROW 
             }
         }
         else // ohne Schwerpunktthema können wir direkt versuchen, die Ausstellung auszubauen
@@ -158,7 +158,7 @@ public class Ausstellungsplanung
     public void setzeAusstellungsplanungZurueck(){
         for (int i=0;i<anzahlZuordnungen;i++)
         { 
-            deleteZuordnung(i); // löscht alle bisherigen Zuordnungen. Da Elemente sich nicht aus Arrays entfernen lassen, werden sie mit null überschrieben
+            zuordnungsverwaltung.deleteZuordnung(i); // löscht alle bisherigen Zuordnungen. Da Elemente sich nicht aus Arrays entfernen lassen, werden sie mit null überschrieben
         }
     }
     
@@ -188,7 +188,7 @@ public class Ausstellungsplanung
      * Methode um Qualitaetsgewichtung für die Planung zu setzen.
      * @param qualitaetsgewicht   Gewichtung der Qualität (Werte von 0 bis 1; das Gewicht der Quantität ergibt sich umgekehrt als 1 minus qualitaetsgewicht). Default 0.5.
      */   
-    public void setQualitaetsgewicht(float in_qualitaetsgewicht)
+    public void setQualitaetsgewicht(double in_qualitaetsgewicht)
     {
         qualitaetsgewicht=in_qualitaetsgewicht;
     }
@@ -219,7 +219,7 @@ public class Ausstellungsplanung
      * 
      * @return qualitaetsgewicht   Wert des Attributtes qualitaetsgewicht
      */
-    public String getQualitaetsgewicht() 
+    public double getQualitaetsgewicht() 
     {
         return qualitaetsgewicht;
     }

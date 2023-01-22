@@ -44,7 +44,7 @@ public class Zuordnungsverwaltung
     /**
      * Konstruktor für Objekte der Klasse Zuordnungsverwaltung
      */
-    public Zuordnungsverwaltung(int in_arraylaenge, String in_schwerpunktthema, double in_kostenobergrenze, float in_qualitaetsgewicht)
+    public Zuordnungsverwaltung(int in_arraylaenge)
     {
         listeZuordnungen = new Zuordnung[in_arraylaenge]; // Initialisierung des Arrays, sodass es 100 Elemente (vom Typ Zuordnung) aufnehmen kann.
 
@@ -72,11 +72,9 @@ public class Zuordnungsverwaltung
                             Raumverwaltung in_raumverwaltung,
                             String in_schwerpunktthema,
                             double in_kostenobergrenze,
-                            float in_qualitaetsgewicht)
+                            double in_qualitaetsgewicht)
     {
-       
         listeZuordnungen[arrayposition]=new Zuordnung(in_kunstwerkverwaltung,in_raumverwaltung,in_schwerpunktthema,in_kostenobergrenze,in_qualitaetsgewicht);
-        
     }
     
     /**
