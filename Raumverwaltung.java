@@ -2,6 +2,7 @@
 import java.util.Vector;
 import java.util.*;
 import java.lang.Math;
+import java.util.Arrays;
 
 /**
  * Die Klasse Raumverwaltung ist eine Containerklasse und dient zur Verwaltung von Objekten der Klasse "Raum".
@@ -17,7 +18,10 @@ public class Raumverwaltung
     // Attribute der Klasse Raumverwaltung
     /** In diesem Attribut werden die einzelnen Raeume mittels der Containerklasse Vector verwaltet. */
     private Vector<Raum> raumVector;
-        
+    
+    /** In diesem Attribut werden die nach Suchkriterien ausgewählten Raeume mittels der Containerklasse Vector verwaltet. */
+    private Vector<Raum> raumSuche;
+           
     //Konstruktor der Klasse Raumverwaltung
     /** Konstruktor fuer Objekte der Klasse Raum. 
      *  Dieser Konstruktor erzeugt eine leere Raumverwaltung.
@@ -31,7 +35,7 @@ public class Raumverwaltung
     //=============================================================
     //Methoden zur Verwaltung der Klasse Raumverwaltung
     //=============================================================
-    //muss noch gemacht werden
+    
     /** Ermittelt den Vector der Raumverwaltung.
      *  @return  Den Vector der Raumverwaltung.
      */
@@ -57,7 +61,7 @@ public class Raumverwaltung
     
     //muss noch gemacht werden/ noetig?
     /** Fügt alle Raume der Raumverwaltung zu.
-     *  @param  raum  alle Objekt der Klasse Raum, die hinzugefuegt werden sollen. 
+     * 
      */
     public void addAll(Raum raum)
     {
@@ -134,7 +138,7 @@ public class Raumverwaltung
         int auswahlRaumNr = (int)(zahlRandom * anzahlRaeume);
         // liest das entsprechende Element aus dem Vector
         return inRaumverwaltung.getRaum(auswahlRaumNr);
-        }
+    }
     
         public Raum zufealligerLeererRaum(ArrayList <Raum> inRaeumeSchonBelegt)
     {
@@ -162,25 +166,36 @@ public class Raumverwaltung
         
     //muss noch gemacht werden
     // Für alle Kunstwerke relevant:Raeume raussuchen nach verfuegbareHoehe 
-    /** Ermittelt alle (oder ein?) Objekte der Klasse Raum, dessen Hoehe größer ist als ein anzugebender Wert.
-     *  @return     Objekte der Klasse Raum, welche das Kriterium in Hoehe erfüllen.
+    /** Ermittelt alle (oder ein?) Objekte der Klasse Raum, dessen Hoehe größer ist als ein zu ueberpruefender Wert.
+     *  @param  hoeheKriterium    Zu ueberpruefender Wert (int)
+     *  @return                   Objekte der Klasse Raum, welche das Kriterium in Hoehe erfüllen.
      */
-    public Vector<Raum> showRaumNachHoehe(int hoeheKriterium)
-    {
-        //Code einfuegen
-        return raumVector;
+    public Raum showRaumNachHoehe(int hoeheKriterium)
+    {      
+        for (Raum einRaum : raumVector)
+        {
+        if (einRaum.showVerfuegbareHoehe()>= hoeheKriterium)
+            {
+                return einRaum;
+            }
+        }
+        return null;
+        
+        //funktioniert so noch nicht
     }
-    
+       
     //muss noch gemacht werden
     // Für KI/KG relevant: Raeume raussuchen nach verfuegbareLaenge, verfuegbareBreite
     /** Ermittelt alle (oder ein?) Objekte der Klasse Raum, dessen Laenge größer ist als ein anzugebender Wert.
      *  @return     Objekte der Klasse Raum, welche das Kriterium in Laenge erfüllen.
      */
+    
     public Vector<Raum> showRaumNachLaenge(int laengeKriterium)
     {
         //Code einfuegen
         return raumVector;
     }
+    
     /** Ermittelt alle (oder ein?) Objekt der Klasse Raum, dessen Breite größer ist als ein anzugebender Wert.
      *  @return     Objekte der Klasse Raum, das Kriterien in Breite erfüllt.
      */
