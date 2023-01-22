@@ -280,6 +280,7 @@ public class Museum
             {
                 // Aufruf der Methode generiereAusstellung der Klasse Ausstellungsplanung 
                 planung2.generiereAusstellung();
+                //// planung.generiereAusstellung(); <-- die Methode ist schon da, wird aber im moment nicht durchlaufen
             }
             
             // behandelt die Eingabe eines Schwerpunktthemas
