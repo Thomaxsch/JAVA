@@ -115,22 +115,18 @@ public class Kunstwerkverwaltung
      * 
      * @return das Kunstwerk zur laufendenNummer
      */
-    public Vector <Kunstwerk> showKunstwerkZuLaufendeNummer(short in_laufendeNummer) {
+    public String showKunstwerkZuLaufendeNummer(short in_laufendeNummer) {
     boolean found = false;
     for (Kunstwerk kw : kunstwerkVector) {
         if (kw.getLaufendeNummer() == in_laufendeNummer) 
-        {
-            System.out.println(kw);
+            {
             found = true;
+            return kw.toString();
+            }   
         }   
-    }   
-    if(!found)
-        {
         System.out.println("Es wurde kein Kunstwerk zur LaufendenNummer gefunden");
         return null;
-        }
-        return kunstwerkVector;
-    }  
+        }  
     
     /**
      * Methode, welche überprüft, ob noch genügend Platz für den Kunstgegenstand in einem Raum übrig ist
