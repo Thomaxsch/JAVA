@@ -20,14 +20,15 @@ public class Ausstellungsplanung
     // === Attribute
     // ==========================================================================
     
-    private String schwerpunktthema = ""; //Variable um das Schwerpunktthema der Ausstellung festzulegen
-    private double kostenobergrenze = 999999999; //Legt die Kostenobergrenze der Ausstellung fest.
+    private String schwerpunktthema = ""; //Variable um das Schwerpunktthema der Ausstellung festzulegen (mit Default)
+    private double kostenobergrenze = 999999999; //Legt die Kostenobergrenze der Ausstellung fest (mit Default)
+
+    
     private Raumverwaltung raumverwaltung;
     private Kunstwerkverwaltung kunstwerkverwaltung;
-    private int anzahlZuordnungen = 1;
-    
     private Zuordnungsverwaltung zuordnungsverwaltung;
-    private Zuordnung zuordnungAktuell;
+    
+    private int anzahlZuordnungen = 1;
     
     // ==========================================================================
     // === Konstruktor
@@ -54,59 +55,46 @@ public class Ausstellungsplanung
     // ==========================================================================
     
     /**
-     * Methode um Schwerpunktthema zu setzen. 
-     * 
-     * @param schwerpunktthema  Wenn kein Schwerpunkt gesetzt werden soll, kann null übergeben werden.
-     * 
-     */   
-    public void set_schwerpunktthema(String in_schwerpunktthema)
-    {
-        // tragen Sie hier den Code ein
-        schwerpunktthema=in_schwerpunktthema;
-    }
-        
-    /**
-     * Methode um Kostenobergrenze zu setzen.
-     * @param kostenobergrenze   Wenn keine Kostenobergrenze gesetzt werden soll, dann z.B. den Wert von ca 1 Milliarde (neun Mal die 9) übergeben. 
-     */   
-    public void set_kostenobergrenze(double in_kostenobergrenze)
-    {
-        // tragen Sie hier den Code ein
-        kostenobergrenze=in_kostenobergrenze;
-    }
-    
-    /**
-     * Hierüber kann das Schwerpunktthema der Ausstellung abgefragt werden.
-     * 
-     * @return schwerpunktthema   Wert des Attributtes schwerpunktthema
-     */
-    public String get_schwerpunktthema() 
-    {
-        return schwerpunktthema;
-    }
-       
-    /**
-     * Methode zum Abfragen der Kostenobergrenze
-     * 
-     * @return kostenobergrenze   Wert des Attributs kostenobergrenze
-     */
-    public double get_kostenobergrenze()
-    {
-        return kostenobergrenze;
-    }
-    
-    /**
      * Methode, um anzustoßen und auf hohem Level zu steuern, dass Zuordnungskandidaten für die Ausstellung erzeugt und optimiert werden. 
      * 
      * Solche Kandidaten werden als Zuordnungen in der Klasse Zuordnungsverwaltung in einem Array verwaltet. Dieses kann so viele einzelne Zuordnungen aufnehmen,
      * wie in obigem Attribut anzahlZuordnungen festgelegt wird.
+     */
+    
+    public void generiereAusstellung()
+    {
+        for (int i=0;i<anzahlZuordnungen;i++){
+            // erzeuge eine neue Zuordnung als Position i der Zuordnungsliste, übergebe dafür Referenzen auf alle Kunstwerke und alle Räume.
+            // Schwerpunktthema und Kostenobergrenze sind Default, wenn nicht anders vorgegegeben.
+        }
+                
+        
+        
+        if (schwerpunktthema!="") // mit Schwerpunktthema müssen wir erst 
+        {
+            findeMinimaleAusstellungskandidaten();
+            wurdeMinimaleAusstellungGefunden();
+            if (wurdeMinimaleAusstellungGefunden){
+                erweitereAusstellungskandidaten();
+            }
+        }
+        else // ohne Schwerpunktthema können wir direkt versuchen, die Ausstellung auszubauen
+        {
+            erweitereAusstellungskandidaten();
+        }
+        
+    }
+    
+    
+    /**
+     *
      */       
       
-    public void generiereAusstellungskandidaten()
+    private void findeMinimaleAusstellungskandidaten()
     {
        for (int i=0;i<anzahlZuordnungen;i++)
        {
-           // erzeuge eine neue Zuordnung als Position i der Zuordnungsliste, übergebe dafür Referenzen auf alle Kunstwerke und alle Räume.
+           
            
            System.out.println(
                "Lege an Zuordnung Nr."+Integer.toString(i) +
@@ -119,7 +107,7 @@ public class Ausstellungsplanung
            ////zuordnungAktuell = zuordnungen.getZuordnung(i);
            
            //Test: 
-           zuordnungAktuell = zuordnungsverwaltung.getZuordnung(0);
+           Zuordnung zuordnungAktuell = zuordnungsverwaltung.getZuordnung(0);
            System.out.println("test: welche Kunstwerke passen in erstes Raumobjekt der Zuordnung?");
            
            for (Kunstwerk k: kunstwerkverwaltung.sortAttraktivitaet() )
@@ -145,9 +133,7 @@ public class Ausstellungsplanung
     
     
     /**
-     * Es kann nötig werden, dass das Mapping/die Zuordnung von Räumen und Bildern der vorgesehen Ausstellung nicht alleine "in place" im ersten Objekt "Ausleihe" optimiert werden kann.
-     * Dies kann zum Beispiel der Fall sein, wenn man komplexere Vertauschungen in der Zuordnung vornimmt, die sich jedoch als schlechter als die bisherige Lösung herausstellen, sodass man
-     * die letzte Zuordnung wiederherstellen möchte. Jedenfalls bietet sich hier die Möglichkeit verschiedene Planungszustände zu speichern; es kann umgesetzt werden, dass man Planungszustände 
+     * ALT ::: Jedenfalls bietet sich hier die Möglichkeit verschiedene Planungszustände zu speichern; es kann umgesetzt werden, dass man Planungszustände 
      * miteinander vergleicht und schlechtere Planungen verwirft.
      * [aktuell deutet sich an, dass wir ohne diese Methode auskommen können]
      *  
@@ -170,7 +156,56 @@ public class Ausstellungsplanung
         //return Zuordnungsverwaltung.get_Zuordnung(0).get_zugeordneteRaeumeKunstwerke();
     }   
     
+    
+    
+    
+    
+    
+    
+    
+    
+    /**
+     * Methode um Schwerpunktthema zu setzen. 
+     * 
+     * @param schwerpunktthema  Wenn kein Schwerpunkt gesetzt werden soll, kann null übergeben werden.
+     * 
+     */   
+    public void setSchwerpunktthema(String in_schwerpunktthema)
+    {
+        // tragen Sie hier den Code ein
+        schwerpunktthema=in_schwerpunktthema;
+    }
+        
+    /**
+     * Methode um Kostenobergrenze zu setzen.
+     * @param kostenobergrenze   Wenn keine Kostenobergrenze gesetzt werden soll, dann z.B. den Wert von ca 1 Milliarde (neun Mal die 9) übergeben. 
+     */   
+    public void setKostenobergrenze(double in_kostenobergrenze)
+    {
+        // tragen Sie hier den Code ein
+        kostenobergrenze=in_kostenobergrenze;
+    }
+    
+    /**
+     * Hierüber kann das Schwerpunktthema der Ausstellung abgefragt werden.
+     * 
+     * @return schwerpunktthema   Wert des Attributtes schwerpunktthema
+     */
+    public String getSchwerpunktthema() 
+    {
+        return schwerpunktthema;
+    }
        
+    /**
+     * Methode zum Abfragen der Kostenobergrenze
+     * 
+     * @return kostenobergrenze   Wert des Attributs kostenobergrenze
+     */
+    public double getKostenobergrenze()
+    {
+        return kostenobergrenze;
+    }
+    
     
 }
   

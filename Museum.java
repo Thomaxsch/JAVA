@@ -12,6 +12,7 @@ public class Museum
 {
     private Raumverwaltung raeume;
     private Kunstwerkverwaltung kunstwerke;
+    private Ausstellungsplanung planung;
     
     public Museum() 
     {
@@ -21,11 +22,13 @@ public class Museum
         importiereKunstwerke("kunstwerke.csv");
         importiereRaeume("raeume.csv");
         
-        Ausstellungsplanung2 planung2 = new Ausstellungsplanung2(raeume, kunstwerke);
+        Ausstellungsplanung2 planung2 = new Ausstellungsplanung2(raeume, kunstwerke); // <--kann das hier weg?
+        
+        planung = new Ausstellungsplanung(raeume, kunstwerke); 
         
         gebeMenuAus();   
-        //Ausstellungsplanung planung = new Ausstellungsplanung(raeume, kunstwerke); 
-        //planung.generiereAusstellungskandidaten();
+        
+        
         
     }
 
@@ -249,7 +252,8 @@ public class Museum
         String eingabe = "";
         
         // Objekt planung der Klasse Austellungsplanung wird erstellt
-        Ausstellungsplanung2 planung = new Ausstellungsplanung2(raeume, kunstwerke);
+        Ausstellungsplanung2 planung2 = new Ausstellungsplanung2(raeume, kunstwerke); // <-- wird für die Ausstellungsplanung im Konstruktor oben erzeugt
+        
         
         try 
         {
@@ -275,7 +279,8 @@ public class Museum
             if(eingabe.equals("1"))
             {
                 // Aufruf der Methode generiereAusstellung der Klasse Ausstellungsplanung 
-                planung.generiereAusstellung();
+                planung2.generiereAusstellung();
+                //// planung.generiereAusstellung(); <-- die Methode ist schon da, wird aber im moment nicht durchlaufen
             }
             
             // behandelt die Eingabe eines Schwerpunktthemas

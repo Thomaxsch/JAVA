@@ -176,7 +176,7 @@ public class Zuordnung
             
             // Das Folgende gibt uns das als nächstes zu setzende Kunstwerk in die Hand,
             // das vom Schwerpunktthema ist, die Restriktionen 5,6,7 (im Raum) erfüllt, sodass auch R1 (global Kosten) erfüllt ist. 
-            // Und bei all dem ist es das KW mit höchster Attraktivität.
+            // Und bei all dem ist es das KW mit höchster Attraktivität. TO DO
             
             Kunstwerk zuSetzendesKW;
             try {
