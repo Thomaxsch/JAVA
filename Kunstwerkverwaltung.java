@@ -188,7 +188,7 @@ public class Kunstwerkverwaltung
             kriteriumAttrProKostenVector.set(i, kriteriumAttrProKostenVector.get(i)/maxAttrProKosten);
         }
         
-        // Wir fusionieren die Kriterien zu einem einzigen gewichteten Kriterium (welches Werte von 0 bis 1 hat)
+        // Wir fusionieren die Kriterien zu einem einzigen gewichteten Kriterium (welches Werte von 0 bis 2 hat)
         double gewichtung = 0.5;
         Vector<Double> kriteriumVector = new Vector<Double>(); // wir können hier nicht double nehmen, weil es ein Vector ist, und der erlaubt keine primitives, daher Double
         
@@ -271,7 +271,7 @@ public class Kunstwerkverwaltung
                 }
             }
         
-            if (passtSchwerpunkt&passtDimension&passtBudget&passtZuordnenbar&passtInstallationAnteilI)
+            if (passtSchwerpunkt & passtDimension & passtBudget & passtZuordnenbar & passtInstallationAnteilI)
             {
                bestes_kw_lfd_nr = kw.getLaufendeNummer();
                break; // die Schleife endet, wenn das erste Mal ein KW passt
