@@ -257,15 +257,17 @@ public class Museum
             do 
            {
             // Einfaches Benutzermenü
-            System.out.println("-------------------------------------");
+            System.out.println("----------------------------------------");
             System.out.println("VAWi-Museum Essen Ausstellungsplanung");
-            System.out.println("-------------------------------------");
+            System.out.println("----------------------------------------");
             System.out.println("(1) Planung starten");
             System.out.println("(2) Schwerpunktthema angeben/ändern");
             System.out.println("(3) Kostenobergrenze angeben/ändern");
-            System.out.println("(4) Räume einlesen");
-            System.out.println("(5) Kunstwerk einlesen");
-            System.out.println("(6) Anwendung beenden"); 
+            System.out.println("(4) Aktuelles Schwerpunktthema anzeigen");
+            System.out.println("(5) Aktuelle Kostenobergrenze anzeigen");
+            System.out.println("(6) Räume einlesen");
+            System.out.println("(7) Kunstwerk einlesen");
+            System.out.println("(8) Anwendung beenden"); 
             System.out.println("Bitte eine Auswahl treffen (z.B. 2 um ein Schwerpunktthema zu setzen)"); 
             
             // nimmt ausgewählten Menüpunkt entgegen
@@ -336,20 +338,34 @@ public class Museum
                 }
             }
             
-            // behandelt die Auswahl einer einzulesenden Datei mit Räumen
+            // behandelt die Anzeige des aktuellen Schwerpunktthemas
              if(eingabe.equals("4"))
+            {
+                //Methode getSchwerpunktthema des Ojekts planung der Klasse Ausstellungsplanung wird aufgerufen
+                System.out.println("Ihr aktuelles Schwerpunktthema: " + planung.getSchwerpunktthema());
+            }
+            
+            // behandelt die Anzeige der aktuellen Kostenobergrenze
+             if(eingabe.equals("5"))
+            {
+                //Methode getKostenobergrenze des Ojekts planung der Klasse Ausstellungsplanung wird aufgerufen
+                System.out.println("Ihre aktuelle Kostenobergrenze: " + planung.getKostenobergrenze());
+            }
+            
+            // behandelt die Auswahl einer einzulesenden Datei mit Räumen
+             if(eingabe.equals("6"))
             {
                 
             }
             
             // behandelt die Auswahl einer einzulesenden Datei mit Kunstwerken
-             if(eingabe.equals("5"))
+             if(eingabe.equals("7"))
             {
                 
             }
             
             // beendet die Anwendung
-            if(eingabe.equals("6"))
+            if(eingabe.equals("8"))
             {
                 weiter = false;
                 
