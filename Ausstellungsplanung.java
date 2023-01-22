@@ -59,7 +59,7 @@ public class Ausstellungsplanung
      * @param schwerpunktthema  Wenn kein Schwerpunkt gesetzt werden soll, kann null übergeben werden.
      * 
      */   
-    public void set_schwerpunktthema(String in_schwerpunktthema)
+    public void setSchwerpunktthema(String in_schwerpunktthema)
     {
         // tragen Sie hier den Code ein
         schwerpunktthema=in_schwerpunktthema;
@@ -69,7 +69,7 @@ public class Ausstellungsplanung
      * Methode um Kostenobergrenze zu setzen.
      * @param kostenobergrenze   Wenn keine Kostenobergrenze gesetzt werden soll, dann z.B. den Wert von ca 1 Milliarde (neun Mal die 9) übergeben. 
      */   
-    public void set_kostenobergrenze(double in_kostenobergrenze)
+    public void setKostenobergrenze(double in_kostenobergrenze)
     {
         // tragen Sie hier den Code ein
         kostenobergrenze=in_kostenobergrenze;
@@ -80,7 +80,7 @@ public class Ausstellungsplanung
      * 
      * @return schwerpunktthema   Wert des Attributtes schwerpunktthema
      */
-    public String get_schwerpunktthema() 
+    public String getSchwerpunktthema() 
     {
         return schwerpunktthema;
     }
@@ -90,7 +90,7 @@ public class Ausstellungsplanung
      * 
      * @return kostenobergrenze   Wert des Attributs kostenobergrenze
      */
-    public double get_kostenobergrenze()
+    public double getKostenobergrenze()
     {
         return kostenobergrenze;
     }
