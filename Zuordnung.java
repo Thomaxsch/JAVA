@@ -669,11 +669,13 @@ public class Zuordnung
     
     
     
+    // ==========================================================================
+    // === Methoden, die die Ausstellungsplanung zur Steuerung benötigt
+    // ========================================================================== 
     
     
-    
-    /*
-     * Methoden, die die Ausstellungsplanung zur Steuerung benötigt
+    /**
+     * ...
      */
     
     public boolean wurdeMinimalloesungErreicht (){
@@ -690,9 +692,76 @@ public class Zuordnung
         return denRaeumenZugeordneteKunstwerke;
     }
     
+    /**
+     * Gibt die Güte der gesamten Zuordnung.  
+     * Die Güte wird mittels der Methode gueteRaum() gebildet, die wiederum auf gueteRaumBelegung() und gueteRaumAttraktivitaet() basiert.
+     */
+    
     public double getZuordnungsGuete(){
-        n;
+        // Wir bilden den Mittelwert über die Güten der Räume
+        int anzahl=0;
+        double gueteSumme=0.0;
+        
+        for (int r=0;r<raeumeArray.length;r++){
+           gueteSumme += gueteRaum(r);
+           anzahl++;
+        }
+        
+        return gueteSumme/anzahl;
     }
+    
+    // ==========================================================================
+    // === Methoden zur Bestimmung der Güte der Raumbelegung
+    // ========================================================================== 
+    /**
+     * Ermittelt für einen Raum den Anteil der aktuellen Wandbelegung mit Bildern
+     */
+    private double gueteRaumBelegung(int r){
+        //Summe ursprüngliche Wandflächen des Raumes
+        int distOrig = raeumeArray[r].showWandWest()+raeumeArray[r].showWandOst()+raeumeArray[r].showWandNord()+raeumeArray[r].showWandSued();
+        //Summe der noch freien Wandflächen des Raumes
+        int distNowFrei = verfuegbarWandWest[r]+verfuegbarWandOst[r]+verfuegbarWandNord[r]+verfuegbarWandSued[r];
+            
+        double distNowBelegt = distOrig - distNowFrei;
+            
+        return distNowBelegt/distOrig;
+    }
+    
+    /**
+     * Ermittelt für einen Raum den aktuellen Durchschnitt der Attraktivität der Kunstwerke
+     */
+    private double gueteRaumAttraktivitaet(int r){
+        int anzahl=0;
+        double attrSumme=0.0;
+        for (Kunstwerk kw: denRaeumenZugeordneteKunstwerke.get(r)) // wir iterieren über die im Raum r platzierten Kunstwerke 
+        {
+           attrSumme += kw.getAttraktivitaet();
+           anzahl++;
+        }
+        
+        double mittelwert=0.0; // wenn ein Raum noch keine Kunstwerke hat, betrachten wir 0 als den Mittelwert und geben diesen zurück, ansonsten:
+        if (anzahl>0){
+            mittelwert=0.01*attrSumme/anzahl; //Division durch hundert, um die Skala auf 0..1 zu normieren
+        }
+        
+        return mittelwert;
+    }
+    
+    /**
+     * Ermittelt für einen Raum den kombinierten Gütewert aus Attraktivitätsmittelwert & Anteil Wandbelegung mit Bilden. 
+     * 
+     * Diese kombinierte Güte kann Werte zwischen 0 und 1 annehmen, da auch die beiden Augangs-Skalen Werte von 0 bis 1 enthalten. 
+     * Wir nehmen eine Qualitätsgewichtung bei der Kombination vor, weil der Attraktivitätsmittelwert ein Qualitätsaspekt ist, während
+     * die Raumbelegung ein Quantitätsaspekt darstellt.
+     * 
+     */
+    private double gueteRaum(int r){
+        
+        return (gueteRaumAttraktivitaet(r)*qualitaetsgewicht + gueteRaumBelegung(r)*(1-qualitaetsgewicht));
+    }
+    
+    
+
     
     
     
