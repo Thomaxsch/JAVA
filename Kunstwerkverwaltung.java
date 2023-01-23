@@ -157,7 +157,8 @@ public class Kunstwerkverwaltung
         int verfuegbarHoeheRaum,                                                                     // relevant für alle KW
         double restbudget,                                                                           // verfügbares Restbudget (double)
         ArrayList<Kunstwerk> kunstwerkeSchonZugeordnet,                                              // bisher platzierte Kunstwerke (Arraylist)
-        double anteilI)                                                                              // Anteil der mit I belegten Räume. (double)
+        double anteilI,                                                                              // Anteil der mit I belegten Räume. (double)
+        double qualitaetsgewicht)                                                                    // Gewichtung der Qualitaet vs Quantität
     {
         //Bilde für jedes Kunstwerk ein Attraktivitäts-Kriterium und ein AttraktivitätProKosten-Kriterium
         Vector<Double> kriteriumAttrVector = new Vector<Double>();
@@ -185,12 +186,12 @@ public class Kunstwerkverwaltung
         }
         
         // Wir fusionieren die Kriterien zu einem einzigen gewichteten Kriterium (welches Werte von 0 bis 2 hat)
-        double gewichtung = 0.5;
+        
         Vector<Double> kriteriumVector = new Vector<Double>(); // wir können hier nicht double nehmen, weil es ein Vector ist, und der erlaubt keine primitives, daher Double
         
         for (Integer i = 0; i < kunstwerkVector.size(); i++)
         {
-            kriteriumVector.add(kriteriumAttrVector.get(i)*gewichtung + kriteriumAttrProKostenVector.get(i)*(1-gewichtung));
+            kriteriumVector.add(kriteriumAttrVector.get(i)*qualitaetsgewicht + kriteriumAttrProKostenVector.get(i)*(1-qualitaetsgewicht));
         }
         /**
          * wir haben nun eine Liste mit den Kritriumswerten je Kunstwerk.

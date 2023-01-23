@@ -36,8 +36,6 @@ public class Zuordnungsverwaltung
     // Deklaration eines Arrays für die Zuordnungen:
     private Zuordnung[] listeZuordnungen; 
     
-    private String schwerpunktthema; //Schwerpunktthema der Ausstellung
-    private double kostenobergrenze; //Kostenobergrenze der Ausstellung
     
     // ==========================================================================
     // === Konstruktor
@@ -46,11 +44,10 @@ public class Zuordnungsverwaltung
     /**
      * Konstruktor für Objekte der Klasse Zuordnungsverwaltung
      */
-    public Zuordnungsverwaltung(int in_arraylaenge, String in_schwerpunktthema, double in_kostenobergrenze)
+    public Zuordnungsverwaltung(int in_arraylaenge)
     {
         listeZuordnungen = new Zuordnung[in_arraylaenge]; // Initialisierung des Arrays, sodass es 100 Elemente (vom Typ Zuordnung) aufnehmen kann.
-        schwerpunktthema = in_schwerpunktthema;
-        kostenobergrenze = in_kostenobergrenze;
+
     }
     
     // ==========================================================================
@@ -70,29 +67,23 @@ public class Zuordnungsverwaltung
     /**
      * Lege die i-te Zuordnung in der Zuordnungsverwaltung neu an
      */
-    public void addZuordnung(int arrayposition, Kunstwerkverwaltung in_kunstwerkverwaltung,Raumverwaltung in_raumverwaltung, String in_schwerpunktthema,double in_kostenobergrenze)
+    public void addZuordnung(int arrayposition,
+                            Kunstwerkverwaltung in_kunstwerkverwaltung,
+                            Raumverwaltung in_raumverwaltung,
+                            String in_schwerpunktthema,
+                            double in_kostenobergrenze,
+                            double in_qualitaetsgewicht)
     {
-       
-        listeZuordnungen[arrayposition]=new Zuordnung(in_kunstwerkverwaltung,in_raumverwaltung,in_schwerpunktthema,in_kostenobergrenze);
-        
+        listeZuordnungen[arrayposition]=new Zuordnung(in_kunstwerkverwaltung,in_raumverwaltung,in_schwerpunktthema,in_kostenobergrenze,in_qualitaetsgewicht);
     }
-    
-    
-    
-    
-    // ALT:
-    public void setZuordnung(int arrayposition, Zuordnung in_zuordnung)
-    {
-       listeZuordnungen[arrayposition]=in_zuordnung;
-    }   
     
     /**
-     * Drop die schlechtere Planung, sodass die beste Zuordnung an Stelle [0] ist ==== MUSS KOMPLETT NEU GEMACHT UND GEDACHT WERDEN (ALT)
-     *  
+     * Leere die ausgewählte Zuordnung
      */
-    public void drop_schlechtesteAusleihe()
+    public void deleteZuordnung(int n)
     {
-        ;
+        listeZuordnungen[n]=null;
     }
+    
     
 }
