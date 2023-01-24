@@ -185,8 +185,9 @@ public class Zuordnung
             // Und bei all dem ist es das KW mit höchster Attraktivität. TO DO
             
             Kunstwerk zuSetzendesKW = null;
-            try {
-                short laufendeNummer = kunstwerkverwaltung.naechstesZuSetzendesKunstwerk(
+            
+                short laufendeNummer = kunstwerkverwaltung.naechstesZuSetzendesKunstwerk
+                (
                     schwerpunktthema,
                     verfuegbarWandWest[i],verfuegbarWandOst[i],verfuegbarWandNord[i],verfuegbarWandSued[i], // relevant für Bilder (vier Wände)
                     verfuegbarLaengeRaum[i],verfuegbarBreiteRaum[i],                                        // relevant für G und I (laengs/quer bzw Raumfläche)
@@ -204,10 +205,8 @@ public class Zuordnung
                 {
                     zuSetzendesKW = kunstwerkverwaltung.showKunstwerkZuLaufendeNummer2(laufendeNummer);
                 }
-            }
-            catch (Exception e){ // Mit exception e werden alle, nicht nur spezielle Fehler abgefangen.
-                continue; // Anweisung beendet die aktuelle Ausführung des Schleifenkörpers, aber die Schleife wird mit dem nächsten Durchlauf (d.h. nächster Raum) fortgesetzt 
-            }
+
+            
 
             // Jetzt validieren wir einer Methode der Klasse "Zuordnung", ob das Kunstwerk wirklich passt, oder ob sich in der Implementierung ein Fehler eingeschlichen hat:
             if (!passtKunstwerkDimensionalInRaum(zuSetzendesKW,unserAktuellerRaumIndex))
@@ -270,6 +269,8 @@ public class Zuordnung
      */
     public void versucheLoesungserweiterung()
     {
+        /*
+         
         for (int i=0;i<raeumeArray.length;i++) // d.h. für jeden Raum
         {
             // Wir benötigen einen zufällig ausgewählten noch leeren Raum, um dort zu versuchen ein KW zu platzieren:
@@ -318,7 +319,7 @@ public class Zuordnung
                     welcheTypenDuerfenNochInRaum,                                  //ob der Typ egal ist oder es nur noch B/G sein darf
                     kunstwerkeSchonZugeordnet                                      // bisher platzierte Kunstwerke
                 ); 
-                */
+                *//*
             }
             catch (Exception e){ 
                 // Mit exception e werden alle, nicht nur spezielle Fehler abgefangen.
@@ -344,13 +345,17 @@ public class Zuordnung
             - naechstesZuSetzendesKunstwerkMODUS3 (stattdessen rein zufällige Zuordnung)
             - naechstesZuSetzendesKunstwerkMODUS4 (kostenpfad berücksichtigen: z.B. 40% der Hälfte der Räume schon gesetzt, liegen proportional aber bei 60% Kostenausschöpfung...)
             */
-        }
+           
+        
+        
         
         /**
          * Weitere Ideen zur Optimierung:
          *  - Prüfe, ob es möglich und vorteilhaft ist, einen mit X Bildern und Y Kunstgegenständen gefüllten Raum durch eine (bisher nicht zugeordnete) KI zu ersetzen
          *  - Kunstwerk durch ein nicht zugeteiltes eindeutig besseres Kunstwerk ersetzen
-         */
+         */ 
+        
+        
     }
     
     /**
@@ -368,7 +373,7 @@ public class Zuordnung
      *      
      * @param in_r Raumindex
      */
-    
+     
     public void aktualisiereParameterNachSetzen(Kunstwerk kw, int r)
     {
         // -------------------
@@ -604,7 +609,9 @@ public class Zuordnung
         if (in_Kunstwerk.getArt()=='B'|| in_Kunstwerk.getArt()=='G')
         {
             boolean blockiertDurchKunstinstallation = false;
-            blockiertDurchKunstinstallation= (denRaeumenZugeordneteKunstwerke.get(r).get(0).getArt()=='I'); // beispielhafter Zugriff auf array list 2 dim für 1. KW in Raum
+            
+            //blockiertDurchKunstinstallation= (denRaeumenZugeordneteKunstwerke.get(r).get(0).getArt()=='I'); // beispielhafter  Zugriff auf nested array list (2 dim) für 1. KW in Raum // LÖSCHEN
+            
             //Wie folgt prüfen wir zur Sicherheit aber ab, ob es irgendein KW der Art I im Raum r gibt:
             for (Kunstwerk k: denRaeumenZugeordneteKunstwerke.get(r))
             {
