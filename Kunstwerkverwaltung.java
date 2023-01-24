@@ -135,7 +135,7 @@ public class Kunstwerkverwaltung
      */
     public boolean checkPlatzfürKG (int in_hoehe, int in_breite)
     {
-        return false; //muss noch geschrieben werden
+        if {return false; //muss noch geschrieben werden
     }
     /**
      * Methode, welche überprüft, ob noch genügend Platz für das Bild in einem Raum übrig ist
