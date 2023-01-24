@@ -152,7 +152,30 @@ public class Kunstwerkverwaltung
     }
     
     
-    
+    /**
+     * Methode zum Ermitteln eines Kunstwerkes anhand seiner laufendenNummer
+     * 
+     * @return das Kunstwerk zur laufendenNummer
+     */
+    public Kunstwerk showKunstwerkZuLaufendeNummer2(short in_laufendeNummer) {
+    boolean found = false;
+    Kunstwerk kw_out = null;
+    for (Kunstwerk kw : kunstwerkVector) {
+        
+        if (kw.getLaufendeNummer() == in_laufendeNummer) 
+        {
+            System.out.println(kw);
+            found = true;
+            kw_out=kw;
+        }   
+    }   
+    if(!found)
+        {
+        System.out.println("Es wurde kein Kunstwerk zur LaufendenNummer gefunden");
+        return null;
+        }
+        return kw_out;
+    }  
     
     public short naechstesZuSetzendesKunstwerk(
         String schwerpunktthema,

@@ -31,7 +31,7 @@ public class Ausstellungsplanung
     private Kunstwerkverwaltung kunstwerkverwaltung;
     private Zuordnungsverwaltung zuordnungsverwaltung;
     
-    private int anzahlZuordnungen = 1;
+    private int anzahlZuordnungen = 2;
     
     // ==========================================================================
     // === Konstruktor
@@ -78,18 +78,22 @@ public class Ausstellungsplanung
                 
         if (schwerpunktthema!="") // mit Schwerpunktthema müssen wir erst versuchen, eine minimale Zuordnung zu finden
         {
+            System.out.println("mit Schwerpunktthema müssen wir erst versuchen, eine minimale Zuordnung zu finden");
+            
             findeMinimaleAusstellungskandidaten();
             wurdeMinimaleAusstellungGefunden();
             if (wurdeMinimaleAusstellungGefunden()){
+                System.out.println("Minimallösung wurde gefunden. Versuche Ausstellung zu erweitern.");
                 erweitereAusstellungskandidaten();
             }
             else
             {
-                ; /////////////XXXXXXXXXX TO DO: NEUTHROW 
+                System.out.println("Es konnte keine Minimallösung gefunden werden. Bitte wählen Sie ein anderes Schwerpunktthema oder geben Sie keines vor");
             }
         }
         else // ohne Schwerpunktthema können wir direkt versuchen, die Ausstellung auszubauen
         {
+             System.out.println("ohne Schwerpunktthema können wir direkt versuchen, die Ausstellung auszubauen");
             erweitereAusstellungskandidaten();
         }
         
@@ -101,7 +105,7 @@ public class Ausstellungsplanung
      *
      */       
       
-    private void findeMinimaleAusstellungskandidaten()
+    private void findeMinimaleAusstellungskandidaten() 
     {
         for (int i=0;i<anzahlZuordnungen;i++)
         {

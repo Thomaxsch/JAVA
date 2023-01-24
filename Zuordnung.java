@@ -1,4 +1,6 @@
 import java.util.*;
+import java.util.ArrayList;
+
 /**
 
  * 
@@ -151,7 +153,7 @@ public class Zuordnung
      * Die zufällige Raumauswahl bewirkt, dass wir Pfadabhängigkeiten aufgrund der Reihenfolge der KW-Platzierung vermeiden und möglichst diverse Konstellationen
      * als minimale Zuordnungen erhalten. Später versuchen wir dann die minimalen Loesungen noch zu verbessern.
      */
-    public void versucheMinimalloesungZuFinden () throws Exception
+    public void versucheMinimalloesungZuFinden ()
     {
         for (int i=0;i<raeumeArray.length;i++) // d.h. potentiell für jeden Raum wenn die Schleife vorher nicht abgebrochen wird
         {
@@ -182,7 +184,7 @@ public class Zuordnung
             // das vom Schwerpunktthema ist, die Restriktionen 5,6,7 (im Raum) erfüllt, sodass auch R1 (global Kosten) erfüllt ist. 
             // Und bei all dem ist es das KW mit höchster Attraktivität. TO DO
             
-            Kunstwerk zuSetzendesKW;
+            Kunstwerk zuSetzendesKW = null;
             try {
                 short laufendeNummer = kunstwerkverwaltung.naechstesZuSetzendesKunstwerk(
                     schwerpunktthema,
@@ -194,20 +196,24 @@ public class Zuordnung
                     ((double) wieOftWurdeSchonEineInstallationPlatziert)/raeumeArray.length,                // Anteil der mit I belegten Räume. (cast für die Division nötig)
                     qualitaetsgewicht                                                                       // Gewichtung von Qualität und Quantität
                 ); 
-                zuSetzendesKW = kunstwerkverwaltung.showKunstwerkZuLaufendeNummer(laufendeNummer);
+                if (laufendeNummer==-1) // die Kunstwerkverwaltung gibt -1 zurück, wenn KEIN Kunstwerk in den Raum passt (z.B. wegen verfügbarer Fläche oder Restbudget zu klein)
+                {
+                    continue;// Anweisung beendet die aktuelle Ausführung des Schleifenkörpers, aber die Schleife wird mit dem nächsten Durchlauf (d.h. nächster Raum) fortgesetzt 
+                }
+                else if (laufendeNummer>=0)
+                {
+                    zuSetzendesKW = kunstwerkverwaltung.showKunstwerkZuLaufendeNummer2(laufendeNummer);
+                }
             }
-            catch (Exception e){ 
-                // Mit exception e werden alle, nicht nur spezielle Fehler abgefangen.
-                // Ein Fehlerfall könnte sein, wenn es schlichtweg kein passendes Kunstwerk gibt, weil z.B.
-                // die Kostengrenze überschritten wurde oder die Maße einfach zu allen Räumen inkompatibel sind
-                // (?? (oder wird dann quasi leeres KW gegeben, ich meine nicht sondern es kommt zum Fehler)
-                
+            catch (Exception e){ // Mit exception e werden alle, nicht nur spezielle Fehler abgefangen.
                 continue; // Anweisung beendet die aktuelle Ausführung des Schleifenkörpers, aber die Schleife wird mit dem nächsten Durchlauf (d.h. nächster Raum) fortgesetzt 
             }
 
             // Jetzt validieren wir einer Methode der Klasse "Zuordnung", ob das Kunstwerk wirklich passt, oder ob sich in der Implementierung ein Fehler eingeschlichen hat:
             if (!passtKunstwerkDimensionalInRaum(zuSetzendesKW,unserAktuellerRaumIndex))
-            {throw new Exception ("es konnte nicht validiert werden, dass das KW in den Raum passt. Widerspruch");}
+            {
+                System.out.println("es konnte nicht validiert werden, dass das KW in den Raum passt. Widerspruch");
+            }
             
             // Wenn wir bis hierhin ohne break/continue/throw gekommen sind, können wir das ausgewählte Kunstwerk im Raum platzieren (= das eigentliche Setzen):
             denRaeumenZugeordneteKunstwerke.get(unserAktuellerRaumIndex).add(zuSetzendesKW);
@@ -220,6 +226,19 @@ public class Zuordnung
             - naechstesZuSetzendesKunstwerkMODUS3 (stattdessen rein zufällige Zuordnung)
             - naechstesZuSetzendesKunstwerkMODUS4 (kostenpfad berücksichtigen: z.B. 40% der Hälfte der Räume schon gesetzt, liegen proportional aber bei 60% Kostenausschöpfung...)
             */
+        }
+        
+        // Zu Testzwecken die gefundene Zuordnung in die Konsole ausgeben:
+        for (int r=0;r<raeumeArray.length;r++)
+        {
+            System.out.println("------------------------------------");
+            System.out.print("Raum: " + raeumeArray[r].getNummer() + " - " + "\n");
+            System.out.println("------------------------------------");
+
+            for(Kunstwerk kw : denRaeumenZugeordneteKunstwerke.get(r))
+            {
+                System.out.println(kw);
+            } 
         }
     }
     
@@ -309,7 +328,7 @@ public class Zuordnung
                 
                 continue; // Anweisung beendet die aktuelle Ausführung des Schleifenkörpers, aber die Schleife wird mit dem nächsten Durchlauf (d.h. nächster Raum) fortgesetzt 
             }
-
+            /*
             // Jetzt validieren wir einer Methode der Klasse "Zuordnung", ob das Kunstwerk wirklich passt, oder ob sich in der Implementierung ein Fehler eingeschlichen hat:
             if (!passtKunstwerkDimensionalInRaum(zuSetzendesKW,unserAktuellerRaumIndex))
             {throw new Exception ("es konnte nicht validiert werden, dass das KW in den Raum passt. Widerspruch");}
@@ -574,7 +593,7 @@ public class Zuordnung
      * Gewährleistet auch Restriktion 8, dass KI alleine in Raum, d.h. sonst keine Bilder oder KG
      */
     
-    public boolean passtKunstwerkDimensionalInRaum(Kunstwerk in_Kunstwerk, int r) // Raum r
+    public Boolean passtKunstwerkDimensionalInRaum(Kunstwerk in_Kunstwerk, int r) // Raum r
     {
         boolean passtHoehe = (in_Kunstwerk.getHoehe()<verfuegbarHoeheRaum[r]);
         if (passtHoehe==false)
@@ -657,9 +676,9 @@ public class Zuordnung
             else
             {return false;}
         }
-        //return false; // Java meckert wenn das return nicht da steht am Ende. Lieber hätte ich dann einen Fehler. Aber gut, wenn Java es so will.
+        
                     
-            
+        return null; // wenn die Methode null zurückgibt, ist etwas schiefglaufen; die Methode gibt Boolean anstatt boolean zurück, weil wir hier sonst zu true/false gezwungen wären
     }
         
 
