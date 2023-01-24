@@ -148,7 +148,30 @@ public class Kunstwerkverwaltung
     }
     
     
-    
+    /**
+     * Methode zum Ermitteln eines Kunstwerkes anhand seiner laufendenNummer
+     * 
+     * @return das Kunstwerk zur laufendenNummer
+     */
+    public Kunstwerk showKunstwerkZuLaufendeNummer2(short in_laufendeNummer) {
+    boolean found = false;
+    Kunstwerk kw_out = null;
+    for (Kunstwerk kw : kunstwerkVector) {
+        
+        if (kw.getLaufendeNummer() == in_laufendeNummer) 
+        {
+            System.out.println(kw);
+            found = true;
+            kw_out=kw;
+        }   
+    }   
+    if(!found)
+        {
+        System.out.println("Es wurde kein Kunstwerk zur LaufendenNummer gefunden");
+        return null;
+        }
+        return kw_out;
+    }  
     
     public short naechstesZuSetzendesKunstwerk(
         String schwerpunktthema,
@@ -203,21 +226,34 @@ public class Kunstwerkverwaltung
         
         Vector<Kunstwerk> kunstwerkVectorKlon = (Vector<Kunstwerk>) kunstwerkVector.clone(); // wir machen einen Klon vom Kunstwerkvektor, den wir später Element für Element reduzieren.
                                                                                             // Ein Klon, damit wir nicht unseren ursprünglichen Kunstwerkvektor kaputt machen.
-        Vector<Double> kriteriumVectorKlon = (Vector<Double>) kunstwerkVector.clone();   // Ebenso ein Klon vom Kriteriumsvektor. Double statt double, weil Vectors keine primitives erlauben.
+        Vector<Double> kriteriumVectorKlon = (Vector<Double>) kriteriumVector.clone();   // Ebenso ein Klon vom Kriteriumsvektor. Double statt double, weil Vectors keine primitives erlauben.
         
         for (Integer i = 0; i < kunstwerkVector.size(); i++) { // wir gehen alle Kunstwerke durch
             
-            double naechstBesterKriteriumsWert = Collections.max(kriteriumVectorKlon); // größter Wert im Kriteriumsvektor
-            int indexBesterWert = kunstwerkVectorKlon.indexOf(naechstBesterKriteriumsWert); // dessen Index
+            Double naechstBesterKriteriumsWert = Collections.max(kriteriumVectorKlon); // größter Wert im Kriteriumsvektor
+            int indexBesterWert = kriteriumVectorKlon.indexOf(naechstBesterKriteriumsWert); // dessen Index
             
+            /* Zum testen:
+            System.out.println(naechstBesterKriteriumsWert);
+            System.out.println(indexBesterWert);
+            System.out.println(kunstwerkVectorKlon.size());
+            System.out.println(kriteriumVectorKlon.size());
+            System.out.println(kunstwerkVectorKlon.get(indexBesterWert));
+            */
+           
             Kunstwerk naechstBestesKunstwerk = kunstwerkVectorKlon.get(indexBesterWert);
             kunstwerkeSortiertVector.add(naechstBestesKunstwerk);// wir schreiben das beste Kunstwerk als nächstes Element in kunstwerkeSortiertVector
             
             //dann nehmen wir sowohl aus den Klonen vom kriteriumVector wie auch vom kunstwerkVector dieses Element heraus, sodass
             // wir in der der nächsten Iterationen aus den restlichen Kunstwerken den besten Kandidaten bestimmen usw usw. Somit brauchen sich die Klone komplett auf und am Ende sind
             // gar keine Werte mehr erhalten. Dafür haben wir 
-            kriteriumVectorKlon.removeElement(naechstBestesKunstwerk);
-            kunstwerkVectorKlon.removeElement(naechstBesterKriteriumsWert);
+            kunstwerkVectorKlon.removeElement(naechstBestesKunstwerk);
+            kriteriumVectorKlon.removeElement(naechstBesterKriteriumsWert);
+            
+            /* Zum testen:
+            System.out.println(kunstwerkVectorKlon.size());
+            System.out.println(kriteriumVectorKlon.size());
+            */
         }
             
         /**
@@ -229,7 +265,7 @@ public class Kunstwerkverwaltung
        
        short bestes_kw_lfd_nr = -1; // wir suchen das beste Kunstwerk. Wenn wir keins finden, geben wir den Wert "-1" zurück.
        for (Kunstwerk kw : kunstwerkeSortiertVector) {
-            boolean passtSchwerpunkt=(kw.getThema()==schwerpunktthema);
+            boolean passtSchwerpunkt=(kw.getThema().equals(schwerpunktthema));
             boolean passtDimension=false;
             if (kw.getArt()=='B')
             {
@@ -241,9 +277,19 @@ public class Kunstwerkverwaltung
             }
             if (kw.getArt()=='G'| kw.getArt()=='I')
             {
-                Kunstgegenstand kg = (Kunstgegenstand) kw; // cast, sonst können wir die Länge nicht abrufen
-                if ((kw.getBreite()<=verfuegbarBreiteRaum & kg.getLaenge()<=verfuegbarLaengeRaum) | 
-                    (kw.getBreite()<=verfuegbarLaengeRaum & kg.getLaenge()<=verfuegbarBreiteRaum)) // entweder laengs oder quer
+                int dimy=kw.getBreite();
+                int dimx=0;
+                if (kw.getArt()=='G')
+                {
+                    dimx=((Kunstgegenstand) kw).getLaenge();// cast, sonst können wir die Länge nicht abrufen
+                }
+                if (kw.getArt()=='G')
+                {
+                    dimx=((Kunstgegenstand) kw).getLaenge();// cast, sonst können wir die Länge nicht abrufen
+                }
+                
+                if ((dimx<=verfuegbarBreiteRaum & dimy<=verfuegbarLaengeRaum) | 
+                    (dimy<=verfuegbarLaengeRaum & dimx<=verfuegbarBreiteRaum)) // entweder laengs oder quer
                 {
                     passtDimension=true;
                     
@@ -267,7 +313,17 @@ public class Kunstwerkverwaltung
                     passtInstallationAnteilI=false;
                 }
             }
-        
+            
+            /* Zum Testen
+            System.out.println(kw);
+            System.out.println("passtSchwerpunkt: " + passtSchwerpunkt);
+            System.out.println("passtDimension: " + passtDimension);
+            System.out.println("passtBudget: " + passtBudget);
+            System.out.println("passtZuordnenbar: " + passtZuordnenbar);
+            System.out.println("passtInstallationAnteilI: " + passtInstallationAnteilI);
+            */
+           
+           
             if (passtSchwerpunkt & passtDimension & passtBudget & passtZuordnenbar & passtInstallationAnteilI)
             {
                bestes_kw_lfd_nr = kw.getLaufendeNummer();
@@ -275,6 +331,8 @@ public class Kunstwerkverwaltung
             } 
         } 
        
+       System.out.println("Index bestes KW:"+bestes_kw_lfd_nr);
+        
        return bestes_kw_lfd_nr; // -1 wenn keins gefunden wurde
         
     }   

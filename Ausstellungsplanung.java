@@ -31,7 +31,7 @@ public class Ausstellungsplanung
     private Kunstwerkverwaltung kunstwerkverwaltung;
     private Zuordnungsverwaltung zuordnungsverwaltung;
     
-    private int anzahlZuordnungen = 1;
+    private int anzahlZuordnungen = 2;
     
     // ==========================================================================
     // === Konstruktor
@@ -78,18 +78,23 @@ public class Ausstellungsplanung
                 
         if (schwerpunktthema!="") // mit Schwerpunktthema müssen wir erst versuchen, eine minimale Zuordnung zu finden
         {
-            findeMinimaleAusstellungskandidaten();
+            System.out.println("Ein Schwerpunktthema wurde vorgegeben. Wir müssen zuerst versuchen, mindestens eine minimale Zuordnung zu finden");
+            
+            findeMinimaleAusstellungskandidaten(); // <- die Methode versucht für jede Zuordnung eine Minimallösung zu finden
             wurdeMinimaleAusstellungGefunden();
+            
             if (wurdeMinimaleAusstellungGefunden()){
+                System.out.println("Minimallösung wurde gefunden. Versuche Ausstellung zu erweitern.");
                 erweitereAusstellungskandidaten();
             }
             else
             {
-                ; /////////////XXXXXXXXXX TO DO: NEUTHROW 
+                System.out.println("Es konnte keine Minimallösung gefunden werden. Bitte wählen Sie ein anderes Schwerpunktthema oder geben Sie keines vor");
             }
         }
         else // ohne Schwerpunktthema können wir direkt versuchen, die Ausstellung auszubauen
         {
+            System.out.println("ohne Schwerpunktthema können wir direkt versuchen, die Ausstellung auszubauen");
             erweitereAusstellungskandidaten();
         }
         
@@ -101,7 +106,7 @@ public class Ausstellungsplanung
      *
      */       
       
-    private void findeMinimaleAusstellungskandidaten()
+    private void findeMinimaleAusstellungskandidaten() 
     {
         for (int i=0;i<anzahlZuordnungen;i++)
         {
@@ -117,14 +122,17 @@ public class Ausstellungsplanung
             if (zuordnungsverwaltung.getZuordnung(i).wurdeMinimalloesungErreicht()) 
             {
                 wurdeGefunden=true;
+                System.out.println("ERFOLG: Es war uns möglich, mindestens eine minimale Zuordnung zu finden");
                 break;
             }
         }
+        System.out.println("MISSERFOLG: Wir konnten");
         return wurdeGefunden;
     }
     
     private void erweitereAusstellungskandidaten()
     {
+        System.out.println("Wir suchen nun nach der bestmöglichen Ausstellung");
         for (int i=0;i<anzahlZuordnungen;i++)
         {
             zuordnungsverwaltung.getZuordnung(i).versucheLoesungserweiterung();

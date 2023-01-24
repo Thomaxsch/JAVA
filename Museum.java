@@ -26,8 +26,18 @@ public class Museum
         
         planung = new Ausstellungsplanung(raeume, kunstwerke); 
         
-        gebeMenuAus();   
+        // ---- TEST-------
+        planung.setKostenobergrenze(999999999);
+        planung.setSchwerpunktthema("Aktmalerei");
+        planung.setQualitaetsgewicht(0.5);
         
+        planung.generiereAusstellung();
+        System.out.println("fertig");
+        // TEST ENDE-------
+        
+        /*
+        gebeMenuAus();   
+        */
         
         
     }
