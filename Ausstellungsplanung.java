@@ -81,15 +81,17 @@ public class Ausstellungsplanung
             System.out.println("Ein Schwerpunktthema wurde vorgegeben. Wir müssen zuerst versuchen, mindestens eine minimale Zuordnung zu finden");
             
             findeMinimaleAusstellungskandidaten(); // <- die Methode versucht für jede Zuordnung eine Minimallösung zu finden
-            wurdeMinimaleAusstellungGefunden();
+            wurdeMinimaleAusstellungGefunden(); // <- die Methode prüft, ob es mindestens eine Minimallösung gab
             
             if (wurdeMinimaleAusstellungGefunden()){
-                System.out.println("Minimallösung wurde gefunden. Versuche Ausstellung zu erweitern.");
+                System.out.println("ERFOLG: Es war uns möglich, mindestens eine minimale Zuordnung zu finden");
+                System.out.println("Versuche Ausstellung zu erweitern.");
                 erweitereAusstellungskandidaten();
             }
             else
             {
-                System.out.println("Es konnte keine Minimallösung gefunden werden. Bitte wählen Sie ein anderes Schwerpunktthema oder geben Sie keines vor");
+                System.out.println("MISSERFOLG: Wir konnten überhaupt keine minimale Zuordnung erreichen.");
+                System.out.println("Bitte wählen Sie ein anderes Schwerpunktthema oder geben Sie keines vor");
             }
         }
         else // ohne Schwerpunktthema können wir direkt versuchen, die Ausstellung auszubauen
@@ -122,11 +124,11 @@ public class Ausstellungsplanung
             if (zuordnungsverwaltung.getZuordnung(i).wurdeMinimalloesungErreicht()) 
             {
                 wurdeGefunden=true;
-                System.out.println("ERFOLG: Es war uns möglich, mindestens eine minimale Zuordnung zu finden");
+                
                 break;
             }
         }
-        System.out.println("MISSERFOLG: Wir konnten");
+        
         return wurdeGefunden;
     }
     
