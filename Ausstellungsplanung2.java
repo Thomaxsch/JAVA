@@ -1,5 +1,6 @@
 import java.util.*;
 import java.util.Arrays;
+import java.io.*;
 
 /**
  * Beschreiben Sie hier die Klasse Ausstellungsplanung2.
@@ -27,7 +28,10 @@ public class Ausstellungsplanung2
         zugeordneteKunstwerke = new HashMap<Raum, List<Kunstwerk>>();
         
         generiereAusstellung();
-        //gebeAus();
+        gebeAus();
+        
+        Ausgabedatei ausgabedatei = new Ausgabedatei("ausleihdatei.txt", zugeordneteKunstwerke);
+        ausgabedatei.schreibeAusleihen();
     }
     
     
@@ -214,7 +218,7 @@ public class Ausstellungsplanung2
 
 public void gebeAus()
 {
-    for(Raum key : zugeordneteKunstwerke.keySet())
+    /*for(Raum key : zugeordneteKunstwerke.keySet())
     {
             System.out.println("------------------------------------");
             System.out.print("Raum: " + key + " - " + "\n");
@@ -225,7 +229,40 @@ public void gebeAus()
             {
                 System.out.println(k);
             } 
-    }
+    }*/
+    
+    try
+        {
+            BufferedWriter meinWriter = new BufferedWriter(new FileWriter("ausleihdatei2.txt"));
+            
+            for(Raum key : zugeordneteKunstwerke.keySet())
+            {
+                meinWriter.write("------------------------------------");
+                meinWriter.newLine();
+                meinWriter.write("Raum: " + key);
+                meinWriter.newLine();
+                meinWriter.write("------------------------------------");
+                meinWriter.newLine();
+    
+                List<Kunstwerk> temp = zugeordneteKunstwerke.get(key);
+            
+                for(Kunstwerk k : temp)
+                {
+                    meinWriter.write(k.toString());
+                    meinWriter.newLine();
+                } 
+            }
+            
+            meinWriter.close();
+            
+            
+        }
+        catch(IOException e)
+        {
+            System.out.println("Beim Schreiben in die Datei ist etwas schief gegangen.");
+        }
+    
+    
 }
 
 /**
