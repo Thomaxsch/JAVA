@@ -209,7 +209,7 @@ public class Zuordnung
                 }
                 else if (laufendeNummer>=0)
                 {
-                    zuSetzendesKW = kunstwerkverwaltung.showKunstwerkZuLaufendeNummer2(laufendeNummer);
+                    zuSetzendesKW = kunstwerkverwaltung.showKunstwerkZuLaufendeNummer(laufendeNummer);
                 }
 
             
