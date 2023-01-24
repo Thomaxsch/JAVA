@@ -209,7 +209,7 @@ public class Zuordnung
                 }
                 else if (laufendeNummer>=0)
                 {
-                    zuSetzendesKW = kunstwerkverwaltung.showKunstwerkZuLaufendeNummer2(laufendeNummer);
+                    zuSetzendesKW = kunstwerkverwaltung.showKunstwerkZuLaufendeNummer(laufendeNummer);
                 }
 
             
@@ -786,9 +786,7 @@ public class Zuordnung
         return (gueteRaumAttraktivitaet(r)*qualitaetsgewicht + gueteRaumBelegung(r)*(1-qualitaetsgewicht));
     }
     
-    
-
-    
+  
     public void ausgebenZuordnungAufKonsole()
     {
         // Zu Log- und Testzwecken die gefundene Zuordnung in die Konsole ausgeben:
