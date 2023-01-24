@@ -143,7 +143,10 @@ public class Raumverwaltung
         public Raum zufealligerLeererRaum(ArrayList <Raum> inRaeumeSchonBelegt)
     {
         // Die belegten Räume kommen als ArrayList an. Wir erzeugen für den nachfolgenden Schritt eine ArrayList aus dem raumVector, der alle Räume enthält
-        ArrayList<Raum> raumArrayList = new ArrayList<Raum>(raumVector); // TO DO ! KLON !
+        
+        Vector<Raum> raumVectorKlon = (Vector<Raum>) raumVector.clone(); // wir machen einen Klon vom Raumvektor, aus dem wir die belegten Räume später entfernen.
+                                                                         // Ein Klon, damit wir nicht unseren ursprünglichen Raumvektor kaputt machen.
+        ArrayList<Raum> raumArrayList = new ArrayList<Raum>(raumVectorKlon); // aus dem Klon machen wir dann die ArrayList
         
         // Jetzt entnehmen wir daraus alle Räume, die schon belegt sind. Das heißt wir führen in raumArrayList nur noch die komplett unbelegten Räume
         raumArrayList.removeAll(inRaeumeSchonBelegt);

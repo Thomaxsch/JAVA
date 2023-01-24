@@ -155,6 +155,8 @@ public class Zuordnung
      */
     public void versucheMinimalloesungZuFinden ()
     {
+        System.out.println("---Versuche Minimallösung zu funden---");
+        
         for (int i=0;i<raeumeArray.length;i++) // d.h. potentiell für jeden Raum wenn die Schleife vorher nicht abgebrochen wird
         {
             // Unser Etappenziel ist erreicht, wenn die Hälfte der Räume mit Schwerpunktkunstwerk versehen wurde. Dann soll die Schleife abbrechen:
@@ -165,6 +167,7 @@ public class Zuordnung
             
             // Wir benötigen einen zufällig ausgewählten noch leeren Raum, um dort zu versuchen ein KW zu platzieren:
             Raum unserAktuellerRaum = raumverwaltung.zufealligerLeererRaum(raeumeSchonBelegt);
+            
             
             // Wir brauchen auch den Index dieses Raums, damit wir in unseren Listen später die richtigen Werte zum Raumindex finden können: 
             int unserAktuellerRaumIndex = 0;
@@ -179,6 +182,7 @@ public class Zuordnung
                     unserAktuellerRaumIndex++; // erhoehe unserAktuellerRaumIndex um 1 und schaue ob der nächste Raum der mit dem gesuchten Index ist
                 }
             }
+            System.out.println("-> Was passt in Raum " + raeumeArray[unserAktuellerRaumIndex].getNummer() + " ?");
             
             // Das Folgende gibt uns das als nächstes zu setzende Kunstwerk in die Hand,
             // das vom Schwerpunktthema ist, die Restriktionen 5,6,7 (im Raum) erfüllt, sodass auch R1 (global Kosten) erfüllt ist. 
@@ -211,12 +215,13 @@ public class Zuordnung
             // Jetzt validieren wir einer Methode der Klasse "Zuordnung", ob das Kunstwerk wirklich passt, oder ob sich in der Implementierung ein Fehler eingeschlichen hat:
             if (!passtKunstwerkDimensionalInRaum(zuSetzendesKW,unserAktuellerRaumIndex))
             {
-                System.out.println("es konnte nicht validiert werden, dass das KW in den Raum passt. Widerspruch");
+                System.out.println("ACHTUNG WIDERSPRUCH: es konnte nicht validiert werden, dass das KW in den Raum" + raeumeArray[unserAktuellerRaumIndex].getNummer() + " passt.");
             }
             
             // Wenn wir bis hierhin ohne break/continue/throw gekommen sind, können wir das ausgewählte Kunstwerk im Raum platzieren (= das eigentliche Setzen):
             denRaeumenZugeordneteKunstwerke.get(unserAktuellerRaumIndex).add(zuSetzendesKW);
-            // Nach jedem Setzen sind einige Parameter zu aktualisieren:
+            
+            // Setzen heißt, dass einige Parameter zu aktualisieren sind:
             aktualisiereParameterNachSetzen(zuSetzendesKW,unserAktuellerRaumIndex); 
                 
             /**
@@ -517,9 +522,10 @@ public class Zuordnung
         //////////////////////////////////////////////////////////////////////////
         // Aktualisiere Arraylist der belegten Räume
         
-        if (denRaeumenZugeordneteKunstwerke.get(r).isEmpty())
+        if (!raeumeSchonBelegt.contains(raeumeArray[r])) // wenn ein Raum bisher noch völlig ohne Kunstwerk ist
         {   
-            raeumeSchonBelegt.add(raeumeArray[r]);// dies muss nur einmal geschehen wenn erstmals ein KW in den Raum gesetzt wird.
+            raeumeSchonBelegt.add(raeumeArray[r]);
+            System.out.println("Raum " + raeumeArray[r] + " wurde belegt" );
         }
         
         /////////////////////////////////////////////////////////////////////////
