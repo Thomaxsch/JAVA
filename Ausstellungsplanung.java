@@ -78,10 +78,11 @@ public class Ausstellungsplanung
                 
         if (schwerpunktthema!="") // mit Schwerpunktthema müssen wir erst versuchen, eine minimale Zuordnung zu finden
         {
-            System.out.println("mit Schwerpunktthema müssen wir erst versuchen, eine minimale Zuordnung zu finden");
+            System.out.println("Ein Schwerpunktthema wurde vorgegeben. Wir müssen zuerst versuchen, mindestens eine minimale Zuordnung zu finden");
             
-            findeMinimaleAusstellungskandidaten();
+            findeMinimaleAusstellungskandidaten(); // <- die Methode versucht für jede Zuordnung eine Minimallösung zu finden
             wurdeMinimaleAusstellungGefunden();
+            
             if (wurdeMinimaleAusstellungGefunden()){
                 System.out.println("Minimallösung wurde gefunden. Versuche Ausstellung zu erweitern.");
                 erweitereAusstellungskandidaten();
@@ -93,7 +94,7 @@ public class Ausstellungsplanung
         }
         else // ohne Schwerpunktthema können wir direkt versuchen, die Ausstellung auszubauen
         {
-             System.out.println("ohne Schwerpunktthema können wir direkt versuchen, die Ausstellung auszubauen");
+            System.out.println("ohne Schwerpunktthema können wir direkt versuchen, die Ausstellung auszubauen");
             erweitereAusstellungskandidaten();
         }
         
@@ -121,14 +122,17 @@ public class Ausstellungsplanung
             if (zuordnungsverwaltung.getZuordnung(i).wurdeMinimalloesungErreicht()) 
             {
                 wurdeGefunden=true;
+                System.out.println("ERFOLG: Es war uns möglich, mindestens eine minimale Zuordnung zu finden");
                 break;
             }
         }
+        System.out.println("MISSERFOLG: Wir konnten");
         return wurdeGefunden;
     }
     
     private void erweitereAusstellungskandidaten()
     {
+        System.out.println("Wir suchen nun nach der bestmöglichen Ausstellung");
         for (int i=0;i<anzahlZuordnungen;i++)
         {
             zuordnungsverwaltung.getZuordnung(i).versucheLoesungserweiterung();

@@ -155,7 +155,7 @@ public class Zuordnung
      */
     public void versucheMinimalloesungZuFinden ()
     {
-        System.out.println("/n---Versuche Minimallösung zu funden---");
+        System.out.println("\n---Versuche Minimallösung zu finden---");
         
         for (int i=0;i<raeumeArray.length;i++) // d.h. potentiell für jeden Raum wenn die Schleife vorher nicht abgebrochen wird
         {
@@ -183,7 +183,7 @@ public class Zuordnung
                     unserAktuellerRaumIndex++; // erhoehe unserAktuellerRaumIndex um 1 und schaue ob der nächste Raum der mit dem gesuchten Index ist
                 }
             }
-            System.out.println("-> Was passt in Raum " + raeumeArray[unserAktuellerRaumIndex].getNummer() + " ?");
+            System.out.println("-> Haben wir ein geeignetes Kunstwerk für Raum " + raeumeArray[unserAktuellerRaumIndex].getNummer() + " ?");
             
             // Das Folgende gibt uns das als nächstes zu setzende Kunstwerk in die Hand,
             // das vom Schwerpunktthema ist, die Restriktionen 5,6,7 (im Raum) erfüllt, sodass auch R1 (global Kosten) erfüllt ist. 
@@ -204,6 +204,7 @@ public class Zuordnung
                 ); 
                 if (laufendeNummer==-1) // die Kunstwerkverwaltung gibt -1 zurück, wenn KEIN Kunstwerk in den Raum passt (z.B. wegen verfügbarer Fläche oder Restbudget zu klein)
                 {
+                    System.out.println("Leider passt kein geeignetes Schwerpunktkunstwerk in diesen Raum");
                     continue;// Anweisung beendet die aktuelle Ausführung des Schleifenkörpers, aber die Schleife wird mit dem nächsten Durchlauf (d.h. nächster Raum) fortgesetzt 
                 }
                 else if (laufendeNummer>=0)
@@ -216,7 +217,7 @@ public class Zuordnung
             // Jetzt validieren wir einer Methode der Klasse "Zuordnung", ob das Kunstwerk wirklich passt, oder ob sich in der Implementierung ein Fehler eingeschlichen hat:
             if (!passtKunstwerkDimensionalInRaum(zuSetzendesKW,unserAktuellerRaumIndex))
             {
-                System.out.println("ACHTUNG WIDERSPRUCH: es konnte nicht validiert werden, dass das KW in den Raum" + raeumeArray[unserAktuellerRaumIndex].getNummer() + " passt.");
+                System.out.println("XXXXACHTUNG WIDERSPRUCH: es konnte nicht validiert werden, dass das KW in den Raum" + raeumeArray[unserAktuellerRaumIndex].getNummer() + " passt.");
             }
             
             // Wenn wir bis hierhin ohne break/continue/throw gekommen sind, können wir das ausgewählte Kunstwerk im Raum platzieren (= das eigentliche Setzen):
@@ -225,7 +226,8 @@ public class Zuordnung
             // Setzen heißt, dass einige Parameter zu aktualisieren sind:
             aktualisiereParameterNachSetzen(zuSetzendesKW,unserAktuellerRaumIndex); 
             
-            System.out.println("wie viele Räume haben genau ein Schwerpunktkunstwerk:" + wieOftWurdeSchonEinSchwerpunktKunstwertPlatziert);
+            System.out.println("wie viele Räume haben nun genau ein Schwerpunktkunstwerk:" + wieOftWurdeSchonEinSchwerpunktKunstwertPlatziert + "\n");
+            
             
             /**
             später auch mit anderer Methode  versuchen:
@@ -235,18 +237,7 @@ public class Zuordnung
             */
         }
         
-        // Zu Testzwecken die gefundene Zuordnung in die Konsole ausgeben:
-        for (int r=0;r<raeumeArray.length;r++)
-        {
-            System.out.println("------------------------------------");
-            System.out.print("Raum: " + raeumeArray[r].getNummer() + " - " + "\n");
-            System.out.println("------------------------------------");
-
-            for(Kunstwerk kw : denRaeumenZugeordneteKunstwerke.get(r))
-            {
-                System.out.println(kw);
-            } 
-        }
+        ausgebenZuordnungAufKonsole();
     }
     
     /**
@@ -528,7 +519,7 @@ public class Zuordnung
         if (!raeumeSchonBelegt.contains(raeumeArray[r])) // wenn ein Raum bisher noch völlig ohne Kunstwerk ist
         {   
             raeumeSchonBelegt.add(raeumeArray[r]);
-            System.out.println("Raum " + raeumeArray[r] + " wurde belegt" );
+            System.out.println("-> Es wurde belegt Raum " + raeumeArray[r] + " !" );
         }
         
         /////////////////////////////////////////////////////////////////////////
@@ -798,7 +789,25 @@ public class Zuordnung
     
 
     
+    public void ausgebenZuordnungAufKonsole()
+    {
+        // Zu Log- und Testzwecken die gefundene Zuordnung in die Konsole ausgeben:
+        System.out.println("So sieht die Zuordnung nun aus:");
+        for (int r=0;r<raeumeArray.length;r++)
+        {
+            
+            System.out.println("------------------------------------");
+            System.out.print("Raum: " + raeumeArray[r].getNummer() + " - " + "\n");
+            System.out.println("------------------------------------");
+
+            for(Kunstwerk kw : denRaeumenZugeordneteKunstwerke.get(r))
+            {
+                System.out.println(kw);
+            } 
+        }    
+    }
     
+
     
  
     // ==========================================================================
