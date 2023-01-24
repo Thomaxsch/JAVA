@@ -155,10 +155,11 @@ public class Zuordnung
      */
     public void versucheMinimalloesungZuFinden ()
     {
-        System.out.println("---Versuche Minimallösung zu funden---");
+        System.out.println("/n---Versuche Minimallösung zu funden---");
         
         for (int i=0;i<raeumeArray.length;i++) // d.h. potentiell für jeden Raum wenn die Schleife vorher nicht abgebrochen wird
         {
+            
             // Unser Etappenziel ist erreicht, wenn die Hälfte der Räume mit Schwerpunktkunstwerk versehen wurde. Dann soll die Schleife abbrechen:
             if (wieOftWurdeSchonEinSchwerpunktKunstwertPlatziert == raumverwaltung.anzahlHaelfteRaeume())
             {
@@ -223,7 +224,9 @@ public class Zuordnung
             
             // Setzen heißt, dass einige Parameter zu aktualisieren sind:
             aktualisiereParameterNachSetzen(zuSetzendesKW,unserAktuellerRaumIndex); 
-                
+            
+            System.out.println("wie viele Räume haben genau ein Schwerpunktkunstwerk:" + wieOftWurdeSchonEinSchwerpunktKunstwertPlatziert);
+            
             /**
             später auch mit anderer Methode  versuchen:
             - naechstesZuSetzendesKunstwerkMODUS2 (statt beste Attraktivität die beste Relation aus Attraktivität und Kosten(*Volumen); sowie nicht mehr als 1/3 ges.-Kostenobergrenze pro Kunstwerk?)
@@ -580,7 +583,7 @@ public class Zuordnung
         
         /////////////////////////////////////////////////////////////////////////
         // Aktualisiere, wie oft schon ein Schwerpunktkunstwerk gesetzt wurde
-        if (kw.getArt()=='B')
+        if (kw.getThema().equals(schwerpunktthema))
         {
             wieOftWurdeSchonEinSchwerpunktKunstwertPlatziert++;
         }
