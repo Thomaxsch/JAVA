@@ -311,8 +311,9 @@ public class Zuordnung
                     verfuegbarWandWest[i],verfuegbarWandOst[i],verfuegbarWandNord[i],verfuegbarWandSued[i], // relevant für Bilder (vier Wände)
                     verfuegbarLaengeRaum[i],verfuegbarBreiteRaum[i],                                        // relevant für G und I (laengs/quer bzw Raumfläche)
                     verfuegbarHoeheRaum[i],                                                                 // relevant für alle KW
-                    minFeuchteRaum[i], maxFeuchteRaum[i],minTempRaum[i], maxTempRaum[i],                    // relevant für Bilder
                     restbudget,                                                                             // verfügbares Restbudget
+                    minFeuchteRaum[i], maxFeuchteRaum[i],minTempRaum[i], maxTempRaum[i],                    // relevant für Bilder
+                    
                     welcheThemenDuerfenNochInRaum,                                 //welche Themen erlaubt sind, falls es schon 3 unique im Raum gibt.
                                                                                    // ACHTUNG: wenn weniger als 3 Einträge zum Raum, dann ignorieren
                     welcheTypenDuerfenNochInRaum,                                  //ob der Typ egal ist oder es nur noch B/G sein darf
