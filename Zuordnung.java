@@ -319,7 +319,7 @@ public class Zuordnung
                 qualitaetsgewicht,                                                                      // Gewichtung von Qualität und Quantität
                 minFeuchteRaum[r], maxFeuchteRaum[r],minTempRaum[r], maxTempRaum[r],                    // relevant für Bilder
                 welcheThemenDuerfenNochInRaum.get(r),  // falls diese ArrayList genau (!) drei Elemente enthält, sind nur noch KW mit einem dieser Themen erlaubt
-                welcheTypenDuerfenNochInRaum.get(r),   // Es wird "BIG" oder "BG" übergeben (ob der Typ egal ist oder es nur noch B/G sein darf)
+                welcheTypenDuerfenNochInRaum.get(r)   // Es wird "BIG" oder "BG" übergeben (ob der Typ egal ist oder es nur noch B/G sein darf)
                 );
             if (zuSetzendesKunstwerkLaufendeNummer>=0) // Ein Kunstwerk passt.
             {
