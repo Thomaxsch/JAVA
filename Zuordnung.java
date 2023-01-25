@@ -268,6 +268,7 @@ public class Zuordnung
      *     -- R4 (mehrere Bilder im Raum ohne Temp/Feuchte Widerspruch) => wir nutzen unsere hiesigen Arrays zu Temp & Feuchte
      *     -- R3 (max 3 versch Themen im Raum) => ggf. nur manche Themen für den Raum noch erlaubt => TO DO: Arraylist wird übergeben welcheThemenDuerfenNochInRaum
      *     -- R8 (KI alleine im Raum) => wir übergeben, ob noch B/I/G (kein Kunstwerk bisher im Raum) oder nur noch B/G geht  => TO DO!
+     *     -- gemischter Restriktions-/Zielaspekt (eine Verschlechterung der Raumattraktivität wird für Bilder in Kauf genommen, wenn noch weniger als 60% der Raumfläche belegt sind)   
      *     
      *  
      * Dafür implementieren wir in der Kunstwerkverwaltung eine Methode naechstesZuSetzendesKunstwerkErweiterung(). Wir prüfen dann hier in der Methode noch vorab,
@@ -318,7 +319,7 @@ public class Zuordnung
                 qualitaetsgewicht,                                                                      // Gewichtung von Qualität und Quantität
                 minFeuchteRaum[r], maxFeuchteRaum[r],minTempRaum[r], maxTempRaum[r],                    // relevant für Bilder
                 welcheThemenDuerfenNochInRaum.get(r),  // falls diese ArrayList genau (!) drei Elemente enthält, sind nur noch KW mit einem dieser Themen erlaubt
-                welcheTypenDuerfenNochInRaum.get(r)    // Es wird "BIG" oder "BG" übergeben (ob der Typ egal ist oder es nur noch B/G sein darf)
+                welcheTypenDuerfenNochInRaum.get(r),   // Es wird "BIG" oder "BG" übergeben (ob der Typ egal ist oder es nur noch B/G sein darf)
                 );
             if (zuSetzendesKunstwerkLaufendeNummer>=0) // Ein Kunstwerk passt.
             {

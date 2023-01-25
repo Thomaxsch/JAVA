@@ -29,7 +29,7 @@ public class Museum
         // ---- TEST-------
 
         planung.setKostenobergrenze(999999999);
-        planung.setSchwerpunktthema("Rokoko"); //"Aktmalerei" "Rokoko" ""
+        planung.setSchwerpunktthema("Aktmalerei"); //"Aktmalerei" "Rokoko" ""
         planung.setQualitaetsgewicht(0.5);
         planung.generiereAusstellungen();
         planung.getBestesMapping ();
