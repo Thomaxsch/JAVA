@@ -279,7 +279,24 @@ public class Kunstwerkverwaltung
             }
         return passtBudget & passtZuordnenbar & passtInstallationAnteilI;
     }
+    
+    public boolean checkRaumFeuchteundTemp(int minFeuchteRaum, int maxFeuchteRaum,int minTempRaum, int maxTempRaum, Kunstwerk kw)
+    {
+        /**
+         * Wahrheitswert der angibt, ob die vorhandene Luftfeuchtigkeit für das im Raum zum plazierende Bild kompatibel ist. 
+         */
+        boolean passtRaumFeuchte; 
+        /**
+         * Wahrheitswert der angibt, ob die vorhandene Raumtemperatur für das im Raum zum plazierende Bild kompatibel ist. 
+         */
+        boolean passtRaumTemp = false;
         
+        if (kw.getArt()=='B')
+        {Bild b = (Bild) kw; // hier wird ein Kunstwerk in ein Bild umgewandelt. Dies wird gemacht, um auf die "getMethoden" wie "getMinTemp" zugreifen zu können.   
+        }
+        
+        return passtRaumTemp;
+    }
     public short naechstesZuSetzendesKunstwerk(
         String schwerpunktthema,
         int verfuegbarWandWest,int verfuegbarWandOst,int verfuegbarWandNord,int verfuegbarWandSued,  // relevant für Bilder (vier Wände)
@@ -334,6 +351,7 @@ public class Kunstwerkverwaltung
             } 
         } 
        
+        
        System.out.println("Index bestes KW:"+bestes_kw_lfd_nr);
     
        return bestes_kw_lfd_nr; // -1 wenn keins gefunden wurde
