@@ -318,10 +318,10 @@ public class Kunstwerkverwaltung
         double restbudget,                                                                           // verfügbares Restbudget (double)
         ArrayList<Kunstwerk> kunstwerkeSchonZugeordnet,                                              // bisher platzierte Kunstwerke (Arraylist)
         double anteilI,                                                                              // Anteil der mit I belegten Räume. (double)
-        double qualitaetsgewicht,
-        int minFeuchteRaum, int maxFeuchteRaum,int minTempRaum, int maxTempRaum, 
-        ArrayList<String> welcheThemenDuerfenNochInRaum,               // Es wird "BIG" oder "BG" übergeben. Welche Themen erlaubt sind, falls es schon 3 unique im Raum gibt. ACHTUNG: wenn weniger als 3 Einträge zum Raum, dann ignorieren
-        ArrayList<String> welcheTypenDuerfenNochInRaum             //ob der Typ egal ist oder es nur noch B/G sein darf
+        double qualitaetsgewicht,                                                                    // Gewichtung von Qualität und Quantität
+        int minFeuchteRaum, int maxFeuchteRaum,int minTempRaum, int maxTempRaum,                     // relevant nur für Bilder. Bild muss innerhalb dieser Grenzen sein.
+        ArrayList<String> welcheThemenDuerfenNochInRaum,     // falls diese ArrayList genau (!) drei Elemente enthält, sind nur noch KW mit einem dieser Themen erlaubt                                       
+        String welcheTypenDuerfenNochInRaum                  // es wird "BIG" oder "BG" übergeben (ob der Typ egal ist oder es nur noch B/G sein darf)
         ) 
         {
        short bestes_kw_lfd_nr = -1; // wir suchen das beste Kunstwerk. Wenn wir keins finden, geben wir den Wert "-1" zurück.

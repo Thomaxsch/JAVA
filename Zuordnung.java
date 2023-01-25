@@ -299,7 +299,7 @@ public class Zuordnung
         //        Passt kein Kunstwerk mehr in einen Raum, setzen wir den Bedarf in diesem Raum auf 0, sodass er nicht mehr durchlaufen wird.
         // Wir sind fertig, wenn alle Räume den Bedarfswert 0 haben.
         
-        int maxBedarf = raeumeBedarfWeitereKunstwerke[maxBedarfIndex()];
+        double maxBedarf = raeumeBedarfWeitereKunstwerke[maxBedarfIndex()];
         while (maxBedarf>0) // solange es also noch in irgendeinem Raum einen Bedarf > 0 gibt
         {
             // Bedürftigster Raum (s.o. unter 1.):
@@ -316,7 +316,7 @@ public class Zuordnung
                 ((double) wieOftWurdeSchonEineInstallationPlatziert)/raeumeArray.length,                // Anteil der mit I belegten Räume. (cast für die Division nötig)
                 qualitaetsgewicht,                                                                      // Gewichtung von Qualität und Quantität
                 minFeuchteRaum[r], maxFeuchteRaum[r],minTempRaum[r], maxTempRaum[r],                    // relevant für Bilder
-                welcheThemenDuerfenNochInRaum.get(r),  // Welche Themen erlaubt sind, falls es schon 3 unique im Raum gibt. ACHTUNG: wenn weniger als 3 Einträge zum Raum, dann ignorieren
+                welcheThemenDuerfenNochInRaum.get(r),  // falls diese ArrayList genau (!) drei Elemente enthält, sind nur noch KW mit einem dieser Themen erlaubt
                 welcheTypenDuerfenNochInRaum.get(r)    // Es wird "BIG" oder "BG" übergeben (ob der Typ egal ist oder es nur noch B/G sein darf)
                 );
             if (zuSetzendesKunstwerkLaufendeNummer>=0) // Ein Kunstwerk passt.
