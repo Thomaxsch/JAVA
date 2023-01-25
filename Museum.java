@@ -31,9 +31,9 @@ public class Museum
         planung.setSchwerpunktthema("Aktmalerei");
         planung.setQualitaetsgewicht(0.5);
         
-        planung.generiereAusstellung();
-        System.out.println("fertig");
-        // TEST ENDE-------
+        planung.generiereAusstellungen();
+        planung.getBestesMapping ();
+        // --- TEST ENDE ----
         
         /*
         gebeMenuAus();   

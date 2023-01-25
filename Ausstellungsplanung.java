@@ -1,15 +1,16 @@
 import java.util.*;
 
 /**
- * Die Klasse Ausstellungsplanung entlastet vor allem die zentrale Logikklasse "Ausleihe", indem sie das Schwerpunktthema und die Kostenobergrenze aufnimmt.
- * Außerdem wird hier die Suche nach einer (optimalen) Ausstellung gesteuert.
+ * Diese Klasse enthält die Planungslogik auf hohem Level und ist daher eine Geschäftslogikklasse 
+ * (während sich die Klasse Zuordnung um die meisten Details kümmert - teils unterstützt durch Kunstwerkveraltung und Raumverwaltung).
  * 
- * Die Planungslogik würde sich im Modell aber erst eine Ebene darüber befinden,
-in einer Geschäftslogikklasse, die die Beschriebene Logik implementiert.
-Sie kann dann Zuordnungsverwaltung initiieren,
-darin Zuordnungen erzeugen oder ändern
-oder Zuordnungen vergleichen.
- * 
+ * - Hier wird die Zuordnungsverwaltung (ZV) initiert und angefordert, dass die ZV so viele Zuordnungen anlegt, wie hier im Parameter anzahlZuordnungen spezifiziert sind.
+ * - Es wird gesteuert, dass nach Zuordnungsmappings für die Minimallösung bzw. die Lösungserweiterung gesucht wird:
+ * -- Minimallösungen werden gesucht, wenn ein Schwerpunktthema angegeben ist (Schwerpunkt in genau der Hälfte der Räume). 
+ * -- Danach werden die Minimallösungen erweitert, indem weitere Platzierungen in den Räumen versuchen werden. Dies wird ohne Schwerpunktthema unmittelbar begonnen.
+ * - Schließlich wird eine Methode zum Vergleich von Zuordnungen implementiert, um im eher wahrscheinlichen Fall mehrerer Lösungen die optimale Lösung auszuwählen.
+ * - Die Klasse Ausgabedatei benötigt Zugang zum besten Mapping Räume-Kunstwerke, wozu wir eine public Methode anbieten.
+ * - Außerdem gibt es hier in Form von getter und setter die Verwaltung für folgende Parameter: 1) Schwerpunktthema 2) Kostenobergrenze 3) Qualitätsgewicht 
  * 
  * @author Thomas Scheidt
  * @version 19.12.2022
@@ -42,11 +43,11 @@ public class Ausstellungsplanung
      */
     public Ausstellungsplanung(Raumverwaltung in_raumverwaltung, Kunstwerkverwaltung in_kunstwerkverwaltung) 
     {
-        // Initieerung der Zuordnungsverwaltung
-        zuordnungsverwaltung = new Zuordnungsverwaltung(anzahlZuordnungen);
-        
         raumverwaltung=in_raumverwaltung;
         kunstwerkverwaltung=in_kunstwerkverwaltung;
+        
+        // Initieerung der Zuordnungsverwaltung
+        zuordnungsverwaltung = new Zuordnungsverwaltung(raumverwaltung,kunstwerkverwaltung,this);
     }
     
     // ==========================================================================
@@ -54,27 +55,22 @@ public class Ausstellungsplanung
     // ==========================================================================
     
     /**
-     * Methode, um anzustoßen und auf hohem Level zu steuern, dass Zuordnungskandidaten für die Ausstellung erzeugt werden, wonach
-     * aus ihnen die im Verlgeich beste Lösung ausgesucht wird. 
+     * Methode, um anzustoßen und auf hohem Level zu steuern, dass Zuordnungskandidaten für die Ausstellung erzeugt werden
      * 
-     *  Die Klasse Zuordnungsverwaltung verwaltet Zuordnungen (d.h. die Kandidaten / verschiedene Planungszustände und insbesondere deren Mappings) in einem Array.
-     *  Dieses kann so viele einzelne Zuordnungen aufnehmen,wie in obigem Attribut anzahlZuordnungen bestimmt wird.
-     *  
-     *  Die Klasse Ausgabedatei benötigt Zugang zum Mapping Räume-Kunstwerke, daher geben wir dies am Ende aus.
+     * Die Klasse Zuordnungsverwaltung verwaltet Zuordnungen (d.h. die Kandidaten / verschiedene Planungszustände und insbesondere deren Mappings) in einer 
+     * verschachtelten ArrayList. Wir versuchen unabhängig voneinander so viele Mappings erzeugen zu lassen, wie im hiesigen Attribut anzahlZuordnungen bestimmt wird.
+     * 
      */
     
-    public ArrayList <ArrayList <Kunstwerk>> generiereAusstellung()
+    public void generiereAusstellungen()
     {
-        for (int i=0;i<anzahlZuordnungen;i++){
-            // erzeuge eine neue Zuordnung als Position i der Zuordnungsliste, übergebe dafür Referenzen auf alle Kunstwerke und alle Räume.
-            // Schwerpunktthema und Kostenobergrenze sind Default, wenn nicht anders vorgegegeben.
-            zuordnungsverwaltung.addZuordnung(i,kunstwerkverwaltung,raumverwaltung,schwerpunktthema,kostenobergrenze,qualitaetsgewicht);
-            
-            System.out.println(
-               "Lege an Zuordnung Nr."+Integer.toString(i) +
-               " für bis zu " + Integer.toString(kunstwerkverwaltung.sizeKunstwerkverwaltung()) +
-               " Kunstwerke und " + Integer.toString(raumverwaltung.anzahlRaeume()) + " Räume");
-        }
+        // Falls aus vorherigen Durchläufen der Methode schon Zuordnungen bestehen, verwerfen wir diese und fangen wieder ganz von vorne an:
+        zuordnungsverwaltung.deleteZuordnungen();
+        
+        // Erzeuge anzahlZuordnungen neue Zuordnungen in der Zuordnungsverwaltung. Diese Zuordnungen enthalten noch kein Mapping Kunstwerke-Räume.
+        zuordnungsverwaltung.fuelleZuordnungsverwaltung(anzahlZuordnungen);
+        
+        // Jetzt suchen wir nach Mappings Kunstwerke-Räume:
                 
         if (schwerpunktthema!="") // mit Schwerpunktthema müssen wir erst versuchen, eine minimale Zuordnung zu finden
         {
@@ -84,14 +80,15 @@ public class Ausstellungsplanung
             wurdeMinimaleAusstellungGefunden(); // <- die Methode prüft, ob es mindestens eine Minimallösung gab
             
             if (wurdeMinimaleAusstellungGefunden()){
-                System.out.println("ERFOLG: Es war uns möglich, mindestens eine minimale Zuordnung zu finden");
+                System.out.println("\nERFOLG: Es war uns möglich, mindestens eine minimale Zuordnung zu finden");
+                setzeInvalideMinimalloesungenNull(); // Zuordnungen die keine Minimallösung darstellen setzen wir zu null, um diese nachfolgend zu überspringen
                 System.out.println("Wir versuchen alle gefundenen Minimallösungen zu erweitern.");
                 erweitereAusstellungskandidaten();
             }
             else
             {
-                System.out.println("MISSERFOLG: Wir konnten überhaupt keine minimale Zuordnung erreichen.");
-                System.out.println("Bitte wählen Sie ein anderes Schwerpunktthema oder geben Sie keines vor");
+                System.out.println("\nMISSERFOLG: Wir konnten überhaupt keine minimale Zuordnung erreichen.");
+                System.out.println("Bitte wählen Sie ein anderes Schwerpunktthema oder geben Sie keines vor"); // hiernach ist unsere Methode neu aufzurufen
             }
         }
         else // ohne Schwerpunktthema können wir direkt versuchen, die Ausstellung auszubauen
@@ -100,8 +97,8 @@ public class Ausstellungsplanung
             erweitereAusstellungskandidaten();
         }
         
-        return zuordnungsverwaltung.getZuordnung(vergleicheAusstellungskandidatenWaehleBeste()) // den Index der besten Zuordnung ermitteln
-                                    .getDenRaeumenZugeordneteKunstwerke(); // und sich von dieser besten Zuordnung nur das Mapping ausgeben lassen
+        // Zusammenfassung der Ergebnisse:
+        
     }
     
     /**
@@ -112,9 +109,15 @@ public class Ausstellungsplanung
     {
         for (int i=0;i<anzahlZuordnungen;i++)
         {
+            System.out.println("\n-------- Unser " + i +". Versuch eine Minimallösung zu finden ---");
             zuordnungsverwaltung.getZuordnung(i).versucheMinimalloesungZuFinden();
+            System.out.println("***** Zuordnungsversuch " + i +" abgeschlossen *****");
         }
     }
+    
+    /**
+     * 
+     */
     
     private boolean wurdeMinimaleAusstellungGefunden()
     {
@@ -124,7 +127,6 @@ public class Ausstellungsplanung
             if (zuordnungsverwaltung.getZuordnung(i).wurdeMinimalloesungErreicht()) 
             {
                 wurdeGefunden=true;
-                
                 break;
             }
         }
@@ -132,17 +134,40 @@ public class Ausstellungsplanung
         return wurdeGefunden;
     }
     
+    /**
+     * 
+     */
+    
     private void erweitereAusstellungskandidaten()
     {
-        System.out.println("Wir suchen nun nach der bestmöglichen Ausstellung");
+        
         for (int i=0;i<anzahlZuordnungen;i++)
         {
+            System.out.println("\n-------- Wir versuchen die Ausstellung zu optimieren für Zuordnung " + i +" ---");
             zuordnungsverwaltung.getZuordnung(i).versucheLoesungserweiterung();
+            System.out.println("***** Ausstellungsoptimierung für Zuordnung " + i +" beendet *****");
         }
     }
     
+    /**
+     * Die Klasse Ausgabedatei benötigt Zugang zum besten Mapping Räume-Kunstwerke, wozu wir diese Methode anbieten.
+     */
+    
+    public ArrayList <ArrayList <Kunstwerk>> getBestesMapping ()
+    {
+        
+        return zuordnungsverwaltung.getZuordnung(vergleicheAusstellungskandidatenWaehleBeste()) // den Index der besten Zuordnung ansteuern
+                                    .getDenRaeumenZugeordneteKunstwerke(); // und sich von dieser besten Zuordnung nur das Mapping ausgeben lassen
+    }
+    
+    /**
+     * Suche nach dem (Index des) besten Mappings
+     */
+    
     private int vergleicheAusstellungskandidatenWaehleBeste()
     {
+        System.out.println("\n-------- Suche nach bester Ausstellung ---");
+        
         // Nehmen wir an die allererste Zuordnung ist die beste
         int indexBesteZuordnung=0;
         double zuordnungsGuete=zuordnungsverwaltung.getZuordnung(0).getZuordnungsGuete();
@@ -157,22 +182,26 @@ public class Ausstellungsplanung
                 zuordnungsGuete=zuVergleichendeZuordnungsGuete;
             }
         }
+        System.out.println("***** Die beste Ausstellung stellt Zuordnung Nr. " + indexBesteZuordnung +" *****");
+        System.out.println("(*_*)");
+        System.out.println("<> <> <> <> <> <> <> <> <> ");
         return indexBesteZuordnung;
     }       
     
-    
-       
-    /**
-     * METHODE IST GLAUBE ICH nicht nötig DA ES EIN ARRAY IST DER EINFACH ÜBERSCHRIEBEN WERDEN KANN MIT NEUEN ZUORDNUNGEN!
-     */
-    public void setzeAusstellungsplanungZurueck(){
-        for (int i=0;i<anzahlZuordnungen;i++)
-        { 
-            zuordnungsverwaltung.deleteZuordnung(i); // löscht alle bisherigen Zuordnungen. Da Elemente sich nicht aus Arrays entfernen lassen, werden sie mit null überschrieben
+    private void setzeInvalideMinimalloesungenNull()
+    {
+        for (int z=0;z<anzahlZuordnungen;z++)
+        {
+            if (!zuordnungsverwaltung.getZuordnung(z).wurdeMinimalloesungErreicht())
+            {
+                zuordnungsverwaltung.setzeZuordnungNull(z);
+            }
         }
     }
-    
-    
+
+    // ==========================================================================
+    // === Getter/Setter-Methoden für Schwerpunkt, Kostengrenze, Qualitätsgewicht
+    // ==========================================================================
     
     /**
      * Methode um Schwerpunktthema zu setzen. 
@@ -202,8 +231,7 @@ public class Ausstellungsplanung
     {
         qualitaetsgewicht=in_qualitaetsgewicht;
     }
-    
-    
+
     /**
      * Hierüber kann das Schwerpunktthema der Ausstellung abgefragt werden.
      * 
@@ -233,9 +261,6 @@ public class Ausstellungsplanung
     {
         return qualitaetsgewicht;
     }
-       
-    
-    
 }
   
     

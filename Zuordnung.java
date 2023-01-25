@@ -31,7 +31,7 @@ public class Zuordnung
     private ArrayList <String> welcheTypenDuerfenNochInRaum = new ArrayList <String>(); // 
     
     private ArrayList <Kunstwerk> kunstwerkeSchonZugeordnet = new ArrayList <Kunstwerk >(); // Liste aller Kunstwerke, die schon einem Raum zugeordnet wurden. Arraylist mit flex. Länge
-    private ArrayList <Raum> raeumeSchonBelegt = new ArrayList <Raum>(); // Initalisierung der Liste aller Räume, denen schon ein KW zugeordnet wurde. Arraylist mit flex. Länge
+    private ArrayList <Raum> raeumeSchonBelegtEinKW = new ArrayList <Raum>(); // Initalisierung der Liste aller Räume, denen schon ein KW zugeordnet wurde. Arraylist mit flex. Länge
     
     private double [] raeumeBedarfWeitereKunstwerke; // je näher Richtung 1, desto bedürftiger ist der Raum mit diesem Index. 
                                                      // bei einem Wert von 0 ist der Raum perfekt gefüllt oder nicht weiter füllbar.
@@ -159,7 +159,7 @@ public class Zuordnung
      */
     public void versucheMinimalloesungZuFinden ()
     {
-        System.out.println("\n---Versuche Minimallösung zu finden---");
+        System.out.println("\n---Beginne Suche Minimallösung ---");
         
         for (int i=0;i<raeumeArray.length;i++) // d.h. potentiell für jeden Raum wenn die Schleife vorher nicht abgebrochen wird
         {
@@ -171,7 +171,7 @@ public class Zuordnung
             }
             
             // Wir benötigen einen zufällig ausgewählten noch leeren Raum, um dort zu versuchen ein KW zu platzieren:
-            Raum unserAktuellerRaum = raumverwaltung.zufealligerLeererRaum(raeumeSchonBelegt);
+            Raum unserAktuellerRaum = raumverwaltung.zufealligerLeererRaum(raeumeSchonBelegtEinKW);
             
             
             // Wir brauchen auch den Index dieses Raums, damit wir in unseren Listen später die richtigen Werte zum Raumindex finden können: 
@@ -226,6 +226,7 @@ public class Zuordnung
             
             // Wenn wir bis hierhin ohne break/continue/throw gekommen sind, können wir das ausgewählte Kunstwerk im Raum platzieren (= das eigentliche Setzen):
             denRaeumenZugeordneteKunstwerke.get(unserAktuellerRaumIndex).add(zuSetzendesKW);
+            System.out.println("---> Es wurde belegt Raum " + raeumeArray[unserAktuellerRaumIndex] + " !" );
             
             // Setzen heißt, dass unmittelbar danach einige Parameter zu aktualisieren sind:
             aktualisiereParameterNachSetzen(zuSetzendesKW,unserAktuellerRaumIndex); 
@@ -283,8 +284,8 @@ public class Zuordnung
         {
             raeumeBedarfWeitereKunstwerke[r] = 1 - gueteRaum(r);
             
-            // Wir prüfen auch bereits, ob schon eine Kunstinstalltion im Raum ist. Dann wissen wir auch sicher, dass sonst nichts mehr herein passt:
-            boolean RaumBlockiertDurchKunstinstallation= (denRaeumenZugeordneteKunstwerke.get(r).get(0).getArt()=='I'); // aufgrund des Vorgehens wäre die I immer 1. Element
+            // Wir prüfen auch bereits, ob schon eine Kunstinstallation im Raum ist. Dann wissen wir auch sicher, dass sonst nichts mehr herein passt:
+            boolean RaumBlockiertDurchKunstinstallation= (welcheTypenDuerfenNochInRaum.get(r).equals("BG")); // dann ist "BIG" nicht mehr erlaubt, weil I im Raum
             if (RaumBlockiertDurchKunstinstallation){
                 raeumeBedarfWeitereKunstwerke[r] = 0;
             }
@@ -324,6 +325,7 @@ public class Zuordnung
                 // Wir setzen das Kunstwerk
                 Kunstwerk zuSetzendesKW = kunstwerkverwaltung.showKunstwerkZuLaufendeNummer(zuSetzendesKunstwerkLaufendeNummer);
                 denRaeumenZugeordneteKunstwerke.get(r).add(zuSetzendesKW);
+                System.out.println("---> Es wurde belegt Raum " + raeumeArray[r] + " !" );
                 aktualisiereParameterNachSetzen(zuSetzendesKW,r); 
                 
                 // (((Jetzt validieren wir einer Methode der Klasse "Zuordnung", ob das Kunstwerk wirklich passt, oder ob sich in der Implementierung ein Fehler eingeschlichen hat:
@@ -335,10 +337,11 @@ public class Zuordnung
                 // Aktualisieren des Bedarfs in diesem Raum mit dem nun aktuellen Wert
                 raeumeBedarfWeitereKunstwerke[r] = 1 - gueteRaum(r);
             }
-            else if (zuSetzendesKunstwerkLaufendeNummer>=0) // Kein Kunstwerk passt mehr in diesen Raum
+            else if (zuSetzendesKunstwerkLaufendeNummer<0) // Kein Kunstwerk passt mehr in diesen Raum
             {
                 // Wir setzen den Bedarf auf 0, damit dieser Raum abgeschlossen ist
                 raeumeBedarfWeitereKunstwerke[r] = 0;
+                System.out.println("---> Optimierung wurde abgeschlossen für die Belegung von Raum" + raeumeArray[r].getNummer() + " !" );
             }
             
             // Anschließend ermitteln wir den nun aktuellen maximalen Bedarf, damit die while-Schleife ggf. abbrechen kann, wenn es keinerlei Bedarf mehr gibt
@@ -346,6 +349,11 @@ public class Zuordnung
         }
     
             
+        for (int r=0;r<raeumeArray.length;r++)
+        {
+            System.out.println("Bedarf für Raum" + raeumeArray[r].getNummer() + " = " + raeumeBedarfWeitereKunstwerke[r]);
+        }
+        ausgebenZuordnungAufKonsole();
             // Das Folgende gibt uns das als nächstes zu setzende Kunstwerk in die Hand,
             // das die Restriktionen 5,6,7 (im Raum) erfüllt, sodass auch R1 (globale Kosten) erfüllt ist,
             // das bzgl. Bilder hinsichtlich Temp & Feuchte konsistent ist (R4), sodass höchstens drei Themen im Raum sind (R3)
@@ -373,7 +381,7 @@ public class Zuordnung
      *      - 6x räumliche Dimensionen (4 wände, 2 Raumachsen)
      *      - restbudget
      *      - kunstwerkeSchonZugeordnet
-     *      - raeumeSchonBelegt
+     *      - raeumeSchonBelegtEinKW
      *      - Temp Min/Max aufgrund Bildern im Raum
      *      - Feuchte Min/Max aufgrund Bildern im Raum
      *      - wenn es schon drei Themen im Raum gibt, welches das sind, weil dann nur noch diese erlaubt sind für weitere KW (Themen werden ab 1. Thema erfasst)
@@ -444,10 +452,19 @@ public class Zuordnung
         
         if (kw.getArt()=='G'| kw.getArt()=='I')
         {
-            Kunstgegenstand in_Kunstgegenstand = (Kunstgegenstand) kw; // die Parentclass "Kunstwerk" hat nicht die Methode getLaenge, die wir aber gleich benötigen, daher casten wir
-            int l=in_Kunstgegenstand.getLaenge();
-            int b=in_Kunstgegenstand.getBreite();
-            
+            int l = 0;
+            int b = 0;
+            // die Parentclass "Kunstwerk" hat nicht die Methode getLaenge(), die wir aber hier benötigen, daher casten wir
+            if (kw.getArt()=='G')
+            {Kunstgegenstand kg = (Kunstgegenstand) kw;
+            l=kg.getLaenge();
+            b=kg.getBreite();
+            }
+            else if (kw.getArt()=='I')
+            {Kunstinstallation ki = (Kunstinstallation) kw;
+            l=ki.getLaenge();
+            b=ki.getBreite();
+            }
             int restl1=verfuegbarLaengeRaum[r]-l; // Fall laengs
             int restl2=verfuegbarBreiteRaum[r]-b; // Fall laengs
             int restq1=verfuegbarLaengeRaum[r]-b; // Fall quer
@@ -527,10 +544,10 @@ public class Zuordnung
         //////////////////////////////////////////////////////////////////////////
         // Aktualisiere Arraylist der belegten Räume
         
-        if (!raeumeSchonBelegt.contains(raeumeArray[r])) // wenn ein Raum bisher noch völlig ohne Kunstwerk ist
+        if (!raeumeSchonBelegtEinKW.contains(raeumeArray[r])) // wenn ein Raum bisher noch völlig ohne Kunstwerk ist
         {   
-            raeumeSchonBelegt.add(raeumeArray[r]);
-            System.out.println("-> Es wurde belegt Raum " + raeumeArray[r] + " !" );
+            raeumeSchonBelegtEinKW.add(raeumeArray[r]);
+            
         }
         
         /////////////////////////////////////////////////////////////////////////
@@ -746,6 +763,31 @@ public class Zuordnung
         return gueteSumme/anzahl;
     }
     
+    /**
+     * 
+     */
+    public double [] getZuordnungsErgebnisse()
+    {
+        double [] zuordnungsErgebnisse = new double [3];
+        
+        
+        double mittlereGueteRaumBelegung = 0;
+        double mittlereGueteRaumAttraktivitaet = 0;
+        for (int r=0;r<raeumeArray.length;r++)
+        {
+            mittlereGueteRaumBelegung += gueteRaumBelegung(r);
+            mittlereGueteRaumAttraktivitaet += gueteRaumAttraktivitaet(r);
+        }
+        mittlereGueteRaumBelegung = mittlereGueteRaumBelegung / raeumeArray.length;
+        mittlereGueteRaumAttraktivitaet = mittlereGueteRaumAttraktivitaet / raeumeArray.length;
+        
+        zuordnungsErgebnisse[0]= mittlereGueteRaumBelegung;
+        zuordnungsErgebnisse[1]= mittlereGueteRaumAttraktivitaet;
+        zuordnungsErgebnisse[2]= getZuordnungsGuete();
+        
+        return zuordnungsErgebnisse;
+    }
+    
     // ==========================================================================
     // === Methoden zur Bestimmung der Güte der Raumbelegung
     // ========================================================================== 
@@ -796,6 +838,7 @@ public class Zuordnung
         return (gueteRaumAttraktivitaet(r)*qualitaetsgewicht + gueteRaumBelegung(r)*(1-qualitaetsgewicht));
     }
     
+   
     
     // ==========================================================================
     // === Methoden bzgl. der Bedürftigkeit eines Raumes im Rahmen der Lösungserweiterung
@@ -819,12 +862,12 @@ public class Zuordnung
     public void ausgebenZuordnungAufKonsole()
     {
         // Zu Log- und Testzwecken die gefundene Zuordnung in die Konsole ausgeben:
-        System.out.println("So sieht die Zuordnung nun aus:");
+        System.out.println("\nSo sieht die Zuordnung nun aus:");
         for (int r=0;r<raeumeArray.length;r++)
         {
             
             System.out.println("------------------------------------");
-            System.out.print("Raum: " + raeumeArray[r].getNummer() + " - " + "\n");
+            System.out.print("# Raum " + raeumeArray[r].getNummer() + "  " + "\n");
             System.out.println("------------------------------------");
 
             for(Kunstwerk kw : denRaeumenZugeordneteKunstwerke.get(r))
@@ -972,12 +1015,12 @@ public class Zuordnung
     }
     
     /**
-     * Welche Räume sind schon belegt? Erlaubt u.a. der Raumverwaltung zufällig noch leere Räume auszuwählen.
+     * Welche Räume sind schon belegt mit einem KW? Erlaubt u.a. der Raumverwaltung zufällig noch leere Räume auszuwählen.
      */
     public ArrayList <Raum> ermittleBelegteRaeume()
     {
         //Zu befüllen und returnieren:
-        ArrayList <Raum> raeumeSchonBelegt = new ArrayList <Raum>(); // Initalisierung der Liste aller Räume, denen schon ein KW zugeordnet wurde. Arraylist mit flex. Länge
+        ArrayList <Raum> raeumeSchonBelegtEinKW = new ArrayList <Raum>(); // Initalisierung der Liste aller Räume, denen schon ein KW zugeordnet wurde. Arraylist mit flex. Länge
         
         // Zur Erinnerung: so sieht die Struktur vom nested Array aus:
         //private ArrayList <ArrayList <Kunstwerk >> denRaeumenZugeordneteKunstwerke = new ArrayList <ArrayList <Kunstwerk >>();
@@ -987,11 +1030,11 @@ public class Zuordnung
         for (ArrayList <Kunstwerk> kunstwerkeImRaum: denRaeumenZugeordneteKunstwerke) {
             if (kunstwerkeImRaum.isEmpty())
             {
-                raeumeSchonBelegt.add(raeumeArray[i]);
+                raeumeSchonBelegtEinKW.add(raeumeArray[i]);
             }
             i++;
         }
-        return raeumeSchonBelegt;
+        return raeumeSchonBelegtEinKW;
     }
     
     /**
