@@ -322,6 +322,7 @@ public class Kunstwerkverwaltung
         int minFeuchteRaum, int maxFeuchteRaum,int minTempRaum, int maxTempRaum, 
         ArrayList<String> welcheThemenDuerfenNochInRaum,            // Es wird "BIG" oder "BG" übergeben. Welche Themen erlaubt sind, falls es schon 3 unique im Raum gibt. ACHTUNG: wenn weniger als 3 Einträge zum Raum, dann ignorieren
         ArrayList<String> welcheTypenDuerfenNochInRaum)             //ob der Typ egal ist oder es nur noch B/G sein darf
+
         {
        short bestes_kw_lfd_nr = -1; // wir suchen das beste Kunstwerk. Wenn wir keins finden, geben wir den Wert "-1" zurück.
        for (Kunstwerk kw : bildeKriteriumsliste(qualitaetsgewicht)) {
