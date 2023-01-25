@@ -335,6 +335,7 @@ public class Kunstwerkverwaltung
             } 
         } 
        
+        
        System.out.println("Index bestes KW:"+bestes_kw_lfd_nr);
     
        return bestes_kw_lfd_nr; // -1 wenn keins gefunden wurde
