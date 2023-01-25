@@ -29,14 +29,6 @@ Attraktivität: 51, Thema: Aktmalerei, Nr: 59, Art des Kunstwerks: G, Bezeichnun
 Attraktivität: 47, Thema: Aktmalerei, Nr: 81, Art des Kunstwerks: G, Bezeichnung: Andiron with figure of Juno (chenet) (one of a pair), Breite 112
 Attraktivität: 46, Thema: Aktmalerei, Nr: 78, Art des Kunstwerks: G, Bezeichnung: Nymph with a Shell, Breite 48
 ------------------------------------
-Raum: Nummer: 5, Raumbezeichnung: Raum A, Breite: 1200, Länge: 1400, Höhe:250
-------------------------------------
-Attraktivität: 50, Thema: Aktmalerei, Nr: 56, Art des Kunstwerks: G, Bezeichnung: Chimneypiece (cheminée), Breite 248
-Attraktivität: 48, Thema: Pflanzen, Nr: 63, Art des Kunstwerks: G, Bezeichnung: Tapestry Room from Croome Court, Breite 690
-Attraktivität: 46, Thema: Aktmalerei, Nr: 73, Art des Kunstwerks: G, Bezeichnung: Low cabinet (meuble à hauteur d'appui) (one of a pair), Breite 95
-Attraktivität: 46, Thema: Klassizismus, Nr: 89, Art des Kunstwerks: G, Bezeichnung: Five-light candelabrum (one of a pair), Breite 42
-Attraktivität: 39, Thema: Klassizismus, Nr: 90, Art des Kunstwerks: G, Bezeichnung: Five-light candelabrum (one of a pair), Breite 34
-------------------------------------
 Raum: Nummer: 2, Raumbezeichnung: Galerie links, Breite: 800, Länge: 800, Höhe:250
 ------------------------------------
 Attraktivität: 80, Thema: Aktmalerei, Nr: 7, Art des Kunstwerks: B, Bezeichnung: Still Life with Oysters a Silver Tazza and Glassware, Breite 80
@@ -77,3 +69,11 @@ Attraktivität: 50, Thema: Landschaftsmalerei, Nr: 11, Art des Kunstwerks: B, Be
 Attraktivität: 47, Thema: Aktmalerei, Nr: 39, Art des Kunstwerks: B, Bezeichnung: Portrait of a Young Man, Breite 20
 Attraktivität: 45, Thema: Landschaftsmalerei, Nr: 41, Art des Kunstwerks: B, Bezeichnung: A Shaded Avenue, Breite 24
 Attraktivität: 31, Thema: Aktmalerei, Nr: 47, Art des Kunstwerks: B, Bezeichnung: A Shepherd and a Rider on a Country Lane, Breite 39
+------------------------------------
+Raum: Nummer: 5, Raumbezeichnung: Raum A, Breite: 1200, Länge: 1400, Höhe:250
+------------------------------------
+Attraktivität: 50, Thema: Aktmalerei, Nr: 56, Art des Kunstwerks: G, Bezeichnung: Chimneypiece (cheminée), Breite 248
+Attraktivität: 48, Thema: Pflanzen, Nr: 63, Art des Kunstwerks: G, Bezeichnung: Tapestry Room from Croome Court, Breite 690
+Attraktivität: 46, Thema: Aktmalerei, Nr: 73, Art des Kunstwerks: G, Bezeichnung: Low cabinet (meuble à hauteur d'appui) (one of a pair), Breite 95
+Attraktivität: 46, Thema: Klassizismus, Nr: 89, Art des Kunstwerks: G, Bezeichnung: Five-light candelabrum (one of a pair), Breite 42
+Attraktivität: 39, Thema: Klassizismus, Nr: 90, Art des Kunstwerks: G, Bezeichnung: Five-light candelabrum (one of a pair), Breite 34
