@@ -85,7 +85,7 @@ public class Ausstellungsplanung
             
             if (wurdeMinimaleAusstellungGefunden()){
                 System.out.println("ERFOLG: Es war uns möglich, mindestens eine minimale Zuordnung zu finden");
-                System.out.println("Versuche Ausstellung zu erweitern.");
+                System.out.println("Wir versuchen alle gefundenen Minimallösungen zu erweitern.");
                 erweitereAusstellungskandidaten();
             }
             else
