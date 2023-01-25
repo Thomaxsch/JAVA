@@ -24,15 +24,15 @@ public class Museum
         
         Ausstellungsplanung2 planung2 = new Ausstellungsplanung2(raeume, kunstwerke); // <--kann das hier weg?
         
-        planung = new Ausstellungsplanung(raeume, kunstwerke); 
+        //planung = new Ausstellungsplanung(raeume, kunstwerke); 
         
         // ---- TEST-------
-        planung.setKostenobergrenze(999999999);
-        planung.setSchwerpunktthema("Aktmalerei");
-        planung.setQualitaetsgewicht(0.5);
+        //planung.setKostenobergrenze(999999999);
+        //planung.setSchwerpunktthema("Aktmalerei");
+        //planung.setQualitaetsgewicht(0.5);
         
-        planung.generiereAusstellungen();
-        planung.getBestesMapping ();
+        //planung.generiereAusstellungen();
+        //planung.getBestesMapping ();
         // --- TEST ENDE ----
         
         /*
