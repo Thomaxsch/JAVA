@@ -1,4 +1,5 @@
 import java.util.Vector;
+import java.util.ArrayList;
 
 /**
  * NEU:
@@ -34,8 +35,11 @@ public class Zuordnungsverwaltung
     // ==========================================================================
     
     // Deklaration eines Arrays für die Zuordnungen:
-    private Zuordnung[] listeZuordnungen; 
-    
+    private ArrayList <Zuordnung> listeZuordnungen; 
+    private int anzahlZuordnungen;
+    private Raumverwaltung raumverwaltung;
+    private Kunstwerkverwaltung kunstwerkverwaltung;
+    private Ausstellungsplanung ausstellungsplanung;
     
     // ==========================================================================
     // === Konstruktor
@@ -44,10 +48,13 @@ public class Zuordnungsverwaltung
     /**
      * Konstruktor für Objekte der Klasse Zuordnungsverwaltung
      */
-    public Zuordnungsverwaltung(int in_arraylaenge)
+    public Zuordnungsverwaltung (Raumverwaltung in_raumverwaltung,Kunstwerkverwaltung in_kunstwerkverwaltung,Ausstellungsplanung in_ausstellungsplanung)
     {
-        listeZuordnungen = new Zuordnung[in_arraylaenge]; // Initialisierung des Arrays, sodass es 100 Elemente (vom Typ Zuordnung) aufnehmen kann.
-
+        listeZuordnungen = new ArrayList <Zuordnung>(); // Initialisierung der Liste
+        
+        raumverwaltung = in_raumverwaltung;
+        kunstwerkverwaltung = in_kunstwerkverwaltung;
+        ausstellungsplanung = in_ausstellungsplanung;
     }
     
     // ==========================================================================
@@ -55,35 +62,49 @@ public class Zuordnungsverwaltung
     // ==========================================================================
        
     /**
-     * Gebe ein bestimmtes Element aus dem Vektor zurück.
+     * Gebe ein bestimmtes Element aus der ArrayList zurück.
      * 
-     * @return Ein bestimmtes Element aus Vektor, also eine bestimmte geplante Ausleihe.
+     * @return Ein bestimmtes Element aus der ArrayList, also eine bestimmte geplante Ausleihe.
      */
     public Zuordnung getZuordnung(int n)
     {
-        return listeZuordnungen[n];
-    }
-
-    /**
-     * Lege die i-te Zuordnung in der Zuordnungsverwaltung neu an
-     */
-    public void addZuordnung(int arrayposition,
-                            Kunstwerkverwaltung in_kunstwerkverwaltung,
-                            Raumverwaltung in_raumverwaltung,
-                            String in_schwerpunktthema,
-                            double in_kostenobergrenze,
-                            double in_qualitaetsgewicht)
-    {
-        listeZuordnungen[arrayposition]=new Zuordnung(in_kunstwerkverwaltung,in_raumverwaltung,in_schwerpunktthema,in_kostenobergrenze,in_qualitaetsgewicht);
+        return listeZuordnungen.get(n);
     }
     
     /**
-     * Leere die ausgewählte Zuordnung
+     * Fülle die Zuordnungsverwaltung mit anzahlZuordnungen frischen Zuordnungs-Objekten.  
      */
-    public void deleteZuordnung(int n)
-    {
-        listeZuordnungen[n]=null;
+    public void fuelleZuordnungsverwaltung (int in_anzahlZuordnungen){
+        anzahlZuordnungen=in_anzahlZuordnungen;
+        for (int z=0;z<anzahlZuordnungen;z++)
+        {
+            listeZuordnungen.add(new Zuordnung(kunstwerkverwaltung,raumverwaltung,
+                                              ausstellungsplanung.getSchwerpunktthema(),ausstellungsplanung.getKostenobergrenze(),ausstellungsplanung.getQualitaetsgewicht()));
+            System.out.println(
+               "Lege an Zuordnung Nr."+Integer.toString(z) +
+               " für bis zu " + Integer.toString(kunstwerkverwaltung.sizeKunstwerkverwaltung()) +
+               " Kunstwerke und " + Integer.toString(raumverwaltung.anzahlRaeume()) + " Räume");
+        }
+        
     }
     
+    // ==========================================================================
+    // === Methoden zum Zurücksetzen/Überspringen von Zuordnungen
+    // ==========================================================================
+       
+    /**
+     * Setze für die ausgewählte Zuordnung "null"
+     */
+    public void setzeZuordnungNull(int z)
+    {
+        listeZuordnungen.set(z,null); //setzt die Zuordnung zu null
+    }
     
+    /**
+     * Entferne alle Zuordnungen
+     */
+    public void deleteZuordnungen()
+    {
+        listeZuordnungen.removeAll(listeZuordnungen); // löscht alle Elemente die in Klammern stehen aus listeZuordnungen => alle Elemente der List
+    }
 }

@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.*;
 
 /**
  * Die Klasse Datei kann Strings als Zeilen in einer Datei ausgeben.
@@ -15,7 +16,9 @@ public class Ausgabedatei
     /**
      * Objekt der Klasse Ausstellungsplanung, auf dessen Grundlage die Ausleih-, Ausstellungs- und Museumsführer-Datei erstellt werden können
      */
-    private Ausstellungsplanung planung;
+    // private Ausstellungsplanung planung;
+    
+    private HashMap<Raum, List<Kunstwerk>> zugeordneteKunstwerke;
     /**
      * Objekt der Java-Klasse PrintWriter zum Schreiben von Zeichenketten
      */
@@ -31,12 +34,13 @@ public class Ausgabedatei
     
     /**
      * Konstruktor für Objekte der Klasse Ausgabedatei mit Parameternn für den Dateinamen und die Ausstellungsplanung
-     * @param file      Dateiname für die zu erstellende Outputdatei 
-     * @param planung   Objekt der Klasse Ausstellungsplanung
+     * @param file                     Dateiname für die zu erstellende Outputdatei 
+     * @param auszugebendeKunstwerke   HashMap mit den Räumen und Objekten die ausgegeben werden sollen
      */
-    public Ausgabedatei(String file, Ausstellungsplanung planung) 
+    public Ausgabedatei(String file, HashMap<Raum, List<Kunstwerk>> auszugebendeKunstwerke) 
     {
-        
+        this.file = file;
+        this.zugeordneteKunstwerke = auszugebendeKunstwerke;
     }
     
     /**
@@ -56,7 +60,49 @@ public class Ausgabedatei
      */
     public void schreibeAusleihen()
     {
+        try
+        {
+            BufferedWriter meinWriter = new BufferedWriter(new FileWriter("ausgabedatei.txt"));
+            meinWriter.write("Hallo Welt");
+            meinWriter.newLine();
+            meinWriter.write("Dies ist eine Testdatei");
+            meinWriter.close();
+        }
+        catch(IOException e)
+        {
+            System.out.println("Beim Schreiben in die Datei ist etwas schief gegangen.");
+        }
+        
+        try
+        {
+            BufferedWriter meinWriter = new BufferedWriter(new FileWriter(file));
+            
+            for(Raum key : zugeordneteKunstwerke.keySet())
+            {
+                meinWriter.write("------------------------------------");
+                meinWriter.newLine();
+                meinWriter.write("Raum: " + key);
+                meinWriter.newLine();
+                meinWriter.write("------------------------------------");
+                meinWriter.newLine();
     
+            List<Kunstwerk> temp = zugeordneteKunstwerke.get(key);
+            
+                for(Kunstwerk k : temp)
+                {
+                    meinWriter.write(k.toString());
+                    meinWriter.newLine();
+                } 
+            }
+            
+            meinWriter.close();
+            
+        }
+        catch(IOException e)
+        {
+            System.out.println("Beim Schreiben in die Datei ist etwas schief gegangen.");
+        }
+        
     }
     
     /**
@@ -94,9 +140,5 @@ public class Ausgabedatei
     private void writeLine(String str) 
     {
         
-    }
-    
-    
-    
-    
+    } 
 }
