@@ -32,7 +32,7 @@ public class Ausstellungsplanung
     private Kunstwerkverwaltung kunstwerkverwaltung;
     private Zuordnungsverwaltung zuordnungsverwaltung;
     
-    private int anzahlZuordnungen = 2;
+    private int anzahlZuordnungen = 10;
     
     // ==========================================================================
     // === Konstruktor
@@ -97,8 +97,11 @@ public class Ausstellungsplanung
             erweitereAusstellungskandidaten();
         }
         
-        // Zusammenfassung der Ergebnisse:
-        
+        // Zusammenfassung der Ergebnisse aller Zuordnungen:
+        if (wurdeMinimaleAusstellungGefunden())
+        {
+            zuordnungsverwaltung.ausgebenZuordnungsGuetenAufKonsole();
+        }
     }
     
     /**

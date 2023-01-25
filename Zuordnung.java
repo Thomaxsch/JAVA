@@ -846,14 +846,38 @@ public class Zuordnung
     
     
     private int maxBedarfIndex(){
+        // Suche nach einem Index, an dem der Bedarf maximal ist (klassische Maximumbestimmung):
         double max = raeumeBedarfWeitereKunstwerke[0];
         int indexMaxBedarf = 0;
         for (int r = 0; r < raeumeArray.length; r++) {
           if (raeumeBedarfWeitereKunstwerke[r] > max) {
             max = raeumeBedarfWeitereKunstwerke[r];
             indexMaxBedarf = r;
-          }  
+            }
         }
+        
+        // Insbesondere wenn kein Schwerpunktthema gesetzt ist, sowie ggf. ansonsten in besonderen Fällen würden 
+        // wir deterministisch vorgehen und bei jeder Lösungserweiterung dieselbe Zuordnung erreichen.
+        // Um das Potential alternativer Ausschöpfungswege ausschöpfen zu können, führen wir an dieser Stelle ein Zufallselement ein: 
+        // Sollte es kein klares Maximum geben, sonder zwei oder mehr Räume mit höchstem Wert bedürftig sein, wählen wir daraus einen zufälligen Raum.
+        // Der Zufall wird bei dieser Konstruktion vor allem dann Einfluss nehmen, wenn noch alle oder einige Räume komplett leer sind.
+        // Wir haben den Ansatz in einem Szenario mit 10 Zuordnungen ohne Schwerpunktthema getestet:
+        // - Hier war die Güte ohne Zufall statisch bei 0.394.
+        // - Mit Zufall hatten wir Gütewerte zwischen 0.393 und und 0.414. Da wir am Ende nur die beste Güte herausfiltern, ist dies durchaus eine Verbesserung.
+        ArrayList <Integer> welcheRaeumeHabenMaximalenBedarf = new ArrayList <Integer>();
+        
+        for (int r = 0; r < raeumeArray.length; r++) {
+          if (raeumeBedarfWeitereKunstwerke[r] == raeumeBedarfWeitereKunstwerke[indexMaxBedarf]) 
+            {
+                welcheRaeumeHabenMaximalenBedarf.add((Integer)r); // wir speichern den Raum Index ab, wenn der Bedarf in diesem Raum auf höchstem Niveau ist
+            }
+        }
+        
+        // Folgendes gibt zufälligen Raumindex (siehe Erklärung im Kommentar zur Methode Raumverwaltung.zufealligerLeererRaum):
+        Random rand = new Random();
+        int zufaelligerIndexAusWelcheRaeumeHabenMaximalenBedarf = rand.nextInt(welcheRaeumeHabenMaximalenBedarf.size());
+        indexMaxBedarf = welcheRaeumeHabenMaximalenBedarf.get(zufaelligerIndexAusWelcheRaeumeHabenMaximalenBedarf);
+        
         return indexMaxBedarf;
     }
   
