@@ -320,7 +320,7 @@ public class Kunstwerkverwaltung
         double anteilI,                                                                              // Anteil der mit I belegten Räume. (double)
         double qualitaetsgewicht,
         int minFeuchteRaum, int maxFeuchteRaum,int minTempRaum, int maxTempRaum, 
-        ArrayList<String> welcheThemenDuerfenNochInRaum,               // Es wird "BIG" oder "BG" übergeben. Welche Themen erlaubt sind, falls es schon 3 unique im Raum gibt. ACHTUNG: wenn weniger als 3 Einträge zum Raum, dann ignorieren
+        ArrayList<String> welcheThemenDuerfenNochInRaum,            // Es wird "BIG" oder "BG" übergeben. Welche Themen erlaubt sind, falls es schon 3 unique im Raum gibt. ACHTUNG: wenn weniger als 3 Einträge zum Raum, dann ignorieren
         ArrayList<String> welcheTypenDuerfenNochInRaum             //ob der Typ egal ist oder es nur noch B/G sein darf
         ) 
         {
@@ -336,7 +336,7 @@ public class Kunstwerkverwaltung
         } 
        
        System.out.println("Index bestes KW:"+bestes_kw_lfd_nr);
-        
+    
        return bestes_kw_lfd_nr; // -1 wenn keins gefunden wurde
     }   
 }
