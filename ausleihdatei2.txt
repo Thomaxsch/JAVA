@@ -5,30 +5,6 @@ Attraktivität: 51, Thema: Aktmalerei, Nr: 59, Art des Kunstwerks: G, Bezeichnun
 Attraktivität: 47, Thema: Aktmalerei, Nr: 81, Art des Kunstwerks: G, Bezeichnung: Andiron with figure of Juno (chenet) (one of a pair), Breite 112
 Attraktivität: 46, Thema: Aktmalerei, Nr: 78, Art des Kunstwerks: G, Bezeichnung: Nymph with a Shell, Breite 48
 ------------------------------------
-Raum: Nummer: 3, Raumbezeichnung: Galerie rechts, Breite: 800, Länge: 800, Höhe:250
-------------------------------------
-Attraktivität: 62, Thema: Pflanzen, Nr: 58, Art des Kunstwerks: G, Bezeichnung: Seasons and Elements (Summer) (set of four), Breite 279
-Attraktivität: 57, Thema: Aktmalerei, Nr: 71, Art des Kunstwerks: G, Bezeichnung: Woman Getting out of the Bath, Breite 18
-Attraktivität: 52, Thema: Aktmalerei, Nr: 83, Art des Kunstwerks: G, Bezeichnung: Autumn (one of a set of four), Breite 85
-Attraktivität: 44, Thema: Impressionismus, Nr: 33, Art des Kunstwerks: B, Bezeichnung: Springtime, Breite 152
-Attraktivität: 39, Thema: Aktmalerei, Nr: 6, Art des Kunstwerks: B, Bezeichnung: The Garden of the Tuileries on a Winter Afternoon, Breite 92
-Attraktivität: 32, Thema: Aktmalerei, Nr: 1, Art des Kunstwerks: B, Bezeichnung: The Apotheosis of the Spanish Monarchy, Breite 66
-Attraktivität: 32, Thema: Aktmalerei, Nr: 21, Art des Kunstwerks: B, Bezeichnung: Portrait of a Woman and an Enslaved Servant, Breite 106
-Attraktivität: 31, Thema: Aktmalerei, Nr: 20, Art des Kunstwerks: B, Bezeichnung: The Boulevard Montmartre on a Winter Morning, Breite 105
-Attraktivität: 29, Thema: Aktmalerei, Nr: 38, Art des Kunstwerks: B, Bezeichnung: Two Children Teasing a Cat, Breite 88
-Attraktivität: 24, Thema: Aktmalerei, Nr: 10, Art des Kunstwerks: B, Bezeichnung: A Woman with a Dog, Breite 65
-Attraktivität: 23, Thema: Aktmalerei, Nr: 3, Art des Kunstwerks: B, Bezeichnung: Young Woman with a Water Pitcher, Breite 40
-Attraktivität: 23, Thema: Aktmalerei, Nr: 4, Art des Kunstwerks: B, Bezeichnung: A Matador, Breite 113
-Attraktivität: 20, Thema: Rokoko, Nr: 13, Art des Kunstwerks: B, Bezeichnung: A Lock a Column and a Church beside a Lagoon, Breite 67
-Attraktivität: 15, Thema: Aktmalerei, Nr: 8, Art des Kunstwerks: B, Bezeichnung: Hermann von Wedigh III (died 1560), Breite 45
-Attraktivität: 15, Thema: Impressionismus, Nr: 29, Art des Kunstwerks: B, Bezeichnung: The Dance Class, Breite 77
-Attraktivität: 12, Thema: Impressionismus, Nr: 30, Art des Kunstwerks: B, Bezeichnung: The Rehearsal of the Ballet Onstage, Breite 73
-Attraktivität: 11, Thema: Aktmalerei, Nr: 28, Art des Kunstwerks: B, Bezeichnung: Portrait of a Young Man, Breite 74
-Attraktivität: 9, Thema: Aktmalerei, Nr: 42, Art des Kunstwerks: B, Bezeichnung: Study for a Portrait of a Woman, Breite 53
-Attraktivität: 7, Thema: Aktmalerei, Nr: 31, Art des Kunstwerks: B, Bezeichnung: Louis XV (1710–1774) as a Child, Breite 141
-Attraktivität: 5, Thema: Aktmalerei, Nr: 32, Art des Kunstwerks: B, Bezeichnung: Portrait of a Man, Breite 56
-Attraktivität: 2, Thema: Aktmalerei, Nr: 25, Art des Kunstwerks: B, Bezeichnung: A Kitchen, Breite 44
-------------------------------------
 Raum: Nummer: 5, Raumbezeichnung: Raum A, Breite: 1200, Länge: 1400, Höhe:250
 ------------------------------------
 Attraktivität: 50, Thema: Aktmalerei, Nr: 56, Art des Kunstwerks: G, Bezeichnung: Chimneypiece (cheminée), Breite 248
@@ -77,3 +53,27 @@ Attraktivität: 50, Thema: Landschaftsmalerei, Nr: 11, Art des Kunstwerks: B, Be
 Attraktivität: 47, Thema: Aktmalerei, Nr: 39, Art des Kunstwerks: B, Bezeichnung: Portrait of a Young Man, Breite 20
 Attraktivität: 45, Thema: Landschaftsmalerei, Nr: 41, Art des Kunstwerks: B, Bezeichnung: A Shaded Avenue, Breite 24
 Attraktivität: 31, Thema: Aktmalerei, Nr: 47, Art des Kunstwerks: B, Bezeichnung: A Shepherd and a Rider on a Country Lane, Breite 39
+------------------------------------
+Raum: Nummer: 3, Raumbezeichnung: Galerie rechts, Breite: 800, Länge: 800, Höhe:250
+------------------------------------
+Attraktivität: 62, Thema: Pflanzen, Nr: 58, Art des Kunstwerks: G, Bezeichnung: Seasons and Elements (Summer) (set of four), Breite 279
+Attraktivität: 57, Thema: Aktmalerei, Nr: 71, Art des Kunstwerks: G, Bezeichnung: Woman Getting out of the Bath, Breite 18
+Attraktivität: 52, Thema: Aktmalerei, Nr: 83, Art des Kunstwerks: G, Bezeichnung: Autumn (one of a set of four), Breite 85
+Attraktivität: 44, Thema: Impressionismus, Nr: 33, Art des Kunstwerks: B, Bezeichnung: Springtime, Breite 152
+Attraktivität: 39, Thema: Aktmalerei, Nr: 6, Art des Kunstwerks: B, Bezeichnung: The Garden of the Tuileries on a Winter Afternoon, Breite 92
+Attraktivität: 32, Thema: Aktmalerei, Nr: 1, Art des Kunstwerks: B, Bezeichnung: The Apotheosis of the Spanish Monarchy, Breite 66
+Attraktivität: 32, Thema: Aktmalerei, Nr: 21, Art des Kunstwerks: B, Bezeichnung: Portrait of a Woman and an Enslaved Servant, Breite 106
+Attraktivität: 31, Thema: Aktmalerei, Nr: 20, Art des Kunstwerks: B, Bezeichnung: The Boulevard Montmartre on a Winter Morning, Breite 105
+Attraktivität: 29, Thema: Aktmalerei, Nr: 38, Art des Kunstwerks: B, Bezeichnung: Two Children Teasing a Cat, Breite 88
+Attraktivität: 24, Thema: Aktmalerei, Nr: 10, Art des Kunstwerks: B, Bezeichnung: A Woman with a Dog, Breite 65
+Attraktivität: 23, Thema: Aktmalerei, Nr: 3, Art des Kunstwerks: B, Bezeichnung: Young Woman with a Water Pitcher, Breite 40
+Attraktivität: 23, Thema: Aktmalerei, Nr: 4, Art des Kunstwerks: B, Bezeichnung: A Matador, Breite 113
+Attraktivität: 20, Thema: Rokoko, Nr: 13, Art des Kunstwerks: B, Bezeichnung: A Lock a Column and a Church beside a Lagoon, Breite 67
+Attraktivität: 15, Thema: Aktmalerei, Nr: 8, Art des Kunstwerks: B, Bezeichnung: Hermann von Wedigh III (died 1560), Breite 45
+Attraktivität: 15, Thema: Impressionismus, Nr: 29, Art des Kunstwerks: B, Bezeichnung: The Dance Class, Breite 77
+Attraktivität: 12, Thema: Impressionismus, Nr: 30, Art des Kunstwerks: B, Bezeichnung: The Rehearsal of the Ballet Onstage, Breite 73
+Attraktivität: 11, Thema: Aktmalerei, Nr: 28, Art des Kunstwerks: B, Bezeichnung: Portrait of a Young Man, Breite 74
+Attraktivität: 9, Thema: Aktmalerei, Nr: 42, Art des Kunstwerks: B, Bezeichnung: Study for a Portrait of a Woman, Breite 53
+Attraktivität: 7, Thema: Aktmalerei, Nr: 31, Art des Kunstwerks: B, Bezeichnung: Louis XV (1710–1774) as a Child, Breite 141
+Attraktivität: 5, Thema: Aktmalerei, Nr: 32, Art des Kunstwerks: B, Bezeichnung: Portrait of a Man, Breite 56
+Attraktivität: 2, Thema: Aktmalerei, Nr: 25, Art des Kunstwerks: B, Bezeichnung: A Kitchen, Breite 44
