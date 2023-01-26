@@ -62,15 +62,21 @@ public class Museum
      */
     public void importiereKunstwerke(String name)
     {              
+        // Deklaration drei Objektvariablen vom Typ Kunstinstallation, Bild und Kunstgegenstand        
         Kunstinstallation ki;
         Bild bi;
         Kunstgegenstand kg;
         
+        // Beginn Try-Block
         try 
         {
+            // Deklaration der Variablen eof vom Typ boolean und Initialisierung mit dem Wert false 
             boolean eof = false;
+            
+            
             BufferedReader dEin = new BufferedReader(new FileReader(name));
             
+            // While-Schleife soll solange durchlaufen werden, solange die Variable nicht den Wert true hat
             while(!eof)
             {
                String zw_in = dEin.readLine(); 
@@ -167,10 +173,12 @@ public class Museum
                 }
             }
         }
+        //wird ausgeführt, wenn die Datei nicht gefunden wurde
         catch(FileNotFoundException e)
         {
             System.out.println("Die Datei" + name + "existiert nicht.");
         }
+        // wird ausgeführt, wenn es beim Lesen der Datei zu einem Fehler kommt
         catch(IOException e)
         {
             System.out.println("Fehler beim Zugriff auf die Datei!");

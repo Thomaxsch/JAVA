@@ -17,7 +17,7 @@ public class Ausgabedatei
      * Objekt der Klasse Ausstellungsplanung, auf dessen Grundlage die Ausleih-, Ausstellungs- und Museumsführer-Datei erstellt werden können
      */
     // private Ausstellungsplanung planung;
-    
+       
     private ArrayList <ArrayList <Kunstwerk>> zugeordneteKunstwerke;
     /**
      * Objekt der Java-Klasse PrintWriter zum Schreiben von Zeichenketten
@@ -30,6 +30,7 @@ public class Ausgabedatei
     public Ausgabedatei(String file)
     {
        this.file = file;
+       
     }
     
     /**
@@ -89,6 +90,9 @@ public class Ausgabedatei
             }*/
             
             //meinWriter.close();
+            
+            Raumverwaltung raeume = new Raumverwaltung();
+            Vector<Raum> vorhandeneRaeume = raeume.getRaumVector();
             
             StringBuilder sb = new StringBuilder();
             sb.append("<html>");
