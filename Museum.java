@@ -286,21 +286,26 @@ public class Museum
             if(eingabe.equals("1"))
             {
                 // Aufruf der Methode generiereAusstellungen des Objekts planung der Klasse Ausstellungsplanung 
-                planung.generiereAusstellungen();
+                //planung.generiereAusstellungen();
                 
                 // gibt entweder das beste Mapping oder Null, wenn es keine Minimallösung gab
-                ArrayList <ArrayList <Kunstwerk>> planungsergebnis = planung.getBestesMapping(); 
+                //ArrayList <ArrayList <Kunstwerk>> planungsErgebnis = planung.getBestesMapping(); 
                 
-                if (planungsergebnis==null)
+                Ausgabedatei datei = new Ausgabedatei("raumdatei.csv");
+                datei.schreibeAusleihen();
+                
+                /*if (planungsErgebnis == null)
                 {
                     // hier sollte automatisch die Konsole aufrufen
                     System.out.println("TEST: back to Konsole");
                 } 
                 else
                 {
-                    // hier kann die Ausgabedatei angestoßen weren
-                    System.out.println("TEST: hier kann die Ausgabedatei angestoßen weren");
-                };
+                    // Deklaration und Initialisierung einer Objektvariablen der Klasse Ausgabedatei
+                    // als Parameter wird das Stringliteral "raumdatei.csv" und das Ergebnis der Ausstellungplanung als ArrayList übergeben
+                    Ausgabedatei datei = new Ausgabedatei("raumdatei.csv");
+                    datei.schreibeAusleihen();
+                }*/
             }
             
             // behandelt die Eingabe eines Schwerpunktthemas

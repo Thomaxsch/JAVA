@@ -30,8 +30,8 @@ public class Ausstellungsplanung2
         generiereAusstellung();
         gebeAus();
         
-        Ausgabedatei ausgabedatei = new Ausgabedatei("ausleihdatei.txt", zugeordneteKunstwerke);
-        ausgabedatei.schreibeAusleihen();
+        //Ausgabedatei ausgabedatei = new Ausgabedatei("ausleihdatei.txt", zugeordneteKunstwerke);
+        //ausgabedatei.schreibeAusleihen();
     }
     
     
