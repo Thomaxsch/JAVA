@@ -335,11 +335,25 @@ public class Kunstwerkverwaltung
         /**
          * Als nächstes gehen wir diese von oben nach unten durch und nehmen das erste passende Kunstwerk, das noch nicht platziert wurde
         */
+       System.out.println("verfuegbarWandWest:" + verfuegbarWandWest);
+       System.out.println("verfuegbarWandOst:" + verfuegbarWandOst);
+       System.out.println("verfuegbarWandNord:" + verfuegbarWandNord);
+       System.out.println("verfuegbarWandSued:" + verfuegbarWandSued);
+       System.out.println("verfuegbarLaengeRaum:" + verfuegbarLaengeRaum);
+       System.out.println("verfuegbarBreiteRaum:" + verfuegbarBreiteRaum);
+       System.out.println("verfuegbarHoeheRaum:" + verfuegbarHoeheRaum);
+       System.out.println("restbudget:" + restbudget);
+       System.out.println("wie viele KW nicht zugeordnet:" + kunstwerkeSchonZugeordnet.size());
+       System.out.println("anteilI:" + anteilI);
+       System.out.println("qualitaetsgewicht:" + qualitaetsgewicht);
+       
        short bestes_kw_lfd_nr = -1; // wir suchen das beste Kunstwerk. Wenn wir keins finden, geben wir den Wert "-1" zurück.
+       System.out.println(bildeKriteriumsliste(qualitaetsgewicht).size());
        for (Kunstwerk kw : bildeKriteriumsliste(qualitaetsgewicht)) {
             boolean passtSchwerpunkt=(kw.getThema().equals(schwerpunktthema));
             boolean passtDimension= überprüfeKunstwerkzuRaumdimension(verfuegbarWandWest, verfuegbarWandOst, verfuegbarWandNord, verfuegbarWandSued, verfuegbarLaengeRaum, verfuegbarBreiteRaum, verfuegbarHoeheRaum, kw);
-            
+            //System.out.println("passtSchwerpunkt:"+passtSchwerpunkt);
+            //System.out.println("passtDimension:"+passtDimension);
             if (passtSchwerpunkt & passtDimension & überprüfeKunstwerkWeitereParameter(restbudget, kunstwerkeSchonZugeordnet, anteilI, kw))
             {
                bestes_kw_lfd_nr = kw.getLaufendeNummer();
@@ -362,8 +376,9 @@ public class Kunstwerkverwaltung
         double qualitaetsgewicht,                                                                    // Gewichtung von Qualität und Quantität
         int minFeuchteRaum, int maxFeuchteRaum,int minTempRaum, int maxTempRaum,                     // relevant nur für Bilder. Bild muss innerhalb dieser Grenzen sein.
         ArrayList<String> welcheThemenDuerfenNochInRaum,     // falls diese ArrayList genau (!) drei Elemente enthält, sind nur noch KW mit einem dieser Themen erlaubt                                       
-        String welcheTypenDuerfenNochInRaum )                 // es wird "BIG" oder "BG" übergeben (ob der Typ egal ist oder es nur noch B/G sein darf)
-        //TO-DO: Attraktivitaet darf nicht sinken, wenn Raum genug befüllt ist. --> bekomme von Thomas einen Attraktivitaetsmittelwert geliefert und die bereits genutzte Raumfläche)
+        String welcheTypenDuerfenNochInRaum,                 // es wird "BIG" oder "BG" übergeben (ob der Typ egal ist oder es nur noch B/G sein darf)
+        double gueteRaumAttraktivitaet,            // Aktueller Durchschnitt der Attraktivität der Kunstwerke im Raum -> wir platzieren nur KW mit höherem Attraktivitätswert...
+        double gueteRaumBelegung)                  // Anteil der aktuellen Wandbelegung des Raumes mit Bildern -> ... es sei denn es geht um ein Bild und die Raumbelegung ist noch < 60%
         {
        short bestes_kw_lfd_nr = -1; // wir suchen das beste Kunstwerk. Wenn wir keins finden, geben wir den Wert "-1" zurück.
        for (Kunstwerk kw : bildeKriteriumsliste(qualitaetsgewicht)) {
@@ -385,7 +400,7 @@ public class Kunstwerkverwaltung
        System.out.println("Index bestes KW:"+bestes_kw_lfd_nr);
     
        return bestes_kw_lfd_nr; // -1 wenn keins gefunden wurde
-    }   
+    }    
 }
     
 

@@ -2,27 +2,15 @@ import java.util.Vector;
 import java.util.ArrayList;
 
 /**
- * NEU:
- * Empfehlen würden wir eine eigene Datenklasse für die einzelne Zuordnung von Raum und Kunstwerk (z.B. „Zuordnung“ oder eben „Ausleihe“) und eine 
-Verwaltungsklasse, die die Gesamtheit der Zuordnungen umfasst.
+ * Hier haben wir eine Verwaltungsklasse, die die Gesamtheit der Zuordnungen erfasst.
  * 
- * 
- * OLD:
- * 
- * Die Ausleihverwaltung ist eine Verwaltungsklasse. Kandidaten für Ausstellungen werden in der Klasse Ausleihverwaltung in einem array mit (aktuell vorgesehen) zwei Einträgen verwaltet.
- * Das erste Ausleihe-Objekt des Arrays dient zur Umsetzung der Kandidatensuche und enthält auch das Mapping/die Zuordnung von Räumen und Bildern der vorgesehen Ausstellung. 
- * 
- * Das zweite (oder weitere) Ausleihe-Objekte des Arrays der Ausleihverwaltung bleibt hier zunächst ungenutzt, aber kann von der Methode "optimiereAusstellung" der Ausstellungsplanung genutzt
- * werden. Es kann nötig werden, dass das Mapping/die Zuordnung von Räumen und Bildern der vorgesehen Ausstellung nicht alleine "in place" im ersten Objekt "Ausleihe" optimiert werden kann.
- * Dies kann zum Beispiel der Fall sein, wenn man komplexere Vertauschungen in der Zuordnung vornimmt, die sich jedoch als schlechter als die bisherige Lösung herausstellen, sodass man die
- * letzte Zuordnung wiederherstellen möchte. Jedenfalls bietet sich hier die Möglichkeit verschiedene Planungszustände zu speichern; es kann umgesetzt werden, dass man Planungszustände 
- * miteinander vergleicht und schlechtere Planungen verwirft. [aktuell deutet sich an, dass wir ohne dies auskommen können]
- * 
- * /**Die Verwaltungsklasse "Zuordnungsverwaltung" enthält
+ *  TO DO Formulierung Anpassen: Die Verwaltungsklasse "Zuordnungsverwaltung" enthält
     eine Liste von Zuordnungen,
     kann Zuordnungen anlegen und
     könnte Methoden anbieten, bestimmte Zuordnungen abzurufen
     (etwa Alle Zuordnungen zu einem Raum).
+ * 
+ * Kandidaten für Ausstellungen werden in der ArrayList "listeZuordnungen" verwaltet.
  * 
  * 
  * @author Thomas Scheidt 

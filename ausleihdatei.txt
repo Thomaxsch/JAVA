@@ -1,9 +1,9 @@
 ------------------------------------
 Raum: Nummer: 5, Raumbezeichnung: Raum A, Breite: 1200, Länge: 1400, Höhe:250
 ------------------------------------
-Attraktivität: 50, Thema: Aktmalerei, Nr: 56, Art des Kunstwerks: G, Bezeichnung: Chimneypiece (cheminée), Breite 248
+Attraktivität: 50, Thema: Sonstiges, Nr: 56, Art des Kunstwerks: G, Bezeichnung: Chimneypiece (cheminée), Breite 248
 Attraktivität: 48, Thema: Pflanzen, Nr: 63, Art des Kunstwerks: G, Bezeichnung: Tapestry Room from Croome Court, Breite 690
-Attraktivität: 46, Thema: Aktmalerei, Nr: 73, Art des Kunstwerks: G, Bezeichnung: Low cabinet (meuble à hauteur d'appui) (one of a pair), Breite 95
+Attraktivität: 46, Thema: Sonstiges, Nr: 73, Art des Kunstwerks: G, Bezeichnung: Low cabinet (meuble à hauteur d'appui) (one of a pair), Breite 95
 Attraktivität: 46, Thema: Klassizismus, Nr: 89, Art des Kunstwerks: G, Bezeichnung: Five-light candelabrum (one of a pair), Breite 42
 Attraktivität: 39, Thema: Klassizismus, Nr: 90, Art des Kunstwerks: G, Bezeichnung: Five-light candelabrum (one of a pair), Breite 34
 ------------------------------------
@@ -15,65 +15,71 @@ Attraktivität: 46, Thema: Aktmalerei, Nr: 78, Art des Kunstwerks: G, Bezeichnun
 ------------------------------------
 Raum: Nummer: 2, Raumbezeichnung: Galerie links, Breite: 800, Länge: 800, Höhe:250
 ------------------------------------
-Attraktivität: 80, Thema: Aktmalerei, Nr: 7, Art des Kunstwerks: B, Bezeichnung: Still Life with Oysters a Silver Tazza and Glassware, Breite 80
-Attraktivität: 79, Thema: Aktmalerei, Nr: 50, Art des Kunstwerks: B, Bezeichnung: Woman Playing a Guitar, Breite 75
-Attraktivität: 78, Thema: Aktmalerei, Nr: 15, Art des Kunstwerks: B, Bezeichnung: Woman with a Rake, Breite 34
+Attraktivität: 80, Thema: Stillleben, Nr: 7, Art des Kunstwerks: B, Bezeichnung: Still Life with Oysters a Silver Tazza and Glassware, Breite 80
+Attraktivität: 79, Thema: Portraits, Nr: 50, Art des Kunstwerks: B, Bezeichnung: Woman Playing a Guitar, Breite 75
+Attraktivität: 78, Thema: Sonstiges, Nr: 15, Art des Kunstwerks: B, Bezeichnung: Woman with a Rake, Breite 34
 Attraktivität: 78, Thema: Landschaftsmalerei, Nr: 45, Art des Kunstwerks: B, Bezeichnung: A River Landscape, Breite 63
 Attraktivität: 76, Thema: Impressionismus, Nr: 16, Art des Kunstwerks: B, Bezeichnung: Garden at Sainte-Adresse, Breite 129
-Attraktivität: 76, Thema: Aktmalerei, Nr: 17, Art des Kunstwerks: B, Bezeichnung: The Garden of the Tuileries on a Spring Morning, Breite 92
-Attraktivität: 76, Thema: Aktmalerei, Nr: 27, Art des Kunstwerks: B, Bezeichnung: Portrait of a Man, Breite 86
+Attraktivität: 76, Thema: Expressionismus, Nr: 17, Art des Kunstwerks: B, Bezeichnung: The Garden of the Tuileries on a Spring Morning, Breite 92
+Attraktivität: 76, Thema: Portraits, Nr: 27, Art des Kunstwerks: B, Bezeichnung: Portrait of a Man, Breite 86
 Attraktivität: 75, Thema: Aktmalerei, Nr: 2, Art des Kunstwerks: B, Bezeichnung: Woman with a Parrot, Breite 195
-Attraktivität: 75, Thema: Aktmalerei, Nr: 14, Art des Kunstwerks: B, Bezeichnung: The Lamentation, Breite 172
-Attraktivität: 75, Thema: Aktmalerei, Nr: 22, Art des Kunstwerks: B, Bezeichnung: La Berceuse (Woman Rocking a Cradle; Augustine-Alix Pellicot Roulin 1851–1930), Breite 73
-Attraktivität: 75, Thema: Aktmalerei, Nr: 77, Art des Kunstwerks: G, Bezeichnung: Bust of a Woman, Breite 12
+Attraktivität: 75, Thema: Religion, Nr: 14, Art des Kunstwerks: B, Bezeichnung: The Lamentation, Breite 172
+Attraktivität: 75, Thema: Portraits, Nr: 22, Art des Kunstwerks: B, Bezeichnung: La Berceuse, Breite 73
+Attraktivität: 75, Thema: Sonstiges, Nr: 77, Art des Kunstwerks: G, Bezeichnung: Bust of a Woman, Breite 12
 Attraktivität: 75, Thema: Klassizismus, Nr: 86, Art des Kunstwerks: G, Bezeichnung: Seated girl, Breite 25
-Attraktivität: 72, Thema: Aktmalerei, Nr: 92, Art des Kunstwerks: G, Bezeichnung: Double-spouted vase with cover, Breite 19
+Attraktivität: 72, Thema: Sonstiges, Nr: 92, Art des Kunstwerks: G, Bezeichnung: Double-spouted vase with cover, Breite 19
 Attraktivität: 71, Thema: Aktmalerei, Nr: 68, Art des Kunstwerks: G, Bezeichnung: Spanish Dancer (Second State), Breite 21
-Attraktivität: 70, Thema: Aktmalerei, Nr: 26, Art des Kunstwerks: B, Bezeichnung: A Bouquet of Flowers, Breite 32
+Attraktivität: 70, Thema: Stillleben, Nr: 26, Art des Kunstwerks: B, Bezeichnung: A Bouquet of Flowers, Breite 32
 Attraktivität: 69, Thema: Landschaftsmalerei, Nr: 48, Art des Kunstwerks: B, Bezeichnung: A Road in Louveciennes, Breite 46
-Attraktivität: 69, Thema: Aktmalerei, Nr: 88, Art des Kunstwerks: G, Bezeichnung: Virgin of the Immaculate Conception, Breite 36
-Attraktivität: 68, Thema: Aktmalerei, Nr: 9, Art des Kunstwerks: B, Bezeichnung: A Maid Asleep, Breite 76
-Attraktivität: 68, Thema: Aktmalerei, Nr: 34, Art des Kunstwerks: B, Bezeichnung: A Vase of Flowers, Breite 60
-Attraktivität: 67, Thema: Aktmalerei, Nr: 37, Art des Kunstwerks: B, Bezeichnung: A Forest at Dawn with a Deer Hunt, Breite 90
-Attraktivität: 66, Thema: Aktmalerei, Nr: 23, Art des Kunstwerks: B, Bezeichnung: Portrait of a Woman, Breite 81
+Attraktivität: 69, Thema: Religion, Nr: 88, Art des Kunstwerks: G, Bezeichnung: Virgin of the Immaculate Conception, Breite 36
+Attraktivität: 68, Thema: Sonstiges, Nr: 9, Art des Kunstwerks: B, Bezeichnung: A Maid Asleep, Breite 76
+Attraktivität: 68, Thema: Stillleben, Nr: 34, Art des Kunstwerks: B, Bezeichnung: A Vase of Flowers, Breite 60
+Attraktivität: 67, Thema: Tiere, Nr: 37, Art des Kunstwerks: B, Bezeichnung: A Forest at Dawn with a Deer Hunt, Breite 90
+Attraktivität: 66, Thema: Portraits, Nr: 23, Art des Kunstwerks: B, Bezeichnung: Portrait of a Woman, Breite 81
 Attraktivität: 66, Thema: Pflanzen, Nr: 35, Art des Kunstwerks: B, Bezeichnung: A Man Leaning on a Parapet, Breite 12
-Attraktivität: 65, Thema: Aktmalerei, Nr: 40, Art des Kunstwerks: B, Bezeichnung: A Woodland Road with Travelers, Breite 83
-Attraktivität: 65, Thema: Aktmalerei, Nr: 43, Art des Kunstwerks: B, Bezeichnung: A Woman Seated at a Window, Breite 22
-Attraktivität: 65, Thema: Aktmalerei, Nr: 49, Art des Kunstwerks: B, Bezeichnung: The Musician, Breite 111
-Attraktivität: 63, Thema: Aktmalerei, Nr: 5, Art des Kunstwerks: B, Bezeichnung: Portrait of a Woman, Breite 50
+Attraktivität: 65, Thema: Tiere, Nr: 40, Art des Kunstwerks: B, Bezeichnung: A Woodland Road with Travelers, Breite 83
+Attraktivität: 65, Thema: Portraits, Nr: 43, Art des Kunstwerks: B, Bezeichnung: A Woman Seated at a Window, Breite 22
+Attraktivität: 65, Thema: Barock, Nr: 49, Art des Kunstwerks: B, Bezeichnung: The Musician, Breite 111
+Attraktivität: 63, Thema: Portraits, Nr: 5, Art des Kunstwerks: B, Bezeichnung: Portrait of a Woman, Breite 50
 Attraktivität: 63, Thema: Impressionismus, Nr: 46, Art des Kunstwerks: B, Bezeichnung: A Woman Reading, Breite 37
-Attraktivität: 63, Thema: Aktmalerei, Nr: 94, Art des Kunstwerks: G, Bezeichnung: Pietà, Breite 17
-Attraktivität: 61, Thema: Aktmalerei, Nr: 24, Art des Kunstwerks: B, Bezeichnung: Christ before Pilate; The Resurrection, Breite 21
-Attraktivität: 61, Thema: Aktmalerei, Nr: 36, Art des Kunstwerks: B, Bezeichnung: A Young Woman and a Cavalier, Breite 88
-Attraktivität: 60, Thema: Aktmalerei, Nr: 76, Art des Kunstwerks: G, Bezeichnung: Standing boy, Breite 20
-Attraktivität: 57, Thema: Aktmalerei, Nr: 44, Art des Kunstwerks: B, Bezeichnung: The Card Players, Breite 81
-Attraktivität: 56, Thema: Aktmalerei, Nr: 19, Art des Kunstwerks: B, Bezeichnung: The Christ Child with Saints Boris and Gleb, Breite 10
-Attraktivität: 55, Thema: Aktmalerei, Nr: 18, Art des Kunstwerks: B, Bezeichnung: Christ Blessing Surrounded by a Donor Family, Breite 119
+Attraktivität: 63, Thema: Religion, Nr: 94, Art des Kunstwerks: G, Bezeichnung: Pietà, Breite 17
+Attraktivität: 61, Thema: Religion, Nr: 24, Art des Kunstwerks: B, Bezeichnung: Christ before Pilate The Resurrection, Breite 21
+Attraktivität: 61, Thema: Sonstiges, Nr: 36, Art des Kunstwerks: B, Bezeichnung: A Young Woman and a Cavalier, Breite 88
+Attraktivität: 60, Thema: Sonstiges, Nr: 76, Art des Kunstwerks: G, Bezeichnung: Standing boy, Breite 20
+Attraktivität: 57, Thema: Sonstiges, Nr: 44, Art des Kunstwerks: B, Bezeichnung: The Card Players, Breite 81
+Attraktivität: 56, Thema: Religion, Nr: 19, Art des Kunstwerks: B, Bezeichnung: The Christ Child with Saints Boris and Gleb, Breite 10
+Attraktivität: 55, Thema: Religion, Nr: 18, Art des Kunstwerks: B, Bezeichnung: Christ Blessing Surrounded by a Donor Family, Breite 119
 Attraktivität: 50, Thema: Landschaftsmalerei, Nr: 11, Art des Kunstwerks: B, Bezeichnung: A Brazilian Landscape, Breite 91
-Attraktivität: 47, Thema: Aktmalerei, Nr: 39, Art des Kunstwerks: B, Bezeichnung: Portrait of a Young Man, Breite 20
+Attraktivität: 47, Thema: Portraits, Nr: 39, Art des Kunstwerks: B, Bezeichnung: Portrait of a Young Man, Breite 20
 Attraktivität: 45, Thema: Landschaftsmalerei, Nr: 41, Art des Kunstwerks: B, Bezeichnung: A Shaded Avenue, Breite 24
-Attraktivität: 31, Thema: Aktmalerei, Nr: 47, Art des Kunstwerks: B, Bezeichnung: A Shepherd and a Rider on a Country Lane, Breite 39
+Attraktivität: 31, Thema: Tiere, Nr: 47, Art des Kunstwerks: B, Bezeichnung: A Shepherd and a Rider on a Country Lane, Breite 39
+------------------------------------
+Raum: Nummer: 4, Raumbezeichnung: Saal, Breite: 600, Länge: 1200, Höhe:250
+------------------------------------
+Attraktivität: 51, Thema: Tiere, Nr: 59, Art des Kunstwerks: G, Bezeichnung: Seasons and Elements (Fire) (set of four), Breite 274
+Attraktivität: 47, Thema: Aktmalerei, Nr: 81, Art des Kunstwerks: G, Bezeichnung: Andiron with figure of Juno (chenet) (one of a pair), Breite 112
+Attraktivität: 46, Thema: Sonstiges, Nr: 78, Art des Kunstwerks: G, Bezeichnung: Nymph with a Shell, Breite 48
 ------------------------------------
 Raum: Nummer: 3, Raumbezeichnung: Galerie rechts, Breite: 800, Länge: 800, Höhe:250
 ------------------------------------
 Attraktivität: 62, Thema: Pflanzen, Nr: 58, Art des Kunstwerks: G, Bezeichnung: Seasons and Elements (Summer) (set of four), Breite 279
 Attraktivität: 57, Thema: Aktmalerei, Nr: 71, Art des Kunstwerks: G, Bezeichnung: Woman Getting out of the Bath, Breite 18
-Attraktivität: 52, Thema: Aktmalerei, Nr: 83, Art des Kunstwerks: G, Bezeichnung: Autumn (one of a set of four), Breite 85
+Attraktivität: 52, Thema: Sonstiges, Nr: 83, Art des Kunstwerks: G, Bezeichnung: Autumn (one of a set of four), Breite 85
 Attraktivität: 44, Thema: Impressionismus, Nr: 33, Art des Kunstwerks: B, Bezeichnung: Springtime, Breite 152
-Attraktivität: 39, Thema: Aktmalerei, Nr: 6, Art des Kunstwerks: B, Bezeichnung: The Garden of the Tuileries on a Winter Afternoon, Breite 92
-Attraktivität: 32, Thema: Aktmalerei, Nr: 1, Art des Kunstwerks: B, Bezeichnung: The Apotheosis of the Spanish Monarchy, Breite 66
-Attraktivität: 32, Thema: Aktmalerei, Nr: 21, Art des Kunstwerks: B, Bezeichnung: Portrait of a Woman and an Enslaved Servant, Breite 106
-Attraktivität: 31, Thema: Aktmalerei, Nr: 20, Art des Kunstwerks: B, Bezeichnung: The Boulevard Montmartre on a Winter Morning, Breite 105
-Attraktivität: 29, Thema: Aktmalerei, Nr: 38, Art des Kunstwerks: B, Bezeichnung: Two Children Teasing a Cat, Breite 88
-Attraktivität: 24, Thema: Aktmalerei, Nr: 10, Art des Kunstwerks: B, Bezeichnung: A Woman with a Dog, Breite 65
-Attraktivität: 23, Thema: Aktmalerei, Nr: 3, Art des Kunstwerks: B, Bezeichnung: Young Woman with a Water Pitcher, Breite 40
-Attraktivität: 23, Thema: Aktmalerei, Nr: 4, Art des Kunstwerks: B, Bezeichnung: A Matador, Breite 113
+Attraktivität: 39, Thema: Expressionismus, Nr: 6, Art des Kunstwerks: B, Bezeichnung: The Garden of the Tuileries on a Winter Afternoon, Breite 92
+Attraktivität: 32, Thema: Sonstiges, Nr: 1, Art des Kunstwerks: B, Bezeichnung: The Apotheosis of the Spanish Monarchy, Breite 66
+Attraktivität: 32, Thema: Portraits, Nr: 21, Art des Kunstwerks: B, Bezeichnung: Portrait of a Woman and an Enslaved Servant, Breite 106
+Attraktivität: 31, Thema: Expressionismus, Nr: 20, Art des Kunstwerks: B, Bezeichnung: The Boulevard Montmartre on a Winter Morning, Breite 105
+Attraktivität: 29, Thema: Tiere, Nr: 38, Art des Kunstwerks: B, Bezeichnung: Two Children Teasing a Cat, Breite 88
+Attraktivität: 24, Thema: Portraits, Nr: 10, Art des Kunstwerks: B, Bezeichnung: A Woman with a Dog, Breite 65
+Attraktivität: 23, Thema: Barock, Nr: 3, Art des Kunstwerks: B, Bezeichnung: Young Woman with a Water Pitcher, Breite 40
+Attraktivität: 23, Thema: Portraits, Nr: 4, Art des Kunstwerks: B, Bezeichnung: A Matador, Breite 113
 Attraktivität: 20, Thema: Rokoko, Nr: 13, Art des Kunstwerks: B, Bezeichnung: A Lock a Column and a Church beside a Lagoon, Breite 67
-Attraktivität: 15, Thema: Aktmalerei, Nr: 8, Art des Kunstwerks: B, Bezeichnung: Hermann von Wedigh III (died 1560), Breite 45
+Attraktivität: 15, Thema: Portraits, Nr: 8, Art des Kunstwerks: B, Bezeichnung: Hermann von Wedigh III (died 1560), Breite 45
 Attraktivität: 15, Thema: Impressionismus, Nr: 29, Art des Kunstwerks: B, Bezeichnung: The Dance Class, Breite 77
 Attraktivität: 12, Thema: Impressionismus, Nr: 30, Art des Kunstwerks: B, Bezeichnung: The Rehearsal of the Ballet Onstage, Breite 73
-Attraktivität: 11, Thema: Aktmalerei, Nr: 28, Art des Kunstwerks: B, Bezeichnung: Portrait of a Young Man, Breite 74
-Attraktivität: 9, Thema: Aktmalerei, Nr: 42, Art des Kunstwerks: B, Bezeichnung: Study for a Portrait of a Woman, Breite 53
-Attraktivität: 7, Thema: Aktmalerei, Nr: 31, Art des Kunstwerks: B, Bezeichnung: Louis XV (1710–1774) as a Child, Breite 141
-Attraktivität: 5, Thema: Aktmalerei, Nr: 32, Art des Kunstwerks: B, Bezeichnung: Portrait of a Man, Breite 56
-Attraktivität: 2, Thema: Aktmalerei, Nr: 25, Art des Kunstwerks: B, Bezeichnung: A Kitchen, Breite 44
+Attraktivität: 11, Thema: Portraits, Nr: 28, Art des Kunstwerks: B, Bezeichnung: Portrait of a Young Man, Breite 74
+Attraktivität: 9, Thema: Portraits, Nr: 42, Art des Kunstwerks: B, Bezeichnung: Study for a Portrait of a Woman, Breite 53
+Attraktivität: 7, Thema: Portraits, Nr: 31, Art des Kunstwerks: B, Bezeichnung: Louis XV (1710–1774) as a Child, Breite 141
+Attraktivität: 5, Thema: Portraits, Nr: 32, Art des Kunstwerks: B, Bezeichnung: Portrait of a Man, Breite 56
+Attraktivität: 2, Thema: Tiere, Nr: 25, Art des Kunstwerks: B, Bezeichnung: A Kitchen, Breite 44
