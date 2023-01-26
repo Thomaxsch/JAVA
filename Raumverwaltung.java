@@ -150,6 +150,7 @@ public class Raumverwaltung
         
         // Jetzt entnehmen wir daraus alle Räume, die schon belegt sind. Das heißt wir führen in raumArrayList nur noch die komplett unbelegten Räume
         raumArrayList.removeAll(inRaeumeSchonBelegt);
+        System.out.println("noch " + raumArrayList.size() + " Räume zu prüfen.");
         
         // Um zufällig einen freien Raum daraus abrufen zu können, suchen wir als Index eine ganzzahlige Zufallszahl zwischen
         // erstes Element von raumArrayList (d.h. der Wert 0 ) und 

@@ -26,14 +26,25 @@ public class Museum
         
         planung = new Ausstellungsplanung(raeume, kunstwerke); 
         
-        // ---- TEST-------
-
-        planung.setKostenobergrenze(999999999);
-        planung.setSchwerpunktthema("Aktmalerei"); //"Aktmalerei" "Rokoko" ""
+        /* ###############################
+         * ---- TEST--------------------*/ 
+        planung.setKostenobergrenze(5000);
+        planung.setSchwerpunktthema("Expressionismus"); //"Aktmalerei" "Rokoko" ""
         planung.setQualitaetsgewicht(0.5);
         planung.generiereAusstellungen();
-        planung.getBestesMapping ();
-        // --- TEST ENDE ---
+        
+        ArrayList <ArrayList <Kunstwerk>> planungsergebnis = planung.getBestesMapping(); // gibt entweder das beste Mapping oder Null, wenn es keine Minimallösung gab
+        if (planungsergebnis==null)
+        {
+            // hier sollte automatisch die Konsole aufrufen
+            System.out.println("TEST: back to Konsole");
+        } else
+        {
+            // hier kann die Ausgabedatei angestoßen weren
+            System.out.println("TEST: hier kann die Ausgabedatei angestoßen weren");
+        };
+        // --- TEST ENDE -----------------
+        // ###############################
         
         /*
         gebeMenuAus();   

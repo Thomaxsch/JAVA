@@ -2,7 +2,13 @@ import java.util.*;
 import java.util.ArrayList;
 
 /**
-
+ * NEU:
+ * Empfehlen würden wir eine eigene Datenklasse für die einzelne Zuordnung von Raum und Kunstwerk (z.B. „Zuordnung“ oder eben „Ausleihe“) und eine 
+ * Spätere Ausbaumöglichkeiten:
+ * -- Platzierung von G im Raum verbessern
+ * -- wir haben uns für ein Platzierungsvorgehen und eine Optimierung entschieden, bei der der Reihe nach KW platziert werden; es werden aber keine KW aus einem entfernt oder
+ * Räumen getauscht. Dies kann u.U. vorteilhaft sein. Jedoch wären dann deutlichere Änderungen an der Implementierung nötig, da z.B. Dies kann zum Beispiel der Fall sein, wenn man komplexere Vertauschungen in der Zuordnung vornimmt, die sich jedoch als schlechter als die bisherige Lösung herausstellen, sodass man die
+ * letzte Zuordnung wiederherstellen möchte
  * 
  * @author Thomas Scheidt 
  * @version 19.12.2022
@@ -31,7 +37,10 @@ public class Zuordnung
     private ArrayList <String> welcheTypenDuerfenNochInRaum = new ArrayList <String>(); // 
     
     private ArrayList <Kunstwerk> kunstwerkeSchonZugeordnet = new ArrayList <Kunstwerk >(); // Liste aller Kunstwerke, die schon einem Raum zugeordnet wurden. Arraylist mit flex. Länge
-    private ArrayList <Raum> raeumeSchonBelegtEinKW = new ArrayList <Raum>(); // Initalisierung der Liste aller Räume, denen schon ein KW zugeordnet wurde. Arraylist mit flex. Länge
+    private ArrayList <Raum> raeumeSchonFertigEinSchwerpunktKW = new ArrayList <Raum>(); // Initalisierung der Liste aller Räume, denen im Rahmen der Minimallösung schon ein KW zugeordnet wurde
+                                                                    // oder nicht mit einem Schwerpunktthema belegt werden konnten. Arraylist mit flex. Länge
+    
+    
     
     private double [] raeumeBedarfWeitereKunstwerke; // je näher Richtung 1, desto bedürftiger ist der Raum mit diesem Index. 
                                                      // bei einem Wert von 0 ist der Raum perfekt gefüllt oder nicht weiter füllbar.
@@ -161,7 +170,7 @@ public class Zuordnung
     {
         System.out.println("\n---Beginne Suche Minimallösung ---");
         
-        for (int i=0;i<raeumeArray.length;i++) // d.h. potentiell für jeden Raum wenn die Schleife vorher nicht abgebrochen wird
+        for (int r=0;r<raeumeArray.length;r++) // d.h. potentiell für jeden Raum wenn die Schleife vorher nicht abgebrochen wird
         {
             
             // Unser Etappenziel ist erreicht, wenn die Hälfte der Räume mit Schwerpunktkunstwerk versehen wurde. Dann soll die Schleife abbrechen:
@@ -171,14 +180,14 @@ public class Zuordnung
             }
             
             // Wir benötigen einen zufällig ausgewählten noch leeren Raum, um dort zu versuchen ein KW zu platzieren:
-            Raum unserAktuellerRaum = raumverwaltung.zufealligerLeererRaum(raeumeSchonBelegtEinKW);
+            Raum unserAktuellerRaum = raumverwaltung.zufealligerLeererRaum(raeumeSchonFertigEinSchwerpunktKW);
             
             
             // Wir brauchen auch den Index dieses Raums, damit wir in unseren Listen später die richtigen Werte zum Raumindex finden können: 
             int unserAktuellerRaumIndex = 0;
-            for (Raum r: raeumeArray)
+            for (Raum raum: raeumeArray)
             {
-                if (r == unserAktuellerRaum)
+                if (raum.equals(unserAktuellerRaum))
                 {
                     break; // breche die Schleife ab, weil unserAktuellerRaumIndex bereits den richtigen Wert hat
                 }
@@ -198,9 +207,9 @@ public class Zuordnung
             short laufendeNummer = kunstwerkverwaltung.naechstesZuSetzendesKunstwerk
             (
                 schwerpunktthema,
-                verfuegbarWandWest[i],verfuegbarWandOst[i],verfuegbarWandNord[i],verfuegbarWandSued[i], // relevant für Bilder (vier Wände)
-                verfuegbarLaengeRaum[i],verfuegbarBreiteRaum[i],                                        // relevant für G und I (laengs/quer bzw Raumfläche)
-                verfuegbarHoeheRaum[i],                                                                 // relevant für alle KW
+                verfuegbarWandWest[r],verfuegbarWandOst[r],verfuegbarWandNord[r],verfuegbarWandSued[r], // relevant für Bilder (vier Wände)
+                verfuegbarLaengeRaum[r],verfuegbarBreiteRaum[r],                                        // relevant für G und I (laengs/quer bzw Raumfläche)
+                verfuegbarHoeheRaum[r],                                                                 // relevant für alle KW
                 restbudget,                                                                             // verfügbares Restbudget (double)
                 kunstwerkeSchonZugeordnet,                                                              // bisher platzierte Kunstwerke (Arraylist)
                 ((double) wieOftWurdeSchonEineInstallationPlatziert)/raeumeArray.length,                // Anteil der mit I belegten Räume. (cast für die Division nötig)
@@ -208,7 +217,9 @@ public class Zuordnung
             ); 
             if (laufendeNummer==-1) // die Kunstwerkverwaltung gibt -1 zurück, wenn KEIN Kunstwerk in den Raum passt (z.B. wegen verfügbarer Fläche oder Restbudget zu klein)
             {
-                System.out.println("Leider passt kein geeignetes Schwerpunktkunstwerk in diesen Raum");
+                raeumeSchonFertigEinSchwerpunktKW.add(raeumeArray[unserAktuellerRaumIndex]); // um zu vermeiden, dass wir den Raum erneut überprüfen
+                System.out.println("Leider passt kein geeignetes Schwerpunktkunstwerk in diesen Raum\n");
+                
                 continue;// Anweisung beendet die aktuelle Ausführung des Schleifenkörpers, aber die Schleife wird mit dem nächsten Durchlauf (d.h. nächster Raum) fortgesetzt 
             }
             else if (laufendeNummer>=0)
@@ -382,7 +393,7 @@ public class Zuordnung
      *      - 6x räumliche Dimensionen (4 wände, 2 Raumachsen)
      *      - restbudget
      *      - kunstwerkeSchonZugeordnet
-     *      - raeumeSchonBelegtEinKW
+     *      - raeumeSchonFertigEinSchwerpunktKW
      *      - Temp Min/Max aufgrund Bildern im Raum
      *      - Feuchte Min/Max aufgrund Bildern im Raum
      *      - wenn es schon drei Themen im Raum gibt, welches das sind, weil dann nur noch diese erlaubt sind für weitere KW (Themen werden ab 1. Thema erfasst)
@@ -545,9 +556,9 @@ public class Zuordnung
         //////////////////////////////////////////////////////////////////////////
         // Aktualisiere Arraylist der belegten Räume
         
-        if (!raeumeSchonBelegtEinKW.contains(raeumeArray[r])) // wenn ein Raum bisher noch völlig ohne Kunstwerk ist
+        if (!raeumeSchonFertigEinSchwerpunktKW.contains(raeumeArray[r])) // wenn ein Raum bisher noch völlig ohne Kunstwerk ist
         {   
-            raeumeSchonBelegtEinKW.add(raeumeArray[r]);
+            raeumeSchonFertigEinSchwerpunktKW.add(raeumeArray[r]);
             
         }
         
@@ -902,7 +913,7 @@ public class Zuordnung
         }    
     }
     
-
+     
     
  
     // ==========================================================================
@@ -1040,35 +1051,31 @@ public class Zuordnung
     }
     
     /**
-     * Welche Räume sind schon belegt mit einem KW? Erlaubt u.a. der Raumverwaltung zufällig noch leere Räume auszuwählen.
+     * Im Rahmen der Minimalösung ist die Frage, welche Räume sind schon mit einem Schwerpunkt-KW belegt wurden oder nicht mit einem solchen Thema
+     * belegbar sind. Die Methode gibt dies aus. Wir geben diese Information im Rahmen der Suche nach einer Minimallösung an die Raumverwaltung weiter,
+     * damit die Raumverwaltung zufällig noch weitere belegbare Räume auswählen kann.
      */
-    public ArrayList <Raum> ermittleBelegteRaeume()
+    private ArrayList <Raum> ermittleBeiMinimalloesungBelegteOderNichtBelegbareRaeume()
     {
         //Zu befüllen und returnieren:
-        ArrayList <Raum> raeumeSchonBelegtEinKW = new ArrayList <Raum>(); // Initalisierung der Liste aller Räume, denen schon ein KW zugeordnet wurde. Arraylist mit flex. Länge
+        ArrayList <Raum> raeumeSchonFertigEinSchwerpunktKW = new ArrayList <Raum>(); // Initalisierung der Liste aller Räume, denen schon ein KW zugeordnet wurde. Arraylist mit flex. Länge
         
         // Zur Erinnerung: so sieht die Struktur vom nested Array aus:
         //private ArrayList <ArrayList <Kunstwerk >> denRaeumenZugeordneteKunstwerke = new ArrayList <ArrayList <Kunstwerk >>();
         
-        // => wir müssen schauen, bei welchem Index des äußeren Array das innere Array leer ist, dann in diesen Fällen den Raum zum äußeren Index zu raeumeSchonBelegt hinzufügen:
+        // => wir müssen schauen, bei welchem Index des äußeren Array das innere Array leer ist, dann in diesen Fällen den Raum zum äußeren Index zu raeumeSchonFertigEinSchwerpunktKW hinzufügen:
         int i=0;
         for (ArrayList <Kunstwerk> kunstwerkeImRaum: denRaeumenZugeordneteKunstwerke) {
             if (kunstwerkeImRaum.isEmpty())
             {
-                raeumeSchonBelegtEinKW.add(raeumeArray[i]);
+                raeumeSchonFertigEinSchwerpunktKW.add(raeumeArray[i]);
             }
             i++;
         }
-        return raeumeSchonBelegtEinKW;
+        return raeumeSchonFertigEinSchwerpunktKW;
     }
     
-    /**
-     * Wie viele Räume sind schon belegt?
-     */
-    public int ermittleBelegteRaeumeAnzahl()
-    {
-        return ermittleBelegteRaeume().size();
-    }
+    
     
     /**
      * Summe der Kosten der bisher platzierten Kunstwerke. 
@@ -1091,32 +1098,7 @@ public class Zuordnung
     {
         return 5; // kostenobergrenze; // - ermittlePlatzierteKunstwerkeKosten();
     }
-    
-    
-    
-    
 
-
-
-    /**
-     * Bilder im Raum müssen hinsichtlich Temperatur und Feuchte ohne Widerspruch sein (Restriktion 4)
-     */
-    public boolean passtBildFeuchteTemparaturZuBildernInRaum ()
-    {
-        /**
-         
-        bild.setMinTemp();
-        bild.setMaxTemp();
-        bild.setMinLuft();
-        bild.setMaxLuft();
-        bild.getMinTemp();
-        bild.getMaxTemp();
-        bild.getMinLuft();
-        bild.getMaxLuft();
-         */
-        return true;
-    }
-    
     /**
      * in einem Raum dürfen höchstens drei verschiedene Themen sein (Restriktion 3)
      * 
@@ -1138,19 +1120,6 @@ public class Zuordnung
         return true;
     }
     
-    /**
-     * Mittelwert (?) der Attraktvität % der bisher platzierten KW. 
-     * 
-     * TODO:
-     * Kann das ggf. die Kunstwerkeverwaltung unterstützen/umsetzen?
-     * Sind die Attraktivitäten ggf. pro Raum zu berechnen?
-     */
-    public int ermittlePlatzierteKunstwerkeAttraktivitaet()
-    {
-        ermittlePlatzierteKunstwerke(); // liefert eine einfache Arraylist der schon platzierten KW
-        // TO DO
-        int attraktivitaetSumme=0;
-        return attraktivitaetSumme;
-    }
+    
     
 }

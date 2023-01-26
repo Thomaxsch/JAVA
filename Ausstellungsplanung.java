@@ -34,6 +34,8 @@ public class Ausstellungsplanung
     
     private int anzahlZuordnungen = 10;
     
+    private boolean erweiterungsloesungAbgeschlossen = false; // nachdem wir eine Lösungserweiterung vorgenommen haben, wird dies hier vermerkt
+    
     // ==========================================================================
     // === Konstruktor
     // ==========================================================================
@@ -66,6 +68,7 @@ public class Ausstellungsplanung
     {
         // Falls aus vorherigen Durchläufen der Methode schon Zuordnungen bestehen, verwerfen wir diese und fangen wieder ganz von vorne an:
         zuordnungsverwaltung.deleteZuordnungen();
+        erweiterungsloesungAbgeschlossen = false; // falls aus Vorzyklus dieser Wert noch true war.
         
         // Erzeuge anzahlZuordnungen neue Zuordnungen in der Zuordnungsverwaltung. Diese Zuordnungen enthalten noch kein Mapping Kunstwerke-Räume.
         zuordnungsverwaltung.fuelleZuordnungsverwaltung(anzahlZuordnungen);
@@ -110,24 +113,32 @@ public class Ausstellungsplanung
       
     private void findeMinimaleAusstellungskandidaten() 
     {
-        for (int i=0;i<anzahlZuordnungen;i++)
+        for (int z=0;z<anzahlZuordnungen;z++)
         {
-            System.out.println("\n-------- Unser " + i +". Versuch eine Minimallösung zu finden ---");
-            zuordnungsverwaltung.getZuordnung(i).versucheMinimalloesungZuFinden();
-            System.out.println("***** Zuordnungsversuch " + i +" abgeschlossen *****");
+            System.out.println("\n-------- Unser " + z +". Versuch eine Minimallösung zu finden ---");
+            zuordnungsverwaltung.getZuordnung(z).versucheMinimalloesungZuFinden();
+            if (zuordnungsverwaltung.getZuordnung(z).wurdeMinimalloesungErreicht())
+            {
+                System.out.println("--- Eine Minimallösung liegt in dieser Zuordnung vor.");
+            }
+            else
+            {
+                System.out.println("--- Eine Minimallösung liegt in dieser Zuordnung NICHT vor.");
+            }
+            System.out.println("***** Zuordnungsversuch " + z +" abgeschlossen *****");
         }
     }
     
     /**
-     * 
+     *  ...
      */
     
     private boolean wurdeMinimaleAusstellungGefunden()
     {
         boolean wurdeGefunden=false;
-        for (int i=0;i<anzahlZuordnungen;i++)
+        for (int z=0;z<anzahlZuordnungen;z++)
         {
-            if (zuordnungsverwaltung.getZuordnung(i).wurdeMinimalloesungErreicht()) 
+            if (zuordnungsverwaltung.getZuordnung(z).wurdeMinimalloesungErreicht()) 
             {
                 wurdeGefunden=true;
                 break;
@@ -150,17 +161,21 @@ public class Ausstellungsplanung
             zuordnungsverwaltung.getZuordnung(i).versucheLoesungserweiterung();
             System.out.println("***** Ausstellungsoptimierung für Zuordnung " + i +" beendet *****");
         }
+        erweiterungsloesungAbgeschlossen = true; 
     }
     
     /**
-     * Die Klasse Ausgabedatei benötigt Zugang zum besten Mapping Räume-Kunstwerke, wozu wir diese Methode anbieten.
+     * Die Klasse Ausgabedatei benötigt Zugang zum besten Mapping Räume-Kunstwerke, wozu wir diese Methode anbieten. Gibt null aus, wenn keine Minimallösung gefunden wurde.
      */
     
     public ArrayList <ArrayList <Kunstwerk>> getBestesMapping ()
     {
-        
-        return zuordnungsverwaltung.getZuordnung(vergleicheAusstellungskandidatenWaehleBeste()) // den Index der besten Zuordnung ansteuern
-                                    .getDenRaeumenZugeordneteKunstwerke(); // und sich von dieser besten Zuordnung nur das Mapping ausgeben lassen
+        if (erweiterungsloesungAbgeschlossen == true) // schließt aus, dass wir dies tun, wenn keine Minimallösung zuvor gefunden wurde
+        {
+            return zuordnungsverwaltung.getZuordnung(vergleicheAusstellungskandidatenWaehleBeste()) // den Index der besten Zuordnung ansteuern
+                                       .getDenRaeumenZugeordneteKunstwerke(); // und sich von dieser besten Zuordnung nur das Mapping ausgeben lassen
+        }
+        return null;
     }
     
     /**
@@ -169,26 +184,30 @@ public class Ausstellungsplanung
     
     private int vergleicheAusstellungskandidatenWaehleBeste()
     {
-        System.out.println("\n-------- Suche nach bester Ausstellung ---");
-        
-        // Nehmen wir an die allererste Zuordnung ist die beste
-        int indexBesteZuordnung=0;
-        double zuordnungsGuete=zuordnungsverwaltung.getZuordnung(0).getZuordnungsGuete();
-        
-        // Nun schauen wir, ob wir nicht noch bessere Zuordnungen finden
-        for (int i=0;i<anzahlZuordnungen;i++)
-        {   
-            double zuVergleichendeZuordnungsGuete=zuordnungsverwaltung.getZuordnung(i).getZuordnungsGuete();
-            if (zuVergleichendeZuordnungsGuete>zuordnungsGuete)
-            {
-                indexBesteZuordnung=i;
-                zuordnungsGuete=zuVergleichendeZuordnungsGuete;
+        if (erweiterungsloesungAbgeschlossen == true) // schließt aus, dass wir dies tun, wenn keine Minimallösung zuvor gefunden wurde
+        {
+            System.out.println("\n-------- Suche nach bester Ausstellung ---");
+            
+            // Nehmen wir an die allererste Zuordnung ist die beste
+            int indexBesteZuordnung=0;
+            double zuordnungsGuete=zuordnungsverwaltung.getZuordnung(0).getZuordnungsGuete();
+            
+            // Nun schauen wir, ob wir nicht noch bessere Zuordnungen finden
+            for (int i=0;i<anzahlZuordnungen;i++)
+            {   
+                double zuVergleichendeZuordnungsGuete=zuordnungsverwaltung.getZuordnung(i).getZuordnungsGuete();
+                if (zuVergleichendeZuordnungsGuete>zuordnungsGuete)
+                {
+                    indexBesteZuordnung=i;
+                    zuordnungsGuete=zuVergleichendeZuordnungsGuete;
+                }
             }
+            System.out.println("***** Die beste Ausstellung stellt Zuordnung Nr. " + indexBesteZuordnung +" *****");
+            System.out.println("(*_*)");
+            System.out.println("<> <> <> <> <> <> <> <> <> ");
+            return indexBesteZuordnung;
         }
-        System.out.println("***** Die beste Ausstellung stellt Zuordnung Nr. " + indexBesteZuordnung +" *****");
-        System.out.println("(*_*)");
-        System.out.println("<> <> <> <> <> <> <> <> <> ");
-        return indexBesteZuordnung;
+        return -1;
     }       
     
     private void setzeInvalideMinimalloesungenNull()
@@ -198,6 +217,7 @@ public class Ausstellungsplanung
             if (!zuordnungsverwaltung.getZuordnung(z).wurdeMinimalloesungErreicht())
             {
                 zuordnungsverwaltung.setzeZuordnungNull(z);
+                System.out.println("NOI");
             }
         }
     }
