@@ -10,20 +10,34 @@ import java.util.*;
  */
 public class Museum
 {
+    // Deklaration der Objektvariablen der Klasse Raumverwaltung
     private Raumverwaltung raeume;
+    
+    // Deklaration der Objektvariablen der Klasse Kunstwerksverwaltung
     private Kunstwerkverwaltung kunstwerke;
+    
+    // Deklaration der Objektvariablen der Klasse Ausstellungsplanung
     private Ausstellungsplanung planung;
     
+    /**
+     * parameterloser Konstrukur der Klasse Museum
+     */
     public Museum() 
     {
+        // eine neue Instanz der Klasse Raumverwaltung wird generiert und der Objektvariablen raeume zugewiesen
         raeume = new Raumverwaltung();
+        
+        // eine neue Instanz der Klasse Kunstwerkverwaltung wird generiert und der Objektvariablen kunstwerke zugewiesen
         kunstwerke = new Kunstwerkverwaltung();
-
+        
+        // Aufruf der Klassenmethode importiereKunstwerke, als Parameter wird eine CSV-Datei mit Kunstwerken übergeben, die eingelesen werden soll
         importiereKunstwerke("kunstwerke.csv");
+        
+        // Aufruf der Klassenmethode importiereRaeume, als Parameter wird eine CSV-Datei mit Räumen übergeben, die eingelesen werden soll
         importiereRaeume("raeume.csv");
         
-        Ausstellungsplanung2 planung2 = new Ausstellungsplanung2(raeume, kunstwerke); // <--kann das hier weg?
-        
+        // eine neue Instanz der Klasse Ausstellungsplanung wird generiert und der Objektvariablen planung zugewiesen
+        // als Parameter werden zwei Objekte der Klassen Raumverwaltung und Kunstwerksverwaltung übergeben
         planung = new Ausstellungsplanung(raeume, kunstwerke); 
         
         /* ###############################
@@ -54,12 +68,7 @@ public class Museum
     }
 
     /**
-     * In der Main-Methode werden alle Anweisungen ausgeführt, die beim Start
-     * des Programms benötigt werden (z.B. Import der Räume und
-     * Kunstwerke aus den CSV-Dateien). Weiterhin wird ein Objekt der 
-     * Klasse Ausstellungsplanung erstellt und dann deren Methode "generiereAusstellung"
-     * aufgerufen.
-     * 
+     * Mit der Main-Methode wird das Programm gestartet. Es wird eine Objektvariable meinMuseum der Klasse Museum deklariert und eine neue Instanz der Klasse Museum generiert
      * @param  args    Stringparameter, die übergeben werden können
      */
     public static void main(String[] args)
