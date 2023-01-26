@@ -351,7 +351,9 @@ public class Kunstwerkverwaltung
         double qualitaetsgewicht,                                                                    // Gewichtung von Qualität und Quantität
         int minFeuchteRaum, int maxFeuchteRaum,int minTempRaum, int maxTempRaum,                     // relevant nur für Bilder. Bild muss innerhalb dieser Grenzen sein.
         ArrayList<String> welcheThemenDuerfenNochInRaum,     // falls diese ArrayList genau (!) drei Elemente enthält, sind nur noch KW mit einem dieser Themen erlaubt                                       
-        String welcheTypenDuerfenNochInRaum )                 // es wird "BIG" oder "BG" übergeben (ob der Typ egal ist oder es nur noch B/G sein darf)
+        String welcheTypenDuerfenNochInRaum ,                 // es wird "BIG" oder "BG" übergeben (ob der Typ egal ist oder es nur noch B/G sein darf)
+        double gueteRaumAttraktivitaet,            // Aktueller Durchschnitt der Attraktivität der Kunstwerke im Raum -> wir platzieren nur KW mit höherem Attraktivitätswert...
+        double gueteRaumBelegung)                  // Anteil der aktuellen Wandbelegung des Raumes mit Bildern -> ... es sei denn es geht um ein Bild und die Raumbelegung ist noch < 60%
         
         {
        short bestes_kw_lfd_nr = -1; // wir suchen das beste Kunstwerk. Wenn wir keins finden, geben wir den Wert "-1" zurück.
