@@ -280,7 +280,7 @@ public class Kunstwerkverwaltung
         return passtBudget & passtZuordnenbar & passtInstallationAnteilI;
     }
     
-    public boolean checkRaumFeuchteundTemp(int minFeuchteRaum, int maxFeuchteRaum,int minTempRaum, int maxTempRaum, Kunstwerk kw)
+    private boolean checkRaumFeuchteundTemp(int minFeuchteRaum, int maxFeuchteRaum,int minTempRaum, int maxTempRaum, Kunstwerk kw)
     {
         /**
          * Wahrheitswert der angibt, ob die vorhandene Luftfeuchtigkeit für das im Raum zum plazierende Bild kompatibel ist. 
@@ -289,14 +289,39 @@ public class Kunstwerkverwaltung
         /**
          * Wahrheitswert der angibt, ob die vorhandene Raumtemperatur für das im Raum zum plazierende Bild kompatibel ist. 
          */
-        boolean passtRaumTemp = false;
+        boolean passtRaumTemp;
         
-        if (kw.getArt()=='B')
-        {Bild b = (Bild) kw; // hier wird ein Kunstwerk in ein Bild umgewandelt. Dies wird gemacht, um auf die "getMethoden" wie "getMinTemp" zugreifen zu können.   
+        boolean passtFeuchteUndTemp = false;
+        /**
+         * // hier wird ein Kunstwerk in ein Bild umgewandelt. Dies wird gemacht, um auf die "getMethoden" wie "getMinTemp" zugreifen zu können.
+         */
+        Bild b = (Bild) kw; 
+        
+        if(minFeuchteRaum >= b.getMinLuft() && maxFeuchteRaum <= b.getMaxLuft()) 
+        {
+            passtRaumFeuchte = true;
         }
-        
-        return passtRaumTemp;
+        else
+        {
+            System.out.println("Das Bild kann nicht in den Raum plaziert werden, da die Luftfeuchtigkeit zu hoch oder zu niedrig ist");
+            return passtRaumFeuchte = false;
+        }
+        if (minTempRaum >= b.getMinTemp() && maxTempRaum <= b.getMaxTemp())
+        {
+            passtRaumTemp = true;
+        }
+        else 
+        {
+            System.out.println("Das Bild kann nicht in den Raum plaziert werden, da die Raumtemperatur zu hoch oder zu niedrig ist");
+            return passtRaumTemp = false;
+        }
+        if (passtRaumFeuchte && passtRaumTemp == true)
+        {
+            return passtFeuchteUndTemp = true;
+        }
+        return passtFeuchteUndTemp;
     }
+    
     public short naechstesZuSetzendesKunstwerk(
         String schwerpunktthema,
         int verfuegbarWandWest,int verfuegbarWandOst,int verfuegbarWandNord,int verfuegbarWandSued,  // relevant für Bilder (vier Wände)
@@ -338,7 +363,7 @@ public class Kunstwerkverwaltung
         int minFeuchteRaum, int maxFeuchteRaum,int minTempRaum, int maxTempRaum,                     // relevant nur für Bilder. Bild muss innerhalb dieser Grenzen sein.
         ArrayList<String> welcheThemenDuerfenNochInRaum,     // falls diese ArrayList genau (!) drei Elemente enthält, sind nur noch KW mit einem dieser Themen erlaubt                                       
         String welcheTypenDuerfenNochInRaum )                 // es wird "BIG" oder "BG" übergeben (ob der Typ egal ist oder es nur noch B/G sein darf)
-        
+        //TO-DO: Attraktivitaet darf nicht sinken, wenn Raum genug befüllt ist. --> bekomme von Thomas einen Attraktivitaetsmittelwert geliefert und die bereits genutzte Raumfläche)
         {
        short bestes_kw_lfd_nr = -1; // wir suchen das beste Kunstwerk. Wenn wir keins finden, geben wir den Wert "-1" zurück.
        for (Kunstwerk kw : bildeKriteriumsliste(qualitaetsgewicht)) {
@@ -348,7 +373,12 @@ public class Kunstwerkverwaltung
             {
                bestes_kw_lfd_nr = kw.getLaufendeNummer();
                break; // die Schleife endet, wenn das erste Mal ein KW passt
-            } 
+            }
+            boolean passtRaumFeuchteUndTemp = checkRaumFeuchteundTemp(minFeuchteRaum, maxFeuchteRaum, minTempRaum, maxTempRaum, kw); 
+            if (kw.getArt()=='B' & passtRaumFeuchteUndTemp)
+            {
+                break; // die Schleife endet, wenn die Raumbedingungen nicht mit dem Bild kompatibel sind. 
+            }        
         } 
        
         

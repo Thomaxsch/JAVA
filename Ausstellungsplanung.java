@@ -32,7 +32,7 @@ public class Ausstellungsplanung
     private Kunstwerkverwaltung kunstwerkverwaltung;
     private Zuordnungsverwaltung zuordnungsverwaltung;
     
-    private int anzahlZuordnungen = 10;
+    private int anzahlZuordnungen = 2;
     
     // ==========================================================================
     // === Konstruktor
