@@ -299,7 +299,7 @@ public class Kunstwerkverwaltung
         
         if(minFeuchteRaum <= b.getMinLuft() && maxFeuchteRaum >= b.getMaxLuft()) 
         {
-            passtRaumFeuchte = true;
+            passtRaumFeuchte = true; 
         }
         else
         {
@@ -439,8 +439,7 @@ public class Kunstwerkverwaltung
                break; // die Schleife endet, wenn das erste Mal ein KW passt
             } 
         
-        } 
-          
+        }
         
        System.out.println("Index bestes KW:"+bestes_kw_lfd_nr);
     
