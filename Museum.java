@@ -10,56 +10,42 @@ import java.util.*;
  */
 public class Museum
 {
+    // Deklaration der Objektvariablen der Klasse Raumverwaltung
     private Raumverwaltung raeume;
+    
+    // Deklaration der Objektvariablen der Klasse Kunstwerksverwaltung
     private Kunstwerkverwaltung kunstwerke;
+    
+    // Deklaration der Objektvariablen der Klasse Ausstellungsplanung
     private Ausstellungsplanung planung;
     
+    /**
+     * parameterloser Konstrukur der Klasse Museum
+     */
     public Museum() 
     {
+        // eine neue Instanz der Klasse Raumverwaltung wird generiert und der Objektvariablen raeume zugewiesen
         raeume = new Raumverwaltung();
+        
+        // eine neue Instanz der Klasse Kunstwerkverwaltung wird generiert und der Objektvariablen kunstwerke zugewiesen
         kunstwerke = new Kunstwerkverwaltung();
-
+        
+        // Aufruf der Klassenmethode importiereKunstwerke, als Parameter wird eine CSV-Datei mit Kunstwerken übergeben, die eingelesen werden soll
         importiereKunstwerke("kunstwerke.csv");
+        
+        // Aufruf der Klassenmethode importiereRaeume, als Parameter wird eine CSV-Datei mit Räumen übergeben, die eingelesen werden soll
         importiereRaeume("raeume.csv");
         
-        Ausstellungsplanung2 planung2 = new Ausstellungsplanung2(raeume, kunstwerke); // <--kann das hier weg?
-        
+        // eine neue Instanz der Klasse Ausstellungsplanung wird generiert und der Objektvariablen planung zugewiesen
+        // als Parameter werden zwei Objekte der Klassen Raumverwaltung und Kunstwerksverwaltung übergeben
         planung = new Ausstellungsplanung(raeume, kunstwerke); 
         
-        /* ###############################
-         * ---- TEST--------------------*/ 
-        planung.setKostenobergrenze(999999999);
-        planung.setSchwerpunktthema("Aktmalerei"); //"Aktmalerei" "Rokoko" ""
-        planung.setQualitaetsgewicht(0.5);
-        planung.generiereAusstellungen();
-        
-        ArrayList <ArrayList <Kunstwerk>> planungsergebnis = planung.getBestesMapping(); // gibt entweder das beste Mapping oder Null, wenn es keine Minimallösung gab
-        if (planungsergebnis==null)
-        {
-            // hier sollte automatisch die Konsole aufrufen
-            System.out.println("TEST: back to Konsole");
-        } else
-        {
-            // hier kann die Ausgabedatei angestoßen weren
-            System.out.println("TEST: hier kann die Ausgabedatei angestoßen weren");
-        };
-        // --- TEST ENDE -----------------
-        // ###############################
-        
-        /*
-        gebeMenuAus();   
-        */
-        
-        
+        // Ausgabe der privaten Methode der Klasse Museum
+        gebeMenuAus(); 
     }
 
     /**
-     * In der Main-Methode werden alle Anweisungen ausgeführt, die beim Start
-     * des Programms benötigt werden (z.B. Import der Räume und
-     * Kunstwerke aus den CSV-Dateien). Weiterhin wird ein Objekt der 
-     * Klasse Ausstellungsplanung erstellt und dann deren Methode "generiereAusstellung"
-     * aufgerufen.
-     * 
+     * Mit der Main-Methode wird das Programm gestartet. Es wird eine Objektvariable meinMuseum der Klasse Museum deklariert und eine neue Instanz der Klasse Museum generiert
      * @param  args    Stringparameter, die übergeben werden können
      */
     public static void main(String[] args)
@@ -76,15 +62,21 @@ public class Museum
      */
     public void importiereKunstwerke(String name)
     {              
+        // Deklaration drei Objektvariablen vom Typ Kunstinstallation, Bild und Kunstgegenstand        
         Kunstinstallation ki;
         Bild bi;
         Kunstgegenstand kg;
         
+        // Beginn Try-Block
         try 
         {
+            // Deklaration der Variablen eof vom Typ boolean und Initialisierung mit dem Wert false 
             boolean eof = false;
+            
+            
             BufferedReader dEin = new BufferedReader(new FileReader(name));
             
+            // While-Schleife soll solange durchlaufen werden, solange die Variable nicht den Wert true hat
             while(!eof)
             {
                String zw_in = dEin.readLine(); 
@@ -181,10 +173,12 @@ public class Museum
                 }
             }
         }
+        //wird ausgeführt, wenn die Datei nicht gefunden wurde
         catch(FileNotFoundException e)
         {
             System.out.println("Die Datei" + name + "existiert nicht.");
         }
+        // wird ausgeführt, wenn es beim Lesen der Datei zu einem Fehler kommt
         catch(IOException e)
         {
             System.out.println("Fehler beim Zugriff auf die Datei!");
@@ -272,10 +266,6 @@ public class Museum
         // Variable zur Speicherung der Eingbe von der Konsole
         String eingabe = "";
         
-        // Objekt planung der Klasse Austellungsplanung wird erstellt
-        Ausstellungsplanung2 planung2 = new Ausstellungsplanung2(raeume, kunstwerke); // <-- wird für die Ausstellungsplanung im Konstruktor oben erzeugt
-        
-        
         try 
         {
            // Do-Schleife damit das Menü nach einer Eingabe immer wieder angezeigt wird
@@ -288,11 +278,13 @@ public class Museum
             System.out.println("(1) Planung starten");
             System.out.println("(2) Schwerpunktthema angeben/ändern");
             System.out.println("(3) Kostenobergrenze angeben/ändern");
-            System.out.println("(4) Aktuelles Schwerpunktthema anzeigen");
-            System.out.println("(5) Aktuelle Kostenobergrenze anzeigen");
-            System.out.println("(6) Räume einlesen");
-            System.out.println("(7) Kunstwerk einlesen");
-            System.out.println("(8) Anwendung beenden"); 
+            System.out.println("(4) Qualitätsgewicht angeben/ändern");
+            System.out.println("(5) Aktuelles Schwerpunktthema anzeigen");
+            System.out.println("(6) Aktuelle Kostenobergrenze anzeigen");
+            System.out.println("(7) Aktuelles Qualitätsgewicht anzeigen");
+            System.out.println("(8) Räume einlesen");
+            System.out.println("(9) Kunstwerk einlesen");
+            System.out.println("(10) Anwendung beenden"); 
             System.out.println("Bitte eine Auswahl treffen (z.B. 2 um ein Schwerpunktthema zu setzen)"); 
             
             // nimmt ausgewählten Menüpunkt entgegen
@@ -301,17 +293,35 @@ public class Museum
             // behandelt die Generierung der Ausstellung
             if(eingabe.equals("1"))
             {
-                // Aufruf der Methode generiereAusstellung der Klasse Ausstellungsplanung 
-                planung2.generiereAusstellung();
-                //// planung.generiereAusstellung(); <-- die Methode ist schon da, wird aber im moment nicht durchlaufen
+                // Aufruf der Methode generiereAusstellungen des Objekts planung der Klasse Ausstellungsplanung 
+                //planung.generiereAusstellungen();
+                
+                // gibt entweder das beste Mapping oder Null, wenn es keine Minimallösung gab
+                //ArrayList <ArrayList <Kunstwerk>> planungsErgebnis = planung.getBestesMapping(); 
+                
+                Ausgabedatei datei = new Ausgabedatei("raumdatei.csv");
+                datei.schreibeAusleihen();
+                
+                /*if (planungsErgebnis == null)
+                {
+                    // hier sollte automatisch die Konsole aufrufen
+                    System.out.println("TEST: back to Konsole");
+                } 
+                else
+                {
+                    // Deklaration und Initialisierung einer Objektvariablen der Klasse Ausgabedatei
+                    // als Parameter wird das Stringliteral "raumdatei.csv" und das Ergebnis der Ausstellungplanung als ArrayList übergeben
+                    Ausgabedatei datei = new Ausgabedatei("raumdatei.csv");
+                    datei.schreibeAusleihen();
+                }*/
             }
             
             // behandelt die Eingabe eines Schwerpunktthemas
             if(eingabe.equals("2"))
             {
                 // Liste der Themen wird direkt bei der Erstellung mit Hilfe der Methode asList der Klasse Arrays initialisiert
-                List<String> themen = Arrays.asList("Aktmalerei", "Barock", "Bauhaus", "Expressionismus", "Hyperrealismus", "Impressionismus", "Klassizismus", "Landschaftmalerei", "Neo-Expressionismus",
-                    "Pflanzen", "Portraits", "Religion", "Renaissance", "Rokoko", "Romantik", "Sonstiges", "Stilleben", "Surrealismus", "Tiere");
+                List<String> themen = Arrays.asList("Aktmalerei", "Barock", "Bauhaus", "Expressionismus", "Hyperrealismus", "Impressionismus", "Klassizismus", "Landschaftmalerei", 
+                    "Neo-Expressionismus", "Pflanzen", "Portraits", "Religion", "Renaissance", "Rokoko", "Romantik", "Sonstiges", "Stilleben", "Surrealismus", "Tiere");
                 
                 // Info an Benutzer welche Eingabe erforderlich ist
                 System.out.print("Ihr Schwerpunktthema: ");
@@ -351,9 +361,9 @@ public class Museum
                 try
                 {                
                     // Aufruf der Methode setKostenobergrenze des Objekts planung der Klasse Ausstellungsplanung
-                    // Eingaben von der Konsole sind immer Strings und müssen deshalb erstmal mit der Methoder parseDouble der Klasse Double umgewandelt werden
+                    // Eingaben von der Konsole sind immer Strings und müssen deshalb erstmal mit der Methode parseDouble der Klasse Double umgewandelt werden
                     planung.setKostenobergrenze(Double.parseDouble(eingabe));
-                    
+                                        
                     // Info für den Benutzer wenn Kostenobergrenze erfolgreich gesetzt werden konnte
                     System.out.println("Kostenobergrenze " + planung.getKostenobergrenze() + " wurde erfolgreich gesetzt");
                 }
@@ -364,34 +374,67 @@ public class Museum
                 }
             }
             
+            // behandelt die Eingabe eines Qualitätsgewichts
+            if(eingabe.equals("4"))
+            {
+                // Info an Benutzer welche Eingabe erforderlich ist
+                System.out.println("Bitte geben Sie ein Qualitätsgewicht an: ");
+                
+                // nimmt die Eingabe von der Konsole entgegen und speichert Sie in der Variablen eingabe
+                eingabe = console.readLine();
+                
+                // Try-Block
+                try
+                {                
+                    // Aufruf der Methode setQualitaetsgewicht des Objekts planung der Klasse Ausstellungsplanung
+                    // Eingaben von der Konsole sind immer Strings und müssen deshalb erstmal mit der Methode parseDouble der Klasse Double umgewandelt werden
+                    planung.setQualitaetsgewicht(Double.parseDouble(eingabe));
+                                        
+                    // Info für den Benutzer wenn Kostenobergrenze erfolgreich gesetzt werden konnte
+                    System.out.println("Qualitätsgewicht " + planung.getQualitaetsgewicht() + " wurde erfolgreich gesetzt");
+                }
+                // Catch-Block fängt Fehler ab, wenn z.B. ein Text statt einer Zahl eingegeben wurde
+                catch(NumberFormatException e)
+                {
+                    System.out.println("Fehler beim Setzen des Qualitätsgewichtes. Kein gültiger Wert!");
+                }
+            }
+            
             // behandelt die Anzeige des aktuellen Schwerpunktthemas
-             if(eingabe.equals("4"))
+             if(eingabe.equals("5"))
             {
                 //Methode getSchwerpunktthema des Ojekts planung der Klasse Ausstellungsplanung wird aufgerufen
                 System.out.println("Ihr aktuelles Schwerpunktthema: " + planung.getSchwerpunktthema());
             }
             
             // behandelt die Anzeige der aktuellen Kostenobergrenze
-             if(eingabe.equals("5"))
+             if(eingabe.equals("6"))
             {
                 //Methode getKostenobergrenze des Ojekts planung der Klasse Ausstellungsplanung wird aufgerufen
                 System.out.println("Ihre aktuelle Kostenobergrenze: " + planung.getKostenobergrenze());
             }
             
+            // behandelt die Anzeige der aktuellen Qualitätsgewichtes
+             if(eingabe.equals("7"))
+            {
+                //Methode getKostenobergrenze des Ojekts planung der Klasse Ausstellungsplanung wird aufgerufen
+                System.out.println("Ihre aktuelles Qualitätsgewicht: " + planung.getQualitaetsgewicht());
+            }
+            
             // behandelt die Auswahl einer einzulesenden Datei mit Räumen
-             if(eingabe.equals("6"))
+             if(eingabe.equals("8"))
             {
                 
             }
             
             // behandelt die Auswahl einer einzulesenden Datei mit Kunstwerken
-             if(eingabe.equals("7"))
+             if(eingabe.equals("9"))
             {
                 
             }
             
             // beendet die Anwendung
-            if(eingabe.equals("8"))
+            if(eingabe.equals("10"))
             {
                 weiter = false;
                 

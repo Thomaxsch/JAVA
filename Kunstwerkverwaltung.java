@@ -280,7 +280,7 @@ public class Kunstwerkverwaltung
         return passtBudget & passtZuordnenbar & passtInstallationAnteilI;
     }
     
-    public boolean checkRaumFeuchteundTemp(int minFeuchteRaum, int maxFeuchteRaum,int minTempRaum, int maxTempRaum, Kunstwerk kw)
+    private boolean checkRaumFeuchteundTemp(int minFeuchteRaum, int maxFeuchteRaum,int minTempRaum, int maxTempRaum, Kunstwerk kw)
     {
         /**
          * Wahrheitswert der angibt, ob die vorhandene Luftfeuchtigkeit für das im Raum zum plazierende Bild kompatibel ist. 
@@ -289,14 +289,39 @@ public class Kunstwerkverwaltung
         /**
          * Wahrheitswert der angibt, ob die vorhandene Raumtemperatur für das im Raum zum plazierende Bild kompatibel ist. 
          */
-        boolean passtRaumTemp = false;
+        boolean passtRaumTemp;
         
-        if (kw.getArt()=='B')
-        {Bild b = (Bild) kw; // hier wird ein Kunstwerk in ein Bild umgewandelt. Dies wird gemacht, um auf die "getMethoden" wie "getMinTemp" zugreifen zu können.   
+        boolean passtFeuchteUndTemp = false;
+        /**
+         * // hier wird ein Kunstwerk in ein Bild umgewandelt. Dies wird gemacht, um auf die "getMethoden" wie "getMinTemp" zugreifen zu können.
+         */
+        Bild b = (Bild) kw; 
+        
+        if(minFeuchteRaum <= b.getMinLuft() && maxFeuchteRaum >= b.getMaxLuft()) 
+        {
+            passtRaumFeuchte = true; 
         }
-        
-        return passtRaumTemp;
+        else
+        {
+            System.out.println("Das Bild kann nicht in den Raum plaziert werden, da die Luftfeuchtigkeit zu hoch oder zu niedrig ist");
+            passtRaumFeuchte = false;
+        }
+        if (minTempRaum <= b.getMinTemp() && maxTempRaum >= b.getMaxTemp())
+        {
+            passtRaumTemp = true;
+        }
+        else 
+        {
+            System.out.println("Das Bild kann nicht in den Raum plaziert werden, da die Raumtemperatur zu hoch oder zu niedrig ist");
+            passtRaumTemp = false;
+        }
+        if (passtRaumFeuchte && passtRaumTemp == true)
+        {
+            passtFeuchteUndTemp = true;
+        }
+        return passtFeuchteUndTemp;
     }
+    
     public short naechstesZuSetzendesKunstwerk(
         String schwerpunktthema,
         int verfuegbarWandWest,int verfuegbarWandOst,int verfuegbarWandNord,int verfuegbarWandSued,  // relevant für Bilder (vier Wände)
@@ -351,22 +376,70 @@ public class Kunstwerkverwaltung
         double qualitaetsgewicht,                                                                    // Gewichtung von Qualität und Quantität
         int minFeuchteRaum, int maxFeuchteRaum,int minTempRaum, int maxTempRaum,                     // relevant nur für Bilder. Bild muss innerhalb dieser Grenzen sein.
         ArrayList<String> welcheThemenDuerfenNochInRaum,     // falls diese ArrayList genau (!) drei Elemente enthält, sind nur noch KW mit einem dieser Themen erlaubt                                       
-        String welcheTypenDuerfenNochInRaum ,                 // es wird "BIG" oder "BG" übergeben (ob der Typ egal ist oder es nur noch B/G sein darf)
+        String welcheTypenDuerfenNochInRaum,                 // es wird "BIG" oder "BG" übergeben (ob der Typ egal ist oder es nur noch B/G sein darf)
         double gueteRaumAttraktivitaet,            // Aktueller Durchschnitt der Attraktivität der Kunstwerke im Raum -> wir platzieren nur KW mit höherem Attraktivitätswert...
         double gueteRaumBelegung)                  // Anteil der aktuellen Wandbelegung des Raumes mit Bildern -> ... es sei denn es geht um ein Bild und die Raumbelegung ist noch < 60%
-        
         {
        short bestes_kw_lfd_nr = -1; // wir suchen das beste Kunstwerk. Wenn wir keins finden, geben wir den Wert "-1" zurück.
        for (Kunstwerk kw : bildeKriteriumsliste(qualitaetsgewicht)) {
-            boolean passtDimension= überprüfeKunstwerkzuRaumdimension(verfuegbarWandWest, verfuegbarWandOst, verfuegbarWandNord, verfuegbarWandSued, verfuegbarLaengeRaum, verfuegbarBreiteRaum, verfuegbarHoeheRaum, kw);
+           boolean passtRaumFeuchteUndTemp = true; 
+        
+             if (kw.getArt()=='B' & passtRaumFeuchteUndTemp)
+            {
+                passtRaumFeuchteUndTemp = checkRaumFeuchteundTemp(minFeuchteRaum, maxFeuchteRaum, minTempRaum, maxTempRaum, kw);
+                // das Kunstwerk wird nicht plaziert, wenn die Raumbedingungen nicht mit dem Bild kompatibel sind. 
+            }   
             
-            if  (passtDimension & überprüfeKunstwerkWeitereParameter(restbudget, kunstwerkeSchonZugeordnet, anteilI, kw))
+            boolean passtKunstwerkInThemenvielfalt = true;
+            
+            if (welcheThemenDuerfenNochInRaum.size() == 3)
+            {
+                passtKunstwerkInThemenvielfalt = welcheThemenDuerfenNochInRaum.contains(kw.getThema());
+                //das Kunstwerk wird nicht plaziert, falls das Kunstwerk eine Thema hat, welches noch nicht in dem Raum plaziert wurde, da sonst ein 4. neues Thema gesetzt werden würde. 
+            }
+            
+            boolean passtKunstwerkTypInRaum = true;
+            
+            if (kw.getArt() == 'I')
+            {
+                passtKunstwerkTypInRaum = welcheTypenDuerfenNochInRaum.equals("BIG");
+                // hiermit wird verdeutlicht, dass Kunstinstallationen nur plaziert werden können, wenn der Raum leer ist, also "BIG" übergeben wurde. 
+            }
+
+            boolean verbessertKunstwerkRaum = true;
+            
+            if (kw.getArt() == 'B' & gueteRaumBelegung <= 0.6 & gueteRaumAttraktivitaet <= kw.getAttraktivitaet())
+            {
+                verbessertKunstwerkRaum = true;
+                //wenn der Raum unter 60% belegt ist, kann das Bild noch in den Raum belegt werden, damit dieser nicht zu leer steht. 
+            }
+            else if ((kw.getArt() == 'I' || kw.getArt() == 'G') & gueteRaumAttraktivitaet <= kw.getAttraktivitaet())
+            {
+                verbessertKunstwerkRaum = true;
+                //hier wird auch nochmal geprüft, ob auch die Installationen oder Kunstgegenstände den Raum verbessern. Bei Installationen ist jedoch immer davon auszugehen,
+                //da diese sowieso nur alleine in einem Raum stehen können. 
+            }
+            
+            else 
+            {
+                verbessertKunstwerkRaum = false;
+                /*Es wird false ausgegeben, wenn folgende Bedingungen erfüllt sind:
+                 * Bei Bildern: Der Raum ist bereits über 60% belegt und das Bild würde die Attraktivitaet des Raumes verschlechtern.
+                 * Bei Kunstgegenständen: Der Kunstgegenstand liegt unter dem Attraktivitaetsmittelwert und würde folglich auch den Raum verschlechtern. 
+                */
+            }
+            
+            boolean passtDimension= überprüfeKunstwerkzuRaumdimension(verfuegbarWandWest, verfuegbarWandOst, verfuegbarWandNord, verfuegbarWandSued, 
+            verfuegbarLaengeRaum, verfuegbarBreiteRaum, verfuegbarHoeheRaum, kw);
+            
+            if  (passtDimension & überprüfeKunstwerkWeitereParameter(restbudget, kunstwerkeSchonZugeordnet, anteilI, kw) & passtRaumFeuchteUndTemp
+            & passtKunstwerkInThemenvielfalt & passtKunstwerkTypInRaum & verbessertKunstwerkRaum) 
             {
                bestes_kw_lfd_nr = kw.getLaufendeNummer();
                break; // die Schleife endet, wenn das erste Mal ein KW passt
             } 
-        } 
-       
+        
+        }
         
        System.out.println("Index bestes KW:"+bestes_kw_lfd_nr);
     

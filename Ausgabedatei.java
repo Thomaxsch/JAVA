@@ -17,8 +17,8 @@ public class Ausgabedatei
      * Objekt der Klasse Ausstellungsplanung, auf dessen Grundlage die Ausleih-, Ausstellungs- und Museumsführer-Datei erstellt werden können
      */
     // private Ausstellungsplanung planung;
-    
-    private HashMap<Raum, List<Kunstwerk>> zugeordneteKunstwerke;
+       
+    private ArrayList <ArrayList <Kunstwerk>> zugeordneteKunstwerke;
     /**
      * Objekt der Java-Klasse PrintWriter zum Schreiben von Zeichenketten
      */
@@ -30,6 +30,7 @@ public class Ausgabedatei
     public Ausgabedatei(String file)
     {
        this.file = file;
+       
     }
     
     /**
@@ -37,7 +38,7 @@ public class Ausgabedatei
      * @param file                     Dateiname für die zu erstellende Outputdatei 
      * @param auszugebendeKunstwerke   HashMap mit den Räumen und Objekten die ausgegeben werden sollen
      */
-    public Ausgabedatei(String file, HashMap<Raum, List<Kunstwerk>> auszugebendeKunstwerke) 
+    public Ausgabedatei(String file, ArrayList <ArrayList <Kunstwerk>> auszugebendeKunstwerke) 
     {
         this.file = file;
         this.zugeordneteKunstwerke = auszugebendeKunstwerke;
@@ -59,25 +60,18 @@ public class Ausgabedatei
      * planung
      */
     public void schreibeAusleihen()
-    {
+    {      
         try
         {
-            BufferedWriter meinWriter = new BufferedWriter(new FileWriter("ausgabedatei.txt"));
-            meinWriter.write("Hallo Welt");
-            meinWriter.newLine();
-            meinWriter.write("Dies ist eine Testdatei");
-            meinWriter.close();
-        }
-        catch(IOException e)
-        {
-            System.out.println("Beim Schreiben in die Datei ist etwas schief gegangen.");
-        }
-        
-        try
-        {
-            BufferedWriter meinWriter = new BufferedWriter(new FileWriter(file));
+            //BufferedWriter meinWriter = new BufferedWriter(new FileWriter(file));
+                       
+            /*for(int i=0; i<=zugeordneteKunstwerke.size(); i++)
+            {
+                ArrayList<Kunstwerk> array = zugeordneteKunstwerke.get(i);
+                System.out.println(array);
+            }*/
             
-            for(Raum key : zugeordneteKunstwerke.keySet())
+            /* for(Raum key : zugeordneteKunstwerke)
             {
                 meinWriter.write("------------------------------------");
                 meinWriter.newLine();
@@ -93,9 +87,19 @@ public class Ausgabedatei
                     meinWriter.write(k.toString());
                     meinWriter.newLine();
                 } 
-            }
+            }*/
             
-            meinWriter.close();
+            //meinWriter.close();
+            
+            Raumverwaltung raeume = new Raumverwaltung();
+            Vector<Raum> vorhandeneRaeume = raeume.getRaumVector();
+            
+            StringBuilder sb = new StringBuilder();
+            sb.append("<html>");
+            FileWriter fstream = new FileWriter("test.html");
+            BufferedWriter out = new BufferedWriter(fstream);
+            out.write(sb.toString());
+            out.close();
             
         }
         catch(IOException e)

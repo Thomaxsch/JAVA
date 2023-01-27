@@ -29,6 +29,12 @@ Attraktivität: 7, Thema: Portraits, Nr: 31, Art des Kunstwerks: B, Bezeichnung:
 Attraktivität: 5, Thema: Portraits, Nr: 32, Art des Kunstwerks: B, Bezeichnung: Portrait of a Man, Breite 56
 Attraktivität: 2, Thema: Tiere, Nr: 25, Art des Kunstwerks: B, Bezeichnung: A Kitchen, Breite 44
 ------------------------------------
+Raum: Nummer: 4, Raumbezeichnung: Saal, Breite: 600, Länge: 1200, Höhe:250
+------------------------------------
+Attraktivität: 51, Thema: Aktmalerei, Nr: 59, Art des Kunstwerks: G, Bezeichnung: Seasons and Elements (Fire) (set of four), Breite 274
+Attraktivität: 47, Thema: Aktmalerei, Nr: 81, Art des Kunstwerks: G, Bezeichnung: Andiron with figure of Juno (chenet) (one of a pair), Breite 112
+Attraktivität: 46, Thema: Aktmalerei, Nr: 78, Art des Kunstwerks: G, Bezeichnung: Nymph with a Shell, Breite 48
+------------------------------------
 Raum: Nummer: 2, Raumbezeichnung: Galerie links, Breite: 800, Länge: 800, Höhe:250
 ------------------------------------
 Attraktivität: 80, Thema: Stillleben, Nr: 7, Art des Kunstwerks: B, Bezeichnung: Still Life with Oysters a Silver Tazza and Glassware, Breite 80
