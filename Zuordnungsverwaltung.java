@@ -78,15 +78,18 @@ public class Zuordnungsverwaltung
     
     public void ausgebenZuordnungsGuetenAufKonsole(){
         System.out.println("\n-------- Übersicht über die Gütenkriterien der Zuordnungen ---");
+        
         for (int z=0;z<anzahlZuordnungen;z++)
         {
             double [] ergebnisse= listeZuordnungen.get(z).getZuordnungsErgebnisse();
             System.out.println("Zuordnung Nr." + z + "|" + 
+                                "#KWplatziert: " + listeZuordnungen.get(z).wieVieleKunstwerkePlatziert() +  "/" + kunstwerkverwaltung.sizeKunstwerkverwaltung()+  "|" +
                                 "ØGueteRaumBelegung: " +  Math.floor(ergebnisse[0]*1000)/1000 +  "|" +        
                                 "ØGueteRaumAttraktivitaet: " +  Math.floor(ergebnisse[1]*1000)/1000 +  "|" + 
                                 "ØKombinierteGuete: " +  Math.floor(ergebnisse[2]*1000)/1000
                                 ); // Math.floor rundet ab zum nächsthöchsten Integer. Durch obige Konstruktion können wir den double Wert auf 3 Nachkommastellen darstellen.      
         }
+        
     }
     
     // ==========================================================================

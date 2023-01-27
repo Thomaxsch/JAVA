@@ -28,8 +28,8 @@ public class Museum
         
         /* ###############################
          * ---- TEST--------------------*/ 
-        planung.setKostenobergrenze(5000);
-        planung.setSchwerpunktthema("Expressionismus"); //"Aktmalerei" "Rokoko" ""
+        planung.setKostenobergrenze(999999999);
+        planung.setSchwerpunktthema("Aktmalerei"); //"Aktmalerei" "Rokoko" ""
         planung.setQualitaetsgewicht(0.5);
         planung.generiereAusstellungen();
         

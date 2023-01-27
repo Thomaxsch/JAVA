@@ -318,12 +318,12 @@ public class Kunstwerkverwaltung
        System.out.println("verfuegbarBreiteRaum:" + verfuegbarBreiteRaum);
        System.out.println("verfuegbarHoeheRaum:" + verfuegbarHoeheRaum);
        System.out.println("restbudget:" + restbudget);
-       System.out.println("wie viele KW nicht zugeordnet:" + kunstwerkeSchonZugeordnet.size());
+       System.out.println("wie viele KW zugeordnet:" + kunstwerkeSchonZugeordnet.size());
        System.out.println("anteilI:" + anteilI);
        System.out.println("qualitaetsgewicht:" + qualitaetsgewicht);
        
        short bestes_kw_lfd_nr = -1; // wir suchen das beste Kunstwerk. Wenn wir keins finden, geben wir den Wert "-1" zurück.
-       System.out.println(bildeKriteriumsliste(qualitaetsgewicht).size());
+       //System.out.println(bildeKriteriumsliste(qualitaetsgewicht).size());
        for (Kunstwerk kw : bildeKriteriumsliste(qualitaetsgewicht)) {
             boolean passtSchwerpunkt=(kw.getThema().equals(schwerpunktthema));
             boolean passtDimension= überprüfeKunstwerkzuRaumdimension(verfuegbarWandWest, verfuegbarWandOst, verfuegbarWandNord, verfuegbarWandSued, verfuegbarLaengeRaum, verfuegbarBreiteRaum, verfuegbarHoeheRaum, kw);
