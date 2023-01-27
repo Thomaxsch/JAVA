@@ -297,27 +297,27 @@ public class Kunstwerkverwaltung
          */
         Bild b = (Bild) kw; 
         
-        if(minFeuchteRaum >= b.getMinLuft() && maxFeuchteRaum <= b.getMaxLuft()) 
+        if(minFeuchteRaum <= b.getMinLuft() && maxFeuchteRaum >= b.getMaxLuft()) 
         {
-            passtRaumFeuchte = true;
+            passtRaumFeuchte = true; 
         }
         else
         {
             System.out.println("Das Bild kann nicht in den Raum plaziert werden, da die Luftfeuchtigkeit zu hoch oder zu niedrig ist");
-            return passtRaumFeuchte = false;
+            passtRaumFeuchte = false;
         }
-        if (minTempRaum >= b.getMinTemp() && maxTempRaum <= b.getMaxTemp())
+        if (minTempRaum <= b.getMinTemp() && maxTempRaum >= b.getMaxTemp())
         {
             passtRaumTemp = true;
         }
         else 
         {
             System.out.println("Das Bild kann nicht in den Raum plaziert werden, da die Raumtemperatur zu hoch oder zu niedrig ist");
-            return passtRaumTemp = false;
+            passtRaumTemp = false;
         }
         if (passtRaumFeuchte && passtRaumTemp == true)
         {
-            return passtFeuchteUndTemp = true;
+            passtFeuchteUndTemp = true;
         }
         return passtFeuchteUndTemp;
     }
@@ -343,12 +343,12 @@ public class Kunstwerkverwaltung
        System.out.println("verfuegbarBreiteRaum:" + verfuegbarBreiteRaum);
        System.out.println("verfuegbarHoeheRaum:" + verfuegbarHoeheRaum);
        System.out.println("restbudget:" + restbudget);
-       System.out.println("wie viele KW nicht zugeordnet:" + kunstwerkeSchonZugeordnet.size());
+       System.out.println("wie viele KW zugeordnet:" + kunstwerkeSchonZugeordnet.size());
        System.out.println("anteilI:" + anteilI);
        System.out.println("qualitaetsgewicht:" + qualitaetsgewicht);
        
        short bestes_kw_lfd_nr = -1; // wir suchen das beste Kunstwerk. Wenn wir keins finden, geben wir den Wert "-1" zurück.
-       System.out.println(bildeKriteriumsliste(qualitaetsgewicht).size());
+       //System.out.println(bildeKriteriumsliste(qualitaetsgewicht).size());
        for (Kunstwerk kw : bildeKriteriumsliste(qualitaetsgewicht)) {
             boolean passtSchwerpunkt=(kw.getThema().equals(schwerpunktthema));
             boolean passtDimension= überprüfeKunstwerkzuRaumdimension(verfuegbarWandWest, verfuegbarWandOst, verfuegbarWandNord, verfuegbarWandSued, verfuegbarLaengeRaum, verfuegbarBreiteRaum, verfuegbarHoeheRaum, kw);
@@ -382,20 +382,64 @@ public class Kunstwerkverwaltung
         {
        short bestes_kw_lfd_nr = -1; // wir suchen das beste Kunstwerk. Wenn wir keins finden, geben wir den Wert "-1" zurück.
        for (Kunstwerk kw : bildeKriteriumsliste(qualitaetsgewicht)) {
-            boolean passtDimension= überprüfeKunstwerkzuRaumdimension(verfuegbarWandWest, verfuegbarWandOst, verfuegbarWandNord, verfuegbarWandSued, verfuegbarLaengeRaum, verfuegbarBreiteRaum, verfuegbarHoeheRaum, kw);
+           boolean passtRaumFeuchteUndTemp = true; 
+        
+             if (kw.getArt()=='B' & passtRaumFeuchteUndTemp)
+            {
+                passtRaumFeuchteUndTemp = checkRaumFeuchteundTemp(minFeuchteRaum, maxFeuchteRaum, minTempRaum, maxTempRaum, kw);
+                // das Kunstwerk wird nicht plaziert, wenn die Raumbedingungen nicht mit dem Bild kompatibel sind. 
+            }   
             
-            if  (passtDimension & überprüfeKunstwerkWeitereParameter(restbudget, kunstwerkeSchonZugeordnet, anteilI, kw))
+            boolean passtKunstwerkInThemenvielfalt = true;
+            
+            if (welcheThemenDuerfenNochInRaum.size() == 3)
+            {
+                passtKunstwerkInThemenvielfalt = welcheThemenDuerfenNochInRaum.contains(kw.getThema());
+                //das Kunstwerk wird nicht plaziert, falls das Kunstwerk eine Thema hat, welches noch nicht in dem Raum plaziert wurde, da sonst ein 4. neues Thema gesetzt werden würde. 
+            }
+            
+            boolean passtKunstwerkTypInRaum = true;
+            
+            if (kw.getArt() == 'I')
+            {
+                passtKunstwerkTypInRaum = welcheTypenDuerfenNochInRaum.equals("BIG");
+                // hiermit wird verdeutlicht, dass Kunstinstallationen nur plaziert werden können, wenn der Raum leer ist, also "BIG" übergeben wurde. 
+            }
+
+            boolean verbessertKunstwerkRaum = true;
+            
+            if (kw.getArt() == 'B' & gueteRaumBelegung <= 0.6 & gueteRaumAttraktivitaet <= kw.getAttraktivitaet())
+            {
+                verbessertKunstwerkRaum = true;
+                //wenn der Raum unter 60% belegt ist, kann das Bild noch in den Raum belegt werden, damit dieser nicht zu leer steht. 
+            }
+            else if ((kw.getArt() == 'I' || kw.getArt() == 'G') & gueteRaumAttraktivitaet <= kw.getAttraktivitaet())
+            {
+                verbessertKunstwerkRaum = true;
+                //hier wird auch nochmal geprüft, ob auch die Installationen oder Kunstgegenstände den Raum verbessern. Bei Installationen ist jedoch immer davon auszugehen,
+                //da diese sowieso nur alleine in einem Raum stehen können. 
+            }
+            
+            else 
+            {
+                verbessertKunstwerkRaum = false;
+                /*Es wird false ausgegeben, wenn folgende Bedingungen erfüllt sind:
+                 * Bei Bildern: Der Raum ist bereits über 60% belegt und das Bild würde die Attraktivitaet des Raumes verschlechtern.
+                 * Bei Kunstgegenständen: Der Kunstgegenstand liegt unter dem Attraktivitaetsmittelwert und würde folglich auch den Raum verschlechtern. 
+                */
+            }
+            
+            boolean passtDimension= überprüfeKunstwerkzuRaumdimension(verfuegbarWandWest, verfuegbarWandOst, verfuegbarWandNord, verfuegbarWandSued, 
+            verfuegbarLaengeRaum, verfuegbarBreiteRaum, verfuegbarHoeheRaum, kw);
+            
+            if  (passtDimension & überprüfeKunstwerkWeitereParameter(restbudget, kunstwerkeSchonZugeordnet, anteilI, kw) & passtRaumFeuchteUndTemp
+            & passtKunstwerkInThemenvielfalt & passtKunstwerkTypInRaum & verbessertKunstwerkRaum) 
             {
                bestes_kw_lfd_nr = kw.getLaufendeNummer();
                break; // die Schleife endet, wenn das erste Mal ein KW passt
-            }
-            boolean passtRaumFeuchteUndTemp = checkRaumFeuchteundTemp(minFeuchteRaum, maxFeuchteRaum, minTempRaum, maxTempRaum, kw); 
-            if (kw.getArt()=='B' & passtRaumFeuchteUndTemp)
-            {
-                break; // die Schleife endet, wenn die Raumbedingungen nicht mit dem Bild kompatibel sind. 
-            }        
-        } 
-       
+            } 
+        
+        }
         
        System.out.println("Index bestes KW:"+bestes_kw_lfd_nr);
     

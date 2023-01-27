@@ -87,6 +87,7 @@ public class Ausstellungsplanung
                 setzeInvalideMinimalloesungenNull(); // Zuordnungen die keine Minimallösung darstellen setzen wir zu null, um diese nachfolgend zu überspringen
                 System.out.println("Wir versuchen alle gefundenen Minimallösungen zu erweitern.");
                 erweitereAusstellungskandidaten();
+                zuordnungsverwaltung.ausgebenZuordnungsGuetenAufKonsole();// Zusammenfassung der Ergebnisse aller Zuordnungen
             }
             else
             {
@@ -98,13 +99,10 @@ public class Ausstellungsplanung
         {
             System.out.println("ohne Schwerpunktthema können wir direkt versuchen, die Ausstellung auszubauen");
             erweitereAusstellungskandidaten();
+            zuordnungsverwaltung.ausgebenZuordnungsGuetenAufKonsole();// Zusammenfassung der Ergebnisse aller Zuordnungen
         }
         
-        // Zusammenfassung der Ergebnisse aller Zuordnungen:
-        if (wurdeMinimaleAusstellungGefunden())
-        {
-            zuordnungsverwaltung.ausgebenZuordnungsGuetenAufKonsole();
-        }
+        
     }
     
     /**
@@ -155,11 +153,15 @@ public class Ausstellungsplanung
     private void erweitereAusstellungskandidaten()
     {
         
-        for (int i=0;i<anzahlZuordnungen;i++)
+        for (int z=0;z<anzahlZuordnungen;z++)
         {
-            System.out.println("\n-------- Wir versuchen die Ausstellung zu optimieren für Zuordnung " + i +" ---");
-            zuordnungsverwaltung.getZuordnung(i).versucheLoesungserweiterung();
-            System.out.println("***** Ausstellungsoptimierung für Zuordnung " + i +" beendet *****");
+            if (zuordnungsverwaltung.getZuordnung(z)!=null) // die Prüfung erfolgt, damit wir Zuordnungen ohne Minimallösung nicht weiter auszubauen versuchen
+            {
+                System.out.println("\n-------- Wir versuchen die Ausstellung zu optimieren für Zuordnung " + z +" ---");
+                zuordnungsverwaltung.getZuordnung(z).versucheLoesungserweiterung();
+                System.out.println("***** Ausstellungsoptimierung für Zuordnung " + z +" beendet *****");
+            }
+
         }
         erweiterungsloesungAbgeschlossen = true; 
     }
@@ -170,7 +172,7 @@ public class Ausstellungsplanung
     
     public ArrayList <ArrayList <Kunstwerk>> getBestesMapping ()
     {
-        if (erweiterungsloesungAbgeschlossen == true) // schließt aus, dass wir dies tun, wenn keine Minimallösung zuvor gefunden wurde
+        if (erweiterungsloesungAbgeschlossen == true) // Die Auswahl des besten Vorgangs erfolgt nur aus den erweiterten Lösungen.
         {
             return zuordnungsverwaltung.getZuordnung(vergleicheAusstellungskandidatenWaehleBeste()) // den Index der besten Zuordnung ansteuern
                                        .getDenRaeumenZugeordneteKunstwerke(); // und sich von dieser besten Zuordnung nur das Mapping ausgeben lassen
@@ -184,22 +186,32 @@ public class Ausstellungsplanung
     
     private int vergleicheAusstellungskandidatenWaehleBeste()
     {
-        if (erweiterungsloesungAbgeschlossen == true) // schließt aus, dass wir dies tun, wenn keine Minimallösung zuvor gefunden wurde
+        if (erweiterungsloesungAbgeschlossen == true) // Die Auswahl des besten Vorgangs erfolgt nur aus den erweiterten Lösungen.
         {
             System.out.println("\n-------- Suche nach bester Ausstellung ---");
             
-            // Nehmen wir an die allererste Zuordnung ist die beste
-            int indexBesteZuordnung=0;
-            double zuordnungsGuete=zuordnungsverwaltung.getZuordnung(0).getZuordnungsGuete();
+            // Initialsierung
+            int indexBesteZuordnung = -1;
+            double zuordnungsGuete = 0;
             
-            // Nun schauen wir, ob wir nicht noch bessere Zuordnungen finden
+            // Nun schauen wir, welche Zuordnung die beste Zuordnungsgüte hat
             for (int i=0;i<anzahlZuordnungen;i++)
             {   
-                double zuVergleichendeZuordnungsGuete=zuordnungsverwaltung.getZuordnung(i).getZuordnungsGuete();
+                double zuVergleichendeZuordnungsGuete = 0; // Initialisierung
+                
+                if (zuordnungsverwaltung.getZuordnung(i)!=null)
+                {
+                    zuVergleichendeZuordnungsGuete = zuordnungsverwaltung.getZuordnung(i).getZuordnungsGuete();
+                }
+                else if (zuordnungsverwaltung.getZuordnung(i)==null)
+                {
+                    zuVergleichendeZuordnungsGuete = -1; // Wenn es keine Minimallösung gab wurde die Zuordnung Null gesetzt. Dann nehmen wir sie hier aus dem Vergleich
+                }
+                
                 if (zuVergleichendeZuordnungsGuete>zuordnungsGuete)
                 {
-                    indexBesteZuordnung=i;
-                    zuordnungsGuete=zuVergleichendeZuordnungsGuete;
+                    indexBesteZuordnung = i;
+                    zuordnungsGuete = zuVergleichendeZuordnungsGuete;
                 }
             }
             System.out.println("***** Die beste Ausstellung stellt Zuordnung Nr. " + indexBesteZuordnung +" *****");
@@ -217,7 +229,7 @@ public class Ausstellungsplanung
             if (!zuordnungsverwaltung.getZuordnung(z).wurdeMinimalloesungErreicht())
             {
                 zuordnungsverwaltung.setzeZuordnungNull(z);
-                System.out.println("NOI");
+                System.out.println("Habe Zuordnung " + z + " geleert, da für diese keine Minimallösung gefunden wurde. Somit erweitern wir diese Lösung auch nicht.");
             }
         }
     }
