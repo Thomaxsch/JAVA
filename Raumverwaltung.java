@@ -58,19 +58,7 @@ public class Raumverwaltung
            System.out.println("Raum ist bereits in der Raumverwaltung enthalten. Er kann nicht erneut hinzugefuegt werden");
        }
     }
-    
-    //muss noch gemacht werden/ noetig?
-    /** Fügt alle Raume der Raumverwaltung zu.
-     * 
-     */
-    public void addAll(Raum raum)
-    {
-       raumVector.addElement(raum);
-       // Code einfuegen: Schleife
-       // Code einfuegen: Ein Objekt Raum kann nur hinzugefuegt werden wenn nicht bereits enthalten
        
-    }
-    
     /** Entfernt einen Raum aus der Raumverwaltung.
      *  @param  inRaum  Ein Objekt der Klasse Raum, das entfernt werden soll.
      */
@@ -168,81 +156,6 @@ public class Raumverwaltung
         return raumArrayList.get(randomNum);
         }
         
-    //muss noch gemacht werden
-    // Für alle Kunstwerke relevant:Raeume raussuchen nach verfuegbareHoehe 
-    /** Ermittelt alle (oder ein?) Objekte der Klasse Raum, dessen Hoehe größer ist als ein zu ueberpruefender Wert.
-     *  @param  hoeheKriterium    Zu ueberpruefender Wert (int)
-     *  @return                   Objekte der Klasse Raum, welche das Kriterium in Hoehe erfüllen.
-     */
-    public Raum showRaumNachHoehe(int hoeheKriterium)
-    {      
-        for (Raum einRaum : raumVector)
-        {
-        if (einRaum.showVerfuegbareHoehe()>= hoeheKriterium)
-            {
-                return einRaum;
-            }
-        }
-        return null;
-        
-        //funktioniert so noch nicht
-    }
-       
-    //muss noch gemacht werden
-    // Für KI/KG relevant: Raeume raussuchen nach verfuegbareLaenge, verfuegbareBreite
-    /** Ermittelt alle (oder ein?) Objekte der Klasse Raum, dessen Laenge größer ist als ein anzugebender Wert.
-     *  @return     Objekte der Klasse Raum, welche das Kriterium in Laenge erfüllen.
-     */
-    
-    public Vector<Raum> showRaumNachLaenge(int laengeKriterium)
-    {
-        //Code einfuegen
-        return raumVector;
-    }
-    
-    /** Ermittelt alle (oder ein?) Objekt der Klasse Raum, dessen Breite größer ist als ein anzugebender Wert.
-     *  @return     Objekte der Klasse Raum, das Kriterien in Breite erfüllt.
-     */
-    public Vector<Raum> showRaumNachBreite(int breiteKriterium)
-    {
-        //Code einfuegen
-        return raumVector;
-    }
-    
-    //muss noch gemacht werden
-    // Für Bilder relevant: Raeume raussuchen nach wandNord, wandOst, wandSued, wandWest
-    /** Ermittelt alle (oder ein?) Objekt der Klasse Raum, dessen wandNord größer ist als ein anzugebender Wert.
-     *  @return     Objekte der Klasse Raum, das Kriterien in wandNord erfüllt.
-     */
-    public Vector<Raum> showRaumNachWandNord(int wandNordKriterium)
-    {
-        //Code einfuegen
-        return raumVector;
-    }
-    /** Ermittelt alle (oder ein?) Objekt der Klasse Raum, dessen wandOst größer ist als ein anzugebender Wert.
-     *  @return     Objekte der Klasse Raum, das Kriterien in wandOst erfüllt.
-     */
-    public Vector<Raum> showRaumNachWandOst(int wandOstKriterium)
-    {
-        //Code einfuegen
-        return raumVector;
-    }
-    /** Ermittelt alle (oder ein?) Objekt der Klasse Raum, dessen wandSued größer ist als ein anzugebender Wert.
-     *  @return     Objekte der Klasse Raum, das Kriterien in wandSued erfüllt.
-     */
-    public Vector<Raum> showRaumNachWandSued(int wandSuedKriterium)
-    {
-        //Code einfuegen
-        return raumVector;
-    }
-    /** Ermittelt alle (oder ein?) Objekt der Klasse Raum, dessen wandWest größer ist als ein anzugebender Wert.
-     *  @return     Objekte der Klasse Raum, das Kriterien in wandWest erfüllt.
-     */
-    public Vector<Raum> showRaumNachWandWest(int wandWestKriterium)
-    {
-        //Code einfuegen
-        return raumVector;
-    }
     
     //=======================================
     // Weitere Methoden
