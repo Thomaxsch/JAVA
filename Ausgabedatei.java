@@ -63,13 +63,13 @@ public class Ausgabedatei
     {      
         try
         {
-            //BufferedWriter meinWriter = new BufferedWriter(new FileWriter(file));
+            BufferedWriter meinWriter = new BufferedWriter(new FileWriter(file));
                        
-            /*for(int i=0; i<=zugeordneteKunstwerke.size(); i++)
+            for(int i=0; i<zugeordneteKunstwerke.size(); i++)
             {
                 ArrayList<Kunstwerk> array = zugeordneteKunstwerke.get(i);
                 System.out.println(array);
-            }*/
+            }
             
             /* for(Raum key : zugeordneteKunstwerke)
             {
@@ -89,9 +89,9 @@ public class Ausgabedatei
                 } 
             }*/
             
-            //meinWriter.close();
+            meinWriter.close();
             
-            Raumverwaltung raeume = new Raumverwaltung();
+            /*Raumverwaltung raeume = new Raumverwaltung();
             Vector<Raum> vorhandeneRaeume = raeume.getRaumVector();
             
             StringBuilder sb = new StringBuilder();
@@ -99,7 +99,7 @@ public class Ausgabedatei
             FileWriter fstream = new FileWriter("test.html");
             BufferedWriter out = new BufferedWriter(fstream);
             out.write(sb.toString());
-            out.close();
+            out.close();*/
             
         }
         catch(IOException e)
