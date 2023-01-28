@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.*;
+import java.text.*;
 
 /**
  * Die Klasse Datei kann Strings als Zeilen in einer Datei ausgeben.
@@ -22,7 +23,9 @@ public class Ausgabedatei
     /**
      * Objekt der Java-Klasse PrintWriter zum Schreiben von Zeichenketten
      */
-    private PrintWriter outpoutDatei;
+    
+    private Raumverwaltung raeume;
+    
         /**
      * Konstruktor für Objekte der Klasse Ausgabedatei mit Parameternamen für den Dateinamen
      * @param file Dateiname für die zu erstellende Outputdatei 
@@ -38,21 +41,13 @@ public class Ausgabedatei
      * @param file                     Dateiname für die zu erstellende Outputdatei 
      * @param auszugebendeKunstwerke   HashMap mit den Räumen und Objekten die ausgegeben werden sollen
      */
-    public Ausgabedatei(String file, ArrayList <ArrayList <Kunstwerk>> auszugebendeKunstwerke) 
+    public Ausgabedatei(String file, ArrayList <ArrayList <Kunstwerk>> auszugebendeKunstwerke, Raumverwaltung raeume) 
     {
         this.file = file;
         this.zugeordneteKunstwerke = auszugebendeKunstwerke;
+        this.raeume = raeume;
     }
     
-    /**
-     * Methode zum nachträglichen Setzen eines Objekts der Klasse Ausstellungsplanung
-     * @param planung   Objekt der Klasse Ausstellungsplanung die nachträglich gesetzt werden kann
-     */
-    public void setAusstellungsplanung(Ausstellungsplanung planung)
-    {
-        
-    }
-
     /**
      * Erstellt eine Datei (Ausleihdatei), die nach Quelle sortiert angibt 
      * welche Kunstwerke wo ausgeliehen werden sollen, einschließlich der 
@@ -60,47 +55,64 @@ public class Ausgabedatei
      * planung
      */
     public void schreibeAusleihen()
-    {      
+    {
+        ArrayList<Kunstwerk> k = new ArrayList<Kunstwerk>();
+        double gesamtKosten = 0.0;
+        
         try
-        {
-            BufferedWriter meinWriter = new BufferedWriter(new FileWriter(file));
-                       
-            for(int i=0; i<zugeordneteKunstwerke.size(); i++)
+        {          
+            for(int i=0; i < zugeordneteKunstwerke.size(); i++)
             {
-                ArrayList<Kunstwerk> array = zugeordneteKunstwerke.get(i);
-                System.out.println(array);
+                for(int j=0; j < zugeordneteKunstwerke.get(i).size(); j++)
+                {
+                    k.add(zugeordneteKunstwerke.get(i).get(j));
+                }
             }
             
-            /* for(Raum key : zugeordneteKunstwerke)
-            {
-                meinWriter.write("------------------------------------");
-                meinWriter.newLine();
-                meinWriter.write("Raum: " + key);
-                meinWriter.newLine();
-                meinWriter.write("------------------------------------");
-                meinWriter.newLine();
-    
-            List<Kunstwerk> temp = zugeordneteKunstwerke.get(key);
+            BufferedWriter meinWriter = new BufferedWriter(new FileWriter(file));
             
-                for(Kunstwerk k : temp)
-                {
-                    meinWriter.write(k.toString());
-                    meinWriter.newLine();
-                } 
-            }*/
+            meinWriter.write("------------------------------------------\n");
+            meinWriter.write("Auszuleihende Kunstwerke                  \n");
+            meinWriter.write("------------------------------------------\n");
+            
+            for(int i=0; i < k.size(); i++)
+            {
+                meinWriter.write(k.get(i).toString() + "\n");
+                gesamtKosten += k.get(i).getKosten();
+            }
+            
+            meinWriter.write("------------------------------------------\n");
+            Locale locale = new Locale("de", "DE");
+            NumberFormat waehrung = NumberFormat.getCurrencyInstance(locale);
+            meinWriter.write("Gesamtkosten: " + waehrung.format(gesamtKosten));
+            meinWriter.write("------------------------------------------\n");
             
             meinWriter.close();
             
-            /*Raumverwaltung raeume = new Raumverwaltung();
-            Vector<Raum> vorhandeneRaeume = raeume.getRaumVector();
-            
+            gesamtKosten = 0;
             StringBuilder sb = new StringBuilder();
             sb.append("<html>");
-            FileWriter fstream = new FileWriter("test.html");
+            sb.append("<h1>Auszuleihende Kunstwerke (inkl. Gesamtkosten)</h1>");
+            sb.append("<table border='1px' width='100%'>");
+            sb.append("<tr><td>Nr.</td>");
+            sb.append("<td>Kunstwerk</td>");
+            sb.append("<td>Kosten</td></tr>");                
+            
+            for(int i=0; i < k.size(); i++)
+            {
+                sb.append("<tr><td>" + (i+1) + "</td>");
+                sb.append("<td>" + k.get(i).toString() + "</td>");
+                sb.append("<td>" + waehrung.format(k.get(i).getKosten()) + "</td></tr>");
+                gesamtKosten += k.get(i).getKosten();
+            }
+            sb.append("<tr><td colspan='2'>Gesamtkosten</td>");
+            sb.append("<td>" + waehrung.format(gesamtKosten) + "</td></tr>");
+            sb.append("</table>");
+            
+            FileWriter fstream = new FileWriter("ausleihdatei.html");
             BufferedWriter out = new BufferedWriter(fstream);
             out.write(sb.toString());
-            out.close();*/
-            
+            out.close();
         }
         catch(IOException e)
         {
@@ -116,7 +128,67 @@ public class Ausgabedatei
      */
     public void schreibeAusstellungen()
     {
-        
+        try
+        {
+            // Objekt meinWriter der Klasse BufferedWriter zur Ausgabepufferung, und anonymes File-WriteWriter-Objekt zur eigentlichen Ausgabe
+            BufferedWriter meinWriter = new BufferedWriter(new FileWriter(file));
+            
+            // erste Dimension der ArrayList zugeordneteKunstwerke wird bis zu deren Ende durchlaufen, entspricht den Räumen
+            for(int i=0; i < zugeordneteKunstwerke.size(); i++)
+            {
+                //die Methode write schreibt den String-Eingabeparameter als Byte in den Ausgabestrom
+                meinWriter.write("------------------------------------------\n");
+                meinWriter.write("Raum: " + raeume.getRaum(i).toString() + "\n");
+                meinWriter.write("------------------------------------------\n");
+                
+                // zweite Dimension der Arraylist wird bis zum Ende durchlaufen,enthält die einzelnen Kunstwerke deren String-Repräsentation als Byte in den Ausgabestrom geschrieben wird
+                for(int j=0; j < zugeordneteKunstwerke.get(i).size(); j++)
+                {
+                    meinWriter.write(zugeordneteKunstwerke.get(i).get(j).toString() + "\n");
+                }
+                
+                meinWriter.write("\n");
+            }
+            
+            // Ausgabepuffer wird durch die Methode close geschlossen
+            meinWriter.close();
+                      
+            StringBuilder sb = new StringBuilder();
+            sb.append("<html>");
+            sb.append("<h1>Auflistung nach Räumen (zur Aufstellung der Kunstwerke für Museumsmitarbeiter)</h1>");
+                    
+              for(int i=0; i < zugeordneteKunstwerke.size(); i++)
+            {
+                //die Methode write schreibt den String-Eingabeparameter als Byte in den Ausgabestrom
+                sb.append("<h1>Raum: " + raeume.getRaum(i).toString() + "</h1>");
+                sb.append("<table border='1px' width='100%'>");
+                sb.append("<tr><td>Nr.</td>");
+                sb.append("<td>Kunstwerk</td></tr>");
+                
+                // zweite Dimension der Arraylist wird bis zum Ende durchlaufen,enthält die einzelnen Kunstwerke deren String-Repräsentation als Byte in den Ausgabestrom geschrieben wird
+                for(int j=0; j < zugeordneteKunstwerke.get(i).size(); j++)
+                {
+                    sb.append("<tr>");
+                    sb.append("<td>" + (j+1) + "</td>");
+                    sb.append("<td>" + zugeordneteKunstwerke.get(i).get(j).toString() + "</td>");
+                    sb.append("</tr>");
+                }
+                
+                sb.append("</table>");
+                
+            }
+            
+            sb.append("</html>");
+            FileWriter fstream = new FileWriter("raumdatei.html");
+            BufferedWriter out = new BufferedWriter(fstream);
+            out.write(sb.toString());
+            out.close();
+        }
+        catch(IOException e)
+        {
+            System.out.println("Beim Schreiben in die Datei ist etwas schief gegangen.");
+        }
+    
     }
     
     /**
@@ -126,17 +198,67 @@ public class Ausgabedatei
      */
     public void schreibeMuseumsfuehrer()
     {
-        
+         try
+        {
+            // Objekt meinWriter der Klasse BufferedWriter zur Ausgabepufferung, und anonymes File-WriteWriter-Objekt zur eigentlichen Ausgabe
+            BufferedWriter meinWriter = new BufferedWriter(new FileWriter(file));
+            
+            // erste Dimension der ArrayList zugeordneteKunstwerke wird bis zu deren Ende durchlaufen, entspricht den Räumen
+            for(int i=0; i < zugeordneteKunstwerke.size(); i++)
+            {
+                //die Methode write schreibt den String-Eingabeparameter als Byte in den Ausgabestrom
+                meinWriter.write("------------------------------------------\n");
+                meinWriter.write("Raum: " + raeume.getRaum(i).toString() + "\n");
+                meinWriter.write("------------------------------------------\n");
+                
+                // zweite Dimension der Arraylist wird bis zum Ende durchlaufen,enthält die einzelnen Kunstwerke deren String-Repräsentation als Byte in den Ausgabestrom geschrieben wird
+                for(int j=0; j < zugeordneteKunstwerke.get(i).size(); j++)
+                {
+                    meinWriter.write(zugeordneteKunstwerke.get(i).get(j).toString() + "\n");
+                }
+                
+                meinWriter.write("\n");
+            }
+            
+            // Ausgabepuffer wird durch die Methode close geschlossen
+            meinWriter.close();
+                      
+            StringBuilder sb = new StringBuilder();
+            sb.append("<html>");
+            sb.append("<h1>Museumsführer (mit den fünf attraktivsten Kunstwerk pro Raum</h1>");
+                    
+              for(int i=0; i < zugeordneteKunstwerke.size(); i++)
+            {
+                //die Methode write schreibt den String-Eingabeparameter als Byte in den Ausgabestrom
+                sb.append("<h1>Raum: " + raeume.getRaum(i).toString() + "</h1>");
+                sb.append("<table border='1px' width='100%'>");
+                sb.append("<tr><td>Nr.</td>");
+                sb.append("<td>Kunstwerk</td></tr>");
+                
+                // zweite Dimension der Arraylist wird bis zum Ende durchlaufen,enthält die einzelnen Kunstwerke deren String-Repräsentation als Byte in den Ausgabestrom geschrieben wird
+                for(int j=0; j < zugeordneteKunstwerke.get(i).size(); j++)
+                {
+                    sb.append("<tr>");
+                    sb.append("<td>" + (j+1) + "</td>");
+                    sb.append("<td>" + zugeordneteKunstwerke.get(i).get(j).toString() + "</td>");
+                    sb.append("</tr>");
+                }
+                
+                sb.append("</table>");
+            }
+            
+            sb.append("</html>");
+            FileWriter fstream = new FileWriter("museumsfuehrer.html");
+            BufferedWriter out = new BufferedWriter(fstream);
+            out.write(sb.toString());
+            out.close();
+        }
+        catch(IOException e)
+        {
+            System.out.println("Beim Schreiben in die Datei ist etwas schief gegangen.");
+        }
     }
-    
-    /**
-     * Öffnet eine Output-Datei mit dem Namen des Attributs file
-     */
-    private void openFile() throws IOException 
-    {
-        
-    }
-    
+       
     /**
      * Schreibt eine Textzeile in eine  Ausgabedatei
      * @param str Text der in eine Teile der Ausgabedatei geschrieben werden soll

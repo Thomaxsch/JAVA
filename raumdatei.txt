@@ -1,0 +1,40 @@
+------------------------------------------
+Raum: Nummer: 1, Raumbezeichnung: Große Halle, Breite: 1500, Länge: 1000, Höhe:400
+------------------------------------------
+Attraktivität: 98, Thema: Stillleben, Nr: 104, Art des Kunstwerks: I, Bezeichnung: Candlestick and Playing Cards on a Table, Breite 53
+Attraktivität: 69, Thema: Religion, Nr: 88, Art des Kunstwerks: G, Bezeichnung: Virgin of the Immaculate Conception, Breite 36
+Attraktivität: 42, Thema: Tiere, Nr: 85, Art des Kunstwerks: G, Bezeichnung: Winter (one of a set of four), Breite 86
+Attraktivität: 36, Thema: Sonstiges, Nr: 82, Art des Kunstwerks: G, Bezeichnung: Summer (one of a set of four), Breite 85
+
+------------------------------------------
+Raum: Nummer: 2, Raumbezeichnung: Galerie links, Breite: 800, Länge: 800, Höhe:250
+------------------------------------------
+Attraktivität: 60, Thema: Sonstiges, Nr: 76, Art des Kunstwerks: G, Bezeichnung: Standing boy, Breite 20
+Attraktivität: 75, Thema: Sonstiges, Nr: 77, Art des Kunstwerks: G, Bezeichnung: Bust of a Woman, Breite 12
+Attraktivität: 71, Thema: Aktmalerei, Nr: 68, Art des Kunstwerks: G, Bezeichnung: Spanish Dancer (Second State), Breite 21
+Attraktivität: 63, Thema: Religion, Nr: 94, Art des Kunstwerks: G, Bezeichnung: Pietà, Breite 17
+
+------------------------------------------
+Raum: Nummer: 3, Raumbezeichnung: Galerie rechts, Breite: 800, Länge: 800, Höhe:250
+------------------------------------------
+Attraktivität: 75, Thema: Klassizismus, Nr: 86, Art des Kunstwerks: G, Bezeichnung: Seated girl, Breite 25
+Attraktivität: 30, Thema: Religion, Nr: 87, Art des Kunstwerks: G, Bezeichnung: Christ at the Column, Breite 31
+Attraktivität: 46, Thema: Sonstiges, Nr: 78, Art des Kunstwerks: G, Bezeichnung: Nymph with a Shell, Breite 48
+
+------------------------------------------
+Raum: Nummer: 4, Raumbezeichnung: Saal, Breite: 600, Länge: 1200, Höhe:250
+------------------------------------------
+Attraktivität: 72, Thema: Sonstiges, Nr: 92, Art des Kunstwerks: G, Bezeichnung: Double-spouted vase with cover, Breite 19
+Attraktivität: 57, Thema: Aktmalerei, Nr: 71, Art des Kunstwerks: G, Bezeichnung: Woman Getting out of the Bath, Breite 18
+
+------------------------------------------
+Raum: Nummer: 5, Raumbezeichnung: Raum A, Breite: 1200, Länge: 1400, Höhe:250
+------------------------------------------
+Attraktivität: 89, Thema: Bauhaus, Nr: 100, Art des Kunstwerks: I, Bezeichnung: Vase, Breite 25
+Attraktivität: 32, Thema: Bauhaus, Nr: 67, Art des Kunstwerks: G, Bezeichnung: Woman Stretching, Breite 21
+Attraktivität: 23, Thema: Religion, Nr: 74, Art des Kunstwerks: G, Bezeichnung: Christ and the two thieves crucified, Breite 22
+Attraktivität: 22, Thema: Tiere, Nr: 54, Art des Kunstwerks: G, Bezeichnung: Horse Trotting the Feet Not Touching the Ground, Breite 27
+Attraktivität: 20, Thema: Aktmalerei, Nr: 70, Art des Kunstwerks: G, Bezeichnung: Dancer Looking at the Sole of Her Right Foot (Fourth State), Breite 24
+Attraktivität: 15, Thema: Religion, Nr: 52, Art des Kunstwerks: G, Bezeichnung: Baptism of Christ, Breite 26
+Attraktivität: 15, Thema: Sonstiges, Nr: 95, Art des Kunstwerks: G, Bezeichnung: Prudence, Breite 4
+

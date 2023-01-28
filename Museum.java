@@ -299,17 +299,18 @@ public class Museum
                 // gibt entweder das beste Mapping oder Null, wenn es keine Minimallösung gab
                 ArrayList <ArrayList <Kunstwerk>> planungsErgebnis = planung.getBestesMapping(); 
                                
-                if (planungsErgebnis == null)
-                {
-                    // hier sollte automatisch die Konsole aufrufen
-                    System.out.println("TEST: back to Konsole");
-                } 
-                else
+                if (planungsErgebnis != null)
                 {
                     // Deklaration und Initialisierung einer Objektvariablen der Klasse Ausgabedatei
                     // als Parameter wird das Stringliteral "raumdatei.csv" und das Ergebnis der Ausstellungplanung als ArrayList übergeben
-                    Ausgabedatei datei = new Ausgabedatei("raumdatei.csv", planungsErgebnis);
-                    datei.schreibeAusleihen();
+                    Ausgabedatei datei1 = new Ausgabedatei("raumdatei.txt", planungsErgebnis, raeume);
+                    datei1.schreibeAusstellungen();
+                    
+                    Ausgabedatei datei2 = new Ausgabedatei("museumsfuehrer.txt", planungsErgebnis, raeume);
+                    datei2.schreibeMuseumsfuehrer();
+                    
+                    Ausgabedatei datei3 = new Ausgabedatei("ausleihdaten.txt", planungsErgebnis, raeume);
+                    datei3.schreibeAusleihen();
                 }
             }
             
