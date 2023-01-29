@@ -321,26 +321,29 @@ public class Museum
             if(eingabe.equals("1"))
             {
                 // Aufruf der Methode generiereAusstellungen des Objekts planung der Klasse Ausstellungsplanung 
-                //planung.generiereAusstellungen();
+                planung.generiereAusstellungen();
                 
                 // gibt entweder das beste Mapping oder Null, wenn es keine Minimallösung gab
-                //ArrayList <ArrayList <Kunstwerk>> planungsErgebnis = planung.getBestesMapping(); 
-                
-                Ausgabedatei datei = new Ausgabedatei("raumdatei.csv");
-                datei.schreibeAusleihen();
-                
-                /*if (planungsErgebnis == null)
-                {
-                    // hier sollte automatisch die Konsole aufrufen
-                    System.out.println("TEST: back to Konsole");
-                } 
-                else
+                ArrayList <ArrayList <Kunstwerk>> planungsErgebnis = planung.getBestesMapping(); 
+                               
+                if (planungsErgebnis != null)
                 {
                     // Deklaration und Initialisierung einer Objektvariablen der Klasse Ausgabedatei
                     // als Parameter wird das Stringliteral "raumdatei.csv" und das Ergebnis der Ausstellungplanung als ArrayList übergeben
-                    Ausgabedatei datei = new Ausgabedatei("raumdatei.csv");
-                    datei.schreibeAusleihen();
-                }*/
+                    Ausgabedatei datei1 = new Ausgabedatei("raumdatei.txt", planungsErgebnis, raeume);
+                    datei1.schreibeAusstellungen();
+                    
+                    Ausgabedatei datei2 = new Ausgabedatei("museumsfuehrer.txt", planungsErgebnis, raeume);
+                    datei2.schreibeMuseumsfuehrer();
+                    
+                    Ausgabedatei datei3 = new Ausgabedatei("ausleihdaten.txt", planungsErgebnis, raeume);
+                    datei3.schreibeAusleihen();
+                }
+                else
+                {
+                    System.out.print("Keine Minimallösung gefunden. Bitte prüfen Sie die Konfigurationsparameter (Kostenobergrenze, Schwerpunktthema, Qualitätsgewicht).");
+                }
+                
             }
             
             // behandelt die Eingabe eines Schwerpunktthemas
