@@ -40,35 +40,8 @@ public class Museum
         // als Parameter werden zwei Objekte der Klassen Raumverwaltung und Kunstwerksverwaltung übergeben
         planung = new Ausstellungsplanung(raeume, kunstwerke); 
         
-        
-        /* ###############################
-         * ---- TEST--------------------*/ 
-        planung.setKostenobergrenze(999999999);
-        planung.setSchwerpunktthema("Aktmalerei"); //"Aktmalerei" "Rokoko" ""
-        planung.setQualitaetsgewicht(0.5);
-        
-        /*planung.generiereAusstellungen();
-        ArrayList <ArrayList <Kunstwerk>> planungsergebnis = planung.getBestesMapping(); // gibt entweder das beste Mapping oder Null, wenn es keine Minimallösung gab
-        if (planungsergebnis==null)
-        {
-            // hier sollte automatisch die Konsole aufrufen
-            System.out.println("TEST: back to Konsole");
-        } else
-        {
-            // hier kann die Ausgabedatei angestoßen weren
-            System.out.println("TEST: hier kann die Ausgabedatei angestoßen weren");
-        };
-        */
-       
-        
-        planung.variationsAnalyse();
-        // --- TEST ENDE -----------------
-        // ###############################
-        
-        
-
         // Ausgabe der privaten Methode der Klasse Museum
-        //gebeMenuAus(); 
+        gebeMenuAus(); 
     }
 
     /**
