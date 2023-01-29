@@ -312,6 +312,11 @@ public class Museum
                     Ausgabedatei datei3 = new Ausgabedatei("ausleihdaten.txt", planungsErgebnis, raeume);
                     datei3.schreibeAusleihen();
                 }
+                else
+                {
+                    System.out.print("Keine Minimallösung gefunden. Bitte prüfen Sie die Konfigurationsparameter (Kostenobergrenze, Schwerpunktthema, Qualitätsgewicht).");
+                }
+                
             }
             
             // behandelt die Eingabe eines Schwerpunktthemas
