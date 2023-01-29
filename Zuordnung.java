@@ -20,7 +20,7 @@ import java.util.ArrayList;
 
 *<pre>
 * Die Planungssoftware soll ein Optimierungsproblem lösen können. Unser Ansatz ist, dass nach dem Zufallsprinzip verschiedene Zuordnungen 
-* von Kunstwerken zu Räumen versucht vornimmt. Die Klasse Ausstellungsplanung kann dann diese Zuordnungen vergleichen und die beste Zuordnung auswählen,
+* von Kunstwerken zu Räumen versucht werden. Die Klasse Ausstellungsplanung kann dann diese Zuordnungen vergleichen und die beste Zuordnung auswählen,
 * für die dann entsprechende Ausgabedateien erzeugt werden.
 * 
 * Eine Kernfrage unserer Zuordnung ist, was der nächste Raum ist, in den man welches Kunstwerk als nächstes zuordnet.
@@ -859,10 +859,42 @@ public class Zuordnung
     /**
      * Gibt das Mapping Kunstwerke-Räume der Zuordnung aus. Dieses Mapping ist die Zuordnung im engeren Sinne und wird von der Klasse Ausgabedatei gebraucht,
      * um die Ausgabedateien zu erzeugen.
+     * 
+     * Erläuterung zum Mapping: die Räume werden durch die äußere Arraylist von ArrayList <ArrayList <Kunstwerk >>() dargestellt. Das heißt, hieraus ist tatsächlich nur die
+     * Reihenfolge der Räume abzulesen (woraus dann in Form der inneren Arraylist aber entnommen werden kann, welche 0..n Kunstwerk-Objekte zugeordnet sind). Die Reihenfolge 
+     * der Räume ist dieselbe, wie sie mit raumverwaltung.getRaumVector() vorliegt.
      */
     public ArrayList <ArrayList <Kunstwerk >> getDenRaeumenZugeordneteKunstwerke()
     {
-        return denRaeumenZugeordneteKunstwerke;
+        return denRaeumenZugeordneteKunstwerke; // die Einträge liegen in derselben Reihenfolge vor, wie die Räume in der Raumverwaltung sortiert sind. Ein Eintrag pro Raum.
+    }
+    
+    /**
+     * Über diese Methode können die aktuell erlaubten Werte für die minimale/maximale Feuchte und Temperatur abgerufen werden. Diese liegen in Form von vier Arrays vor. Die Arrays
+     * haben jeweils einen Eintrag pro Raum. Die Reihenfolge der Räume ist dieselbe, wie sie mit raumverwaltung.getRaumVector() vorliegt.
+     * 
+     * Es muss jeweils spezifiziert werden, welcher der vier Arrays gewünscht ist.Die Angaben werden von der Klasse Ausgabedatei gebraucht, um die Ausgabedateien zu erzeugen.
+     */
+    public int []  getRangesFeuchtenTemperaturen (String welcherAspekt)
+    {
+        int [] ausgabe = minFeuchteRaum;
+        if (welcherAspekt.equals( "minFeuchteRaum"))
+        {
+            ausgabe = minFeuchteRaum;
+        }
+        else if (welcherAspekt.equals( "maxFeuchteRaum"))
+        {
+            ausgabe = maxFeuchteRaum;
+        }
+        else if (welcherAspekt.equals( "minTempRaum"))
+        {
+            ausgabe = minTempRaum;
+        }
+        else if (welcherAspekt.equals( "maxTempRaum"))
+        {
+            ausgabe = maxTempRaum;
+        }
+        return ausgabe; // die Einträge liegen in derselben Reihenfolge vor, wie die Räume in der Raumverwaltung sortiert sind. Ein Eintrag pro Raum.
     }
     
     /**

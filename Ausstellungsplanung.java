@@ -10,6 +10,7 @@ import java.util.*;
  * -- Danach werden die Minimallösungen erweitert, indem weitere Platzierungen in den Räumen versuchen werden. Dies wird ohne Schwerpunktthema unmittelbar begonnen.
  * - Schließlich wird eine Methode zum Vergleich von Zuordnungen implementiert, um im eher wahrscheinlichen Fall mehrerer Lösungen die optimale Lösung auszuwählen.
  * - Die Klasse Ausgabedatei benötigt Zugang zum besten Mapping Räume-Kunstwerke, wozu wir eine public Methode anbieten.
+ * - Ähnlich gibt es eine Methode, die die Klasse Ausgabedatei nutzen kann, um für die beste Lösung die Bandbreiten der erlaubten Feuchten/Temperaturen abzurufen
  * - Außerdem gibt es hier in Form von getter und setter die Verwaltung für folgende Parameter: 1) Schwerpunktthema 2) Kostenobergrenze 3) Qualitätsgewicht 
  * 
  * 
@@ -182,6 +183,24 @@ public class Ausstellungsplanung
         }
         return null;
     }
+    
+    /**
+     * Die Klasse Ausgabedatei benötigt für die beste Lösung die Bandbreiten der erlaubten Feuchten/Temperaturen der Räume, wozu wir diese Methode anbieten.  
+     * Gibt null aus, wenn keine Minimallösung gefunden wurde. 
+     * 
+     * Als Input wird ein Element aus ["minFeuchteRaum", "maxFeuchteRaum","minTempRaum","maxTempRaum"] erwartet.
+     */
+    
+    public int[] getBestesMappingErlaubteFeuchtenTemperaturen (String welcherAspekt)
+    {
+        if (erweiterungsloesungAbgeschlossen == true) // Die Auswahl des besten Vorgangs erfolgt nur aus den erweiterten Lösungen.
+        {
+            return zuordnungsverwaltung.getZuordnung(vergleicheAusstellungskandidatenWaehleBeste()) // den Index der besten Zuordnung ansteuern
+                                       .getRangesFeuchtenTemperaturen(welcherAspekt); // und sich von dieser besten Zuordnung nur das Mapping ausgeben lassen
+        }
+        return null;
+    }
+    
     
     /**
      * Suche nach dem (Index des) besten Mappings

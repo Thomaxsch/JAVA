@@ -41,6 +41,8 @@ public class Museum
         planung = new Ausstellungsplanung(raeume, kunstwerke); 
         
         // Ausgabe der privaten Methode der Klasse Museum
+        //planung.variationsAnalyse();
+        
         gebeMenuAus(); 
     }
 
@@ -301,6 +303,12 @@ public class Museum
                                
                 if (planungsErgebnis != null)
                 {
+                    // Die Arrays haben jeweils einen Eintrag pro Raum. Die Reihenfolge der Räume ist dieselbe, wie sie mit raumverwaltung.getRaumVector() vorliegt.
+                    int[] A = planung.getBestesMappingErlaubteFeuchtenTemperaturen("minFeuchteRaum");
+                    int[] B = planung.getBestesMappingErlaubteFeuchtenTemperaturen("maxFeuchteRaum");
+                    int[] C = planung.getBestesMappingErlaubteFeuchtenTemperaturen("minTempRaum");
+                    int[] D = planung.getBestesMappingErlaubteFeuchtenTemperaturen("maxTempRaum");
+                    
                     // Deklaration und Initialisierung einer Objektvariablen der Klasse Ausgabedatei
                     // als Parameter wird das Stringliteral "raumdatei.csv" und das Ergebnis der Ausstellungplanung als ArrayList übergeben
                     Ausgabedatei datei1 = new Ausgabedatei("raumdatei.txt", planungsErgebnis, raeume);
