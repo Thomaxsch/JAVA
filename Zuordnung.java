@@ -2,13 +2,15 @@ import java.util.*;
 import java.util.ArrayList;
 
 /**
- * Die vorliegende Klasse ist eine Datenklasse für die einzelne Zuordnung von Raum und Kunstwerk(en). Sie enthält in diesem Zusammenhang nicht nur 
- * das Mapping Raum-Kunstwerk, sondern eine ganze Reihe von Datenstrukturen:
- *  -
- *  ... (verschachtelte) Listenartige Objekte ArrayList und Array.
- *  
- * Zusätzlich sind in der Klasse mehrere Aspekte der Geschäftslogik im Details implementiert. Die Klasse wird hierbei auch unterstützt durch die Klassen
- * Kunstwerkverwaltung und Raumverwaltung (zufällger Raum ...)
+ * Die vorliegende Klasse ist eine Datenklasse für die einzelne Zuordnung von Raum und Kunstwerk(en). 
+ * 
+ * Sie enthält in diesem Zusammenhang nicht nur das Mapping Raum-Kunstwerk, sondern eine ganze Reihe von Datenstrukturen in Form listenartiger Objekte (verschachtelter) ArrayList und Array. 
+ * Hierbei kommt als wesentlicher Unterschied zum Tragen, dass ArrayLists eine flexible Länge haben (z.B. beliebig viele Kunstwerke eines Raumes). Dafür können sie nicht direkt 
+ * Primitives aufnehmen (z.B. integer-Wert der erlaubten Feuchte im Raum). So kommt es, dass wir manchmal Arrays und manchmal ArrayListen verwenden. Die listenartigen Objekte sind weiter
+ * unten erklärt, wo sie deklariert werden ("Attribute" der Klasse) und sind konsequent sprechend benannt.
+ * 
+ * Zusätzlich sind in der Klasse mehrere Aspekte der Geschäftslogik im Detail implementiert. Die Klasse wird hierbei auch unterstützt durch die Klassen
+ * Kunstwerkverwaltung und Raumverwaltung (insbesonders Auswahl eines zufälligen leeren Raumes sowie Suche des bestes Kunstwerkes in gegebener Situation).
  * 
  * Die Klasse besteht aus folgenden Methoden (Kurzübersicht)...
  *  
@@ -38,24 +40,24 @@ import java.util.ArrayList;
 * Wenn kein Schwerpunktthema vorgegeben wird (Wert ""), dann wird direkt mit der Lösungserweiterung begonnen.
 * 
 * Die Qualitätsgewichtung fließt bei unserer Lösungsfindung auf zweierlei Weisen ein:
-*	- Bei der Suche nach dem jeweils noch besten möglichen Kunstwerk für einen Raum. Hierbei bestimmt das Gewicht den Einfluss folgender Gütekriterien:
-*		○ Attraktivität des Kunstwerkes
-*		○ Attraktivität pro Kosten des Kunstwerkes
-*	- Bei der Lösungserweiterung (s.o. unter 2.) wird immer wieder der Raum mit dem größten Verbesserungsbedarf gesucht. Hierbei gewichten wir folgende Bedürftigkeitskriterien:
-*		○ Geringer Mittelwert der Attraktivität der Kunstwerke (leere Räume berücksichtigen wir mit einem Attraktivitätswert von 0)
-*		○ Geringer Anteil der belegten Wandfläche des Raumes
+*    - Bei der Suche nach dem jeweils noch besten möglichen Kunstwerk für einen Raum. Hierbei bestimmt das Gewicht den Einfluss folgender Gütekriterien:
+*        ○ Attraktivität des Kunstwerkes
+*        ○ Attraktivität pro Kosten des Kunstwerkes
+*    - Bei der Lösungserweiterung (s.o. unter 2.) wird immer wieder der Raum mit dem größten Verbesserungsbedarf gesucht. Hierbei gewichten wir folgende Bedürftigkeitskriterien:
+*        ○ Geringer Mittelwert der Attraktivität der Kunstwerke (leere Räume berücksichtigen wir mit einem Attraktivitätswert von 0)
+*        ○ Geringer Anteil der belegten Wandfläche des Raumes
 *
 * Diese Aspekte der Gewichtung steuern wir mit einem einzigen Parameter. Eine hohe Qualitätsgewichtung rückt die Attraktivität in den Mittelpunkt,
 * sodass tendenziell die Raumbelegung (Quantität) abnimmt, und umgekehrt.
 * 
 * Darüber hinaus steuern wir ohne Parametrisierungsmöglichkeit, dass …
-*	- … Kunstwerke nur für die Platzierung im Raum in Frage kommen, wenn sie mindestens so viel Attraktivität aufweisen wie der aktuelle Mittelwert im Raum,
-*	  also eine echte Attraktivitätsverbesserung versprechen. Dies zahlt auf den Qualitätsaspekt ein.
-*	- Jedoch dürfen in Räumen mit einer aktuellen Wandbelegung unter 60%  Bilder trotzdem platziert werden, 
-*	  d.h. selbst wenn dadurch der reine Attraktvitätsmittelwert des Raums sinken würde. Dies zahlt auf den Quantitätsaspekt ein.   
-*	
+*    - … Kunstwerke nur für die Platzierung im Raum in Frage kommen, wenn sie mindestens so viel Attraktivität aufweisen wie der aktuelle Mittelwert im Raum,
+*      also eine echte Attraktivitätsverbesserung versprechen. Dies zahlt auf den Qualitätsaspekt ein.
+*    - Jedoch dürfen in Räumen mit einer aktuellen Wandbelegung unter 60%  Bilder trotzdem platziert werden, 
+*      d.h. selbst wenn dadurch der reine Attraktvitätsmittelwert des Raums sinken würde. Dies zahlt auf den Quantitätsaspekt ein.   
+*    
 * Die folgende Tabelle zeigt unser Verständnis des Optimierungsproblems auf. 
-* Ganz rechts ist dargestellt, was bei der Minimal- bzw. der Erweiterungslösung zu beachten ist.	
+* Ganz rechts ist dargestellt, was bei der Minimal- bzw. der Erweiterungslösung zu beachten ist.    
 |-----------------------------------|-------------------------------------------------------------------------|-------------|------------------------|--------------|
 | #                                 | Optimierungsproblem                                                     | Bezug       | Relevanz Min           | Relevanz Erw |
 |-----------------------------------|-------------------------------------------------------------------------|-------------|------------------------|--------------|
@@ -63,7 +65,7 @@ import java.util.ArrayList;
 | Ziel                              | Wenig freie Wandfläche                                                  | Ausstellung | ja                     | ja           |
 | Restriktion 1                     | Kostenobergrenze einhalten                                              | Ausstellung | ja                     | ja           |
 | Restriktion 2                     | Schwerpunktthema in mindestens der Hälfte der Räume vertreten           | Ausstellung | ja als Zwischenziel    | Nein!        |
-| Restriktion 3                     | In einem Raum höchstens drei verschiedene Themen                        | Raum        | nein (da <= 1 KW/Raum) | ja           |
+| Restriktion 3                     | in einem Raum höchstens drei verschiedene Themen                        | Raum        | nein (da <= 1 KW/Raum) | ja           |
 | Restriktion 4                     | Bilder hinsichtlich Temperatur & Feuchte ohne Widerspruch               | Raum        | nein (da <= 1 KW/Raum) | ja           |
 | Restriktion 5                     | Für alle Kunstwerke muss die Höhe zum Raum passen                       | Raum        | ja                     | ja           |
 | Restriktion 6                     | Bilder Abstand min 1m an Wand                                           | Raum        | ja                     | ja           |
@@ -86,55 +88,65 @@ public class Zuordnung
     // === Attribute
     // ==========================================================================
    
-    private Kunstwerkverwaltung kunstwerkverwaltung;//Damit wir später auf Methoden der Kunstwerk- bzw. Raumverwaltung zugreifen können
-    private Raumverwaltung raumverwaltung;          //Damit wir später auf Methoden der Kunstwerk- bzw. Raumverwaltung zugreifen können
+    // Damit wir später auf Methoden der Kunstwerk- bzw. Raumverwaltung zugreifen können:
+    private Kunstwerkverwaltung kunstwerkverwaltung;
+    private Raumverwaltung raumverwaltung;
     
-    private Kunstwerk [] kunstwerkeArray;           // um die Referenzen auf die Kunstwerke vom Import aufzunehmen (alle Kunstwerke)
-    private Raum [] raeumeArray;                    // um die Referenzen auf die Räume vom Import aufzunehmen (alle Räume)
-
-    private ArrayList <ArrayList <Kunstwerk >> denRaeumenZugeordneteKunstwerke = new ArrayList <ArrayList <Kunstwerk >>(); // Liste von (Kunstwerke im Raum) pro Raum. Nested array list.
-    // Die äußere ArrayList wird später so viele Elemente haben wie es Räume gibt,
-    // während die innere ArrayList die Anzahl der Kunstwerke in einem konkreten Raum angibt (Anzahl Elemente der inneren Arraylist: von keins ... bis theroetisch max Anzahl Kunstwerke)
+    // Um die Referenzen auf die Kunstwerke bzw. Räume vom Import aufzunehmen (alle Kunstwerke/Räume):
+    private Kunstwerk [] kunstwerkeArray;           
+    private Raum [] raeumeArray;
     
-    // Analog, welche Themen im Raum erlaubt sind, pro Raum - 
-    // was entweder genau drei Stück sind, dann sind nur die drei Themen noch erlaubt
-    // oder die ArrayList des Raums hat weniger als drei Einträge, dann ist noch alles erlaubt an Themen
+    // Die Zuordnung der Kunstwerke zu Räumen. Liste von Kunstwerke im Raum pro Raum(nested ArrayList):
+    private ArrayList <ArrayList <Kunstwerk >> denRaeumenZugeordneteKunstwerke = new ArrayList <ArrayList <Kunstwerk >>();
+    // - Die äußere ArrayList wird so viele Elemente haben wie es Räume gibt. Sie enthät nicht direkt Räume,aber anhand der Position kann man in raeumeArray den entsprechenden Raum finden.
+    // - Die innere ArrayList enthält Referenzen auf die Kunstwerke in einem konkreten Raum (Anzahl Elemente der inneren ArrayList: von keins ... bis theroetisch max Anzahl Kunstwerke)
+    
+    // Ebenso haben wir eine verschachtelte ArrayList, in der für jeden Raumindex (Position in äußerer ArrayList) festgehalten wird, welche Themen im Raum erlaubt sind:
     private ArrayList <ArrayList <String >> welcheThemenDuerfenNochInRaum = new ArrayList <ArrayList <String >> (); 
+    // - Entweder sind genau drei Themen als Strings für den Raum aufgefüht. Dann sind nur noch Kunstwerke mit einem dieser drei Themen im Raum erlaubt
+    // - Oder die ArrayList des Raums hat weniger als drei Einträge, dann ist noch alles erlaubt an Themen.
      
-    // Liste, welche Typen noch in den Raum dürfen, pro Raum - mit den erlaubten Werten "BIG" oder "BG": 
-    private ArrayList <String> welcheTypenDuerfenNochInRaum = new ArrayList <String>(); // 
+    // Liste, welche Typen noch in den Raum dürfen (pro Raum) - mit den erlaubten Werten "BIG" oder "BG" oder "": 
+    private ArrayList <String> welcheTypenDuerfenNochInRaum = new ArrayList <String>();
+    // - noch B/I/G (kein Bild oder Gegenstand bisher im Raum) oder
+    // - nur noch weitere B/G im Raum platziert werden kann (ein Bild oder Gegenstand im Raum) oder 
+    // - nichts mehr, weil schon eine I im Raum ist 
     
-    private ArrayList <Kunstwerk> kunstwerkeSchonZugeordnet = new ArrayList <Kunstwerk >(); // Liste aller Kunstwerke, die schon einem Raum zugeordnet wurden. Arraylist mit flex. Länge
-    private ArrayList <Raum> raeumeSchonFertigEinSchwerpunktKW = new ArrayList <Raum>(); // Initalisierung der Liste aller Räume, denen im Rahmen der Minimallösung schon ein KW zugeordnet wurde
-                                                                    // oder nicht mit einem Schwerpunktthema belegt werden konnten. Arraylist mit flex. Länge
+    // Liste aller Kunstwerke, die schon einem Raum zugeordnet wurden: 
+    private ArrayList <Kunstwerk> kunstwerkeSchonZugeordnet = new ArrayList <Kunstwerk >(); 
     
-    private double [] raeumeBedarfWeitereKunstwerke; // je näher Richtung 1, desto bedürftiger ist der Raum mit diesem Index. 
-                                                     // bei einem Wert von 0 ist der Raum perfekt gefüllt oder nicht weiter füllbar.
+    // Initalisierung der Liste aller Räume, denen im Rahmen der Minimallösung schon ein KW zugeordnet wurde, oder die nicht mit einem Schwerpunktthema belegt werden konnten.
+    private ArrayList <Raum> raeumeSchonFertigEinSchwerpunktKW = new ArrayList <Raum>(); 
     
-    //// Auch die folgenden Arrays zu Raumdimensionen werden später so viele Elemente habe wie es Räume gibt (d.h. je ein Wert von z.B. Höhe pro Raum)
-    //relevant für B:
-    private int [] verfuegbarWandWest; // Liste von (noch verfuegbarer Wandplatz) pro Raum
-    private int [] verfuegbarWandOst;  // Liste von (noch verfuegbarer Wandplatz) pro Raum
-    private int [] verfuegbarWandNord; // Liste von (noch verfuegbarer Wandplatz) pro Raum
-    private int [] verfuegbarWandSued; // Liste von (noch verfuegbarer Wandplatz) pro Raum
+    // Array der Bedarfswerte pro Raum, was im Rahmen der Erweiterungslösung wichtig ist, um zu entscheiden welcher Raum als nächstes für die Platzierung in Frage kommt:
+    private double [] raeumeBedarfWeitereKunstwerke;
+    // - je näher Richtung 1, desto bedürftiger ist der Raum mit diesem Index. 
+    // - bei einem Wert von 0 ist der Raum perfekt gefüllt (Güte 1) oder nicht weiter füllbar (Güte kann auch kleiner 1 sein).
+    
+    // Auch die folgenden Arrays zu Raumdimensionen, Temperatur und Feuchte werden später so viele Elemente habe wie es Räume gibt (d.h. je ein Wert von z.B. Höhe pro Raum)
+    // - relevant für B:
+    private int [] verfuegbarWandWest; // Liste von (noch verfügbarer Wandplatz West) pro Raum
+    private int [] verfuegbarWandOst;  // Liste von (noch verfügbarer Wandplatz Ost) pro Raum
+    private int [] verfuegbarWandNord; // Liste von (noch verfügbarer Wandplatz Nord) pro Raum
+    private int [] verfuegbarWandSued; // Liste von (noch verfügbarer Wandplatz Süd) pro Raum
     private int [] minFeuchteRaum; // Liste von (aufgrund platzierter Bilder erlaubte Feuchte) pro Raum
     private int [] maxFeuchteRaum; // Liste von (aufgrund platzierter Bilder erlaubte Feuchte) pro Raum
     private int [] minTempRaum; // Liste von (aufgrund platzierter Bilder erlaubte Temperatur) pro Raum
     private int [] maxTempRaum; // Liste von (aufgrund platzierter Bilder erlaubte Temperatur) pro Raum
-
-    //relevant für KG und KI:
-    private int [] verfuegbarLaengeRaum; // Liste von (noch verfuegbarer Raumdistanz) pro Raum
-    private int [] verfuegbarBreiteRaum; // Liste von (noch verfuegbarer Raumdistanz) pro Raum
-    //relevant für alle KW:
-    private int [] verfuegbarHoeheRaum; // Liste von (Höhe) pro Raum
+    // - relevant für KG und KI:
+    private int [] verfuegbarLaengeRaum; // Liste von (noch verfügbarer Raumdistanz der einen Raumachse) pro Raum
+    private int [] verfuegbarBreiteRaum; // Liste von (noch verfügbarer Raumdistanz der anderen Raumachse) pro Raum
+    // - relevant für alle KW:
+    private int [] verfuegbarHoeheRaum; // Liste von (noch verfügbarer Höhe) pro Raum
     
-    private double kostenobergrenze; //Vorgegebene Kostenobergrenze der Ausstellung
-    private double restbudget; // noch verbliebenes Budget
-    private double qualitaetsgewicht; //Gewichtung der Qualität (Werte von 0 bis 1; das Gewicht der Quantität ergibt sich umgekehrt als 1 minus qualitaetsgewicht).
-                                           // default 0.5
-    private String schwerpunktthema; //Vorgegebenes Schwerpunktthema der Ausstellung
-    private int wieOftWurdeSchonEinSchwerpunktKunstwertPlatziert = 0;
-    private int wieOftWurdeSchonEineInstallationPlatziert = 0;
+
+    private double qualitaetsgewicht; // Vorgegebene Qualitätsgewichtung (Werte von 0 bis 1; das Gewicht der Quantität ergibt sich umgekehrt als 1 minus Qualitaetsgewicht). Default-Wert 0.5. 
+    private String schwerpunktthema; // Vorgegebenes Schwerpunktthema der Ausstellung. Default "" für keines.
+    private double kostenobergrenze; // Vorgegebene Kostenobergrenze der Ausstellung. Default 999999999.
+    private double restbudget; // Noch verbliebenes Budget, was mit der voranschreitenden Platzierung von Kunstwerken immer weiter abnimmt.
+    private int wieOftWurdeSchonEinSchwerpunktKunstwertPlatziert = 0; // Wie oft über alle Räume schon ein Schwerpunktkunstwerk platziert wurde.
+    private int wieOftWurdeSchonEineInstallationPlatziert = 0; // Wie oft über alle Räume schon eine Installation platziert wurde.
+    private int wieOftGabEsValidierungsprobleme = 0; // Wie oft die Validierungsmethode das Eregbnis der Methode der Kunstwerkverwaltung zur Suche eines passenden KW nicht bestätigt
     
     // ==========================================================================
     // === Konstruktoren
@@ -206,7 +218,7 @@ public class Zuordnung
             //und analog:
             welcheThemenDuerfenNochInRaum.add(new ArrayList<String>());
             
-            welcheTypenDuerfenNochInRaum.add("BIG"); // anfangs dürfen boch B I G in den Raum bis ein I gesetzt wurde
+            welcheTypenDuerfenNochInRaum.add("BIG"); // anfangs dürfen boch B I G in den Raum bis ein I gesetzt wurde (dann nichts mehr) oder B oder ein G (dann nur noch BG)
         }
         
         //Restbudget initial mit dem vollen Betrag belegen
@@ -295,8 +307,9 @@ public class Zuordnung
 
             
 
-            // Jetzt validieren wir einer Methode der Klasse "Zuordnung", ob das Kunstwerk wirklich passt, oder ob sich in der Implementierung ein Fehler eingeschlichen hat:
-            if (!passtKunstwerkDimensionalInRaum(zuSetzendesKW,r))
+            // Jetzt validieren wir einer Methode der Klasse "Zuordnung", ob das Kunstwerk wirklich passt, oder ob sich in der Implementierung ein Fehler eingeschlichen haben könnte
+            boolean problem = (passtKWValidierung (zuSetzendesKW,r) != (laufendeNummer>=0));
+            if (problem)
             {
                 System.out.println("XXXXxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxACHTUNG WIDERSPRUCH:" +
                                     "es konnte nicht validiert werden, dass das KW in den Raum" + raeumeArray[r].getNummer() + " passt.");
@@ -356,12 +369,11 @@ public class Zuordnung
         
         for (int r=0;r<raeumeArray.length;r++)
         {
-            raeumeBedarfWeitereKunstwerke[r] = 1 - gueteRaum(r);
+            raeumeBedarfWeitereKunstwerke[r] = 1 - gueteRaumKombiniert(r);
             
-            // Wir prüfen auch bereits, ob schon eine Kunstinstallation im Raum ist. Dann wissen wir auch sicher, dass sonst nichts mehr herein passt:
-            boolean RaumBlockiertDurchKunstinstallation= (welcheTypenDuerfenNochInRaum.get(r).equals("BG")); // dann ist "BIG" nicht mehr erlaubt, weil I im Raum
-            if (RaumBlockiertDurchKunstinstallation){
-                raeumeBedarfWeitereKunstwerke[r] = 0;
+            if (welcheTypenDuerfenNochInRaum.get(r).equals("")) // dann sind im Raum keine weiteren KW möglich, weil eine Installation aus der Minimallösung diesen blockiert
+            {
+                raeumeBedarfWeitereKunstwerke[r] = 0; // daher gilt der Raum für uns von Anfang an als abgeschlossen.
             }
         }
         
@@ -393,28 +405,42 @@ public class Zuordnung
                 minFeuchteRaum[r], maxFeuchteRaum[r],minTempRaum[r], maxTempRaum[r],                    // relevant für Bilder
                 welcheThemenDuerfenNochInRaum.get(r),  // falls diese ArrayList genau (!) drei Elemente enthält, sind nur noch KW mit einem dieser Themen erlaubt
                 welcheTypenDuerfenNochInRaum.get(r),   // Es wird "BIG" oder "BG" übergeben (ob der Typ egal ist oder es nur noch B/G sein darf)
-                gueteRaumAttraktivitaet(r),            // Aktueller Durchschnitt der Attraktivität der Kunstwerke im Raum -> wir platzieren nur KW mit höherem Attraktivitätswert...
-                gueteRaumBelegung(r)                   // Anteil der aktuellen Wandbelegung des Raumes mit Bildern -> ... es sei denn es geht um ein Bild und die Raumbelegung ist noch < 60%
+                gueteRaumAttraktivitaet(r),  // Aktueller Durchschnitt der Attraktivität der Kunstwerke im Raum -> wir platzieren nur KW mit höherem Attraktivitätswert...
+                gueteRaumBelegung(r)   // Anteil der aktuellen Wandbelegung des Raumes mit Bildern -> ... es sei denn es geht um ein Bild und die Raumbelegung ist noch < 60%
                 );
-            if (zuSetzendesKunstwerkLaufendeNummer>=0) // Ein Kunstwerk passt.
+
+            if (zuSetzendesKunstwerkLaufendeNummer>=0) // Die Kunstwerkverwaltung konnte für uns ein freies passendes Kunstwerk für diesen Raum finden
             {
-                // Wir setzen das Kunstwerk
                 Kunstwerk zuSetzendesKW = kunstwerkverwaltung.showKunstwerkZuLaufendeNummer(zuSetzendesKunstwerkLaufendeNummer);
+                
+                // Jetzt validieren wir, ob das Kunstwerk wirklich passt, oder ob sich in der Implementierung ein Fehler eingeschlichen haben könnte
+                boolean problem = (passtKWValidierung (zuSetzendesKW,r) != true);
+                if (problem)
+                {
+                    System.out.println("XXXXxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxACHTUNG WIDERSPRUCH:" +
+                                    "es konnte nicht validiert werden, dass das KW in den Raum" + raeumeArray[r].getNummer() + " passt.");
+                }
+                
+                // Wir setzen das Kunstwerk
                 denRaeumenZugeordneteKunstwerke.get(r).add(zuSetzendesKW);
                 System.out.println("---> Es wurde belegt Raum " + raeumeArray[r] + " !" );
                 aktualisiereParameterNachSetzen(zuSetzendesKW,r); 
                 
-                // (((Jetzt validieren wir einer Methode der Klasse "Zuordnung", ob das Kunstwerk wirklich passt, oder ob sich in der Implementierung ein Fehler eingeschlichen hat:
-                if (!passtKunstwerkDimensionalInRaum(zuSetzendesKW,r))
+                // Aktualisieren des Bedarfes vom Raum
+                if (welcheTypenDuerfenNochInRaum.get(r).equals("BG")) // wenn schon ein Bild oder ein Kunstgegenstand im Raum ist, dürfen noch weitere B oder G in den Raum
                 {
-                    System.out.println("YYYYyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyACHTUNG WIDERSPRUCH:" +
-                    "es konnte nicht validiert werden, dass das KW in den Raum" + raeumeArray[r].getNummer() + " passt.");
+                    // Aktualisieren des Bedarfs in diesem Raum mit dem nun aktuellen Wert
+                    raeumeBedarfWeitereKunstwerke[r] = 1 - gueteRaumKombiniert(r); 
                 }
-                
-                // Aktualisieren des Bedarfs in diesem Raum mit dem nun aktuellen Wert
-                raeumeBedarfWeitereKunstwerke[r] = 1 - gueteRaum(r);
+                else if (welcheTypenDuerfenNochInRaum.get(r).equals("")) // wenn eine Installation im Raum gesetzt wurde
+                {
+                    // Wenn eine Kunstinstallation platziert wurde, wissen wir sicher, dass sonst nichts mehr in den Raum herein passt und schließen den Raum ab (Bedarf 0).
+                    raeumeBedarfWeitereKunstwerke[r] = 0;
+                    System.out.println("---> Optimierung wurde abgeschlossen für die Belegung von Raum" + raeumeArray[r].getNummer() + " !" );
+                }
             }
-            else if (zuSetzendesKunstwerkLaufendeNummer<0) // Kein Kunstwerk passt mehr in diesen Raum
+            
+            else if (zuSetzendesKunstwerkLaufendeNummer<0) // Laut Kunstwerkverwaltung war kein freies passendes Kunstwerk mehr für den Raum zu finden
             {
                 // Wir setzen den Bedarf auf 0, damit dieser Raum abgeschlossen ist
                 raeumeBedarfWeitereKunstwerke[r] = 0;
@@ -452,7 +478,7 @@ public class Zuordnung
      *      - Temp Min/Max aufgrund Bildern im Raum
      *      - Feuchte Min/Max aufgrund Bildern im Raum
      *      - wenn es schon drei Themen im Raum gibt, welches das sind, weil dann nur noch diese erlaubt sind für weitere KW (Themen werden ab 1. Thema erfasst)
-     *      - ob noch B/I/G (kein Kunstwerk bisher im Raum) oder nur noch B/G im Raum platziert werden kann
+     *      - ob noch B/I/G (kein Kunstwerk bisher im Raum) oder nur noch B/G im Raum platziert werden kann (B/G im Raum) oder nichts mehr (I im Raum)
      *      - wie oft schon ein Kunstwerk des Schwerpunktthemas gesetzt wurde
      *      - wie oft schon eine Installation gesetzt wurde
      *      
@@ -660,11 +686,23 @@ public class Zuordnung
         }
 
         /////////////////////////////////////////////////////////////////////////
-        // Aktualisiere, ob noch B/I/G (kein Kunstwerk bisher im Raum) oder nur noch B/G im Raum platziert werden kann
-      
-        if (kw.getArt()=='I')
+        // Aktualisiere, ob
+        // --- noch B/I/G (kein Bild oder Gegenstand bisher im Raum) oder
+        // --- nur noch weitere B/G im Raum platziert werden kann (ein Bild oder Gegenstand im Raum) oder 
+        // --- nichts mehr, weil schon eine I im Raum ist 
+        if (kw.getArt()=='G'| kw.getArt()=='B')
         {
-            welcheTypenDuerfenNochInRaum.set(r,"BG"); // per Initialisierung steht dort sonst "BIG" als Eintrag
+            if (welcheTypenDuerfenNochInRaum.get(r).equals("BIG")) // per Initialisierung steht dort "BIG" als Eintrag, danach muss es in diesem Fall permanent "BG" bleiben
+            {
+                welcheTypenDuerfenNochInRaum.set(r,"BG");
+            }
+        }
+        else if(kw.getArt()=='I')
+        {
+            if (welcheTypenDuerfenNochInRaum.get(r).equals("BIG")) // per Initialisierung steht dort "BIG" als Eintrag, danach muss es in diesem Fall permanent "" bleiben
+            {
+                welcheTypenDuerfenNochInRaum.set(r,"");
+            }
         }
         
         /////////////////////////////////////////////////////////////////////////
@@ -675,7 +713,7 @@ public class Zuordnung
         }
         
         /////////////////////////////////////////////////////////////////////////
-        // Aktualisiere, wie oft schon eine Installation gesetzt wurde
+        // Aktualisiere, wie oft schon eine Installation gesetzt wurde über alle Räume hinweg
         
         if (kw.getArt()=='I')
         {
@@ -685,41 +723,44 @@ public class Zuordnung
     }
     
     // ==========================================================================
-    // === Raumbezogene Prüfmethoden
+    // === Validierungsmethoden
     // ==========================================================================  
     
     /**
-     * Passt Kunstwerk von den Dimensionen in den Raum (Restriktionen 5, 6, 7)
-     * 
-     * Prüft auch Restriktion 8, dass KI alleine in Raum, d.h. sonst keine Bilder oder KG 
+     * Passt Kunstwerk hinsichtlich Höhe in den Raum
      */
-    
-    public Boolean passtKunstwerkDimensionalInRaum(Kunstwerk in_Kunstwerk, int r) // Raum r
-    {
+    private Boolean passtKunstwerkHoehe (Kunstwerk in_Kunstwerk, int r){ // Raumindex r
         boolean passtHoehe = (in_Kunstwerk.getHoehe()<=verfuegbarHoeheRaum[r]);
-        if (passtHoehe==false)
+        System.out.println("-Höhe passt in Raum " + passtHoehe );
+        return passtHoehe;
+    }
+    
+    /**
+     * Passt Kunstwerk in den Raum hinsichtlich der Frage, ob eine Installation im Raum die weitere Platzierung von KW verhindert
+     */
+    private Boolean passtIblockiertNicht (Kunstwerk in_Kunstwerk, int r){ // Raumindex r
+        boolean passtIblockiertNicht = true;
+        if (in_Kunstwerk.getArt()=='B'| in_Kunstwerk.getArt()=='G')
         {
-            return false;
-        }
-        
-        if (in_Kunstwerk.getArt()=='B'|| in_Kunstwerk.getArt()=='G')
-        {
-            boolean blockiertDurchKunstinstallation = false;
-            
             //Wie folgt prüfen wir ab, ob es irgendein KW der Art I im Raum r gibt:
             for (Kunstwerk k: denRaeumenZugeordneteKunstwerke.get(r))
             {
                 if (k.getArt()=='I')
                 {
-                    blockiertDurchKunstinstallation =true;
+                    passtIblockiertNicht =false;
                 }
             }
-            
-            if (blockiertDurchKunstinstallation == true)
-            {
-                return false;
-            }
         }
+        System.out.println("-Raum ist nicht bereits durch eine I blockiert " + passtIblockiertNicht);
+        return passtIblockiertNicht;
+    }
+    
+    /**
+     * Passt Kunstwerk von den Dimensionen an die Wände (für Bilder) bzw. in die Fläche (KI, KG) des Raumes
+     */
+    private Boolean passtKunstwerkAnWandOderInFläche(Kunstwerk in_Kunstwerk, int r) 
+    {
+        boolean passtDim = false;
         
         if (in_Kunstwerk.getArt()=='B')
         {
@@ -727,20 +768,14 @@ public class Zuordnung
             boolean passtSued =(verfuegbarWandSued[r]-in_Kunstwerk.getBreite()>=0);
             boolean passtOst =(verfuegbarWandOst[r]-in_Kunstwerk.getBreite()>=0);
             boolean passtWest =(verfuegbarWandWest[r]-in_Kunstwerk.getBreite()>=0);
-            boolean passtBildAnEineWand = passtNord || passtSued  ||  passtOst || passtWest;
-            if (passtBildAnEineWand)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            passtDim = passtNord | passtSued  |  passtOst | passtWest;
+            System.out.println("-Bild passt an eine Wand " + passtDim);
         }
         
         if (in_Kunstwerk.getArt()=='G')
         {
-            Kunstgegenstand in_Kunstgegenstand = (Kunstgegenstand) in_Kunstwerk; // die Parentclass "Kunstwerk" hat nicht die Methode getLaenge, die wir aber gleich benötigen, daher casten wir
+            Kunstgegenstand in_Kunstgegenstand = (Kunstgegenstand) in_Kunstwerk; 
+            // die Parentclass "Kunstwerk" hat nicht die Methode getLaenge, die wir aber gleich benötigen, daher casten wir
             
             boolean passtQuerA = (verfuegbarLaengeRaum[r]-in_Kunstwerk.getBreite()>=0); //einmal quer im Raum platzieren, wobei quer aktuell beliebig (?) aber orthoginal zu laengs definiert ist
             boolean passtQuerB = (verfuegbarBreiteRaum[r]-in_Kunstgegenstand.getLaenge()>=0);
@@ -749,10 +784,8 @@ public class Zuordnung
             boolean passtLaengsB = (verfuegbarBreiteRaum[r]-in_Kunstwerk.getBreite()>=0);
             boolean passtLaengs = passtLaengsA && passtLaengsB;
             
-            if (passtQuer||passtLaengs)
-            {return true;}
-            else
-            {return false;}
+            passtDim = (passtQuer|passtLaengs);
+            System.out.println("-KG passt in Raumbreite und Raumlänge " + passtDim);
         }
             
         if (in_Kunstwerk.getArt()=='I') 
@@ -760,42 +793,58 @@ public class Zuordnung
             Kunstinstallation in_Kunstinstallation = (Kunstinstallation) in_Kunstwerk;
             // die Parentclass "Kunstwerk" hat nicht die Methode getLaenge, die wir aber gleich benötigen, daher casten wir
             
-            boolean schonAnderesKunstwerkImRaum = !denRaeumenZugeordneteKunstwerke.get(r).isEmpty(); // ! für "nicht"
-            
-            if (schonAnderesKunstwerkImRaum)
-            {return false;}
-            
             boolean passtQuerA = (verfuegbarLaengeRaum[r]-in_Kunstwerk.getBreite()>=0); //einmal quer im Raum platzieren, wobei quer orthoginal zu laengs definiert ist
             boolean passtQuerB = (verfuegbarBreiteRaum[r]-in_Kunstinstallation.getLaenge()>=0);
             boolean passtQuer = passtQuerA && passtQuerB;
             boolean passtLaengsA = (verfuegbarLaengeRaum[r]-in_Kunstinstallation.getLaenge()>=0); //einmal laengs im Raum platzieren
             boolean passtLaengsB = (verfuegbarBreiteRaum[r]-in_Kunstwerk.getBreite()>=0);
             boolean passtLaengs = passtLaengsA && passtLaengsB;
-            
-            if (passtQuer||passtLaengs)
-            {return true;}
-            else
-            {return false;}
+            passtDim = (passtQuer|passtLaengs);
+            System.out.println("-KI passt in Raumbreite und Raumlänge " + passtDim);
         }
-        
-                    
-        return null; // wenn die Methode null zurückgibt, ist etwas schiefglaufen; die Methode gibt Boolean anstatt boolean zurück, weil wir hier sonst zu true/false gezwungen wären
+        return passtDim;
     }
         
-
-    
-    
-    
-    
-    
-    
-    // ==========================================================================
-    // === Methoden für die Steuerung durch insb. die Ausstellungsplanung
-    // ========================================================================== 
-    
+    /**
+     * Darf in den Raum noch eine I? Nein, wenn bereits irgendein KW im Raum platziert ist?
+     */
+    private Boolean passtIWirdNichtBlockert (Kunstwerk in_Kunstwerk, int r){ // Raumindex r
+        boolean schonAnderesKunstwerkImRaum = !denRaeumenZugeordneteKunstwerke.get(r).isEmpty(); // ! für "nicht"
+        boolean passtIWirdNichtBlockert = true;
+        if (in_Kunstwerk.getArt()=='I') 
+        {   
+            if (schonAnderesKunstwerkImRaum)
+            {
+                System.out.println("-KI darf nicht platziert werden, weil es schon ein KW im Raum gibt!");
+                passtIWirdNichtBlockert = false;
+            }
+        }
+        return passtIWirdNichtBlockert;
+    }
     
     /**
-     * ...
+     * Fasst das Validierungsergebnis zusammen, ob ein KW in den Raum passt.
+     */
+    private Boolean passtKWValidierung (Kunstwerk in_Kunstwerk, int r){ // Raumindex r
+        boolean validierungsErgebnis = (passtKunstwerkHoehe(in_Kunstwerk,r) & 
+                                        passtIblockiertNicht(in_Kunstwerk,r) &
+                                        passtKunstwerkAnWandOderInFläche(in_Kunstwerk,r) &
+                                        passtIWirdNichtBlockert(in_Kunstwerk,r));
+        if (validierungsErgebnis == false ){
+            wieOftGabEsValidierungsprobleme ++;
+        }
+                                        
+        return validierungsErgebnis;
+    }
+
+    
+    // ====================================================================================
+    // === Methoden für die Steuerung (insbesondere auch durch die Ausstellungsplanung)
+    // ====================================================================================
+    
+    /**
+     * Die Methode prüft, ob in mindestens der Hälfte der Räume mindestens ein Kunstwerk vom Schwerpunkt platziert ist. Dann ist eine Minimallösung erreicht.
+     * 
      */
     
     public boolean wurdeMinimalloesungErreicht (){
@@ -807,6 +856,10 @@ public class Zuordnung
         return wurdeMinimalErreicht;
     }
     
+    /**
+     * Gibt das Mapping Kunstwerke-Räume der Zuordnung aus. Dieses Mapping ist die Zuordnung im engeren Sinne und wird von der Klasse Ausgabedatei gebraucht,
+     * um die Ausgabedateien zu erzeugen.
+     */
     public ArrayList <ArrayList <Kunstwerk >> getDenRaeumenZugeordneteKunstwerke()
     {
         return denRaeumenZugeordneteKunstwerke;
@@ -814,7 +867,7 @@ public class Zuordnung
     
     /**
      * Gibt die Güte der gesamten Zuordnung.  
-     * Die Güte wird mittels der Methode gueteRaum() gebildet, die wiederum auf gueteRaumBelegung() und gueteRaumAttraktivitaet() basiert.
+     * Die Güte wird mittels der Methode gueteRaumKombiniert() gebildet, die wiederum auf gueteRaumBelegung() und gueteRaumAttraktivitaet() basiert.
      */
     
     public double getZuordnungsGuete(){
@@ -823,7 +876,7 @@ public class Zuordnung
         double gueteSumme=0.0;
         
         for (int r=0;r<raeumeArray.length;r++){
-           gueteSumme += gueteRaum(r);
+           gueteSumme += gueteRaumKombiniert(r);
            anzahl++;
         }
         
@@ -831,11 +884,16 @@ public class Zuordnung
     }
     
     /**
-     * 
+     * Stellt einige Aspekte des Zuordnungsergebnisses als Array zusammen:
+     * - mittlere Güte der Raumbelegung (basierend auf gueteRaumBelegung(r))
+     * - mittlere Güte der Raumattraktivitaet (basierend auf gueteRaumAttraktivitaet(r))
+     * - mittlere kombinierte Güte der Räume (basierend auf getZuordnungsGuete())
+     * - das verbrauchte Budget
+     * Die Ausstellungsplanung und die Zuordnungsverwaltung nutzen diese Informationen, um sie auf der Konsolde darzustellen.
      */
     public double [] getZuordnungsErgebnisse()
     {
-        double [] zuordnungsErgebnisse = new double [3];
+        double [] zuordnungsErgebnisse = new double [4];
         
         
         double mittlereGueteRaumBelegung = 0;
@@ -848,16 +906,55 @@ public class Zuordnung
         mittlereGueteRaumBelegung = mittlereGueteRaumBelegung / raeumeArray.length;
         mittlereGueteRaumAttraktivitaet = mittlereGueteRaumAttraktivitaet / raeumeArray.length;
         
-        zuordnungsErgebnisse[0]= mittlereGueteRaumBelegung;
-        zuordnungsErgebnisse[1]= mittlereGueteRaumAttraktivitaet;
-        zuordnungsErgebnisse[2]= getZuordnungsGuete();
+        zuordnungsErgebnisse[0] = mittlereGueteRaumBelegung;
+        zuordnungsErgebnisse[1] = mittlereGueteRaumAttraktivitaet;
+        zuordnungsErgebnisse[2] = getZuordnungsGuete();
+        zuordnungsErgebnisse[3] = kostenobergrenze - restbudget; // dies ist das verbrauchte Budget (verbrauchtes Budet + restbudget = kostenobergrenze)
         
         return zuordnungsErgebnisse;
     }
     
-    // ==========================================================================
-    // === Methoden zur Bestimmung der Güte der Raumbelegung
-    // ========================================================================== 
+    /**
+     * Die Methode gibt einen Überblick über die Räume auf die Konsole aus und zeigt die darin platzierten Kunstwerke.
+     */
+    
+    public void ausgebenZuordnungAufKonsole()
+    {
+        // Zu Log- und Testzwecken die gefundene Zuordnung in die Konsole ausgeben:
+        System.out.println("\nSo sieht die Zuordnung nun aus:");
+        for (int r=0;r<raeumeArray.length;r++)
+        {
+            
+            System.out.println("------------------------------------");
+            System.out.print("# Raum " + raeumeArray[r].getNummer() + "  " + "\n");
+            System.out.println("------------------------------------");
+
+            for(Kunstwerk kw : denRaeumenZugeordneteKunstwerke.get(r))
+            {
+                System.out.println(kw);
+            } 
+        }    
+    }
+    
+    /**
+     * Ermittelt wie viele Kunstwerke im Rahmen der Zuordnung platziert wurden.
+     */
+    public int wieVieleKunstwerkePlatziert(){
+        return kunstwerkeSchonZugeordnet.size();
+    }
+    
+    /**
+     * Gibt aus, wie oft es zu Validierungsproblemen kam, also wie oft die Validierungsmethoden das Ergebnis der KW-Verwaltung zur Suche eines passenden KW nicht bestätigt.
+     */
+    public int getAnzahlValidierungsprobleme()
+    {
+        return wieOftGabEsValidierungsprobleme; 
+    }
+    
+    
+    // ===========================================================================================================================
+    // === Methoden zur Bestimmung der Güte der Raumbelegung sowie der Bedürftigkeit eines Raumes im Rahmen der Lösungserweiterung
+    // ===========================================================================================================================
     /**
      * Ermittelt für einen Raum den Anteil der aktuellen Wandbelegung mit Bildern
      */
@@ -900,17 +997,10 @@ public class Zuordnung
      * die Raumbelegung ein Quantitätsaspekt darstellt.
      * 
      */
-    private double gueteRaum(int r){
+    private double gueteRaumKombiniert(int r){
         
         return (gueteRaumAttraktivitaet(r)*qualitaetsgewicht + gueteRaumBelegung(r)*(1-qualitaetsgewicht));
     }
-    
-   
-    
-    // ==========================================================================
-    // === Methoden bzgl. der Bedürftigkeit eines Raumes im Rahmen der Lösungserweiterung
-    // ========================================================================== 
-    
     
     private int maxBedarfIndex(){
         // Suche nach einem Index, an dem der Bedarf maximal ist (klassische Maximumbestimmung):
@@ -947,32 +1037,4 @@ public class Zuordnung
         
         return indexMaxBedarf;
     }
-  
-    
-    // WEITERES 
-    public void ausgebenZuordnungAufKonsole()
-    {
-        // Zu Log- und Testzwecken die gefundene Zuordnung in die Konsole ausgeben:
-        System.out.println("\nSo sieht die Zuordnung nun aus:");
-        for (int r=0;r<raeumeArray.length;r++)
-        {
-            
-            System.out.println("------------------------------------");
-            System.out.print("# Raum " + raeumeArray[r].getNummer() + "  " + "\n");
-            System.out.println("------------------------------------");
-
-            for(Kunstwerk kw : denRaeumenZugeordneteKunstwerke.get(r))
-            {
-                System.out.println(kw);
-            } 
-        }    
-    }
-    
-    
-    public int wieVieleKunstwerkePlatziert(){
-        return kunstwerkeSchonZugeordnet.size();
-    }
-    
- 
-    
 }

@@ -110,6 +110,26 @@ public class Kunstwerkverwaltung
         return kunstwerkVector;
         }   
 
+    /**
+     * Methode, die alle vorkommenden Themen ausgibt
+     * 
+     * @return alle vorkommenden Themen
+     */
+    public ArrayList <String> getVorkommendeThemen ()
+    {
+        ArrayList <String> vorkommendeThemen = new ArrayList <String>();
+        for(Kunstwerk kw : kunstwerkVector) 
+        {
+            if (!vorkommendeThemen.contains(kw.getThema()))
+            {
+                vorkommendeThemen.add(kw.getThema());
+            }
+        }
+        return vorkommendeThemen;
+    }
+    
+    
+        
     
     /**
      * Methode zum Ermitteln eines Kunstwerkes anhand seiner laufendenNummer
@@ -295,15 +315,24 @@ public class Kunstwerkverwaltung
         /**
          * // hier wird ein Kunstwerk in ein Bild umgewandelt. Dies wird gemacht, um auf die "getMethoden" wie "getMinTemp" zugreifen zu können.
          */
-        Bild b = (Bild) kw; 
-        
+        Bild b;
+        if (kw.getArt()!='B')
+        {
+            b = (Bild) kw;
+        }
+        else
+        {
+            return true;
+        }
+         
+        // Das folgende wird nur für Bilder durchlaufen
         if(minFeuchteRaum <= b.getMinLuft() && maxFeuchteRaum >= b.getMaxLuft()) 
         {
             passtRaumFeuchte = true; 
         }
         else
         {
-            System.out.println("Das Bild kann nicht in den Raum plaziert werden, da die Luftfeuchtigkeit zu hoch oder zu niedrig ist");
+            //System.out.println("Das Bild kann nicht in den Raum plaziert werden, da die Luftfeuchtigkeit zu hoch oder zu niedrig ist");
             passtRaumFeuchte = false;
         }
         if (minTempRaum <= b.getMinTemp() && maxTempRaum >= b.getMaxTemp())
@@ -312,13 +341,11 @@ public class Kunstwerkverwaltung
         }
         else 
         {
-            System.out.println("Das Bild kann nicht in den Raum plaziert werden, da die Raumtemperatur zu hoch oder zu niedrig ist");
+            //System.out.println("Das Bild kann nicht in den Raum plaziert werden, da die Raumtemperatur zu hoch oder zu niedrig ist");
             passtRaumTemp = false;
         }
-        if (passtRaumFeuchte && passtRaumTemp == true)
-        {
-            passtFeuchteUndTemp = true;
-        }
+        passtFeuchteUndTemp = passtRaumFeuchte && passtRaumTemp;
+
         return passtFeuchteUndTemp;
     }
     
@@ -413,7 +440,7 @@ public class Kunstwerkverwaltung
                 verbessertKunstwerkRaum = true;
                 //wenn der Raum unter 60% belegt ist, kann das Bild noch in den Raum belegt werden, damit dieser nicht zu leer steht. 
             }
-            else if ((kw.getArt() == 'I' || kw.getArt() == 'G') & gueteRaumAttraktivitaet <= kw.getAttraktivitaet())
+            else if ((kw.getArt() == 'I' | kw.getArt() == 'G') & gueteRaumAttraktivitaet <= kw.getAttraktivitaet())
             {
                 verbessertKunstwerkRaum = true;
                 //hier wird auch nochmal geprüft, ob auch die Installationen oder Kunstgegenstände den Raum verbessern. Bei Installationen ist jedoch immer davon auszugehen,

@@ -12,6 +12,9 @@ import java.util.*;
  * - Die Klasse Ausgabedatei benötigt Zugang zum besten Mapping Räume-Kunstwerke, wozu wir eine public Methode anbieten.
  * - Außerdem gibt es hier in Form von getter und setter die Verwaltung für folgende Parameter: 1) Schwerpunktthema 2) Kostenobergrenze 3) Qualitätsgewicht 
  * 
+ * 
+ * TTO DO* : PLUS DIE BEIDEN VARIATIOSNANALYSE-METHODEN
+ * 
  * @author Thomas Scheidt
  * @version 19.12.2022
  */
@@ -32,7 +35,7 @@ public class Ausstellungsplanung
     private Kunstwerkverwaltung kunstwerkverwaltung;
     private Zuordnungsverwaltung zuordnungsverwaltung;
     
-    private int anzahlZuordnungen = 2;
+    private int anzahlZuordnungen = 10;
     
     private boolean erweiterungsloesungAbgeschlossen = false; // nachdem wir eine Lösungserweiterung vorgenommen haben, wird dies hier vermerkt
     
@@ -233,7 +236,88 @@ public class Ausstellungsplanung
             }
         }
     }
+    
+    public void variationsAnalyse()
+    {
+        System.out.println("*** Starte Variationsanalyse ***");
+        
+        String vorherEingestelltesSchwerpunktthema = schwerpunktthema;//vermerke bisher eingstellten Wert, damit wir ihn nach Variation wieder auf diesen Wert rücksetzen können
+        
+        ArrayList <String> vorkommendeThemen = kunstwerkverwaltung.getVorkommendeThemen(); // wir werden jedes der vorkommenden Thema als Vorgabe eines Variationsdurchlaufs machen
+        vorkommendeThemen.add(""); // wir möchten auch den Fall analysieren, dass kein Schwerpunktthema vorgegeben wurde
+        
+        ArrayList <String> ausgabeJeThema = new ArrayList <String> ();
+        
+        for (String thema : vorkommendeThemen)
+        {
+            setSchwerpunktthema(thema); //"Aktmalerei" "Rokoko" "" ...
+            
+            generiereAusstellungen(); // Bildung mehrerer Zuordnungen und jeweils Lösungssuche
+            int i = vergleicheAusstellungskandidatenWaehleBeste(); // gibt Index der besten Zuordnung, falls Erweiterungslösung abgeschlossen wurde; sonst -1
+            
+            // damit die Ausgabe auf der Konsole schön leserlich wird, müssen wir kürzere Themen mit Whitespace am Ende verlängern
+            thema = fuelleSpacesEin(thema,vorkommendeThemen);
+            
+            if (i>=0)
+            {
+                double [] ergebnisseBesteAusstellung = zuordnungsverwaltung.getZuordnung(i).getZuordnungsErgebnisse();            
+                ausgabeJeThema.add(thema + "|" + 
+                                    "#KWplatziert: " + zuordnungsverwaltung.getZuordnung(i).wieVieleKunstwerkePlatziert() +  "/" + kunstwerkverwaltung.sizeKunstwerkverwaltung()+  "|" +
+                                    "ØKombinierteGuete%: " +  Math.floor(ergebnisseBesteAusstellung[2]*1000)/10 + "|" +
+                                    "ØGueteRaumBelegung%: " +  Math.floor(ergebnisseBesteAusstellung[0]*1000)/10 +  "|" +        
+                                    "ØGueteRaumAttraktivitaet%: " +  Math.floor(ergebnisseBesteAusstellung[1]*1000)/10 +  "|" + 
+                                    // Math.floor rundet ab zum nächsten Integer. Durch obige Konstruktion können wir den double Wert auf 1 Nachkommastelle darstellen. 
+                                    "#Valid.-prob.:" + zuordnungsverwaltung.getZuordnung(i).getAnzahlValidierungsprobleme() +  "|" +
+                                    "Budgetverbrauch: " + (int) ergebnisseBesteAusstellung[3] + " €");
+                                     
+            }
+            else if (i<0)
+            {
+                ausgabeJeThema.add(thema + "|" +
+                                    "Keine Minimalzuordnung gefunden.");
+            }
+        }
+        
+        System.out.println("\n\n-------- Ergebnisse der Variationsanalyse--------\n");
+        System.out.println("Wir geben je Schwerpunkt die - an der kombinierten Güte gemessen - beste erreichte Zuordnung an.");
+        System.out.println("Unter anderem wird aufgeführt, wie viele Kunstwerke ingesamt (beliebigen Typs und Themas) platziert wurden und wieviel Budget dafür verbraucht wurde.");
+        System.out.println("Es gibt " + (vorkommendeThemen.size()-1) + " mögliche Schwerpunktthemen; die letzte Zeile zeigt den Fall, dass KEIN Schwerpunktthema vorgegeben wird:\n");
+        
+        // Nun die Ausgabe je Thema je Konsolenzeile:
+        for (int t=0; t<ausgabeJeThema.size();t++)
+        {
+            System.out.println(ausgabeJeThema.get(t));
+        }
+        
+        schwerpunktthema = vorherEingestelltesSchwerpunktthema; // Thema auf das Thema vor der Variation zurücksetzen
+        System.out.println("\n*** Variationsanalyse beendet ***");
+    }
+    
+    private String fuelleSpacesEin (String in_thema, ArrayList <String> in_vorkommendeThemen)
+    {
+        // Zuerst die Zahl der Character des längsten Themas bestimmen
+        int maxThemenLaenge=0;
+        for (String thema: in_vorkommendeThemen)
+        {
+            if (thema.length()>maxThemenLaenge)
+            {
+                maxThemenLaenge=thema.length();
+            }
+        }
+        
+        // Nun entsprechend Whitespaces anfügen
+        String thema = in_thema;
+        while (thema.length()<maxThemenLaenge)
+        {
+            thema+= " ";
+        }
 
+        return thema;
+    }
+        
+    
+    
+    
     // ==========================================================================
     // === Getter/Setter-Methoden für Schwerpunkt, Kostengrenze, Qualitätsgewicht
     // ==========================================================================
