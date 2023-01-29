@@ -47,7 +47,6 @@ public class Raum
     //Konstruktoren der Klasse Raum
     /** Konstruktor fuer Objekte der Klasse Raum ohne Parameter.
      */
-    
     public Raum()
     {  
         //Initialisieren von Attributen
@@ -63,16 +62,15 @@ public class Raum
     }
 
     /** Konstruktor fuer Objekte der Klasse Raum mit Parameter.
-     * 
-     * @param in_nummer            Dieser int enspricht der Raumnummer.
-     * @param in_name              Dieser String entpricht der Raumbezeichnung.
-     * @param in_laengeRaum        Dieser int entspricht der Raumlaenge (der Nord- und Südwand) in cm.
-     * @param in_breiteRaum        Dieser int entspricht der Raumbreite (der Ost- und Westwand) in cm.
-     * @param in_hoeheRaum         Dieser int entspricht der Raumhoehe in cm.
-     * @param in_tuerNord          Dieser int entspricht der Türbreite an der Nordseite des Raums in cm.
-     * @param in_tuerOst           Dieser int entspricht der Türbreite an der Ostseite des Raums in cm.
-     * @param in_tuerSued          Dieser int entspricht der Türbreite an der Suedseite des Raums in cm.
-     * @param in_tuerWest          Dieser int entspricht der Türbreite an der Westseite des Raums in cm.
+     *  @param in_nummer            Dieser int enspricht der Raumnummer.
+     *  @param in_name              Dieser String entpricht der Raumbezeichnung.
+     *  @param in_laengeRaum        Dieser int entspricht der Raumlaenge (der Nord- und Südwand) in cm.
+     *  @param in_breiteRaum        Dieser int entspricht der Raumbreite (der Ost- und Westwand) in cm.
+     *  @param in_hoeheRaum         Dieser int entspricht der Raumhoehe in cm.
+     *  @param in_tuerNord          Dieser int entspricht der Türbreite an der Nordseite des Raums in cm.
+     *  @param in_tuerOst           Dieser int entspricht der Türbreite an der Ostseite des Raums in cm.
+     *  @param in_tuerSued          Dieser int entspricht der Türbreite an der Suedseite des Raums in cm.
+     *  @param in_tuerWest          Dieser int entspricht der Türbreite an der Westseite des Raums in cm.
      */
     public Raum(int in_nummer,String in_name,int in_laengeRaum,int in_breiteRaum,int in_hoeheRaum,
                 int in_tuerNord,int in_tuerOst, int in_tuerSued, int in_tuerWest)
@@ -94,8 +92,7 @@ public class Raum
     /** Die Nummer des Raums setzen/aendern.
      *  @param in_nummer    Die neue Nummer des Raums. (int)
      */
-    
-        public void setNummer(int in_nummer)
+    public void setNummer(int in_nummer)
     {   
         // Schreibt den Eingabewert in das Attribut nummer.
         nummer = in_nummer;
@@ -103,8 +100,7 @@ public class Raum
     /** Die Nummer des Raumes ermittlen.
      *  @return  Die Nummer des Raums.
      */
-    
-        public int getNummer()
+    public int getNummer()
     { 
         return nummer;
     }
@@ -112,8 +108,7 @@ public class Raum
     /** Den Namen des Raums setzen/aendern.
      *  @param in_name    Der neue Name des Raums. (String)
      */
-    
-        public void setName(String in_name)
+    public void setName(String in_name)
     {   
         // Schreibt den Eingabewert in das Attribut name.
         name = in_name;
@@ -121,8 +116,7 @@ public class Raum
     /** Den Namen des Raumes ermittlen.
      *  @return  Der Namen des Raums.
      */
-    
-        public String getName()
+    public String getName()
     { 
         return name;
     }
@@ -130,8 +124,7 @@ public class Raum
     /** Die Laenge des Raums setzen/aendern.
      *  @param in_laengeRaum   Die neue Laenge des Raums in cm. (int)
      */
-    
-        public void setLaengeRaum(int in_laengeRaum)
+    public void setLaengeRaum(int in_laengeRaum)
     {   
         // Schreibt den Eingabewert in das Attribut laengeRaumInCm.
         laengeRaum = in_laengeRaum;
@@ -139,8 +132,7 @@ public class Raum
     /** Die Laenge des Raumes ermittlen.
      *  @return  Die Laenge des Raums in cm.
      */
-    
-        public int getLaengeRaum()
+    public int getLaengeRaum()
     { 
         return laengeRaum;
     }
@@ -148,8 +140,7 @@ public class Raum
     /** Die Breite des Raums setzen/aendern.
      *  @param in_breiteRaum    Die neue Breite des Raums in cm. (int)
      */
-    
-        public void setBreiteRaum(int in_breiteRaum)
+    public void setBreiteRaum(int in_breiteRaum)
     {   
         // Schreibt den Eingabewert in das Attribut breiteRaumInCm.
         breiteRaum = in_breiteRaum;
@@ -157,8 +148,7 @@ public class Raum
     /** Die Breite des Raumes ermittlen.
      *  @return  Die Breite des Raums in cm.
      */
-    
-        public int getBreiteRaum()
+    public int getBreiteRaum()
     { 
         return breiteRaum;
     }
@@ -166,8 +156,7 @@ public class Raum
     /** Die Hoehe des Raums setzen/aendern.
      *  @param in_hoeheRaum    Die neue Hoehe des Raums in cm. (int)
      */
-    
-        public void setHoeheRaum(int in_hoeheRaum)
+    public void setHoeheRaum(int in_hoeheRaum)
     {   
         // Schreibt den Eingabewert in das Attribut hoeheRaumInCm.
         hoeheRaum = in_hoeheRaum;
@@ -175,8 +164,7 @@ public class Raum
     /** Die Hoehe des Raumes ermittlen.
      *  @return  Die Hoehe des Raums in cm.
      */
-    
-        public int getHoeheRaum()
+    public int getHoeheRaum()
     { 
         return hoeheRaum;
     }
@@ -184,8 +172,7 @@ public class Raum
     /** Die Tuerbreite der Nordseite des Raums setzen/aendern.
      *  @param in_tuerNord    Die neue Tuerbreite der Nordseite in cm. (int)
      */
-    
-        public void setTuerNord(int in_tuerNord)
+    public void setTuerNord(int in_tuerNord)
     {   
         // Schreibt den Eingabewert in das Attribut tuerNordInCm.
         tuerNord = in_tuerNord;
@@ -193,8 +180,7 @@ public class Raum
     /** Die Tuerbreite der Nordseite des Raumes ermittlen.
      *  @return  Die Tuerbreite der Nordseite des Raums in cm.
      */
-    
-        public int getTuerNord()
+    public int getTuerNord()
     { 
         return tuerNord;
     }
@@ -202,8 +188,7 @@ public class Raum
     /** Die Tuerbreite der Ostseite des Raums setzen/aendern.
      *  @param in_tuerOst    Die neue Tuerbreite der Ostseite in cm. (int)
      */
-    
-        public void setTuerOst(int in_tuerOst)
+    public void setTuerOst(int in_tuerOst)
     {   
         // Schreibt den Eingabewert in das Attribut tuerOstInCm.
         tuerOst= in_tuerOst;
@@ -211,8 +196,7 @@ public class Raum
     /** Die Tuerbreite der Ostseite des Raumes ermittlen.
      *  @return  Die Tuerbreite der Ostseite des Raums in cm.
      */
-    
-        public int getTuerOst()
+    public int getTuerOst()
     { 
         return tuerOst;
     }
@@ -220,8 +204,7 @@ public class Raum
     /** Die Tuerbreite der Suedseite des Raums setzen/aendern.
      *  @param in_tuerSued   Die neue Tuerbreite der Suedseite in cm. (int)
      */
-    
-        public void setTuerSued(int in_tuerSued)
+    public void setTuerSued(int in_tuerSued)
     {   
         // Schreibt den Eingabewert in das Attribut tuerSuedInCm.
         tuerSued = in_tuerSued;
@@ -229,8 +212,7 @@ public class Raum
     /** Die Tuerbreite der Suedseite des Raumes ermittlen.
      *  @return  Die Tuerbreite der Suedseite des Raums in cm.
      */
-    
-        public int getTuerSued()
+    public int getTuerSued()
     { 
         return tuerSued;
     }
@@ -238,8 +220,7 @@ public class Raum
     /** Die Tuerbreite der Westseite des Raums setzen/aendern.
      *  @param in_tuerWest    Die neue Tuerbreite der Westseite in cm. (int)
      */
-    
-        public void setTuerWest(int in_tuerWest)
+    public void setTuerWest(int in_tuerWest)
     {   
         // Schreibt den Eingabewert in das Attribut tuerWestInCm.
         tuerWest = in_tuerWest;
@@ -247,8 +228,7 @@ public class Raum
     /** Die Tuerbreite der Westeite des Raumes ermittlen.
      *  @return  Die Tuerbreite der Westseite des Raums in cm.
      */
-    
-        public int getTuerWest()
+    public int getTuerWest()
     { 
         return tuerWest;
     }
@@ -261,8 +241,7 @@ public class Raum
      *  von jeweils 100 cm zu beiden angrenzenden Raumecken.
      *  @return  Die verfuegbare Strecke an der Wand Nord in cm.
      */
-    
-        public int showWandNord()
+    public int showWandNord()
     { 
         int wandNord;
         wandNord=laengeRaum-tuerNord-200;
@@ -274,8 +253,7 @@ public class Raum
      *  von jeweils 100 cm zu beiden angrenzenden Raumecken.
      *  @return  Die verfuegbare Strecke an der Wand Ost in cm.
      */
-    
-        public int showWandOst()
+    public int showWandOst()
     { 
         int wandOst;
         wandOst=breiteRaum-tuerOst-200;
@@ -287,8 +265,7 @@ public class Raum
      *  von jeweils 100 cm zu beiden angrenzenden Raumecken.
      *  @return  Die verfuegbare Strecke an der Wand Sued in cm.
      */
-    
-        public int showWandSued()
+    public int showWandSued()
     { 
         int wandSued;
         wandSued=laengeRaum-tuerSued-200;
@@ -300,8 +277,7 @@ public class Raum
      *  von jeweils 100 cm zu beiden angrenzenden Raumecken.
      *  @return  Die verfuegbare Strecke an der Wand West in cm.
      */
-    
-        public int showWandWest()
+    public int showWandWest()
     { 
         int wandWest;
         wandWest=breiteRaum-tuerWest-200;
@@ -316,8 +292,7 @@ public class Raum
      *  angrenzenden Waenden.
      *  @return  Die verfuegbare Strecke zwischen Wand Ost und Wand West in cm.
      */
-    
-        public int showVerfuegbareLaenge()
+    public int showVerfuegbareLaenge()
     { 
         int verfuegbareLaenge;
         verfuegbareLaenge=laengeRaum-400;
@@ -329,8 +304,7 @@ public class Raum
      *  angrenzenden Waenden.
      *  @return  Die verfuegbare Strecke zwischen Wand Nord und Wand Suedt in cm.
      */
-    
-        public int showVerfuegbareBreite()
+    public int showVerfuegbareBreite()
     { 
         int verfuegbareBreite;
         verfuegbareBreite=breiteRaum-400;
@@ -340,20 +314,27 @@ public class Raum
     //========================================================================
     //Methoden relevant zur Planung von allen Kunstwerken
     //========================================================================
-    /** Zeigt die verfuegbare Hoehe des Raums an.
-     *  Für Bilder: Diese Strecke entspricht der Hoehe des Raums abzueglich dem Mindestabstand von jeweils 100 cm zu 
-     *  Boden und Decke (insgesamt 200 cm).
-     *  Für KI/KG: Diese Strecke entspricht der Hoehe des Raums abzueglich dem Mindestabstand von 200 cm zur Decke.
+    /** Zeigt die verfuegbare Hoehe des Raums fuer B an.Diese Strecke entspricht der Hoehe des Raums abzueglich eines 
+     *  Mindestabstandes von jeweils 10 cm zu Boden und Decke (insgesamt 20 cm).
      *  @return Die verfuegbare Hoehe des Raums in cm.
      */
-    
-        public int showVerfuegbareHoehe()
+    public int showVerfuegbareHoeheBilder()
     {
-        int verfuegbareHoehe;
-        verfuegbareHoehe=hoeheRaum-200;
-        return verfuegbareHoehe;
+        int verfuegbareHoeheBilder;
+        verfuegbareHoeheBilder=hoeheRaum-20;
+        return verfuegbareHoeheBilder;
     }  
     
+    /** Zeigt die verfuegbare Hoehe des Raums fuer I und G an. Diese Strecke entspricht der Hoehe des Raums abzueglich eines 
+     *  Mindestabstandes von 10 cm zur Decke.
+     *  @return Die verfuegbare Hoehe des Raums in cm.
+     */
+    public int showVerfuegbareHoehe()
+    {
+        int verfuegbareHoehe;
+        verfuegbareHoehe=hoeheRaum-10;
+        return verfuegbareHoehe;
+    } 
     //==============================
     //Weitere Methoden
     //==============================
