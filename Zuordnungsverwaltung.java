@@ -66,9 +66,8 @@ public class Zuordnungsverwaltung
         anzahlZuordnungen=in_anzahlZuordnungen;
         for (int z=0;z<anzahlZuordnungen;z++)
         {
-            listeZuordnungen.add(new Zuordnung(kunstwerkverwaltung,raumverwaltung,
-                                              ausstellungsplanung.getSchwerpunktthema(),ausstellungsplanung.getKostenobergrenze(),ausstellungsplanung.getQualitaetsgewicht()));
-            System.out.println(
+            listeZuordnungen.add(new Zuordnung(kunstwerkverwaltung,raumverwaltung,ausstellungsplanung));
+            ausstellungsplanung.printLog(
                "Lege an Zuordnung Nr."+Integer.toString(z) +
                " für bis zu " + Integer.toString(kunstwerkverwaltung.sizeKunstwerkverwaltung()) +
                " Kunstwerke und " + Integer.toString(raumverwaltung.anzahlRaeume()) + " Räume");
@@ -77,12 +76,12 @@ public class Zuordnungsverwaltung
     }
     
     public void ausgebenZuordnungsGuetenAufKonsole(){
-        System.out.println("\n-------- Übersicht über die Gütenkriterien der Zuordnungen ---");
+        ausstellungsplanung.printLog("\n-------- Übersicht über die Gütenkriterien der Zuordnungen ---");
         
         for (int z=0;z<anzahlZuordnungen;z++)
         {
             double [] ergebnisse= getZuordnung(z).getZuordnungsErgebnisse();
-            System.out.println("Zuordnung Nr." + z + "|" + 
+            ausstellungsplanung.printLog("Zuordnung Nr." + z + "|" + 
                                 "#KWplatziert: " + getZuordnung(z).wieVieleKunstwerkePlatziert() +  "/" + kunstwerkverwaltung.sizeKunstwerkverwaltung()+  "|" +
                                 "#Valid.-prob.:" + getZuordnung(z).getAnzahlValidierungsprobleme() + "|" +
                                 "ØGueteRaumBelegung%: " +  Math.floor(ergebnisse[0]*1000)/10 +  "|" +        

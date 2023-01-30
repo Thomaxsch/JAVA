@@ -239,46 +239,53 @@ public class Kunstwerkverwaltung
     private boolean überprüfeKunstwerkzuRaumdimension(
         int verfuegbarWandWest,int verfuegbarWandOst,int verfuegbarWandNord,int verfuegbarWandSued,  // relevant für Bilder (vier Wände)
         int verfuegbarLaengeRaum,int verfuegbarBreiteRaum,                                           // relevant für G und I (laengs/quer bzw Raumfläche)
-        int verfuegbarHoeheRaum,                                                                     // relevant für alle KW)
-        Kunstwerk kw
-        )                                                                     
+        int verfuegbarHoeheRaum,                                                                     // relevant für G und I
+        int verfuegbarHoeheRaumBilder,                                                               // relevant für B
+        Kunstwerk kw)                                                                     
     {
-            boolean passtDimension=false;
-            if (kw.getArt()=='B')
+        boolean passtBildWandbreite=false;
+        boolean passtBildHoehe=false;
+        if (kw.getArt()=='B')
+        {
+            if (kw.getBreite()<=verfuegbarWandWest | kw.getBreite()<=verfuegbarWandOst  | kw.getBreite()<=verfuegbarWandNord  | kw.getBreite()<=verfuegbarWandSued)
             {
-                
-                if (kw.getBreite()<=verfuegbarWandWest | kw.getBreite()<=verfuegbarWandOst  | kw.getBreite()<=verfuegbarWandNord  | kw.getBreite()<=verfuegbarWandSued)
-                {
-                    passtDimension=true;
-                }
+                passtBildWandbreite=true;
             }
-            if (kw.getArt()=='G'| kw.getArt()=='I')
+            if (kw.getHoehe()<=verfuegbarHoeheRaumBilder)
             {
-                int dimy=kw.getBreite();
-                int dimx=0;
-                if (kw.getArt()=='G')
-                {
-                    dimx=((Kunstgegenstand) kw).getLaenge();// cast, sonst können wir die Länge nicht abrufen
-                }
-                if (kw.getArt()=='G')
-                {
-                    dimx=((Kunstgegenstand) kw).getLaenge();// cast, sonst können wir die Länge nicht abrufen
-                }
-                
-                if ((dimx<=verfuegbarBreiteRaum & dimy<=verfuegbarLaengeRaum) | 
-                    (dimy<=verfuegbarLaengeRaum & dimx<=verfuegbarBreiteRaum)) // entweder laengs oder quer
-                {
-                    passtDimension=true;
-                    
-                }
+                passtBildHoehe=true; 
             }
-             
-            if (!(kw.getHoehe()<=verfuegbarHoeheRaum))
+            return (passtBildWandbreite & passtBildHoehe);
+        }
+        
+        boolean passtIGRaumflaeche=false;
+        boolean passtIGHoehe=false;
+        if (kw.getArt()=='G'| kw.getArt()=='I')
+        {
+            if (kw.getHoehe()<=verfuegbarHoeheRaum)
             {
-                passtDimension=false;
+                passtIGHoehe=true; 
             }
-            return passtDimension;
-        } 
+            
+            int dimy=kw.getBreite();
+            int dimx=0;
+            if (kw.getArt()=='G')
+            {
+                dimx=((Kunstgegenstand) kw).getLaenge();// cast, sonst können wir die Länge nicht abrufen
+            }
+            if (kw.getArt()=='I')
+            {
+                dimx=((Kunstinstallation) kw).getLaenge();// cast, sonst können wir die Länge nicht abrufen
+            }
+            
+            if ((dimx<=verfuegbarBreiteRaum & dimy<=verfuegbarLaengeRaum) | 
+                (dimy<=verfuegbarLaengeRaum & dimx<=verfuegbarBreiteRaum)) // entweder laengs oder quer
+            {
+                passtIGRaumflaeche=true;
+            }
+        }
+        return (passtIGRaumflaeche & passtIGHoehe);
+    } 
         
     private boolean überprüfeKunstwerkWeitereParameter(        
         double restbudget,                                                                           // verfügbares Restbudget (double)
@@ -353,7 +360,8 @@ public class Kunstwerkverwaltung
         String schwerpunktthema,
         int verfuegbarWandWest,int verfuegbarWandOst,int verfuegbarWandNord,int verfuegbarWandSued,  // relevant für Bilder (vier Wände)
         int verfuegbarLaengeRaum,int verfuegbarBreiteRaum,                                           // relevant für G und I (laengs/quer bzw Raumfläche)
-        int verfuegbarHoeheRaum,                                                                     // relevant für alle KW
+        int verfuegbarHoeheRaum,                                                                     // relevant für G und I
+        int verfuegbarHoeheRaumBilder,                                                               // relevant für B
         double restbudget,                                                                           // verfügbares Restbudget (double)
         ArrayList<Kunstwerk> kunstwerkeSchonZugeordnet,                                              // bisher platzierte Kunstwerke (Arraylist)
         double anteilI,                                                                              // Anteil der mit I belegten Räume. (double)
@@ -369,6 +377,7 @@ public class Kunstwerkverwaltung
        System.out.println("verfuegbarLaengeRaum:" + verfuegbarLaengeRaum);
        System.out.println("verfuegbarBreiteRaum:" + verfuegbarBreiteRaum);
        System.out.println("verfuegbarHoeheRaum:" + verfuegbarHoeheRaum);
+       System.out.println("verfuegbarHoeheRaumBilder:" + verfuegbarHoeheRaumBilder);
        System.out.println("restbudget:" + restbudget);
        System.out.println("wie viele KW zugeordnet:" + kunstwerkeSchonZugeordnet.size());
        System.out.println("anteilI:" + anteilI);
@@ -378,7 +387,8 @@ public class Kunstwerkverwaltung
        //System.out.println(bildeKriteriumsliste(qualitaetsgewicht).size());
        for (Kunstwerk kw : bildeKriteriumsliste(qualitaetsgewicht)) {
             boolean passtSchwerpunkt=(kw.getThema().equals(schwerpunktthema));
-            boolean passtDimension= überprüfeKunstwerkzuRaumdimension(verfuegbarWandWest, verfuegbarWandOst, verfuegbarWandNord, verfuegbarWandSued, verfuegbarLaengeRaum, verfuegbarBreiteRaum, verfuegbarHoeheRaum, kw);
+            boolean passtDimension= überprüfeKunstwerkzuRaumdimension(verfuegbarWandWest, verfuegbarWandOst, verfuegbarWandNord, verfuegbarWandSued,
+                                                                    verfuegbarLaengeRaum, verfuegbarBreiteRaum, verfuegbarHoeheRaum,verfuegbarHoeheRaumBilder, kw);
             //System.out.println("passtSchwerpunkt:"+passtSchwerpunkt);
             //System.out.println("passtDimension:"+passtDimension);
             if (passtSchwerpunkt & passtDimension & überprüfeKunstwerkWeitereParameter(restbudget, kunstwerkeSchonZugeordnet, anteilI, kw))
@@ -396,7 +406,8 @@ public class Kunstwerkverwaltung
     public short erweitereRaumlösung(
         int verfuegbarWandWest,int verfuegbarWandOst,int verfuegbarWandNord,int verfuegbarWandSued,  // relevant für Bilder (vier Wände)
         int verfuegbarLaengeRaum,int verfuegbarBreiteRaum,                                           // relevant für G und I (laengs/quer bzw Raumfläche)
-        int verfuegbarHoeheRaum,                                                                     // relevant für alle KW
+        int verfuegbarHoeheRaum,                                                                     // relevant für G und I
+        int verfuegbarHoeheRaumBilder,                                                               // relevant für B
         double restbudget,                                                                           // verfügbares Restbudget (double)
         ArrayList<Kunstwerk> kunstwerkeSchonZugeordnet,                                              // bisher platzierte Kunstwerke (Arraylist)
         double anteilI,                                                                              // Anteil der mit I belegten Räume. (double)
@@ -435,12 +446,12 @@ public class Kunstwerkverwaltung
 
             boolean verbessertKunstwerkRaum = true;
             
-            if (kw.getArt() == 'B' & gueteRaumBelegung <= 0.6 & gueteRaumAttraktivitaet <= kw.getAttraktivitaet())
+            if ((kw.getArt() == 'B')     &  ((gueteRaumAttraktivitaet <= kw.getAttraktivitaet()) | (gueteRaumBelegung <= 0.6)))
             {
                 verbessertKunstwerkRaum = true;
                 //wenn der Raum unter 60% belegt ist, kann das Bild noch in den Raum belegt werden, damit dieser nicht zu leer steht. 
             }
-            else if ((kw.getArt() == 'I' | kw.getArt() == 'G') & gueteRaumAttraktivitaet <= kw.getAttraktivitaet())
+            else if (((kw.getArt() == 'I') | (kw.getArt() == 'G'))        &  (gueteRaumAttraktivitaet <= kw.getAttraktivitaet()))
             {
                 verbessertKunstwerkRaum = true;
                 //hier wird auch nochmal geprüft, ob auch die Installationen oder Kunstgegenstände den Raum verbessern. Bei Installationen ist jedoch immer davon auszugehen,
@@ -457,7 +468,7 @@ public class Kunstwerkverwaltung
             }
             
             boolean passtDimension= überprüfeKunstwerkzuRaumdimension(verfuegbarWandWest, verfuegbarWandOst, verfuegbarWandNord, verfuegbarWandSued, 
-            verfuegbarLaengeRaum, verfuegbarBreiteRaum, verfuegbarHoeheRaum, kw);
+            verfuegbarLaengeRaum, verfuegbarBreiteRaum, verfuegbarHoeheRaum, verfuegbarHoeheRaumBilder, kw);
             
             if  (passtDimension & überprüfeKunstwerkWeitereParameter(restbudget, kunstwerkeSchonZugeordnet, anteilI, kw) & passtRaumFeuchteUndTemp
             & passtKunstwerkInThemenvielfalt & passtKunstwerkTypInRaum & verbessertKunstwerkRaum) 
@@ -467,8 +478,8 @@ public class Kunstwerkverwaltung
             } 
         
         }
-        
-       System.out.println("Index bestes KW:"+bestes_kw_lfd_nr);
+       
+       System.out.println("\nIndex bestes KW:"+bestes_kw_lfd_nr);
     
        return bestes_kw_lfd_nr; // -1 wenn keins gefunden wurde
     }    

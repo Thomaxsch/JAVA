@@ -11,6 +11,7 @@ import java.util.*;
  * - Schließlich wird eine Methode zum Vergleich von Zuordnungen implementiert, um im eher wahrscheinlichen Fall mehrerer Lösungen die optimale Lösung auszuwählen.
  * - Die Klasse Ausgabedatei benötigt Zugang zum besten Mapping Räume-Kunstwerke, wozu wir eine public Methode anbieten.
  * - Ähnlich gibt es eine Methode, die die Klasse Ausgabedatei nutzen kann, um für die beste Lösung die Bandbreiten der erlaubten Feuchten/Temperaturen abzurufen
+ * - Schließlich sorgt die Methode printLog dafür, dass die Klassen Ausstellungsplanung, Zuordnungsverwaltung sowie Zuordnung nur im Debugmode ihr Log auf die Konsole werfen.
  * - Außerdem gibt es hier in Form von getter und setter die Verwaltung für folgende Parameter: 1) Schwerpunktthema 2) Kostenobergrenze 3) Qualitätsgewicht 
  * 
  * 
@@ -39,6 +40,7 @@ public class Ausstellungsplanung
     private int anzahlZuordnungen = 10;
     
     private boolean erweiterungsloesungAbgeschlossen = false; // nachdem wir eine Lösungserweiterung vorgenommen haben, wird dies hier vermerkt
+    private boolean logModus = true; // Wenn true, werfen die Klassen Ausstellungsplanung, Zuordnungsverwaltung sowie Zuordnung ihr Log auf die Konsole. Sonst nicht.
     
     // ==========================================================================
     // === Konstruktor
@@ -81,27 +83,27 @@ public class Ausstellungsplanung
                 
         if (schwerpunktthema!="") // mit Schwerpunktthema müssen wir erst versuchen, eine minimale Zuordnung zu finden
         {
-            System.out.println("Ein Schwerpunktthema wurde vorgegeben. Wir müssen zuerst versuchen, mindestens eine minimale Zuordnung zu finden");
+            printLog("Ein Schwerpunktthema wurde vorgegeben. Wir müssen zuerst versuchen, mindestens eine minimale Zuordnung zu finden");
             
             findeMinimaleAusstellungskandidaten(); // <- die Methode versucht für jede Zuordnung eine Minimallösung zu finden
             wurdeMinimaleAusstellungGefunden(); // <- die Methode prüft, ob es mindestens eine Minimallösung gab
             
             if (wurdeMinimaleAusstellungGefunden()){
-                System.out.println("\nERFOLG: Es war uns möglich, mindestens eine minimale Zuordnung zu finden");
+                printLog("\nERFOLG: Es war uns möglich, mindestens eine minimale Zuordnung zu finden");
                 setzeInvalideMinimalloesungenNull(); // Zuordnungen die keine Minimallösung darstellen setzen wir zu null, um diese nachfolgend zu überspringen
-                System.out.println("Wir versuchen alle gefundenen Minimallösungen zu erweitern.");
+                printLog("Wir versuchen alle gefundenen Minimallösungen zu erweitern.");
                 erweitereAusstellungskandidaten();
                 zuordnungsverwaltung.ausgebenZuordnungsGuetenAufKonsole();// Zusammenfassung der Ergebnisse aller Zuordnungen
             }
             else
             {
-                System.out.println("\nMISSERFOLG: Wir konnten überhaupt keine minimale Zuordnung erreichen.");
-                System.out.println("Bitte wählen Sie ein anderes Schwerpunktthema oder geben Sie keines vor"); // hiernach ist unsere Methode neu aufzurufen
+                printLog("\nMISSERFOLG: Wir konnten überhaupt keine minimale Zuordnung erreichen.");
+                printLog("Bitte wählen Sie ein anderes Schwerpunktthema oder geben Sie keines vor"); // hiernach ist unsere Methode neu aufzurufen
             }
         }
         else // ohne Schwerpunktthema können wir direkt versuchen, die Ausstellung auszubauen
         {
-            System.out.println("ohne Schwerpunktthema können wir direkt versuchen, die Ausstellung auszubauen");
+            printLog("ohne Schwerpunktthema können wir direkt versuchen, die Ausstellung auszubauen");
             erweitereAusstellungskandidaten();
             zuordnungsverwaltung.ausgebenZuordnungsGuetenAufKonsole();// Zusammenfassung der Ergebnisse aller Zuordnungen
         }
@@ -117,17 +119,17 @@ public class Ausstellungsplanung
     {
         for (int z=0;z<anzahlZuordnungen;z++)
         {
-            System.out.println("\n-------- Unser " + z +". Versuch eine Minimallösung zu finden ---");
+            printLog("\n-------- Unser " + z +". Versuch eine Minimallösung zu finden ---");
             zuordnungsverwaltung.getZuordnung(z).versucheMinimalloesungZuFinden();
             if (zuordnungsverwaltung.getZuordnung(z).wurdeMinimalloesungErreicht())
             {
-                System.out.println("--- Eine Minimallösung liegt in dieser Zuordnung vor.");
+                printLog("--- Eine Minimallösung liegt in dieser Zuordnung vor.");
             }
             else
             {
-                System.out.println("--- Eine Minimallösung liegt in dieser Zuordnung NICHT vor.");
+                printLog("--- Eine Minimallösung liegt in dieser Zuordnung NICHT vor.");
             }
-            System.out.println("***** Zuordnungsversuch " + z +" abgeschlossen *****");
+            printLog("***** Zuordnungsversuch " + z +" abgeschlossen *****");
         }
     }
     
@@ -161,9 +163,9 @@ public class Ausstellungsplanung
         {
             if (zuordnungsverwaltung.getZuordnung(z)!=null) // die Prüfung erfolgt, damit wir Zuordnungen ohne Minimallösung nicht weiter auszubauen versuchen
             {
-                System.out.println("\n-------- Wir versuchen die Ausstellung zu optimieren für Zuordnung " + z +" ---");
+                printLog("\n-------- Wir versuchen die Ausstellung zu optimieren für Zuordnung " + z +" ---");
                 zuordnungsverwaltung.getZuordnung(z).versucheLoesungserweiterung();
-                System.out.println("***** Ausstellungsoptimierung für Zuordnung " + z +" beendet *****");
+                printLog("***** Ausstellungsoptimierung für Zuordnung " + z +" beendet *****");
             }
 
         }
@@ -210,7 +212,7 @@ public class Ausstellungsplanung
     {
         if (erweiterungsloesungAbgeschlossen == true) // Die Auswahl des besten Vorgangs erfolgt nur aus den erweiterten Lösungen.
         {
-            System.out.println("\n-------- Suche nach bester Ausstellung ---");
+            printLog("\n-------- Suche nach bester Ausstellung ---");
             
             // Initialsierung
             int indexBesteZuordnung = -1;
@@ -236,9 +238,9 @@ public class Ausstellungsplanung
                     zuordnungsGuete = zuVergleichendeZuordnungsGuete;
                 }
             }
-            System.out.println("***** Die beste Ausstellung stellt Zuordnung Nr. " + indexBesteZuordnung +" *****");
-            System.out.println("(*_*)");
-            System.out.println("<> <> <> <> <> <> <> <> <> ");
+            printLog("***** Die beste Ausstellung stellt Zuordnung Nr. " + indexBesteZuordnung +" *****");
+            printLog("(*_*)");
+            printLog("<> <> <> <> <> <> <> <> <> ");
             return indexBesteZuordnung;
         }
         return -1;
@@ -251,14 +253,14 @@ public class Ausstellungsplanung
             if (!zuordnungsverwaltung.getZuordnung(z).wurdeMinimalloesungErreicht())
             {
                 zuordnungsverwaltung.setzeZuordnungNull(z);
-                System.out.println("Habe Zuordnung " + z + " geleert, da für diese keine Minimallösung gefunden wurde. Somit erweitern wir diese Lösung auch nicht.");
+                printLog("Habe Zuordnung " + z + " geleert, da für diese keine Minimallösung gefunden wurde. Somit erweitern wir diese Lösung auch nicht.");
             }
         }
     }
     
     public void variationsAnalyse()
     {
-        System.out.println("*** Starte Variationsanalyse ***");
+        printLog("*** Starte Variationsanalyse ***");
         
         String vorherEingestelltesSchwerpunktthema = schwerpunktthema;//vermerke bisher eingstellten Wert, damit wir ihn nach Variation wieder auf diesen Wert rücksetzen können
         
@@ -297,19 +299,19 @@ public class Ausstellungsplanung
             }
         }
         
-        System.out.println("\n\n-------- Ergebnisse der Variationsanalyse--------\n");
-        System.out.println("Wir geben je Schwerpunkt die - an der kombinierten Güte gemessen - beste erreichte Zuordnung an.");
-        System.out.println("Unter anderem wird aufgeführt, wie viele Kunstwerke ingesamt (beliebigen Typs und Themas) platziert wurden und wieviel Budget dafür verbraucht wurde.");
-        System.out.println("Es gibt " + (vorkommendeThemen.size()-1) + " mögliche Schwerpunktthemen; die letzte Zeile zeigt den Fall, dass KEIN Schwerpunktthema vorgegeben wird:\n");
+        printLog("\n\n-------- Ergebnisse der Variationsanalyse--------\n");
+        printLog("Wir geben je Schwerpunkt die - an der kombinierten Güte gemessen - beste erreichte Zuordnung an.");
+        printLog("Unter anderem wird aufgeführt, wie viele Kunstwerke ingesamt (beliebigen Typs und Themas) platziert wurden und wieviel Budget dafür verbraucht wurde.");
+        printLog("Es gibt " + (vorkommendeThemen.size()-1) + " mögliche Schwerpunktthemen; die letzte Zeile zeigt den Fall, dass KEIN Schwerpunktthema vorgegeben wird:\n");
         
         // Nun die Ausgabe je Thema je Konsolenzeile:
         for (int t=0; t<ausgabeJeThema.size();t++)
         {
-            System.out.println(ausgabeJeThema.get(t));
+            printLog(ausgabeJeThema.get(t));
         }
         
         schwerpunktthema = vorherEingestelltesSchwerpunktthema; // Thema auf das Thema vor der Variation zurücksetzen
-        System.out.println("\n*** Variationsanalyse beendet ***");
+        printLog("\n*** Variationsanalyse beendet ***");
     }
     
     private String fuelleSpacesEin (String in_thema, ArrayList <String> in_vorkommendeThemen)
@@ -333,8 +335,16 @@ public class Ausstellungsplanung
 
         return thema;
     }
-        
     
+    /**
+     * Sorgt dafür, dass die Klassen Ausstellungsplanung, Zuordnungsverwaltung sowie Zuordnung nur im Debugmode ihr Log auf die Konsole werfen.
+     */
+    public void printLog(String text){
+        if (logModus)
+        {
+            System.out.println(text);
+        }
+    }
     
     
     // ==========================================================================
