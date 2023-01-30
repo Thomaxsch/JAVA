@@ -41,9 +41,9 @@ public class Museum
         planung = new Ausstellungsplanung(raeume, kunstwerke); 
         
         // Ausgabe der privaten Methode der Klasse Museum
-        planung.variationsAnalyse();
+        //planung.variationsAnalyse();
         
-        //gebeMenuAus(); 
+        gebeMenuAus(); 
     }
 
     /**
