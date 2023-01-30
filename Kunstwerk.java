@@ -334,8 +334,42 @@ import java.lang.Integer;
     @Override
     public String toString()
     { 
-        return "Attraktivität: " + this.getAttraktivitaet() + ", Thema: " + this.thema + ", Nr: " + this.laufendeNummer + ", Art des Kunstwerks: " + this.art + ", Bezeichnung: " + 
-        this.bezeichnung + ", Breite " + this.breite;
+        return "Attraktivität: " + this.getAttraktivitaet() + ", Thema: " + this.thema + ", Nr: " + this.laufendeNummer + 
+        ", Art des Kunstwerks: " + this.art + ", Bezeichnung: " + this.bezeichnung + ", Breite " + this.breite;
+    }
+    
+     /**
+     * Methode, welche eine modifizierte textuelle Beschreibung der Kunstwerke für den Museumsführer ausgibt.
+     * 
+     * @return eine textueller Beschreibung für den Museumsführer.
+     */
+    public String outputMuseumsführer()
+    {
+        return "Name des Kunstwerks: " + this.getBezeichnung() + "  aus dem Jahr " + this.getJahr() + System.lineSeparator() +
+        "Künstler: " + this.getKuenstler() + System.lineSeparator() + 
+        "Zur Verfügung gestellt durch das Partnermuseum: " + this.getVerleihendesMuseum() + ", " + this.getAnschrift();
+    }
+    
+     /**
+     * Methode, welche eine modifizierte textuelle Beschreibung der Kunstwerke für die Ausleihdatei ausgibt.
+     * 
+     * @return eine textueller Beschreibung für die Ausleihdatei.
+     */
+    public String outputAusleihdatei()
+    {
+        return "Partnermuseum: " + this.getVerleihendesMuseum() + ", Nummer: " + this.getLaufendeNummer() + ", Art des Kunstwerks: " + 
+        this.getArt() + ", Name des Kunstwerks: " + this.getBezeichnung();
+    }
+    
+    /**
+     * Methode, welche eine modifizierte textuelle Beschreibung der Kunstwerke für die Raumdatei ausgibt.
+     * 
+     * @return eine textueller Beschreibung für die Raumausgabedatei.
+     */
+    public String outputRaumdatei()
+    {
+        return "Nummer: " + this.getLaufendeNummer() + ", Art des Kunstwerks: " + this.getArt() + ", Name des Kunstwerks: " 
+        + this.getBezeichnung() + ", Thema: " + this.getThema();
     }
     
     /**

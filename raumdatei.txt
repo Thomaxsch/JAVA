@@ -38,9 +38,47 @@ Attraktivität: 74, Thema: Sonstiges, Nr: 1916, Art des Kunstwerks: B, Bezeichnu
 ------------------------------------------
 Raum: Nummer: 2, Raumbezeichnung: Galerie links, Breite: 800, Länge: 800, Höhe:250
 ------------------------------------------
+<<<<<<< HEAD
 Attraktivität: 99, Thema: Sonstiges, Nr: 8114, Art des Kunstwerks: I, Bezeichnung: Fish Series No. 2, Breite 25
+=======
+Attraktivität: 75, Thema: Religion, Nr: 14, Art des Kunstwerks: B, Bezeichnung: The Lamentation, Breite 172
+Attraktivität: 67, Thema: Tiere, Nr: 37, Art des Kunstwerks: B, Bezeichnung: A Forest at Dawn with a Deer Hunt, Breite 90
+Attraktivität: 55, Thema: Religion, Nr: 18, Art des Kunstwerks: B, Bezeichnung: Christ Blessing Surrounded by a Donor Family, Breite 119
+Attraktivität: 69, Thema: Religion, Nr: 88, Art des Kunstwerks: G, Bezeichnung: Virgin of the Immaculate Conception, Breite 36
+Attraktivität: 75, Thema: Klassizismus, Nr: 86, Art des Kunstwerks: G, Bezeichnung: Seated girl, Breite 25
+Attraktivität: 61, Thema: Religion, Nr: 24, Art des Kunstwerks: B, Bezeichnung: Christ before Pilate The Resurrection, Breite 21
+Attraktivität: 65, Thema: Tiere, Nr: 40, Art des Kunstwerks: B, Bezeichnung: A Woodland Road with Travelers, Breite 83
+Attraktivität: 56, Thema: Religion, Nr: 19, Art des Kunstwerks: B, Bezeichnung: The Christ Child with Saints Boris and Gleb, Breite 10
+Attraktivität: 29, Thema: Tiere, Nr: 38, Art des Kunstwerks: B, Bezeichnung: Two Children Teasing a Cat, Breite 88
+Attraktivität: 63, Thema: Religion, Nr: 94, Art des Kunstwerks: G, Bezeichnung: Pietà, Breite 17
+Attraktivität: 31, Thema: Tiere, Nr: 47, Art des Kunstwerks: B, Bezeichnung: A Shepherd and a Rider on a Country Lane, Breite 39
+Attraktivität: 2, Thema: Tiere, Nr: 25, Art des Kunstwerks: B, Bezeichnung: A Kitchen, Breite 44
 
 ------------------------------------------
+Raum: Nummer: 3, Raumbezeichnung: Galerie rechts, Breite: 800, Länge: 800, Höhe:250
+------------------------------------------
+Attraktivität: 75, Thema: Aktmalerei, Nr: 2, Art des Kunstwerks: B, Bezeichnung: Woman with a Parrot, Breite 195
+Attraktivität: 65, Thema: Barock, Nr: 49, Art des Kunstwerks: B, Bezeichnung: The Musician, Breite 111
+Attraktivität: 65, Thema: Portraits, Nr: 43, Art des Kunstwerks: B, Bezeichnung: A Woman Seated at a Window, Breite 22
+Attraktivität: 75, Thema: Portraits, Nr: 22, Art des Kunstwerks: B, Bezeichnung: La Berceuse, Breite 73
+Attraktivität: 63, Thema: Portraits, Nr: 5, Art des Kunstwerks: B, Bezeichnung: Portrait of a Woman, Breite 50
+Attraktivität: 71, Thema: Aktmalerei, Nr: 68, Art des Kunstwerks: G, Bezeichnung: Spanish Dancer (Second State), Breite 21
+Attraktivität: 47, Thema: Portraits, Nr: 39, Art des Kunstwerks: B, Bezeichnung: Portrait of a Young Man, Breite 20
+Attraktivität: 32, Thema: Portraits, Nr: 21, Art des Kunstwerks: B, Bezeichnung: Portrait of a Woman and an Enslaved Servant, Breite 106
+Attraktivität: 23, Thema: Barock, Nr: 3, Art des Kunstwerks: B, Bezeichnung: Young Woman with a Water Pitcher, Breite 40
+Attraktivität: 23, Thema: Portraits, Nr: 4, Art des Kunstwerks: B, Bezeichnung: A Matador, Breite 113
+Attraktivität: 57, Thema: Aktmalerei, Nr: 71, Art des Kunstwerks: G, Bezeichnung: Woman Getting out of the Bath, Breite 18
+Attraktivität: 24, Thema: Portraits, Nr: 10, Art des Kunstwerks: B, Bezeichnung: A Woman with a Dog, Breite 65
+Attraktivität: 15, Thema: Portraits, Nr: 8, Art des Kunstwerks: B, Bezeichnung: Hermann von Wedigh III (died 1560), Breite 45
+Attraktivität: 11, Thema: Portraits, Nr: 28, Art des Kunstwerks: B, Bezeichnung: Portrait of a Young Man, Breite 74
+Attraktivität: 47, Thema: Aktmalerei, Nr: 81, Art des Kunstwerks: G, Bezeichnung: Andiron with figure of Juno (chenet) (one of a pair), Breite 112
+Attraktivität: 9, Thema: Portraits, Nr: 42, Art des Kunstwerks: B, Bezeichnung: Study for a Portrait of a Woman, Breite 53
+Attraktivität: 7, Thema: Portraits, Nr: 31, Art des Kunstwerks: B, Bezeichnung: Louis XV (1710–1774) as a Child, Breite 141
+Attraktivität: 5, Thema: Portraits, Nr: 32, Art des Kunstwerks: B, Bezeichnung: Portrait of a Man, Breite 56
+>>>>>>> 3874686ea7da50d625b4b77d1e5ee317024e71a4
+
+------------------------------------------
+<<<<<<< HEAD
 Raum: Nummer: 3, Raumbezeichnung: Galerie rechts, Breite: 800, Länge: 800, Höhe:250
 ------------------------------------------
 Attraktivität: 79, Thema: Sonstiges, Nr: 2735, Art des Kunstwerks: G, Bezeichnung: Armrest, Breite 20
@@ -63,6 +101,8 @@ Attraktivität: 79, Thema: Sonstiges, Nr: 1768, Art des Kunstwerks: B, Bezeichnu
 Attraktivität: 78, Thema: Expressionismus, Nr: 675, Art des Kunstwerks: B, Bezeichnung: William S. Doig Trade Card, Breite 7
 
 ------------------------------------------
+=======
+>>>>>>> 3874686ea7da50d625b4b77d1e5ee317024e71a4
 Raum: Nummer: 4, Raumbezeichnung: Saal, Breite: 600, Länge: 1200, Höhe:250
 ------------------------------------------
 Attraktivität: 98, Thema: Sonstiges, Nr: 8398, Art des Kunstwerks: I, Bezeichnung: Mural sketch Health Building Hall of Science New York World's Fair 1939, Breite 55
