@@ -11,11 +11,13 @@ import java.util.*;
  * - Schließlich wird eine Methode zum Vergleich von Zuordnungen implementiert, um im eher wahrscheinlichen Fall mehrerer Lösungen die optimale Lösung auszuwählen.
  * - Die Klasse Ausgabedatei benötigt Zugang zum besten Mapping Räume-Kunstwerke, wozu wir eine public Methode anbieten.
  * - Ähnlich gibt es eine Methode, die die Klasse Ausgabedatei nutzen kann, um für die beste Lösung die Bandbreiten der erlaubten Feuchten/Temperaturen abzurufen
+ * - Eine Variationsanalyse, die verschiedene Schwerpunktthemen durchspielt und die beste Zuordnung ermittelt, ist mit variationsAnalyse und fuelleSpacesEin umgesetzt
  * - Schließlich sorgt die Methode printLog dafür, dass die Klassen Ausstellungsplanung, Zuordnungsverwaltung sowie Zuordnung nur im Debugmode ihr Log auf die Konsole werfen.
- * - Außerdem gibt es hier in Form von getter und setter die Verwaltung für folgende Parameter: 1) Schwerpunktthema 2) Kostenobergrenze 3) Qualitätsgewicht 
- * 
- * 
- * TTO DO* : PLUS DIE BEIDEN VARIATIOSNANALYSE-METHODEN
+ * - Mit einer weiteren Methode switchlogModus schaltet man den Log-Modus an und aus (Default: aus).
+ * - Außerdem gibt es hier in Form von getter und setter die Verwaltung für folgende Parameter: 
+ *          1) Schwerpunktthema
+ *          2) Kostenobergrenze
+ *          3) Qualitätsgewicht 
  * 
  * @author Thomas Scheidt
  * @version 19.12.2022
@@ -25,7 +27,6 @@ public class Ausstellungsplanung
     // ==========================================================================
     // === Attribute
     // ==========================================================================
-    
     private String schwerpunktthema = ""; //Variable um das Schwerpunktthema der Ausstellung festzulegen (mit Default).
                                             //Wenn kein Schwerpunkt gesetzt werden soll, kann leer ("")  übergeben werden.
     private double kostenobergrenze = 999999999; //Legt die Kostenobergrenze der Ausstellung fest (mit Default)
@@ -40,7 +41,7 @@ public class Ausstellungsplanung
     private int anzahlZuordnungen = 10;
     
     private boolean erweiterungsloesungAbgeschlossen = false; // nachdem wir eine Lösungserweiterung vorgenommen haben, wird dies hier vermerkt
-    private boolean logModus = true; // Wenn true, werfen die Klassen Ausstellungsplanung, Zuordnungsverwaltung sowie Zuordnung ihr Log auf die Konsole. Sonst nicht.
+    private boolean logModus = false; // Wenn true, werfen die Klassen Ausstellungsplanung, Zuordnungsverwaltung sowie Zuordnung ihr Log auf die Konsole. Sonst nicht.
     
     // ==========================================================================
     // === Konstruktor
@@ -123,11 +124,11 @@ public class Ausstellungsplanung
             zuordnungsverwaltung.getZuordnung(z).versucheMinimalloesungZuFinden();
             if (zuordnungsverwaltung.getZuordnung(z).wurdeMinimalloesungErreicht())
             {
-                printLog("--- Eine Minimallösung liegt in dieser Zuordnung vor.");
+                printLog("\n--- Eine Minimallösung liegt in dieser Zuordnung vor.");
             }
             else
             {
-                printLog("--- Eine Minimallösung liegt in dieser Zuordnung NICHT vor.");
+                printLog("\n--- Eine Minimallösung liegt in dieser Zuordnung NICHT vor.");
             }
             printLog("***** Zuordnungsversuch " + z +" abgeschlossen *****");
         }
@@ -299,19 +300,20 @@ public class Ausstellungsplanung
             }
         }
         
-        printLog("\n\n-------- Ergebnisse der Variationsanalyse--------\n");
-        printLog("Wir geben je Schwerpunkt die - an der kombinierten Güte gemessen - beste erreichte Zuordnung an.");
-        printLog("Unter anderem wird aufgeführt, wie viele Kunstwerke ingesamt (beliebigen Typs und Themas) platziert wurden und wieviel Budget dafür verbraucht wurde.");
-        printLog("Es gibt " + (vorkommendeThemen.size()-1) + " mögliche Schwerpunktthemen; die letzte Zeile zeigt den Fall, dass KEIN Schwerpunktthema vorgegeben wird:\n");
+        System.out.println("\n\n-------- Ergebnisse der Variationsanalyse--------\n");
+        System.out.println("Wir geben je Schwerpunkt die - an der kombinierten Güte gemessen - beste erreichte Zuordnung an.");
+        System.out.println("Unter anderem wird aufgeführt, wie viele Kunstwerke ingesamt (beliebigen Typs und Themas) platziert wurden und wieviel Budget dafür verbraucht wurde.");
+        System.out.println("Es gibt " + (vorkommendeThemen.size()-1) + " mögliche Schwerpunktthemen; die letzte Zeile zeigt den Fall, dass KEIN Schwerpunktthema vorgegeben wird:\n");
         
         // Nun die Ausgabe je Thema je Konsolenzeile:
         for (int t=0; t<ausgabeJeThema.size();t++)
         {
-            printLog(ausgabeJeThema.get(t));
+            System.out.println(ausgabeJeThema.get(t));
         }
         
         schwerpunktthema = vorherEingestelltesSchwerpunktthema; // Thema auf das Thema vor der Variation zurücksetzen
-        printLog("\n*** Variationsanalyse beendet ***");
+        System.out.println("\n-------------------------------------------------\n");
+        printLog("*** Variationsanalyse beendet ***");
     }
     
     private String fuelleSpacesEin (String in_thema, ArrayList <String> in_vorkommendeThemen)
@@ -346,10 +348,18 @@ public class Ausstellungsplanung
         }
     }
     
+    /**
+     * Hierüber kann der Log-Modus an/ausgeschaltet werden. Wenn aktiviert (true), werfen die Klassen Ausstellungsplanung, Zuordnungsverwaltung sowie Zuordnung 
+     * ihr Log auf die Konsole. Sonst nicht. Default ist false.
+     */
+    public void switchlogModus() 
+    {
+        logModus = (!logModus); // Umkehr der bisherigen Einstellung
+    }
     
-    // ==========================================================================
-    // === Getter/Setter-Methoden für Schwerpunkt, Kostengrenze, Qualitätsgewicht
-    // ==========================================================================
+    // =====================================================================================
+    // === Getter/Setter-Methoden für Schwerpunkt, Kostengrenze, Qualitätsgewicht, Log-Modus
+    // =====================================================================================
     
     /**
      * Methode um Schwerpunktthema zu setzen. 
@@ -379,7 +389,7 @@ public class Ausstellungsplanung
     {
         qualitaetsgewicht=in_qualitaetsgewicht;
     }
-
+    
     /**
      * Hierüber kann das Schwerpunktthema der Ausstellung abgefragt werden.
      * 
@@ -400,7 +410,7 @@ public class Ausstellungsplanung
         return kostenobergrenze;
     }
     
-     /**
+    /**
      * Hierüber kann das Qualitätsgewicht, das der Ausstellungsplanung zugrunde gelegt wird, abgefragt werden.
      * 
      * @return qualitaetsgewicht   Wert des Attributtes qualitaetsgewicht
@@ -409,6 +419,7 @@ public class Ausstellungsplanung
     {
         return qualitaetsgewicht;
     }
+
 }
   
     

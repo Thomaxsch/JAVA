@@ -40,9 +40,7 @@ public class Museum
         // als Parameter werden zwei Objekte der Klassen Raumverwaltung und Kunstwerksverwaltung übergeben
         planung = new Ausstellungsplanung(raeume, kunstwerke); 
         
-        // Ausgabe der privaten Methode der Klasse Museum
-        //planung.variationsAnalyse();
-        
+        // Ausgabe des Konsolenmenüs der Klasse Museum
         gebeMenuAus(); 
     }
 
@@ -286,7 +284,9 @@ public class Museum
             System.out.println("(7) Aktuelles Qualitätsgewicht anzeigen");
             System.out.println("(8) Räume einlesen");
             System.out.println("(9) Kunstwerk einlesen");
-            System.out.println("(10) Anwendung beenden"); 
+            System.out.println("(10) Variationsanalyse");
+            System.out.println("(11) Logmodus für Planung und Variationsanalyse an/aus");
+            System.out.println("(12) Anwendung beenden"); 
             System.out.println("Bitte eine Auswahl treffen (z.B. 2 um ein Schwerpunktthema zu setzen)"); 
             
             // nimmt ausgewählten Menüpunkt entgegen
@@ -444,8 +444,20 @@ public class Museum
                 
             }
             
+            // behandelt das Durchführen einer Variationsanalyse und Anzeige der Ergebnisse
+             if(eingabe.equals("10"))
+            {
+                planung.variationsAnalyse();
+            }
+            
+            // schaltet den Log-Modus für die Planung sowie Variationsanalyse an/aus
+             if(eingabe.equals("11"))
+            {
+                planung.switchlogModus();
+            }
+            
             // beendet die Anwendung
-            if(eingabe.equals("10"))
+            if(eingabe.equals("12"))
             {
                 weiter = false;
                 

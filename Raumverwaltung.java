@@ -119,8 +119,7 @@ public class Raumverwaltung
         ArrayList<Raum> raumArrayList = new ArrayList<Raum>(raumVectorKlon); 
         // entfernt alle belegten Raeume aus der ArrayList, die komplett unbelegten Raeume bleiben enthalten
         raumArrayList.removeAll(inRaeumeSchonBelegt);
-        // gibt die Anzahl der noch enthaltenen Raeume der ArrayList aus
-        System.out.println("noch " + raumArrayList.size() + " Räume zu prüfen.");
+        
        
         // erstellt einen Zufallsnummer-Generator
         Random rand = new Random();

@@ -143,7 +143,6 @@ public class Kunstwerkverwaltung
         
         if (kw.getLaufendeNummer() == in_laufendeNummer) 
         {
-            System.out.println(kw);
             found = true;
             kw_out=kw;
         }   
@@ -370,35 +369,20 @@ public class Kunstwerkverwaltung
         /**
          * Als nächstes gehen wir diese von oben nach unten durch und nehmen das erste passende Kunstwerk, das noch nicht platziert wurde
         */
-       System.out.println("verfuegbarWandWest:" + verfuegbarWandWest);
-       System.out.println("verfuegbarWandOst:" + verfuegbarWandOst);
-       System.out.println("verfuegbarWandNord:" + verfuegbarWandNord);
-       System.out.println("verfuegbarWandSued:" + verfuegbarWandSued);
-       System.out.println("verfuegbarLaengeRaum:" + verfuegbarLaengeRaum);
-       System.out.println("verfuegbarBreiteRaum:" + verfuegbarBreiteRaum);
-       System.out.println("verfuegbarHoeheRaum:" + verfuegbarHoeheRaum);
-       System.out.println("verfuegbarHoeheRaumBilder:" + verfuegbarHoeheRaumBilder);
-       System.out.println("restbudget:" + restbudget);
-       System.out.println("wie viele KW zugeordnet:" + kunstwerkeSchonZugeordnet.size());
-       System.out.println("anteilI:" + anteilI);
-       System.out.println("qualitaetsgewicht:" + qualitaetsgewicht);
-       
+
        short bestes_kw_lfd_nr = -1; // wir suchen das beste Kunstwerk. Wenn wir keins finden, geben wir den Wert "-1" zurück.
-       //System.out.println(bildeKriteriumsliste(qualitaetsgewicht).size());
+       
        for (Kunstwerk kw : bildeKriteriumsliste(qualitaetsgewicht)) {
             boolean passtSchwerpunkt=(kw.getThema().equals(schwerpunktthema));
             boolean passtDimension= überprüfeKunstwerkzuRaumdimension(verfuegbarWandWest, verfuegbarWandOst, verfuegbarWandNord, verfuegbarWandSued,
                                                                     verfuegbarLaengeRaum, verfuegbarBreiteRaum, verfuegbarHoeheRaum,verfuegbarHoeheRaumBilder, kw);
-            //System.out.println("passtSchwerpunkt:"+passtSchwerpunkt);
-            //System.out.println("passtDimension:"+passtDimension);
+
             if (passtSchwerpunkt & passtDimension & überprüfeKunstwerkWeitereParameter(restbudget, kunstwerkeSchonZugeordnet, anteilI, kw))
             {
                bestes_kw_lfd_nr = kw.getLaufendeNummer();
                break; // die Schleife endet, wenn das erste Mal ein KW passt
             } 
         } 
-       
-       System.out.println("Index bestes KW:"+bestes_kw_lfd_nr);
         
        return bestes_kw_lfd_nr; // -1 wenn keins gefunden wurde
         
@@ -479,7 +463,7 @@ public class Kunstwerkverwaltung
         
         }
        
-       System.out.println("\nIndex bestes KW:"+bestes_kw_lfd_nr);
+       
     
        return bestes_kw_lfd_nr; // -1 wenn keins gefunden wurde
     }    

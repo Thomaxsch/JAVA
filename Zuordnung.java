@@ -260,6 +260,8 @@ public class Zuordnung
             }
             
             // Wir benötigen einen zufällig ausgewählten noch leeren Raum, um dort zu versuchen ein KW zu platzieren:
+            
+            ap.printLog("noch " + (raeumeArray.length - raeumeSchonFertigEinSchwerpunktKW.size()) + " Räume zu prüfen.");
             Raum unserAktuellerRaum = raumverwaltung.zufealligerLeererRaum(raeumeSchonFertigEinSchwerpunktKW);
             
             
@@ -276,16 +278,15 @@ public class Zuordnung
                     r++; // erhoehe unserAktuellerRaumIndex um 1 und schaue ob der nächste Raum der mit dem gesuchten Index ist
                 }
             }
-            ap.printLog("-> Haben wir ein geeignetes Kunstwerk für Raum " + raeumeArray[r].getNummer() + " ?");
             
+            ap.printLog("-> Haben wir ein geeignetes Kunstwerk für Raum " + raeumeArray[r].getNummer() + " ?");
             // Das Folgende gibt uns das als nächstes zu setzende Kunstwerk in die Hand,
             // das vom Schwerpunktthema ist, die Restriktionen 5,6,7 (im Raum) erfüllt, sodass auch R1 (global Kosten) erfüllt ist. 
             // Und bei all dem ist es das KW mit höchster Attraktivität. TO DO
             
             Kunstwerk zuSetzendesKW = null;
-            
             short laufendeNummer = kunstwerkverwaltung.naechstesZuSetzendesKunstwerk
-            (
+                (
                 schwerpunktthema,
                 verfuegbarWandWest[r],verfuegbarWandOst[r],verfuegbarWandNord[r],verfuegbarWandSued[r], // relevant für Bilder (vier Wände)
                 verfuegbarLaengeRaum[r],verfuegbarBreiteRaum[r],                                        // relevant für G und I (laengs/quer bzw Raumfläche)
@@ -295,7 +296,16 @@ public class Zuordnung
                 kunstwerkeSchonZugeordnet,                                                              // bisher platzierte Kunstwerke (Arraylist)
                 ((double) wieOftWurdeSchonEineInstallationPlatziert)/raeumeArray.length,                // Anteil der mit I belegten Räume. (cast für die Division nötig)
                 qualitaetsgewicht                                                                       // Gewichtung von Qualität und Quantität
-            ); 
+                ); 
+            ap.printLog("verfuegbarWandWest: " + verfuegbarWandWest[r] + " Ost: " + verfuegbarWandOst[r] + " Nord: " + verfuegbarWandNord[r] + " Sued: " + verfuegbarWandSued[r]);
+            ap.printLog("verfuegbarLaengeRaum: " + verfuegbarLaengeRaum[r] + " verfuegbarBreiteRaum: " + verfuegbarBreiteRaum[r]);
+            ap.printLog("verfuegbarHoeheRaum: " + verfuegbarHoeheRaum[r] + " verfuegbarHoeheRaumBilder: " + verfuegbarHoeheRaumBilder[r]);
+            ap.printLog("restbudget: " + (int) restbudget);
+            ap.printLog("wie viele KW zugeordnet: " + kunstwerkeSchonZugeordnet.size());
+            ap.printLog("anteilI: " + ((double) wieOftWurdeSchonEineInstallationPlatziert)/raeumeArray.length);
+            ap.printLog("qualitaetsgewicht: " + qualitaetsgewicht);
+            
+            
             if (laufendeNummer==-1) // die Kunstwerkverwaltung gibt -1 zurück, wenn KEIN Kunstwerk in den Raum passt (z.B. wegen verfügbarer Fläche oder Restbudget zu klein)
             {
                 raeumeSchonFertigEinSchwerpunktKW.add(raeumeArray[r]); // um zu vermeiden, dass wir den Raum erneut überprüfen
@@ -306,10 +316,12 @@ public class Zuordnung
             else if (laufendeNummer>=0)
             {
                 zuSetzendesKW = kunstwerkverwaltung.showKunstwerkZuLaufendeNummer(laufendeNummer);
+                ap.printLog("Attraktivität: " + zuSetzendesKW.getAttraktivitaet() + ", Thema: " + zuSetzendesKW.getThema() + ", Nr: " + zuSetzendesKW.getLaufendeNummer() + 
+                            ", Art des Kunstwerks: " + zuSetzendesKW.getArt() + ", Bezeichnung: " + zuSetzendesKW.getBezeichnung());
+                ap.printLog("Index bestes KW: " + laufendeNummer);
             }
 
-            
-
+        
             // Jetzt validieren wir einer Methode der Klasse "Zuordnung", ob das Kunstwerk wirklich passt, oder ob sich in der Implementierung ein Fehler eingeschlichen haben könnte
             boolean problem = (passtKWValidierung (zuSetzendesKW,r) != (laufendeNummer>=0));
             if (problem)
@@ -415,6 +427,8 @@ public class Zuordnung
                 gueteRaumBelegung(r)             // Anteil der aktuellen Wandbelegung des Raumes mit Bildern          
                 );
 
+            
+            ap.printLog("\nIndex bestes KW: "+ zuSetzendesKunstwerkLaufendeNummer);    
             if (zuSetzendesKunstwerkLaufendeNummer>=0) // Die Kunstwerkverwaltung konnte für uns ein freies passendes Kunstwerk für diesen Raum finden
             {
                 Kunstwerk zuSetzendesKW = kunstwerkverwaltung.showKunstwerkZuLaufendeNummer(zuSetzendesKunstwerkLaufendeNummer);
