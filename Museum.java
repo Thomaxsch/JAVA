@@ -30,12 +30,6 @@ public class Museum
         // eine neue Instanz der Klasse Kunstwerkverwaltung wird generiert und der Objektvariablen kunstwerke zugewiesen
         kunstwerke = new Kunstwerkverwaltung();
         
-        // Aufruf der Klassenmethode importiereKunstwerke, als Parameter wird eine CSV-Datei mit Kunstwerken übergeben, die eingelesen werden soll
-        importiereKunstwerke("kunstwerke.csv");
-        
-        // Aufruf der Klassenmethode importiereRaeume, als Parameter wird eine CSV-Datei mit Räumen übergeben, die eingelesen werden soll
-        importiereRaeume("raeume.csv");
-        
         // eine neue Instanz der Klasse Ausstellungsplanung wird generiert und der Objektvariablen planung zugewiesen
         // als Parameter werden zwei Objekte der Klassen Raumverwaltung und Kunstwerksverwaltung übergeben
         planung = new Ausstellungsplanung(raeume, kunstwerke); 
@@ -167,11 +161,15 @@ public class Museum
                       }
                 }
                 
+                // wenn keine Zeile mehr vorhanden ist, die gelesen werden kann, wird die Boolean-Variable eof auf den Wert true gesetzt
                 if (zw_in == null)
                 {
                     eof=true;
                 }
             }
+            
+            // Ausgabe an den Benutzer das Kunstwerke erfolgreich eingelesen werden konnten
+            System.out.println("Es wurden " + kunstwerke.sizeKunstwerkverwaltung() + " Kunstwerke eingelesen!");
         }
         //wird ausgeführt, wenn die Datei nicht gefunden wurde
         catch(FileNotFoundException e)
@@ -232,19 +230,26 @@ public class Museum
                                    Integer.parseInt(array[7]),
                                    Integer.parseInt(array[8]));
                    
+                    // Raum wird der Raumverwaltung hinzugefügt
                     raeume.addRaum(raum);                
                 }
                 
+                // wenn keine Zeile mehr vorhanden ist, die gelesen werden kann, wird die Boolean-Variable eof auf den Wert true gesetzt
                 if (zw_in == null)
                 {
                     eof=true;
                 }
             }
+            
+            // Ausgabe an den Benutzer das Räume erfolgreich eingelesen werden konnten
+            System.out.println("Es wurden " + raeume.anzahlRaeume() + " Räume eingelesen!");
         }
+        // behandelt den Fall, dass der angegebene Pfad/Datei nicht korrekt ist
         catch(FileNotFoundException e)
         {
-            System.out.println("Die Datei" + name + "existiert nicht.");
+            System.out.println("Die Datei" + name + "existiert nicht. Bitte wählen Sie eine gültige Datei.");
         }
+        // behandelt den Fall, dass beim Zugriff auf die Datei ein Fehler aufgetreten, z.B. Datei ist schreibgeschützt
         catch(IOException e)
         {
             System.out.println("Fehler beim Zugriff auf die Datei!");
@@ -272,9 +277,9 @@ public class Museum
             do 
            {
             // Einfaches Benutzermenü
-            System.out.println("----------------------------------------");
+            System.out.println("-------------------------------------------------------------------");
             System.out.println("VAWi-Museum Essen Ausstellungsplanung");
-            System.out.println("----------------------------------------");
+            System.out.println("-------------------------------------------------------------------");
             System.out.println("(1) Planung starten");
             System.out.println("(2) Schwerpunktthema angeben/ändern");
             System.out.println("(3) Kostenobergrenze angeben/ändern");
@@ -294,8 +299,22 @@ public class Museum
             
             // behandelt die Generierung der Ausstellung
             if(eingabe.equals("1"))
-            {
-                // Aufruf der Methode generiereAusstellungen des Objekts planung der Klasse Ausstellungsplanung 
+            { 
+                // prüft ob Räume für die Ausstellungsplanung vorhanden sind, ansonsten Abbruch der Generierung durch continue
+                if(raeume.anzahlRaeume() == 0) 
+                {
+                    System.out.println("Bitte lesen Sie erst einige Räume für die Ausstellungsplanung ein.");
+                    continue;
+                }
+                
+                // prüft ob Kunstwerke für die Ausstellungsplanung vorhanden sind, ansonsten Abbruch der Generierung durch continue
+                if(kunstwerke.sizeKunstwerkverwaltung() == 0) 
+                {
+                    System.out.println("Bitte lesen Sie erst einige Kunstwerke für die Ausstellungsplanung ein.");
+                    continue;
+                }
+                
+                 // Aufruf der Methode generiereAusstellungen des Objekts planung der Klasse Ausstellungsplanung 
                 planung.generiereAusstellungen();
                 
                 // gibt entweder das beste Mapping oder Null, wenn es keine Minimallösung gab
@@ -437,13 +456,33 @@ public class Museum
             // behandelt die Auswahl einer einzulesenden Datei mit Räumen
              if(eingabe.equals("8"))
             {
+                // Info an den Anwender, welche Eingabe erwartet wird 
+                System.out.print("Bitte geben Sie den Pfad mit den zu verwendenden Räumen an:");
                 
+                // liest den angegebenen Pfad von der Konsole und speichert ihn in der Variablen eingabe
+                eingabe = console.readLine();
+                
+                 // bevor neue Räume eingelesen erden, werden evtl. vorher eingelesene Räume gelöscht
+                raeume.clearRaumverwaltung();
+                
+                // die Variable eingabe mit der Pfadangabe dient als Eingabeparameter für die Methode importiereRaeume
+                importiereRaeume(eingabe);
             }
             
             // behandelt die Auswahl einer einzulesenden Datei mit Kunstwerken
              if(eingabe.equals("9"))
             {
+                // Info an den Anwender, welche Eingabe erwartet wird 
+                System.out.print("Bitte geben Sie den Pfad mit den zu verwendenden Kunstwerken an:");
                 
+                // liest den angegebenen Pfad von der Konsole und speichert ihn in der Variablen eingabe
+                eingabe = console.readLine();
+                
+                // bevor neue Kunstweerke eingelesen werden, werden evtl. vorher eingelesene Räume gelöscht
+                kunstwerke.clearKunstwerkverwaltung();
+                
+                // die Variable eingabe mit der Pfadangabe dient als Eingabeparameter für die Methode importiereKunstwerke
+                importiereKunstwerke(eingabe);
             }
             
             // behandelt das Durchführen einer Variationsanalyse und Anzeige der Ergebnisse
