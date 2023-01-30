@@ -2,11 +2,9 @@ import java.io.*;
 import java.util.*;
 
 /**
- * Die Klasse Museum bildet die Einstiegsklasse. Aus ihr wird das Programm
- * gestartet. 
- * 
+ * Die Klasse Museum bildet die Einstiegsklasse. Aus ihr wird das Programm gestartet. Sie dient auch dem Einlesen der Kunstwerke und Räume und bietet ein Konsolenmenü an.
  * @author Mischa Paul Marchlewski 
- * @version 06.01.2023
+ * @version 30.01.2023
  */
 public class Museum
 {
@@ -44,6 +42,7 @@ public class Museum
      */
     public static void main(String[] args)
     {
+        // Objektvariable meinMuseum der Klasse Museum wird deklariert und mit new ein neu erzeugtes Museums-Objekt zugewiesen
         Museum meinMuseum = new Museum();
     }
     
@@ -56,7 +55,7 @@ public class Museum
      */
     public void importiereKunstwerke(String name)
     {              
-        // Deklaration drei Objektvariablen vom Typ Kunstinstallation, Bild und Kunstgegenstand        
+        // Deklaration von drei Objektvariablen vom Typ Kunstinstallation, Bild und Kunstgegenstand        
         Kunstinstallation ki;
         Bild bi;
         Kunstgegenstand kg;
@@ -67,16 +66,18 @@ public class Museum
             // Deklaration der Variablen eof vom Typ boolean und Initialisierung mit dem Wert false 
             boolean eof = false;
             
-            
             BufferedReader dEin = new BufferedReader(new FileReader(name));
             
             // While-Schleife soll solange durchlaufen werden, solange die Variable nicht den Wert true hat
             while(!eof)
             {
-               String zw_in = dEin.readLine(); 
+               // es wird eine Zeile aus der Eingabedatei gelesen und in der String-Variablen zw_in gespeichert
+                String zw_in = dEin.readLine(); 
                
+               // Prüfung, ob der Varianle zw_in ein String-Objekt zugeordnet ist
                if(zw_in != null)
                {
+                   // Werte in der String-Variablen zw_in wird beim Auftreten eines Kommas getrennt, getrennte Werte werden in einem String-Array gespeichert
                    String[] array = zw_in.split(",");
                    
                    /*
@@ -98,9 +99,15 @@ public class Museum
                     * array[15] = Maximale Luftfeuchtigkeit in C (nur bei Bildern)
                     */ 
                    
+                   // Wert an der zweiten Stelle des Array entspricht der Art des Kunstwerks 
+                   // If-Zweig wird ausgeführt, wenn es sich um ein Bild handelt
                    if(array[1].equals("B")) 
                    {
-                        bi = new Bild(Short.parseShort(array[0]),
+                       /* Werte des String-Arrays bilden die Eingabeparameter für den Konstruktor der Klasse Bild
+                        * die Referenz auf das neu erzeugte Bild-Objekt wird in der Variablen bi gespeichert 
+                        * Konstruktor erwartet bei einigen Eingabeparametern Integer-Werte, mit der Methode parseInt erfolgt die Umwandlung
+                       */  
+                       bi = new Bild(Short.parseShort(array[0]),
                                      array[1].charAt(0),
                                      array[2],
                                      array[3],
@@ -116,12 +123,18 @@ public class Museum
                                      Integer.parseInt(array[13]),
                                      Integer.parseInt(array[14]),
                                      Integer.parseInt(array[15]));
-                                     
+                        
+                        // Referenz auf das neu erzeugte Bild-Objekt wird der Containerklasse kunstwerke hinzugefügt
                         kunstwerke.addKunstwerk(bi);
                    }
                    
+                   // If-Zweig wird ausgeführt, wenn es sich um eine Kunstinstallation handelt
                    if(array[1].equals("I"))
                    {
+                        /* Werte des String-Arrays bilden die Eingabeparameter für den Konstruktor der Klasse Kunstinstallation
+                        * die Referenz auf die neu erzeugte Kunstinstallation wird in der Variablen ki gespeichert 
+                        * Konstruktor erwartet bei einigen Eingabeparametern Integer-Werte, mit der Methode parseInt erfolgt die Umwandlung
+                       */  
                          ki = new Kunstinstallation(Short.parseShort(array[0]),
                                      array[1].charAt(0),
                                      array[2],
@@ -136,13 +149,19 @@ public class Museum
                                      Integer.parseInt(array[11]),
                                      Integer.parseInt(array[12]),
                                      Integer.parseInt(array[13]));
-                                     
+                        
+                        // Referenz auf die neu erzeugte Installation wird der Containerklasse kunstwerke hinzugefügt
                         kunstwerke.addKunstwerk(ki);
                    }
                    
+                   // If-Zweig wird ausgeführt, wenn es sich um einen Kunstgegenstand handelt
                    if(array[1].equals("G"))
                    {
-                         kg = new Kunstgegenstand(Short.parseShort(array[0]),
+                       /* Werte des String-Arrays bilden die Eingabeparameter für den Konstruktor der Klasse Kunstgegenstand
+                        * die Referenz auf den neu erzeugten Kunstgegenstand wird in der Variablenkg gespeichert 
+                        * Konstruktor erwartet bei einigen Eingabeparametern Integer-Werte, mit der Methode parseInt erfolgt die Umwandlung
+                       */    
+                       kg = new Kunstgegenstand(Short.parseShort(array[0]),
                                      array[1].charAt(0),
                                      array[2],
                                      array[3],
@@ -156,7 +175,8 @@ public class Museum
                                      Integer.parseInt(array[11]),
                                      Integer.parseInt(array[12]),
                                      Integer.parseInt(array[13]));
-                                     
+                        
+                        // Referenz auf die neu erzeugte Installation wird der Containerklasse kunstwerke hinzugefügt
                         kunstwerke.addKunstwerk(kg);
                       }
                 }

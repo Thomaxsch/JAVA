@@ -3,7 +3,7 @@ import java.util.*;
 import java.text.*;
 
 /**
- * Die Klasse Datei kann Strings als Zeilen in einer Datei ausgeben.
+ * Die Klasse Ausgabe ist für die Ausgabe der geforderten Dateien verantwortlich und erzeugt eine txt- und HTML-Ausgabe.
  * 
  * @author Mischa Paul Marchlewski
  * @version 19.12.2022
@@ -33,7 +33,6 @@ public class Ausgabedatei
     public Ausgabedatei(String file)
     {
        this.file = file;
-       
     }
     
     /**
