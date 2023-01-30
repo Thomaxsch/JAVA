@@ -28,7 +28,7 @@ AUTOR(EN):
     - Kunstwerkverwaltung
 
 WIE IST DAS PROJEKT ZU STARTEN:
-Das Projekt lässt sich über die Konsole mittels des Befehls "java "VaWi Museum Essen" starten. 
+Das Projekt lässt sich über die Konsole mittels des Befehls "java -jar VAWiMuseumEssen.jar" starten. 
 Im Anschluss wird über die Konsole ein Menü aufgerufen über welches einige Auswahlmöglichkeiten eingeblendet werden:
 
 --> Auf die Menüpunkte kann unter Eingabe der jeweiligen Nummer und einem anschließenden "Enter" zugegriffen werden. 
@@ -52,7 +52,7 @@ Die einzelnen Begrifflichkeiten werden unter dem Punkt "Benutzerhinweise" genaue
 
     (4) Qualitätsgewicht angeben/ändern
     Es besteht die Möglichkeit für die Ausstellung ein Qualitätsgewicht anzugeben oder falls bereits festgelegt zu ändern. 
-    Hierfür tippen Sie einfach die gewünschte Gewichtung z.B. "0,6" ein und bestätigen die Eingabe mit "Enter".    
+    Hierfür tippen Sie einfach die gewünschte Gewichtung z.B. "0.6" ein und bestätigen die Eingabe mit "Enter".    
 
     Wenn im Anschluss unter "(1)" die Planung durchgeführt wird, wird in diesem Fall die gesetzte Gewichtung berücksichtigt.
     
@@ -68,10 +68,10 @@ Die einzelnen Begrifflichkeiten werden unter dem Punkt "Benutzerhinweise" genaue
     Bei Aufruf dieser Option wird angezeigt, welches Qualitätsgewicht für die Planung gesetzt wurde. 
     
     (8) Räume einlesen
-    Unter dieser Option lassen sich ".csv" Dateien der Räume in das Programm einlesen.
+    Unter dieser Option lassen sich ".csv" Dateien der Räume in das Programm einlesen. //Beschreibung einfügen
     
     (9) Kunstwerk einlesen 
-    Unter dieser Option lassen sich ".csv" Dateien der Kunstwerke in das Programm einlesen.    
+    Unter dieser Option lassen sich ".csv" Dateien der Kunstwerke in das Programm einlesen. //Beschreibung einfügen
     
     (10) Anwendung beenden
     Über diese Option schließt sich die Anwendung. 
@@ -99,11 +99,22 @@ berücksichtigt.Im folgenden werden die einzelnen Begrifflichkeiten der festzule
     
     Qualitätsgewicht:
     Über das Qualitätsgewicht lässt sich die Relevanz der Attraktivität der gesetzten Kunstwerke (Qualität) im Verhältnis zu der 
-    Anzahl der gesetzten Kunstwerke (Quantität) für die zu planende Ausstellung festlegen. Dabei ist immer ein Wert zwischen 0 & 1 anzugeben.  
+    Dichte der gesetzten Kunstwerke an  der Wand (Quantität) für die zu planende Ausstellung festlegen. Dabei ist immer ein Wert zwischen 0 & 1 anzugeben.  
     Ist der Wert somit näher an der 1, so wird bei der Aufsstellung der Fokus auf möglichst attraktive Kunstwerke 
     gelegt. Dafür wird jedoch möglicherweise die Anzahl der auszustellenden Kunstwerke sinken und folglich werden die Räume
-    gegebenenfalls weniger gefüllt. 
-    --> Beispiel: "0.7" - Priorisierung attraktivierer Kunstwerke unter Berücksichtigung, dass die Räume ggf. weniger belegt werden. 
+    gegebenenfalls weniger gefüllt. Durch die Auswahl des Qualitätsgewichts wird zudem die Auswahl des Raumes für das jeweilige Kunstwerk beeinflusst. 
+    
+    Die Qualitätsgewichtung fließt bei unserer Lösungsfindung auf zweierlei Weisen ein:
+    - Bei der Suche nach dem jeweils noch besten möglichen Kunstwerk für einen Raum. Hierbei bestimmt das Gewicht den Einfluss folgender Gütekriterien:
+        ○ Attraktivität des Kunstwerkes
+        ○ Attraktivität pro Kosten des Kunstwerkes
+    - Bei der Lösungserweiterung (s.o. unter 2.) wird immer wieder der Raum mit dem größten Verbesserungsbedarf gesucht. Hierbei gewichten wir folgende Bedürftigkeitskriterien:
+        ○ Geringer Mittelwert der Attraktivität der Kunstwerke (leere Räume berücksichtigen wir mit einem Attraktivitätswert von 0)
+        ○ Geringer Anteil der belegten Wandfläche des Raumes
+
+     Diese Aspekte der Gewichtung steuern wir mit einem einzigen Parameter. Eine hohe Qualitätsgewichtung rückt die Attraktivität in den Mittelpunkt,
+     sodass tendenziell die Raumbelegung (Quantität) abnimmt, und umgekehrt.
+    --> Beispiel: "0.7" - Priorisierung attraktivierer Kunstwerke unter Berücksichtigung, dass die Räume ggf. weniger dicht belegt werden. 
     
     Als Standard ist der Wert "0.5" angegeben, sodass es sich um ein ausgeglichenes Attraktivitäts und Raumbelegungsverhältnis handelt.
     
