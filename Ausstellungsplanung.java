@@ -181,7 +181,15 @@ public class Ausstellungsplanung
     {
         if (erweiterungsloesungAbgeschlossen == true) // Die Auswahl des besten Vorgangs erfolgt nur aus den erweiterten Lösungen.
         {
-            return zuordnungsverwaltung.getZuordnung(vergleicheAusstellungskandidatenWaehleBeste()) // den Index der besten Zuordnung ansteuern
+            printLog("\n-------- Suche nach bester Ausstellung ---");
+            
+            int indexBesteZuordnung = vergleicheAusstellungskandidatenWaehleBeste();
+                    
+            printLog("***** Die beste Ausstellung stellt Zuordnung Nr. " + indexBesteZuordnung +" *****");
+            printLog("(*_*)");
+            printLog("<> <> <> <> <> <> <> <> <> ");
+            
+            return zuordnungsverwaltung.getZuordnung(indexBesteZuordnung) // den Index der besten Zuordnung ansteuern
                                        .getDenRaeumenZugeordneteKunstwerke(); // und sich von dieser besten Zuordnung nur das Mapping ausgeben lassen
         }
         return null;
@@ -213,8 +221,6 @@ public class Ausstellungsplanung
     {
         if (erweiterungsloesungAbgeschlossen == true) // Die Auswahl des besten Vorgangs erfolgt nur aus den erweiterten Lösungen.
         {
-            printLog("\n-------- Suche nach bester Ausstellung ---");
-            
             // Initialsierung
             int indexBesteZuordnung = -1;
             double zuordnungsGuete = 0;
@@ -239,9 +245,7 @@ public class Ausstellungsplanung
                     zuordnungsGuete = zuVergleichendeZuordnungsGuete;
                 }
             }
-            printLog("***** Die beste Ausstellung stellt Zuordnung Nr. " + indexBesteZuordnung +" *****");
-            printLog("(*_*)");
-            printLog("<> <> <> <> <> <> <> <> <> ");
+
             return indexBesteZuordnung;
         }
         return -1;

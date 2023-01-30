@@ -303,6 +303,8 @@ public class Museum
                                
                 if (planungsErgebnis != null)
                 {
+                    System.out.print("\nWir haben nach Lösungen gesucht und können nun die beste ausgeben.\n");
+                    
                     // Die Arrays haben jeweils einen Eintrag pro Raum. Die Reihenfolge der Räume ist dieselbe, wie sie mit raumverwaltung.getRaumVector() vorliegt.
                     int[] A = planung.getBestesMappingErlaubteFeuchtenTemperaturen("minFeuchteRaum");
                     int[] B = planung.getBestesMappingErlaubteFeuchtenTemperaturen("maxFeuchteRaum");
@@ -322,7 +324,7 @@ public class Museum
                 }
                 else
                 {
-                    System.out.print("Keine Minimallösung gefunden. Bitte prüfen Sie die Konfigurationsparameter (Kostenobergrenze, Schwerpunktthema, Qualitätsgewicht).");
+                    System.out.print("\nKeine Minimallösung gefunden. Bitte prüfen Sie die Konfigurationsparameter (Kostenobergrenze, Schwerpunktthema, Qualitätsgewicht).\n");
                 }
                 
             }
