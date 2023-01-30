@@ -314,7 +314,7 @@ public class Raum
     //========================================================================
     //Methoden relevant zur Planung von allen Kunstwerken
     //========================================================================
-    /** Zeigt die verfuegbare Hoehe des Raums fuer B an.Diese Strecke entspricht der Hoehe des Raums abzueglich eines 
+    /** Zeigt die verfuegbare Hoehe des Raums fuer B an. Diese Strecke entspricht der Hoehe des Raums abzueglich eines 
      *  Mindestabstandes von jeweils 10 cm zu Boden und Decke (insgesamt 20 cm).
      *  @return Die verfuegbare Hoehe des Raums in cm.
      */
@@ -335,13 +335,12 @@ public class Raum
         verfuegbareHoehe=hoeheRaum-10;
         return verfuegbareHoehe;
     } 
+    
     //==============================
     //Weitere Methoden
     //==============================
-    /**
-     * @author: Mischa, 06.01.2023
-     * Methode gibt eine lesbare Beschreibung eines Raumes aus
-     * @return Beschreibung
+    /** Gibt eine lesbare Beschreibung eines Raumes aus (fuer Austellungsdatei)
+     *  @return Beschreibung
      */
     @Override
     public String toString()
@@ -350,6 +349,13 @@ public class Raum
         ", Länge: " + this.laengeRaum + ", Höhe:" + this.getHoeheRaum();  
     }
     
-
+    /** Gibt eine lesbare Beschreibung eines Raumes aus (fuer Museumsfuehrer und Ausleihdatei)
+     *  @return Beschreibung
+     */
+    public String toStringKurz()
+    {
+        return "Nummer: " + this.nummer + ", Raumbezeichnung: " + this.name;  
+    }
+    
     
 }
