@@ -515,51 +515,51 @@ public class Zuordnung
         // Wir prüfen aktuell, welche Wand die beste Wand für die Platzierung ist, indem wir diejenige nehmen, wo der Rest nach Platzierung am kleinsten ist.
         // Die Überlegung ist, damit manchmal perfekte Passungen zu erreichen bzw.  generell möglichst viel Freiraum "am Stück" zu lassen.
         //
-        // Bleibt nach der Platzierung an der besten Wand an dieser dann noch Platz über, der größer als ein Meter wäre,
-        // muss noch ein Meter extra abgezogen werden, da dies der Puffer zum nächsten Bild wäre
-        // und entsprechenden den effektiv verfügbaren Platz für das nächste Bild reduziert:
+        // Bliebe nach der Platzierung an der besten Wand an dieser Wand weniger als 100 cm Platz, dann kann der Puffer zum nächsten Bild nicht eingehalten werden, sodass
+        // die Wand in dem Fall keinen Platz mehr für weitere Kunstwerke hat. Bliebe mehr als 100 cm Platz, muss noch ein Meter extra abgezogen werden,
+        // da dies der Puffer zum nächsten Bild darstellt und entsprechend den effektiv verfügbaren Platz für das nächste Bild reduziert:
         
         if (kw.getArt()=='B')
         {
             ArrayList<Integer> verfuegbarkeitenWaende = new ArrayList<Integer>();
-            verfuegbarkeitenWaende.add(verfuegbarWandWest[r]-kw.getBreite());
-            verfuegbarkeitenWaende.add(verfuegbarWandOst[r]-kw.getBreite());
-            verfuegbarkeitenWaende.add(verfuegbarWandNord[r]-kw.getBreite());
-            verfuegbarkeitenWaende.add(verfuegbarWandSued[r]-kw.getBreite());
-            int indexVerfWand = verfuegbarkeitenWaende.indexOf(Collections.min(verfuegbarkeitenWaende)); // Index der Wand mit meistem Platz
+            verfuegbarkeitenWaende.add(verfuegbarWandWest[r]);
+            verfuegbarkeitenWaende.add(verfuegbarWandOst[r]);
+            verfuegbarkeitenWaende.add(verfuegbarWandNord[r]);
+            verfuegbarkeitenWaende.add(verfuegbarWandSued[r]);
+            int indexVerfWand = verfuegbarkeitenWaende.indexOf(Collections.max(verfuegbarkeitenWaende)); // Index der Wand mit meistem Platz
             if (indexVerfWand==0) // West
             {
                 if (verfuegbarWandWest[r]-(kw.getBreite())>=100)
                 {verfuegbarWandWest[r]-=(kw.getBreite()+100);}
                 else
-                {verfuegbarWandWest[r]-=kw.getBreite();}
+                {verfuegbarWandWest[r]=0;}
             }
             else if (indexVerfWand==1) // ost
             {
                 if (verfuegbarWandOst[r]-(kw.getBreite())>=100)
                 {verfuegbarWandOst[r]-=(kw.getBreite()+100);}
                 else
-                {verfuegbarWandOst[r]-=kw.getBreite();}
+                {verfuegbarWandOst[r]=0;}
             }
             else if (indexVerfWand==2) // Nord
             {
                 if (verfuegbarWandNord[r]-(kw.getBreite())>=100)
                 {verfuegbarWandNord[r]-=(kw.getBreite()+100);}
                 else
-                {verfuegbarWandNord[r]-=kw.getBreite();}
+                {verfuegbarWandNord[r]=0;}
             }
             else if (indexVerfWand==3) // sued
             {
                 if (verfuegbarWandSued[r]-(kw.getBreite())>=100)
                 {verfuegbarWandSued[r]-=(kw.getBreite()+100);}
                 else
-                {verfuegbarWandSued[r]-=kw.getBreite();}
+                {verfuegbarWandSued[r]=0;}
             }
         }
         
         // Bei G oder I:  
-        // Bei Kunstgegenständen müssen noch ein Meter als Puffer extra abgezogen werden, wenn noch ein Rest übrig bliebe. Bei I ist es im Grunde egal,
-        // weil sowieso sonst nichts mehr in den Raum passt, aber es schadet nicht, die selbe Logik durchzuhalten.
+        // Bei Kunstgegenständen müssen noch ein Meter als Puffer extra abgezogen werden, wenn noch ein Rest größer 100 cm übrig bliebe (sonst passt nichts mehr).
+        // Bei I ist es im Grunde egal, weil sowieso sonst nichts mehr in den Raum passt, aber es schadet nicht, die selbe Logik durchzuhalten.
         // Bei Kunstgegenständen ist die Frage, ob die Platzierung "laengs" oder "quer" die beste ist, sofern beide Optionen möglich sind. Wir nehmen 
         // in solchen Fällen die Platzierungsoption,bei der am meisten FLÄCHE ungenutzt leibt.
         
@@ -584,32 +584,32 @@ public class Zuordnung
             int restq2=verfuegbarBreiteRaum[r]-l; // Fall quer
             
             // Wenn sowohl laengs als auch quere Positionierung ist möglich:
-            if (restl1>=0 &&restl2>=0 && restq1>=0 && restq2>=0)
+            if (restl1>=0 && restl2>=0 && restq1>=0 && restq2>=0)
             {
                 if (restl1*restl2>=restq1*restq2) //Platzierung laengs wird vorgenommen
                 {
-                    if (restl1>=1 && restl2>=1) // nur wenn die Reste beide größer gleich 1 sind, können wir ein Meter Puffer abziehen
+                    if (restl1>=100 && restl2>=100) // nur wenn die Reste beide größer gleich 1 sind, können wir ein Meter Puffer abziehen
                     {
                         verfuegbarLaengeRaum[r]-=(l+100); 
                         verfuegbarBreiteRaum[r]-=(b+100);
                     }
-                    else // sonst macht es keinen Sinn 1 Meter Puffer abzuziehen
+                    else // sonst ist Ende Gelände
                     {
-                        verfuegbarLaengeRaum[r]-=(l);
-                        verfuegbarBreiteRaum[r]-=(b);
+                        verfuegbarLaengeRaum[r]=0;
+                        verfuegbarBreiteRaum[r]=0;
                     }
                 }
                 else if (restl1*restl2<restq1*restq2) // Platzierung quer wird vorgenommen
                 {
-                    if (restq1>=1 && restq2>=1) // nur wenn die Reste beide größer gleich 1 sind, können wir ein Meter Puffer abziehen
+                    if (restq1>=100 && restq2>=100) // nur wenn die Reste beide größer gleich 1 sind, können wir ein Meter Puffer abziehen
                     {
                         verfuegbarLaengeRaum[r]-=(b+100); 
                         verfuegbarBreiteRaum[r]-=(l+100);
                     }
-                    else // sonst macht es keinen Sinn 1 Meter Puffer abzuziehen
+                    else // sonst ist Ende Gelände
                     {
-                        verfuegbarLaengeRaum[r]-=(b);
-                        verfuegbarBreiteRaum[r]-=(l);
+                        verfuegbarLaengeRaum[r]=0;
+                        verfuegbarBreiteRaum[r]=0;
                     }
                 }
             }
@@ -618,15 +618,15 @@ public class Zuordnung
             if (restl1>=0 && restl2>=0 && (restq1<0 | restq2<0))
             {
                 //Platzierung laengs wird vorgenommen
-                    if (restl1>=1 && restl2>=1) // nur wenn die Rest beide größer gleich 1 sind, können wir 1 Meter Puffer abziehen
+                    if (restl1>=100 && restl2>=100) // nur wenn die Rest beide größer gleich 1 sind, können wir 1 Meter Puffer abziehen
                     {
-                        verfuegbarLaengeRaum[r]-=(l+1); 
-                        verfuegbarBreiteRaum[r]-=(b+1);
+                        verfuegbarLaengeRaum[r]-=(l+100); 
+                        verfuegbarBreiteRaum[r]-=(b+100);
                     }
-                    else // sonst macht es keinen Sinn 1 Meter Puffer abzuziehen
+                    else // sonst ist Ende Gelände
                     {
-                        verfuegbarLaengeRaum[r]-=(l);
-                        verfuegbarBreiteRaum[r]-=(b);
+                        verfuegbarLaengeRaum[r]=0;
+                        verfuegbarBreiteRaum[r]=0;
                     }
 
             }
@@ -635,15 +635,15 @@ public class Zuordnung
             if ((restl1<0 | restl2<0) && restq1>=0 && restq2>=0)
             {
                 // Platzierung quer wird vorgenommen
-                if (restq1>=1 && restq2>=1) // nur wenn die Reste beide größer gleich 1 sind, können wir 1 Meter Puffer abziehen
+                if (restq1>=100 && restq2>=100) // nur wenn die Reste beide größer gleich 1 sind, können wir 1 Meter Puffer abziehen
                     {
-                        verfuegbarLaengeRaum[r]-=(b+1); 
-                        verfuegbarBreiteRaum[r]-=(l+1);
+                        verfuegbarLaengeRaum[r]-=(b+100); 
+                        verfuegbarBreiteRaum[r]-=(l+100);
                     }
-                    else // sonst macht es keinen Sinn 1 Meter Puffer abzuziehen
+                    else // sonst ist Ende Gelände
                     {
-                        verfuegbarLaengeRaum[r]-=(b);
-                        verfuegbarBreiteRaum[r]-=(l);
+                        verfuegbarLaengeRaum[r]=0;
+                        verfuegbarBreiteRaum[r]=0;
                     }
             }
             
@@ -956,18 +956,19 @@ public class Zuordnung
         double [] zuordnungsErgebnisse = new double [4];
         
         
-        double mittlereGueteRaumBelegung = 0;
-        double mittlereGueteRaumAttraktivitaet = 0;
+        double summeMittlereGueteRaumBelegung = 0;
+        double summeMittlereGueteRaumAttraktivitaet = 0;
         for (int r=0;r<raeumeArray.length;r++)
         {
-            mittlereGueteRaumBelegung += gueteRaumBelegung(r);
-            mittlereGueteRaumAttraktivitaet += gueteRaumAttraktivitaet(r);
+            summeMittlereGueteRaumBelegung += gueteRaumBelegung(r);
+            summeMittlereGueteRaumAttraktivitaet += gueteRaumAttraktivitaet(r);
         }
-        mittlereGueteRaumBelegung = mittlereGueteRaumBelegung / raeumeArray.length;
-        mittlereGueteRaumAttraktivitaet = mittlereGueteRaumAttraktivitaet / raeumeArray.length;
         
-        zuordnungsErgebnisse[0] = mittlereGueteRaumBelegung;
-        zuordnungsErgebnisse[1] = mittlereGueteRaumAttraktivitaet;
+        
+        // I führt zu Wandbelegungsgüte von 0 und solche Räume zählen daher nicht rein bei mittlerer Wandbelegung. Bei mittlerer Attraktivität zählen die Räume mit I aber. 
+        zuordnungsErgebnisse[0] = summeMittlereGueteRaumBelegung / (raeumeArray.length - wieOftWurdeSchonEineInstallationPlatziert);
+        zuordnungsErgebnisse[1] = summeMittlereGueteRaumAttraktivitaet / raeumeArray.length;
+        
         zuordnungsErgebnisse[2] = getZuordnungsGuete();
         zuordnungsErgebnisse[3] = kostenobergrenze - restbudget; // dies ist das verbrauchte Budget (verbrauchtes Budet + restbudget = kostenobergrenze)
         
@@ -986,7 +987,7 @@ public class Zuordnung
         {
             
             ap.printLog("------------------------------------");
-            ap.printLog("# Raum " + raeumeArray[r].getNummer() + "  " + "\n");
+            ap.printLog("\n" + "# Raum " + raeumeArray[r].getNummer() );
             ap.printLog("------------------------------------");
 
             for(Kunstwerk kw : denRaeumenZugeordneteKunstwerke.get(r))

@@ -38,7 +38,7 @@ public class Ausstellungsplanung
     private Kunstwerkverwaltung kunstwerkverwaltung;
     private Zuordnungsverwaltung zuordnungsverwaltung;
     
-    private int anzahlZuordnungen = 10;
+    private int anzahlZuordnungen = 10; // aus Laufzeitengründen passen wir die Zahl in der Methode generiereAusstellungen() noch an
     
     private boolean erweiterungsloesungAbgeschlossen = false; // nachdem wir eine Lösungserweiterung vorgenommen haben, wird dies hier vermerkt
     private boolean logModus = false; // Wenn true, werfen die Klassen Ausstellungsplanung, Zuordnungsverwaltung sowie Zuordnung ihr Log auf die Konsole. Sonst nicht.
@@ -76,6 +76,21 @@ public class Ausstellungsplanung
         // Falls aus vorherigen Durchläufen der Methode schon Zuordnungen bestehen, verwerfen wir diese und fangen wieder ganz von vorne an:
         zuordnungsverwaltung.deleteZuordnungen();
         erweiterungsloesungAbgeschlossen = false; // falls aus Vorzyklus dieser Wert noch true war.
+        
+        // Aus Performancegründen senken wir die Zahl der Zuordnungen, wenn es sehr viel Kunstwerke gibt, damit die Laufzeit im Rahmen bleibt
+        if (kunstwerkverwaltung.sizeKunstwerkverwaltung()>2000)
+        {
+            anzahlZuordnungen = 2; // bei ca. 7000 KW (Datensatz 7) benötigte: die Variationsanalyse ohne Log ca ?? Minuten / Suche ohne Schwerpunkt mit Log ca 4 Min
+                                   // bei ca. 2700 KW (Datensatz 6) benötigte: die Variationsanalyse ohne Log ca 15 Minuten / Suche ohne Schwerpunkt mit Log ca 1.5 Minuten
+        }
+        else if (kunstwerkverwaltung.sizeKunstwerkverwaltung()>500)
+        {
+            anzahlZuordnungen = 3; // bei ca. 1300 KW (Datensatz 5) benötigte: die Variationsanalyse ohne Log ca 5 Minuten / Suche ohne Schwerpunkt mit Log einige Sekunden 
+        }
+        else
+        {
+            anzahlZuordnungen = 5;
+        }
         
         // Erzeuge anzahlZuordnungen neue Zuordnungen in der Zuordnungsverwaltung. Diese Zuordnungen enthalten noch kein Mapping Kunstwerke-Räume.
         zuordnungsverwaltung.fuelleZuordnungsverwaltung(anzahlZuordnungen);
