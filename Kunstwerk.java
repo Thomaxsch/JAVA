@@ -338,6 +338,11 @@ import java.lang.Integer;
         ", Art des Kunstwerks: " + this.art + ", Bezeichnung: " + this.bezeichnung + ", Breite " + this.breite;
     }
     
+     /**
+     * Methode, welche eine modifizierte textuelle Beschreibung der Kunstwerke für den Museumsführer ausgibt.
+     * 
+     * @return eine textueller Beschreibung für den Museumsführer.
+     */
     public String outputMuseumsführer()
     {
         return "Name des Kunstwerks: " + this.getBezeichnung() + "  aus dem Jahr " + this.getJahr() + System.lineSeparator() +
