@@ -2,19 +2,17 @@ import java.util.Vector;
 import java.util.ArrayList;
 
 /**
- * Hier haben wir eine Verwaltungsklasse, die die Gesamtheit der Zuordnungen erfasst.
+ * Hier haben wir eine Verwaltungsklasse, die die Gesamtheit der Zuordnungen erfasst. Solche Kandidaten für Ausstellungen werden in der ArrayList "listeZuordnungen" verwaltet.<pre>
  * 
- *  TO DO Formulierung Anpassen: Die Verwaltungsklasse "Zuordnungsverwaltung" enthält
-    eine Liste von Zuordnungen,
-    kann Zuordnungen anlegen und
-    könnte Methoden anbieten, bestimmte Zuordnungen abzurufen
-    (etwa Alle Zuordnungen zu einem Raum).
- * 
- * Kandidaten für Ausstellungen werden in der ArrayList "listeZuordnungen" verwaltet.
- * 
+ *  Die Verwaltungsklasse "Zuordnungsverwaltung" enthält diese Liste von Zuordnungen,
+ *    -- kann mittels der public Methode fuelleZuordnungsverwaltung Zuordnungen anlegen,
+ *    -- bietet die public Methode getZuordnung an, damit andere Methoden die Referenz auf eine bestimmte Zuordnung aus der Zuordungsliste erhalten,
+ *    -- hat eine public Methode ausgebenZuordnungsGuetenAufKonsole zur Darstellung von Ergebnisaspekten aller Zuordnungen im Log (d.h. der Konsole),
+ *    -- kann einzelne Zuordnungen vergessen, indem es die Referenz auf Null setzt, damit gescheiterte Minimallösungen nicht weiter verfolgt werden,
+ *    -- oder alle Zuordnungen vergessen, um ganz neu und von Grund auf mit der Ausstellungssuche zu beginnen (z.B. nachdem ein Parameter wie das Qualitätsgewicht geändert wurde)</pre>
  * 
  * @author Thomas Scheidt 
- * @version 19.12.2022
+ * @version 2023
  */
 public class Zuordnungsverwaltung
 {
@@ -46,13 +44,32 @@ public class Zuordnungsverwaltung
     }
     
     // ==========================================================================
-    // === Methoden
+    // === Methoden zur Generierung, Suche und Darstellung
     // ==========================================================================
        
     /**
+     * Fülle die Zuordnungsverwaltung mit der vorgegebenen Anzahl an frischen Zuordnungs-Objekten. 
+     * 
+     * @param in_anzahlZuordnungen     wie viele potentielle Ausstellungskandidaten (Zuordnungen) soll es geben
+     */
+    public void fuelleZuordnungsverwaltung (int in_anzahlZuordnungen)
+    {
+        anzahlZuordnungen=in_anzahlZuordnungen;
+        for (int z=0;z<anzahlZuordnungen;z++)
+        {
+            listeZuordnungen.add(new Zuordnung(kunstwerkverwaltung,raumverwaltung,ausstellungsplanung)); // übergibt an die Zuordnungsobjekte auch einige Referenzen
+            ausstellungsplanung.printLog(
+               "Lege an Zuordnung Nr."+Integer.toString(z) +
+               " für bis zu " + Integer.toString(kunstwerkverwaltung.sizeKunstwerkverwaltung()) +
+               " Kunstwerke und " + Integer.toString(raumverwaltung.anzahlRaeume()) + " Räume");
+        }
+    }
+    
+    /**
      * Gebe ein bestimmtes Element aus der ArrayList zurück.
      * 
-     * @return Ein bestimmtes Element aus der ArrayList, also eine bestimmte geplante Ausleihe.
+     * @param n     der Index der Zuordnung in der Zuordnungsliste
+     * @return      ein bestimmtes Element aus der ArrayList, also eine bestimmte geplante Ausleihe.
      */
     public Zuordnung getZuordnung(int n)
     {
@@ -60,24 +77,11 @@ public class Zuordnungsverwaltung
     }
     
     /**
-     * Fülle die Zuordnungsverwaltung mit anzahlZuordnungen frischen Zuordnungs-Objekten.  
+     * Darstellung von Ergebnisaspekten aller Zuordnungen im Log (d.h. der Konsole).
      */
-    public void fuelleZuordnungsverwaltung (int in_anzahlZuordnungen){
-        anzahlZuordnungen=in_anzahlZuordnungen;
-        for (int z=0;z<anzahlZuordnungen;z++)
-        {
-            listeZuordnungen.add(new Zuordnung(kunstwerkverwaltung,raumverwaltung,ausstellungsplanung));
-            ausstellungsplanung.printLog(
-               "Lege an Zuordnung Nr."+Integer.toString(z) +
-               " für bis zu " + Integer.toString(kunstwerkverwaltung.sizeKunstwerkverwaltung()) +
-               " Kunstwerke und " + Integer.toString(raumverwaltung.anzahlRaeume()) + " Räume");
-        }
-        
-    }
-    
-    public void ausgebenZuordnungsGuetenAufKonsole(){
+    public void ausgebenZuordnungsGuetenAufKonsole()
+    {
         ausstellungsplanung.printLog("\n-------- Übersicht über die Gütenkriterien der Zuordnungen ---");
-        
         for (int z=0;z<anzahlZuordnungen;z++)
         {
             double [] ergebnisse= getZuordnung(z).getZuordnungsErgebnisse();
@@ -88,19 +92,19 @@ public class Zuordnungsverwaltung
                                 "ØGueteRaumAttraktivitaet%: " +  Math.floor(ergebnisse[1]*1000)/10 +  "|" + 
                                 "ØKombinierteGuete%: " +  Math.floor(ergebnisse[2]*1000)/10 +  "|" +
                                 // Math.floor rundet ab zum nächsten Integer. Durch obige Konstruktion können wir den double Wert auf 1 Nachkommastelle darstellen. 
-                                "Budgetverbrauch: " + (int) ergebnisse[3] + " €");
-                                     
+                                "Budgetverbrauch: " + (int) ergebnisse[3] + " €");                
         }
-        
     }
-    
     
     // ==========================================================================
     // === Methoden zum Zurücksetzen/Überspringen von Zuordnungen
     // ==========================================================================
        
     /**
-     * Setze für die ausgewählte Zuordnung "null"
+     * Setze für die ausgewählte Zuordnung "null". Damit kann die Ausstellungsplanung sicherstellen, dass nicht Zuordnungen ausgebaut werden, für die es keine Minimallösung gab,
+     * oder diese gar für die beste Zuordnung in Frage kommen (werden aus der Suche nach der besten Zuordnung genommen).
+     * 
+     * @param z    der Index der Zuordnung in der Zuordnungsliste
      */
     public void setzeZuordnungNull(int z)
     {
@@ -108,10 +112,10 @@ public class Zuordnungsverwaltung
     }
     
     /**
-     * Entferne alle Zuordnungen
+     * Entferne alle Zuordnungen, um ganz clean anfangen zu können.
      */
     public void deleteZuordnungen()
     {
-        listeZuordnungen.removeAll(listeZuordnungen); // löscht alle Elemente die in Klammern stehen aus listeZuordnungen => alle Elemente der List
+        listeZuordnungen.removeAll(listeZuordnungen); // löscht alle Elemente die in Klammern stehen aus listeZuordnungen => alle Elemente der Liste
     }
 }
