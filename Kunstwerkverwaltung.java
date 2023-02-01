@@ -322,7 +322,7 @@ public class Kunstwerkverwaltung
          * // hier wird ein Kunstwerk in ein Bild umgewandelt. Dies wird gemacht, um auf die "getMethoden" wie "getMinTemp" zugreifen zu können.
          */
         Bild b;
-        if (kw.getArt()!='B')
+        if (kw.getArt()=='B')
         {
             b = (Bild) kw;
         }
@@ -332,24 +332,35 @@ public class Kunstwerkverwaltung
         }
          
         // Das folgende wird nur für Bilder durchlaufen
-        if(minFeuchteRaum <= b.getMinLuft() && maxFeuchteRaum >= b.getMaxLuft()) 
+        
+        // Wenn (rmin <= bmin <= rmax) | (rmin <= bmax <= rmax) ist das Bild hinsichtlich Temperatur (bzw. Feuchte) platzierbar, 
+        // weil die Bandbreite des Bildes dann einen Überlapp hergibt mit den bisher im Raum platzierten Bildern.
+        // Die Überlegung dahinter ist in der Klasse zuordnung.aktualisiereParameterNachSetzen ausführlich erläutert.
+        if (
+            ((minFeuchteRaum <= b.getMinLuft()) & (b.getMinLuft() <= maxFeuchteRaum)) |
+            ((minFeuchteRaum <= b.getMaxLuft()) & (b.getMaxLuft() <= maxFeuchteRaum))
+           )
         {
-            passtRaumFeuchte = true; 
+            passtRaumFeuchte = true;
         }
         else
         {
-            //System.out.println("Das Bild kann nicht in den Raum plaziert werden, da die Luftfeuchtigkeit zu hoch oder zu niedrig ist");
+            //Das Bild kann nicht in den Raum plaziert werden, da die Luftfeuchtigkeit zu hoch oder zu niedrig sein müsste
             passtRaumFeuchte = false;
         }
-        if (minTempRaum <= b.getMinTemp() && maxTempRaum >= b.getMaxTemp())
+        if (
+            ((minTempRaum <= b.getMinTemp()) & (b.getMinTemp() <= maxTempRaum)) |
+            ((minTempRaum <= b.getMaxTemp()) & (b.getMaxTemp() <= maxTempRaum))
+           )
         {
             passtRaumTemp = true;
         }
-        else 
+        else
         {
-            //System.out.println("Das Bild kann nicht in den Raum plaziert werden, da die Raumtemperatur zu hoch oder zu niedrig ist");
+            //Das Bild kann nicht in den Raum plaziert werden, da die Raumtemperatur zu hoch oder zu niedrig sein müsste
             passtRaumTemp = false;
         }
+
         passtFeuchteUndTemp = passtRaumFeuchte && passtRaumTemp;
 
         return passtFeuchteUndTemp;
