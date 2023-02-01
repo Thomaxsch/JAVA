@@ -2,7 +2,7 @@ import java.util.*;
 
 /**
  * Diese Klasse enthält die Planungslogik auf hohem Level und ist daher eine Geschäftslogikklasse 
- * (während sich die Klasse Zuordnung um die meisten Details kümmert - teils unterstützt durch Kunstwerkveraltung und Raumverwaltung).
+ * (während sich die Klasse Zuordnung um die meisten Details kümmert - teils unterstützt durch Kunstwerkveraltung und Raumverwaltung).<pre>
  * 
  * - Hier wird die Zuordnungsverwaltung (ZV) initiert und angefordert, dass die ZV so viele Zuordnungen anlegt, wie hier im Parameter anzahlZuordnungen spezifiziert sind.
  * - Es wird gesteuert, dass nach Zuordnungsmappings für die Minimallösung bzw. die Lösungserweiterung gesucht wird:
@@ -11,28 +11,27 @@ import java.util.*;
  * - Schließlich wird eine Methode zum Vergleich von Zuordnungen implementiert, um im eher wahrscheinlichen Fall mehrerer Lösungen die optimale Lösung auszuwählen.
  * - Die Klasse Ausgabedatei benötigt Zugang zum besten Mapping Räume-Kunstwerke, wozu wir eine public Methode anbieten.
  * - Ähnlich gibt es eine Methode, die die Klasse Ausgabedatei nutzen kann, um für die beste Lösung die Bandbreiten der erlaubten Feuchten/Temperaturen abzurufen
- * - Eine Variationsanalyse, die verschiedene Schwerpunktthemen durchspielt und die beste Zuordnung ermittelt, ist mit variationsAnalyse und fuelleSpacesEin umgesetzt
+ * - Eine Variationsanalyse, die verschiedene Schwerpunktthemen durchspielt und jeweils die beste Zuordnung ermittelt, ist mit variationsAnalyse und fuelleSpacesEin umgesetzt
  * - Schließlich sorgt die Methode printLog dafür, dass die Klassen Ausstellungsplanung, Zuordnungsverwaltung sowie Zuordnung nur im Debugmode ihr Log auf die Konsole werfen.
  * - Mit einer weiteren Methode switchlogModus schaltet man den Log-Modus an und aus (Default: aus).
  * - Außerdem gibt es hier in Form von getter und setter die Verwaltung für folgende Parameter: 
  *          1) Schwerpunktthema
  *          2) Kostenobergrenze
- *          3) Qualitätsgewicht 
+ *          3) Qualitätsgewicht</pre> 
  * 
  * @author Thomas Scheidt
- * @version 19.12.2022
+ * @version 2023
  */
 public class Ausstellungsplanung
 {
     // ==========================================================================
     // === Attribute
     // ==========================================================================
-    private String schwerpunktthema = ""; //Variable um das Schwerpunktthema der Ausstellung festzulegen (mit Default).
-                                            //Wenn kein Schwerpunkt gesetzt werden soll, kann leer ("")  übergeben werden.
-    private double kostenobergrenze = 999999999; //Legt die Kostenobergrenze der Ausstellung fest (mit Default)
-                                            // Wenn keine Kostenobergrenze gesetzt werden soll, dann den Wert von ca 1 Milliarde (neun Mal die 9) übergeben.
-    private double qualitaetsgewicht = 0.5; //Gewichtung der Qualität (Werte von 0 bis 1; das Gewicht der Quantität ergibt sich umgekehrt als 1 minus qualitaetsgewicht).
-                                           // default 0.5
+    private String schwerpunktthema = "";          // Variable um das Schwerpunktthema der Ausstellung festzulegen (mit Default kein Schwerpunktthema).
+                                                   // Wenn kein Schwerpunkt gesetzt werden soll, kann leer ("")  übergeben werden.
+    private double kostenobergrenze = 999999999;   // Legt die Kostenobergrenze der Ausstellung fest (mit Default eine Milliarde)
+                                                   // Wenn keine Kostenobergrenze gesetzt werden soll, dann den Wert von ca 1 Milliarde (neun Mal die 9) übergeben.
+    private double qualitaetsgewicht = 0.5;        // Gewichtung der Qualität (Werte von 0 bis 1; das Gewicht der Quantität ergibt sich umgekehrt als 1 minus qualitaetsgewicht). Default 0.5.
     
     private Raumverwaltung raumverwaltung;
     private Kunstwerkverwaltung kunstwerkverwaltung;
@@ -40,7 +39,7 @@ public class Ausstellungsplanung
     
     private int anzahlZuordnungen = 10; // aus Laufzeitengründen passen wir die Zahl in der Methode generiereAusstellungen() noch an
     
-    private boolean erweiterungsloesungAbgeschlossen = false; // nachdem wir eine Lösungserweiterung vorgenommen haben, wird dies hier vermerkt
+    private boolean erweiterungsloesungAbgeschlossen = false; // nachdem wir die Lösungserweiterung vorgenommen haben, wird dies hier vermerkt
     private boolean logModus = false; // Wenn true, werfen die Klassen Ausstellungsplanung, Zuordnungsverwaltung sowie Zuordnung ihr Log auf die Konsole. Sonst nicht.
     
     // ==========================================================================
@@ -56,7 +55,7 @@ public class Ausstellungsplanung
         kunstwerkverwaltung=in_kunstwerkverwaltung;
         
         // Initieerung der Zuordnungsverwaltung
-        zuordnungsverwaltung = new Zuordnungsverwaltung(raumverwaltung,kunstwerkverwaltung,this);
+        zuordnungsverwaltung = new Zuordnungsverwaltung(raumverwaltung,kunstwerkverwaltung,this); // die Zurordnungsverwaltung nutzt von hier z.B. die Methode printLog
     }
     
     // ==========================================================================
@@ -68,7 +67,6 @@ public class Ausstellungsplanung
      * 
      * Die Klasse Zuordnungsverwaltung verwaltet Zuordnungen (d.h. die Kandidaten / verschiedene Planungszustände und insbesondere deren Mappings) in einer 
      * verschachtelten ArrayList. Wir versuchen unabhängig voneinander so viele Mappings erzeugen zu lassen, wie im hiesigen Attribut anzahlZuordnungen bestimmt wird.
-     * 
      */
     
     public void generiereAusstellungen()
@@ -80,7 +78,7 @@ public class Ausstellungsplanung
         // Aus Performancegründen senken wir die Zahl der Zuordnungen, wenn es sehr viel Kunstwerke gibt, damit die Laufzeit im Rahmen bleibt
         if (kunstwerkverwaltung.sizeKunstwerkverwaltung()>2000)
         {
-            anzahlZuordnungen = 2; // bei ca. 7000 KW (Datensatz 7) benötigte: die Variationsanalyse ohne Log ca ?? Minuten / Suche ohne Schwerpunkt mit Log ca 4 Min
+            anzahlZuordnungen = 2; // bei ca. 7000 KW (Datensatz 7)benötigte: die Variationsanalyse ohne Log ca ?? Minuten / Suche ohne Schwerpunkt mit Log ca 4 Min
                                    // bei ca. 2700 KW (Datensatz 6) benötigte: die Variationsanalyse ohne Log ca 15 Minuten / Suche ohne Schwerpunkt mit Log ca 1.5 Minuten
         }
         else if (kunstwerkverwaltung.sizeKunstwerkverwaltung()>500)
@@ -92,11 +90,11 @@ public class Ausstellungsplanung
             anzahlZuordnungen = 5;
         }
         
-        // Erzeuge anzahlZuordnungen neue Zuordnungen in der Zuordnungsverwaltung. Diese Zuordnungen enthalten noch kein Mapping Kunstwerke-Räume.
+        // Erzeuge anzahlZuordnungen neue Zuordnungen in der Zuordnungsverwaltung. Diese Zuordnungen enthalten zum jetzigen Zeitpunkt noch kein Mapping Kunstwerke-Räume.
         zuordnungsverwaltung.fuelleZuordnungsverwaltung(anzahlZuordnungen);
         
         // Jetzt suchen wir nach Mappings Kunstwerke-Räume:
-                
+        
         if (schwerpunktthema!="") // mit Schwerpunktthema müssen wir erst versuchen, eine minimale Zuordnung zu finden
         {
             printLog("Ein Schwerpunktthema wurde vorgegeben. Wir müssen zuerst versuchen, mindestens eine minimale Zuordnung zu finden");
@@ -123,12 +121,10 @@ public class Ausstellungsplanung
             erweitereAusstellungskandidaten();
             zuordnungsverwaltung.ausgebenZuordnungsGuetenAufKonsole();// Zusammenfassung der Ergebnisse aller Zuordnungen
         }
-        
-        
     }
     
     /**
-     *
+     * Hier wird die Suche nach Minimallösungen gesteuert.
      */       
       
     private void findeMinimaleAusstellungskandidaten() 
@@ -150,7 +146,9 @@ public class Ausstellungsplanung
     }
     
     /**
-     *  ...
+     *  Prüfung, ob mindestens eine Minimallösung gefunden wurde
+     *  
+     *  @return   ob mindestens eine Minimallösung gefunden wurde
      */
     
     private boolean wurdeMinimaleAusstellungGefunden()
@@ -164,17 +162,15 @@ public class Ausstellungsplanung
                 break;
             }
         }
-        
         return wurdeGefunden;
     }
     
     /**
-     * 
+     * Hier wird gesteuert, dass Mappings Kunstwerke-Räume, die eine Minimallösung darstellen noch so weit es geht optimiert werden (Lösungserweiterung).
      */
     
     private void erweitereAusstellungskandidaten()
     {
-        
         for (int z=0;z<anzahlZuordnungen;z++)
         {
             if (zuordnungsverwaltung.getZuordnung(z)!=null) // die Prüfung erfolgt, damit wir Zuordnungen ohne Minimallösung nicht weiter auszubauen versuchen
@@ -183,13 +179,17 @@ public class Ausstellungsplanung
                 zuordnungsverwaltung.getZuordnung(z).versucheLoesungserweiterung();
                 printLog("***** Ausstellungsoptimierung für Zuordnung " + z +" beendet *****");
             }
-
         }
         erweiterungsloesungAbgeschlossen = true; 
     }
     
     /**
-     * Die Klasse Ausgabedatei benötigt Zugang zum besten Mapping Räume-Kunstwerke, wozu wir diese Methode anbieten. Gibt null aus, wenn keine Minimallösung gefunden wurde.
+     * Die Klasse Ausgabedatei benötigt Zugang zum besten Mapping Räume-Kunstwerke, wozu wir diese Methode anbieten.
+     * 
+     * Gibt null aus, wenn keine Minimallösung gefunden wurde, weil dann erweitereAusstellungskandidaten() im Ablauf der public method generiereAusstellungen()
+     * nicht aufgerufen wurde und daher erweiterungsloesungAbgeschlossen = false. Ansonsten wird das beste gefundene Mapping zurückgegeben.
+     * 
+     * @return      Mapping Räume-Kunstwerke
      */
     
     public ArrayList <ArrayList <Kunstwerk>> getBestesMapping ()
@@ -212,9 +212,12 @@ public class Ausstellungsplanung
     
     /**
      * Die Klasse Ausgabedatei benötigt für die beste Lösung die Bandbreiten der erlaubten Feuchten/Temperaturen der Räume, wozu wir diese Methode anbieten.  
-     * Gibt null aus, wenn keine Minimallösung gefunden wurde. 
+     * Gibt null aus, wenn keine Minimallösung gefunden wurde. Die Methode wird im selben Zusammenhang mit getBestesMapping () aufgerufen.
      * 
      * Als Input wird ein Element aus ["minFeuchteRaum", "maxFeuchteRaum","minTempRaum","maxTempRaum"] erwartet.
+     * 
+     * @param welcherAspekt     ein Element aus ["minFeuchteRaum", "maxFeuchteRaum","minTempRaum","maxTempRaum"]
+     * @return                  das entsprechende int array für min/max Feuchte/Temp 
      */
     
     public int[] getBestesMappingErlaubteFeuchtenTemperaturen (String welcherAspekt)
@@ -222,21 +225,21 @@ public class Ausstellungsplanung
         if (erweiterungsloesungAbgeschlossen == true) // Die Auswahl des besten Vorgangs erfolgt nur aus den erweiterten Lösungen.
         {
             return zuordnungsverwaltung.getZuordnung(vergleicheAusstellungskandidatenWaehleBeste()) // den Index der besten Zuordnung ansteuern
-                                       .getRangesFeuchtenTemperaturen(welcherAspekt); // und sich von dieser besten Zuordnung nur das Mapping ausgeben lassen
+                                       .getRangesFeuchtenTemperaturen(welcherAspekt); // und sich von dieser besten Zuordnung nur min/max Feuchte/Temp ausgeben lassen
         }
         return null;
     }
     
-    
     /**
      * Suche nach dem (Index des) besten Mappings
+     * 
+     * @return Zuodnungsindex des besten Mappings
      */
-    
     private int vergleicheAusstellungskandidatenWaehleBeste()
     {
-        if (erweiterungsloesungAbgeschlossen == true) // Die Auswahl des besten Vorgangs erfolgt nur aus den erweiterten Lösungen.
+        if (erweiterungsloesungAbgeschlossen == true) // Die Auswahl des besten Vorgangs erfolgt nur nachdem die Lösungserweiterung für alle Zuordnungen mit Minimallösung abgeschlossen wurde
         {
-            // Initialsierung
+            // Initialisierung
             int indexBesteZuordnung = -1;
             double zuordnungsGuete = 0;
             
@@ -245,26 +248,30 @@ public class Ausstellungsplanung
             {   
                 double zuVergleichendeZuordnungsGuete = 0; // Initialisierung
                 
-                if (zuordnungsverwaltung.getZuordnung(i)!=null)
+                if (zuordnungsverwaltung.getZuordnung(i)!=null) // Die Auswahl des besten Vorgangs erfolgt nur aus den erweiterten Lösungen.
                 {
                     zuVergleichendeZuordnungsGuete = zuordnungsverwaltung.getZuordnung(i).getZuordnungsGuete();
                 }
                 else if (zuordnungsverwaltung.getZuordnung(i)==null)
                 {
-                    zuVergleichendeZuordnungsGuete = -1; // Wenn es keine Minimallösung gab wurde die Zuordnung Null gesetzt. Dann nehmen wir sie hier aus dem Vergleich
+                    zuVergleichendeZuordnungsGuete = -1000; // Wenn es keine Minimallösung gab, wurde die Zuordnung Null gesetzt. Dann nehmen wir sie hier aus dem Vergleich
                 }
                 
-                if (zuVergleichendeZuordnungsGuete>zuordnungsGuete)
+                if (zuVergleichendeZuordnungsGuete>zuordnungsGuete) // Wir suchen ja den Index mit der Zuordnung der besten Güte (klassische Maximumsbestimmung)
                 {
                     indexBesteZuordnung = i;
                     zuordnungsGuete = zuVergleichendeZuordnungsGuete;
                 }
             }
-
-            return indexBesteZuordnung;
+            return indexBesteZuordnung; // ist als positiver Wert zu erwarten
         }
-        return -1;
+        return -2; // es ist nicht zu erwarten, dass dies Eintritt
     }       
+    
+    /**
+     * Hier wird gesteuert, dass Zuordnungen, für die keine Minimallösung gefunden wurden, durch Null ersetzt werden (Referenz wird entfernt, ab ins Nirvana).
+     * 
+     */
     
     private void setzeInvalideMinimalloesungenNull()
     {
@@ -278,6 +285,10 @@ public class Ausstellungsplanung
         }
     }
     
+    /**
+     * Eine Variationsanalyse, die verschiedene Schwerpunktthemen durchspielt und jeweils die beste Zuordnung ermittelt, ist mit variationsAnalyse und fuelleSpacesEin umgesetzt.
+     */
+    
     public void variationsAnalyse()
     {
         printLog("*** Starte Variationsanalyse ***");
@@ -285,13 +296,13 @@ public class Ausstellungsplanung
         String vorherEingestelltesSchwerpunktthema = schwerpunktthema;//vermerke bisher eingstellten Wert, damit wir ihn nach Variation wieder auf diesen Wert rücksetzen können
         
         ArrayList <String> vorkommendeThemen = kunstwerkverwaltung.getVorkommendeThemen(); // wir werden jedes der vorkommenden Thema als Vorgabe eines Variationsdurchlaufs machen
-        vorkommendeThemen.add(""); // wir möchten auch den Fall analysieren, dass kein Schwerpunktthema vorgegeben wurde
+        vorkommendeThemen.add(""); // wir möchten zusätzlich auch den Fall analysieren, dass kein Schwerpunktthema vorgegeben wurde
         
-        ArrayList <String> ausgabeJeThema = new ArrayList <String> ();
+        ArrayList <String> ausgabeJeThema = new ArrayList <String> (); // was wir als Zusammenfassung mit einer Zeile je Themenszenario nachher im Log sehen möchten sammeln wir hier
         
         for (String thema : vorkommendeThemen)
         {
-            setSchwerpunktthema(thema); //"Aktmalerei" "Rokoko" "" ...
+            setSchwerpunktthema(thema); //"Aktmalerei", "Rokoko", ... , "" 
             
             generiereAusstellungen(); // Bildung mehrerer Zuordnungen und jeweils Lösungssuche
             int i = vergleicheAusstellungskandidatenWaehleBeste(); // gibt Index der besten Zuordnung, falls Erweiterungslösung abgeschlossen wurde; sonst -1
@@ -309,8 +320,7 @@ public class Ausstellungsplanung
                                     "ØGueteRaumAttraktivitaet%: " +  Math.floor(ergebnisseBesteAusstellung[1]*1000)/10 +  "|" + 
                                     // Math.floor rundet ab zum nächsten Integer. Durch obige Konstruktion können wir den double Wert auf 1 Nachkommastelle darstellen. 
                                     "#Valid.-prob.:" + zuordnungsverwaltung.getZuordnung(i).getAnzahlValidierungsprobleme() +  "|" +
-                                    "Budgetverbrauch: " + (int) ergebnisseBesteAusstellung[3] + " €");
-                                     
+                                    "Budgetverbrauch: " + (int) ergebnisseBesteAusstellung[3] + " €");                
             }
             else if (i<0)
             {
@@ -324,7 +334,7 @@ public class Ausstellungsplanung
         System.out.println("Unter anderem wird aufgeführt, wie viele Kunstwerke ingesamt (beliebigen Typs und Themas) platziert wurden und wieviel Budget dafür verbraucht wurde.");
         System.out.println("Es gibt " + (vorkommendeThemen.size()-1) + " mögliche Schwerpunktthemen; die letzte Zeile zeigt den Fall, dass KEIN Schwerpunktthema vorgegeben wird:\n");
         
-        // Nun die Ausgabe je Thema je Konsolenzeile:
+        // Nun als Zusammenfassung der Variationsanalyse die Ausgabe je Thema je Konsolenzeile:
         for (int t=0; t<ausgabeJeThema.size();t++)
         {
             System.out.println(ausgabeJeThema.get(t));
@@ -334,6 +344,15 @@ public class Ausstellungsplanung
         System.out.println("\n-------------------------------------------------\n");
         printLog("*** Variationsanalyse beendet ***");
     }
+    
+    /**
+     * Damit die Ausgabe auf der Konsole schön leserlich wird, müssen wir kürzere Themen mit Whitespace am Ende verlängern. Nur für Zwecke der Darstellung im Log (der Konsole) im Rahmen 
+     * der public method variationsAnalyse().
+     * 
+     * @param in_thema               Thema als String (also gegebenes Schwerpunktthema-Szenario der Variationsanalyse)
+     * @param in_vorkommendeThemen   Liste der möglichen Themen, in der die Themen unterschiedliche Längen haben
+     * @return                       Thema als String, bei dem die fehlenden Zeichen bis zur Characterlänge des längsten Themas mit Space angefügt wurden
+     */
     
     private String fuelleSpacesEin (String in_thema, ArrayList <String> in_vorkommendeThemen)
     {
@@ -347,7 +366,7 @@ public class Ausstellungsplanung
             }
         }
         
-        // Nun entsprechend Whitespaces anfügen
+        // Nun entsprechend Whitespaces anfügen, damit kürzere Themen mit Whitespace verlängert werden - sodass sie untereinander im Log eine schöne Tabellenspalte hergeben
         String thema = in_thema;
         while (thema.length()<maxThemenLaenge)
         {
@@ -358,9 +377,13 @@ public class Ausstellungsplanung
     }
     
     /**
-     * Sorgt dafür, dass die Klassen Ausstellungsplanung, Zuordnungsverwaltung sowie Zuordnung nur im Debugmode ihr Log auf die Konsole werfen.
+     * Sorgt dafür, dass die Klassen Ausstellungsplanung, Zuordnungsverwaltung sowie Zuordnung nur im Logmodus/Debugmode ihr Log auf die Konsole werfen. Die vorliegende Methode wird
+     * daher in den Klassen aufgerufen, anstatt direkt System.out.println. 
+     * 
+     * @param text    String der im Moment des Programmablaufes auf die Konsole soll, sofern der Logmodus an ist
      */
-    public void printLog(String text){
+    public void printLog(String text)
+    {
         if (logModus)
         {
             System.out.println(text);
@@ -376,15 +399,14 @@ public class Ausstellungsplanung
         logModus = (!logModus); // Umkehr der bisherigen Einstellung
     }
     
-    // =====================================================================================
-    // === Getter/Setter-Methoden für Schwerpunkt, Kostengrenze, Qualitätsgewicht, Log-Modus
-    // =====================================================================================
+    // ==========================================================================
+    // === Getter/Setter-Methoden für Schwerpunkt, Kostengrenze, Qualitätsgewicht
+    // ==========================================================================
     
     /**
      * Methode um Schwerpunktthema zu setzen. 
      * 
-     * @param schwerpunktthema  Wenn kein Schwerpunkt gesetzt werden soll, kann null übergeben werden.
-     * 
+     * @param in_schwerpunktthema  Wenn kein Schwerpunkt gesetzt werden soll, kann "" übergeben werden.
      */   
     public void setSchwerpunktthema(String in_schwerpunktthema)
     {
@@ -393,7 +415,8 @@ public class Ausstellungsplanung
         
     /**
      * Methode um Kostenobergrenze zu setzen.
-     * @param kostenobergrenze   Wenn keine Kostenobergrenze gesetzt werden soll, dann z.B. den Wert von ca 1 Milliarde (neun Mal die 9) übergeben. 
+     * 
+     * @param in_kostenobergrenze   Wenn keine Kostenobergrenze gesetzt werden soll, dann kann der Wert von einer Milliarde übergeben werden (neun mal hintereinander die "9"). 
      */   
     public void setKostenobergrenze(double in_kostenobergrenze)
     {
@@ -402,7 +425,8 @@ public class Ausstellungsplanung
     
     /**
      * Methode um Qualitaetsgewichtung für die Planung zu setzen.
-     * @param qualitaetsgewicht   Gewichtung der Qualität (Werte von 0 bis 1; das Gewicht der Quantität ergibt sich umgekehrt als 1 minus qualitaetsgewicht). Default 0.5.
+     * 
+     * @param in_qualitaetsgewicht   Gewichtung der Qualität (Werte von 0 bis 1; das Gewicht der Quantität ergibt sich umgekehrt als 1 minus qualitaetsgewicht). Default 0.5.
      */   
     public void setQualitaetsgewicht(double in_qualitaetsgewicht)
     {
@@ -412,7 +436,7 @@ public class Ausstellungsplanung
     /**
      * Hierüber kann das Schwerpunktthema der Ausstellung abgefragt werden.
      * 
-     * @return schwerpunktthema   Wert des Attributtes schwerpunktthema
+     * @return    Wert des Attributtes schwerpunktthema
      */
     public String getSchwerpunktthema() 
     {
@@ -422,7 +446,7 @@ public class Ausstellungsplanung
     /**
      * Methode zum Abfragen der Kostenobergrenze
      * 
-     * @return kostenobergrenze   Wert des Attributs kostenobergrenze
+     * @return    Wert des Attributs kostenobergrenze
      */
     public double getKostenobergrenze()
     {
@@ -432,13 +456,12 @@ public class Ausstellungsplanung
     /**
      * Hierüber kann das Qualitätsgewicht, das der Ausstellungsplanung zugrunde gelegt wird, abgefragt werden.
      * 
-     * @return qualitaetsgewicht   Wert des Attributtes qualitaetsgewicht
+     * @return    Wert des Attributtes qualitaetsgewicht
      */
     public double getQualitaetsgewicht() 
     {
         return qualitaetsgewicht;
     }
-
 }
   
     

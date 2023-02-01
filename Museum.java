@@ -343,22 +343,16 @@ public class Museum
                 if (planungsErgebnis != null)
                 {
                     System.out.print("\nWir haben nach Lösungen gesucht und können nun die beste ausgeben.\n");
-                    
-                    // Die Arrays haben jeweils einen Eintrag pro Raum. Die Reihenfolge der Räume ist dieselbe, wie sie mit raumverwaltung.getRaumVector() vorliegt.
-                    int[] A = planung.getBestesMappingErlaubteFeuchtenTemperaturen("minFeuchteRaum");
-                    int[] B = planung.getBestesMappingErlaubteFeuchtenTemperaturen("maxFeuchteRaum");
-                    int[] C = planung.getBestesMappingErlaubteFeuchtenTemperaturen("minTempRaum");
-                    int[] D = planung.getBestesMappingErlaubteFeuchtenTemperaturen("maxTempRaum");
-                    
+                                    
                     // Deklaration und Initialisierung einer Objektvariablen der Klasse Ausgabedatei
                     // als Parameter wird das Stringliteral "raumdatei.csv" und das Ergebnis der Ausstellungplanung als ArrayList übergeben
-                    Ausgabedatei datei1 = new Ausgabedatei("raumdatei.txt", planungsErgebnis, raeume);
+                    Ausgabedatei datei1 = new Ausgabedatei("raumdatei.txt", planungsErgebnis, planung, raeume);
                     datei1.schreibeAusstellungen();
                     
-                    Ausgabedatei datei2 = new Ausgabedatei("museumsfuehrer.txt", planungsErgebnis, raeume);
+                    Ausgabedatei datei2 = new Ausgabedatei("museumsfuehrer.txt", planungsErgebnis, planung, raeume);
                     datei2.schreibeMuseumsfuehrer();
                     
-                    Ausgabedatei datei3 = new Ausgabedatei("ausleihdaten.txt", planungsErgebnis, raeume);
+                    Ausgabedatei datei3 = new Ausgabedatei("ausleihdaten.txt", planungsErgebnis, planung, raeume);
                     datei3.schreibeAusleihen();
                 }
                 else

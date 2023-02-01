@@ -14,12 +14,17 @@ public class Ausgabedatei
     * Der Name der Datei mit Pfadinformationen (bsp. C:/temp/datei.txt)
     */
     private String file;
+    
     /**
      * Objekt der Klasse Ausstellungsplanung, auf dessen Grundlage die Ausleih-, Ausstellungs- und Museumsführer-Datei erstellt werden können
-     */
-    // private Ausstellungsplanung planung;
-       
+     */ 
+    private Ausstellungsplanung planung;
+    
+    /**
+     * Array-List der Kunstwerke aus dem besten Planungsergebnis
+     */     
     private ArrayList <ArrayList <Kunstwerk>> zugeordneteKunstwerke;
+    
     /**
      * Objekt der Java-Klasse PrintWriter zum Schreiben von Zeichenketten
      */
@@ -38,13 +43,16 @@ public class Ausgabedatei
     /**
      * Konstruktor für Objekte der Klasse Ausgabedatei mit Parameternn für den Dateinamen und die Ausstellungsplanung
      * @param file                     Dateiname für die zu erstellende Outputdatei 
-     * @param auszugebendeKunstwerke   HashMap mit den Räumen und Objekten die ausgegeben werden sollen
+     * @param auszugebendeKunstwerke   Array-List der Kunstwerke aus dem besten Planungsergebnis
+     * @param planung                  Objekt der Klasse Ausstellungsplanung
+     * @param raeume                   in der Ausstellungsplanung verwendete Räume
      */
-    public Ausgabedatei(String file, ArrayList <ArrayList <Kunstwerk>> auszugebendeKunstwerke, Raumverwaltung raeume) 
+    public Ausgabedatei(String file, ArrayList <ArrayList <Kunstwerk>> auszugebendeKunstwerke, Ausstellungsplanung planung, Raumverwaltung raeume) 
     {
         this.file = file;
         this.zugeordneteKunstwerke = auszugebendeKunstwerke;
         this.raeume = raeume;
+        this.planung = planung;
     }
     
     /**
@@ -121,14 +129,15 @@ public class Ausgabedatei
     }
     
     /**
-     * Erstellt eine Datei (Ausstellungsdatei), die nach Räumen aufgegliedert
-     * auflistet,welches Kunstwerk wo ausgestellt werden soll. Sie nutzt dazu
-     * die Ausstellungsplanung.
+     * Erstellt eine Datei (Raumdatei), die nach Räumen aufgegliedert
+     * auflistet, welches Kunstwerk wo ausgestellt werden soll. Sie nutzt dazu
+     * das Array zugeordneteKunstwerke.
      */
     public void schreibeAusstellungen()
     {
         try
         {
+            // Beginn Ausgabe in Textdatei 
             // Objekt meinWriter der Klasse BufferedWriter zur Ausgabepufferung, und anonymes File-WriteWriter-Objekt zur eigentlichen Ausgabe
             BufferedWriter meinWriter = new BufferedWriter(new FileWriter(file));
             
@@ -136,14 +145,18 @@ public class Ausgabedatei
             for(int i=0; i < zugeordneteKunstwerke.size(); i++)
             {
                 //die Methode write schreibt den String-Eingabeparameter als Byte in den Ausgabestrom
-                meinWriter.write("------------------------------------------\n");
+                meinWriter.write("-------------------------------------------------------------------------------------------------------\n");
                 meinWriter.write("Raum: " + raeume.getRaum(i).toString() + "\n");
-                meinWriter.write("------------------------------------------\n");
+                meinWriter.write("Minimale Raumtemperatur: " + planung.getBestesMappingErlaubteFeuchtenTemperaturen("minTempRaum")[i] + "\n");
+                meinWriter.write("Maximale Raumtemperatur: " + planung.getBestesMappingErlaubteFeuchtenTemperaturen("maxTempRaum")[i] + "\n");
+                meinWriter.write("Minimale Luftfeuchte: " + planung.getBestesMappingErlaubteFeuchtenTemperaturen("minFeuchteRaum")[i] + "\n");
+                meinWriter.write("Maximale Luftfeuchte: " + planung.getBestesMappingErlaubteFeuchtenTemperaturen("maxFeuchteRaum")[i] + "\n");
+                meinWriter.write("-------------------------------------------------------------------------------------------------------\n");
                 
                 // zweite Dimension der Arraylist wird bis zum Ende durchlaufen,enthält die einzelnen Kunstwerke deren String-Repräsentation als Byte in den Ausgabestrom geschrieben wird
                 for(int j=0; j < zugeordneteKunstwerke.get(i).size(); j++)
                 {
-                    meinWriter.write(zugeordneteKunstwerke.get(i).get(j).toString() + "\n");
+                    meinWriter.write(zugeordneteKunstwerke.get(i).get(j).outputRaumdatei() + "\n");
                 }
                 
                 meinWriter.write("\n");
@@ -151,25 +164,37 @@ public class Ausgabedatei
             
             // Ausgabepuffer wird durch die Methode close geschlossen
             meinWriter.close();
-                      
+            
+            // Ende Ausgabe in Textdatei
+            // Beginn Ausgabe in HTML-Datei            
+            
+            // Objekt sb der Klasse StringBuilder wird deklariert und Generierung einer neuen Instanz der Klasse StringBuilder mit new, dier Objektvariablen sb zugewiesen wird
             StringBuilder sb = new StringBuilder();
+            
+            // mit der Methode append werde im weiteren Verlauf mehrere Strings aneinandergehängt
             sb.append("<html>");
             sb.append("<h1>Auflistung nach Räumen (zur Aufstellung der Kunstwerke für Museumsmitarbeiter)</h1>");
-                    
-              for(int i=0; i < zugeordneteKunstwerke.size(); i++)
+            
+            // in der äußeren For-Schleife wird das Array zugeordneteKunstwerke durchlaufen, entspricht der Anzahl der Räume
+            for(int i=0; i < zugeordneteKunstwerke.size(); i++)
             {
-                //die Methode write schreibt den String-Eingabeparameter als Byte in den Ausgabestrom
+                // für jeden Raum wird eine String-Repräsentation durch Aufruf der Methode toString ausgegeben
                 sb.append("<h1>Raum: " + raeume.getRaum(i).toString() + "</h1>");
+                sb.append("Minimale Raumtemperatur: " + planung.getBestesMappingErlaubteFeuchtenTemperaturen("minTempRaum")[i] + "</br>");
+                sb.append("Maximale Raumtemperatur: " + planung.getBestesMappingErlaubteFeuchtenTemperaturen("maxTempRaum")[i] + "</br>");
+                sb.append("Minimale Luftfeuchte: " + planung.getBestesMappingErlaubteFeuchtenTemperaturen("minFeuchteRaum")[i] + "</br>");
+                sb.append("Maximale Luftfeuchte: " + planung.getBestesMappingErlaubteFeuchtenTemperaturen("maxFeuchteRaum")[i] + "</br></br/>");
                 sb.append("<table border='1px' width='100%'>");
                 sb.append("<tr><td>Nr.</td>");
                 sb.append("<td>Kunstwerk</td></tr>");
                 
-                // zweite Dimension der Arraylist wird bis zum Ende durchlaufen,enthält die einzelnen Kunstwerke deren String-Repräsentation als Byte in den Ausgabestrom geschrieben wird
+                // in der inneren For-Schleife werden alle einem Raum zugeordneten Kunstwerke durchlaufen
                 for(int j=0; j < zugeordneteKunstwerke.get(i).size(); j++)
                 {
+                    // String-Repräsentation der Kunstwerke erfolgt mit der Methode 
                     sb.append("<tr>");
                     sb.append("<td>" + (j+1) + "</td>");
-                    sb.append("<td>" + zugeordneteKunstwerke.get(i).get(j).toString() + "</td>");
+                    sb.append("<td>" + zugeordneteKunstwerke.get(i).get(j).outputRaumdatei() + "</td>");
                     sb.append("</tr>");
                 }
                 
@@ -178,10 +203,22 @@ public class Ausgabedatei
             }
             
             sb.append("</html>");
+            
+            // Objekt fstream der Klasse FileWriter wird deklariert und eine Instanz der Klasse FileWriter mit new zugewiesen
+            // bei der Instanzierung wird als Eingabeparameter der Name der HTML-Datei als String übergeben
             FileWriter fstream = new FileWriter("raumdatei.html");
+            
+            // Objekt out der Klasse BufferedWriter wird deklariert und eine neue Instanz der Klasse BufferedWriter zugewiesen
+            // bei der Instanzierung wird als Eingabeparameter das Objekt fstream übergeben
             BufferedWriter out = new BufferedWriter(fstream);
+            
+            // mit der Methode write werden die Daten in die HTML-Datei geschrieben
             out.write(sb.toString());
+            
+            // gepufferter Ausgabestrom wird mit der Methode close geschlossen
             out.close();
+            
+            // Ende Ausgabe in HTML-Datei
         }
         catch(IOException e)
         {
