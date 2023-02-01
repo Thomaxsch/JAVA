@@ -343,8 +343,7 @@ public class Raum
     public String toString()
     {
         return "Nummer: " + this.nummer + ", Raumbezeichnung: " + this.name + ", Breite: " + this.breiteRaum +
-        ", Länge: " + this.laengeRaum + ", Höhe:" + this.hoeheRaum;  
-
+        ", Länge: " + this.laengeRaum + ", Höhe: " + this.getHoeheRaum();  
     }
     
     /** Gibt eine lesbare Beschreibung eines Raumes aus (fuer Museumsfuehrer und Ausleihdatei)
