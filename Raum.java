@@ -283,7 +283,18 @@ public class Raum
         wandWest=breiteRaum-tuerWest-200;
         return wandWest;
     }
-          
+     
+    /** Zeigt die verfuegbare Hoehe des Raums fuer B an. Diese Strecke entspricht der Hoehe des Raums abzueglich eines 
+     *  Mindestabstandes von jeweils 10 cm zu Boden und Decke (insgesamt 20 cm).
+     *  @return Die verfuegbare Hoehe des Raums in cm.
+     */
+    public int showVerfuegbareHoeheBilder()
+    {
+        int verfuegbareHoeheBilder;
+        verfuegbareHoeheBilder=hoeheRaum-20;
+        return verfuegbareHoeheBilder;
+    }  
+    
     //========================================================================
     //Methoden relevant zur Planung von Kunstgegenstaenden/Kunstinstallationen
     //========================================================================
@@ -310,21 +321,7 @@ public class Raum
         verfuegbareBreite=breiteRaum-400;
         return verfuegbareBreite;
     }
-    
-    //========================================================================
-    //Methoden relevant zur Planung von allen Kunstwerken
-    //========================================================================
-    /** Zeigt die verfuegbare Hoehe des Raums fuer B an. Diese Strecke entspricht der Hoehe des Raums abzueglich eines 
-     *  Mindestabstandes von jeweils 10 cm zu Boden und Decke (insgesamt 20 cm).
-     *  @return Die verfuegbare Hoehe des Raums in cm.
-     */
-    public int showVerfuegbareHoeheBilder()
-    {
-        int verfuegbareHoeheBilder;
-        verfuegbareHoeheBilder=hoeheRaum-20;
-        return verfuegbareHoeheBilder;
-    }  
-    
+   
     /** Zeigt die verfuegbare Hoehe des Raums fuer I und G an. Diese Strecke entspricht der Hoehe des Raums abzueglich eines 
      *  Mindestabstandes von 10 cm zur Decke.
      *  @return Die verfuegbare Hoehe des Raums in cm.
@@ -346,7 +343,7 @@ public class Raum
     public String toString()
     {
         return "Nummer: " + this.nummer + ", Raumbezeichnung: " + this.name + ", Breite: " + this.breiteRaum +
-        ", Länge: " + this.laengeRaum + ", Höhe:" + this.getHoeheRaum();  
+        ", Länge: " + this.laengeRaum + ", Höhe:" + this.hoeheRaum;  
     }
     
     /** Gibt eine lesbare Beschreibung eines Raumes aus (fuer Museumsfuehrer und Ausleihdatei)
