@@ -335,7 +335,7 @@ public class Kunstwerkverwaltung
         
         // Wenn (rmin <= bmin <= rmax) | (rmin <= bmax <= rmax) ist das Bild hinsichtlich Temperatur (bzw. Feuchte) platzierbar, 
         // weil die Bandbreite des Bildes dann einen Überlapp hergibt mit den bisher im Raum platzierten Bildern.
-        // Die Überlegung dahinter ist in der Klasse zuordnung.aktualisiereParameterNachSetzen ausführlich erläutert.
+        // Die Überlegung dahinter ist in der Methode zuordnung.aktualisiereParameterNachSetzen ausführlicher erläutert.
         if (
             ((minFeuchteRaum <= b.getMinLuft()) & (b.getMinLuft() <= maxFeuchteRaum)) |
             ((minFeuchteRaum <= b.getMaxLuft()) & (b.getMaxLuft() <= maxFeuchteRaum))
