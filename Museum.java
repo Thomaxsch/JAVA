@@ -202,6 +202,10 @@ public class Museum
             System.out.println("Fehler beim Zugriff auf die Datei!");
             System.out.println("Folgender Fehler ist aufgetreten " + e.getMessage());
         }
+        catch(NumberFormatException e)
+        {
+             System.out.println("Fehler in der zugrundeliegenden Datei: " + e.getMessage());
+        }
     }
     
     /**
