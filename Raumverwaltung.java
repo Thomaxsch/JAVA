@@ -119,8 +119,7 @@ public class Raumverwaltung
         ArrayList<Raum> raumArrayList = new ArrayList<Raum>(raumVectorKlon); 
         // entfernt alle belegten Raeume aus der ArrayList, die komplett unbelegten Raeume bleiben enthalten
         raumArrayList.removeAll(inRaeumeSchonBelegt);
-        
-       
+               
         // erstellt einen Zufallsnummer-Generator
         Random rand = new Random();
         // ermittelt eine zufaellige ganzzahlige Nummer zwischen 0 (erstes Element der ArrayList) und der Länge d. 

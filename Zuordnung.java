@@ -2,9 +2,9 @@ import java.util.*;
 import java.util.ArrayList;
 
 /**
- * Die vorliegende Klasse ist eine Datenklasse für die einzelne Zuordnung von Raum und Kunstwerk(en). 
+ * Die vorliegende Klasse ist eine Datenklasse für die einzelne Zuordnung von Raum und Kunstwerk(en). Sie enthält den Planungszustand. 
  * 
- * Sie enthält in diesem Zusammenhang nicht nur das Mapping Raum-Kunstwerk, sondern eine ganze Reihe von Datenstrukturen in Form listenartiger Objekte (verschachtelter) ArrayList und Array. 
+ * Sie enthält in diesem Zusammenhang nicht nur das Mapping Kunstwerke-Räume, sondern eine ganze Reihe von Datenstrukturen in Form listenartiger Objekte (verschachtelter) ArrayList und Array. 
  * Hierbei kommt als wesentlicher Unterschied zum Tragen, dass ArrayLists eine flexible Länge haben (z.B. beliebig viele Kunstwerke eines Raumes). Dafür können sie nicht direkt 
  * Primitives aufnehmen (z.B. integer-Wert der erlaubten Feuchte im Raum). So kommt es, dass wir manchmal Arrays und manchmal ArrayListen verwenden. Die listenartigen Objekte sind weiter
  * unten erklärt, wo sie deklariert werden ("Attribute" der Klasse) und sind konsequent sprechend benannt.
@@ -690,26 +690,54 @@ public class Zuordnung
         /** ------------------------------------------------------------------------------------------
         // Aktualisiere die Arrays der im Raum erlaubten Temperaturen & Feuchten (für Bilder relevant)
         */
+        // Schauen wir uns zuerst den Fall der Temperaturen an. 
+        // Ein Bild hat eine erlaubte Range zwischen Mindest- und Maximalwert. Kürzen wir die Grenzen mit bmin und bmax ab.
+        // Ein Raum hat zunächst noch keine Grenzwerte (wir nehmen willkürlich -999/+999).
+        // Der Raum nimmt bei der Platzierung des ersten (!) Bildes im Raum dessen Grenzen an. Nennen wir die Grenzen rmin und rmax.
+        
+        // Ein weiteres Bild passt dann, wenn es einen Überlapp der Range von bmin und bmax sowie rmin und rmax gibt.
+        // Ansonsten können die Werte im Raum nicht eingstellt werden, weil die Heizung nicht sowohl die Ranges des neuen Bildes als auch
+        // der bisherigen Bilder erfüllen kann, wie die folgende Skizze zeigt:
+        //                           rmin                   rmax      bmin...bmax 
+        
+        // In drei Fallkonstellationen gibt es einen Überlapp:
+        //                           rmin    bmin-----------rmax......bmax     
+        //                  bmin.....rmin-----------bmax    rmax
+        //                           rmin   bmin------bmax  rmax
+        
+        // Fall A: (rmin <= bmin <= rmax <= bmax)   -> rmin ist auf bmin einzustellen, da es sonst zu kalt sein kann für das neue Bild
+        // Fall B: (bmin <= rmin <= bmax <= rmax)   -> rmax ist auf bmax einzustellen, da es sonst zu warm sen kann für das neue Bild
+        // Fall C: (rmin <= bmin <= bmax <= rmax)   -> rmin ist auf bmin einzustellen und rmax auf bmax, da es sonst zu kalt oder warm sein kann für das neue Bild
+        
+        // Praktischerweise liegt Fall C auch vor, wenn wir für einen leeren Raum rmin = -999 setzen sowie rmax = +999. Das haben wir anfangs auch so initialisiert.
+        // Ebenfalls ist praktisch, dass obige Überlegung nicht nur für die Temperaturen greift, sondern genau so auch für die Feuchten.
+        
+        // Wir können noch obiges Schema noch weiter vereinfachen:
+        //      - Wenn (rmin <= bmin <= rmax), dann ist rmin auf bmin einzustellen, da es sonst zu kalt sein kann für das neue Bild
+        //      - Wenn (rmin <= bmax <= rmax), dann ist rmax auf bmax einzustellen, da es sonst zu warm sein kann für das neue Bild
+        //      - Beides kann auch zusammen passieren.
+        //      - Liegt mindestens eine der beiden Bdeingungen vor, gibt es einen Überlapp und demnach ist das Bild platzierbar.
         
         if (kw.getArt()=='B')
         {
             Bild b = (Bild) kw; // die Parentclass "Kunstwerk" hat nicht die Methoden/Eigenschaften für Temp & Feuchte, die wir aber gleich benötigen, daher casten wir
             
-            if ((minFeuchteRaum[r]==-999) | (minFeuchteRaum[r]<b.getMinLuft())) // wenn noch kein Eintrag da, oder wenn die bisherige min Grenze zu niedrig ist für das neue Bild
+            // Umsetzung obiger Logik
+            if ((minFeuchteRaum[r] <= b.getMinLuft()) & (b.getMinLuft() <= maxFeuchteRaum[r]))
             {
-                minFeuchteRaum[r]=b.getMinLuft();
+                minFeuchteRaum[r] = b.getMinLuft();
             }
-            if ((minTempRaum[r]==-999) | (minTempRaum[r]<b.getMinTemp())) // wenn noch kein Eintrag da, oder wenn die bisherige min Grenze zu niedrig ist für das neue Bild
+            if ((minTempRaum[r] <= b.getMinTemp()) & (b.getMinTemp() <= maxTempRaum[r]))
             {
-                minTempRaum[r]=b.getMinTemp();
+                minTempRaum[r] = b.getMinTemp();
             }
-            if ((maxFeuchteRaum[r]==+999) | (maxFeuchteRaum[r]>b.getMaxLuft())) // wenn noch kein Eintrag da, oder wenn die bisherige max Grenze zu hoch ist für das neue Bild
+            if ((minFeuchteRaum[r] <= b.getMaxLuft()) & (b.getMaxLuft() <= maxFeuchteRaum[r]))
             {
-                maxFeuchteRaum[r]=b.getMaxLuft();
+                maxFeuchteRaum[r] = b.getMaxLuft();
             }
-            if ((maxTempRaum[r]==+999) | (maxTempRaum[r]>b.getMaxTemp())) // wenn noch kein Eintrag da, oder wenn die bisherige max Grenze zu hoch ist für das neue Bild
+            if ((minTempRaum[r] <= b.getMaxTemp()) & (b.getMaxTemp() <= maxTempRaum[r]))
             {
-                maxTempRaum[r]=b.getMaxTemp();
+                maxTempRaum[r] = b.getMaxTemp();
             }
         }
         
