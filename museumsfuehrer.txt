@@ -1,9 +1,9 @@
 ------------------------------------------
 Raum: Nummer: 1, Raumbezeichnung: Große Halle
 ------------------------------------------
-Name des Kunstwerks: Lamelle Blue Delphinium Butter Plate  aus dem Jahr ca. 1934
-Künstler: Ilonka Karasz
-Zur Verfügung gestellt durch das Partnermuseum: Bode-Museum, Am Kupfergraben/10117 Berlin/Deutschland
+Name des Kunstwerks: Girl in a Red Dress  aus dem Jahr 1934
+Künstler: Charles Henry Alston
+Zur Verfügung gestellt durch das Partnermuseum: Uffizien, Piazzale degli Uffizi 6/50122 Firenze FI/Italien
 
 ------------------------------------------
 Raum: Nummer: 2, Raumbezeichnung: Galerie links
@@ -14,15 +14,40 @@ Zur Verfügung gestellt durch das Partnermuseum: Bode-Museum, Am Kupfergraben/10
 Name des Kunstwerks: Christ and the Samaritan Woman (Schr. 141c)  aus dem Jahr 15. Jahrhundert
 Künstler: Anonymous/ German/ 15th century
 Zur Verfügung gestellt durch das Partnermuseum: Metropolitan Museum of Art, 1000 5th Ave/New York/NY 10028/Vereinigte Staaten
-Name des Kunstwerks: Pair of firedogs  aus dem Jahr ca. 1760
+Name des Kunstwerks: Sacrifice of Isaac  aus dem Jahr Mitte 17. Jahrhundert
 Künstler: 
-Zur Verfügung gestellt durch das Partnermuseum: Musée du Louvre, Rue de Rivoli/75001 Paris/Frankreich
-Name des Kunstwerks: Allegory of Fortitude from Varie pitture a fresco de'principali maestri veneziani ora per la prima volta con le stampe pubblicate (Frescoes by the Most Important Venetian Masters Published in Print for the First Time) plate 4  aus dem Jahr 1760
-Künstler: Antonio Maria Zanetti II
-Zur Verfügung gestellt durch das Partnermuseum: National Gallery, Trafalgar Square/London WC2N 5DN/Vereinigtes Königreich
+Zur Verfügung gestellt durch das Partnermuseum: Bode-Museum, Am Kupfergraben/10117 Berlin/Deutschland
+Name des Kunstwerks: Part of a border  aus dem Jahr 18. Jahrhundert
+Künstler: 
+Zur Verfügung gestellt durch das Partnermuseum: The British Museum, Great Russell St/London WC1B 3DG/Vereinigtes Königreich
+Name des Kunstwerks: S. Emeri Roi de Hongrie (St. Emeric King of Hungary) from November 4th from Les Images De Tous Les Saincts et Saintes de L'Année (Images of All of the Saints and Religious Events of the Year)  aus dem Jahr 1636
+Künstler: Jacques Callot
+Zur Verfügung gestellt durch das Partnermuseum: Rijksmuseum Amsterdam, Museumstraat 1/1071 XX Amsterdam/Niederlande
 
 ------------------------------------------
 Raum: Nummer: 3, Raumbezeichnung: Galerie rechts
+------------------------------------------
+Name des Kunstwerks: Teapot  aus dem Jahr ca. 1753
+Künstler: Worcester factory
+Zur Verfügung gestellt durch das Partnermuseum: The British Museum, Great Russell St/London WC1B 3DG/Vereinigtes Königreich
+Name des Kunstwerks: Jug  aus dem Jahr 1727
+Künstler: Simon Pantin I
+Zur Verfügung gestellt durch das Partnermuseum: Uffizien, Piazzale degli Uffizi 6/50122 Firenze FI/Italien
+Name des Kunstwerks: Card Number 563 Amy Gordon from the Actors and Actresses series (N145-7) issued by Duke Sons & Co. to promote Duke Cigarettes  aus dem Jahr 1880er
+Künstler: W. Duke/ Sons & Co.
+Zur Verfügung gestellt durch das Partnermuseum: National Gallery, Trafalgar Square/London WC2N 5DN/Vereinigtes Königreich
+Name des Kunstwerks: My Little White Kitties – Into Mischief  aus dem Jahr 1857–71
+Künstler: Currier & Ives
+Zur Verfügung gestellt durch das Partnermuseum: National Gallery, Trafalgar Square/London WC2N 5DN/Vereinigtes Königreich
+Name des Kunstwerks: Pair of firedogs  aus dem Jahr ca. 1760
+Künstler: 
+Zur Verfügung gestellt durch das Partnermuseum: Musée du Louvre, Rue de Rivoli/75001 Paris/Frankreich
+Name des Kunstwerks: Cupid with a Bird on a String  aus dem Jahr 17.–frühe 18. Jahrhundert
+Künstler: Joseph Werner the Younger
+Zur Verfügung gestellt durch das Partnermuseum: Rijksmuseum Amsterdam, Museumstraat 1/1071 XX Amsterdam/Niederlande
+
+------------------------------------------
+Raum: Nummer: 4, Raumbezeichnung: Saal
 ------------------------------------------
 Name des Kunstwerks: The Refreshment  aus dem Jahr 1788
 Künstler: Thomas Rowlandson
@@ -42,33 +67,11 @@ Zur Verfügung gestellt durch das Partnermuseum: Rijksmuseum Amsterdam, Museumst
 Name des Kunstwerks: Writing box  aus dem Jahr ca. 1715–20
 Künstler: Ferdinand Plitzner
 Zur Verfügung gestellt durch das Partnermuseum: Bode-Museum, Am Kupfergraben/10117 Berlin/Deutschland
-Name des Kunstwerks: Fragment  aus dem Jahr 17.–18. Jahrhundert
-Künstler: 
-Zur Verfügung gestellt durch das Partnermuseum: Museo del Prado, C. de Ruiz de Alarcón 23/28014 Madrid/Spanien
-
-------------------------------------------
-Raum: Nummer: 4, Raumbezeichnung: Saal
-------------------------------------------
-Name des Kunstwerks: Teapot  aus dem Jahr ca. 1753
-Künstler: Worcester factory
-Zur Verfügung gestellt durch das Partnermuseum: The British Museum, Great Russell St/London WC1B 3DG/Vereinigtes Königreich
-Name des Kunstwerks: Jug  aus dem Jahr 1727
-Künstler: Simon Pantin I
-Zur Verfügung gestellt durch das Partnermuseum: Uffizien, Piazzale degli Uffizi 6/50122 Firenze FI/Italien
-Name des Kunstwerks: Card Number 563 Amy Gordon from the Actors and Actresses series (N145-7) issued by Duke Sons & Co. to promote Duke Cigarettes  aus dem Jahr 1880er
-Künstler: W. Duke/ Sons & Co.
-Zur Verfügung gestellt durch das Partnermuseum: National Gallery, Trafalgar Square/London WC2N 5DN/Vereinigtes Königreich
-Name des Kunstwerks: My Little White Kitties – Into Mischief  aus dem Jahr 1857–71
-Künstler: Currier & Ives
-Zur Verfügung gestellt durch das Partnermuseum: National Gallery, Trafalgar Square/London WC2N 5DN/Vereinigtes Königreich
-Name des Kunstwerks: Cupid with a Bird on a String  aus dem Jahr 17.–frühe 18. Jahrhundert
-Künstler: Joseph Werner the Younger
-Zur Verfügung gestellt durch das Partnermuseum: Rijksmuseum Amsterdam, Museumstraat 1/1071 XX Amsterdam/Niederlande
 
 ------------------------------------------
 Raum: Nummer: 5, Raumbezeichnung: Raum A
 ------------------------------------------
-Name des Kunstwerks: Girl in a Red Dress  aus dem Jahr 1934
-Künstler: Charles Henry Alston
-Zur Verfügung gestellt durch das Partnermuseum: Uffizien, Piazzale degli Uffizi 6/50122 Firenze FI/Italien
+Name des Kunstwerks: Lamelle Blue Delphinium Butter Plate  aus dem Jahr ca. 1934
+Künstler: Ilonka Karasz
+Zur Verfügung gestellt durch das Partnermuseum: Bode-Museum, Am Kupfergraben/10117 Berlin/Deutschland
 

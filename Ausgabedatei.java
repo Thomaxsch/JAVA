@@ -25,12 +25,9 @@ public class Ausgabedatei
      */     
     private ArrayList <ArrayList <Kunstwerk>> zugeordneteKunstwerke;
     
-    /**
-     * Objekt der Java-Klasse PrintWriter zum Schreiben von Zeichenketten
-     */
-    
     private Raumverwaltung raeume;
-    
+    private Kunstwerkverwaltung kws;
+      
         /**
      * Konstruktor für Objekte der Klasse Ausgabedatei mit Parameternamen für den Dateinamen
      * @param file Dateiname für die zu erstellende Outputdatei 
@@ -47,12 +44,13 @@ public class Ausgabedatei
      * @param planung                  Objekt der Klasse Ausstellungsplanung
      * @param raeume                   in der Ausstellungsplanung verwendete Räume
      */
-    public Ausgabedatei(String file, ArrayList <ArrayList <Kunstwerk>> auszugebendeKunstwerke, Ausstellungsplanung planung, Raumverwaltung raeume) 
+    public Ausgabedatei(String file, ArrayList <ArrayList <Kunstwerk>> auszugebendeKunstwerke, Ausstellungsplanung planung, Raumverwaltung raeume, Kunstwerkverwaltung kws) 
     {
         this.file = file;
         this.zugeordneteKunstwerke = auszugebendeKunstwerke;
         this.raeume = raeume;
         this.planung = planung;
+        this.kws = kws;
     }
     
     /**
@@ -65,6 +63,8 @@ public class Ausgabedatei
     {
         ArrayList<Kunstwerk> k = new ArrayList<Kunstwerk>();
         double gesamtKosten = 0.0;
+        
+        ArrayList<String> museen = kws.getAllePartnermuseen();
         
         try
         {          
@@ -82,12 +82,22 @@ public class Ausgabedatei
             meinWriter.write("Auszuleihende Kunstwerke                  \n");
             meinWriter.write("------------------------------------------\n");
             
-            for(int i=0; i < k.size(); i++)
+            for(int i=0; i<museen.size(); i++)
             {
-                meinWriter.write(k.get(i).toString() + "\n");
-                gesamtKosten += k.get(i).getKosten();
+                meinWriter.write("------------------------------------------\n");
+                meinWriter.write(museen.get(i));
+                meinWriter.write("------------------------------------------\n");
+                
+                for(int j=0; j < k.size(); j++)
+                {
+                    if(museen.get(i).equals(k.get(j).getVerleihendesMuseum()))
+                    {
+                        meinWriter.write(k.get(j).toString() + "\n");
+                        gesamtKosten += k.get(j).getKosten();
+                    }
+                }
             }
-            
+                
             meinWriter.write("------------------------------------------\n");
             Locale locale = new Locale("de", "DE");
             NumberFormat waehrung = NumberFormat.getCurrencyInstance(locale);
@@ -255,7 +265,7 @@ public class Ausgabedatei
                 
                 meinWriter.write("\n");
             }
-            
+    
             // Ausgabepuffer wird durch die Methode close geschlossen
             meinWriter.close();
                       

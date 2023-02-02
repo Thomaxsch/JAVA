@@ -350,13 +350,13 @@ public class Museum
                                     
                     // Deklaration und Initialisierung einer Objektvariablen der Klasse Ausgabedatei
                     // als Parameter wird das Stringliteral "raumdatei.csv" und das Ergebnis der Ausstellungplanung als ArrayList übergeben
-                    Ausgabedatei datei1 = new Ausgabedatei("raumdatei.txt", planungsErgebnis, planung, raeume);
+                    Ausgabedatei datei1 = new Ausgabedatei("raumdatei.txt", planungsErgebnis, planung, raeume, kunstwerke);
                     datei1.schreibeAusstellungen();
                     
-                    Ausgabedatei datei2 = new Ausgabedatei("museumsfuehrer.txt", planungsErgebnis, planung, raeume);
+                    Ausgabedatei datei2 = new Ausgabedatei("museumsfuehrer.txt", planungsErgebnis, planung, raeume, kunstwerke);
                     datei2.schreibeMuseumsfuehrer();
                     
-                    Ausgabedatei datei3 = new Ausgabedatei("ausleihdaten.txt", planungsErgebnis, planung, raeume);
+                    Ausgabedatei datei3 = new Ausgabedatei("ausleihdaten.txt", planungsErgebnis, planung, raeume, kunstwerke);
                     datei3.schreibeAusleihen();
                 }
                 else
