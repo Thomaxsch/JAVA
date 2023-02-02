@@ -128,7 +128,24 @@ public class Kunstwerkverwaltung
         return vorkommendeThemen;
     }
     
+    /**
+     * Methode, die alle Partnermuseen ausgibt
+     * 
+     * @return alle Partnermuseeen aus der Importdatei
+     */
     
+    public ArrayList <String> getAllePartnermuseen()
+    {
+        ArrayList <String> allePartnermuseen = new ArrayList <String>();
+        for(Kunstwerk kw : kunstwerkVector) 
+        {
+            if (!allePartnermuseen.contains(kw.getVerleihendesMuseum()))
+            {
+                allePartnermuseen.add(kw.getVerleihendesMuseum());
+            }
+        }
+        return allePartnermuseen;
+    }
         
     
     /**
