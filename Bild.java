@@ -160,5 +160,15 @@ public class Bild extends Kunstwerk
     {
         return maxLuft;
     }
+    /**
+     * Gibt die Maße des Bildes aus.
+     * 
+     * @return die Maße des Bildes in einem String.
+     */
+    @Override
+    public String outputMaße()
+    {
+        return ", Höhe: " + super.getHoehe() + ", Breite: " + super.getBreite();
+    }
     }
     

@@ -107,5 +107,14 @@ public class Kunstgegenstand extends Kunstwerk
         return gewicht;
     }
     
-    
+    /**
+     * Gibt die Maße des Kunstgegenstandes und einer Kunstinstallation aus. 
+     * 
+     * @return die Maße des jeweiligen Kunstwerkes
+     */
+    @Override
+    public String outputMaße()
+    {
+        return ", Höhe: " + super.getHoehe() + ", Breite: " + super.getBreite() + ", Länge: " + getLaenge() + ", Gewicht: " +getGewicht();
+    }
 }

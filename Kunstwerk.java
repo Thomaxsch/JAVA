@@ -338,6 +338,11 @@ import java.lang.Integer;
         ", Art des Kunstwerks: " + this.art + ", Bezeichnung: " + this.bezeichnung + ", Breite " + this.breite;
     }
     
+    /**
+     * Methode, um in den Childklassen daraufzugreifen zu können. 
+     */
+    abstract String outputMaße();
+    
      /**
      * Methode, welche eine modifizierte textuelle Beschreibung der Kunstwerke für den Museumsführer ausgibt.
      * 
@@ -369,7 +374,7 @@ import java.lang.Integer;
     public String outputRaumdatei()
     {
         return "Nummer: " + this.getLaufendeNummer() + ", Art des Kunstwerks: " + this.getArt() + ", Name des Kunstwerks: " 
-        + this.getBezeichnung() + ", Thema: " + this.getThema();
+        + this.getBezeichnung() + ", Thema: " + this.getThema() + outputMaße();
     }
     
     /**
