@@ -115,6 +115,6 @@ public class Kunstgegenstand extends Kunstwerk
     @Override
     public String outputMaße()
     {
-        return ", Höhe: " + super.getHoehe() + ", Breite: " + super.getBreite() + ", Länge: " + getLaenge() + ", Gewicht: " +getGewicht();
+        return ", Höhe: " + super.getHoehe() + ", Breite: " + super.getBreite() + ", Länge: " + getLaenge() + ", Gewicht in kg: " +getGewicht();
     }
 }
