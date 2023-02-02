@@ -146,7 +146,7 @@ public class Ausgabedatei
             {
                 //die Methode write schreibt den String-Eingabeparameter als Byte in den Ausgabestrom
                 meinWriter.write("-------------------------------------------------------------------------------------------------------\n");
-                meinWriter.write("Raum: " + raeume.getRaum(i).toString() + "\n");
+                meinWriter.write("Raum: " + raeume.getRaum(i).toStringKurz() + "\n");
                 meinWriter.write("Minimale Raumtemperatur: " + planung.getBestesMappingErlaubteFeuchtenTemperaturen("minTempRaum")[i] + "\n");
                 meinWriter.write("Maximale Raumtemperatur: " + planung.getBestesMappingErlaubteFeuchtenTemperaturen("maxTempRaum")[i] + "\n");
                 meinWriter.write("Minimale Luftfeuchte: " + planung.getBestesMappingErlaubteFeuchtenTemperaturen("minFeuchteRaum")[i] + "\n");
@@ -244,13 +244,13 @@ public class Ausgabedatei
             {
                 //die Methode write schreibt den String-Eingabeparameter als Byte in den Ausgabestrom
                 meinWriter.write("------------------------------------------\n");
-                meinWriter.write("Raum: " + raeume.getRaum(i).toString() + "\n");
+                meinWriter.write("Raum: " + raeume.getRaum(i).toStringKurz() + "\n");
                 meinWriter.write("------------------------------------------\n");
                 
                 // zweite Dimension der Arraylist wird bis zum Ende durchlaufen,enthält die einzelnen Kunstwerke deren String-Repräsentation als Byte in den Ausgabestrom geschrieben wird
                 for(int j=0; j < zugeordneteKunstwerke.get(i).size(); j++)
                 {
-                    meinWriter.write(zugeordneteKunstwerke.get(i).get(j).toString() + "\n");
+                    meinWriter.write(zugeordneteKunstwerke.get(i).get(j).outputMuseumsführer() + "\n");
                 }
                 
                 meinWriter.write("\n");
@@ -266,7 +266,7 @@ public class Ausgabedatei
               for(int i=0; i < zugeordneteKunstwerke.size(); i++)
             {
                 //die Methode write schreibt den String-Eingabeparameter als Byte in den Ausgabestrom
-                sb.append("<h1>Raum: " + raeume.getRaum(i).toString() + "</h1>");
+                sb.append("<h1>Raum: " + raeume.getRaum(i).toStringKurz() + "</h1>");
                 sb.append("<table border='1px' width='100%'>");
                 sb.append("<tr><td>Nr.</td>");
                 sb.append("<td>Kunstwerk</td></tr>");
@@ -276,7 +276,7 @@ public class Ausgabedatei
                 {
                     sb.append("<tr>");
                     sb.append("<td>" + (j+1) + "</td>");
-                    sb.append("<td>" + zugeordneteKunstwerke.get(i).get(j).toString() + "</td>");
+                    sb.append("<td>" + zugeordneteKunstwerke.get(i).get(j).outputMuseumsführer() + "</td>");
                     sb.append("</tr>");
                 }
                 
