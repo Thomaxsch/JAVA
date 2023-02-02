@@ -1,90 +1,75 @@
 ------------------------------------------
 Auszuleihende Kunstwerke                  
 ------------------------------------------
-Attraktivität: 97, Thema: Surrealismus, Nr: 1333, Art des Kunstwerks: I, Bezeichnung: Commode, Breite 125
-Attraktivität: 74, Thema: Expressionismus, Nr: 887, Art des Kunstwerks: G, Bezeichnung: Vase with cover, Breite 21
+Attraktivität: 76, Thema: Pflanzen, Nr: 752, Art des Kunstwerks: G, Bezeichnung: Boreas and Orithyia from a set of scenes from Ovid's Metamorphoses, Breite 452
 Attraktivität: 70, Thema: Expressionismus, Nr: 463, Art des Kunstwerks: B, Bezeichnung: Still Waters, Breite 31
-Attraktivität: 72, Thema: Pflanzen, Nr: 988, Art des Kunstwerks: G, Bezeichnung: Vase with flowers, Breite 20
 Attraktivität: 77, Thema: Impressionismus, Nr: 312, Art des Kunstwerks: B, Bezeichnung: A Sudden Squall, Breite 28
+Attraktivität: 76, Thema: Expressionismus, Nr: 4, Art des Kunstwerks: B, Bezeichnung: North Sea Fishermen, Breite 38
 Attraktivität: 74, Thema: Impressionismus, Nr: 389, Art des Kunstwerks: B, Bezeichnung: Lecture d'un testament from La Com�die Humaine published in Le Charivari December 20 1853, Breite 36
-Attraktivität: 79, Thema: Pflanzen, Nr: 745, Art des Kunstwerks: G, Bezeichnung: Jug, Breite 17
-Attraktivität: 64, Thema: Expressionismus, Nr: 90, Art des Kunstwerks: B, Bezeichnung: Holland (Year 1650) from the Headdresses of Various Nations series (N305) to promote Mayo's Cut Plug Tobacco, Breite 3
-Attraktivität: 73, Thema: Pflanzen, Nr: 549, Art des Kunstwerks: G, Bezeichnung: Rice dish, Breite 8
-Attraktivität: 78, Thema: Sonstiges, Nr: 149, Art des Kunstwerks: B, Bezeichnung: Untitled Tam 1711 State I (11/20), Breite 51
-Attraktivität: 73, Thema: Surrealismus, Nr: 223, Art des Kunstwerks: B, Bezeichnung: Man with shovel, Breite 25
-Attraktivität: 76, Thema: Barock, Nr: 132, Art des Kunstwerks: B, Bezeichnung: Study for a Massacre of the Innocents, Breite 12
-Attraktivität: 80, Thema: Sonstiges, Nr: 64, Art des Kunstwerks: B, Bezeichnung: Design for a sepulchral monument; verso: Design for a monument, Breite 15
-Attraktivität: 70, Thema: Barock, Nr: 300, Art des Kunstwerks: B, Bezeichnung: Justicia (copy) from Cognition and the Seven Virtues, Breite 2
-Attraktivität: 36, Thema: Sonstiges, Nr: 435, Art des Kunstwerks: B, Bezeichnung: Instruction insert from the Transparencies series (N137) issued by W. Duke Sons & Co. to promote Honest Long Cut Tobacco, Breite 6
-Attraktivität: 70, Thema: Barock, Nr: 692, Art des Kunstwerks: G, Bezeichnung: Double beaker, Breite 9
-Attraktivität: 71, Thema: Sonstiges, Nr: 709, Art des Kunstwerks: G, Bezeichnung: Box, Breite 12
-Attraktivität: 70, Thema: Sonstiges, Nr: 614, Art des Kunstwerks: G, Bezeichnung: Standing woman holding a dog, Breite 29
-Attraktivität: 27, Thema: Barock, Nr: 277, Art des Kunstwerks: B, Bezeichnung: Album of prints entitled Architettura del Mitelli, Breite 27
-Attraktivität: 67, Thema: Surrealismus, Nr: 992, Art des Kunstwerks: G, Bezeichnung: Physician's watch, Breite 4
-Attraktivität: 8, Thema: Sonstiges, Nr: 340, Art des Kunstwerks: B, Bezeichnung: Winter (L'Hyver), Breite 30
+Attraktivität: 80, Thema: Pflanzen, Nr: 658, Art des Kunstwerks: G, Bezeichnung: Saucer (one of nine) (part of a service), Breite 3
+Attraktivität: 97, Thema: Surrealismus, Nr: 1333, Art des Kunstwerks: I, Bezeichnung: Commode, Breite 125
 Attraktivität: 79, Thema: Expressionismus, Nr: 183, Art des Kunstwerks: B, Bezeichnung: Indian Wigwams from the Habitations of Man series (N113) issued by W. Duke Sons & Co. to promote Honest Long Cut Smoking and Chewing Tobacco, Breite 10
+Attraktivität: 64, Thema: Romantik, Nr: 406, Art des Kunstwerks: B, Bezeichnung: An Irish Howl [Owl]!, Breite 27
+Attraktivität: 73, Thema: Tiere, Nr: 627, Art des Kunstwerks: G, Bezeichnung: Vase (one of a pair), Breite 23
+Attraktivität: 68, Thema: Expressionismus, Nr: 81, Art des Kunstwerks: B, Bezeichnung: The Long Neglected Grave of General Grant (published as a supplement to the New York Gazette April 24 1892), Breite 34
+Attraktivität: 54, Thema: Romantik, Nr: 49, Art des Kunstwerks: B, Bezeichnung: Mon aim�e qu'as-tu?... plate XXXII from the suite Impressions de m�nage (second series) published in Le Charivari August 10 1847, Breite 16
+Attraktivität: 73, Thema: Romantik, Nr: 755, Art des Kunstwerks: G, Bezeichnung: Miniature tea bowl (one of five) (part of a set), Breite 2
+Attraktivität: 76, Thema: Tiere, Nr: 804, Art des Kunstwerks: G, Bezeichnung: Tile, Breite 40
+Attraktivität: 65, Thema: Tiere, Nr: 152, Art des Kunstwerks: B, Bezeichnung: Shaft-tailed Bunting from the Song Birds of the World series (N42) for Allen & Ginter Cigarettes, Breite 8
+Attraktivität: 97, Thema: Neo-Expressionismus, Nr: 1289, Art des Kunstwerks: I, Bezeichnung: Desk accessory, Breite 15
+Attraktivität: 78, Thema: Impressionismus, Nr: 226, Art des Kunstwerks: B, Bezeichnung: A Glimpse of the Homestead, Breite 40
 Attraktivität: 79, Thema: Sonstiges, Nr: 437, Art des Kunstwerks: B, Bezeichnung: The Burning Life of the Earth (Vie ardente du sol), Breite 41
-Attraktivität: 75, Thema: Expressionismus, Nr: 469, Art des Kunstwerks: B, Bezeichnung: Second Floor Hallway of Residence for Leila H. G. Webb of New York New York, Breite 21
 Attraktivität: 80, Thema: Rokoko, Nr: 512, Art des Kunstwerks: G, Bezeichnung: Secretary cabinet, Breite 104
-Attraktivität: 49, Thema: Sonstiges, Nr: 398, Art des Kunstwerks: B, Bezeichnung: A Sensible Move. Our Marine Artist Utilizes the Sea Serpent for Her Summer  Sketching Trip, Breite 29
-Attraktivität: 78, Thema: Expressionismus, Nr: 345, Art des Kunstwerks: B, Bezeichnung: Design for a Victoria no. 4210, Breite 23
-Attraktivität: 42, Thema: Sonstiges, Nr: 374, Art des Kunstwerks: B, Bezeichnung: Urban and Commercial Chile. The Woman Car Conductor, Breite 9
-Attraktivität: 34, Thema: Sonstiges, Nr: 259, Art des Kunstwerks: B, Bezeichnung: Plate 20: an old Polish nobleman wearing a plumed hat in center standing in profile facing right another Polish man to right in background standing in profile facing left from 'Diversi capricci', Breite 9
-Attraktivität: 72, Thema: Sonstiges, Nr: 554, Art des Kunstwerks: G, Bezeichnung: Fragment, Breite 10
-Attraktivität: 74, Thema: Portraits, Nr: 47, Art des Kunstwerks: B, Bezeichnung: Fred Humes from Western Stars or Scenes Exhibit Cards series (W412), Breite 8
-Attraktivität: 67, Thema: Barock, Nr: 257, Art des Kunstwerks: B, Bezeichnung: Head of an old bearded man facing right from the series of  'Small Heads in Oriental Headdress', Breite 8
-Attraktivität: 79, Thema: Portraits, Nr: 57, Art des Kunstwerks: B, Bezeichnung: Deer Ham Ioway from the American Indian Chiefs series (N2) for Allen & Ginter Cigarettes Brands, Breite 3
-Attraktivität: 70, Thema: Sonstiges, Nr: 297, Art des Kunstwerks: B, Bezeichnung: Poison Hemlock from the Plants series, Breite 5
-Attraktivität: 74, Thema: Sonstiges, Nr: 514, Art des Kunstwerks: G, Bezeichnung: Column with base, Breite 50
-Attraktivität: 74, Thema: Sonstiges, Nr: 774, Art des Kunstwerks: G, Bezeichnung: Coffer, Breite 41
-Attraktivität: 78, Thema: Sonstiges, Nr: 910, Art des Kunstwerks: G, Bezeichnung: Pitcher, Breite 22
-Attraktivität: 76, Thema: Sonstiges, Nr: 401, Art des Kunstwerks: B, Bezeichnung: Costume design of a dancing masked figure; verso: Study of a female head, Breite 38
-Attraktivität: 75, Thema: Sonstiges, Nr: 591, Art des Kunstwerks: G, Bezeichnung: Edging, Breite 8
+Attraktivität: 79, Thema: Sonstiges, Nr: 962, Art des Kunstwerks: G, Bezeichnung: Pendant with a Head of Jupiter, Breite 11
+Attraktivität: 72, Thema: Impressionismus, Nr: 137, Art des Kunstwerks: B, Bezeichnung: Design for Spider Phaeton, Breite 21
+Attraktivität: 64, Thema: Sonstiges, Nr: 177, Art des Kunstwerks: B, Bezeichnung: Kitty Cheatham from the Actors and Actresses series (N342) Type 4 issued by Thomas H. Hall Tobacco to promote Between the Acts Cigarettes., Breite 4
 Attraktivität: 76, Thema: Sonstiges, Nr: 655, Art des Kunstwerks: G, Bezeichnung: Miniature daybed (part of a set), Breite 6
-Attraktivität: 58, Thema: Sonstiges, Nr: 404, Art des Kunstwerks: B, Bezeichnung: Stanhope Phaeton #4009, Breite 55
-Attraktivität: 73, Thema: Sonstiges, Nr: 996, Art des Kunstwerks: G, Bezeichnung: Ewer, Breite 16
-Attraktivität: 29, Thema: Portraits, Nr: 269, Art des Kunstwerks: B, Bezeichnung: Schildknecht Catcher Milwaukee from the Old Judge series (N172) for Old Judge Cigarettes, Breite 3
-Attraktivität: 2, Thema: Portraits, Nr: 197, Art des Kunstwerks: B, Bezeichnung: Magee Philadelphia National League from the White Border series (T206) for the American Tobacco Company, Breite 3
-Attraktivität: 98, Thema: Hyperrealismus, Nr: 1137, Art des Kunstwerks: I, Bezeichnung: Untitled, Breite 159
+Attraktivität: 61, Thema: Impressionismus, Nr: 230, Art des Kunstwerks: B, Bezeichnung: Ode to the Moon (No. 31 in Passages from the Poems of Thomas Hood Illustrated by the Junior Etching Club in Thirty-Four Plates), Breite 37
+Attraktivität: 12, Thema: Sonstiges, Nr: 93, Art des Kunstwerks: B, Bezeichnung: A View of the Adams Mansion Quincy Massachusetts (Merrymount Press New Year's Card 1929), Breite 16
+Attraktivität: 68, Thema: Rokoko, Nr: 746, Art des Kunstwerks: G, Bezeichnung: Small rectangular table, Breite 40
+Attraktivität: 67, Thema: Rokoko, Nr: 721, Art des Kunstwerks: G, Bezeichnung: Coffeepot, Breite 17
+Attraktivität: 73, Thema: Rokoko, Nr: 669, Art des Kunstwerks: G, Bezeichnung: Parrot (one of a pair), Breite 10
+Attraktivität: 71, Thema: Sonstiges, Nr: 709, Art des Kunstwerks: G, Bezeichnung: Box, Breite 12
+Attraktivität: 1, Thema: Sonstiges, Nr: 7, Art des Kunstwerks: B, Bezeichnung: Washington Statue. Fairmount Park from Philadelphia Pennsylvania souvenir views (W500), Breite 6
 Attraktivität: 71, Thema: Sonstiges, Nr: 600, Art des Kunstwerks: G, Bezeichnung: Miniature andiron (one of a pair) (part of a set), Breite 2
 Attraktivität: 77, Thema: Sonstiges, Nr: 705, Art des Kunstwerks: G, Bezeichnung: Vase with hexagonal foot (one of a pair), Breite 12
+Attraktivität: 74, Thema: Portraits, Nr: 47, Art des Kunstwerks: B, Bezeichnung: Fred Humes from Western Stars or Scenes Exhibit Cards series (W412), Breite 8
+Attraktivität: 67, Thema: Barock, Nr: 257, Art des Kunstwerks: B, Bezeichnung: Head of an old bearded man facing right from the series of  'Small Heads in Oriental Headdress', Breite 8
+Attraktivität: 76, Thema: Portraits, Nr: 231, Art des Kunstwerks: B, Bezeichnung: Asta from Actress Exhibit series (W423), Breite 8
+Attraktivität: 77, Thema: Barock, Nr: 251, Art des Kunstwerks: B, Bezeichnung: Saint Geberhardus from Bavaria Sancta: The Life and Martyrdom of Holy Men and Women (Vol. II), Breite 15
+Attraktivität: 67, Thema: Sonstiges, Nr: 390, Art des Kunstwerks: B, Bezeichnung: Mary Anderson in Colors of the New Brunswick Yacht Club from the Yacht Colors of the World series (N91) for Duke brand cigarettes, Breite 3
+Attraktivität: 49, Thema: Sonstiges, Nr: 398, Art des Kunstwerks: B, Bezeichnung: A Sensible Move. Our Marine Artist Utilizes the Sea Serpent for Her Summer  Sketching Trip, Breite 29
+Attraktivität: 70, Thema: Barock, Nr: 443, Art des Kunstwerks: B, Bezeichnung: Copy of Une Dame Portant Une Fiasco de Vin Entre Deux Hommes (A Lady Holding a Fiasco of Wine Between Two Men) from Les Fantaisies (The Fantasies), Breite 8
+Attraktivität: 70, Thema: Barock, Nr: 692, Art des Kunstwerks: G, Bezeichnung: Double beaker, Breite 9
+Attraktivität: 70, Thema: Sonstiges, Nr: 614, Art des Kunstwerks: G, Bezeichnung: Standing woman holding a dog, Breite 29
+Attraktivität: 69, Thema: Sonstiges, Nr: 171, Art des Kunstwerks: B, Bezeichnung: Mae Marsh from the Movie Stars series (T82) issued with Recruit Little Cigars Athletic Little Cigars and Coupon Cigarettes by Liggett & Myers Tobacco Company, Breite 4
+Attraktivität: 25, Thema: Sonstiges, Nr: 134, Art des Kunstwerks: B, Bezeichnung: Shooting from the Pretty Athletes series (N196) issued by Wm. S. Kimball & Co., Breite 6
+Attraktivität: 74, Thema: Expressionismus, Nr: 887, Art des Kunstwerks: G, Bezeichnung: Vase with cover, Breite 21
 Attraktivität: 74, Thema: Sonstiges, Nr: 23, Art des Kunstwerks: B, Bezeichnung: Card 45 Johnny Dwyer from the Prizefighters series (N269) issued by P. Lorillard Company to promote Mechanics Delight Long Cut Tobacco, Breite 6
 Attraktivität: 67, Thema: Sonstiges, Nr: 68, Art des Kunstwerks: B, Bezeichnung: Haverford College from the College series (T51) Fifth Set (101-125) issued by Murad Cigarettes, Breite 6
-Attraktivität: 64, Thema: Romantik, Nr: 406, Art des Kunstwerks: B, Bezeichnung: An Irish Howl [Owl]!, Breite 27
+Attraktivität: 72, Thema: Pflanzen, Nr: 988, Art des Kunstwerks: G, Bezeichnung: Vase with flowers, Breite 20
 Attraktivität: 73, Thema: Pflanzen, Nr: 660, Art des Kunstwerks: G, Bezeichnung: Cup and saucer, Breite 6
+Attraktivität: 80, Thema: Sonstiges, Nr: 849, Art des Kunstwerks: G, Bezeichnung: Seal-top spoon, Breite 4
+Attraktivität: 76, Thema: Sonstiges, Nr: 354, Art des Kunstwerks: B, Bezeichnung: Tobit Accusing Anna of Stealing the Kid from The Story of Tobias, Breite 28
 Attraktivität: 63, Thema: Sonstiges, Nr: 322, Art des Kunstwerks: B, Bezeichnung: Estelle Clayton from the Actresses series (N253-C) issued by P. Lorillard Company to promote Tiger Fine Cut Tobacco, Breite 3
 Attraktivität: 75, Thema: Sonstiges, Nr: 43, Art des Kunstwerks: B, Bezeichnung: Monterey California from the Surf Beauties series (N232) issued by Kinney Bros., Breite 7
-Attraktivität: 73, Thema: Romantik, Nr: 755, Art des Kunstwerks: G, Bezeichnung: Miniature tea bowl (one of five) (part of a set), Breite 2
-Attraktivität: 64, Thema: Sonstiges, Nr: 177, Art des Kunstwerks: B, Bezeichnung: Kitty Cheatham from the Actors and Actresses series (N342) Type 4 issued by Thomas H. Hall Tobacco to promote Between the Acts Cigarettes., Breite 4
-Attraktivität: 37, Thema: Romantik, Nr: 377, Art des Kunstwerks: B, Bezeichnung: A king's funeral bound in Monuments des Arts du Dessin volume 3 plate 176, Breite 36
-Attraktivität: 12, Thema: Sonstiges, Nr: 93, Art des Kunstwerks: B, Bezeichnung: A View of the Adams Mansion Quincy Massachusetts (Merrymount Press New Year's Card 1929), Breite 16
-Attraktivität: 1, Thema: Sonstiges, Nr: 7, Art des Kunstwerks: B, Bezeichnung: Washington Statue. Fairmount Park from Philadelphia Pennsylvania souvenir views (W500), Breite 6
-Attraktivität: 97, Thema: Hyperrealismus, Nr: 1284, Art des Kunstwerks: I, Bezeichnung: Large Blue Horizontal, Breite 232
-Attraktivität: 78, Thema: Impressionismus, Nr: 226, Art des Kunstwerks: B, Bezeichnung: A Glimpse of the Homestead, Breite 40
-Attraktivität: 76, Thema: Expressionismus, Nr: 4, Art des Kunstwerks: B, Bezeichnung: North Sea Fishermen, Breite 38
+Attraktivität: 58, Thema: Sonstiges, Nr: 253, Art des Kunstwerks: B, Bezeichnung: Seated Girl, Breite 10
+Attraktivität: 47, Thema: Expressionismus, Nr: 129, Art des Kunstwerks: B, Bezeichnung: Squaw Gathering Grapes from the Indian Life in the 60's series (T73) issued with Hassan Cork Tip Cigarettes by the American Tobacco Company, Breite 6
+Attraktivität: 3, Thema: Sonstiges, Nr: 240, Art des Kunstwerks: B, Bezeichnung: Frontispiece depicting two lions above a scroll facing the Medici coat of arms with ribbons and branches terminating in male figures on either side from a series of 15 plates depicting designs for the wainscotting under the Vatican tapestries in the Sistine Chapel, Breite 24
+Attraktivität: 78, Thema: Sonstiges, Nr: 149, Art des Kunstwerks: B, Bezeichnung: Untitled Tam 1711 State I (11/20), Breite 51
+Attraktivität: 73, Thema: Surrealismus, Nr: 223, Art des Kunstwerks: B, Bezeichnung: Man with shovel, Breite 25
 Attraktivität: 77, Thema: Tiere, Nr: 541, Art des Kunstwerks: G, Bezeichnung: Brooch with pendant (part of parure), Breite 6
 Attraktivität: 79, Thema: Tiere, Nr: 848, Art des Kunstwerks: G, Bezeichnung: Hind (one of a pair), Breite 15
-Attraktivität: 72, Thema: Impressionismus, Nr: 137, Art des Kunstwerks: B, Bezeichnung: Design for Spider Phaeton, Breite 21
-Attraktivität: 61, Thema: Impressionismus, Nr: 230, Art des Kunstwerks: B, Bezeichnung: Ode to the Moon (No. 31 in Passages from the Poems of Thomas Hood Illustrated by the Junior Etching Club in Thirty-Four Plates), Breite 37
+Attraktivität: 80, Thema: Sonstiges, Nr: 605, Art des Kunstwerks: G, Bezeichnung: Chair (one of a pair), Breite 45
+Attraktivität: 80, Thema: Sonstiges, Nr: 64, Art des Kunstwerks: B, Bezeichnung: Design for a sepulchral monument; verso: Design for a monument, Breite 15
+Attraktivität: 54, Thema: Tiere, Nr: 41, Art des Kunstwerks: B, Bezeichnung: Spirits, Breite 60
+Attraktivität: 76, Thema: Sonstiges, Nr: 846, Art des Kunstwerks: G, Bezeichnung: Tobacco box, Breite 5
 Attraktivität: 76, Thema: Tiere, Nr: 525, Art des Kunstwerks: G, Bezeichnung: Candelabra with Meissen bird (one of a pair), Breite 15
-Attraktivität: 76, Thema: Tiere, Nr: 804, Art des Kunstwerks: G, Bezeichnung: Tile, Breite 40
-Attraktivität: 36, Thema: Impressionismus, Nr: 425, Art des Kunstwerks: B, Bezeichnung: Broadside with 48 scenes relating to the pilgrimage of San Isidro, Breite 31
-Attraktivität: 73, Thema: Tiere, Nr: 627, Art des Kunstwerks: G, Bezeichnung: Vase (one of a pair), Breite 23
-Attraktivität: 71, Thema: Tiere, Nr: 837, Art des Kunstwerks: G, Bezeichnung: Wine jar (Orcio da vino), Breite 102
-Attraktivität: 79, Thema: Sonstiges, Nr: 938, Art des Kunstwerks: G, Bezeichnung: Tea urn, Breite 55
-Attraktivität: 79, Thema: Impressionismus, Nr: 19, Art des Kunstwerks: B, Bezeichnung: Gleaners in the Hail, Breite 18
-Attraktivität: 76, Thema: Portraits, Nr: 231, Art des Kunstwerks: B, Bezeichnung: Asta from Actress Exhibit series (W423), Breite 8
-Attraktivität: 66, Thema: Sonstiges, Nr: 488, Art des Kunstwerks: B, Bezeichnung: Design for the Headpiece of the Gazette de France, Breite 11
-Attraktivität: 80, Thema: Sonstiges, Nr: 615, Art des Kunstwerks: G, Bezeichnung: Henriette et Damon, Breite 36
-Attraktivität: 79, Thema: Sonstiges, Nr: 753, Art des Kunstwerks: G, Bezeichnung: Coffer or chest key, Breite 4
 Attraktivität: 77, Thema: Sonstiges, Nr: 524, Art des Kunstwerks: G, Bezeichnung: Chimneypiece, Breite 168
-Attraktivität: 79, Thema: Sonstiges, Nr: 962, Art des Kunstwerks: G, Bezeichnung: Pendant with a Head of Jupiter, Breite 11
-Attraktivität: 71, Thema: Portraits, Nr: 479, Art des Kunstwerks: B, Bezeichnung: Gantz Catcher Baltimore Orioles from the Old Judge series (N172) for Old Judge Cigarettes, Breite 3
-Attraktivität: 43, Thema: Portraits, Nr: 99, Art des Kunstwerks: B, Bezeichnung: From the Actresses and Celebrities series (N60 Type 1) promoting Little Beauties Cigarettes for Allen & Ginter brand tobacco products, Breite 3
-Attraktivität: 73, Thema: Sonstiges, Nr: 874, Art des Kunstwerks: G, Bezeichnung: Miniature bowl, Breite 3
-Attraktivität: 14, Thema: Portraits, Nr: 42, Art des Kunstwerks: B, Bezeichnung: James P. Jim Conway Pitcher Kansas City Cowboys from the Old Judge series (N172) for Old Judge Cigarettes, Breite 3
-Attraktivität: 7, Thema: Portraits, Nr: 342, Art des Kunstwerks: B, Bezeichnung: Minnie Parrott from the Actresses series (N203) issued by Wm. S. Kimball & Co., Breite 3
+Attraktivität: 42, Thema: Sonstiges, Nr: 374, Art des Kunstwerks: B, Bezeichnung: Urban and Commercial Chile. The Woman Car Conductor, Breite 9
+Attraktivität: 97, Thema: Hyperrealismus, Nr: 1284, Art des Kunstwerks: I, Bezeichnung: Large Blue Horizontal, Breite 232
 Attraktivität: 69, Thema: Pflanzen, Nr: 672, Art des Kunstwerks: G, Bezeichnung: Tobacco box, Breite 15
+Attraktivität: 72, Thema: Sonstiges, Nr: 554, Art des Kunstwerks: G, Bezeichnung: Fragment, Breite 10
 Attraktivität: 76, Thema: Aktmalerei, Nr: 900, Art des Kunstwerks: G, Bezeichnung: First Arabesque Pench�e, Breite 54
 Attraktivität: 72, Thema: Sonstiges, Nr: 127, Art des Kunstwerks: B, Bezeichnung: Untitled broadside cover for the poem The Song of the Border-Guard, Breite 31
 Attraktivität: 78, Thema: Sonstiges, Nr: 828, Art des Kunstwerks: G, Bezeichnung: Pendant in the form of a mermaid, Breite 12
@@ -92,12 +77,26 @@ Attraktivität: 80, Thema: Aktmalerei, Nr: 597, Art des Kunstwerks: G, Bezeichnu
 Attraktivität: 74, Thema: Sonstiges, Nr: 32, Art des Kunstwerks: B, Bezeichnung: Tower of  London, Breite 25
 Attraktivität: 78, Thema: Sonstiges, Nr: 792, Art des Kunstwerks: G, Bezeichnung: Toilet box (one of a pair), Breite 15
 Attraktivität: 64, Thema: Aktmalerei, Nr: 227, Art des Kunstwerks: B, Bezeichnung: Plate 16: Hebe in a niche with her hands in the air running to the left while looking to the right from a series of mythological gods and goddesses, Breite 11
-Attraktivität: 80, Thema: Sonstiges, Nr: 849, Art des Kunstwerks: G, Bezeichnung: Seal-top spoon, Breite 4
-Attraktivität: 76, Thema: Sonstiges, Nr: 846, Art des Kunstwerks: G, Bezeichnung: Tobacco box, Breite 5
-Attraktivität: 80, Thema: Sonstiges, Nr: 605, Art des Kunstwerks: G, Bezeichnung: Chair (one of a pair), Breite 45
+Attraktivität: 74, Thema: Sonstiges, Nr: 514, Art des Kunstwerks: G, Bezeichnung: Column with base, Breite 50
 Attraktivität: 56, Thema: Sonstiges, Nr: 28, Art des Kunstwerks: B, Bezeichnung: It's all about Color II, Breite 32
-Attraktivität: 80, Thema: Pflanzen, Nr: 658, Art des Kunstwerks: G, Bezeichnung: Saucer (one of nine) (part of a service), Breite 3
 Attraktivität: 80, Thema: Sonstiges, Nr: 499, Art des Kunstwerks: B, Bezeichnung: Vallauris Exhibition 1954, Breite 57
-Attraktivität: 97, Thema: Neo-Expressionismus, Nr: 1289, Art des Kunstwerks: I, Bezeichnung: Desk accessory, Breite 15
+Attraktivität: 98, Thema: Hyperrealismus, Nr: 1137, Art des Kunstwerks: I, Bezeichnung: Untitled, Breite 159
+Attraktivität: 79, Thema: Sonstiges, Nr: 938, Art des Kunstwerks: G, Bezeichnung: Tea urn, Breite 55
+Attraktivität: 79, Thema: Impressionismus, Nr: 19, Art des Kunstwerks: B, Bezeichnung: Gleaners in the Hail, Breite 18
+Attraktivität: 79, Thema: Portraits, Nr: 57, Art des Kunstwerks: B, Bezeichnung: Deer Ham Ioway from the American Indian Chiefs series (N2) for Allen & Ginter Cigarettes Brands, Breite 3
+Attraktivität: 70, Thema: Sonstiges, Nr: 297, Art des Kunstwerks: B, Bezeichnung: Poison Hemlock from the Plants series, Breite 5
+Attraktivität: 80, Thema: Sonstiges, Nr: 615, Art des Kunstwerks: G, Bezeichnung: Henriette et Damon, Breite 36
+Attraktivität: 78, Thema: Sonstiges, Nr: 910, Art des Kunstwerks: G, Bezeichnung: Pitcher, Breite 22
+Attraktivität: 79, Thema: Sonstiges, Nr: 753, Art des Kunstwerks: G, Bezeichnung: Coffer or chest key, Breite 4
+Attraktivität: 76, Thema: Sonstiges, Nr: 401, Art des Kunstwerks: B, Bezeichnung: Costume design of a dancing masked figure; verso: Study of a female head, Breite 38
+Attraktivität: 58, Thema: Sonstiges, Nr: 404, Art des Kunstwerks: B, Bezeichnung: Stanhope Phaeton #4009, Breite 55
+Attraktivität: 29, Thema: Portraits, Nr: 269, Art des Kunstwerks: B, Bezeichnung: Schildknecht Catcher Milwaukee from the Old Judge series (N172) for Old Judge Cigarettes, Breite 3
+Attraktivität: 74, Thema: Sonstiges, Nr: 774, Art des Kunstwerks: G, Bezeichnung: Coffer, Breite 41
+Attraktivität: 73, Thema: Sonstiges, Nr: 874, Art des Kunstwerks: G, Bezeichnung: Miniature bowl, Breite 3
+Attraktivität: 75, Thema: Sonstiges, Nr: 591, Art des Kunstwerks: G, Bezeichnung: Edging, Breite 8
+Attraktivität: 73, Thema: Sonstiges, Nr: 996, Art des Kunstwerks: G, Bezeichnung: Ewer, Breite 16
+Attraktivität: 2, Thema: Portraits, Nr: 197, Art des Kunstwerks: B, Bezeichnung: Magee Philadelphia National League from the White Border series (T206) for the American Tobacco Company, Breite 3
+Attraktivität: 67, Thema: Impressionismus, Nr: 724, Art des Kunstwerks: G, Bezeichnung: Vase with flowering branch motif (one of a pair), Breite 10
+Attraktivität: 69, Thema: Sonstiges, Nr: 820, Art des Kunstwerks: G, Bezeichnung: Plate, Breite 1
 ------------------------------------------
-Gesamtkosten: 247.769,00 €------------------------------------------
+Gesamtkosten: 230.629,00 €------------------------------------------
