@@ -146,7 +146,7 @@ public class Ausgabedatei
             {
                 //die Methode write schreibt den String-Eingabeparameter als Byte in den Ausgabestrom
                 meinWriter.write("-------------------------------------------------------------------------------------------------------\n");
-                meinWriter.write("Raum: " + raeume.getRaum(i).toStringKurz() + "\n");
+                meinWriter.write("Raum: " + raeume.getRaum(i).toString() + "\n");
                 meinWriter.write("Minimale Raumtemperatur: " + planung.getBestesMappingErlaubteFeuchtenTemperaturen("minTempRaum")[i] + "\n");
                 meinWriter.write("Maximale Raumtemperatur: " + planung.getBestesMappingErlaubteFeuchtenTemperaturen("maxTempRaum")[i] + "\n");
                 meinWriter.write("Minimale Luftfeuchte: " + planung.getBestesMappingErlaubteFeuchtenTemperaturen("minFeuchteRaum")[i] + "\n");
