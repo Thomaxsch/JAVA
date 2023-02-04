@@ -34,23 +34,31 @@ Im Anschluss wird über die Konsole ein Menü aufgerufen über welches einige Au
 --> Auf die Menüpunkte kann unter Eingabe der jeweiligen Nummer und einem anschließenden "Enter" zugegriffen werden. 
 Die einzelnen Begrifflichkeiten werden unter dem Punkt "Benutzerhinweise" genauer erläutert. 
 
-    (1) Planung starten
+    (1) Räume einlesen
+    Unter dieser Option lassen sich ".csv" Dateien der Räume in das Programm einlesen. Dabei kann durch den Anwender ein Pfad
+    ausgewählt werden, aus welchem die Dateien importiert werden sollen. Die Ausgabedateien werden ebenfalls dort abgelegt.
+    
+    (2) Kunstwerk einlesen 
+    Unter dieser Option lassen sich ".csv" Dateien der Kunstwerke in das Programm einlesen.Dabei kann durch den Anwender ein Pfad
+    ausgewählt werden, aus welchem die Dateien importiert werden sollen. Die Ausgabedateien werden ebenfalls dort abgelegt.
+
+    (3) Planung starten
     Falls die anderen Menüoptionen zuvor nicht angepasst wurden wird unter den Standardbedingungen (ohne Schwerpunkt und einem Qualitätsgewicht
     von 50%) die Planung durchgeführt.
 
-    (2) Schwerpunktthema angeben/ändern
+    (4) Schwerpunktthema angeben/ändern
     Es besteht die Möglichkeit für die Ausstellung ein Schwerpunktthema anzugeben oder falls bereits festgelegt zu ändern. 
     Hierfür tippen Sie einfach das zu setzende Thema ein und bestätigen die Eingabe mit "Enter".
 
     Wenn im Anschluss unter "(1)" die Planung durchgeführt wird, wird in diesem Fall das gesetzte Schwerpunktthema berücksichtigt. 
 
-    (3) Kostenobergrenze angeben/ändern
+    (5) Kostenobergrenze angeben/ändern
     Es besteht die Möglichkeit für die Ausstellung eine Kostenobergrenze anzugeben oder falls bereits festgelegt zu ändern. 
     Hierfür tippen Sie einfach die zu setzende Kostenobergrenze ein und bestätigen die Eingabe mit "Enter".
 
     Wenn im Anschluss unter "(1)" die Planung durchgeführt wird, wird in diesem Fall die gesetzte Kostenobergrenze berücksichtigt. 
 
-    (4) Qualitätsgewicht angeben/ändern
+    (6) Qualitätsgewicht angeben/ändern
     Es besteht die Möglichkeit für die Ausstellung ein Qualitätsgewicht anzugeben oder falls bereits festgelegt zu ändern. 
     Hierfür tippen Sie einfach die gewünschte Gewichtung z.B. "0.6" ein und bestätigen die Eingabe mit "Enter". 
     
@@ -59,25 +67,17 @@ Die einzelnen Begrifflichkeiten werden unter dem Punkt "Benutzerhinweise" genaue
 
     Wenn im Anschluss unter "(1)" die Planung durchgeführt wird, wird in diesem Fall die gesetzte Gewichtung berücksichtigt.
     
-    (5) Aktuelles Scherpunktthema anzeigen
+    (7) Aktuelles Scherpunktthema anzeigen
     Bei Aufruf dieser Option wird angezeigt, ob ein Schwerpunktthema für die Planung gesetzt wurde. Falls dies zutrifft, wird dieses
     angezeigt.
     
-    (6) Aktuelle Kostenobergrenze anzeigen
+    (8) Aktuelle Kostenobergrenze anzeigen
     Bei Aufruf dieser Option wird angezeigt, ob eine Kostenobergrenze für die Planung gesetzt wurde. Falls dies zutrifft, wird diese
     angezeigt.
     
-    (7) Aktuelles Qualitätsgewicht anzeigen
+    (9) Aktuelles Qualitätsgewicht anzeigen
     Bei Aufruf dieser Option wird angezeigt, welches Qualitätsgewicht für die Planung gesetzt wurde. 
-    
-    (8) Räume einlesen
-    Unter dieser Option lassen sich ".csv" Dateien der Räume in das Programm einlesen. Dabei kann durch den Anwender ein Pfad
-    ausgewählt werden, aus welchem die Dateien importiert werden sollen. Die Ausgabedateien werden ebenfalls dort abgelegt.
-    
-    (9) Kunstwerk einlesen 
-    Unter dieser Option lassen sich ".csv" Dateien der Kunstwerke in das Programm einlesen.Dabei kann durch den Anwender ein Pfad
-    ausgewählt werden, aus welchem die Dateien importiert werden sollen. Die Ausgabedateien werden ebenfalls dort abgelegt.
-    
+        
     (10) Variationsanalyse
     Unter dieser Option wird eine Variationsanalyse durchgeführt. Das bedeutet, dass anhand der eingelesenen Kunstwerke und Räume
     die bestmöglichen Zuordnungen für alle Schwerpunktthemen ausgegeben werden. Diese Option eignet sich sehr gut, um sich einen
