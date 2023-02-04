@@ -61,70 +61,129 @@ public class Ausgabedatei
      */
     public void schreibeAusleihen()
     {
+        // eine ArrayList k wird deklariert und ihr eine Referenz auf eine neun initialisierte ArrayList zugewiesen
         ArrayList<Kunstwerk> k = new ArrayList<Kunstwerk>();
+        
+        // Variable gesamtKosten vom Datentyp double wird deklariert und mit dem Wert 0.0 initialisiert
         double gesamtKosten = 0.0;
         
+        // Variable kostenProMueseum vom Datentyp double wird deklariert 
+        double kostenProMuseum;
+        
+        Locale locale = new Locale("de", "DE");
+        NumberFormat waehrung = NumberFormat.getCurrencyInstance(locale);
+        
+        // der Rückgabewert der Methode getAllePartnermuseen wird dem String-Array museen zugewiesen
         ArrayList<String> museen = kws.getAllePartnermuseen();
         
         try
-        {          
+        {        
+            // die ArrayList zugeordneteKunstwerke wird zum bis Ende durchgelaufen
             for(int i=0; i < zugeordneteKunstwerke.size(); i++)
             {
+                // in der zweiten Dimension der ArrayList sind die Kunstwerke enthalten
                 for(int j=0; j < zugeordneteKunstwerke.get(i).size(); j++)
                 {
+                    // zur einfacheren Bearbeitung werden die Kunstwerke in die ArrayList k mit nur einer Dimension hinzugefügt
                     k.add(zugeordneteKunstwerke.get(i).get(j));
                 }
             }
             
+            // Objekt meinWriter der Klasse BufferedWriter (gepufferter Ausgabestrom) wird deklariert
+            // dem Objekt wird eine Referenz auf ein initialisiertes Objekt der Klasse BufferedWriter, dazu wird dem Konstruktor als Eingabeparameter ein Objekt der Klasse FileWriter übergeben,
+            // der wiederum ein als Eingabeparameter eine String übergeben wird, der den Namen für die Auleihdaten widerspiegelt
             BufferedWriter meinWriter = new BufferedWriter(new FileWriter(file));
             
+            // mehrere Zeichen werden in den gepufferten Augabestrrom geschrieben
             meinWriter.write("------------------------------------------\n");
             meinWriter.write("Auszuleihende Kunstwerke                  \n");
-            meinWriter.write("------------------------------------------\n");
+            meinWriter.write("------------------------------------------\n\n");
             
+            // in der äußeren Schleife werden alle Museen aus der ArrayList museen durchlaufen            
             for(int i=0; i<museen.size(); i++)
             {
+                // Kosten pro Museum müssen beim ersten Durchlauf mit neuem Museum auf den Wert 0.0 gesetzt werden
+                kostenProMuseum = 0.0;
+                
+                // mehrere Zeichen werden in den gepufferten Augabestrom geschrieben, u.a. der Name des Museums
                 meinWriter.write("------------------------------------------\n");
-                meinWriter.write(museen.get(i));
+                meinWriter.write(museen.get(i) + "\n");
                 meinWriter.write("------------------------------------------\n");
                 
+                // in der inneren Schleife werden alle Kunstwerke durchlaufen, die ausgeliehen werden sollen
                 for(int j=0; j < k.size(); j++)
                 {
+                    // Prüfung im If-Zweig ob das dem Kunstwerk zugeordnete Museum dem Museum aus der äußeren Schleife entspricht
                     if(museen.get(i).equals(k.get(j).getVerleihendesMuseum()))
                     {
-                        meinWriter.write(k.get(j).toString() + "\n");
+                        // sind beide Museen identisch, dann wird das Kunstwerk mit der Methode write in den Ausgabestrom geschrieben.
+                        meinWriter.write(k.get(j).outputAusleihdatei() + "\n");
+                        
+                        // Aufruf der Methode kostenProMuseum des jeweiligen Kunstwerks und Addition der Ausleihkosten des Kunstwerks zu den Kosten des jeweiligen Museum
+                        kostenProMuseum += k.get(j).getKosten();
+                        
+                        // Aufruf der Methode getKosten des jeweiligen Kunstwerks und Addition der Ausleihkosten des Kunstwerks zu den Gesamtkosten
                         gesamtKosten += k.get(j).getKosten();
                     }
                 }
-            }
                 
-            meinWriter.write("------------------------------------------\n");
-            Locale locale = new Locale("de", "DE");
-            NumberFormat waehrung = NumberFormat.getCurrencyInstance(locale);
-            meinWriter.write("Gesamtkosten: " + waehrung.format(gesamtKosten));
-            meinWriter.write("------------------------------------------\n");
+                // Ausgabe der Kosten pro Museum mit Formatierung im Währungsformat Euro
+                meinWriter.write("------------------------------------------\n");
+                meinWriter.write("Kosten pro Museum: " + waehrung.format(kostenProMuseum) + "\n\n");
+            }
             
+            // mehrere Zeichen werden in den gepufferten Augabestrom geschrieben, u.a. die gesamten Ausleihkosten
+            meinWriter.write("--------------------------------------------\n");
+            meinWriter.write("Gesamtkosten: " + waehrung.format(gesamtKosten));
+            
+            // Ausgabestrom wird geschlossen
             meinWriter.close();
+            
+            // Ende Textausgabe
+            // Beginn HTML-Ausgabe
             
             gesamtKosten = 0;
             StringBuilder sb = new StringBuilder();
             sb.append("<html>");
             sb.append("<h1>Auszuleihende Kunstwerke (inkl. Gesamtkosten)</h1>");
-            sb.append("<table border='1px' width='100%'>");
-            sb.append("<tr><td>Nr.</td>");
-            sb.append("<td>Kunstwerk</td>");
-            sb.append("<td>Kosten</td></tr>");                
             
-            for(int i=0; i < k.size(); i++)
+            // in der äußeren Schleife werden alle Museen aus der ArrayList museen durchlaufen            
+            for(int i=0; i<museen.size(); i++)
             {
-                sb.append("<tr><td>" + (i+1) + "</td>");
-                sb.append("<td>" + k.get(i).toString() + "</td>");
-                sb.append("<td>" + waehrung.format(k.get(i).getKosten()) + "</td></tr>");
-                gesamtKosten += k.get(i).getKosten();
+                // Kosten pro Museum müssen beim ersten Durchlauf mit neuem Museum auf den Wert 0.0 gesetzt werden
+                kostenProMuseum = 0.0;
+                
+                // Ausgabe des Museums
+                sb.append("<h3>" + museen.get(i) + "</h3>");
+                sb.append("<table width='100%' border='1px'");
+                sb.append("<tr><td>Nr.</td><td>Beschreibung des Kunstwerks</td><td>Kosten</td>");
+                
+                for(int j=0; j < k.size(); j++)
+                {                   
+                    // Prüfung im If-Zweig ob das dem Kunstwerk zugeordnete Museum dem Museum aus der äußeren Schleife entspricht
+                    if(museen.get(i).equals(k.get(j).getVerleihendesMuseum()))
+                    {
+                        sb.append("<tr><td>" + (j+1) + "</td>");
+                        sb.append("<td>" + k.get(j).toString() + "</td>");
+                        sb.append("<td>" + waehrung.format(k.get(j).getKosten()) + "</td></tr>");
+                        
+                        // Aufruf der Methode kostenProMuseum des jeweiligen Kunstwerks und Addition der Ausleihkosten des Kunstwerks zu den Kosten des jeweiligen Museum
+                        kostenProMuseum += k.get(j).getKosten();
+                        
+                        // Aufruf der Methode getKosten des jeweiligen Kunstwerks und Addition der Ausleihkosten des Kunstwerks zu den Gesamtkosten
+                        gesamtKosten += k.get(j).getKosten(); 
+                    }
+                }
+                
+                sb.append("<tr><td colspan='2'>Kosten pro Museum</td>");
+                sb.append("<td>" + waehrung.format(kostenProMuseum) + "</td></tr>");
+                sb.append("</table>");
             }
-            sb.append("<tr><td colspan='2'>Gesamtkosten</td>");
-            sb.append("<td>" + waehrung.format(gesamtKosten) + "</td></tr>");
-            sb.append("</table>");
+            
+            
+            //sb.append("<tr><td colspan='2'>Gesamtkosten</td>");
+            //sb.append("<td>" + waehrung.format(gesamtKosten) + "</td></tr>");
+            //sb.append("</table>");
             
             FileWriter fstream = new FileWriter("ausleihdatei.html");
             BufferedWriter out = new BufferedWriter(fstream);
