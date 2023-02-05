@@ -8,10 +8,7 @@ import java.util.Comparator;
  * "Kunstinstallationen", "Bild" und "Kunstgegenstand" durchführen kann. 
  * So kann diese die o.g. Klassen nach Objekten durchsuchen und gezielt darauf zugreifen.  
  * Die Kunstwerkverwaltung ist zudem geeignet die Logikklassen gezielt durch Methoden zu unterstützen. 
- * Aufgrunddessen ist sie in der Lage die Klasse der "Ausstellungsplanung" zu entlasten. 
- * 
- * Die Ausstellungsplanung kann sich folglich auf die Kunstwerkverwaltung beziehen, um daraus die richtige Auswahl der Ausstellung 
- * und Ausleihe zu treffen. 
+ * Aufgrunddessen ist sie in der Lage die Klasse "Zuordnung" zu entlasten. 
  * 
  * @author (Alexander Kipry) 
  * @version (05.02.2023)
