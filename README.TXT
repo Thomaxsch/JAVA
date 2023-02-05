@@ -4,9 +4,17 @@ Ausstellungsplanung des VAWi-Museums Essen - Gruppe 06
 PROJEKTZWECK: 
 Planung einer attraktiven und möglichst kostengünstigen Ausstellung für das VAWi-Museum Essen anhand von spezifischen Ausleihlisten
 von Kunstwerken anderer kooperiender Museen unter Berücksichtigung der vorhandenen Raumbedingungen des VAWi-Museums.
+Als Ergebnis werden drei auf den Zweck angepasste Ausgabedateien für den Anwender ausgegeben:
+
+    - Ausleihdatei
+    - Raumdatei
+    - Museumsführer
+
+Diese sind unterschiedlich gegliedert, um dem jeweiligen Leser der Dateien einen möglichst passenden Überblick über alle für ihn relevanten
+Informationen zu geben. 
 
 VERSION oder DATUM: 
-29.01.2023
+05.02.2023
 
 AUTOR(EN): 
     Carla Saradeth:
@@ -37,10 +45,17 @@ Die einzelnen Begrifflichkeiten werden unter dem Punkt "Benutzerhinweise" genaue
     (1) Räume einlesen
     Unter dieser Option lassen sich ".csv" Dateien der Räume in das Programm einlesen. Dabei kann durch den Anwender ein Pfad
     ausgewählt werden, aus welchem die Dateien importiert werden sollen. Die Ausgabedateien werden ebenfalls dort abgelegt.
+    Die Eingabe des Pfades hat in folgendem Format zu erfolgen: "/" zu Beginn und "/" am Ende der Eingabe des Pfades.
+
+    -> Beispiel: "/home/MaxMustermann/Dokumente/Museumsplanung/Februar2023/"
+    
     
     (2) Kunstwerk einlesen 
     Unter dieser Option lassen sich ".csv" Dateien der Kunstwerke in das Programm einlesen.Dabei kann durch den Anwender ein Pfad
     ausgewählt werden, aus welchem die Dateien importiert werden sollen. Die Ausgabedateien werden ebenfalls dort abgelegt.
+    Die Eingabe des Pfades hat in folgendem Format zu erfolgen: "/" zu Beginn und "/" am Ende der Eingabe des Pfades.
+    
+    -> Beispiel: "/home/MaxMustermann/Dokumente/Museumsplanung/Februar2023/"
 
     (3) Planung starten
     Falls die anderen Menüoptionen zuvor nicht angepasst wurden wird unter den Standardbedingungen (ohne Schwerpunkt und einem Qualitätsgewicht
