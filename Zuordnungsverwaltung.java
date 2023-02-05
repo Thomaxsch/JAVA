@@ -22,6 +22,7 @@ public class Zuordnungsverwaltung
     
     // Deklaration eines Arrays für die Zuordnungen:
     private ArrayList <Zuordnung> listeZuordnungen; 
+    
     private int anzahlZuordnungen;
     private Raumverwaltung raumverwaltung;
     private Kunstwerkverwaltung kunstwerkverwaltung;
