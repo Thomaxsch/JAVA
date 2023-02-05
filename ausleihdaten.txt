@@ -1,7 +1,9 @@
 ------------------------------------------
 Auszuleihende Kunstwerke                  
 ------------------------------------------
+
 ------------------------------------------
+<<<<<<< HEAD
 Mus�e du Louvre------------------------------------------
 Attraktivität: 80, Thema: Pflanzen, Nr: 658, Art des Kunstwerks: G, Bezeichnung: Saucer (one of nine) (part of a service), Breite 3
 Attraktivität: 76, Thema: Aktmalerei, Nr: 900, Art des Kunstwerks: G, Bezeichnung: First Arabesque Pench�e, Breite 54
@@ -10,14 +12,41 @@ Attraktivität: 61, Thema: Impressionismus, Nr: 230, Art des Kunstwerks: B, Beze
 Attraktivität: 79, Thema: Sonstiges, Nr: 938, Art des Kunstwerks: G, Bezeichnung: Tea urn, Breite 55
 Attraktivität: 76, Thema: Impressionismus, Nr: 260, Art des Kunstwerks: B, Bezeichnung: Old Willesley House, Breite 25
 Attraktivität: 80, Thema: Sonstiges, Nr: 605, Art des Kunstwerks: G, Bezeichnung: Chair (one of a pair), Breite 45
+=======
+The British Museum
 ------------------------------------------
+Partnermuseum: The British Museum, Nummer: 82, Art des Kunstwerks: G, Name des Kunstwerks: Part of a border
+Partnermuseum: The British Museum, Nummer: 75, Art des Kunstwerks: G, Name des Kunstwerks: Teapot
+Partnermuseum: The British Museum, Nummer: 4, Art des Kunstwerks: B, Name des Kunstwerks: The Refreshment
+------------------------------------------
+Kosten pro Museum: 7.613,00 €
+
+------------------------------------------
+Rijksmuseum Amsterdam
+------------------------------------------
+Partnermuseum: Rijksmuseum Amsterdam, Nummer: 2, Art des Kunstwerks: B, Name des Kunstwerks: S. Emeri Roi de Hongrie (St. Emeric King of Hungary) from November 4th from Les Images De Tous Les Saincts et Saintes de L'Année (Images of All of the Saints and Religious Events of the Year)
+Partnermuseum: Rijksmuseum Amsterdam, Nummer: 35, Art des Kunstwerks: B, Name des Kunstwerks: Cupid with a Bird on a String
+Partnermuseum: Rijksmuseum Amsterdam, Nummer: 63, Art des Kunstwerks: G, Name des Kunstwerks: Tankard
+Partnermuseum: Rijksmuseum Amsterdam, Nummer: 14, Art des Kunstwerks: B, Name des Kunstwerks: Recerca di Volumi di un Edificio Isolato [Exploration of Volumes in a Free-Standing Building]
+------------------------------------------
+Kosten pro Museum: 16.919,00 €
+
+>>>>>>> 5d5120f6b7b130c3014c88fecace2534a877838c
+------------------------------------------
+<<<<<<< HEAD
 Eremitage------------------------------------------
 Attraktivität: 72, Thema: Sonstiges, Nr: 127, Art des Kunstwerks: B, Bezeichnung: Untitled broadside cover for the poem The Song of the Border-Guard, Breite 31
 Attraktivität: 79, Thema: Impressionismus, Nr: 19, Art des Kunstwerks: B, Bezeichnung: Gleaners in the Hail, Breite 18
 Attraktivität: 18, Thema: Impressionismus, Nr: 159, Art des Kunstwerks: B, Bezeichnung: Design for 4 seat Phaeton no top no. 3211, Breite 22
 Attraktivität: 1, Thema: Sonstiges, Nr: 7, Art des Kunstwerks: B, Bezeichnung: Washington Statue. Fairmount Park from Philadelphia Pennsylvania souvenir views (W500), Breite 6
 Attraktivität: 73, Thema: Romantik, Nr: 755, Art des Kunstwerks: G, Bezeichnung: Miniature tea bowl (one of five) (part of a set), Breite 2
+=======
+Metropolitan Museum of Art
 ------------------------------------------
+Partnermuseum: Metropolitan Museum of Art, Nummer: 36, Art des Kunstwerks: B, Name des Kunstwerks: Christ and the Samaritan Woman (Schr. 141c)
+>>>>>>> 5d5120f6b7b130c3014c88fecace2534a877838c
+------------------------------------------
+<<<<<<< HEAD
 National Gallery------------------------------------------
 Attraktivität: 77, Thema: Impressionismus, Nr: 312, Art des Kunstwerks: B, Bezeichnung: A Sudden Squall, Breite 28
 Attraktivität: 74, Thema: Impressionismus, Nr: 389, Art des Kunstwerks: B, Bezeichnung: Lecture d'un testament from La Com�die Humaine published in Le Charivari December 20 1853, Breite 36
@@ -33,7 +62,12 @@ Attraktivität: 79, Thema: Sonstiges, Nr: 962, Art des Kunstwerks: G, Bezeichnun
 Attraktivität: 12, Thema: Sonstiges, Nr: 93, Art des Kunstwerks: B, Bezeichnung: A View of the Adams Mansion Quincy Massachusetts (Merrymount Press New Year's Card 1929), Breite 16
 Attraktivität: 73, Thema: Tiere, Nr: 627, Art des Kunstwerks: G, Bezeichnung: Vase (one of a pair), Breite 23
 Attraktivität: 65, Thema: Tiere, Nr: 152, Art des Kunstwerks: B, Bezeichnung: Shaft-tailed Bunting from the Song Birds of the World series (N42) for Allen & Ginter Cigarettes, Breite 8
+=======
+Kosten pro Museum: 2.035,00 €
+
+>>>>>>> 5d5120f6b7b130c3014c88fecace2534a877838c
 ------------------------------------------
+<<<<<<< HEAD
 Metropolitan Museum of Art------------------------------------------
 Attraktivität: 70, Thema: Expressionismus, Nr: 463, Art des Kunstwerks: B, Bezeichnung: Still Waters, Breite 31
 Attraktivität: 67, Thema: Barock, Nr: 257, Art des Kunstwerks: B, Bezeichnung: Head of an old bearded man facing right from the series of  'Small Heads in Oriental Headdress', Breite 8
@@ -109,3 +143,53 @@ Attraktivität: 72, Thema: Pflanzen, Nr: 988, Art des Kunstwerks: G, Bezeichnung
 Attraktivität: 98, Thema: Hyperrealismus, Nr: 1137, Art des Kunstwerks: I, Bezeichnung: Untitled, Breite 159
 ------------------------------------------
 Gesamtkosten: 206.830,00 €------------------------------------------
+=======
+Uffizien
+------------------------------------------
+Partnermuseum: Uffizien, Nummer: 115, Art des Kunstwerks: I, Name des Kunstwerks: Girl in a Red Dress
+Partnermuseum: Uffizien, Nummer: 76, Art des Kunstwerks: G, Name des Kunstwerks: Jug
+------------------------------------------
+Kosten pro Museum: 3.456,00 €
+
+------------------------------------------
+Bode-Museum
+------------------------------------------
+Partnermuseum: Bode-Museum, Nummer: 41, Art des Kunstwerks: B, Name des Kunstwerks: Avec Ou Dessus
+Partnermuseum: Bode-Museum, Nummer: 71, Art des Kunstwerks: G, Name des Kunstwerks: Sacrifice of Isaac
+Partnermuseum: Bode-Museum, Nummer: 90, Art des Kunstwerks: G, Name des Kunstwerks: Writing box
+Partnermuseum: Bode-Museum, Nummer: 101, Art des Kunstwerks: I, Name des Kunstwerks: Lamelle Blue Delphinium Butter Plate
+------------------------------------------
+Kosten pro Museum: 8.040,00 €
+
+------------------------------------------
+Musée du Louvre
+------------------------------------------
+Partnermuseum: Musée du Louvre, Nummer: 80, Art des Kunstwerks: G, Name des Kunstwerks: Pair of firedogs
+------------------------------------------
+Kosten pro Museum: 1.988,00 €
+
+------------------------------------------
+Eremitage
+------------------------------------------
+------------------------------------------
+Kosten pro Museum: 0,00 €
+
+------------------------------------------
+Museo del Prado
+------------------------------------------
+------------------------------------------
+Kosten pro Museum: 0,00 €
+
+------------------------------------------
+National Gallery
+------------------------------------------
+Partnermuseum: National Gallery, Nummer: 44, Art des Kunstwerks: B, Name des Kunstwerks: Card Number 563 Amy Gordon from the Actors and Actresses series (N145-7) issued by Duke Sons & Co. to promote Duke Cigarettes
+Partnermuseum: National Gallery, Nummer: 16, Art des Kunstwerks: B, Name des Kunstwerks: My Little White Kitties – Into Mischief
+Partnermuseum: National Gallery, Nummer: 37, Art des Kunstwerks: B, Name des Kunstwerks: Kellogg's Funny Jungleland Moving-Pictures
+Partnermuseum: National Gallery, Nummer: 45, Art des Kunstwerks: B, Name des Kunstwerks: Fanny Davenport from the Actresses series (N252-B) issued by P. Lorillard Company to promote Tiger Fine Cut Tobacco
+------------------------------------------
+Kosten pro Museum: 10.767,00 €
+
+--------------------------------------------
+Gesamtkosten: 50.818,00 €
+>>>>>>> 5d5120f6b7b130c3014c88fecace2534a877838c
