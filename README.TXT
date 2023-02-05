@@ -36,7 +36,7 @@ AUTOR(EN):
     - Kunstwerkverwaltung
 
 WIE IST DAS PROJEKT ZU STARTEN:
-Das Projekt lässt sich über die Konsole mittels des Befehls "java -jar VAWiMuseumEssen.jar" starten. 
+Das Projekt lässt sich über die Konsole mittels des Befehls "java -jar PlanungVAWiMuseumEssen.jar" starten. 
 Im Anschluss wird über die Konsole ein Menü aufgerufen über welches einige Auswahlmöglichkeiten eingeblendet werden:
 
 --> Auf die Menüpunkte kann unter Eingabe der jeweiligen Nummer und einem anschließenden "Enter" zugegriffen werden. 
