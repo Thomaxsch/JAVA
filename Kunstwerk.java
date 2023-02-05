@@ -14,7 +14,8 @@ import java.lang.Integer;
  * @author (Alexander Kipry) 
  * @version (03.02.2023)
  */
-    abstract class Kunstwerk implements Comparable<Kunstwerk> // "Comparable" damit durch die Kunstwerkverwaltung ein Vergleich von Attributen vorgenommen werden kann. 
+    abstract class Kunstwerk implements Comparable<Kunstwerk> /* "Comparable" damit durch die Kunstwerkverwaltung ein Vergleich von Attributen
+    vorgenommen werden kann. */
     
 { //Attribute der Klasse Kunstwerk
     /** Lfd-Nummer des Kunstwerkes aus dem Angebot */
@@ -44,7 +45,7 @@ import java.lang.Integer;
     /** Angabe des Namens des Museums, welches das Kunstwerk zur Verfügung stellt */
     private String verleihendesMuseum;
     
-    /** Anschrift des Museums */
+    /** Anschrift des Museums in folgender Schriftweise: "Straße, Hnr, Plz, Ort" */
     private String anschrift;
     
     /** Höhe des Kunstwerkes in cm */
@@ -253,7 +254,7 @@ import java.lang.Integer;
      * 
      * @return die Jahresangabe, in welchem das Kunstwerk erstellt wurde.
      */
-    public String getJahr()
+    public String getJahr()     //hierbei wird ein String genutzt, damit  man auch Jahresangaben wie "1979-1983" angeben kann. 
     {
         return jahr;
     }
@@ -383,6 +384,7 @@ import java.lang.Integer;
      * Methode, welche vorgibt, dass die Attraktivitaet zwischen Kunstwerken verglichen werden kann und 
      * somit die Kunstwerkverwaltung in der Lage ist Kunstwerke nach deren Attraktivitaet zu sortieren. 
      * 
+     * @param kw Übergabe eines Kunstwerk Vectors, welcher nach Attraktivität sortiert werden soll. 
      * @return die Übergabe der verglichenen Attraktivitaetswerte
      */
     @Override
@@ -390,12 +392,5 @@ import java.lang.Integer;
     {
         return Integer.compare(this.attraktivitaetswert, kw.attraktivitaetswert);
     }
-     /*
-    @Override
-    public int compareTo(Kunstwerk k) 
-    {
-        return Integer.compare(this.kosten, k.kosten);
-    }
-    */
 }
 
