@@ -4,9 +4,17 @@ Ausstellungsplanung des VAWi-Museums Essen - Gruppe 06
 PROJEKTZWECK: 
 Planung einer attraktiven und möglichst kostengünstigen Ausstellung für das VAWi-Museum Essen anhand von spezifischen Ausleihlisten
 von Kunstwerken anderer kooperiender Museen unter Berücksichtigung der vorhandenen Raumbedingungen des VAWi-Museums.
+Als Ergebnis werden drei auf den Zweck angepasste Ausgabedateien für den Anwender ausgegeben:
+
+    - Ausleihdatei
+    - Raumdatei
+    - Museumsführer
+
+Diese sind unterschiedlich gegliedert, um dem jeweiligen Leser der Dateien einen möglichst passenden Überblick über alle für ihn relevanten
+Informationen zu geben. 
 
 VERSION oder DATUM: 
-29.01.2023
+05.02.2023
 
 AUTOR(EN): 
     Carla Saradeth:
@@ -28,7 +36,7 @@ AUTOR(EN):
     - Kunstwerkverwaltung
 
 WIE IST DAS PROJEKT ZU STARTEN:
-Das Projekt lässt sich über die Konsole mittels des Befehls "java -jar VAWiMuseumEssen.jar" starten. 
+Das Projekt lässt sich über die Konsole mittels des Befehls "java -jar PlanungVAWiMuseumEssen.jar" starten. 
 Im Anschluss wird über die Konsole ein Menü aufgerufen über welches einige Auswahlmöglichkeiten eingeblendet werden:
 
 --> Auf die Menüpunkte kann unter Eingabe der jeweiligen Nummer und einem anschließenden "Enter" zugegriffen werden. 
@@ -37,10 +45,17 @@ Die einzelnen Begrifflichkeiten werden unter dem Punkt "Benutzerhinweise" genaue
     (1) Räume einlesen
     Unter dieser Option lassen sich ".csv" Dateien der Räume in das Programm einlesen. Dabei kann durch den Anwender ein Pfad
     ausgewählt werden, aus welchem die Dateien importiert werden sollen. Die Ausgabedateien werden ebenfalls dort abgelegt.
+    Die Eingabe des Pfades hat in folgendem Format zu erfolgen: "/" zu Beginn und "/" am Ende der Eingabe des Pfades.
+
+    -> Beispiel: "/home/MaxMustermann/Dokumente/Museumsplanung/Februar2023/"
+    
     
     (2) Kunstwerk einlesen 
     Unter dieser Option lassen sich ".csv" Dateien der Kunstwerke in das Programm einlesen.Dabei kann durch den Anwender ein Pfad
     ausgewählt werden, aus welchem die Dateien importiert werden sollen. Die Ausgabedateien werden ebenfalls dort abgelegt.
+    Die Eingabe des Pfades hat in folgendem Format zu erfolgen: "/" zu Beginn und "/" am Ende der Eingabe des Pfades.
+    
+    -> Beispiel: "/home/MaxMustermann/Dokumente/Museumsplanung/Februar2023/"
 
     (3) Planung starten
     Falls die anderen Menüoptionen zuvor nicht angepasst wurden wird unter den Standardbedingungen (ohne Schwerpunkt und einem Qualitätsgewicht
@@ -88,7 +103,7 @@ Die einzelnen Begrifflichkeiten werden unter dem Punkt "Benutzerhinweise" genaue
     (11) Logmodus für Planung und Variationsanalyse an/aus
     Unter dieser Option lässt sich der Logmodus für die Planung und Variationsanalyse an, bzw. ausschalten. Standardmäßig ist dieser
     ausgeschaltet. Dies bedeutet, dass für den Anwender lediglich die Ergebnisse der Planung und Variationsanalyse ausgegeben werden. 
-    Wird in diesem Fall der Logmodus aktiviert, so wird bei Betätigen der Option (1) Planung oder (10) Variationsanalyse der Log, also
+    Wird in diesem Fall der Logmodus aktiviert, so wird bei Betätigen der Option (3) Planung oder (10) Variationsanalyse der Log, also
     die Durchführung der Planung durchgespielt und für den Anwender angezeigt. 
     Dies kommt für Sie vor allem dann in Betracht, wenn Sie als Anwender nachvollziehen wollen, wie die einzelnen Zuordnungen zustande
     gekommen sind und weshalb diese in dieser Art durch die Software durchgefüht wurden. 
@@ -131,7 +146,7 @@ berücksichtigt.Im folgenden werden die einzelnen Begrifflichkeiten der festzule
     Gütekriterien:
         ○ Attraktivität des Kunstwerkes
         ○ Attraktivität pro Kosten des Kunstwerkes
-    - Bei der Lösungserweiterung (s.o. unter 2.) wird immer wieder der Raum mit dem größten Verbesserungsbedarf gesucht. 
+    - Bei der Lösungserweiterung wird immer wieder der Raum mit dem größten Verbesserungsbedarf gesucht. 
     Hierbei gewichten wir folgende Bedürftigkeitskriterien:
         ○ Geringer Mittelwert der Attraktivität der Kunstwerke (leere Räume berücksichtigen wir mit einem Attraktivitätswert von 0)
         ○ Geringer Anteil der belegten Wandfläche des Raumes
