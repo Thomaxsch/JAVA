@@ -2,7 +2,8 @@ import java.lang.Integer;
 
 /**
  * Bei dieser Klasse handelt es sich um eine abstrakte Parent-Klasse, welche die wesentlichen Informationen aller Kunstwerke definiert. 
- * Somit werden hierrüber neben den Attributen, die auf alle Arten von Kunstwerken, also der Child-Klassen (Kunstinstallationen, Bild, Kunstgegenstand), ebenfalls ein Konstruktor und Methoden definiert.
+ * Somit werden hierrüber neben den Attributen, die auf alle Arten von Kunstwerken, also der Child-Klassen (Kunstinstallationen, Bild, Kunstgegenstand) zutreffen, 
+ * ebenfalls ein Konstruktor und Methoden definiert.
  * Es wurde sich hierbei für eine abstrakte Klasse entschieden, da ein Kunstwerk immer einen “Typ” (Kunstinstallationen, Bild, Kunstgegenstand) haben muss .
  * Somit ist ein Erzeugen eines Objekts “Kunstwerk” nicht sinnvoll. 
  * Mit Starten des Programms durch die Klasse Museum wird eine Eingabedatei mit Daten zu den verfügbaren Angeboten der Kunstwerke eingelesen.
@@ -11,9 +12,11 @@ import java.lang.Integer;
  * Zusätzlich gibt es die Möglichkeit Objekte der Child-Klassen manuell anzulegen oder zu ändern. 
  * 
  * @author (Alexander Kipry) 
- * @version (12.01.2023)
+ * @version (03.02.2023)
  */
-    abstract class Kunstwerk implements Comparable<Kunstwerk> // "Comparable" damit durch die Kunstwerkverwaltung ein Vergleich von Attributen vorgenommen werden kann. 
+    abstract class Kunstwerk implements Comparable<Kunstwerk> /* "Comparable" damit durch die Kunstwerkverwaltung ein Vergleich von Attributen
+    vorgenommen werden kann. */
+    
 { //Attribute der Klasse Kunstwerk
     /** Lfd-Nummer des Kunstwerkes aus dem Angebot */
     private short laufendeNummer;
@@ -42,7 +45,7 @@ import java.lang.Integer;
     /** Angabe des Namens des Museums, welches das Kunstwerk zur Verfügung stellt */
     private String verleihendesMuseum;
     
-    /** Anschrift des Museums */
+    /** Anschrift des Museums in folgender Schriftweise: "Straße, Hnr, Plz, Ort" */
     private String anschrift;
     
     /** Höhe des Kunstwerkes in cm */
@@ -251,7 +254,7 @@ import java.lang.Integer;
      * 
      * @return die Jahresangabe, in welchem das Kunstwerk erstellt wurde.
      */
-    public String getJahr()
+    public String getJahr()     //hierbei wird ein String genutzt, damit  man auch Jahresangaben wie "1979-1983" angeben kann. 
     {
         return jahr;
     }
@@ -338,6 +341,11 @@ import java.lang.Integer;
         ", Art des Kunstwerks: " + this.art + ", Bezeichnung: " + this.bezeichnung + ", Breite " + this.breite;
     }
     
+    /**
+     * Methode, um in den Childklassen daraufzugreifen zu können. 
+     */
+    abstract String outputMaße();
+    
      /**
      * Methode, welche eine modifizierte textuelle Beschreibung der Kunstwerke für den Museumsführer ausgibt.
      * 
@@ -369,13 +377,14 @@ import java.lang.Integer;
     public String outputRaumdatei()
     {
         return "Nummer: " + this.getLaufendeNummer() + ", Art des Kunstwerks: " + this.getArt() + ", Name des Kunstwerks: " 
-        + this.getBezeichnung() + ", Thema: " + this.getThema();
+        + this.getBezeichnung() + ", Thema: " + this.getThema() + outputMaße();
     }
     
     /**
      * Methode, welche vorgibt, dass die Attraktivitaet zwischen Kunstwerken verglichen werden kann und 
      * somit die Kunstwerkverwaltung in der Lage ist Kunstwerke nach deren Attraktivitaet zu sortieren. 
      * 
+     * @param kw Übergabe eines Kunstwerk Vectors, welcher nach Attraktivität sortiert werden soll. 
      * @return die Übergabe der verglichenen Attraktivitaetswerte
      */
     @Override
@@ -383,12 +392,5 @@ import java.lang.Integer;
     {
         return Integer.compare(this.attraktivitaetswert, kw.attraktivitaetswert);
     }
-     /*
-    @Override
-    public int compareTo(Kunstwerk k) 
-    {
-        return Integer.compare(this.kosten, k.kosten);
-    }
-    */
 }
 

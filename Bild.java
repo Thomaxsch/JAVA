@@ -5,7 +5,7 @@
  * Es lassen sich hierrüber manuell Objekte anlegen/ändern, jedoch sollen über die Einstiegsklasse "Museum" über einen Datenimport die Objekte erstellt werden.
  * 
  * @author (Alexander Kipry) 
- * @version (20.12.2022)
+ * @version (03.02.2023)
  */
 
 public class Bild extends Kunstwerk
@@ -51,7 +51,7 @@ public class Bild extends Kunstwerk
      * @param in_minLuft               Dieser int entspricht der minimalen Luftfeuchtigkeit in einem Raum, welche für das Kunstwerk zulässig ist, in %.
      * @param in_maxLuft               Dieser int entspricht der minimalen Luftfeuchtigkeit in einem Raum, welche für das Kunstwerk zulässig ist, in %.
    
-       */
+    */
 
       public Bild (short in_laufendeNummer, char in_art, String in_bezeichnung, String in_kuenstler, String in_jahr, String in_thema, 
       int in_attraktivitaetswert, int in_kosten, String in_verleihendesMuseum,String in_anschrift, int in_hoehe, int in_breite,
@@ -159,6 +159,16 @@ public class Bild extends Kunstwerk
     public int getMaxLuft()
     {
         return maxLuft;
+    }
+    /**
+     * Gibt die Maße des Bildes aus. Diese Methode wird u.a. für die Ausgabedateien benötigt, um eine für Objekte der Klasse Bild angepasste Ausgabe erzeugen zu können. 
+     * 
+     * @return eine textuelle Ausgabe der Maße der Kunstinstallation in einem String. 
+     */
+    @Override //weil die eigentliche Methode hierzu in der Klasse Kunstwerk definiert wird und hierrüber auf die Klasse Bild angepasst wird. 
+    public String outputMaße()
+    {
+        return ", Höhe: " + super.getHoehe() + ", Breite: " + super.getBreite();
     }
     }
     

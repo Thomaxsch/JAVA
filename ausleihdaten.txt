@@ -1,6 +1,7 @@
 ------------------------------------------
 Auszuleihende Kunstwerke                  
 ------------------------------------------
+<<<<<<< HEAD
 Attraktivität: 94, Thema: Sonstiges, Nr: 255, Art des Kunstwerks: I, Bezeichnung: Duck Walk, Breite 217
 Attraktivität: 78, Thema: Impressionismus, Nr: 32, Art des Kunstwerks: B, Bezeichnung: Wood Pigeon, Breite 8
 Attraktivität: 77, Thema: Klassizismus, Nr: 12, Art des Kunstwerks: B, Bezeichnung: Royal American Magazine or Universal Repository of Instruction and Amusement vol. I, Breite 14
@@ -31,5 +32,164 @@ Attraktivität: 70, Thema: Expressionismus, Nr: 45, Art des Kunstwerks: B, Bezei
 Attraktivität: 32, Thema: Portraits, Nr: 56, Art des Kunstwerks: B, Bezeichnung: Annie Boyd from the Actors and Actresses series (N171) for Old Judge Cigarettes, Breite 3
 Attraktivität: 66, Thema: Expressionismus, Nr: 182, Art des Kunstwerks: G, Bezeichnung: In Honor of M. Julien Girard Head Master of the Lyceum Condorcet 1892, Breite 3
 Attraktivität: 4, Thema: Portraits, Nr: 29, Art des Kunstwerks: B, Bezeichnung: Card Number 229 Miss Flint from the Actors and Actresses series (N145-2) issued by Duke Sons & Co. to promote Cross Cut Cigarettes, Breite 3
+=======
+
+>>>>>>> 0d16a40c1b3bc4c04f57d276765454d3ae3a5520
 ------------------------------------------
+<<<<<<< HEAD
 Gesamtkosten: 71.061,00 €------------------------------------------
+=======
+Mus�e du Louvre
+------------------------------------------
+Partnermuseum: Mus�e du Louvre, Nummer: 171, Art des Kunstwerks: B, Name des Kunstwerks: Mae Marsh from the Movie Stars series (T82) issued with Recruit Little Cigars Athletic Little Cigars and Coupon Cigarettes by Liggett & Myers Tobacco Company
+Partnermuseum: Mus�e du Louvre, Nummer: 900, Art des Kunstwerks: G, Name des Kunstwerks: First Arabesque Pench�e
+Partnermuseum: Mus�e du Louvre, Nummer: 259, Art des Kunstwerks: B, Name des Kunstwerks: Plate 20: an old Polish nobleman wearing a plumed hat in center standing in profile facing right another Polish man to right in background standing in profile facing left from 'Diversi capricci'
+Partnermuseum: Mus�e du Louvre, Nummer: 260, Art des Kunstwerks: B, Name des Kunstwerks: Old Willesley House
+Partnermuseum: Mus�e du Louvre, Nummer: 230, Art des Kunstwerks: B, Name des Kunstwerks: Ode to the Moon (No. 31 in Passages from the Poems of Thomas Hood Illustrated by the Junior Etching Club in Thirty-Four Plates)
+Partnermuseum: Mus�e du Louvre, Nummer: 455, Art des Kunstwerks: B, Name des Kunstwerks: Psyche and Charon (?)
+Partnermuseum: Mus�e du Louvre, Nummer: 938, Art des Kunstwerks: G, Name des Kunstwerks: Tea urn
+Partnermuseum: Mus�e du Louvre, Nummer: 774, Art des Kunstwerks: G, Name des Kunstwerks: Coffer
+Partnermuseum: Mus�e du Louvre, Nummer: 1490, Art des Kunstwerks: I, Name des Kunstwerks: Susanna and the Elder
+Partnermuseum: Mus�e du Louvre, Nummer: 297, Art des Kunstwerks: B, Name des Kunstwerks: Poison Hemlock from the Plants series
+Partnermuseum: Mus�e du Louvre, Nummer: 605, Art des Kunstwerks: G, Name des Kunstwerks: Chair (one of a pair)
+------------------------------------------
+Kosten pro Museum: 28.100,00 €
+
+------------------------------------------
+Eremitage
+------------------------------------------
+Partnermuseum: Eremitage, Nummer: 127, Art des Kunstwerks: B, Name des Kunstwerks: Untitled broadside cover for the poem The Song of the Border-Guard
+Partnermuseum: Eremitage, Nummer: 43, Art des Kunstwerks: B, Name des Kunstwerks: Monterey California from the Surf Beauties series (N232) issued by Kinney Bros.
+Partnermuseum: Eremitage, Nummer: 228, Art des Kunstwerks: B, Name des Kunstwerks: Sherman White from Hit Parade of Champions sports cards (W532-2)
+Partnermuseum: Eremitage, Nummer: 7, Art des Kunstwerks: B, Name des Kunstwerks: Washington Statue. Fairmount Park from Philadelphia Pennsylvania souvenir views (W500)
+Partnermuseum: Eremitage, Nummer: 19, Art des Kunstwerks: B, Name des Kunstwerks: Gleaners in the Hail
+Partnermuseum: Eremitage, Nummer: 251, Art des Kunstwerks: B, Name des Kunstwerks: Saint Geberhardus from Bavaria Sancta: The Life and Martyrdom of Holy Men and Women (Vol. II)
+Partnermuseum: Eremitage, Nummer: 159, Art des Kunstwerks: B, Name des Kunstwerks: Design for 4 seat Phaeton no top no. 3211
+Partnermuseum: Eremitage, Nummer: 1231, Art des Kunstwerks: I, Name des Kunstwerks: Necklace
+Partnermuseum: Eremitage, Nummer: 1459, Art des Kunstwerks: I, Name des Kunstwerks: Sailor's Holiday
+------------------------------------------
+Kosten pro Museum: 20.721,00 €
+
+------------------------------------------
+National Gallery
+------------------------------------------
+Partnermuseum: National Gallery, Nummer: 312, Art des Kunstwerks: B, Name des Kunstwerks: A Sudden Squall
+Partnermuseum: National Gallery, Nummer: 398, Art des Kunstwerks: B, Name des Kunstwerks: A Sensible Move. Our Marine Artist Utilizes the Sea Serpent for Her Summer  Sketching Trip
+Partnermuseum: National Gallery, Nummer: 374, Art des Kunstwerks: B, Name des Kunstwerks: Urban and Commercial Chile. The Woman Car Conductor
+Partnermuseum: National Gallery, Nummer: 201, Art des Kunstwerks: B, Name des Kunstwerks: Actress wearing hat with hands on hips behind back from Actresses (N335a) issued by S. F. Hess & Company to promote Long Cut Tobacco brands
+Partnermuseum: National Gallery, Nummer: 149, Art des Kunstwerks: B, Name des Kunstwerks: Untitled Tam 1711 State I (11/20)
+Partnermuseum: National Gallery, Nummer: 389, Art des Kunstwerks: B, Name des Kunstwerks: Lecture d'un testament from La Com�die Humaine published in Le Charivari December 20 1853
+Partnermuseum: National Gallery, Nummer: 627, Art des Kunstwerks: G, Name des Kunstwerks: Vase (one of a pair)
+Partnermuseum: National Gallery, Nummer: 554, Art des Kunstwerks: G, Name des Kunstwerks: Fragment
+Partnermuseum: National Gallery, Nummer: 514, Art des Kunstwerks: G, Name des Kunstwerks: Column with base
+Partnermuseum: National Gallery, Nummer: 93, Art des Kunstwerks: B, Name des Kunstwerks: A View of the Adams Mansion Quincy Massachusetts (Merrymount Press New Year's Card 1929)
+Partnermuseum: National Gallery, Nummer: 962, Art des Kunstwerks: G, Name des Kunstwerks: Pendant with a Head of Jupiter
+Partnermuseum: National Gallery, Nummer: 432, Art des Kunstwerks: B, Name des Kunstwerks: Sand Hopper
+Partnermuseum: National Gallery, Nummer: 57, Art des Kunstwerks: B, Name des Kunstwerks: Deer Ham Ioway from the American Indian Chiefs series (N2) for Allen & Ginter Cigarettes Brands
+Partnermuseum: National Gallery, Nummer: 910, Art des Kunstwerks: G, Name des Kunstwerks: Pitcher
+------------------------------------------
+Kosten pro Museum: 34.657,00 €
+
+------------------------------------------
+Metropolitan Museum of Art
+------------------------------------------
+Partnermuseum: Metropolitan Museum of Art, Nummer: 295, Art des Kunstwerks: B, Name des Kunstwerks: Lot and His Daughters
+Partnermuseum: Metropolitan Museum of Art, Nummer: 322, Art des Kunstwerks: B, Name des Kunstwerks: Estelle Clayton from the Actresses series (N253-C) issued by P. Lorillard Company to promote Tiger Fine Cut Tobacco
+Partnermuseum: Metropolitan Museum of Art, Nummer: 144, Art des Kunstwerks: B, Name des Kunstwerks: Design for Coup� no. 979
+Partnermuseum: Metropolitan Museum of Art, Nummer: 137, Art des Kunstwerks: B, Name des Kunstwerks: Design for Spider Phaeton
+Partnermuseum: Metropolitan Museum of Art, Nummer: 211, Art des Kunstwerks: B, Name des Kunstwerks: Cover for 'Nueva Coleccion de Canciones para el Presente A�o' a man with a guitar placing his arm around a woman's shoulder while another woman watches them
+Partnermuseum: Metropolitan Museum of Art, Nummer: 1027, Art des Kunstwerks: I, Name des Kunstwerks: Woman Carrying a Basket of Fruit
+Partnermuseum: Metropolitan Museum of Art, Nummer: 406, Art des Kunstwerks: B, Name des Kunstwerks: An Irish Howl [Owl]!
+Partnermuseum: Metropolitan Museum of Art, Nummer: 377, Art des Kunstwerks: B, Name des Kunstwerks: A king's funeral bound in Monuments des Arts du Dessin volume 3 plate 176
+Partnermuseum: Metropolitan Museum of Art, Nummer: 257, Art des Kunstwerks: B, Name des Kunstwerks: Head of an old bearded man facing right from the series of  'Small Heads in Oriental Headdress'
+Partnermuseum: Metropolitan Museum of Art, Nummer: 183, Art des Kunstwerks: B, Name des Kunstwerks: Indian Wigwams from the Habitations of Man series (N113) issued by W. Duke Sons & Co. to promote Honest Long Cut Smoking and Chewing Tobacco
+Partnermuseum: Metropolitan Museum of Art, Nummer: 887, Art des Kunstwerks: G, Name des Kunstwerks: Vase with cover
+Partnermuseum: Metropolitan Museum of Art, Nummer: 463, Art des Kunstwerks: B, Name des Kunstwerks: Still Waters
+Partnermuseum: Metropolitan Museum of Art, Nummer: 4, Art des Kunstwerks: B, Name des Kunstwerks: North Sea Fishermen
+Partnermuseum: Metropolitan Museum of Art, Nummer: 18, Art des Kunstwerks: B, Name des Kunstwerks: Fashion Catalogue No. 94 Spring & Summer 1899
+------------------------------------------
+Kosten pro Museum: 31.483,00 €
+
+------------------------------------------
+Bode-Museum
+------------------------------------------
+Partnermuseum: Bode-Museum, Nummer: 752, Art des Kunstwerks: G, Name des Kunstwerks: Boreas and Orithyia from a set of scenes from Ovid's Metamorphoses
+Partnermuseum: Bode-Museum, Nummer: 23, Art des Kunstwerks: B, Name des Kunstwerks: Card 45 Johnny Dwyer from the Prizefighters series (N269) issued by P. Lorillard Company to promote Mechanics Delight Long Cut Tobacco
+Partnermuseum: Bode-Museum, Nummer: 849, Art des Kunstwerks: G, Name des Kunstwerks: Seal-top spoon
+Partnermuseum: Bode-Museum, Nummer: 692, Art des Kunstwerks: G, Name des Kunstwerks: Double beaker
+Partnermuseum: Bode-Museum, Nummer: 221, Art des Kunstwerks: B, Name des Kunstwerks: The Beheading of Two Unidentified Saints (Male and Female)
+Partnermuseum: Bode-Museum, Nummer: 488, Art des Kunstwerks: B, Name des Kunstwerks: Design for the Headpiece of the Gazette de France
+Partnermuseum: Bode-Museum, Nummer: 223, Art des Kunstwerks: B, Name des Kunstwerks: Man with shovel
+Partnermuseum: Bode-Museum, Nummer: 848, Art des Kunstwerks: G, Name des Kunstwerks: Hind (one of a pair)
+Partnermuseum: Bode-Museum, Nummer: 47, Art des Kunstwerks: B, Name des Kunstwerks: Fred Humes from Western Stars or Scenes Exhibit Cards series (W412)
+Partnermuseum: Bode-Museum, Nummer: 269, Art des Kunstwerks: B, Name des Kunstwerks: Schildknecht Catcher Milwaukee from the Old Judge series (N172) for Old Judge Cigarettes
+Partnermuseum: Bode-Museum, Nummer: 197, Art des Kunstwerks: B, Name des Kunstwerks: Magee Philadelphia National League from the White Border series (T206) for the American Tobacco Company
+------------------------------------------
+Kosten pro Museum: 23.850,00 €
+
+------------------------------------------
+Rijksmuseum Amsterdam
+------------------------------------------
+Partnermuseum: Rijksmuseum Amsterdam, Nummer: 182, Art des Kunstwerks: B, Name des Kunstwerks: Kokoschka Rehearsing
+Partnermuseum: Rijksmuseum Amsterdam, Nummer: 541, Art des Kunstwerks: G, Name des Kunstwerks: Brooch with pendant (part of parure)
+Partnermuseum: Rijksmuseum Amsterdam, Nummer: 185, Art des Kunstwerks: B, Name des Kunstwerks: Fonte de Fer album g�n�ral des plaches
+Partnermuseum: Rijksmuseum Amsterdam, Nummer: 724, Art des Kunstwerks: G, Name des Kunstwerks: Vase with flowering branch motif (one of a pair)
+Partnermuseum: Rijksmuseum Amsterdam, Nummer: 597, Art des Kunstwerks: G, Name des Kunstwerks: Plate
+Partnermuseum: Rijksmuseum Amsterdam, Nummer: 591, Art des Kunstwerks: G, Name des Kunstwerks: Edging
+Partnermuseum: Rijksmuseum Amsterdam, Nummer: 279, Art des Kunstwerks: B, Name des Kunstwerks: Actress standing with foot on stool from the Actresses and Celebrities series Type 2 (N146-2) issued by W. Duke Sons & Co.
+Partnermuseum: Rijksmuseum Amsterdam, Nummer: 81, Art des Kunstwerks: B, Name des Kunstwerks: The Long Neglected Grave of General Grant (published as a supplement to the New York Gazette April 24 1892)
+Partnermuseum: Rijksmuseum Amsterdam, Nummer: 804, Art des Kunstwerks: G, Name des Kunstwerks: Tile
+Partnermuseum: Rijksmuseum Amsterdam, Nummer: 753, Art des Kunstwerks: G, Name des Kunstwerks: Coffer or chest key
+Partnermuseum: Rijksmuseum Amsterdam, Nummer: 404, Art des Kunstwerks: B, Name des Kunstwerks: Stanhope Phaeton #4009
+------------------------------------------
+Kosten pro Museum: 30.220,00 €
+
+------------------------------------------
+Uffizien
+------------------------------------------
+Partnermuseum: Uffizien, Nummer: 177, Art des Kunstwerks: B, Name des Kunstwerks: Kitty Cheatham from the Actors and Actresses series (N342) Type 4 issued by Thomas H. Hall Tobacco to promote Between the Acts Cigarettes.
+Partnermuseum: Uffizien, Nummer: 52, Art des Kunstwerks: B, Name des Kunstwerks: Sarratoga [sic] (The Surrender of General Burgoyne to General Horatio Gates Battle of Saratoga October 17 1777)
+Partnermuseum: Uffizien, Nummer: 68, Art des Kunstwerks: B, Name des Kunstwerks: Haverford College from the College series (T51) Fifth Set (101-125) issued by Murad Cigarettes
+Partnermuseum: Uffizien, Nummer: 792, Art des Kunstwerks: G, Name des Kunstwerks: Toilet box (one of a pair)
+Partnermuseum: Uffizien, Nummer: 499, Art des Kunstwerks: B, Name des Kunstwerks: Vallauris Exhibition 1954
+Partnermuseum: Uffizien, Nummer: 435, Art des Kunstwerks: B, Name des Kunstwerks: Instruction insert from the Transparencies series (N137) issued by W. Duke Sons & Co. to promote Honest Long Cut Tobacco
+Partnermuseum: Uffizien, Nummer: 132, Art des Kunstwerks: B, Name des Kunstwerks: Study for a Massacre of the Innocents
+Partnermuseum: Uffizien, Nummer: 103, Art des Kunstwerks: B, Name des Kunstwerks: Seated Unknown Man
+Partnermuseum: Uffizien, Nummer: 437, Art des Kunstwerks: B, Name des Kunstwerks: The Burning Life of the Earth (Vie ardente du sol)
+Partnermuseum: Uffizien, Nummer: 90, Art des Kunstwerks: B, Name des Kunstwerks: Holland (Year 1650) from the Headdresses of Various Nations series (N305) to promote Mayo's Cut Plug Tobacco
+Partnermuseum: Uffizien, Nummer: 828, Art des Kunstwerks: G, Name des Kunstwerks: Pendant in the form of a mermaid
+------------------------------------------
+Kosten pro Museum: 28.850,00 €
+
+------------------------------------------
+Museo del Prado
+------------------------------------------
+Partnermuseum: Museo del Prado, Nummer: 846, Art des Kunstwerks: G, Name des Kunstwerks: Tobacco box
+Partnermuseum: Museo del Prado, Nummer: 354, Art des Kunstwerks: B, Name des Kunstwerks: Tobit Accusing Anna of Stealing the Kid from The Story of Tobias
+Partnermuseum: Museo del Prado, Nummer: 195, Art des Kunstwerks: B, Name des Kunstwerks: Chili from the Races of Mankind series (T181) issued by Abdul Cigarettes
+Partnermuseum: Museo del Prado, Nummer: 600, Art des Kunstwerks: G, Name des Kunstwerks: Miniature andiron (one of a pair) (part of a set)
+Partnermuseum: Museo del Prado, Nummer: 64, Art des Kunstwerks: B, Name des Kunstwerks: Design for a sepulchral monument; verso: Design for a monument
+Partnermuseum: Museo del Prado, Nummer: 655, Art des Kunstwerks: G, Name des Kunstwerks: Miniature daybed (part of a set)
+Partnermuseum: Museo del Prado, Nummer: 361, Art des Kunstwerks: B, Name des Kunstwerks: Girl Observed in a Fountain
+Partnermuseum: Museo del Prado, Nummer: 525, Art des Kunstwerks: G, Name des Kunstwerks: Candelabra with Meissen bird (one of a pair)
+Partnermuseum: Museo del Prado, Nummer: 615, Art des Kunstwerks: G, Name des Kunstwerks: Henriette et Damon
+Partnermuseum: Museo del Prado, Nummer: 401, Art des Kunstwerks: B, Name des Kunstwerks: Costume design of a dancing masked figure; verso: Study of a female head
+Partnermuseum: Museo del Prado, Nummer: 524, Art des Kunstwerks: G, Name des Kunstwerks: Chimneypiece
+------------------------------------------
+Kosten pro Museum: 34.809,00 €
+
+------------------------------------------
+The British Museum
+------------------------------------------
+Partnermuseum: The British Museum, Nummer: 32, Art des Kunstwerks: B, Name des Kunstwerks: Tower of  London
+Partnermuseum: The British Museum, Nummer: 660, Art des Kunstwerks: G, Name des Kunstwerks: Cup and saucer
+Partnermuseum: The British Museum, Nummer: 340, Art des Kunstwerks: B, Name des Kunstwerks: Winter (L'Hyver)
+Partnermuseum: The British Museum, Nummer: 226, Art des Kunstwerks: B, Name des Kunstwerks: A Glimpse of the Homestead
+Partnermuseum: The British Museum, Nummer: 253, Art des Kunstwerks: B, Name des Kunstwerks: Seated Girl
+Partnermuseum: The British Museum, Nummer: 705, Art des Kunstwerks: G, Name des Kunstwerks: Vase with hexagonal foot (one of a pair)
+------------------------------------------
+Kosten pro Museum: 10.638,00 €
+
+--------------------------------------------
+Gesamtkosten: 243.328,00 €
+>>>>>>> 0d16a40c1b3bc4c04f57d276765454d3ae3a5520

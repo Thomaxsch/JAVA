@@ -304,15 +304,15 @@ public class Museum
             System.out.println("-------------------------------------------------------------------");
             System.out.println("VAWi-Museum Essen Ausstellungsplanung");
             System.out.println("-------------------------------------------------------------------");
-            System.out.println("(1) Planung starten");
-            System.out.println("(2) Schwerpunktthema angeben/ändern");
-            System.out.println("(3) Kostenobergrenze angeben/ändern");
-            System.out.println("(4) Qualitätsgewicht angeben/ändern");
-            System.out.println("(5) Aktuelles Schwerpunktthema anzeigen");
-            System.out.println("(6) Aktuelle Kostenobergrenze anzeigen");
-            System.out.println("(7) Aktuelles Qualitätsgewicht anzeigen");
-            System.out.println("(8) Räume einlesen");
-            System.out.println("(9) Kunstwerk einlesen");
+            System.out.println("(1) Räume einlesen");
+            System.out.println("(2) Kunstwerk einlesen");
+            System.out.println("(3) Planung starten");
+            System.out.println("(4) Schwerpunktthema angeben/ändern");
+            System.out.println("(5) Kostenobergrenze angeben/ändern");
+            System.out.println("(6) Qualitätsgewicht angeben/ändern");
+            System.out.println("(7) Aktuelles Schwerpunktthema anzeigen");
+            System.out.println("(8) Aktuelle Kostenobergrenze anzeigen");
+            System.out.println("(9) Aktuelles Qualitätsgewicht anzeigen");
             System.out.println("(10) Variationsanalyse");
             System.out.println("(11) Logmodus für Planung und Variationsanalyse an/aus");
             System.out.println("(12) Anwendung beenden"); 
@@ -321,8 +321,40 @@ public class Museum
             // nimmt ausgewählten Menüpunkt entgegen
             eingabe = console.readLine();
             
+             // behandelt die Auswahl einer einzulesenden Datei mit Räumen
+             if(eingabe.equals("1"))
+            {
+                // Info an den Anwender, welche Eingabe erwartet wird 
+                System.out.print("Bitte geben Sie den Pfad mit den zu verwendenden Räumen an:");
+                
+                // liest den angegebenen Pfad von der Konsole und speichert ihn in der Variablen eingabe
+                eingabe = console.readLine();
+                
+                 // bevor neue Räume eingelesen erden, werden evtl. vorher eingelesene Räume gelöscht
+                raeume.clearRaumverwaltung();
+                
+                // die Variable eingabe mit der Pfadangabe dient als Eingabeparameter für die Methode importiereRaeume
+                importiereRaeume(eingabe);
+            }
+            
+            // behandelt die Auswahl einer einzulesenden Datei mit Kunstwerken
+             if(eingabe.equals("2"))
+            {
+                // Info an den Anwender, welche Eingabe erwartet wird 
+                System.out.print("Bitte geben Sie den Pfad mit den zu verwendenden Kunstwerken an:");
+                
+                // liest den angegebenen Pfad von der Konsole und speichert ihn in der Variablen eingabe
+                eingabe = console.readLine();
+                
+                // bevor neue Kunstweerke eingelesen werden, werden evtl. vorher eingelesene Räume gelöscht
+                kunstwerke.clearKunstwerkverwaltung();
+                
+                // die Variable eingabe mit der Pfadangabe dient als Eingabeparameter für die Methode importiereKunstwerke
+                importiereKunstwerke(eingabe);
+            }
+            
             // behandelt die Generierung der Ausstellung
-            if(eingabe.equals("1"))
+            if(eingabe.equals("3"))
             { 
                 // prüft ob Räume für die Ausstellungsplanung vorhanden sind, ansonsten Abbruch der Generierung durch continue
                 if(raeume.anzahlRaeume() == 0) 
@@ -346,18 +378,23 @@ public class Museum
                                
                 if (planungsErgebnis != null)
                 {
-                    System.out.print("\nWir haben nach Lösungen gesucht und können nun die beste ausgeben.\n");
-                                    
-                    // Deklaration und Initialisierung einer Objektvariablen der Klasse Ausgabedatei
-                    // als Parameter wird das Stringliteral "raumdatei.csv" und das Ergebnis der Ausstellungplanung als ArrayList übergeben
-                    Ausgabedatei datei1 = new Ausgabedatei("raumdatei.txt", planungsErgebnis, planung, raeume);
-                    datei1.schreibeAusstellungen();
+                    System.out.println("\nWir haben nach Lösungen gesucht und können nun die beste ausgeben.\n");
+                    System.out.print("Bitte geben Sie einen Pfad für die Ausgabe der txt- und HTML-Dateien an.");
+                    eingabe = console.readLine();
                     
-                    Ausgabedatei datei2 = new Ausgabedatei("museumsfuehrer.txt", planungsErgebnis, planung, raeume);
-                    datei2.schreibeMuseumsfuehrer();
-                    
-                    Ausgabedatei datei3 = new Ausgabedatei("ausleihdaten.txt", planungsErgebnis, planung, raeume);
-                    datei3.schreibeAusleihen();
+                    File dir = new File(eingabe);
+                    if(dir.exists())
+                    {
+                        // Deklaration und Initialisierung einer Objektvariablen der Klasse Ausgabedatei
+                        Ausgabedatei ausgabe = new Ausgabedatei(eingabe, planungsErgebnis, planung, raeume, kunstwerke);
+                        ausgabe.schreibeAusleihen();
+                        ausgabe.schreibeAusstellungen();
+                        ausgabe.schreibeMuseumsfuehrer();
+                    }
+                    else 
+                    {
+                        System.out.println("Angegebener Pfad ist nicht gültig! Bitte starten Sie die Planung neu.");
+                    }
                 }
                 else
                 {
@@ -367,7 +404,7 @@ public class Museum
             }
             
             // behandelt die Eingabe eines Schwerpunktthemas
-            if(eingabe.equals("2"))
+            if(eingabe.equals("4"))
             {
                 // Liste der Themen wird direkt bei der Erstellung mit Hilfe der Methode asList der Klasse Arrays initialisiert
                 List<String> themen = Arrays.asList("Aktmalerei", "Barock", "Bauhaus", "Expressionismus", "Hyperrealismus", "Impressionismus", "Klassizismus", "Landschaftmalerei", 
@@ -399,7 +436,7 @@ public class Museum
             }
             
             // behandelt die Eingabe einer Kostenobergrenze
-            if(eingabe.equals("3"))
+            if(eingabe.equals("5"))
             {
                 // Info an Benutzer welche Eingabe erforderlich ist
                 System.out.println("Bitte geben Sie eine Kostenobergrenze an: ");
@@ -425,7 +462,7 @@ public class Museum
             }
             
             // behandelt die Eingabe eines Qualitätsgewichts
-            if(eingabe.equals("4"))
+            if(eingabe.equals("6"))
             {
                 // Info an Benutzer welche Eingabe erforderlich ist
                 System.out.println("Bitte geben Sie ein Qualitätsgewicht an: ");
@@ -451,58 +488,26 @@ public class Museum
             }
             
             // behandelt die Anzeige des aktuellen Schwerpunktthemas
-             if(eingabe.equals("5"))
+             if(eingabe.equals("7"))
             {
                 //Methode getSchwerpunktthema des Ojekts planung der Klasse Ausstellungsplanung wird aufgerufen
                 System.out.println("Ihr aktuelles Schwerpunktthema: " + planung.getSchwerpunktthema());
             }
             
             // behandelt die Anzeige der aktuellen Kostenobergrenze
-             if(eingabe.equals("6"))
+             if(eingabe.equals("8"))
             {
                 //Methode getKostenobergrenze des Ojekts planung der Klasse Ausstellungsplanung wird aufgerufen
                 System.out.println("Ihre aktuelle Kostenobergrenze: " + planung.getKostenobergrenze());
             }
             
             // behandelt die Anzeige der aktuellen Qualitätsgewichtes
-             if(eingabe.equals("7"))
-            {
-                //Methode getKostenobergrenze des Ojekts planung der Klasse Ausstellungsplanung wird aufgerufen
-                System.out.println("Ihre aktuelles Qualitätsgewicht: " + planung.getQualitaetsgewicht());
-            }
-            
-            // behandelt die Auswahl einer einzulesenden Datei mit Räumen
-             if(eingabe.equals("8"))
-            {
-                // Info an den Anwender, welche Eingabe erwartet wird 
-                System.out.print("Bitte geben Sie den Pfad mit den zu verwendenden Räumen an:");
-                
-                // liest den angegebenen Pfad von der Konsole und speichert ihn in der Variablen eingabe
-                eingabe = console.readLine();
-                
-                 // bevor neue Räume eingelesen erden, werden evtl. vorher eingelesene Räume gelöscht
-                raeume.clearRaumverwaltung();
-                
-                // die Variable eingabe mit der Pfadangabe dient als Eingabeparameter für die Methode importiereRaeume
-                importiereRaeume(eingabe);
-            }
-            
-            // behandelt die Auswahl einer einzulesenden Datei mit Kunstwerken
              if(eingabe.equals("9"))
             {
-                // Info an den Anwender, welche Eingabe erwartet wird 
-                System.out.print("Bitte geben Sie den Pfad mit den zu verwendenden Kunstwerken an:");
-                
-                // liest den angegebenen Pfad von der Konsole und speichert ihn in der Variablen eingabe
-                eingabe = console.readLine();
-                
-                // bevor neue Kunstweerke eingelesen werden, werden evtl. vorher eingelesene Räume gelöscht
-                kunstwerke.clearKunstwerkverwaltung();
-                
-                // die Variable eingabe mit der Pfadangabe dient als Eingabeparameter für die Methode importiereKunstwerke
-                importiereKunstwerke(eingabe);
+                //Methode getQualitaetsgewicht des Ojekts planung der Klasse Ausstellungsplanung wird aufgerufen
+                System.out.println("Ihre aktuelles Qualitätsgewicht: " + planung.getQualitaetsgewicht());
             }
-            
+                        
             // behandelt das Durchführen einer Variationsanalyse und Anzeige der Ergebnisse
              if(eingabe.equals("10"))
             {

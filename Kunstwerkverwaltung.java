@@ -4,30 +4,35 @@ import java.util.*;
 import java.util.Comparator;
 
 /**
- * Bei der Klasse Kunstwerkverwaltung handelt es sich um eine Verwaltungsklasse, welche diverse Funktionen in Bezug auf die Klassen "Kunstinstallationen", "Bild" und "Kunstgegenstand" durchführen kann. 
+ * Bei der Klasse Kunstwerkverwaltung handelt es sich um eine Verwaltungsklasse, welche diverse Funktionen in Bezug auf die Klassen 
+ * "Kunstinstallationen", "Bild" und "Kunstgegenstand" durchführen kann. 
  * So kann diese die o.g. Klassen nach Objekten durchsuchen und gezielt darauf zugreifen.  
  * Die Kunstwerkverwaltung ist zudem geeignet die Logikklassen gezielt durch Methoden zu unterstützen. 
  * Aufgrunddessen ist sie in der Lage die Klasse der "Ausstellungsplanung" zu entlasten. 
  * 
- * Die Ausstellungsplanung kann sich folglich auf die Kunstwerkverwaltung beziehen, um daraus die richtige Auswahl der Ausstellung und Ausleihe zu treffen. 
+ * Die Ausstellungsplanung kann sich folglich auf die Kunstwerkverwaltung beziehen, um daraus die richtige Auswahl der Ausstellung 
+ * und Ausleihe zu treffen. 
  * 
  * @author (Alexander Kipry) 
- * @version (12.01.2023)
+ * @version (05.02.2023)
 */
 
 public class Kunstwerkverwaltung
-{
+{   //Attribute der Klasse Kunstwerkverwaltung
     /** In diesem Attribut werden die einzelnen Kunstwerke aus dem Angebot mittels der der Containerklasse Vektor verwaltet. */
     private Vector<Kunstwerk> kunstwerkVector;
-   
+    
+    //Konstruktoren der Klasse Kunstwerkverwaltung
     /**
-     * Konstruktor für Objekte der Klasse Kunstwerkverwaltung. Dieser Konstruktor erzeugt ein leeren Vector / Angebot, welches später über Methoden mit Kunstwerken befüllt werden kann. 
+     * Konstruktor für Objekte der Klasse Kunstwerkverwaltung. Dieser Konstruktor erzeugt ein leeren Vector / Angebot, 
+     * welches später über Methoden mit Kunstwerken befüllt werden kann. 
      */
     public Kunstwerkverwaltung()
     {
        //anlegen eines neuen Vectorobjektes
        kunstwerkVector = new Vector<Kunstwerk>();
     }
+    
     //Methoden für die Vektorliste der Klasse Kunstwerkverwaltung 
     /**
      * Diese Methode fügt dem Vector der Kunstwerkverwaltung ein Kunstwerk hinzu.
@@ -79,6 +84,7 @@ public class Kunstwerkverwaltung
     
     /**
      * Methode zur Umsetzung des Aufrufens aller Kunstwerke innerhalb der Vektorliste
+     * 
      * @return den Vector der Kunstwerkverwaltung
      */
     public Vector <Kunstwerk> getKunstwerkVector()
@@ -111,35 +117,59 @@ public class Kunstwerkverwaltung
         }   
 
     /**
-     * Methode, die alle vorkommenden Themen ausgibt
+     * Methode, die alle vorkommenden Themen innerhalb des Kunstwerkvectors ausgibt
      * 
      * @return alle vorkommenden Themen
      */
     public ArrayList <String> getVorkommendeThemen ()
     {
         ArrayList <String> vorkommendeThemen = new ArrayList <String>();
-        for(Kunstwerk kw : kunstwerkVector) 
+        for(Kunstwerk kw : kunstwerkVector)     
         {
-            if (!vorkommendeThemen.contains(kw.getThema()))
+            if (!vorkommendeThemen.contains(kw.getThema()))     /*hierbei werden mittels einer Schleife alle Kunstwerke innerhalb des Vector
+            Kunstwerks durchlaufen. Dabei wird das Thema des jeweiligen Kunstwerkes an die ArrayList "vorkommendeThemen" übergeben und falls noch nicht 
+            vorhanden dieser hinzugefügt. Falls es bereits vorhanden ist, wird das Thema des nächstes Kw abgerufen. 
+            Ist der Kunstwerkvector durchlaufen, so können am Ende alle vorkommendeThemen über die ArrayList "vorkommendeThemen"
+            abgerufen werden  */
             {
                 vorkommendeThemen.add(kw.getThema());
             }
-        }
-        return vorkommendeThemen;
+        } 
+        return vorkommendeThemen; //Themen der bereits hinzugefügten Kunstwerke in einer ArrayList gesammelt. 
     }
     
+    /**
+     * Methode, die alle Partnermuseen innerhalb des KunstwerkVectors ausgibt
+     * 
+     * @return alle Partnermuseeen 
+     */
     
+    public ArrayList <String> getAllePartnermuseen()
+    {
+        ArrayList <String> allePartnermuseen = new ArrayList <String>();
+        for(Kunstwerk kw : kunstwerkVector) /*gleiche Vorgehensweise wie bei der ArrayList "vorkommendeThemen" nur auf die 
+        Partnermuseen bezogen. */
+        {
+            if (!allePartnermuseen.contains(kw.getVerleihendesMuseum()))
+            {
+                allePartnermuseen.add(kw.getVerleihendesMuseum());
+            }
+        }
+        return allePartnermuseen;
+    }
         
     
     /**
      * Methode zum Ermitteln eines Kunstwerkes anhand seiner laufendenNummer
      * 
+     * @param in_laufendeNummer die laufendeNummer, zu welchem das Kunstwerk ermittelt werden soll. 
      * @return das Kunstwerk zur laufendenNummer
      */
     public Kunstwerk showKunstwerkZuLaufendeNummer(short in_laufendeNummer) {
-    boolean found = false;
-    Kunstwerk kw_out = null;
-    for (Kunstwerk kw : kunstwerkVector) {
+    boolean found = false; //boolean um anzugeben, ob es ein Kw zu der lfd. Nummer gibt. 
+    Kunstwerk kw_out = null; //Instanziieren eines Kunstwerks auf null. 
+    for (Kunstwerk kw : kunstwerkVector) { /* ebenso wird hier der kunstwerVector durchlaufen. Falls die eingegebene laufende Nummer
+        der laufendenNummer eines Kunstwerkes entspricht wird found auf true gesetzt und das kw_out dem passenden Kw gleichgesetzt.*/
         
         if (kw.getLaufendeNummer() == in_laufendeNummer) 
         {
@@ -147,14 +177,20 @@ public class Kunstwerkverwaltung
             kw_out=kw;
         }   
     }   
-    if(!found)
+    if(!found) //gab es kein Kunstwerk zu der lfd. Nummer so kann keines ausgegeben werden. 
         {
         System.out.println("Es wurde kein Kunstwerk zur LaufendenNummer gefunden");
         return null;
         }
-        return kw_out;
+        return kw_out; //Ausgabe des Kunstwerkes, welches der laufenden Nummer entsprochen hat. 
     }  
     
+    /**
+     * Methode, die einen Vektor ausgibt, welcher nach dem Kriterium absteigend sortiert ist. 
+     * 
+     * @param qualitaetsgewicht Uebergabe eines Qualitaetsgewichts, nach welchem die Liste gebildet wird.
+     * @return eine nach dem Kriterium ausgerichtete Liste. 
+     */
     private Vector<Kunstwerk> bildeKriteriumsliste(double qualitaetsgewicht)
     {
      //Bilde für jedes Kunstwerk ein Attraktivitäts-Kriterium und ein AttraktivitätProKosten-Kriterium
@@ -235,6 +271,21 @@ public class Kunstwerkverwaltung
         return kunstwerkeSortiertVector;
     }
     
+    /**
+     * Methode, welche anhand eines Wahrheitswertes ausgibt, ob das Kunstwerk in den Raum passt
+     * 
+     * @param verfuegbarWandWest                        restliche Verfügbare Fläche auf der Wand west. 
+     * @param verfuegbarWandOst                         restliche Verfügbare Fläche auf der Wand Ost.
+     * @param verfuegbarWandNord                        restliche Verfügbare Fläche auf der Wand Nord.
+     * @param verfuegbarWandSued                        restliche Verfügbare Fläche auf der Wand Sued.
+     * @param verfuegbarLaengeRaum                      restliche Verfügbare Länge im Raum.
+     * @param verfuegbarBreiteRaum                      restliche verfügbare Breite im Raum.
+     * @param verfuegbarHoeheRaum                       restliche verfügbare Höhe im Raum.
+     * @param verfuegbarHoeheRaumBilder                 restliche verfügbare Raumhöhe für Bilder.
+     * @param kw                                        übergebenes Kunstwerk, welches diesbezüglich überprüft wird.
+     * 
+     * @return true, falls das Kw in den Raum passt. 
+     */
     private boolean überprüfeKunstwerkzuRaumdimension(
         int verfuegbarWandWest,int verfuegbarWandOst,int verfuegbarWandNord,int verfuegbarWandSued,  // relevant für Bilder (vier Wände)
         int verfuegbarLaengeRaum,int verfuegbarBreiteRaum,                                           // relevant für G und I (laengs/quer bzw Raumfläche)
@@ -242,11 +293,15 @@ public class Kunstwerkverwaltung
         int verfuegbarHoeheRaumBilder,                                                               // relevant für B
         Kunstwerk kw)                                                                     
     {
-        boolean passtBildWandbreite=false;
+        boolean passtBildWandbreite=false;      //standard, dass es nicht passt.
         boolean passtBildHoehe=false;
-        if (kw.getArt()=='B')
+        
+        /*die folgenden If Methoden sind nach Bild "B" und Kunstgegenstand "G" und Kunstinstallation "I" aufgeteilt, da diese unterschiedliche
+        Anforderungen an den Raum haben.*/
+        if (kw.getArt()=='B') // dies wird nur überprüft, wenn das Kunstwerk ein Bild ist. 
         {
-            if (kw.getBreite()<=verfuegbarWandWest | kw.getBreite()<=verfuegbarWandOst  | kw.getBreite()<=verfuegbarWandNord  | kw.getBreite()<=verfuegbarWandSued)
+            if (kw.getBreite()<=verfuegbarWandWest | kw.getBreite()<=verfuegbarWandOst  | kw.getBreite()<=verfuegbarWandNord  | 
+            kw.getBreite()<=verfuegbarWandSued) 
             {
                 passtBildWandbreite=true;
             }
@@ -259,7 +314,7 @@ public class Kunstwerkverwaltung
         
         boolean passtIGRaumflaeche=false;
         boolean passtIGHoehe=false;
-        if (kw.getArt()=='G'| kw.getArt()=='I')
+        if (kw.getArt()=='G'| kw.getArt()=='I') //Überprüfung für Kunstgegenstand und Kunstinstallation. 
         {
             if (kw.getHoehe()<=verfuegbarHoeheRaum)
             {
@@ -285,18 +340,28 @@ public class Kunstwerkverwaltung
         }
         return (passtIGRaumflaeche & passtIGHoehe);
     } 
-        
+    
+    /**
+     * Methode, welche überprüft, ob folgende weitere Parameter für das ausgewählte Kunstwerk zutreffen:
+     * 
+     * @param restbudget                                    Kosten für das Kunstwerk passen ins Restbudget?
+     * @param kunstwerkeSchonZugeordnet                     bisher plazierte Kunstwerke
+     * @param anteilI                                       Anteil der mit I belegten Räume
+     * @param kw                                            Kunstwerk, welches überprüft wird.
+     * 
+     * return true, falls das Kunstwerk auf diese Parameter zutrifft. 
+     */
     private boolean überprüfeKunstwerkWeitereParameter(        
-        double restbudget,                                                                           // verfügbares Restbudget (double)
-        ArrayList<Kunstwerk> kunstwerkeSchonZugeordnet,                                              // bisher platzierte Kunstwerke (Arraylist)
-        double anteilI,                                                                              // Anteil der mit I belegten Räume. (double))
+        double restbudget,                                                                           
+        ArrayList<Kunstwerk> kunstwerkeSchonZugeordnet,                                            
+        double anteilI,                               
         Kunstwerk kw)
     {
-        boolean passtBudget=(kw.getKosten()<=restbudget); // TO DO: ist es ein Problem das wir Kosten als INT, aber Budget/Obergrenze als DOUBLE?
-        boolean passtZuordnenbar = (!kunstwerkeSchonZugeordnet.contains(kw));
-        boolean passtInstallationAnteilI=true;
+        boolean passtBudget=(kw.getKosten()<=restbudget); //Überprüfung: Passen die Kosten für das Kunstwerk ins Restbudget?
+        boolean passtZuordnenbar = (!kunstwerkeSchonZugeordnet.contains(kw)); //Ist das Kunstwerk nicht bereits zugeordnet?
+        boolean passtInstallationAnteilI=true; 
         
-        if (anteilI>0.33) // bei sonst zu großem Anteil an Installationen in der Ausstellung
+        if (anteilI>0.33) // bei sonst zu großem Anteil an Installationen in der Ausstellung - es sollen also maximal 33% aus Installation bestehen.
             {
             if (kw.getArt()=='I')
             {
@@ -306,6 +371,17 @@ public class Kunstwerkverwaltung
         return passtBudget & passtZuordnenbar & passtInstallationAnteilI;
     }
     
+    /**
+     * Methode, welche überprüft, ob die Raumfeuchtigkeits und Temperaturbedingungen auf die Voraussetzung des Bildes zutreffen. 
+     *  
+     * @param minFeuchteRaum                                        minFeuchte des Raumes
+     * @param maxFeuchteRaum                                        maxFeuchte des Raumes
+     * @param minTempRaum                                           minTemp des Raumes 
+     * @param maxTempRaum                                           maxTemp des Raumes
+     * @param kw                                                    Kunstwerk, welches auf die Bedingungen überprüft werden soll. 
+     * 
+     * @return true, falls der Raum die Voraussetzungen des Bildes erfüllt. 
+     */
     private boolean checkRaumFeuchteundTemp(int minFeuchteRaum, int maxFeuchteRaum,int minTempRaum, int maxTempRaum, Kunstwerk kw)
     {
         /**
@@ -317,12 +393,12 @@ public class Kunstwerkverwaltung
          */
         boolean passtRaumTemp;
         
-        boolean passtFeuchteUndTemp = false;
+        boolean passtFeuchteUndTemp = false; // es wird zunächst davon ausgegangen, dass die Bedingungen nicht stimmig sind. 
         /**
          * // hier wird ein Kunstwerk in ein Bild umgewandelt. Dies wird gemacht, um auf die "getMethoden" wie "getMinTemp" zugreifen zu können.
          */
         Bild b;
-        if (kw.getArt()=='B')
+        if (kw.getArt()=='B') 
         {
             b = (Bild) kw;
         }
@@ -365,7 +441,25 @@ public class Kunstwerkverwaltung
 
         return passtFeuchteUndTemp;
     }
-    
+    /**
+     * Methode, welche das nächste, jedoch nach den Kritierien beste, zu setzende Kunstwerk ausgibt.
+     * 
+     * @param schwerpunktthema                          Schwerpunktthema daes Kunstwerks
+     * @param verfuegbarWandWest                        restliche Verfügbare Fläche auf der Wand west. 
+     * @param verfuegbarWandOst                         restliche Verfügbare Fläche auf der Wand Ost.
+     * @param verfuegbarWandNord                        restliche Verfügbare Fläche auf der Wand Nord.
+     * @param verfuegbarWandSued                        restliche Verfügbare Fläche auf der Wand Sued.
+     * @param verfuegbarLaengeRaum                      restliche Verfügbare Länge im Raum.
+     * @param verfuegbarBreiteRaum                      restliche verfügbare Breite im Raum.
+     * @param verfuegbarHoeheRaum                       restliche verfügbare Höhe im Raum.
+     * @param verfuegbarHoeheRaumBilder                 restliche verfügbare Raumhöhe für Bilder.
+     * @param restbudget                                verfuegbares restbudget
+     * @param kunstwerkeSchonZugeordnet                 ArrayList der bereits plazierten Kunstwerke
+     * @param anteilI                                   Anteil der Kunstinstallationen in der Ausstellungen (soll nicht höher als 33% sein).
+     * @param qualitaetsgewicht                         Qualitaetsgewicht, nach welcher die Ausstellung aufgebaut wird. 
+     * 
+     * return die laufendeNummer des nächstbesten zu setzenden Kunstwerk.         
+     */
     public short naechstesZuSetzendesKunstwerk(
         String schwerpunktthema,
         int verfuegbarWandWest,int verfuegbarWandOst,int verfuegbarWandNord,int verfuegbarWandSued,  // relevant für Bilder (vier Wände)
@@ -384,7 +478,7 @@ public class Kunstwerkverwaltung
        short bestes_kw_lfd_nr = -1; // wir suchen das beste Kunstwerk. Wenn wir keins finden, geben wir den Wert "-1" zurück.
        
        for (Kunstwerk kw : bildeKriteriumsliste(qualitaetsgewicht)) {
-            boolean passtSchwerpunkt=(kw.getThema().equals(schwerpunktthema));
+            boolean passtSchwerpunkt=(kw.getThema().equals(schwerpunktthema)); // entspricht das Thema des KW dem Schwerpunktthema?
             boolean passtDimension= überprüfeKunstwerkzuRaumdimension(verfuegbarWandWest, verfuegbarWandOst, verfuegbarWandNord, verfuegbarWandSued,
                                                                     verfuegbarLaengeRaum, verfuegbarBreiteRaum, verfuegbarHoeheRaum,verfuegbarHoeheRaumBilder, kw);
 
@@ -398,6 +492,34 @@ public class Kunstwerkverwaltung
        return bestes_kw_lfd_nr; // -1 wenn keins gefunden wurde
         
     }   
+    
+    /**
+     * Methode, welche nach der Minimallösung die Räume weiter befüllt und weiterhin diverse zuvor definierte Kritierien berücksichtigt.
+     * 
+     * @param schwerpunktthema                          Schwerpunktthema daes Kunstwerks
+     * @param verfuegbarWandWest                        restliche Verfügbare Fläche auf der Wand west. 
+     * @param verfuegbarWandOst                         restliche Verfügbare Fläche auf der Wand Ost.
+     * @param verfuegbarWandNord                        restliche Verfügbare Fläche auf der Wand Nord.
+     * @param verfuegbarWandSued                        restliche Verfügbare Fläche auf der Wand Sued.
+     * @param verfuegbarLaengeRaum                      restliche Verfügbare Länge im Raum.
+     * @param verfuegbarBreiteRaum                      restliche verfügbare Breite im Raum.
+     * @param verfuegbarHoeheRaum                       restliche verfügbare Höhe im Raum.
+     * @param verfuegbarHoeheRaumBilder                 restliche verfügbare Raumhöhe für Bilder.
+     * @param restbudget                                verfuegbares restbudget
+     * @param kunstwerkeSchonZugeordnet                 ArrayList der bereits plazierten Kunstwerke
+     * @param anteilI                                   Anteil der Kunstinstallationen in der Ausstellungen (soll nicht höher als 33% sein).
+     * @param qualitaetsgewicht                         Qualitaetsgewicht, nach welcher die Ausstellung aufgebaut wird.
+     * @param minFeuchteRaum                            minFeuchte des Raumes
+     * @param maxFeuchteRaum                            maxFeuchte des Raumes
+     * @param minTempRaum                               minTemp des Raumes 
+     * @param maxTempRaum                               maxTemp des Raumes
+     * @param welcheThemenDuerfenNochInRaum             ArrayList, welche angibt, welche Themen noch in den Raum dürfen
+     * @param welcheTypenDuerfenNochInRaum              String welcher Ausgibt, welche Art von KW noch im Raum plaziert werden darf.
+     * @param gueteRaumAttraktivitaet                   aktueller Durchschnitt der KW im Raum. 
+     * @param gueteRaumBelegung                         Anteil der aktuellen Belegung des Raumes. 
+     * 
+     * @return die lfd. Nummer des zu plazierenden Kunstwerkes.
+     */
     public short erweitereRaumlösung(
         int verfuegbarWandWest,int verfuegbarWandOst,int verfuegbarWandNord,int verfuegbarWandSued,  // relevant für Bilder (vier Wände)
         int verfuegbarLaengeRaum,int verfuegbarBreiteRaum,                                           // relevant für G und I (laengs/quer bzw Raumfläche)
@@ -414,8 +536,9 @@ public class Kunstwerkverwaltung
         double gueteRaumBelegung)                  // Anteil der aktuellen Wandbelegung des Raumes mit Bildern -> ... es sei denn es geht um ein Bild und die Raumbelegung ist noch < 60%
         {
        short bestes_kw_lfd_nr = -1; // wir suchen das beste Kunstwerk. Wenn wir keins finden, geben wir den Wert "-1" zurück.
-       for (Kunstwerk kw : bildeKriteriumsliste(qualitaetsgewicht)) {
-           boolean passtRaumFeuchteUndTemp = true; 
+       for (Kunstwerk kw : bildeKriteriumsliste(qualitaetsgewicht)) { //durchlaufen der ArrayList bildeKritieriumsListe, nach den zu setzenden Kw. 
+           /** 1. Raumbedinungen für Bilder passend? */
+           boolean passtRaumFeuchteUndTemp = true;  
         
              if (kw.getArt()=='B' & passtRaumFeuchteUndTemp)
             {
@@ -423,6 +546,7 @@ public class Kunstwerkverwaltung
                 // das Kunstwerk wird nicht plaziert, wenn die Raumbedingungen nicht mit dem Bild kompatibel sind. 
             }   
             
+            /** 2. Thema des Kunstwerkes mit Themenvielfalt kompatibel? */
             boolean passtKunstwerkInThemenvielfalt = true;
             
             if (welcheThemenDuerfenNochInRaum.size() == 3)
@@ -431,6 +555,7 @@ public class Kunstwerkverwaltung
                 //das Kunstwerk wird nicht plaziert, falls das Kunstwerk eine Thema hat, welches noch nicht in dem Raum plaziert wurde, da sonst ein 4. neues Thema gesetzt werden würde. 
             }
             
+            /** 3. Art des Kunstwerkes noch mit Typem im Raum kompatibel? */
             boolean passtKunstwerkTypInRaum = true;
             
             if (kw.getArt() == 'I')
@@ -438,7 +563,13 @@ public class Kunstwerkverwaltung
                 passtKunstwerkTypInRaum = welcheTypenDuerfenNochInRaum.equals("BIG");
                 // hiermit wird verdeutlicht, dass Kunstinstallationen nur plaziert werden können, wenn der Raum leer ist, also "BIG" übergeben wurde. 
             }
-
+            
+            /** 4. Verbessert das Kunstwerk noch den Raum? Allgemein: 
+             * Bei Bildern unter 60% Belegung = JA!  Damit der Raum nicht zu leer steht.
+             * Sobald 60% belegt sind, werden Bilder nur noch plaziert, wenn sie die Attraktivitaet des Raumes nicht herunterstufen.
+               Kunstgegenstände werden allgemein nur plaziert solange sie den Attraktivitaetsmittelwert nicht herabsenken.
+               Kunstinstallationen stehen sowieso alleine im Raum. */
+               
             boolean verbessertKunstwerkRaum = true;
             
             if ((kw.getArt() == 'B')     &  ((gueteRaumAttraktivitaet <= kw.getAttraktivitaet()) | (gueteRaumBelegung <= 0.6)))
@@ -473,8 +604,6 @@ public class Kunstwerkverwaltung
             } 
         
         }
-       
-       
     
        return bestes_kw_lfd_nr; // -1 wenn keins gefunden wurde
     }    

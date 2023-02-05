@@ -4,9 +4,17 @@ Ausstellungsplanung des VAWi-Museums Essen - Gruppe 06
 PROJEKTZWECK: 
 Planung einer attraktiven und möglichst kostengünstigen Ausstellung für das VAWi-Museum Essen anhand von spezifischen Ausleihlisten
 von Kunstwerken anderer kooperiender Museen unter Berücksichtigung der vorhandenen Raumbedingungen des VAWi-Museums.
+Als Ergebnis werden drei auf den Zweck angepasste Ausgabedateien für den Anwender ausgegeben:
+
+    - Ausleihdatei
+    - Raumdatei
+    - Museumsführer
+
+Diese sind unterschiedlich gegliedert, um dem jeweiligen Leser der Dateien einen möglichst passenden Überblick über alle für ihn relevanten
+Informationen zu geben. 
 
 VERSION oder DATUM: 
-29.01.2023
+05.02.2023
 
 AUTOR(EN): 
     Carla Saradeth:
@@ -28,29 +36,44 @@ AUTOR(EN):
     - Kunstwerkverwaltung
 
 WIE IST DAS PROJEKT ZU STARTEN:
-Das Projekt lässt sich über die Konsole mittels des Befehls "java -jar VAWiMuseumEssen.jar" starten. 
+Das Projekt lässt sich über die Konsole mittels des Befehls "java -jar PlanungVAWiMuseumEssen.jar" starten. 
 Im Anschluss wird über die Konsole ein Menü aufgerufen über welches einige Auswahlmöglichkeiten eingeblendet werden:
 
 --> Auf die Menüpunkte kann unter Eingabe der jeweiligen Nummer und einem anschließenden "Enter" zugegriffen werden. 
 Die einzelnen Begrifflichkeiten werden unter dem Punkt "Benutzerhinweise" genauer erläutert. 
 
-    (1) Planung starten
+    (1) Räume einlesen
+    Unter dieser Option lassen sich ".csv" Dateien der Räume in das Programm einlesen. Dabei kann durch den Anwender ein Pfad
+    ausgewählt werden, aus welchem die Dateien importiert werden sollen. Die Ausgabedateien werden ebenfalls dort abgelegt.
+    Die Eingabe des Pfades hat in folgendem Format zu erfolgen: "/" zu Beginn und "/" am Ende der Eingabe des Pfades.
+
+    -> Beispiel: "/home/MaxMustermann/Dokumente/Museumsplanung/Februar2023/"
+    
+    
+    (2) Kunstwerk einlesen 
+    Unter dieser Option lassen sich ".csv" Dateien der Kunstwerke in das Programm einlesen.Dabei kann durch den Anwender ein Pfad
+    ausgewählt werden, aus welchem die Dateien importiert werden sollen. Die Ausgabedateien werden ebenfalls dort abgelegt.
+    Die Eingabe des Pfades hat in folgendem Format zu erfolgen: "/" zu Beginn und "/" am Ende der Eingabe des Pfades.
+    
+    -> Beispiel: "/home/MaxMustermann/Dokumente/Museumsplanung/Februar2023/"
+
+    (3) Planung starten
     Falls die anderen Menüoptionen zuvor nicht angepasst wurden wird unter den Standardbedingungen (ohne Schwerpunkt und einem Qualitätsgewicht
     von 50%) die Planung durchgeführt.
 
-    (2) Schwerpunktthema angeben/ändern
+    (4) Schwerpunktthema angeben/ändern
     Es besteht die Möglichkeit für die Ausstellung ein Schwerpunktthema anzugeben oder falls bereits festgelegt zu ändern. 
     Hierfür tippen Sie einfach das zu setzende Thema ein und bestätigen die Eingabe mit "Enter".
 
     Wenn im Anschluss unter "(1)" die Planung durchgeführt wird, wird in diesem Fall das gesetzte Schwerpunktthema berücksichtigt. 
 
-    (3) Kostenobergrenze angeben/ändern
+    (5) Kostenobergrenze angeben/ändern
     Es besteht die Möglichkeit für die Ausstellung eine Kostenobergrenze anzugeben oder falls bereits festgelegt zu ändern. 
     Hierfür tippen Sie einfach die zu setzende Kostenobergrenze ein und bestätigen die Eingabe mit "Enter".
 
     Wenn im Anschluss unter "(1)" die Planung durchgeführt wird, wird in diesem Fall die gesetzte Kostenobergrenze berücksichtigt. 
 
-    (4) Qualitätsgewicht angeben/ändern
+    (6) Qualitätsgewicht angeben/ändern
     Es besteht die Möglichkeit für die Ausstellung ein Qualitätsgewicht anzugeben oder falls bereits festgelegt zu ändern. 
     Hierfür tippen Sie einfach die gewünschte Gewichtung z.B. "0.6" ein und bestätigen die Eingabe mit "Enter". 
     
@@ -59,25 +82,17 @@ Die einzelnen Begrifflichkeiten werden unter dem Punkt "Benutzerhinweise" genaue
 
     Wenn im Anschluss unter "(1)" die Planung durchgeführt wird, wird in diesem Fall die gesetzte Gewichtung berücksichtigt.
     
-    (5) Aktuelles Scherpunktthema anzeigen
+    (7) Aktuelles Scherpunktthema anzeigen
     Bei Aufruf dieser Option wird angezeigt, ob ein Schwerpunktthema für die Planung gesetzt wurde. Falls dies zutrifft, wird dieses
     angezeigt.
     
-    (6) Aktuelle Kostenobergrenze anzeigen
+    (8) Aktuelle Kostenobergrenze anzeigen
     Bei Aufruf dieser Option wird angezeigt, ob eine Kostenobergrenze für die Planung gesetzt wurde. Falls dies zutrifft, wird diese
     angezeigt.
     
-    (7) Aktuelles Qualitätsgewicht anzeigen
+    (9) Aktuelles Qualitätsgewicht anzeigen
     Bei Aufruf dieser Option wird angezeigt, welches Qualitätsgewicht für die Planung gesetzt wurde. 
-    
-    (8) Räume einlesen
-    Unter dieser Option lassen sich ".csv" Dateien der Räume in das Programm einlesen. Dabei kann durch den Anwender ein Pfad
-    ausgewählt werden, aus welchem die Dateien importiert werden sollen. Die Ausgabedateien werden ebenfalls dort abgelegt.
-    
-    (9) Kunstwerk einlesen 
-    Unter dieser Option lassen sich ".csv" Dateien der Kunstwerke in das Programm einlesen.Dabei kann durch den Anwender ein Pfad
-    ausgewählt werden, aus welchem die Dateien importiert werden sollen. Die Ausgabedateien werden ebenfalls dort abgelegt.
-    
+        
     (10) Variationsanalyse
     Unter dieser Option wird eine Variationsanalyse durchgeführt. Das bedeutet, dass anhand der eingelesenen Kunstwerke und Räume
     die bestmöglichen Zuordnungen für alle Schwerpunktthemen ausgegeben werden. Diese Option eignet sich sehr gut, um sich einen
@@ -119,21 +134,25 @@ berücksichtigt.Im folgenden werden die einzelnen Begrifflichkeiten der festzule
     
     Qualitätsgewicht:
     Über das Qualitätsgewicht lässt sich die Relevanz der Attraktivität der gesetzten Kunstwerke (Qualität) im Verhältnis zu der 
-    Dichte der gesetzten Kunstwerke an  der Wand (Quantität) für die zu planende Ausstellung festlegen. Dabei ist immer ein Wert zwischen 0 & 1 anzugeben.  
+    Dichte der gesetzten Kunstwerke an  der Wand (Quantität) für die zu planende Ausstellung festlegen. Dabei ist immer ein Wert zwischen 
+    0 & 1 anzugeben.  
     Ist der Wert somit näher an der 1, so wird bei der Aufsstellung der Fokus auf möglichst attraktive Kunstwerke 
     gelegt. Dafür wird jedoch möglicherweise die Anzahl der auszustellenden Kunstwerke sinken und folglich werden die Räume
-    gegebenenfalls weniger gefüllt. Durch die Auswahl des Qualitätsgewichts wird zudem die Auswahl des Raumes für das jeweilige Kunstwerk beeinflusst. 
+    gegebenenfalls weniger gefüllt. Durch die Auswahl des Qualitätsgewichts wird zudem die Auswahl des Raumes für das jeweilige Kunstwerk 
+    beeinflusst. 
     
     Die Qualitätsgewichtung fließt bei unserer Lösungsfindung auf zweierlei Weisen ein:
-    - Bei der Suche nach dem jeweils noch besten möglichen Kunstwerk für einen Raum. Hierbei bestimmt das Gewicht den Einfluss folgender Gütekriterien:
+    - Bei der Suche nach dem jeweils noch besten möglichen Kunstwerk für einen Raum. Hierbei bestimmt das Gewicht den Einfluss folgender 
+    Gütekriterien:
         ○ Attraktivität des Kunstwerkes
         ○ Attraktivität pro Kosten des Kunstwerkes
-    - Bei der Lösungserweiterung (s.o. unter 2.) wird immer wieder der Raum mit dem größten Verbesserungsbedarf gesucht. Hierbei gewichten wir folgende Bedürftigkeitskriterien:
+    - Bei der Lösungserweiterung (s.o. unter 2.) wird immer wieder der Raum mit dem größten Verbesserungsbedarf gesucht. 
+    Hierbei gewichten wir folgende Bedürftigkeitskriterien:
         ○ Geringer Mittelwert der Attraktivität der Kunstwerke (leere Räume berücksichtigen wir mit einem Attraktivitätswert von 0)
         ○ Geringer Anteil der belegten Wandfläche des Raumes
 
-     Diese Aspekte der Gewichtung steuern wir mit einem einzigen Parameter. Eine hohe Qualitätsgewichtung rückt die Attraktivität in den Mittelpunkt,
-     sodass tendenziell die Raumbelegung (Quantität) abnimmt, und umgekehrt.
+     Diese Aspekte der Gewichtung steuern wir mit einem einzigen Parameter. Eine hohe Qualitätsgewichtung rückt die Attraktivität in den
+     Mittelpunkt,sodass tendenziell die Raumbelegung (Quantität) abnimmt, und umgekehrt.
     --> Beispiel: "0.7" - Priorisierung attraktivierer Kunstwerke unter Berücksichtigung, dass die Räume ggf. weniger dicht belegt werden. 
     
     Als Standard ist der Wert "0.5" angegeben, sodass es sich um ein ausgeglichenes Attraktivitäts und Raumbelegungsverhältnis handelt.

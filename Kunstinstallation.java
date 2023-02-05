@@ -6,7 +6,7 @@
  * Jedoch sollen über die Einstiegsklasse "Museum" über einen Datenimport die Objekte erstellt werden, welches sich hierbei den Konstruktoren bedienen.
  * 
  * @author (Alexander Kipry) 
- * @version (20.12.2022)
+ * @version (03.02.2023)
  */
 public class Kunstinstallation extends Kunstwerk
 {
@@ -104,5 +104,15 @@ public class Kunstinstallation extends Kunstwerk
     public int getGewicht()
     {
         return gewicht;
+    }
+    /**
+     * Gibt die Maße einer Kunstinstallation aus. 
+     * 
+     * @return eine textuelle Ausgabe der Maße der Kunstinstallation in einem String. 
+     */
+    @Override //weil die eigentliche Methode hierzu in der Klasse Kunstwerk definiert wird und hierrüber auf die Klasse Kunstinstallation angepasst wird. 
+    public String outputMaße()
+    {
+        return ", Höhe: " + super.getHoehe() + ", Breite: " + super.getBreite() + ", Länge: " + getLaenge() + ", Gewicht in kg: " +getGewicht();
     }
 }
