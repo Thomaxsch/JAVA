@@ -1,56 +1,58 @@
 ------------------------------------------
 Raum: Nummer: 1, Raumbezeichnung: Große Halle, Breite: 1500, Länge: 1000, Höhe: 400
 ------------------------------------------
-Attraktivität: 75, Thema: Aktmalerei, Nr: 2, Art des Kunstwerks: B, Bezeichnung: Woman with a Parrot, Breite 195
-Attraktivität: 76, Thema: Portraits, Nr: 27, Art des Kunstwerks: B, Bezeichnung: Portrait of a Man, Breite 86
-Attraktivität: 79, Thema: Portraits, Nr: 50, Art des Kunstwerks: B, Bezeichnung: Woman Playing a Guitar, Breite 75
-Attraktivität: 65, Thema: Portraits, Nr: 43, Art des Kunstwerks: B, Bezeichnung: A Woman Seated at a Window, Breite 22
-Attraktivität: 75, Thema: Portraits, Nr: 22, Art des Kunstwerks: B, Bezeichnung: La Berceuse (Woman Rocking a Cradle; Augustine-Alix Pellicot Roulin 1851–1930), Breite 73
-Attraktivität: 80, Thema: Stillleben, Nr: 7, Art des Kunstwerks: B, Bezeichnung: Still Life with Oysters a Silver Tazza and Glassware, Breite 80
-Attraktivität: 66, Thema: Portraits, Nr: 23, Art des Kunstwerks: B, Bezeichnung: Portrait of a Woman, Breite 81
-Attraktivität: 68, Thema: Stillleben, Nr: 34, Art des Kunstwerks: B, Bezeichnung: A Vase of Flowers, Breite 60
-Attraktivität: 63, Thema: Portraits, Nr: 5, Art des Kunstwerks: B, Bezeichnung: Portrait of a Woman, Breite 50
-Attraktivität: 70, Thema: Stillleben, Nr: 26, Art des Kunstwerks: B, Bezeichnung: A Bouquet of Flowers, Breite 32
-Attraktivität: 47, Thema: Portraits, Nr: 39, Art des Kunstwerks: B, Bezeichnung: Portrait of a Young Man, Breite 20
-Attraktivität: 71, Thema: Aktmalerei, Nr: 68, Art des Kunstwerks: G, Bezeichnung: Spanish Dancer (Second State), Breite 21
-Attraktivität: 32, Thema: Portraits, Nr: 21, Art des Kunstwerks: B, Bezeichnung: Portrait of a Woman and an Enslaved Servant, Breite 106
-Attraktivität: 23, Thema: Portraits, Nr: 4, Art des Kunstwerks: B, Bezeichnung: A Matador, Breite 113
-Attraktivität: 24, Thema: Portraits, Nr: 10, Art des Kunstwerks: B, Bezeichnung: A Woman with a Dog, Breite 65
+Attraktivität: 94, Thema: Sonstiges, Nr: 255, Art des Kunstwerks: I, Bezeichnung: Duck Walk, Breite 217
 
 ------------------------------------------
 Raum: Nummer: 2, Raumbezeichnung: Galerie links, Breite: 800, Länge: 800, Höhe: 250
 ------------------------------------------
-Attraktivität: 78, Thema: Landschaftsmalerei, Nr: 45, Art des Kunstwerks: B, Bezeichnung: A River Landscape, Breite 63
-Attraktivität: 67, Thema: Tiere, Nr: 37, Art des Kunstwerks: B, Bezeichnung: A Forest at Dawn with a Deer Hunt, Breite 90
-Attraktivität: 75, Thema: Klassizismus, Nr: 86, Art des Kunstwerks: G, Bezeichnung: Seated girl, Breite 25
-Attraktivität: 69, Thema: Landschaftsmalerei, Nr: 48, Art des Kunstwerks: B, Bezeichnung: A Road in Louveciennes, Breite 46
-Attraktivität: 65, Thema: Tiere, Nr: 40, Art des Kunstwerks: B, Bezeichnung: A Woodland Road with Travelers, Breite 83
-Attraktivität: 50, Thema: Landschaftsmalerei, Nr: 11, Art des Kunstwerks: B, Bezeichnung: A Brazilian Landscape, Breite 91
-Attraktivität: 29, Thema: Tiere, Nr: 38, Art des Kunstwerks: B, Bezeichnung: Two Children Teasing a Cat, Breite 88
-Attraktivität: 45, Thema: Landschaftsmalerei, Nr: 41, Art des Kunstwerks: B, Bezeichnung: A Shaded Avenue, Breite 24
-Attraktivität: 31, Thema: Tiere, Nr: 47, Art des Kunstwerks: B, Bezeichnung: A Shepherd and a Rider on a Country Lane, Breite 39
+Attraktivität: 78, Thema: Impressionismus, Nr: 32, Art des Kunstwerks: B, Bezeichnung: Wood Pigeon, Breite 8
+Attraktivität: 77, Thema: Klassizismus, Nr: 12, Art des Kunstwerks: B, Bezeichnung: Royal American Magazine or Universal Repository of Instruction and Amusement vol. I, Breite 14
+Attraktivität: 48, Thema: Sonstiges, Nr: 11, Art des Kunstwerks: B, Bezeichnung: Design for Phaeton no. 490, Breite 25
+Attraktivität: 69, Thema: Sonstiges, Nr: 172, Art des Kunstwerks: G, Bezeichnung: Banner with staff, Breite 54
+Attraktivität: 68, Thema: Klassizismus, Nr: 197, Art des Kunstwerks: G, Bezeichnung: Sugar bowl, Breite 19
+Attraktivität: 73, Thema: Sonstiges, Nr: 116, Art des Kunstwerks: G, Bezeichnung: Albarello, Breite 13
+Attraktivität: 74, Thema: Sonstiges, Nr: 114, Art des Kunstwerks: G, Bezeichnung: Coffee cup, Breite 6
+Attraktivität: 48, Thema: Klassizismus, Nr: 1, Art des Kunstwerks: B, Bezeichnung: The Death of Lucretia from Allen's New and Impartial Roman History, Breite 8
+Attraktivität: 2, Thema: Sonstiges, Nr: 91, Art des Kunstwerks: B, Bezeichnung: Edwin Booth from the series Great Americans (N76) for Duke brand cigarettes, Breite 3
 
 ------------------------------------------
 Raum: Nummer: 3, Raumbezeichnung: Galerie rechts, Breite: 800, Länge: 800, Höhe: 250
 ------------------------------------------
-Attraktivität: 98, Thema: Stillleben, Nr: 104, Art des Kunstwerks: I, Bezeichnung: Candlestick and Playing Cards on a Table, Breite 53
+Attraktivität: 77, Thema: Renaissance, Nr: 65, Art des Kunstwerks: B, Bezeichnung: Blackwork Print with Two Horizontal Panels and Five Small Motifs, Breite 5
+Attraktivität: 80, Thema: Barock, Nr: 81, Art des Kunstwerks: B, Bezeichnung: Saint Gunter from Bavaria Sancta: The Life and Martyrdom of Holy Men and Women Vol. I, Breite 15
+Attraktivität: 72, Thema: Sonstiges, Nr: 60, Art des Kunstwerks: B, Bezeichnung: Two friezes depicting combats between men and lions amidst rinceaux from Frises feuillages ou tritons marins à la romaine plate 4 bound in Oeuvres. Vol. IV, Breite 22
+Attraktivität: 18, Thema: Sonstiges, Nr: 24, Art des Kunstwerks: B, Bezeichnung: The Domestic Monthly An Illustrated Magazine of Fashion Literature and the Fine Arts Vol. XXI No.1, Breite 20
+Attraktivität: 63, Thema: Sonstiges, Nr: 110, Art des Kunstwerks: G, Bezeichnung: Two-handled bowl, Breite 16
 
 ------------------------------------------
 Raum: Nummer: 4, Raumbezeichnung: Saal, Breite: 600, Länge: 1200, Höhe: 250
 ------------------------------------------
-Attraktivität: 75, Thema: Religion, Nr: 14, Art des Kunstwerks: B, Bezeichnung: The Lamentation, Breite 172
-Attraktivität: 57, Thema: Sonstiges, Nr: 44, Art des Kunstwerks: B, Bezeichnung: The Card Players, Breite 81
-Attraktivität: 55, Thema: Religion, Nr: 18, Art des Kunstwerks: B, Bezeichnung: Christ Blessing Surrounded by a Donor Family, Breite 119
-Attraktivität: 69, Thema: Religion, Nr: 88, Art des Kunstwerks: G, Bezeichnung: Virgin of the Immaculate Conception, Breite 36
-Attraktivität: 65, Thema: Barock, Nr: 49, Art des Kunstwerks: B, Bezeichnung: The Musician, Breite 111
-Attraktivität: 78, Thema: Sonstiges, Nr: 15, Art des Kunstwerks: B, Bezeichnung: Woman with a Rake, Breite 34
-Attraktivität: 72, Thema: Sonstiges, Nr: 92, Art des Kunstwerks: G, Bezeichnung: Double-spouted vase with cover, Breite 19
-Attraktivität: 68, Thema: Sonstiges, Nr: 9, Art des Kunstwerks: B, Bezeichnung: A Maid Asleep, Breite 76
-Attraktivität: 61, Thema: Sonstiges, Nr: 36, Art des Kunstwerks: B, Bezeichnung: A Young Woman and a Cavalier, Breite 88
-Attraktivität: 61, Thema: Religion, Nr: 24, Art des Kunstwerks: B, Bezeichnung: Christ before Pilate; The Resurrection, Breite 21
+Attraktivität: 93, Thema: Hyperrealismus, Nr: 233, Art des Kunstwerks: I, Bezeichnung: Death mask: A. Honegger, Breite 20
 
 ------------------------------------------
 Raum: Nummer: 5, Raumbezeichnung: Raum A, Breite: 1200, Länge: 1400, Höhe: 250
 ------------------------------------------
-Attraktivität: 87, Thema: Sonstiges, Nr: 103, Art des Kunstwerks: I, Bezeichnung: America Today, Breite 297
+Attraktivität: 96, Thema: Sonstiges, Nr: 268, Art des Kunstwerks: I, Bezeichnung: Daybreak, Breite 152
+
+------------------------------------------
+Raum: Nummer: 6, Raumbezeichnung: 1. OG links, Breite: 800, Länge: 800, Höhe: 250
+------------------------------------------
+Attraktivität: 78, Thema: Romantik, Nr: 111, Art des Kunstwerks: G, Bezeichnung: Cup, Breite 6
+Attraktivität: 65, Thema: Sonstiges, Nr: 100, Art des Kunstwerks: B, Bezeichnung: View of Heidelberg, Breite 30
+Attraktivität: 75, Thema: Pflanzen, Nr: 176, Art des Kunstwerks: G, Bezeichnung: Caster (?), Breite 13
+Attraktivität: 59, Thema: Sonstiges, Nr: 62, Art des Kunstwerks: B, Bezeichnung: Cartouche with cut out central compartment set in strapwork with a bird and mask at top left and right from Strapwork Cartouches with Interlaced Band Patterns plate 15, Breite 26
+Attraktivität: 71, Thema: Sonstiges, Nr: 191, Art des Kunstwerks: G, Bezeichnung: Standing cup with cover, Breite 23
+Attraktivität: 77, Thema: Sonstiges, Nr: 198, Art des Kunstwerks: G, Bezeichnung: Wineglass (one of a pair), Breite 19
+
+------------------------------------------
+Raum: Nummer: 7, Raumbezeichnung: 1. OG rechts, Breite: 800, Länge: 800, Höhe: 250
+------------------------------------------
+Attraktivität: 75, Thema: Portraits, Nr: 139, Art des Kunstwerks: G, Bezeichnung: Henry IV King of France (b. 1553 r. 1589–1610), Breite 14
+Attraktivität: 66, Thema: Renaissance, Nr: 58, Art des Kunstwerks: B, Bezeichnung: Melancholia, Breite 5
+Attraktivität: 72, Thema: Renaissance, Nr: 140, Art des Kunstwerks: G, Bezeichnung: Saint Michael the Archangel, Breite 157
+Attraktivität: 70, Thema: Expressionismus, Nr: 45, Art des Kunstwerks: B, Bezeichnung: A California Vista No. 8909, Breite 14
+Attraktivität: 32, Thema: Portraits, Nr: 56, Art des Kunstwerks: B, Bezeichnung: Annie Boyd from the Actors and Actresses series (N171) for Old Judge Cigarettes, Breite 3
+Attraktivität: 66, Thema: Expressionismus, Nr: 182, Art des Kunstwerks: G, Bezeichnung: In Honor of M. Julien Girard Head Master of the Lyceum Condorcet 1892, Breite 3
+Attraktivität: 4, Thema: Portraits, Nr: 29, Art des Kunstwerks: B, Bezeichnung: Card Number 229 Miss Flint from the Actors and Actresses series (N145-2) issued by Duke Sons & Co. to promote Cross Cut Cigarettes, Breite 3
 

@@ -1,69 +1,50 @@
 -------------------------------------------------------------------------------------------------------
 Raum: Nummer: 1, Raumbezeichnung: Große Halle, Breite: 1500, Länge: 1000, Höhe: 400
-Minimale Raumtemperatur: 14
-Maximale Raumtemperatur: 12
-Minimale Luftfeuchte: 60
-Maximale Luftfeuchte: 50
--------------------------------------------------------------------------------------------------------
-Nummer: 2, Art des Kunstwerks: B, Name des Kunstwerks: Woman with a Parrot, Thema: Aktmalerei
-Nummer: 27, Art des Kunstwerks: B, Name des Kunstwerks: Portrait of a Man, Thema: Portraits
-Nummer: 50, Art des Kunstwerks: B, Name des Kunstwerks: Woman Playing a Guitar, Thema: Portraits
-Nummer: 43, Art des Kunstwerks: B, Name des Kunstwerks: A Woman Seated at a Window, Thema: Portraits
-Nummer: 22, Art des Kunstwerks: B, Name des Kunstwerks: La Berceuse (Woman Rocking a Cradle; Augustine-Alix Pellicot Roulin 1851–1930), Thema: Portraits
-Nummer: 7, Art des Kunstwerks: B, Name des Kunstwerks: Still Life with Oysters a Silver Tazza and Glassware, Thema: Stillleben
-Nummer: 23, Art des Kunstwerks: B, Name des Kunstwerks: Portrait of a Woman, Thema: Portraits
-Nummer: 34, Art des Kunstwerks: B, Name des Kunstwerks: A Vase of Flowers, Thema: Stillleben
-Nummer: 5, Art des Kunstwerks: B, Name des Kunstwerks: Portrait of a Woman, Thema: Portraits
-Nummer: 26, Art des Kunstwerks: B, Name des Kunstwerks: A Bouquet of Flowers, Thema: Stillleben
-Nummer: 39, Art des Kunstwerks: B, Name des Kunstwerks: Portrait of a Young Man, Thema: Portraits
-Nummer: 68, Art des Kunstwerks: G, Name des Kunstwerks: Spanish Dancer (Second State), Thema: Aktmalerei
-Nummer: 21, Art des Kunstwerks: B, Name des Kunstwerks: Portrait of a Woman and an Enslaved Servant, Thema: Portraits
-Nummer: 4, Art des Kunstwerks: B, Name des Kunstwerks: A Matador, Thema: Portraits
-Nummer: 10, Art des Kunstwerks: B, Name des Kunstwerks: A Woman with a Dog, Thema: Portraits
-
--------------------------------------------------------------------------------------------------------
-Raum: Nummer: 2, Raumbezeichnung: Galerie links, Breite: 800, Länge: 800, Höhe: 250
-Minimale Raumtemperatur: 15
-Maximale Raumtemperatur: 14
-Minimale Luftfeuchte: 60
-Maximale Luftfeuchte: 55
--------------------------------------------------------------------------------------------------------
-Nummer: 45, Art des Kunstwerks: B, Name des Kunstwerks: A River Landscape, Thema: Landschaftsmalerei
-Nummer: 37, Art des Kunstwerks: B, Name des Kunstwerks: A Forest at Dawn with a Deer Hunt, Thema: Tiere
-Nummer: 86, Art des Kunstwerks: G, Name des Kunstwerks: Seated girl, Thema: Klassizismus
-Nummer: 48, Art des Kunstwerks: B, Name des Kunstwerks: A Road in Louveciennes, Thema: Landschaftsmalerei
-Nummer: 40, Art des Kunstwerks: B, Name des Kunstwerks: A Woodland Road with Travelers, Thema: Tiere
-Nummer: 11, Art des Kunstwerks: B, Name des Kunstwerks: A Brazilian Landscape, Thema: Landschaftsmalerei
-Nummer: 38, Art des Kunstwerks: B, Name des Kunstwerks: Two Children Teasing a Cat, Thema: Tiere
-Nummer: 41, Art des Kunstwerks: B, Name des Kunstwerks: A Shaded Avenue, Thema: Landschaftsmalerei
-Nummer: 47, Art des Kunstwerks: B, Name des Kunstwerks: A Shepherd and a Rider on a Country Lane, Thema: Tiere
-
--------------------------------------------------------------------------------------------------------
-Raum: Nummer: 3, Raumbezeichnung: Galerie rechts, Breite: 800, Länge: 800, Höhe: 250
 Minimale Raumtemperatur: -999
 Maximale Raumtemperatur: 999
 Minimale Luftfeuchte: -999
 Maximale Luftfeuchte: 999
 -------------------------------------------------------------------------------------------------------
-Nummer: 104, Art des Kunstwerks: I, Name des Kunstwerks: Candlestick and Playing Cards on a Table, Thema: Stillleben
+Nummer: 255, Art des Kunstwerks: I, Name des Kunstwerks: Duck Walk, Thema: Sonstiges
+
+-------------------------------------------------------------------------------------------------------
+Raum: Nummer: 2, Raumbezeichnung: Galerie links, Breite: 800, Länge: 800, Höhe: 250
+Minimale Raumtemperatur: 7
+Maximale Raumtemperatur: 7
+Minimale Luftfeuchte: 59
+Maximale Luftfeuchte: 59
+-------------------------------------------------------------------------------------------------------
+Nummer: 32, Art des Kunstwerks: B, Name des Kunstwerks: Wood Pigeon, Thema: Impressionismus
+Nummer: 12, Art des Kunstwerks: B, Name des Kunstwerks: Royal American Magazine or Universal Repository of Instruction and Amusement vol. I, Thema: Klassizismus
+Nummer: 11, Art des Kunstwerks: B, Name des Kunstwerks: Design for Phaeton no. 490, Thema: Sonstiges
+Nummer: 172, Art des Kunstwerks: G, Name des Kunstwerks: Banner with staff, Thema: Sonstiges
+Nummer: 197, Art des Kunstwerks: G, Name des Kunstwerks: Sugar bowl, Thema: Klassizismus
+Nummer: 116, Art des Kunstwerks: G, Name des Kunstwerks: Albarello, Thema: Sonstiges
+Nummer: 114, Art des Kunstwerks: G, Name des Kunstwerks: Coffee cup, Thema: Sonstiges
+Nummer: 1, Art des Kunstwerks: B, Name des Kunstwerks: The Death of Lucretia from Allen's New and Impartial Roman History, Thema: Klassizismus
+Nummer: 91, Art des Kunstwerks: B, Name des Kunstwerks: Edwin Booth from the series Great Americans (N76) for Duke brand cigarettes, Thema: Sonstiges
+
+-------------------------------------------------------------------------------------------------------
+Raum: Nummer: 3, Raumbezeichnung: Galerie rechts, Breite: 800, Länge: 800, Höhe: 250
+Minimale Raumtemperatur: 9
+Maximale Raumtemperatur: 11
+Minimale Luftfeuchte: 59
+Maximale Luftfeuchte: 59
+-------------------------------------------------------------------------------------------------------
+Nummer: 65, Art des Kunstwerks: B, Name des Kunstwerks: Blackwork Print with Two Horizontal Panels and Five Small Motifs, Thema: Renaissance
+Nummer: 81, Art des Kunstwerks: B, Name des Kunstwerks: Saint Gunter from Bavaria Sancta: The Life and Martyrdom of Holy Men and Women Vol. I, Thema: Barock
+Nummer: 60, Art des Kunstwerks: B, Name des Kunstwerks: Two friezes depicting combats between men and lions amidst rinceaux from Frises feuillages ou tritons marins à la romaine plate 4 bound in Oeuvres. Vol. IV, Thema: Sonstiges
+Nummer: 24, Art des Kunstwerks: B, Name des Kunstwerks: The Domestic Monthly An Illustrated Magazine of Fashion Literature and the Fine Arts Vol. XXI No.1, Thema: Sonstiges
+Nummer: 110, Art des Kunstwerks: G, Name des Kunstwerks: Two-handled bowl, Thema: Sonstiges
 
 -------------------------------------------------------------------------------------------------------
 Raum: Nummer: 4, Raumbezeichnung: Saal, Breite: 600, Länge: 1200, Höhe: 250
-Minimale Raumtemperatur: 12
-Maximale Raumtemperatur: 15
-Minimale Luftfeuchte: 60
-Maximale Luftfeuchte: 60
+Minimale Raumtemperatur: -999
+Maximale Raumtemperatur: 999
+Minimale Luftfeuchte: -999
+Maximale Luftfeuchte: 999
 -------------------------------------------------------------------------------------------------------
-Nummer: 14, Art des Kunstwerks: B, Name des Kunstwerks: The Lamentation, Thema: Religion
-Nummer: 44, Art des Kunstwerks: B, Name des Kunstwerks: The Card Players, Thema: Sonstiges
-Nummer: 18, Art des Kunstwerks: B, Name des Kunstwerks: Christ Blessing Surrounded by a Donor Family, Thema: Religion
-Nummer: 88, Art des Kunstwerks: G, Name des Kunstwerks: Virgin of the Immaculate Conception, Thema: Religion
-Nummer: 49, Art des Kunstwerks: B, Name des Kunstwerks: The Musician, Thema: Barock
-Nummer: 15, Art des Kunstwerks: B, Name des Kunstwerks: Woman with a Rake, Thema: Sonstiges
-Nummer: 92, Art des Kunstwerks: G, Name des Kunstwerks: Double-spouted vase with cover, Thema: Sonstiges
-Nummer: 9, Art des Kunstwerks: B, Name des Kunstwerks: A Maid Asleep, Thema: Sonstiges
-Nummer: 36, Art des Kunstwerks: B, Name des Kunstwerks: A Young Woman and a Cavalier, Thema: Sonstiges
-Nummer: 24, Art des Kunstwerks: B, Name des Kunstwerks: Christ before Pilate; The Resurrection, Thema: Religion
+Nummer: 233, Art des Kunstwerks: I, Name des Kunstwerks: Death mask: A. Honegger, Thema: Hyperrealismus
 
 -------------------------------------------------------------------------------------------------------
 Raum: Nummer: 5, Raumbezeichnung: Raum A, Breite: 1200, Länge: 1400, Höhe: 250
@@ -72,5 +53,34 @@ Maximale Raumtemperatur: 999
 Minimale Luftfeuchte: -999
 Maximale Luftfeuchte: 999
 -------------------------------------------------------------------------------------------------------
-Nummer: 103, Art des Kunstwerks: I, Name des Kunstwerks: America Today, Thema: Sonstiges
+Nummer: 268, Art des Kunstwerks: I, Name des Kunstwerks: Daybreak, Thema: Sonstiges
+
+-------------------------------------------------------------------------------------------------------
+Raum: Nummer: 6, Raumbezeichnung: 1. OG links, Breite: 800, Länge: 800, Höhe: 250
+Minimale Raumtemperatur: 9
+Maximale Raumtemperatur: 18
+Minimale Luftfeuchte: 60
+Maximale Luftfeuchte: 62
+-------------------------------------------------------------------------------------------------------
+Nummer: 111, Art des Kunstwerks: G, Name des Kunstwerks: Cup, Thema: Romantik
+Nummer: 100, Art des Kunstwerks: B, Name des Kunstwerks: View of Heidelberg, Thema: Sonstiges
+Nummer: 176, Art des Kunstwerks: G, Name des Kunstwerks: Caster (?), Thema: Pflanzen
+Nummer: 62, Art des Kunstwerks: B, Name des Kunstwerks: Cartouche with cut out central compartment set in strapwork with a bird and mask at top left and right from Strapwork Cartouches with Interlaced Band Patterns plate 15, Thema: Sonstiges
+Nummer: 191, Art des Kunstwerks: G, Name des Kunstwerks: Standing cup with cover, Thema: Sonstiges
+Nummer: 198, Art des Kunstwerks: G, Name des Kunstwerks: Wineglass (one of a pair), Thema: Sonstiges
+
+-------------------------------------------------------------------------------------------------------
+Raum: Nummer: 7, Raumbezeichnung: 1. OG rechts, Breite: 800, Länge: 800, Höhe: 250
+Minimale Raumtemperatur: 15
+Maximale Raumtemperatur: 16
+Minimale Luftfeuchte: 56
+Maximale Luftfeuchte: 65
+-------------------------------------------------------------------------------------------------------
+Nummer: 139, Art des Kunstwerks: G, Name des Kunstwerks: Henry IV King of France (b. 1553 r. 1589–1610), Thema: Portraits
+Nummer: 58, Art des Kunstwerks: B, Name des Kunstwerks: Melancholia, Thema: Renaissance
+Nummer: 140, Art des Kunstwerks: G, Name des Kunstwerks: Saint Michael the Archangel, Thema: Renaissance
+Nummer: 45, Art des Kunstwerks: B, Name des Kunstwerks: A California Vista No. 8909, Thema: Expressionismus
+Nummer: 56, Art des Kunstwerks: B, Name des Kunstwerks: Annie Boyd from the Actors and Actresses series (N171) for Old Judge Cigarettes, Thema: Portraits
+Nummer: 182, Art des Kunstwerks: G, Name des Kunstwerks: In Honor of M. Julien Girard Head Master of the Lyceum Condorcet 1892, Thema: Expressionismus
+Nummer: 29, Art des Kunstwerks: B, Name des Kunstwerks: Card Number 229 Miss Flint from the Actors and Actresses series (N145-2) issued by Duke Sons & Co. to promote Cross Cut Cigarettes, Thema: Portraits
 
