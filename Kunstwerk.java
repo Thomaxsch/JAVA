@@ -2,7 +2,8 @@ import java.lang.Integer;
 
 /**
  * Bei dieser Klasse handelt es sich um eine abstrakte Parent-Klasse, welche die wesentlichen Informationen aller Kunstwerke definiert. 
- * Somit werden hierrüber neben den Attributen, die auf alle Arten von Kunstwerken, also der Child-Klassen (Kunstinstallationen, Bild, Kunstgegenstand), ebenfalls ein Konstruktor und Methoden definiert.
+ * Somit werden hierrüber neben den Attributen, die auf alle Arten von Kunstwerken, also der Child-Klassen (Kunstinstallationen, Bild, Kunstgegenstand) zutreffen, 
+ * ebenfalls ein Konstruktor und Methoden definiert.
  * Es wurde sich hierbei für eine abstrakte Klasse entschieden, da ein Kunstwerk immer einen “Typ” (Kunstinstallationen, Bild, Kunstgegenstand) haben muss .
  * Somit ist ein Erzeugen eines Objekts “Kunstwerk” nicht sinnvoll. 
  * Mit Starten des Programms durch die Klasse Museum wird eine Eingabedatei mit Daten zu den verfügbaren Angeboten der Kunstwerke eingelesen.
@@ -11,9 +12,10 @@ import java.lang.Integer;
  * Zusätzlich gibt es die Möglichkeit Objekte der Child-Klassen manuell anzulegen oder zu ändern. 
  * 
  * @author (Alexander Kipry) 
- * @version (12.01.2023)
+ * @version (03.02.2023)
  */
     abstract class Kunstwerk implements Comparable<Kunstwerk> // "Comparable" damit durch die Kunstwerkverwaltung ein Vergleich von Attributen vorgenommen werden kann. 
+    
 { //Attribute der Klasse Kunstwerk
     /** Lfd-Nummer des Kunstwerkes aus dem Angebot */
     private short laufendeNummer;

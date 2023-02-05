@@ -1,11 +1,11 @@
 
 /**
  * Hierbei handelt es sich um eine Child-Klasse der Klasse "Kunstwerk", aus welcher die wesentlichen Attribute vererbt werden. 
- * Zudem werden unter den Attributen die spezifischen Eigenschaften der Kunstgegenstände erfasst.
+ * Zudem werden unter den Attributen die spezifischen Eigenschaften der Kunstgegenstände erfasst. 
  * Es lassen sich hierrüber manuell Objekte anlegen/ändern, jedoch sollen über die Einstiegsklasse "Museum" über einen Datenimport die Objekte erstellt werden.
  * 
  * @author (Alexander Kipry) 
- * @version (20.12.2022)
+ * @version (03.02.2023)
  */
         
 public class Kunstgegenstand extends Kunstwerk
@@ -108,11 +108,12 @@ public class Kunstgegenstand extends Kunstwerk
     }
     
     /**
-     * Gibt die Maße des Kunstgegenstandes und einer Kunstinstallation aus. 
+     * Gibt die Maße des Kunstgegenstandes aus. 
+     * Diese Methode wird u.a. für die Ausgabedateien benötigt, um eine für Objekte der Klasse Kunstgegenstand angepasste Ausgabe erzeugen zu können. 
      * 
-     * @return die Maße des jeweiligen Kunstwerkes
+     * @return eine textuelle Ausgabe der Maße des Kunstgegenstandes in einem String. 
      */
-    @Override
+    @Override //weil die eigentliche Methode hierzu in der Klasse Kunstwerk definiert wird und hierrüber auf die Klasse Kunstgegenstand angepasst wird. 
     public String outputMaße()
     {
         return ", Höhe: " + super.getHoehe() + ", Breite: " + super.getBreite() + ", Länge: " + getLaenge() + ", Gewicht in kg: " +getGewicht();

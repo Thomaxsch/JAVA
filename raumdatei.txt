@@ -1,52 +1,70 @@
 -------------------------------------------------------------------------------------------------------
-Raum: Nummer: 1, Raumbezeichnung: Große Halle, Breite: 1500, Länge: 1000, Höhe: 400
-Minimale Raumtemperatur: -999
-Maximale Raumtemperatur: 999
-Minimale Luftfeuchte: -999
-Maximale Luftfeuchte: 999
+Raum: Nummer: 1, Raumbezeichnung: Gro�e Halle, Breite: 1500, Länge: 1000, Höhe: 400
+Minimale Raumtemperatur: 14
+Maximale Raumtemperatur: 14
+Minimale Luftfeuchte: 57
+Maximale Luftfeuchte: 61
 -------------------------------------------------------------------------------------------------------
-Nummer: 115, Art des Kunstwerks: I, Name des Kunstwerks: Girl in a Red Dress, Thema: Portraits, Höhe: 71, Breite: 55, Länge: 55, Gewicht in kg: 8
+Nummer: 752, Art des Kunstwerks: G, Name des Kunstwerks: Boreas and Orithyia from a set of scenes from Ovid's Metamorphoses, Thema: Pflanzen, Höhe: 358, Breite: 452, Länge: 452, Gewicht in kg: 36
+Nummer: 463, Art des Kunstwerks: B, Name des Kunstwerks: Still Waters, Thema: Expressionismus, Höhe: 17, Breite: 31
+Nummer: 312, Art des Kunstwerks: B, Name des Kunstwerks: A Sudden Squall, Thema: Impressionismus, Höhe: 38, Breite: 28
+Nummer: 389, Art des Kunstwerks: B, Name des Kunstwerks: Lecture d'un testament from La Com�die Humaine published in Le Charivari December 20 1853, Thema: Impressionismus, Höhe: 27, Breite: 36
+Nummer: 658, Art des Kunstwerks: G, Name des Kunstwerks: Saucer (one of nine) (part of a service), Thema: Pflanzen, Höhe: 3, Breite: 3, Länge: 3, Gewicht in kg: 5
+Nummer: 90, Art des Kunstwerks: B, Name des Kunstwerks: Holland (Year 1650) from the Headdresses of Various Nations series (N305) to promote Mayo's Cut Plug Tobacco, Thema: Expressionismus, Höhe: 7, Breite: 3
 
 -------------------------------------------------------------------------------------------------------
 Raum: Nummer: 2, Raumbezeichnung: Galerie links, Breite: 800, Länge: 800, Höhe: 250
-Minimale Raumtemperatur: 15
-Maximale Raumtemperatur: 20
-Minimale Luftfeuchte: 49
-Maximale Luftfeuchte: 63
+Minimale Raumtemperatur: 6
+Maximale Raumtemperatur: 7
+Minimale Luftfeuchte: 60
+Maximale Luftfeuchte: 60
 -------------------------------------------------------------------------------------------------------
-Nummer: 41, Art des Kunstwerks: B, Name des Kunstwerks: Avec Ou Dessus, Thema: Klassizismus, Höhe: 33, Breite: 57
-Nummer: 36, Art des Kunstwerks: B, Name des Kunstwerks: Christ and the Samaritan Woman (Schr. 141c), Thema: Religion, Höhe: 11, Breite: 9
-Nummer: 71, Art des Kunstwerks: G, Name des Kunstwerks: Sacrifice of Isaac, Thema: Pflanzen, Höhe: 26, Breite: 33, Länge: 33, Gewicht in kg: 5
-Nummer: 82, Art des Kunstwerks: G, Name des Kunstwerks: Part of a border, Thema: Pflanzen, Höhe: 39, Breite: 64, Länge: 64, Gewicht in kg: 4
-Nummer: 2, Art des Kunstwerks: B, Name des Kunstwerks: S. Emeri Roi de Hongrie (St. Emeric King of Hungary) from November 4th from Les Images De Tous Les Saincts et Saintes de L'Année (Images of All of the Saints and Religious Events of the Year), Thema: Religion, Höhe: 6, Breite: 5
+Nummer: 672, Art des Kunstwerks: G, Name des Kunstwerks: Tobacco box, Thema: Pflanzen, Höhe: 3, Breite: 15, Länge: 15, Gewicht in kg: 4
+Nummer: 554, Art des Kunstwerks: G, Name des Kunstwerks: Fragment, Thema: Sonstiges, Höhe: 40, Breite: 10, Länge: 10, Gewicht in kg: 7
+Nummer: 900, Art des Kunstwerks: G, Name des Kunstwerks: First Arabesque Pench�e, Thema: Aktmalerei, Höhe: 40, Breite: 54, Länge: 54, Gewicht in kg: 6
+Nummer: 127, Art des Kunstwerks: B, Name des Kunstwerks: Untitled broadside cover for the poem The Song of the Border-Guard, Thema: Sonstiges, Höhe: 49, Breite: 31
+Nummer: 660, Art des Kunstwerks: G, Name des Kunstwerks: Cup and saucer, Thema: Pflanzen, Höhe: 6, Breite: 6, Länge: 6, Gewicht in kg: 4
+Nummer: 32, Art des Kunstwerks: B, Name des Kunstwerks: Tower of  London, Thema: Sonstiges, Höhe: 14, Breite: 25
+Nummer: 227, Art des Kunstwerks: B, Name des Kunstwerks: Plate 16: Hebe in a niche with her hands in the air running to the left while looking to the right from a series of mythological gods and goddesses, Thema: Aktmalerei, Höhe: 21, Breite: 11
+Nummer: 28, Art des Kunstwerks: B, Name des Kunstwerks: It's all about Color II, Thema: Sonstiges, Höhe: 24, Breite: 32
+Nummer: 499, Art des Kunstwerks: B, Name des Kunstwerks: Vallauris Exhibition 1954, Thema: Sonstiges, Höhe: 69, Breite: 57
 
 -------------------------------------------------------------------------------------------------------
 Raum: Nummer: 3, Raumbezeichnung: Galerie rechts, Breite: 800, Länge: 800, Höhe: 250
-Minimale Raumtemperatur: 15
-Maximale Raumtemperatur: 16
+Minimale Raumtemperatur: 10
+Maximale Raumtemperatur: 10
 Minimale Luftfeuchte: 56
-Maximale Luftfeuchte: 70
+Maximale Luftfeuchte: 56
 -------------------------------------------------------------------------------------------------------
-Nummer: 75, Art des Kunstwerks: G, Name des Kunstwerks: Teapot, Thema: Tiere, Höhe: 13, Breite: 18, Länge: 18, Gewicht in kg: 3
-Nummer: 76, Art des Kunstwerks: G, Name des Kunstwerks: Jug, Thema: Rokoko, Höhe: 11, Breite: 11, Länge: 11, Gewicht in kg: 2
-Nummer: 44, Art des Kunstwerks: B, Name des Kunstwerks: Card Number 563 Amy Gordon from the Actors and Actresses series (N145-7) issued by Duke Sons & Co. to promote Duke Cigarettes, Thema: Portraits, Höhe: 6, Breite: 3
-Nummer: 16, Art des Kunstwerks: B, Name des Kunstwerks: My Little White Kitties – Into Mischief, Thema: Tiere, Höhe: 20, Breite: 31
-Nummer: 80, Art des Kunstwerks: G, Name des Kunstwerks: Pair of firedogs, Thema: Rokoko, Höhe: 38, Breite: 44, Länge: 44, Gewicht in kg: 5
-Nummer: 35, Art des Kunstwerks: B, Name des Kunstwerks: Cupid with a Bird on a String, Thema: Tiere, Höhe: 9, Breite: 7
+Nummer: 600, Art des Kunstwerks: G, Name des Kunstwerks: Miniature andiron (one of a pair) (part of a set), Thema: Sonstiges, Höhe: 6, Breite: 2, Länge: 2, Gewicht in kg: 5
+Nummer: 705, Art des Kunstwerks: G, Name des Kunstwerks: Vase with hexagonal foot (one of a pair), Thema: Sonstiges, Höhe: 24, Breite: 12, Länge: 12, Gewicht in kg: 6
+Nummer: 47, Art des Kunstwerks: B, Name des Kunstwerks: Fred Humes from Western Stars or Scenes Exhibit Cards series (W412), Thema: Portraits, Höhe: 13, Breite: 8
+Nummer: 257, Art des Kunstwerks: B, Name des Kunstwerks: Head of an old bearded man facing right from the series of  'Small Heads in Oriental Headdress', Thema: Barock, Höhe: 11, Breite: 8
+Nummer: 57, Art des Kunstwerks: B, Name des Kunstwerks: Deer Ham Ioway from the American Indian Chiefs series (N2) for Allen & Ginter Cigarettes Brands, Thema: Portraits, Höhe: 7, Breite: 3
+Nummer: 297, Art des Kunstwerks: B, Name des Kunstwerks: Poison Hemlock from the Plants series, Thema: Sonstiges, Höhe: 9, Breite: 5
+Nummer: 514, Art des Kunstwerks: G, Name des Kunstwerks: Column with base, Thema: Sonstiges, Höhe: 123, Breite: 50, Länge: 50, Gewicht in kg: 16
+Nummer: 401, Art des Kunstwerks: B, Name des Kunstwerks: Costume design of a dancing masked figure; verso: Study of a female head, Thema: Sonstiges, Höhe: 55, Breite: 38
+Nummer: 591, Art des Kunstwerks: G, Name des Kunstwerks: Edging, Thema: Sonstiges, Höhe: 121, Breite: 8, Länge: 8, Gewicht in kg: 14
+Nummer: 404, Art des Kunstwerks: B, Name des Kunstwerks: Stanhope Phaeton #4009, Thema: Sonstiges, Höhe: 34, Breite: 55
+Nummer: 269, Art des Kunstwerks: B, Name des Kunstwerks: Schildknecht Catcher Milwaukee from the Old Judge series (N172) for Old Judge Cigarettes, Thema: Portraits, Höhe: 6, Breite: 3
+Nummer: 197, Art des Kunstwerks: B, Name des Kunstwerks: Magee Philadelphia National League from the White Border series (T206) for the American Tobacco Company, Thema: Portraits, Höhe: 6, Breite: 3
 
 -------------------------------------------------------------------------------------------------------
 Raum: Nummer: 4, Raumbezeichnung: Saal, Breite: 600, Länge: 1200, Höhe: 250
-Minimale Raumtemperatur: 14
-Maximale Raumtemperatur: 18
+Minimale Raumtemperatur: 15
+Maximale Raumtemperatur: 15
 Minimale Luftfeuchte: 60
 Maximale Luftfeuchte: 65
 -------------------------------------------------------------------------------------------------------
-Nummer: 4, Art des Kunstwerks: B, Name des Kunstwerks: The Refreshment, Thema: Klassizismus, Höhe: 40, Breite: 52
-Nummer: 37, Art des Kunstwerks: B, Name des Kunstwerks: Kellogg's Funny Jungleland Moving-Pictures, Thema: Expressionismus, Höhe: 23, Breite: 17
-Nummer: 63, Art des Kunstwerks: G, Name des Kunstwerks: Tankard, Thema: Sonstiges, Höhe: 19, Breite: 15, Länge: 15, Gewicht in kg: 3
-Nummer: 45, Art des Kunstwerks: B, Name des Kunstwerks: Fanny Davenport from the Actresses series (N252-B) issued by P. Lorillard Company to promote Tiger Fine Cut Tobacco, Thema: Sonstiges, Höhe: 6, Breite: 3
-Nummer: 14, Art des Kunstwerks: B, Name des Kunstwerks: Recerca di Volumi di un Edificio Isolato [Exploration of Volumes in a Free-Standing Building], Thema: Sonstiges, Höhe: 38, Breite: 56
-Nummer: 90, Art des Kunstwerks: G, Name des Kunstwerks: Writing box, Thema: Sonstiges, Höhe: 6, Breite: 28, Länge: 28, Gewicht in kg: 2
+Nummer: 226, Art des Kunstwerks: B, Name des Kunstwerks: A Glimpse of the Homestead, Thema: Impressionismus, Höhe: 28, Breite: 40
+Nummer: 437, Art des Kunstwerks: B, Name des Kunstwerks: The Burning Life of the Earth (Vie ardente du sol), Thema: Sonstiges, Höhe: 54, Breite: 41
+Nummer: 512, Art des Kunstwerks: G, Name des Kunstwerks: Secretary cabinet, Thema: Rokoko, Höhe: 205, Breite: 104, Länge: 104, Gewicht in kg: 24
+Nummer: 137, Art des Kunstwerks: B, Name des Kunstwerks: Design for Spider Phaeton, Thema: Impressionismus, Höhe: 15, Breite: 21
+Nummer: 230, Art des Kunstwerks: B, Name des Kunstwerks: Ode to the Moon (No. 31 in Passages from the Poems of Thomas Hood Illustrated by the Junior Etching Club in Thirty-Four Plates), Thema: Impressionismus, Höhe: 27, Breite: 37
+Nummer: 353, Art des Kunstwerks: B, Name des Kunstwerks: Blue Dancer, Thema: Sonstiges, Höhe: 35, Breite: 25
+Nummer: 374, Art des Kunstwerks: B, Name des Kunstwerks: Urban and Commercial Chile. The Woman Car Conductor, Thema: Sonstiges, Höhe: 2, Breite: 9
+Nummer: 201, Art des Kunstwerks: B, Name des Kunstwerks: Actress wearing hat with hands on hips behind back from Actresses (N335a) issued by S. F. Hess & Company to promote Long Cut Tobacco brands, Thema: Sonstiges, Höhe: 8, Breite: 5
+Nummer: 25, Art des Kunstwerks: B, Name des Kunstwerks: Scandal, Thema: Sonstiges, Höhe: 49, Breite: 62
 
 -------------------------------------------------------------------------------------------------------
 Raum: Nummer: 5, Raumbezeichnung: Raum A, Breite: 1200, Länge: 1400, Höhe: 250
@@ -55,5 +73,112 @@ Maximale Raumtemperatur: 999
 Minimale Luftfeuchte: -999
 Maximale Luftfeuchte: 999
 -------------------------------------------------------------------------------------------------------
-Nummer: 101, Art des Kunstwerks: I, Name des Kunstwerks: Lamelle Blue Delphinium Butter Plate, Thema: Surrealismus, Höhe: 18, Breite: 46, Länge: 46, Gewicht in kg: 4
+Nummer: 1289, Art des Kunstwerks: I, Name des Kunstwerks: Desk accessory, Thema: Neo-Expressionismus, Höhe: 15, Breite: 15, Länge: 15, Gewicht in kg: 2
+
+-------------------------------------------------------------------------------------------------------
+Raum: Nummer: 6, Raumbezeichnung: 1. OG links, Breite: 800, Länge: 800, Höhe: 250
+Minimale Raumtemperatur: -999
+Maximale Raumtemperatur: 999
+Minimale Luftfeuchte: -999
+Maximale Luftfeuchte: 999
+-------------------------------------------------------------------------------------------------------
+Nummer: 1284, Art des Kunstwerks: I, Name des Kunstwerks: Large Blue Horizontal, Thema: Hyperrealismus, Höhe: 74, Breite: 232, Länge: 232, Gewicht in kg: 11
+
+-------------------------------------------------------------------------------------------------------
+Raum: Nummer: 7, Raumbezeichnung: 1. OG rechts, Breite: 800, Länge: 800, Höhe: 250
+Minimale Raumtemperatur: 14
+Maximale Raumtemperatur: 14
+Minimale Luftfeuchte: 60
+Maximale Luftfeuchte: 61
+-------------------------------------------------------------------------------------------------------
+Nummer: 149, Art des Kunstwerks: B, Name des Kunstwerks: Untitled Tam 1711 State I (11/20), Thema: Sonstiges, Höhe: 63, Breite: 51
+Nummer: 223, Art des Kunstwerks: B, Name des Kunstwerks: Man with shovel, Thema: Surrealismus, Höhe: 33, Breite: 25
+Nummer: 132, Art des Kunstwerks: B, Name des Kunstwerks: Study for a Massacre of the Innocents, Thema: Barock, Höhe: 18, Breite: 12
+Nummer: 64, Art des Kunstwerks: B, Name des Kunstwerks: Design for a sepulchral monument; verso: Design for a monument, Thema: Sonstiges, Höhe: 21, Breite: 15
+Nummer: 524, Art des Kunstwerks: G, Name des Kunstwerks: Chimneypiece, Thema: Sonstiges, Höhe: 117, Breite: 168, Länge: 168, Gewicht in kg: 15
+Nummer: 300, Art des Kunstwerks: B, Name des Kunstwerks: Justicia (copy) from Cognition and the Seven Virtues, Thema: Barock, Höhe: 4, Breite: 2
+Nummer: 655, Art des Kunstwerks: G, Name des Kunstwerks: Miniature daybed (part of a set), Thema: Sonstiges, Höhe: 2, Breite: 6, Länge: 6, Gewicht in kg: 4
+Nummer: 435, Art des Kunstwerks: B, Name des Kunstwerks: Instruction insert from the Transparencies series (N137) issued by W. Duke Sons & Co. to promote Honest Long Cut Tobacco, Thema: Sonstiges, Höhe: 10, Breite: 6
+Nummer: 874, Art des Kunstwerks: G, Name des Kunstwerks: Miniature bowl, Thema: Sonstiges, Höhe: 3, Breite: 3, Länge: 3, Gewicht in kg: 4
+Nummer: 277, Art des Kunstwerks: B, Name des Kunstwerks: Album of prints entitled Architettura del Mitelli, Thema: Barock, Höhe: 41, Breite: 27
+Nummer: 340, Art des Kunstwerks: B, Name des Kunstwerks: Winter (L'Hyver), Thema: Sonstiges, Höhe: 24, Breite: 30
+
+-------------------------------------------------------------------------------------------------------
+Raum: Nummer: 8, Raumbezeichnung: Anbau links, Breite: 1200, Länge: 1400, Höhe: 250
+Minimale Raumtemperatur: 5
+Maximale Raumtemperatur: 5
+Minimale Luftfeuchte: 60
+Maximale Luftfeuchte: 62
+-------------------------------------------------------------------------------------------------------
+Nummer: 938, Art des Kunstwerks: G, Name des Kunstwerks: Tea urn, Thema: Sonstiges, Höhe: 55, Breite: 55, Länge: 55, Gewicht in kg: 7
+Nummer: 19, Art des Kunstwerks: B, Name des Kunstwerks: Gleaners in the Hail, Thema: Impressionismus, Höhe: 12, Breite: 18
+Nummer: 597, Art des Kunstwerks: G, Name des Kunstwerks: Plate, Thema: Aktmalerei, Höhe: 2, Breite: 25, Länge: 25, Gewicht in kg: 3
+Nummer: 260, Art des Kunstwerks: B, Name des Kunstwerks: Old Willesley House, Thema: Impressionismus, Höhe: 17, Breite: 25
+Nummer: 488, Art des Kunstwerks: B, Name des Kunstwerks: Design for the Headpiece of the Gazette de France, Thema: Sonstiges, Höhe: 18, Breite: 11
+Nummer: 615, Art des Kunstwerks: G, Name des Kunstwerks: Henriette et Damon, Thema: Sonstiges, Höhe: 59, Breite: 36, Länge: 36, Gewicht in kg: 8
+Nummer: 629, Art des Kunstwerks: G, Name des Kunstwerks: Girl Braiding her Hair, Thema: Aktmalerei, Höhe: 17, Breite: 17, Länge: 17, Gewicht in kg: 4
+Nummer: 910, Art des Kunstwerks: G, Name des Kunstwerks: Pitcher, Thema: Sonstiges, Höhe: 22, Breite: 22, Länge: 22, Gewicht in kg: 3
+Nummer: 753, Art des Kunstwerks: G, Name des Kunstwerks: Coffer or chest key, Thema: Sonstiges, Höhe: 10, Breite: 4, Länge: 4, Gewicht in kg: 6
+Nummer: 962, Art des Kunstwerks: G, Name des Kunstwerks: Pendant with a Head of Jupiter, Thema: Sonstiges, Höhe: 11, Breite: 11, Länge: 11, Gewicht in kg: 6
+Nummer: 361, Art des Kunstwerks: B, Name des Kunstwerks: Girl Observed in a Fountain, Thema: Sonstiges, Höhe: 6, Breite: 8
+Nummer: 159, Art des Kunstwerks: B, Name des Kunstwerks: Design for 4 seat Phaeton no top no. 3211, Thema: Impressionismus, Höhe: 15, Breite: 22
+Nummer: 279, Art des Kunstwerks: B, Name des Kunstwerks: Actress standing with foot on stool from the Actresses and Celebrities series Type 2 (N146-2) issued by W. Duke Sons & Co., Thema: Sonstiges, Höhe: 7, Breite: 4
+
+-------------------------------------------------------------------------------------------------------
+Raum: Nummer: 9, Raumbezeichnung: Anbau rechts, Breite: 1800, Länge: 1400, Höhe: 250
+Minimale Raumtemperatur: -999
+Maximale Raumtemperatur: 999
+Minimale Luftfeuchte: -999
+Maximale Luftfeuchte: 999
+-------------------------------------------------------------------------------------------------------
+Nummer: 1333, Art des Kunstwerks: I, Name des Kunstwerks: Commode, Thema: Surrealismus, Höhe: 88, Breite: 125, Länge: 125, Gewicht in kg: 9
+
+-------------------------------------------------------------------------------------------------------
+Raum: Nummer: 10, Raumbezeichnung: 1. OG Anbau links, Breite: 1200, Länge: 1400, Höhe: 250
+Minimale Raumtemperatur: 15
+Maximale Raumtemperatur: 16
+Minimale Luftfeuchte: 59
+Maximale Luftfeuchte: 59
+-------------------------------------------------------------------------------------------------------
+Nummer: 887, Art des Kunstwerks: G, Name des Kunstwerks: Vase with cover, Thema: Expressionismus, Höhe: 21, Breite: 21, Länge: 21, Gewicht in kg: 4
+Nummer: 23, Art des Kunstwerks: B, Name des Kunstwerks: Card 45 Johnny Dwyer from the Prizefighters series (N269) issued by P. Lorillard Company to promote Mechanics Delight Long Cut Tobacco, Thema: Sonstiges, Höhe: 9, Breite: 6
+Nummer: 68, Art des Kunstwerks: B, Name des Kunstwerks: Haverford College from the College series (T51) Fifth Set (101-125) issued by Murad Cigarettes, Thema: Sonstiges, Höhe: 5, Breite: 6
+Nummer: 988, Art des Kunstwerks: G, Name des Kunstwerks: Vase with flowers, Thema: Pflanzen, Höhe: 43, Breite: 20, Länge: 20, Gewicht in kg: 5
+Nummer: 828, Art des Kunstwerks: G, Name des Kunstwerks: Pendant in the form of a mermaid, Thema: Sonstiges, Höhe: 12, Breite: 12, Länge: 12, Gewicht in kg: 6
+Nummer: 4, Art des Kunstwerks: B, Name des Kunstwerks: North Sea Fishermen, Thema: Expressionismus, Höhe: 23, Breite: 38
+Nummer: 792, Art des Kunstwerks: G, Name des Kunstwerks: Toilet box (one of a pair), Thema: Sonstiges, Höhe: 10, Breite: 15, Länge: 15, Gewicht in kg: 5
+Nummer: 849, Art des Kunstwerks: G, Name des Kunstwerks: Seal-top spoon, Thema: Sonstiges, Höhe: 14, Breite: 4, Länge: 4, Gewicht in kg: 2
+Nummer: 846, Art des Kunstwerks: G, Name des Kunstwerks: Tobacco box, Thema: Sonstiges, Höhe: 14, Breite: 5, Länge: 5, Gewicht in kg: 4
+Nummer: 605, Art des Kunstwerks: G, Name des Kunstwerks: Chair (one of a pair), Thema: Sonstiges, Höhe: 91, Breite: 45, Länge: 45, Gewicht in kg: 10
+Nummer: 177, Art des Kunstwerks: B, Name des Kunstwerks: Kitty Cheatham from the Actors and Actresses series (N342) Type 4 issued by Thomas H. Hall Tobacco to promote Between the Acts Cigarettes., Thema: Sonstiges, Höhe: 7, Breite: 4
+Nummer: 93, Art des Kunstwerks: B, Name des Kunstwerks: A View of the Adams Mansion Quincy Massachusetts (Merrymount Press New Year's Card 1929), Thema: Sonstiges, Höhe: 23, Breite: 16
+Nummer: 7, Art des Kunstwerks: B, Name des Kunstwerks: Washington Statue. Fairmount Park from Philadelphia Pennsylvania souvenir views (W500), Thema: Sonstiges, Höhe: 4, Breite: 6
+
+-------------------------------------------------------------------------------------------------------
+Raum: Nummer: 11, Raumbezeichnung: 1. OG Anbau rechts, Breite: 1800, Länge: 1400, Höhe: 250
+Minimale Raumtemperatur: -999
+Maximale Raumtemperatur: 999
+Minimale Luftfeuchte: -999
+Maximale Luftfeuchte: 999
+-------------------------------------------------------------------------------------------------------
+Nummer: 1137, Art des Kunstwerks: I, Name des Kunstwerks: Untitled, Thema: Hyperrealismus, Höhe: 159, Breite: 159, Länge: 159, Gewicht in kg: 20
+
+-------------------------------------------------------------------------------------------------------
+Raum: Nummer: 12, Raumbezeichnung: Frank-Schneider-Saal, Breite: 1500, Länge: 1500, Höhe: 300
+Minimale Raumtemperatur: 13
+Maximale Raumtemperatur: 13
+Minimale Luftfeuchte: 60
+Maximale Luftfeuchte: 67
+-------------------------------------------------------------------------------------------------------
+Nummer: 183, Art des Kunstwerks: B, Name des Kunstwerks: Indian Wigwams from the Habitations of Man series (N113) issued by W. Duke Sons & Co. to promote Honest Long Cut Smoking and Chewing Tobacco, Thema: Expressionismus, Höhe: 6, Breite: 10
+Nummer: 406, Art des Kunstwerks: B, Name des Kunstwerks: An Irish Howl [Owl]!, Thema: Romantik, Höhe: 36, Breite: 27
+Nummer: 541, Art des Kunstwerks: G, Name des Kunstwerks: Brooch with pendant (part of parure), Thema: Tiere, Höhe: 2, Breite: 6, Länge: 6, Gewicht in kg: 1
+Nummer: 848, Art des Kunstwerks: G, Name des Kunstwerks: Hind (one of a pair), Thema: Tiere, Höhe: 12, Breite: 15, Länge: 15, Gewicht in kg: 2
+Nummer: 81, Art des Kunstwerks: B, Name des Kunstwerks: The Long Neglected Grave of General Grant (published as a supplement to the New York Gazette April 24 1892), Thema: Expressionismus, Höhe: 48, Breite: 34
+Nummer: 49, Art des Kunstwerks: B, Name des Kunstwerks: Mon aim�e qu'as-tu?... plate XXXII from the suite Impressions de m�nage (second series) published in Le Charivari August 10 1847, Thema: Romantik, Höhe: 19, Breite: 16
+Nummer: 627, Art des Kunstwerks: G, Name des Kunstwerks: Vase (one of a pair), Thema: Tiere, Höhe: 23, Breite: 23, Länge: 23, Gewicht in kg: 7
+Nummer: 755, Art des Kunstwerks: G, Name des Kunstwerks: Miniature tea bowl (one of five) (part of a set), Thema: Romantik, Höhe: 2, Breite: 2, Länge: 2, Gewicht in kg: 3
+Nummer: 525, Art des Kunstwerks: G, Name des Kunstwerks: Candelabra with Meissen bird (one of a pair), Thema: Tiere, Höhe: 15, Breite: 15, Länge: 15, Gewicht in kg: 3
+Nummer: 804, Art des Kunstwerks: G, Name des Kunstwerks: Tile, Thema: Tiere, Höhe: 53, Breite: 40, Länge: 40, Gewicht in kg: 10
+Nummer: 152, Art des Kunstwerks: B, Name des Kunstwerks: Shaft-tailed Bunting from the Song Birds of the World series (N42) for Allen & Ginter Cigarettes, Thema: Tiere, Höhe: 7, Breite: 8
 
