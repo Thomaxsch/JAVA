@@ -6,7 +6,7 @@ import java.text.*;
  * Die Klasse Ausgabe ist für die Ausgabe der geforderten Dateien verantwortlich und erzeugt eine txt- und HTML-Ausgabe.
  * 
  * @author Mischa Paul Marchlewski
- * @version 19.12.2022
+ * @version 05.02.2023
  */
 public class Ausgabedatei
 {
@@ -14,6 +14,11 @@ public class Ausgabedatei
     * Der Name der Datei mit Pfadinformationen (bsp. C:/temp/datei.txt)
     */
     private String file;
+    
+    /**
+    * Der Pfad der Datei (bsp. C:/temp/)
+    */
+    private String pfad;
     
     /**
      * Objekt der Klasse Ausstellungsplanung, auf dessen Grundlage die Ausleih-, Ausstellungs- und Museumsführer-Datei erstellt werden können
@@ -44,9 +49,18 @@ public class Ausgabedatei
      * @param planung                  Objekt der Klasse Ausstellungsplanung
      * @param raeume                   in der Ausstellungsplanung verwendete Räume
      */
-    public Ausgabedatei(String file, ArrayList <ArrayList <Kunstwerk>> auszugebendeKunstwerke, Ausstellungsplanung planung, Raumverwaltung raeume, Kunstwerkverwaltung kws) 
+    /*public Ausgabedatei(String file, ArrayList <ArrayList <Kunstwerk>> auszugebendeKunstwerke, Ausstellungsplanung planung, Raumverwaltung raeume, Kunstwerkverwaltung kws) 
     {
         this.file = file;
+        this.zugeordneteKunstwerke = auszugebendeKunstwerke;
+        this.raeume = raeume;
+        this.planung = planung;
+        this.kws = kws;
+    }*/
+    
+     public Ausgabedatei(String pfad, ArrayList <ArrayList <Kunstwerk>> auszugebendeKunstwerke, Ausstellungsplanung planung, Raumverwaltung raeume, Kunstwerkverwaltung kws) 
+    {
+        this.pfad = pfad;
         this.zugeordneteKunstwerke = auszugebendeKunstwerke;
         this.raeume = raeume;
         this.planung = planung;
@@ -92,7 +106,7 @@ public class Ausgabedatei
             // Objekt meinWriter der Klasse BufferedWriter (gepufferter Ausgabestrom) wird deklariert
             // dem Objekt wird eine Referenz auf ein initialisiertes Objekt der Klasse BufferedWriter, dazu wird dem Konstruktor als Eingabeparameter ein Objekt der Klasse FileWriter übergeben,
             // der wiederum ein als Eingabeparameter eine String übergeben wird, der den Namen für die Auleihdaten widerspiegelt
-            BufferedWriter meinWriter = new BufferedWriter(new FileWriter(file));
+            BufferedWriter meinWriter = new BufferedWriter(new FileWriter(pfad + "ausleihdatei.txt"));
             
             // mehrere Zeichen werden in den gepufferten Augabestrrom geschrieben
             meinWriter.write("------------------------------------------\n");
@@ -185,7 +199,7 @@ public class Ausgabedatei
             //sb.append("<td>" + waehrung.format(gesamtKosten) + "</td></tr>");
             //sb.append("</table>");
             
-            FileWriter fstream = new FileWriter("ausleihdatei.html");
+            FileWriter fstream = new FileWriter(pfad + "ausleihdatei.html");
             BufferedWriter out = new BufferedWriter(fstream);
             out.write(sb.toString());
             out.close();
@@ -208,7 +222,7 @@ public class Ausgabedatei
         {
             // Beginn Ausgabe in Textdatei 
             // Objekt meinWriter der Klasse BufferedWriter zur Ausgabepufferung, und anonymes File-WriteWriter-Objekt zur eigentlichen Ausgabe
-            BufferedWriter meinWriter = new BufferedWriter(new FileWriter(file));
+            BufferedWriter meinWriter = new BufferedWriter(new FileWriter(pfad + "raumdatei.txt"));
             
             // erste Dimension der ArrayList zugeordneteKunstwerke wird bis zu deren Ende durchlaufen, entspricht den Räumen
             for(int i=0; i < zugeordneteKunstwerke.size(); i++)
@@ -275,7 +289,7 @@ public class Ausgabedatei
             
             // Objekt fstream der Klasse FileWriter wird deklariert und eine Instanz der Klasse FileWriter mit new zugewiesen
             // bei der Instanzierung wird als Eingabeparameter der Name der HTML-Datei als String übergeben
-            FileWriter fstream = new FileWriter("raumdatei.html");
+            FileWriter fstream = new FileWriter(pfad + "raumdatei.html");
             
             // Objekt out der Klasse BufferedWriter wird deklariert und eine neue Instanz der Klasse BufferedWriter zugewiesen
             // bei der Instanzierung wird als Eingabeparameter das Objekt fstream übergeben
@@ -306,7 +320,7 @@ public class Ausgabedatei
          try
         {
             // Objekt meinWriter der Klasse BufferedWriter zur Ausgabepufferung, und anonymes File-WriteWriter-Objekt zur eigentlichen Ausgabe
-            BufferedWriter meinWriter = new BufferedWriter(new FileWriter(file));
+            BufferedWriter meinWriter = new BufferedWriter(new FileWriter(pfad + "museumsfuehrer.txt"));
             
             // erste Dimension der ArrayList zugeordneteKunstwerke wird bis zu deren Ende durchlaufen, entspricht den Räumen
             for(int i=0; i < zugeordneteKunstwerke.size(); i++)
@@ -330,7 +344,7 @@ public class Ausgabedatei
                       
             StringBuilder sb = new StringBuilder();
             sb.append("<html>");
-            sb.append("<h1>Museumsführer (mit den fünf attraktivsten Kunstwerk pro Raum</h1>");
+            sb.append("<h1>Museumsführer</h1>");
                     
               for(int i=0; i < zugeordneteKunstwerke.size(); i++)
             {
@@ -353,7 +367,7 @@ public class Ausgabedatei
             }
             
             sb.append("</html>");
-            FileWriter fstream = new FileWriter("museumsfuehrer.html");
+            FileWriter fstream = new FileWriter(pfad + "museumsfuehrer.html");
             BufferedWriter out = new BufferedWriter(fstream);
             out.write(sb.toString());
             out.close();
@@ -363,13 +377,4 @@ public class Ausgabedatei
             System.out.println("Beim Schreiben in die Datei ist etwas schief gegangen.");
         }
     }
-       
-    /**
-     * Schreibt eine Textzeile in eine  Ausgabedatei
-     * @param str Text der in eine Teile der Ausgabedatei geschrieben werden soll
-     */
-    private void writeLine(String str) 
-    {
-        
-    } 
 }

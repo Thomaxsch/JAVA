@@ -378,18 +378,23 @@ public class Museum
                                
                 if (planungsErgebnis != null)
                 {
-                    System.out.print("\nWir haben nach Lösungen gesucht und können nun die beste ausgeben.\n");
-                                    
-                    // Deklaration und Initialisierung einer Objektvariablen der Klasse Ausgabedatei
-                    // als Parameter wird das Stringliteral "raumdatei.csv" und das Ergebnis der Ausstellungplanung als ArrayList übergeben
-                    Ausgabedatei datei1 = new Ausgabedatei("raumdatei.txt", planungsErgebnis, planung, raeume, kunstwerke);
-                    datei1.schreibeAusstellungen();
+                    System.out.println("\nWir haben nach Lösungen gesucht und können nun die beste ausgeben.\n");
+                    System.out.print("Bitte geben Sie einen Pfad für die Ausgabe der txt- und HTML-Dateien an.");
+                    eingabe = console.readLine();
                     
-                    Ausgabedatei datei2 = new Ausgabedatei("museumsfuehrer.txt", planungsErgebnis, planung, raeume, kunstwerke);
-                    datei2.schreibeMuseumsfuehrer();
-                    
-                    Ausgabedatei datei3 = new Ausgabedatei("ausleihdaten.txt", planungsErgebnis, planung, raeume, kunstwerke);
-                    datei3.schreibeAusleihen();
+                    File dir = new File(eingabe);
+                    if(dir.exists())
+                    {
+                        // Deklaration und Initialisierung einer Objektvariablen der Klasse Ausgabedatei
+                        Ausgabedatei ausgabe = new Ausgabedatei(eingabe, planungsErgebnis, planung, raeume, kunstwerke);
+                        ausgabe.schreibeAusleihen();
+                        ausgabe.schreibeAusstellungen();
+                        ausgabe.schreibeMuseumsfuehrer();
+                    }
+                    else 
+                    {
+                        System.out.println("Angegebener Pfad ist nicht gültig! Bitte starten Sie die Planung neu.");
+                    }
                 }
                 else
                 {
