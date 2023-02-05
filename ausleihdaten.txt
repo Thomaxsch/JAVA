@@ -4,6 +4,7 @@ Auszuleihende Kunstwerke
 
 ------------------------------------------
 <<<<<<< HEAD
+<<<<<<< HEAD
 Mus�e du Louvre------------------------------------------
 Attraktivität: 80, Thema: Pflanzen, Nr: 658, Art des Kunstwerks: G, Bezeichnung: Saucer (one of nine) (part of a service), Breite 3
 Attraktivität: 76, Thema: Aktmalerei, Nr: 900, Art des Kunstwerks: G, Bezeichnung: First Arabesque Pench�e, Breite 54
@@ -13,6 +14,8 @@ Attraktivität: 79, Thema: Sonstiges, Nr: 938, Art des Kunstwerks: G, Bezeichnun
 Attraktivität: 76, Thema: Impressionismus, Nr: 260, Art des Kunstwerks: B, Bezeichnung: Old Willesley House, Breite 25
 Attraktivität: 80, Thema: Sonstiges, Nr: 605, Art des Kunstwerks: G, Bezeichnung: Chair (one of a pair), Breite 45
 =======
+=======
+>>>>>>> 5d5120f6b7b130c3014c88fecace2534a877838c
 The British Museum
 ------------------------------------------
 Partnermuseum: The British Museum, Nummer: 82, Art des Kunstwerks: G, Name des Kunstwerks: Part of a border
@@ -23,6 +26,7 @@ Kosten pro Museum: 7.613,00 €
 
 ------------------------------------------
 Rijksmuseum Amsterdam
+<<<<<<< HEAD
 ------------------------------------------
 Partnermuseum: Rijksmuseum Amsterdam, Nummer: 2, Art des Kunstwerks: B, Name des Kunstwerks: S. Emeri Roi de Hongrie (St. Emeric King of Hungary) from November 4th from Les Images De Tous Les Saincts et Saintes de L'Année (Images of All of the Saints and Religious Events of the Year)
 Partnermuseum: Rijksmuseum Amsterdam, Nummer: 35, Art des Kunstwerks: B, Name des Kunstwerks: Cupid with a Bird on a String
@@ -77,7 +81,10 @@ Attraktivität: 76, Thema: Expressionismus, Nr: 4, Art des Kunstwerks: B, Bezeic
 Attraktivität: 79, Thema: Expressionismus, Nr: 183, Art des Kunstwerks: B, Bezeichnung: Indian Wigwams from the Habitations of Man series (N113) issued by W. Duke Sons & Co. to promote Honest Long Cut Smoking and Chewing Tobacco, Breite 10
 Attraktivität: 64, Thema: Romantik, Nr: 406, Art des Kunstwerks: B, Bezeichnung: An Irish Howl [Owl]!, Breite 27
 Attraktivität: 54, Thema: Romantik, Nr: 49, Art des Kunstwerks: B, Bezeichnung: Mon aim�e qu'as-tu?... plate XXXII from the suite Impressions de m�nage (second series) published in Le Charivari August 10 1847, Breite 16
+=======
+>>>>>>> 5d5120f6b7b130c3014c88fecace2534a877838c
 ------------------------------------------
+<<<<<<< HEAD
 Bode-Museum------------------------------------------
 Attraktivität: 76, Thema: Pflanzen, Nr: 752, Art des Kunstwerks: G, Bezeichnung: Boreas and Orithyia from a set of scenes from Ovid's Metamorphoses, Breite 452
 Attraktivität: 69, Thema: Pflanzen, Nr: 672, Art des Kunstwerks: G, Bezeichnung: Tobacco box, Breite 15
@@ -90,7 +97,14 @@ Attraktivität: 66, Thema: Sonstiges, Nr: 488, Art des Kunstwerks: B, Bezeichnun
 Attraktivität: 74, Thema: Sonstiges, Nr: 23, Art des Kunstwerks: B, Bezeichnung: Card 45 Johnny Dwyer from the Prizefighters series (N269) issued by P. Lorillard Company to promote Mechanics Delight Long Cut Tobacco, Breite 6
 Attraktivität: 80, Thema: Sonstiges, Nr: 849, Art des Kunstwerks: G, Bezeichnung: Seal-top spoon, Breite 4
 Attraktivität: 79, Thema: Tiere, Nr: 848, Art des Kunstwerks: G, Bezeichnung: Hind (one of a pair), Breite 15
+=======
+Partnermuseum: Rijksmuseum Amsterdam, Nummer: 2, Art des Kunstwerks: B, Name des Kunstwerks: S. Emeri Roi de Hongrie (St. Emeric King of Hungary) from November 4th from Les Images De Tous Les Saincts et Saintes de L'Année (Images of All of the Saints and Religious Events of the Year)
+Partnermuseum: Rijksmuseum Amsterdam, Nummer: 35, Art des Kunstwerks: B, Name des Kunstwerks: Cupid with a Bird on a String
+Partnermuseum: Rijksmuseum Amsterdam, Nummer: 63, Art des Kunstwerks: G, Name des Kunstwerks: Tankard
+Partnermuseum: Rijksmuseum Amsterdam, Nummer: 14, Art des Kunstwerks: B, Name des Kunstwerks: Recerca di Volumi di un Edificio Isolato [Exploration of Volumes in a Free-Standing Building]
+>>>>>>> 5d5120f6b7b130c3014c88fecace2534a877838c
 ------------------------------------------
+<<<<<<< HEAD
 Rijksmuseum Amsterdam------------------------------------------
 Attraktivität: 56, Thema: Sonstiges, Nr: 28, Art des Kunstwerks: B, Bezeichnung: It's all about Color II, Breite 32
 Attraktivität: 75, Thema: Sonstiges, Nr: 591, Art des Kunstwerks: G, Bezeichnung: Edging, Breite 8
@@ -105,7 +119,12 @@ Attraktivität: 12, Thema: Sonstiges, Nr: 279, Art des Kunstwerks: B, Bezeichnun
 Attraktivität: 77, Thema: Tiere, Nr: 541, Art des Kunstwerks: G, Bezeichnung: Brooch with pendant (part of parure), Breite 6
 Attraktivität: 68, Thema: Expressionismus, Nr: 81, Art des Kunstwerks: B, Bezeichnung: The Long Neglected Grave of General Grant (published as a supplement to the New York Gazette April 24 1892), Breite 34
 Attraktivität: 76, Thema: Tiere, Nr: 804, Art des Kunstwerks: G, Bezeichnung: Tile, Breite 40
+=======
+Kosten pro Museum: 16.919,00 €
+
+>>>>>>> 5d5120f6b7b130c3014c88fecace2534a877838c
 ------------------------------------------
+<<<<<<< HEAD
 Uffizien------------------------------------------
 Attraktivität: 64, Thema: Expressionismus, Nr: 90, Art des Kunstwerks: B, Bezeichnung: Holland (Year 1650) from the Headdresses of Various Nations series (N305) to promote Mayo's Cut Plug Tobacco, Breite 3
 Attraktivität: 80, Thema: Sonstiges, Nr: 499, Art des Kunstwerks: B, Bezeichnung: Vallauris Exhibition 1954, Breite 57
@@ -116,7 +135,11 @@ Attraktivität: 67, Thema: Sonstiges, Nr: 68, Art des Kunstwerks: B, Bezeichnung
 Attraktivität: 78, Thema: Sonstiges, Nr: 828, Art des Kunstwerks: G, Bezeichnung: Pendant in the form of a mermaid, Breite 12
 Attraktivität: 78, Thema: Sonstiges, Nr: 792, Art des Kunstwerks: G, Bezeichnung: Toilet box (one of a pair), Breite 15
 Attraktivität: 64, Thema: Sonstiges, Nr: 177, Art des Kunstwerks: B, Bezeichnung: Kitty Cheatham from the Actors and Actresses series (N342) Type 4 issued by Thomas H. Hall Tobacco to promote Between the Acts Cigarettes., Breite 4
+=======
+Metropolitan Museum of Art
+>>>>>>> 5d5120f6b7b130c3014c88fecace2534a877838c
 ------------------------------------------
+<<<<<<< HEAD
 Museo del Prado------------------------------------------
 Attraktivität: 64, Thema: Aktmalerei, Nr: 227, Art des Kunstwerks: B, Bezeichnung: Plate 16: Hebe in a niche with her hands in the air running to the left while looking to the right from a series of mythological gods and goddesses, Breite 11
 Attraktivität: 71, Thema: Sonstiges, Nr: 600, Art des Kunstwerks: G, Bezeichnung: Miniature andiron (one of a pair) (part of a set), Breite 2
@@ -131,7 +154,11 @@ Attraktivität: 28, Thema: Sonstiges, Nr: 361, Art des Kunstwerks: B, Bezeichnun
 Attraktivität: 97, Thema: Surrealismus, Nr: 1333, Art des Kunstwerks: I, Bezeichnung: Commode, Breite 125
 Attraktivität: 76, Thema: Sonstiges, Nr: 846, Art des Kunstwerks: G, Bezeichnung: Tobacco box, Breite 5
 Attraktivität: 76, Thema: Tiere, Nr: 525, Art des Kunstwerks: G, Bezeichnung: Candelabra with Meissen bird (one of a pair), Breite 15
+=======
+Partnermuseum: Metropolitan Museum of Art, Nummer: 36, Art des Kunstwerks: B, Name des Kunstwerks: Christ and the Samaritan Woman (Schr. 141c)
+>>>>>>> 5d5120f6b7b130c3014c88fecace2534a877838c
 ------------------------------------------
+<<<<<<< HEAD
 The British Museum------------------------------------------
 Attraktivität: 73, Thema: Pflanzen, Nr: 660, Art des Kunstwerks: G, Bezeichnung: Cup and saucer, Breite 6
 Attraktivität: 74, Thema: Sonstiges, Nr: 32, Art des Kunstwerks: B, Bezeichnung: Tower of  London, Breite 25
@@ -141,8 +168,63 @@ Attraktivität: 27, Thema: Barock, Nr: 277, Art des Kunstwerks: B, Bezeichnung: 
 Attraktivität: 8, Thema: Sonstiges, Nr: 340, Art des Kunstwerks: B, Bezeichnung: Winter (L'Hyver), Breite 30
 Attraktivität: 72, Thema: Pflanzen, Nr: 988, Art des Kunstwerks: G, Bezeichnung: Vase with flowers, Breite 20
 Attraktivität: 98, Thema: Hyperrealismus, Nr: 1137, Art des Kunstwerks: I, Bezeichnung: Untitled, Breite 159
+=======
+Kosten pro Museum: 2.035,00 €
+
+>>>>>>> 5d5120f6b7b130c3014c88fecace2534a877838c
 ------------------------------------------
+<<<<<<< HEAD
 Gesamtkosten: 206.830,00 €------------------------------------------
+=======
+Uffizien
+------------------------------------------
+Partnermuseum: Uffizien, Nummer: 115, Art des Kunstwerks: I, Name des Kunstwerks: Girl in a Red Dress
+Partnermuseum: Uffizien, Nummer: 76, Art des Kunstwerks: G, Name des Kunstwerks: Jug
+------------------------------------------
+Kosten pro Museum: 3.456,00 €
+
+------------------------------------------
+Bode-Museum
+------------------------------------------
+Partnermuseum: Bode-Museum, Nummer: 41, Art des Kunstwerks: B, Name des Kunstwerks: Avec Ou Dessus
+Partnermuseum: Bode-Museum, Nummer: 71, Art des Kunstwerks: G, Name des Kunstwerks: Sacrifice of Isaac
+Partnermuseum: Bode-Museum, Nummer: 90, Art des Kunstwerks: G, Name des Kunstwerks: Writing box
+Partnermuseum: Bode-Museum, Nummer: 101, Art des Kunstwerks: I, Name des Kunstwerks: Lamelle Blue Delphinium Butter Plate
+------------------------------------------
+Kosten pro Museum: 8.040,00 €
+
+------------------------------------------
+Musée du Louvre
+------------------------------------------
+Partnermuseum: Musée du Louvre, Nummer: 80, Art des Kunstwerks: G, Name des Kunstwerks: Pair of firedogs
+------------------------------------------
+Kosten pro Museum: 1.988,00 €
+
+------------------------------------------
+Eremitage
+------------------------------------------
+------------------------------------------
+Kosten pro Museum: 0,00 €
+
+------------------------------------------
+Museo del Prado
+------------------------------------------
+------------------------------------------
+Kosten pro Museum: 0,00 €
+
+------------------------------------------
+National Gallery
+------------------------------------------
+Partnermuseum: National Gallery, Nummer: 44, Art des Kunstwerks: B, Name des Kunstwerks: Card Number 563 Amy Gordon from the Actors and Actresses series (N145-7) issued by Duke Sons & Co. to promote Duke Cigarettes
+Partnermuseum: National Gallery, Nummer: 16, Art des Kunstwerks: B, Name des Kunstwerks: My Little White Kitties – Into Mischief
+Partnermuseum: National Gallery, Nummer: 37, Art des Kunstwerks: B, Name des Kunstwerks: Kellogg's Funny Jungleland Moving-Pictures
+Partnermuseum: National Gallery, Nummer: 45, Art des Kunstwerks: B, Name des Kunstwerks: Fanny Davenport from the Actresses series (N252-B) issued by P. Lorillard Company to promote Tiger Fine Cut Tobacco
+------------------------------------------
+Kosten pro Museum: 10.767,00 €
+
+--------------------------------------------
+Gesamtkosten: 50.818,00 €
+>>>>>>> 5d5120f6b7b130c3014c88fecace2534a877838c
 =======
 Uffizien
 ------------------------------------------

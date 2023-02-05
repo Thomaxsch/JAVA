@@ -119,21 +119,25 @@ berücksichtigt.Im folgenden werden die einzelnen Begrifflichkeiten der festzule
     
     Qualitätsgewicht:
     Über das Qualitätsgewicht lässt sich die Relevanz der Attraktivität der gesetzten Kunstwerke (Qualität) im Verhältnis zu der 
-    Dichte der gesetzten Kunstwerke an  der Wand (Quantität) für die zu planende Ausstellung festlegen. Dabei ist immer ein Wert zwischen 0 & 1 anzugeben.  
+    Dichte der gesetzten Kunstwerke an  der Wand (Quantität) für die zu planende Ausstellung festlegen. Dabei ist immer ein Wert zwischen 
+    0 & 1 anzugeben.  
     Ist der Wert somit näher an der 1, so wird bei der Aufsstellung der Fokus auf möglichst attraktive Kunstwerke 
     gelegt. Dafür wird jedoch möglicherweise die Anzahl der auszustellenden Kunstwerke sinken und folglich werden die Räume
-    gegebenenfalls weniger gefüllt. Durch die Auswahl des Qualitätsgewichts wird zudem die Auswahl des Raumes für das jeweilige Kunstwerk beeinflusst. 
+    gegebenenfalls weniger gefüllt. Durch die Auswahl des Qualitätsgewichts wird zudem die Auswahl des Raumes für das jeweilige Kunstwerk 
+    beeinflusst. 
     
     Die Qualitätsgewichtung fließt bei unserer Lösungsfindung auf zweierlei Weisen ein:
-    - Bei der Suche nach dem jeweils noch besten möglichen Kunstwerk für einen Raum. Hierbei bestimmt das Gewicht den Einfluss folgender Gütekriterien:
+    - Bei der Suche nach dem jeweils noch besten möglichen Kunstwerk für einen Raum. Hierbei bestimmt das Gewicht den Einfluss folgender 
+    Gütekriterien:
         ○ Attraktivität des Kunstwerkes
         ○ Attraktivität pro Kosten des Kunstwerkes
-    - Bei der Lösungserweiterung (s.o. unter 2.) wird immer wieder der Raum mit dem größten Verbesserungsbedarf gesucht. Hierbei gewichten wir folgende Bedürftigkeitskriterien:
+    - Bei der Lösungserweiterung (s.o. unter 2.) wird immer wieder der Raum mit dem größten Verbesserungsbedarf gesucht. 
+    Hierbei gewichten wir folgende Bedürftigkeitskriterien:
         ○ Geringer Mittelwert der Attraktivität der Kunstwerke (leere Räume berücksichtigen wir mit einem Attraktivitätswert von 0)
         ○ Geringer Anteil der belegten Wandfläche des Raumes
 
-     Diese Aspekte der Gewichtung steuern wir mit einem einzigen Parameter. Eine hohe Qualitätsgewichtung rückt die Attraktivität in den Mittelpunkt,
-     sodass tendenziell die Raumbelegung (Quantität) abnimmt, und umgekehrt.
+     Diese Aspekte der Gewichtung steuern wir mit einem einzigen Parameter. Eine hohe Qualitätsgewichtung rückt die Attraktivität in den
+     Mittelpunkt,sodass tendenziell die Raumbelegung (Quantität) abnimmt, und umgekehrt.
     --> Beispiel: "0.7" - Priorisierung attraktivierer Kunstwerke unter Berücksichtigung, dass die Räume ggf. weniger dicht belegt werden. 
     
     Als Standard ist der Wert "0.5" angegeben, sodass es sich um ein ausgeglichenes Attraktivitäts und Raumbelegungsverhältnis handelt.
