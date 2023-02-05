@@ -103,7 +103,7 @@ Die einzelnen Begrifflichkeiten werden unter dem Punkt "Benutzerhinweise" genaue
     (11) Logmodus für Planung und Variationsanalyse an/aus
     Unter dieser Option lässt sich der Logmodus für die Planung und Variationsanalyse an, bzw. ausschalten. Standardmäßig ist dieser
     ausgeschaltet. Dies bedeutet, dass für den Anwender lediglich die Ergebnisse der Planung und Variationsanalyse ausgegeben werden. 
-    Wird in diesem Fall der Logmodus aktiviert, so wird bei Betätigen der Option (1) Planung oder (10) Variationsanalyse der Log, also
+    Wird in diesem Fall der Logmodus aktiviert, so wird bei Betätigen der Option (3) Planung oder (10) Variationsanalyse der Log, also
     die Durchführung der Planung durchgespielt und für den Anwender angezeigt. 
     Dies kommt für Sie vor allem dann in Betracht, wenn Sie als Anwender nachvollziehen wollen, wie die einzelnen Zuordnungen zustande
     gekommen sind und weshalb diese in dieser Art durch die Software durchgefüht wurden. 
@@ -146,7 +146,7 @@ berücksichtigt.Im folgenden werden die einzelnen Begrifflichkeiten der festzule
     Gütekriterien:
         ○ Attraktivität des Kunstwerkes
         ○ Attraktivität pro Kosten des Kunstwerkes
-    - Bei der Lösungserweiterung (s.o. unter 2.) wird immer wieder der Raum mit dem größten Verbesserungsbedarf gesucht. 
+    - Bei der Lösungserweiterung wird immer wieder der Raum mit dem größten Verbesserungsbedarf gesucht. 
     Hierbei gewichten wir folgende Bedürftigkeitskriterien:
         ○ Geringer Mittelwert der Attraktivität der Kunstwerke (leere Räume berücksichtigen wir mit einem Attraktivitätswert von 0)
         ○ Geringer Anteil der belegten Wandfläche des Raumes
