@@ -52,23 +52,11 @@ public class Bild extends Kunstwerk
      * @param in_maxLuft               Dieser int entspricht der minimalen Luftfeuchtigkeit in einem Raum, welche für das Kunstwerk zulässig ist, in %.
    
     */
-
       public Bild (short in_laufendeNummer, char in_art, String in_bezeichnung, String in_kuenstler, String in_jahr, String in_thema, 
       int in_attraktivitaetswert, int in_kosten, String in_verleihendesMuseum,String in_anschrift, int in_hoehe, int in_breite,
       int in_minTemp,int in_maxTemp, int in_minLuft, int in_maxLuft)
     { 
-        setLaufendeNummer(in_laufendeNummer);
-        setArt(in_art);
-        setBezeichnung(in_bezeichnung);
-        setKuenstler(in_kuenstler);
-        setJahr(in_jahr);
-        setThema(in_thema);
-        setAttraktivitaet(in_attraktivitaetswert);
-        setKosten(in_kosten);
-        setVerleihendesMuseum(in_verleihendesMuseum);
-        setAnschrift(in_anschrift);
-        setHoehe(in_hoehe);
-        setBreite(in_breite);
+        super(in_laufendeNummer, in_art, in_bezeichnung, in_kuenstler, in_jahr, in_thema, in_attraktivitaetswert, in_kosten, in_verleihendesMuseum, in_anschrift, in_hoehe, in_breite);
         setMinTemp(in_minTemp);
         setMaxTemp(in_maxTemp);
         setMinLuft(in_minLuft);
@@ -168,7 +156,7 @@ public class Bild extends Kunstwerk
     @Override //weil die eigentliche Methode hierzu in der Klasse Kunstwerk definiert wird und hierrüber auf die Klasse Bild angepasst wird. 
     public String outputMaße()
     {
-        return ", Höhe: " + super.getHoehe() + ", Breite: " + super.getBreite();
+        return ", Hoehe: " + super.getHoehe() + ", Breite: " + super.getBreite();
     }
     }
     

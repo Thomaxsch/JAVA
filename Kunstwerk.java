@@ -80,7 +80,19 @@ import java.lang.Integer;
     
     public Kunstwerk(short in_laufendeNummer, char in_art, String in_bezeichnung, String in_kuenstler, String in_jahr, String in_thema, 
     int in_attraktivitaetswert, int in_kosten, String in_verleihendesMuseum,String in_anschrift, int in_hoehe, int in_breite)
-    {  
+    {
+        setLaufendeNummer(in_laufendeNummer);
+        setArt(in_art);
+        setBezeichnung(in_bezeichnung);
+        setKuenstler(in_kuenstler);
+        setJahr(in_jahr);
+        setThema(in_thema);
+        setAttraktivitaet(in_attraktivitaetswert);
+        setKosten(in_kosten);
+        setVerleihendesMuseum(in_verleihendesMuseum);
+        setAnschrift(in_anschrift);
+        setHoehe(in_hoehe);
+        setBreite(in_breite);
     }
     
     //Methoden der Klasse Kunstwerk
@@ -337,7 +349,7 @@ import java.lang.Integer;
     @Override
     public String toString()
     { 
-        return "Attraktivität: " + this.getAttraktivitaet() + ", Thema: " + this.thema + ", Nr: " + this.laufendeNummer + 
+        return "Attraktivitaet: " + this.getAttraktivitaet() + ", Thema: " + this.thema + ", Nr: " + this.laufendeNummer + 
         ", Art des Kunstwerks: " + this.art + ", Bezeichnung: " + this.bezeichnung + ", Breite " + this.breite;
     }
     
@@ -354,8 +366,8 @@ import java.lang.Integer;
     public String outputMuseumsführer()
     {
         return "Name des Kunstwerks: " + this.getBezeichnung() + "  aus dem Jahr " + this.getJahr() + System.lineSeparator() +
-        "Künstler: " + this.getKuenstler() + System.lineSeparator() + 
-        "Zur Verfügung gestellt durch das Partnermuseum: " + this.getVerleihendesMuseum() + ", " + this.getAnschrift();
+        "Kuenstler: " + this.getKuenstler() + System.lineSeparator() + 
+        "Zur Verfuegung gestellt durch das Partnermuseum: " + this.getVerleihendesMuseum() + ", " + this.getAnschrift();
     }
     
      /**

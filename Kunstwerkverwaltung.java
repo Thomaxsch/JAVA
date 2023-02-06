@@ -22,7 +22,7 @@ public class Kunstwerkverwaltung
     //Konstruktoren der Klasse Kunstwerkverwaltung
     /**
      * Konstruktor für Objekte der Klasse Kunstwerkverwaltung. Dieser Konstruktor erzeugt ein leeren Vector / Angebot, 
-     * welches später über Methoden mit Kunstwerken befüllt werden kann. 
+     * welches spaeter über Methoden mit Kunstwerken befüllt werden kann. 
      */
     public Kunstwerkverwaltung()
     {
@@ -32,7 +32,7 @@ public class Kunstwerkverwaltung
     
     //Methoden für die Vektorliste der Klasse Kunstwerkverwaltung 
     /**
-     * Diese Methode fügt dem Vector der Kunstwerkverwaltung ein Kunstwerk hinzu.
+     * Diese Methode fuegt dem Vector der Kunstwerkverwaltung ein Kunstwerk hinzu.
      * 
      * @param kunstwerk  Kunstwerk (Kunsinstallation, Bild, Kunstgegenstand) der hinzugefügt werden soll
      */
