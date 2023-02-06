@@ -60,6 +60,8 @@ Die einzelnen Begrifflichkeiten werden unter dem Punkt "Benutzerhinweise" genaue
     (3) Planung starten
     Falls die anderen Menüoptionen zuvor nicht angepasst wurden wird unter den Standardbedingungen (ohne Schwerpunkt und einem Qualitätsgewicht
     von 50%) die Planung durchgeführt.
+    Nach erfolgter Planung, wird der Benutzer aufgefordert einen Dateipfad anzugeben. An der Stelle des Dateipfads werden die 
+    drei Ausgabedatei (Ausleihdatei, Raumdatei und Museumsfueherer) als CSV- und HTML-Datei abgespeichert.
 
     (4) Schwerpunktthema angeben/ändern
     Es besteht die Möglichkeit für die Ausstellung ein Schwerpunktthema anzugeben oder falls bereits festgelegt zu ändern. 
