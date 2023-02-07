@@ -126,7 +126,7 @@ public class Raum
      */
     public void setLaengeRaum(int in_laengeRaum)
     {   
-        // Schreibt den Eingabewert in das Attribut laengeRaumInCm.
+        // Schreibt den Eingabewert in das Attribut laengeRaum.
         laengeRaum = in_laengeRaum;
     }
     /** Die Laenge des Raumes ermittlen.
@@ -142,7 +142,7 @@ public class Raum
      */
     public void setBreiteRaum(int in_breiteRaum)
     {   
-        // Schreibt den Eingabewert in das Attribut breiteRaumInCm.
+        // Schreibt den Eingabewert in das Attribut breiteRaum.
         breiteRaum = in_breiteRaum;
     }
     /** Die Breite des Raumes ermittlen.
@@ -158,7 +158,7 @@ public class Raum
      */
     public void setHoeheRaum(int in_hoeheRaum)
     {   
-        // Schreibt den Eingabewert in das Attribut hoeheRaumInCm.
+        // Schreibt den Eingabewert in das Attribut hoeheRaum.
         hoeheRaum = in_hoeheRaum;
     }
     /** Die Hoehe des Raumes ermittlen.
@@ -174,7 +174,7 @@ public class Raum
      */
     public void setTuerNord(int in_tuerNord)
     {   
-        // Schreibt den Eingabewert in das Attribut tuerNordInCm.
+        // Schreibt den Eingabewert in das Attribut tuerNord.
         tuerNord = in_tuerNord;
     }
     /** Die Tuerbreite der Nordseite des Raumes ermittlen.
@@ -190,7 +190,7 @@ public class Raum
      */
     public void setTuerOst(int in_tuerOst)
     {   
-        // Schreibt den Eingabewert in das Attribut tuerOstInCm.
+        // Schreibt den Eingabewert in das Attribut tuerOst.
         tuerOst= in_tuerOst;
     }
     /** Die Tuerbreite der Ostseite des Raumes ermittlen.
@@ -206,7 +206,7 @@ public class Raum
      */
     public void setTuerSued(int in_tuerSued)
     {   
-        // Schreibt den Eingabewert in das Attribut tuerSuedInCm.
+        // Schreibt den Eingabewert in das Attribut tuerSued.
         tuerSued = in_tuerSued;
     }
     /** Die Tuerbreite der Suedseite des Raumes ermittlen.
@@ -222,7 +222,7 @@ public class Raum
      */
     public void setTuerWest(int in_tuerWest)
     {   
-        // Schreibt den Eingabewert in das Attribut tuerWestInCm.
+        // Schreibt den Eingabewert in das Attribut tuerWest.
         tuerWest = in_tuerWest;
     }
     /** Die Tuerbreite der Westeite des Raumes ermittlen.

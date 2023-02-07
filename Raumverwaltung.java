@@ -118,18 +118,17 @@ public class Raumverwaltung
         // wandelt den Klon in eine ArrayList um
         ArrayList<Raum> raumArrayList = new ArrayList<Raum>(raumVectorKlon); 
         // entfernt alle belegten Raeume aus der ArrayList, die komplett unbelegten Raeume bleiben enthalten
-        raumArrayList.removeAll(inRaeumeSchonBelegt);
-               
+        raumArrayList.removeAll(inRaeumeSchonBelegt); 
         // erstellt einen Zufallsnummer-Generator
         Random rand = new Random();
         // ermittelt eine zufaellige ganzzahlige Nummer zwischen 0 (erstes Element der ArrayList) und der Länge d. 
-        // ArrayList -1 (letztes Element). Beide Randwerte sind bei der Ermittlung inklusive.
+        // ArrayList -1 (letztes Element). Da bei nextInt(int bound) der hintere Randwert exklusive ist,
+        // wird eine "+1" eingefuegt. Somit sind beide Randwerte bei der Ermittlung inklusive.
         int randomNum = rand.nextInt(raumArrayList.size() -1 + 1); 
         // gibt den Raum an der Stelle der ermittelten zufealligen Nummer in der ArrayList aus
         return raumArrayList.get(randomNum);
     }
-    // int randomNum = rand.nextInt((max - min) + 1) + min  gäbe uns Werte zwischen min und max jeweils einschließlich der beiden Grenzen
-        
+    
     /** Gibt eine textuelle Beschreibung aller Räume aus.
      * 
      */
