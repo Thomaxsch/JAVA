@@ -48,7 +48,6 @@ Unter dieser Option lassen sich ".csv" Dateien der Kunstwerke in das Programm ei
 Die Eingabe des Pfades hat in folgendem Format zu erfolgen: "/" zu Beginn und "/" am Ende der Eingabe des Pfades.    
     -> Beispiel: "/home/MaxMustermann/Dokumente/Museumsplanung/Februar2023/"
 
-
     (3) Planung starten
 Falls die anderen Menüoptionen zuvor nicht angepasst wurden wird unter den Standardbedingungen (ohne Schwerpunkt und einem Qualitätsgewicht  von 50%) die Planung durchgeführt.
 Nach erfolgter Planung, wird der Benutzer aufgefordert einen Dateipfad anzugeben. An der Stelle des Dateipfads werden die drei Ausgabedateien  (Ausleihdatei, Raumdatei und Museumsfueherer) als CSV- und HTML-Datei abgespeichert.
@@ -67,8 +66,6 @@ Wenn im Anschluss unter "(1)" die Planung durchgeführt wird, wird in diesem Fal
     (7) Aktuelles Schwerpunktthema anzeigen
 Bei Aufruf dieser Option wird angezeigt, ob ein Schwerpunktthema für die Planung gesetzt wurde. Falls dies zutrifft, wird dieses angezeigt.
     
-
-
     (8) Aktuelle Kostenobergrenze anzeigen
 Bei Aufruf dieser Option wird angezeigt, ob eine Kostenobergrenze für die Planung gesetzt wurde. Falls dies zutrifft, wird diese angezeigt.
     

@@ -127,7 +127,7 @@ public class Ausgabedatei
                         
                         // HTML-Ausgabe der String-Repräsentation des jeweiligen Kunstwerks 
                         sb.append("<tr><td>" + (j+1) + "</td>");
-                        sb.append("<td>" + k.get(j).toString() + "</td>");
+                        sb.append("<td>" + k.get(j).outputAusleihdatei() + "</td>");
                         
                         // HTML-Ausgabe der Kosten des jeweiligen Kunstwerks durch Aufruf Methode getKosten
                         sb.append("<td>" + legeWaehrungsFormatFest(k.get(j).getKosten()) + "</td></tr>");
@@ -168,7 +168,7 @@ public class Ausgabedatei
     }
     
     /**
-     * Erstellt eine Datei (Raumdatei), die nach Räumen aufgegliedertauflistet, welches Kunstwerk wo ausgestellt werden soll. 
+     * Erstellt eine Datei (Raumdatei), die nach Räumen aufgegliedert auflistet, welches Kunstwerk wo ausgestellt werden soll. 
      */
     public void schreibeAusstellungen()
     {

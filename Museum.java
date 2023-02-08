@@ -4,17 +4,23 @@ import java.util.*;
 /**
  * Die Klasse Museum bildet die Einstiegsklasse. Aus ihr wird das Programm gestartet. Sie dient auch dem Einlesen der Kunstwerke und Räume und bietet ein Konsolenmenü an.
  * @author Mischa Paul Marchlewski 
- * @version 30.01.2023
+ * @version 05.02.2023
  */
 public class Museum
 {
-    // Deklaration der Objektvariablen der Klasse Raumverwaltung
+    /**
+     * Deklaration einer Objektvariablen der Klasse Raumverwaltung 
+     */ 
     private Raumverwaltung raeume;
     
-    // Deklaration der Objektvariablen der Klasse Kunstwerksverwaltung
+    /**
+     * Deklaration einer Objektvariablen der Klasse Kunstwerksverwaltung
+     */
     private Kunstwerkverwaltung kunstwerke;
     
-    // Deklaration der Objektvariablen der Klasse Ausstellungsplanung
+    /**
+     *  Deklaration einer Objektvariablen der Klasse Ausstelungsverwaltung
+     */
     private Ausstellungsplanung planung;
     
     /**
@@ -29,7 +35,7 @@ public class Museum
         kunstwerke = new Kunstwerkverwaltung();
         
         // eine neue Instanz der Klasse Ausstellungsplanung wird generiert und der Objektvariablen planung zugewiesen
-        // als Parameter werden zwei Objekte der Klassen Raumverwaltung und Kunstwerksverwaltung übergeben
+        // als Eingabeparameter wird jeweils ein Objekt der Klassen Raumverwaltung und Kunstwerksverwaltung übergeben
         planung = new Ausstellungsplanung(raeume, kunstwerke); 
         
         // Ausgabe des Konsolenmenüs der Klasse Museum
@@ -42,15 +48,13 @@ public class Museum
      */
     public static void main(String[] args)
     {
-        // Objektvariable meinMuseum der Klasse Museum wird deklariert und mit new ein neu erzeugtes Museums-Objekt zugewiesen
+        // Objektvariable meinMuseum der Klasse Museum wird deklariert und ein neu erzeugtes Museums-Objekt zugewiesen
         Museum meinMuseum = new Museum();
     }
     
     /**
-     * Liest die Kunstwerke aus der Datei kunstwerke.csv ein und erstellt
-     * daraus Objeke der Klasse Bild, Kunstinstallation bzw. Kunstgegenstand, die dann
-     * in der Klasse Angebotsverwaltung verwaltet werden
-     * 
+     * Liest die Kunstwerke aus der Datei kunstwerke.csv ein und erstellt daraus Objeke der Klasse Bild, Kunstinstallation bzw. Kunstgegenstand, die dann
+     * in der Klasse Kunstwerkverwaltung verwaltet werden
      * @param name  Name (Pfad) der Datei, die eingelesen werden soll
      */
     public void importiereKunstwerke(String name)
@@ -66,6 +70,10 @@ public class Museum
             // Deklaration der Variablen eof vom Typ boolean und Initialisierung mit dem Wert false 
             boolean eof = false;
             
+            /* Objekt dEin der Klasse BufferedReader zum gepufferten Einlesen von Daten wird deklariert und mit einer Referenz auf ein BufferedReader-Objekt initialisiert
+             * der Konstruktor der Klasse BufferedReader enthält als Eingabeparameter eine Referenz auf ein neues Objekt der Klasse FileReader, die wiederum als Eingabeparameter
+             * die Variable name übergeben bekommt
+             */
             BufferedReader dEin = new BufferedReader(new FileReader(name));
             
             // While-Schleife soll solange durchlaufen werden, solange die Variable nicht den Wert true hat
