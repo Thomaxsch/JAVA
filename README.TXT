@@ -114,6 +114,11 @@ Die Qualitätsgewichtung fließt bei unserer Lösungsfindung auf zweierlei Weise
      Diese Aspekte der Gewichtung steuern wir mit einem einzigen Parameter. Eine hohe Qualitätsgewichtung rückt die Attraktivität in den Mittelpunkt,sodass tendenziell die Raumbelegung (Quantität) abnimmt, und umgekehrt.
     --> Beispiel: "0.7" - Priorisierung attraktiverer Kunstwerke unter Berücksichtigung, dass die Räume ggf. weniger dicht belegt werden. 
 Als Standard ist der Wert "0.5" angegeben, sodass es sich um ein ausgeglichenes Attraktivitäts-und Raumbelegungsverhältnis handelt.
+
+Erläuterungen zur Raumdatei:
+Es kann vorkommen, dass bei der Raumdatei bei den Temperaturangaben der jeweiligen Räume Werte wie etwa „-999“ auftauchen. 
+Hierbei handelt es sich um einen Default-Wert und dies bedeutet, dass sich keine Bilder im Raum befinden und folglich die Raumbedingungen 
+nicht relevant sind. 
     
     
 Einige Mehrwerte unserer Lösung hinsichtlich der Minimalanforderungen der Studienleistung:
